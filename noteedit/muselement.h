@@ -130,6 +130,7 @@ class main_props_str {
 		int dotcount;
 		bool hidden;
 		bool tied;
+		bool triplet;
 		bool staccato;
 		bool sforzato;
 		bool portato;
@@ -276,6 +277,7 @@ class NMusElement {
 		unsigned int status2_;
 #define STAT2_PEDAL_ON (1 << 0)
 #define STAT2_PEDAL_OFF (1 << 1)
+#define STAT2_AUTO_TRIPLET (1 << 2)
 		int trill_;
 		int dynamic_;
 		int va_;

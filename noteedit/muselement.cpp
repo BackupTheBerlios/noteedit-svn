@@ -31,7 +31,7 @@
 
 main_props_str::main_props_str() : scaledBoldItalicMetrics_(QFont()) /* dummy */ {
 			dotcount = 0;
-			pedal_on = pedal_off = 
+			pedal_on = pedal_off = triplet =
 			tied = staccato = sforzato = portato = strong_pizzicato = 
 			arpeggio = grace = sforzando = fermate = hidden = false;
 			noteBody = 0;

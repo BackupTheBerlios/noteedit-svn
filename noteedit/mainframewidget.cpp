@@ -2848,6 +2848,7 @@ void NMainFrameWidget::setSlured(bool slured) {
 
 
 void NMainFrameWidget::setTriplet(bool triplet) {
+	main_props_.triplet = triplet;
 	if (!triplet) {
 		currentVoice_->breakTuplet();
 		computeMidiTimes(false);

@@ -111,7 +111,7 @@ class NVoice {
 		bool inRepeat() {return endingIdx_ >= 0;}
 		bool muted_;
 		int stemPolicy_;
-/*------------------------ getting voice proerties ---------------------------------------*/
+/*------------------------ getting voice properties ---------------------------------------*/
 		main_props_str *getMainPropsAddr() {return main_props_;}
 		NStaff *getStaff() {return theStaff_;}
 		void printAll();
@@ -356,7 +356,8 @@ class NVoice {
 		bool beameEndRequired(QList<NChord> *beamlist_so_far, NTimeSig *timesig, int beats);
 /*----------------------- dealing with tuplets -------------------------------------*/
 		void reconnectTuplets();
-
+		bool buildTupletList(int x0, int x1, char numNotes, QList<NMusElement> *elemlist);
+		void tryToBuildAutoTriplet();
 /*----------------------- search -------------------------------------*/
 		int searchPositionAndUpdateSigns(int dest_xpos, NMusElement **elem, bool *found, NMusElement **elem_before = 0, 
 			int *countof128th = 0, int *lastbaridx = 0, int *lastbarpos = 0, int *lastbartime = 0);

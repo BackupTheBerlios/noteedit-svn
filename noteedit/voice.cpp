@@ -1815,19 +1815,37 @@ void NVoice::setBeamed() {
 	NChord::computeBeames(chordlist, stemPolicy_);
 }
 
-void NVoice::setTuplet(char numNotes, char playtime) {
-	int count, x0, x1, idx;
-	bool found, tupletable = true;
-	NMusElement *acc_elem;
-	QList<NMusElement> *elemlist;
-	int sum;
+// buildTupletList -- build list of tupletable elements between x0 and x1
+// (both included) assuming a tuplet size of numNotes into elemlist
+// in:		x0: left index
+//		x1: right index
+//		numNotes: tuplet size
+// inout:	elemlist: list to add elements to
+// returns:	true iff successful
+// note:	LVIFIX tbd: positions musElementList_ at ???
+//		always clears elemlist at start
 
-	if (!startElement_ || !endElement_) return;
-	x0 = (endElementIdx_ > startElemIdx_) ? startElemIdx_ : endElementIdx_;
-	x1 = (endElementIdx_ > startElemIdx_) ? endElementIdx_ : startElemIdx_;
+bool NVoice::buildTupletList(int x0, int x1, char numNotes, QList<NMusElement> *elemlist) {
+	int count = 0;
+	int idx = 0;
+	bool found = false;
+	bool tupletable = true;
+	NMusElement *acc_elem = 0;
+	int sum = 0;
+	// always clear elemlist at start
+	elemlist->clear();
+	// check preconditions
+	if ((x0 < 0) || (x1 < 0)) return false;
+	if (x0 > x1) {
+		// swap x0 and x1
+		int tmp = x0;
+		x0 = x1;
+		x1 = tmp;
+	}
+	// find first playable element in selection
+	// init count, elemlist and sum
 	found = false;
 	acc_elem = musElementList_.at(x0);
-	elemlist = new QList<NMusElement>();
 	idx = x0;
 	while (!found && acc_elem != 0 && idx < x1) {
 		if (acc_elem->getType() & PLAYABLE) {
@@ -1843,8 +1861,10 @@ void NVoice::setTuplet(char numNotes, char playtime) {
 		}
 	}
 	if (!found) {
-		return;
+		return false;
 	}
+	// loop over remaining playable elements in selection
+	// update count, elemlist and sum
 	found = false;
 	while (!found && tupletable && acc_elem != 0 && idx <= x1) {
 		if (acc_elem->getType() & PLAYABLE) {
@@ -1858,8 +1878,28 @@ void NVoice::setTuplet(char numNotes, char playtime) {
 			tupletable = false;
 		}
 	}
-	tupletable = tupletable && count > 1 && (sum % numNotes == 0);
-	if (!tupletable) {
+	return tupletable && count > 1 && (sum % numNotes == 0);
+}
+
+// setTuplet -- convert the selection into a tuplet of numNotes notes
+// in playing time playtime, i.e. setTuplet(3, 2) creates a triplet
+// in:		numNotes: tuplet size in notes
+//		playtime: playing time for these notes
+// returns:	void
+// note:	LVIFIX tbd: positions musElementList_ at ???
+
+void NVoice::setTuplet(char numNotes, char playtime) {
+	int x0 = 0;
+	int x1 = 0;
+	QList<NMusElement> *elemlist = 0;
+
+	if (!startElement_ || !endElement_) return;
+	x0 = (endElementIdx_ > startElemIdx_) ? startElemIdx_ : endElementIdx_;
+	x1 = (endElementIdx_ > startElemIdx_) ? endElementIdx_ : startElemIdx_;
+
+	elemlist = new QList<NMusElement>();
+	if (!buildTupletList(x0, x1, numNotes, elemlist)) {
+		delete elemlist;
 		return;
 	}
 	x0 = musElementList_.find(elemlist->first());
@@ -1869,6 +1909,7 @@ void NVoice::setTuplet(char numNotes, char playtime) {
 	}
 	createUndoElement(x0, x1 - x0 + 1, 0);
 	NMusElement::computeTuplet(elemlist, numNotes, playtime);
+	// note: don't delete elemlist here, all tuplet notes refer to it
 }
 
 int NVoice::deleteActualElem(int *state, int *state2, bool backspace) {
@@ -2816,6 +2857,13 @@ int NVoice::searchPositionAndUpdateSigns(int dest_xpos, NMusElement **elem, bool
 	return musElementList_.at();
 }
 
+// search for first element with bbox.x >= dest_xpos
+// in:		dest_xpos: the x position to search for
+// out:		countof128th: the timesig in effect at that position in 128th
+// returns:	void
+// note:	if found, positions musElementList_ at the element found
+//		if not found, sets musElementList_'s current item to 0
+
 void NVoice::searchPositionAndUpdateTimesig(int dest_xpos, int *countof128th) {
 	bool found = false;
 	NMusElement *elem;
@@ -2896,10 +2944,73 @@ int NVoice::findLastBarTime(int xpos) {
 	return lastbartime;
 }
 
+// tryToBuildAutoTriplet -- try to automatically build a triplet containing
+// the chord or rest at the current position
+// in:		none
+// out:		none
+// returns:	void
+
+void NVoice::tryToBuildAutoTriplet() {
+	int ppn = -1;			// index of previous previous note
+	int pn = -1;			// index of previous note
+	int cn = -1;			// index of current note
+	int nn = -1;			// index of next note
+	int nnn = -1;			// index of next next note
+	NMusElement *elem = 0;
+	QList<NMusElement> *elemlist = 0;
+	int oldidx = musElementList_.at();
+	if (oldidx < 0) return;
+
+	// determine index of elements which could become part of triplet
+	elem = musElementList_.current();
+	if (elem && (elem->status2_ & STAT2_AUTO_TRIPLET)
+	    && !(elem->status_ & STAT_TUPLET))
+		cn = musElementList_.at();
+	elem = musElementList_.prev();
+	if (elem && (elem->status2_ & STAT2_AUTO_TRIPLET)
+	    && !(elem->status_ & STAT_TUPLET))
+		pn = musElementList_.at();
+	elem = musElementList_.prev();
+	if (elem && (elem->status2_ & STAT2_AUTO_TRIPLET)
+	    && !(elem->status_ & STAT_TUPLET))
+		ppn = musElementList_.at();
+	musElementList_.at(oldidx);
+	elem = musElementList_.next();
+	if (elem && (elem->status2_ & STAT2_AUTO_TRIPLET)
+	    && !(elem->status_ & STAT_TUPLET))
+		nn = musElementList_.at();
+	elem = musElementList_.next();
+	if (elem && (elem->status2_ & STAT2_AUTO_TRIPLET)
+	    && !(elem->status_ & STAT_TUPLET))
+		nnn = musElementList_.at();
+	// LVIFIX: remove debug printf
+	printf("tryToBuildAutoTriplet() ppn=%d pn=%d cn=%d nn=%d nnn=%d\n",
+		ppn, pn, cn, nn, nnn);
+	fflush(stdout);
+
+	elemlist = new QList<NMusElement>();
+	bool ok = false;
+	int x0 = -1;
+	int x1 = -1;
+	if ((ppn >+ 0) && (pn >= 0) && (cn >= 0)) {
+		if (buildTupletList(ppn, cn, 3, elemlist)) {
+			ok = true;
+			x0 = ppn;
+			x1 = cn;
+		}
+	}
+	// LVIFIX: add other possible cases, e.g pn + cn in 1:2
+	if (ok) {
+		createUndoElement(x0, x1 - x0 + 1, 0);
+		NMusElement::computeTuplet(elemlist, 3, 2);
+		// note: don't delete elemlist here, all tuplet notes refer to it
+	}
+	musElementList_.at(oldidx);
+}
 
 void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int offs, NMusElement *tmpElem) {
 	NMusElement *new_elem, *elem_before, *elem;
-	bool found, is_chord = false;
+	bool found, is_chord = false, is_rest = false;
 	unsigned int status = 0;
 	unsigned int status2 = 0;
 	int idx, idx2;
@@ -2911,6 +3022,10 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 	NMusElement *specialElem, *startElement = 0;
 	int newcount = 0;
 
+	// LVIFIX: remove debug printf
+	printf("NVoice::insertAtPosition, triplet=%d\n", main_props_->triplet);
+	fflush(stdout);
+	
 	if (currentElement_) {
 		currentElement_->setActual(false);
 	}
@@ -2993,11 +3108,13 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 			status |= (main_props_->noteBody & BODY_MASK);
 			if (main_props_->pedal_on) status2 |= STAT2_PEDAL_ON;
 			if (main_props_->pedal_off) status2 |= STAT2_PEDAL_OFF;
+			if (main_props_->triplet) status2 |= STAT2_AUTO_TRIPLET;
 			new_elem = 
 			new NChord(main_props_, &(theStaff_->staff_props_), line,  offs, main_props_->actualLength, stemPolicy_, status, status2);
 				part = new_elem->getNoteList()->first();
 		break;
 		case T_REST:
+			is_rest = true;
 			status = main_props_->dotcount | (main_props_->hidden ? STAT_HIDDEN : 0);
 			new_elem = 
 			new NRest(main_props_, &(theStaff_->staff_props_), &yRestOffs_, sub_type, status);
@@ -3045,6 +3162,11 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 	}
 	if (is_chord && main_props_->tied) {
 		findTieMember(part);
+	}
+	if ((is_chord || is_rest) && main_props_->triplet) {
+		printf("NVoice::insertAtPosition, try to build triplet\n");
+		fflush(stdout);
+		tryToBuildAutoTriplet();
 	}
 	if (is_chord && NResource::allowInsertEcho_) {
 		NResource::mapper_->playImmediately(&(theStaff_->actualClef_), (NChord *) new_elem,

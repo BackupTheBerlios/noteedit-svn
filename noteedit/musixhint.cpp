@@ -119,7 +119,7 @@ void NMusixHint::show() {
 	phase_ = 1;
 #ifdef TESTING
 	currentPixmap_ = musixwarn1_;
-	KAudioPlayer::play("/home/ja/qttest/noteedit-2.7.3/noteedit/resources/fanfare.mp3");
+	KAudioPlayer::play("fanfare.mp3");
 #else
 	currentPixmap_ = NResource::musixwarn1_;
 	if (!NResource::fanfareFile_.isEmpty()) {

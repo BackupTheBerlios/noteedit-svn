@@ -3689,9 +3689,9 @@ void NMainFrameWidget::exportMidi() {	this->exportManager( MIDI_PAGE ); }
 void NMainFrameWidget::exportMusiXTeX() { this->exportManager( MUSIX_PAGE ); }
 void NMainFrameWidget::exportPMX() {	this->exportManager( PMX_PAGE ); }
 void NMainFrameWidget::exportABC() {	this->exportManager( ABC_PAGE ); }
-void NMainFrameWidget::exportLilyPond() {	this->exportManager( LILY_PAGE ); };
-void NMainFrameWidget::setOutputParam() {	this->exportManager( PARAM_PAGE ); };
-void NMainFrameWidget::exportMusicXML() {	this->exportManager( MUSICXML_PAGE ); };
+void NMainFrameWidget::exportLilyPond() {	this->exportManager( LILY_PAGE ); }
+void NMainFrameWidget::setOutputParam() {	this->exportManager( PARAM_PAGE ); }
+void NMainFrameWidget::exportMusicXML() {	this->exportManager( MUSICXML_PAGE ); }
 
 void NMainFrameWidget::importMidi() {
 	KMessageBox::sorry(this, i18n("MIDI import is performed by the TSE3 library!\nSee MIDI import section in documentation or read\n\

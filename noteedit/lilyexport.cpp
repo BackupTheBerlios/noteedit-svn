@@ -31,6 +31,7 @@
 #include <istream.h>
 #endif
 #include <stdlib.h> //  esigra: needed for mkstemp when --without-libs
+#include <stdio.h>  //  for test only
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <klocale.h>
@@ -147,7 +148,11 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 	out_ << "%           \"noteedit\"             %" << endl;
 	out_ << "%                                  %" << endl;
 	out_ << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl << endl;
-    out_ << "\\version \"2.0\"" << endl << endl;        // We currently support LilyPond version 2.0 syntax for sure. We must mention this in order to make convert-ly working.
+	if (NResource::lilyProperties_.lilyVersion24) {
+    	out_ << "\\version \"2.4.2\"" << endl << endl;		// LilyPond version 2.4.2 is the one that it is tested with.
+	} else {
+    	out_ << "\\version \"2.0\"" << endl << endl;        // We currently support LilyPond version 2.0 syntax for sure. We must mention this in order to make convert-ly working.
+	}
 	if (!exportDialog_->lilyVoice->isChecked()) {
 		if (NResource::lilyProperties_.lilyProperties) {
 			out_ << "\\include \"paper" << exportDialog_->lilyFont->currentText() << ".ly\"" << endl << endl;
@@ -226,7 +231,11 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 			}
 			removeExceptsFromString(&staffLabel, false);
 			out_ << staffLabel;
-			out_ << " = \\notes\\relative c";
+			if (NResource::lilyProperties_.lilyVersion24) {
+				out_ << " = \\relative c";
+			} else {
+				out_ << " = \\notes\\relative c";
+			}
 			voice_elem = staff_elem->getVoiceNr(0);
 			clef = voice_elem->getFirstClef();
 			switch (clef->getSubType()) {
@@ -235,7 +244,9 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 				case TENOR_CLEF: lastLine_ = 3; str = 1; break;
 				case ALTO_CLEF: lastLine_ = 4; str = 1; break;
 				case BASS_CLEF: lastLine_ = 3; str = 0; break;
-				case TREBLE_CLEF: lastLine_ = -2; str = 1; break;
+				case TREBLE_CLEF: lastLine_ = -2; str = 1;			// violin clef lowered an octave?
+						if (NResource::lilyProperties_.lilyVersion24 && clef->getShift() == -12) str = 0;
+														break;
 			} 
 			for (k = 0; k < str; k++) out_ << '\'';
 			out_ << " {" << endl << '\t';
@@ -282,14 +293,20 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 				}
 				removeExceptsFromString(&staffLabel, false);
 				out_ << staffLabel;
-				out_ << " = \\notes\\relative c";
+				if (NResource::lilyProperties_.lilyVersion24) {
+					out_ << " = \\relative c";
+				} else {
+					out_ << " = \\notes\\relative c";
+				}
 				switch (clef->getSubType()) {
 					case DRUM_BASS_CLEF:
 					case DRUM_CLEF: lastLine_ = -3; str = 0; break;
 					case TENOR_CLEF: lastLine_ = 3; str = 1; break;
 					case ALTO_CLEF: lastLine_ = 4; str = 1; break;
 					case BASS_CLEF: lastLine_ = 3; str = 0; break;
-					case TREBLE_CLEF: lastLine_ = -2; str = 1; break;
+					case TREBLE_CLEF: lastLine_ = -2; str = 1;			// violin clef lowered an octave?
+							if (NResource::lilyProperties_.lilyVersion24 && clef->getShift() == -12) str = 0;
+															break;
 				} 
 				for (k = 0; k < str; k++) out_ << '\'';
                 out_ << " {" << endl << '\t';
@@ -361,7 +378,11 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 		}
 		removeExceptsFromString(&staffLabel, false);
 		if (staffarray_[i].lyrics_count) {
-			out_ << staffLabel << "Text = \\lyrics ";
+			if (NResource::lilyProperties_.lilyVersion24) {
+				out_ << staffLabel << "Text = \\lyrics ";
+			} else {
+				out_ << staffLabel << "Text = \\lyricmode ";
+			}
 			writeLyrics(i, voice_elem);
 		}
 	} // end for (i = 0, staff_elem = stafflist->first(); ...
@@ -374,12 +395,16 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 		else {
 			out_ << "\t\t\\set Score.skipBars = ##t" << endl;
 		}
-		if (NResource::lilyProperties_.lilyVersion2) {
-			if (NResource::lilyProperties_.lilyProperties) {
-				out_ << "\t\t\\property Score.melismaBusyProperties = #'(melismaBusy slurMelismaBusy tieMelismaBusy)" << endl;
-			}
-			else {
-				out_ << "\t\t\\set Score.melismaBusyProperties = #'(melismaBusy slurMelismaBusy tieMelismaBusy)" << endl;
+		if (NResource::lilyProperties_.lilyVersion24) {
+			out_ << "\t\t\\set Score.melismaBusyProperties = #'()" << endl;
+		} else {
+			if (NResource::lilyProperties_.lilyVersion2) {
+				if (NResource::lilyProperties_.lilyProperties) {
+					out_ << "\t\t\\property Score.melismaBusyProperties = #'(melismaBusy slurMelismaBusy tieMelismaBusy)" << endl;
+				}
+				else {
+					out_ << "\t\t\\set Score.melismaBusyProperties = #'(melismaBusy slurMelismaBusy tieMelismaBusy)" << endl;
+				}
 			}
 		}
 		depth_ = 2;
@@ -428,7 +453,11 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 				if (mainWidget->braceMatrix_[k].valid) {
 					if (mainWidget->braceMatrix_[k].beg == i) {
 						tabsOut();
-						out_ << "\\context PianoStaff \\notes" << endl;
+						if (NResource::lilyProperties_.lilyVersion24) {
+							out_ << "\\context PianoStaff" << endl;
+						} else {
+							out_ << "\\context PianoStaff \\notes" << endl;
+						}
 						if (NResource::lilyProperties_.lilyVersion2) {
 							out_ << "<< ";
 						}
@@ -460,7 +489,11 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 
 			tabsOut();
 			if (staffarray_[i].lyrics_count) {
-				out_ << "\\addlyrics " << endl; tabsOut();
+				if (NResource::lilyProperties_.lilyVersion24) {
+					out_ << "\\oldaddlyrics " << endl; tabsOut();
+				} else {
+					out_ << "\\addlyrics " << endl; tabsOut();
+				}
 			}
 	                out_ << "\\context Staff=\"" << staffName << "\" ";
 			out_ << '\\' << staffLabel << endl;
@@ -500,7 +533,11 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 	
 	
 		out_ << "\t}" << endl;
+		if (NResource::lilyProperties_.lilyVersion24) {
+	        out_ << "\t\\layout {" << endl;
+		} else {
 	        out_ << "\t\\paper {" << endl;
+		}
 		if (exportDialog_->lilyLand->isChecked()) {
 			out_ << "\t\torientation = \"landscape\"" << endl;
 			if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
@@ -1457,7 +1494,17 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 			             out_ << "\\clef ";
 				     switch (clef->getSubType()) {
 					 case DRUM_CLEF:  out_ << "percussion"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";"; break;
-				         case TREBLE_CLEF: out_ << "violin"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";"; break;
+					 case TREBLE_CLEF:
+											if (NResource::lilyProperties_.lilyVersion24) {
+												if (clef->getShift()== -12) {
+													out_ << "\"G_8\""; if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
+												} else {
+													out_ << "G"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
+												}
+											} else {
+												out_ << "violin"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
+											}
+											break;
 					 case TENOR_CLEF: out_ << "tenor"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";"; break;
 					 case ALTO_CLEF: out_ << "alto"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";"; break;
 					 case DRUM_BASS_CLEF: out_ << "percussion"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";"; break;

@@ -1317,7 +1317,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					out_ << "    % FIXME, needs proper syntax: \\tempo 4.=" << pending_tempo << endl << ' ';
 					pending_tempo = -1;
 				     } else if (NResource::lilyProperties_.lilyVersion2 && pending_tempo >= 0) {
-					out_ << "\\asdftempo 4.=" << pending_tempo << ' ';
+					out_ << "\\tempo 4.=" << pending_tempo << ' ';
 					pending_tempo = -1;
 				     }
 				     if (part == MULTIREST) {

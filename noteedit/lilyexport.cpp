@@ -379,9 +379,9 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 		removeExceptsFromString(&staffLabel, false);
 		if (staffarray_[i].lyrics_count) {
 			if (NResource::lilyProperties_.lilyVersion24) {
-				out_ << staffLabel << "Text = \\lyrics ";
-			} else {
 				out_ << staffLabel << "Text = \\lyricmode ";
+			} else {
+				out_ << staffLabel << "Text = \\lyrics ";
 			}
 			writeLyrics(i, voice_elem);
 		}

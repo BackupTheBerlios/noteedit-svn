@@ -17,4 +17,5 @@ Bugs fixed:
 - 002581 rest symbol printed twice
 - 002807 rests should have fermatas as well
 - 002809 measure numbers for other voices not printed in .ly file
-
+- 003249 2.7.4 beta crash on RH7.2
+- 003296 crash when ALSA synth not running

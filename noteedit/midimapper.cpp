@@ -344,8 +344,8 @@ NMidiMapper::NMidiMapper() : QObject() {
 		
 	isInUse_ = false;
 
+	actualDevice_nr_ = -1;
 	if (!theScheduler_) {
-		actualDevice_nr_ = -1;
 		cerr << "error opening Midi Device --> music cannot be played" << endl;
 	}
 	else {
@@ -353,13 +353,19 @@ NMidiMapper::NMidiMapper() : QObject() {
 		for (int i = 0; i < theScheduler_->ports(); ++i) {
 			deviceNameList += theScheduler_->portName(i);
 		}
-		actualDevice_nr_ = 0;
+		if (theScheduler_->ports() > 0) {
+			actualDevice_nr_ = 0;
+		}
 #else
-		for (int i = 0; i < theScheduler_->numPorts(); ++i) {
+		for (unsigned int i = 0; i < theScheduler_->numPorts(); ++i) {
 			deviceNameList += theScheduler_->portName(
 				theScheduler_->portNumber(i));
 		}
-		actualDevice_nr_ = theScheduler_->portNumber(0);
+		 // note: when no synthesizer is running (numPorts() == 0)
+		 // theScheduler_->portNumber() will cause a crash
+		if (theScheduler_->numPorts() > 0) {
+			actualDevice_nr_ = theScheduler_->portNumber(0);
+		}
 #endif
 		if (NResource::midiPortSet_) {
 #if TSE3_MID_VERSION_NR < 2
@@ -395,21 +401,27 @@ NMidiMapper::NMidiMapper(TSE3::MidiScheduler *scheduler) : QObject() {
 	channelPool_ = 0x0;
 	lastSelectedChannel_ = 0;
 
+	actualDevice_nr_ = -1;
 	if (!theScheduler_) {
-		actualDevice_nr_ = -1;
 		cerr << "error opening Midi Device --> music cannot be played" << endl;
 	}
 	else {
 #if TSE3_MID_VERSION_NR < 2
 		for (int i = 0; i < theScheduler_->ports(); ++i) {
 			deviceNameList += theScheduler_->portName(i);
+		}
+		if (theScheduler_->ports() > 0) {
+			actualDevice_nr_ = 0;
+		}
 #else
-		for (int i = 0; i < theScheduler_->numPorts(); ++i) {
+		for (unsigned int i = 0; i < theScheduler_->numPorts(); ++i) {
 			deviceNameList += theScheduler_->portName(
 				theScheduler_->portNumber(i));
-#endif
 		}
-		actualDevice_nr_ = 0;
+		if (theScheduler_->numPorts() > 0) {
+			actualDevice_nr_ = theScheduler_->portNumber(0);
+		}
+#endif
 		if (NResource::midiPortSet_) {
 #if TSE3_MID_VERSION_NR < 2
 			if (NResource::defMidiPort_ >= theScheduler_->ports()  ||  NResource::defMidiPort_ < 0) {

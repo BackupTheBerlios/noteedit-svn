@@ -90,7 +90,7 @@ VoiceBox::VoiceBox
 
 	renumber(VoiceNumber);
 
-};
+}
 
 VoiceBox::~VoiceBox() {
 	delete stemDirection_;
@@ -155,7 +155,7 @@ void VoiceBox::apply() {
 
 void VoiceBox::destroy() {
 	if (voiceDialog_->destroyVoice(this, theVoice_)) this->close(true);
-};
+}
 
 
 VoiceDialog::VoiceDialog

@@ -20,7 +20,7 @@ extern "C" {
   void *init_libnoteedit() {
     return new NoteeditFactory;
   }
-};
+}
 
 /**
  * We need one static instance of the factory for our C 'main'

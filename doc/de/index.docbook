@@ -246,63 +246,22 @@
 >Einfügen</title>
 
 <sect2 id="insert_notes">
-<title
->Noten einfügen</title>
+<title>Noten einfügen</title>
 
-<para
->Wählen Sie eine Notenlänge auf der Werkzeugleiste(<inlinemediaobject
-><imageobject
-><imagedata fileref="toolbar.png"/></imageobject
-></inlinemediaobject
->)! Wählen Sie punktiert (<inlinemediaobject
-><imageobject
-><imagedata fileref="dotted.png"/></imageobject
-></inlinemediaobject
->), doppelt punktiert (<inlinemediaobject
-><imageobject
-><imagedata fileref="ddot.png"/></imageobject
-></inlinemediaobject
->) Haltebogen (<inlinemediaobject
-><imageobject
-><imagedata fileref="tied.png"/></imageobject
-></inlinemediaobject
->) staccato (<inlinemediaobject
-><imageobject
-><imagedata fileref="staccato.png"/></imageobject
-></inlinemediaobject
->) sforzato (<inlinemediaobject
-><imageobject
-><imagedata fileref="sforzato.png"/></imageobject
-></inlinemediaobject
->), portato (<inlinemediaobject
-><imageobject
-><imagedata fileref="portato.png"/></imageobject
-></inlinemediaobject
->), strong pizzicato (<inlinemediaobject
-><imageobject
-><imagedata fileref="spizzicato.png"/></imageobject
-></inlinemediaobject
->), sforzando (<inlinemediaobject
-><imageobject
-><imagedata fileref="sforzando.png"/></imageobject
-></inlinemediaobject
->), Fermate (<inlinemediaobject
-><imageobject
-><imagedata fileref="fermata.png"/></imageobject
-></inlinemediaobject
->),arpeggio (<inlinemediaobject
-><imageobject
-><imagedata fileref="arpeggio.png"/></imageobject
-></inlinemediaobject
->) Pedal-an (<inlinemediaobject
-><imageobject
-><imagedata fileref="pedalon.png"/></imageobject
-></inlinemediaobject
->) oder Pedal-aus (<inlinemediaobject
-><imageobject
-><imagedata fileref="pedaloff.png"/></imageobject
-></inlinemediaobject
->) wie gewünscht.</para>
+<para>Wählen Sie eine Notenlänge auf der Werkzeugleiste(<inlinemediaobject><imageobject><imagedata fileref="toolbar.png"/></imageobject></inlinemediaobject>)!
+Wählen Sie punktiert (<inlinemediaobject><imageobject><imagedata fileref="dotted.png"/></imageobject></inlinemediaobject>),
+doppelt punktiert (<inlinemediaobject><imageobject><imagedata fileref="ddot.png"/></imageobject></inlinemediaobject>),
+Haltebogen (<inlinemediaobject><imageobject><imagedata fileref="tied.png"/></imageobject></inlinemediaobject>),
+Triole (<inlinemediaobject><imageobject><imagedata fileref="triplet.png"/></imageobject></inlinemediaobject>),
+staccato (<inlinemediaobject><imageobject><imagedata fileref="staccato.png"/></imageobject></inlinemediaobject>),
+sforzato (<inlinemediaobject><imageobject><imagedata fileref="sforzato.png"/></imageobject></inlinemediaobject>),
+portato (<inlinemediaobject><imageobject><imagedata fileref="portato.png"/></imageobject></inlinemediaobject>),
+starkes Pizzicato (<inlinemediaobject><imageobject><imagedata fileref="spizzicato.png"/></imageobject></inlinemediaobject>),
+sforzando (<inlinemediaobject><imageobject><imagedata fileref="sforzando.png"/></imageobject></inlinemediaobject>),
+Fermate (<inlinemediaobject><imageobject><imagedata fileref="fermata.png"/></imageobject></inlinemediaobject>),
+arpeggio (<inlinemediaobject><imageobject><imagedata fileref="arpeggio.png"/></imageobject></inlinemediaobject>),
+Pedal-an (<inlinemediaobject><imageobject><imagedata fileref="pedalon.png"/></imageobject></inlinemediaobject>),
+oder Pedal-aus (<inlinemediaobject><imageobject><imagedata fileref="pedaloff.png"/></imageobject></inlinemediaobject>) wie gewünscht.</para>
 
 <para id="accidentals"
 ><command
@@ -412,12 +371,12 @@
 ></inlinemediaobject
 >).</para>
 
-<para
->Normalerweise rasten die Punktierungs- und Vorzeichen-Knöpfe nach dem Einfügen wieder aus. Benutzen Sie den Feststellknopf(<inlinemediaobject
-><imageobject
-><imagedata fileref="rivet.png"/></imageobject
-></inlinemediaobject
->), um dieses Verhalten zu ändern. </para>
+<para>Normalerweise rasten die Punktierungs- und Vorzeichen-Knöpfe nach dem Einfügen wieder aus. Benutzen Sie den Feststellknopf(<inlinemediaobject><imageobject><imagedata fileref="rivet.png"/></imageobject></inlinemediaobject>), um dieses Verhalten zu ändern. </para>
+
+<para>Wenn der Triolen-Knopf (<inlinemediaobject><imageobject><imagedata fileref="triplet.png"/></imageobject></inlinemediaobject>)
+während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuchen, mit den zwei, drei eingegebenen Werten eine Triole zu bilden. Erst wenn keine Triolen-Werte mehr aktiv sind den Triolen-Knopf ausschalten, sonst wird die Triole wieder aufgebochen!
+</para>
+
 </sect2>
 
 <sect2

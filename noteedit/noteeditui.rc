@@ -1,0 +1,193 @@
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd" >
+<kpartgui name="NoteEdit" version="1"><!-- Update version number when making a change -->
+<MenuBar>
+ <Menu name="file"><text>&amp;File</text>
+  <!-- Standard actions (new/open/save/saveas) go here automatically -->
+  <Action name="export_midi"/>
+  <Action name="export_musixtex"/>
+  <Action name="export_abc"/>
+  <Action name="export_pmx"/>
+  <Action name="export_lily"/>
+  <Action name="export_musicxml"/>
+  <Separator/>
+  <Action name="import_musicxml"/>
+  <Action name="import_midi"/>
+  <Separator/>
+  <Action name="set_params"/>
+  <Separator/>
+  <Action name="layout_dialog"/>
+  <Separator/>
+  <Action name="close_all"/>
+  <Separator/>
+  <Action name="score_information"/>
+  <Separator/>
+  <Action name="quit"/>
+ </Menu>
+ <Menu name="edit"><text>&amp;Edit</text>
+  <!-- Standard actions (undo/redo/cut/copy/paste) go here automatically -->
+  <Action name="edit_multistaff"/>
+  <Action name="edit_goto"/>
+  <Action name="edit_autobar"/>
+  <Action name="edit_autobeam"/>
+  <Action name="edit_cleanuprests"/>
+  <Action name="set_ntime_repeat"/>
+ </Menu>
+ <Menu name="view"><text>&amp;View</text>
+  <Action name="view_show_bar_numbers"/>
+  <Action name="view_show_staff_names"/>
+  <Action name="view_staff_context"/>
+  <Action name="view_show_aux_lines"/>
+  <Action name="view_drum_tools"/>
+ </Menu>
+ <Menu name="insert"><text>&amp;Insert</text>
+  <Action name="insert_clef"/>
+  <Action name="insert_keysig"/>
+  <Action name="insert_repeatopen"/>
+  <Action name="insert_repeatopenclose"/>
+  <Action name="insert_repeatclose"/>
+  <Action name="insert_specialending1"/>
+  <Action name="insert_specialending2"/>
+  <Action name="insert_double_bar"/>
+  <Action name="insert_end_bar"/>
+  <Action name="insert_timesig"/>
+  <Action name="insert_temposig"/>
+  <Action name="insert_volumechange"/>
+  <Action name="insert_voicechange"/>
+  <Action name="insert_chord"/>
+  <Action name="insert_line"/>
+  <Action name="insert_multi_rest"/>
+  <Action name="create_tuplet"/>
+  <Action name="insert_ritardando"/>
+  <Action name="insert_accelerando"/>
+  <Action name="insert_text"/>
+  <Menu name="segno_staff"><text>Se&amp;gno</text>
+  <Action name="insert_segno"/>
+  <Action name="insert_dal_segno"/>
+  <Action name="insert_dal_segno_al_fine"/>
+  <Action name="insert_dal_segno_al_coda"/>
+  <Action name="insert_fine"/>
+  <Action name="insert_coda"/>
+  </Menu>
+ </Menu>
+ <Menu name="staff"><text>St&amp;aff</text>
+  <Action name="staff_new"/>
+  <Action name="staff_delete"/>
+  <Action name="staff_move"/>
+  <Action name="voice_dialog"/>
+  <Action name="staff_mute"/>
+  <Action name="staff_properties"/>
+  <Action name="staff_lyrics"/>
+  <Action name="staff_importrec"/>
+ </Menu>
+ <Menu name="tools"><text>&amp;Tools</text>
+  <Action name="tools_accidentals"/>
+  <Action name="tools_collect"/>
+  <Action name="tools_transpose"/>
+  <Action name="tools_change_clef"/>
+  <Action name="tools_set_sharp"/>
+  <Action name="tools_set_flat"/>
+ </Menu>
+ <Menu name="TSE3"><text>TSE&amp;3</text>
+  <Action name="tse3_createsong"/>
+  <Action name="tse3_playsong"/>
+  <Action name="tse3_readsong"/>
+  <Action name="tse3_writesong"/>
+  <Action name="tse3_midiout"/>
+  <Action name="tse3_midiin"/>
+  <Action name="tse3_filterdlg"/>
+  <Action name="tse3_information"/>
+  <Action name="tse3_merge"/>
+  <Action name="tse3_score"/>
+ </Menu>
+ <Menu name="settings"><text>&amp;Settings</text>
+  <Action name="midi_devices"/>
+  <Action name="keyconfig"/>
+ </Menu>
+ <Menu name="window"><text>&amp;Window</text>
+  <Action name="window_new_window"/>
+ </Menu>
+ <Menu name="help"><text>&amp;Help</text>
+  <Action name="help_tipoftheday"/>
+ </Menu>
+</MenuBar>
+
+<ToolBar name="program control"><text>Program control</text>
+  <Action name="quit"/>
+  <Action name="view_zoom_in"/>
+  <Action name="view_zoom_out"/>
+</ToolBar>
+<ToolBar name="control"><text>Control</text>
+  <Action name="play"/>
+  <Action name="kb"/>
+  <Action name="kbi"/>
+  <Action name="rec"/>
+  <Action name="zoomval"/>
+  <Action name="edit"/>
+  <Action name="kbinsert"/>
+  <Action name="glue"/>
+  <Action name="stemUp"/>
+  <Action name="stemDown"/>
+</ToolBar>
+<ToolBar name="score control"><text>Score control</text>
+  <Action name="insert_clef"/>
+  <Action name="insert_keysig"/>
+  <Action name="insert_timesig"/>
+  <Action name="insert_volumechange"/>
+  <Action name="insert_voicechange"/>
+  <Action name="insert_repeatopen"/>
+  <Action name="insert_repeatopenclose"/>
+  <Action name="insert_repeatclose"/>
+</ToolBar>
+<ToolBar name="notes"><text>Notes</text>
+  <Action name="select"/>
+  <Action name="breve"/>
+  <Action name="full"/>
+  <Action name="half"/>
+  <Action name="quarter"/>
+  <Action name="n8"/>
+  <Action name="n16"/>
+  <Action name="n32"/>
+  <Action name="n64"/>
+  <Action name="n128"/>
+</ToolBar>
+<ToolBar name="graces"><text>Graces</text>
+  <Action name="tn8"/>
+  <Action name="tn16"/>
+  <Action name="tns32"/>
+</ToolBar>
+<ToolBar name="signs"><text>signs</text>
+  <Action name="sharp"/>
+  <Action name="flat"/>
+  <Action name="natural"/>
+  <Action name="dflat"/>
+  <Action name="dsharp"/>
+</ToolBar>
+<ToolBar name="additional"><text>additional</text>
+  <Action name="dot"/>
+  <Action name="ddot"/>
+  <Action name="tie"/>
+  <Action name="beam"/>
+  <Action name="slur"/>
+  <Action name="triplet"/>
+  <Action name="hrest"/>
+  <Action name="voicenumber"/>
+</ToolBar>
+<ToolBar name="accent_toolbar"><text>Accent Toolbar</text>
+  <Action name="staccato"/>
+  <Action name="sforzato"/>
+  <Action name="portato"/>
+  <Action name="strong_pizzicato"/>
+  <Action name="sforzando"/>
+  <Action name="fermate"/>
+  <Action name="arpegg"/>
+  <Action name="insert_pedal_on"/>
+  <Action name="insert_pedal_off"/>
+</ToolBar>
+<ToolBar name="drum_toolbar"><text>Accent Toolbar</text>
+  <Action name="cross_drum"/>
+  <Action name="cross2_drum"/>
+  <Action name="cross_cric_drum"/>
+  <Action name="rect_drum"/>
+  <Action name="tria_drum"/>
+</ToolBar>
+</kpartgui>

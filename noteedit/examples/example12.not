@@ -1,0 +1,238 @@
+header
+footer
+	title bold (13) "classical"
+score
+	pedstyle = pedstar
+	staffs = 1
+	time = 4/4
+score
+staff 1
+// overlength = 60
+// underlength = 106
+// lyricsdist = 60
+	clef=treble
+music
+midi 1 1: 0 "channel=1"; 0 "program=0";
+midi 1 1: 0 "parameter=7,78";
+midi 1 1: 0 "parameter=93,0";
+midi 1 1: 0 "parameter=91,0";
+midi 1 1: 0 "parameter=10,64";
+1 1: 8c bm; 8e; 8g; [up]8c+ ebm; 8e+ bm; [down] 8g; 8c+; 8e+ ebm; 
+midi all: 1 "tempo=153";
+rom above all: 1 "( \(sm4n) = 153 )";
+pedal 1: 1.000000;
+bar // 1
+1 1: 8c bm; 8e; 8g; [up]8c+ ebm; 8e+ bm; [down] 8g; 8c+; 8e+ ebm; 
+pedal 1: 4.500000*;
+bar // 2
+1 1: 8c bm; 8d; 8a; [up]8d+ ebm; 8f+ bm; [down] 8a; 8d+; 8f+ ebm; 
+pedal 1: 1.000000;
+bar // 3
+1 1: 8c bm; 8d; 8a; [up]8d+ ebm; 8f+ bm; [down] 8a; 8d+; 8f+ ebm; 
+pedal 1: 4.500000*;
+bar // 4
+1 1: 8b- bm; 8d; 8g; [up]8d+ ebm; 8f+ bm; [down] 8g; 8d+; 8f+ ebm; 
+pedal 1: 1.000000;
+bar // 5
+1 1: 8b- bm; 8d; 8g; [up]8d+ ebm; 8f+ bm; [down] 8g; 8d+; 8f+ ebm; 
+pedal 1: 4.500000*;
+bar // 6
+1 1: 8c bm; 8e; 8g; [up]8c+ ebm; 8e+ bm; [down] 8g; 8c+; 8e+ ebm; 
+pedal 1: 1.000000;
+bar // 7
+1 1: 8c bm; 8e; 8g; [up]8c+ ebm; 8e+ bm; [down] 8g; 8c+; 8e+ ebm; 
+pedal 1: 4.500000*;
+bar // 8
+1 1: 8c bm; 8e; 8a; [up]8e+ ebm; 8a+ bm; [down] 8a; 8e+; 8a+ ebm; 
+pedal 1: 1.000000;
+bar // 9
+1 1: 8c bm; 8e; 8a; [up]8e+ ebm; 8a+ bm; [down] 8a; 8e+; 8a+ ebm; 
+pedal 1: 4.500000*;
+bar // 10
+1 1: 8c bm; 8d; 8f#; 8a ebm; 8d+ bm; [down] 8f; [down] 8a; 8d+ ebm; 
+pedal 1: 1.000000;
+bar // 11
+1 1: 8c bm; 8d; 8f#; 8a ebm; 8d+ bm; [down] 8f; [down] 8a; 8d+ ebm; 
+pedal 1: 4.500000*;
+bar // 12
+1 1: 8b- bm; 8d; 8g; [up]8d+ ebm; 8g+ bm; [down] 8g; 8d+; 8g+ ebm; 
+pedal 1: 1.000000;
+bar // 13
+1 1: 8b- bm; 8d; 8g; [up]8d+ ebm; 8g+ bm; [down] 8g; 8d+; 8g+ ebm; 
+pedal 1: 4.500000*;
+bar // 14
+1 1: 8b- bm; 8c; 8e; 8g ebm; 8c+ bm; [down] 8e; [down] 8g; 8c+ ebm; 
+pedal 1: 1.000000;
+bar // 15
+1 1: 8b- bm; 8c; 8e; 8g ebm; 8c+ bm; [down] 8e; [down] 8g; 8c+ ebm; 
+pedal 1: 4.500000*;
+bar // 16
+1 1: 8a- bm; 8c; 8e; 8g ebm; 8c+ bm; [down] 8e; [down] 8g; 8c+ ebm; 
+pedal 1: 1.000000;
+bar // 17
+1 1: 8a- bm; 8c; 8e; 8g ebm; 8c+ bm; [down] 8e; [down] 8g; 8c+ ebm; 
+pedal 1: 4.500000*;
+bar // 18
+1 1: 8f#- bm; 8a-; 8d; 8f# ebm; 8c+ bm; [down] 8d; [down] 8f#; 8c+ ebm; 
+pedal 1: 1.000000;
+bar // 19
+1 1: 8f#- bm; 8a-; 8d; 8f# ebm; 8c+ bm; [down] 8d; [down] 8f#; 8c+ ebm; 
+pedal 1: 4.500000*;
+bar // 20
+1 1: 8g- bm; 8b-; 8d; 8g ebm; 8b bm; [down] 8d; [down] 8g; 8b ebm; 
+pedal 1: 1.000000;
+bar // 21
+1 1: 8g- bm; 8b-; 8d; 8g ebm; 8b bm; [down] 8d; [down] 8g; 8b ebm; 
+pedal 1: 4.500000*;
+bar // 22
+1 1: 8g- bm; 8a#-; 8e; 8g ebm; 8c#+ bm; [down] 8e; [down] 8g; 8c+ ebm; 
+pedal 1: 1.000000;
+bar // 23
+1 1: 8g- bm; 8a#-; 8e; 8g ebm; 8c#+ bm; [down] 8e; [down] 8g; 8c+ ebm; 
+pedal 1: 4.500000*;
+bar // 24
+1 1: 8f- bm; 8a-; 8d; 8a ebm; 8d+ bm; [down] 8d; [down] 8a; 8d+ ebm; 
+pedal 1: 1.000000;
+bar // 25
+1 1: 8f- bm; 8a-; 8d; 8a ebm; 8d+ bm; [down] 8d; [down] 8a; 8d+ ebm; 
+pedal 1: 4.500000*;
+bar // 26
+1 1: 8f- bm; 8g#-; 8d; 8f ebm; 8b bm; [down] 8d; [down] 8f; 8b ebm; 
+pedal 1: 1.000000;
+bar // 27
+1 1: 8f- bm; 8g#-; 8d; 8f ebm; 8b bm; [down] 8d; [down] 8f; 8b ebm; 
+pedal 1: 4.500000*;
+bar // 28
+1 1: 8e- bm; 8g-; 8c; 8g ebm; 8c+ bm; [down] 8c; [down] 8g; 8c+ ebm; 
+pedal 1: 1.000000;
+bar // 29
+1 1: 8e- bm; 8g-; 8c; 8g ebm; 8c+ bm; [down] 8c; [down] 8g; 8c+ ebm; 
+pedal 1: 4.500000*;
+bar // 30
+1 1: 8e- bm; 8f-; 8a-; 8c ebm; 8f bm; 8a-; 8c; 8f ebm; 
+pedal 1: 1.000000;
+bar // 31
+1 1: 8e- bm; 8f-; 8a-; 8c ebm; 8f bm; 8a-; 8c; 8f ebm; 
+pedal 1: 4.500000*;
+bar // 32
+1 1: 8d- bm; 8f-; 8a-; 8c ebm; 8f bm; 8a-; 8c; 8f ebm; 
+pedal 1: 1.000000;
+bar // 33
+1 1: 8d- bm; 8f-; 8a-; 8c ebm; 8f bm; 8a-; 8c; 8f ebm; 
+pedal 1: 4.500000*;
+bar // 34
+score
+staff 1
+	clef=bass
+music
+1 1: [down] 8g- bm; 8d; 8g; 8b ebm; 8f+ bm; 8g; 8b; 8f+ ebm; 
+pedal 1: 1.000000;
+bar // 35
+1 1: [down] 8g- bm; 8d; 8g; 8b ebm; 8f+ bm; 8g; 8b; 8f+ ebm; 
+pedal 1: 4.500000*;
+bar // 36
+1 1: [down] 8c bm; 8e; 8g; 8c+ ebm; 8e+ bm; 8g; 8c+; 8e+ ebm; 
+pedal 1: 1.000000;
+bar // 37
+1 1: [down] 8c bm; 8e; 8g; 8c+ ebm; 8e+ bm; 8g; 8c+; 8e+ ebm; 
+pedal 1: 4.500000*;
+bar // 38
+1 1: [down] 8c bm; 8g; 8a#; 8c+ ebm; 8e+ bm; 8a; 8c+; 8e+ ebm; 
+pedal 1: 1.000000;
+bar // 39
+1 1: [down] 8c bm; 8g; 8a#; 8c+ ebm; 8e+ bm; 8a; 8c+; 8e+ ebm; 
+pedal 1: 4.500000*;
+bar // 40
+1 1: [down] 8f- bm; 8f; 8a; 8c+ ebm; 8e+ bm; 8a; 8c+; 8e+ ebm; 
+pedal 1: 1.000000;
+bar // 41
+1 1: [down] 8f- bm; 8f; 8a; 8c+ ebm; 8e+ bm; 8a; 8c+; 8e+ ebm; 
+pedal 1: 4.500000*;
+bar // 42
+1 1: [down] 8f#- bm; [down] 8c; 8a; 8c+ ebm; 8d#+ bm; 8a; 8c+; 8d+ ebm; 
+pedal 1: 1.000000;
+bar // 43
+1 1: [down] 8f#- bm; [down] 8c; 8a; 8c+ ebm; 8d#+ bm; 8a; 8c+; 8d+ ebm; 
+pedal 1: 4.500000*;
+bar // 44
+1 1: [down] 8g#- bm; 8f; 8b; 8c+ ebm; 8d+ bm; 8b; 8c+; 8d+ ebm; 
+pedal 1: 1.000000;
+bar // 45
+1 1: [down] 8g#- bm; 8f; 8b; 8c+ ebm; 8d+ bm; 8b; 8c+; 8d+ ebm; 
+pedal 1: 4.500000*;
+bar // 46
+1 1: [down] 8g- bm; 8f; 8g; 8b ebm; 8d+ bm; 8g; 8b; 8d+ ebm; 
+pedal 1: 1.000000;
+bar // 47
+1 1: [down] 8g- bm; 8f; 8g; 8b ebm; 8d+ bm; 8g; 8b; 8d+ ebm; 
+pedal 1: 4.500000*;
+bar // 48
+1 1: [down] 8g- bm; 8e; 8g; 8c+ ebm; 8e+ bm; 8g; 8c+; 8e+ ebm; 
+pedal 1: 1.000000;
+bar // 49
+1 1: [down] 8g- bm; 8e; 8g; 8c+ ebm; 8e+ bm; 8g; 8c+; 8e+ ebm; 
+pedal 1: 4.500000*;
+bar // 50
+1 1: [down] 8g- bm; 8d; 8g; 8c+ ebm; 8f+ bm; 8g; 8c+; 8f+ ebm; 
+pedal 1: 1.000000;
+bar // 51
+1 1: [down] 8g- bm; 8d; 8g; 8c+ ebm; 8f+ bm; 8g; 8c+; 8f+ ebm; 
+pedal 1: 4.500000*;
+bar // 52
+1 1: [down] 8g- bm; 8d; 8g; 8b ebm; 8f+ bm; 8g; 8b; 8f+ ebm; 
+pedal 1: 1.000000;
+bar // 53
+1 1: [down] 8g- bm; 8d; 8g; 8b ebm; 8f+ bm; 8g; 8b; 8f+ ebm; 
+pedal 1: 4.500000*;
+bar // 54
+1 1: [down] 8g- bm; 8d#; 8a; 8c+ ebm; 8f#+ bm; 8a; 8c+; 8f+ ebm; 
+pedal 1: 1.000000;
+bar // 55
+1 1: [down] 8g- bm; 8d#; 8a; 8c+ ebm; 8f#+ bm; 8a; 8c+; 8f+ ebm; 
+pedal 1: 4.500000*;
+bar // 56
+1 1: [down] 8g- bm; 8e; 8g; 8c+ ebm; 8g+ bm; 8g; 8c+; 8g+ ebm; 
+pedal 1: 1.000000;
+bar // 57
+1 1: [down] 8g- bm; 8e; 8g; 8c+ ebm; 8g+ bm; 8g; 8c+; 8g+ ebm; 
+pedal 1: 4.500000*;
+bar // 58
+1 1: [down] 8g- bm; 8d; 8g; 8c+ ebm; 8f+ bm; 8g; 8c+; 8f+ ebm; 
+pedal 1: 1.000000;
+bar // 59
+1 1: [down] 8g- bm; 8d; 8g; 8c+ ebm; 8f+ bm; 8g; 8c+; 8f+ ebm; 
+pedal 1: 4.500000*;
+bar // 60
+1 1: [down] 8g- bm; 8d; 8g; 8b ebm; 8f+ bm; 8g; 8b; 8f+ ebm; 
+pedal 1: 1.000000;
+bar // 61
+1 1: [down] 8g- bm; 8d; 8g; 8b ebm; 8f+ bm; 8g; 8b; 8f+ ebm; 
+pedal 1: 4.500000*;
+bar // 62
+1 1: [down] 8c- bm; [down] 8c; 8g; 8a# ebm; 8e+ bm; 8g; 8a; 8e+ ebm; 
+pedal 1: 1.000000;
+bar // 63
+1 1: [down] 8c- bm; [down] 8c; 8g; 8a# ebm; 8e+ bm; 8g; 8a; 8e+ ebm; 
+pedal 1: 4.500000*;
+bar // 64
+1 1: [down] 8c- bm; [down] 8c; 8f; 8a ebm; 8c+ bm; 8f+; 8c+; 8a ebm; 
+pedal 1: 1.000000;
+bar // 65
+1 1: 8c+ bm; 8a; 8f; 8a ebm; 8f bm; 8d; 8f; 8d ebm; 
+pedal 1: 4.500000*;
+bar // 66
+1 1: 8c-; 8b-; clefchange{	clef=treble
+}[down] 8g bm; 8b; 8d+; 8f+ ebm; 8d+ bm; 8b ebm; 
+midi all: 2 "tempo=153";
+rom above all: 2 "( \(sm4n) = 153 )";
+pedal 1: 1.000000;
+rom above 1: 4.000000 "ritard.";
+bar // 67
+1 1: 8d+ bm; 8b; [down] 8g; 8b ebm; 8d bm; 8f; 8e; 8d ebm; 
+pedal 1: 2.500000*;
+bar // 68
+1 1: 1cegc+; 
+midi all: 1 "tempo=100";
+rom above all: 1 "( \(sm4n) = 100 )";
+roll 1 1: 1.000000;
+endbar // 69

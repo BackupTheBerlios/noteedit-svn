@@ -5209,6 +5209,9 @@ void NMainFrameWidget::TSE3toScore() {
 #ifdef WITH_TSE3
 	if (recordButton_->isChecked()) return;
 	if (playing_) return;
+	if (KMessageBox::warningYesNo(0, i18n("This will clear the existing document. Are you sure?"),
+					kapp->makeStdCaption(i18n("Confirmation"))) == KMessageBox::No)
+		return;
 	kbbutton_->setOn(false);
 	newPaper();
 	tse3Handler_->TSE3toScore(&staffList_, &voiceList_, false);

@@ -95,9 +95,11 @@ class NLilyExport {
 		static QRegExp nonAlphas_, digits_, whiteSpaces_, relSyms, starOnly;
 		int noteBody_;
 		bool noStrongPizzMsg_;
+		QByteArray scoreBraceMasks;
+		void buildBraceMasks(QList<NStaff> *stafflist, const NMainFrameWidget *mainWidget);
 		QList<QString> scoreBlock;
-		void buildScoreBlockAndFlush(int i, const QString& label,
-			long bracketMask, long bracketEndMask, long braceMask, long braceEndMask, bool flush);
+		void buildScoreBlockAndFlush(int i, const QString& label, QList<NStaff> *stafflist,
+			const QByteArray braceMasks, bool flush);
 };
 
 #endif // LILYEXPORT_H

@@ -68,6 +68,12 @@
 #define LILY_ERR_PIANO_DISCONT     9
 #define LILY_ERR_CONT_OUTSIDE     10
 
+// Pitpositions used in scoreBraceMasks
+#define BRACE_START	(1 << 0)
+#define BRACE_END	(1 << 1)
+#define BRACKET_START	(1 << 2)
+#define BRACKET_END	(1 << 3)
+
 #define MEASURES_PER_LINE 2
 
 #define EDGE_TEXT_NOT_SET 0
@@ -225,23 +231,7 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 	if (header_written) {
 		out_ << '}' << endl << endl;
 	}
-	long bracketMask = 0; 		// bit 0: first staff, ...
-	long bracketEndMask = 0;
-	long braceMask = 0;
-	long braceEndMask = 0;
-	long bMaskTmp;
-	for (i = 0, staff_elem = stafflist->first(); staff_elem; staff_elem = stafflist->next(), i++) {
-		if (mainWidget->bracketMatrix_[i].valid) {
-			bMaskTmp = (~0 << mainWidget->bracketMatrix_[i].beg) & ~(~1 << mainWidget->bracketMatrix_[i].end);
-			bracketMask |= bMaskTmp;
-			bracketEndMask |= (1 << mainWidget->bracketMatrix_[i].end);
-		}
-		if (mainWidget->braceMatrix_[i].valid) {
-			bMaskTmp = (~0 << mainWidget->braceMatrix_[i].beg) & ~(~1 << mainWidget->braceMatrix_[i].end);
-			braceMask |= bMaskTmp;
-			braceEndMask |= (1 << mainWidget->braceMatrix_[i].end);
-		}
-	}
+	buildBraceMasks(stafflist, mainWidget);
 	for (i = 0, staff_elem = stafflist->first(); staff_elem; staff_elem = stafflist->next(), i++) {
 		if (!staffarray_[i].is_selected) continue; 
 		voice_count = staff_elem->voiceCount();
@@ -409,11 +399,11 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 			writeLyrics(i, voice_elem, staffLabel);
 		}
 		if (NResource::lilyProperties_.lilyVersion24)
-			buildScoreBlockAndFlush(i, staffLabel, bracketMask, bracketEndMask, braceMask, braceEndMask, false);
+			buildScoreBlockAndFlush(i, staffLabel, stafflist, scoreBraceMasks, false);
 	} // end for (i = 0, staff_elem = stafflist->first(); ...
 	
 	if (NResource::lilyProperties_.lilyVersion24)
-		buildScoreBlockAndFlush(0, "", 0, 0, 0, 0, true);
+		buildScoreBlockAndFlush(0, "", stafflist, scoreBraceMasks, true);
 
 	if (!exportDialog_->lilyVoice->isChecked() && !NResource::lilyProperties_.lilyVersion24) {
 		out_ << "\\score {" << endl;
@@ -1942,29 +1932,67 @@ if (NResource::lilyProperties_.lilyVersion24) {
 		out_ << '}' << endl;
 }
 
-void NLilyExport::buildScoreBlockAndFlush(	int i,
-						const QString& label,
-						long bracketMask,
-						long bracketEndMask,
-						long braceMask,
-						long braceEndMask,
-						bool flush)
-{
 /*
-	This function is called for every Staff, during this time
-	with flush false. At the end a call with flush true is needed
-	to push everything out. The function draws only whole lines.
-
-	First Character of every line in scoreBlock holds the number of tabs to get
-	a nice printout of the hierachy.
+	For every staff a byte in QByteArray scoreBraceMasks is set with the bits
+	BRACE_START, BRACE_END, BRACKET_START and BRACKET_END according to the
+	partitur layout and the staffs selected. So in following up
+	buildScoreBlockAndFlush() can easily set Choir-/PiaonStaff braces.
 */
+
+void NLilyExport::buildBraceMasks(QList<NStaff> *stafflist, const NMainFrameWidget *mainWidget)
+{
+	NStaff *staff_el;
+	int m, mm, beg, end, nb;
+
+	const int nBraces = 2;		// bracket and brace are similar, so we prefer to loop.
+	layoutDef *bracs[nBraces];
+	char bracStart[nBraces];
+	char bracEnd[nBraces];
+	bracs[0]	= mainWidget->bracketMatrix_;
+	bracStart[0]	= BRACKET_START;
+	bracEnd[0]	= BRACKET_END;
+	bracs[1] = mainWidget->braceMatrix_;
+	bracStart[1]	= BRACE_START;
+	bracEnd[1]	= BRACE_END;
+
+	scoreBraceMasks.fill(0,stafflist->count());	// adjust and fill target with zero
+	for (nb = 0; nb < nBraces; nb++) {
+		for (m = 0, staff_el = stafflist->first(); staff_el; staff_el = stafflist->next(), m++) {
+			if (bracs[nb][m].valid) {
+				beg = bracs[nb][m].beg;
+				end = bracs[nb][m].end;
+				for (mm = beg; mm <= end; mm++) {
+					if (staffarray_[mm].is_selected) {
+						scoreBraceMasks[mm] |= bracStart[nb];
+						break;
+					}
+				}
+				for (mm = end; mm >= beg; mm--) {
+					if (staffarray_[mm].is_selected) {
+						scoreBraceMasks[mm] |= bracEnd[nb];
+						break;
+	}	}	}	}	}
+}
+
+/*
+	This function is called for every Staff, with parameter flush
+	beeing false. At the end of this a call with flush true is needed
+	to push everything out. The first Character of every line in scoreBlock
+	holds the number of tabs to get a nice printout of the hierachy.
+*/
+
+void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
+						const QString& label,
+						QList<NStaff> *stafflist,
+						const QByteArray braceMasks,
+						bool flush )
+{
+	NStaff *staff_elem;
 	unsigned int m;
 	double wh;
 	QString tmps;
 	static int hy;		// hierarchy
 	static int ii, endDist;	// indices
-	static int braceOn;
-	static int bracketOn;
 
 	if (flush) {		// Flush, initialize for a next export and return.
         	if (!exportDialog_->lilyVoice->isChecked()) {
@@ -1974,13 +2002,13 @@ void NLilyExport::buildScoreBlockAndFlush(	int i,
 				tabsOut();
 	               		out_ << tmps.remove(0,1);		// and flush rest of line
 			}
-
 		}
 		scoreBlock.clear();	// autodelete is on, triggers init block next time
 		return;
         }
 	
 	if (scoreBlock.isEmpty()) {	// This is the init block
+
 		scoreBlock.append( new QString("0\\score {\n"));
 		ii = 1;				// Index of the place for next insertion in hierarchy
 		scoreBlock.append( new QString("2\\set Score.skipBars = ##t\n"));	// closing first hy
@@ -2001,24 +2029,19 @@ void NLilyExport::buildScoreBlockAndFlush(	int i,
 		scoreBlock.append( new QString("0}\n"));
 		hy = 1;
 		endDist = 8;
-		bracketOn = 0;
-		braceOn = 0;
 	}
 
 	if (hy==1 /* or hy changed, according to braces ... */ ) {
-		tmps.sprintf("%d\\relative <<    %%  0x%lx   0x%lx\n", hy++, bracketEndMask, braceEndMask );
+		tmps.sprintf("%d\\relative <<\n",			hy++ );
 		scoreBlock.insert(ii++, new QString(tmps));
 	}
-	if	((braceMask>>i & 1) == 1 && !braceOn ) {		// Piano/GrandStaff open, 0->1 edge
+	if	(scoreBraceMasks[i] & BRACE_START) {		// Piano/GrandStaff open
 			tmps.sprintf("%d\\context GrandStaff = c%s%c <<\n", hy++, label.latin1(), i+'A');
 			scoreBlock.insert(ii++, new QString(tmps));
-			braceOn = 1;
 	}
-	if	((i==0) && (bracketMask & 1) == 1 ||			// ChoirStaff open, 0->1 edge
-		(i!=0) && (bracketMask>>(i-1) & 3) == 2) {
+	if	(scoreBraceMasks[i] & BRACKET_START) {	// ChoirStaff open
 			tmps.sprintf("%d\\context ChoirStaff = c%s%c <<\n", hy++, label.latin1(), i+'A');
 			scoreBlock.insert(ii++, new QString(tmps));
-			bracketOn = 1;
 	}
 
 	if (staffarray_[i].is_selected) {
@@ -2043,17 +2066,13 @@ void NLilyExport::buildScoreBlockAndFlush(	int i,
 			scoreBlock.insert(scoreBlock.count()-endDist, new QString(tmps));
 		}
 
-		if	(((i>0) && (bracketMask>>i & 3) == 1 ) ||	// ChoirStaff close, 1->0 edge
-			((bracketEndMask>>i & 1) && bracketOn )) {
-			tmps.sprintf("%d>>\n", --hy);
-			scoreBlock.insert(ii++, new QString(tmps));
-			bracketOn = 0;
+		if	(scoreBraceMasks[i] & BRACKET_END) {	// ChoirStaff close
+				tmps.sprintf("%d>>\n", --hy);
+				scoreBlock.insert(ii++, new QString(tmps));
 		}
-		if	(((i>0) && (braceMask>>i & 3) == 1 ) ||		// GrandStaff close, 1->0 edge
-			((braceEndMask>>i & 1) && braceOn )) {
-			tmps.sprintf("%d>>\n", --hy);
-			scoreBlock.insert(ii++, new QString(tmps));
-			braceOn = 0;
+		if	(scoreBraceMasks[i] & BRACE_END) {	// GrandStaff close
+				tmps.sprintf("%d>>\n", --hy);
+				scoreBlock.insert(ii++, new QString(tmps));
 		}
 		scoreBlock.insert(ii++, new QString("0\n"));
 	}

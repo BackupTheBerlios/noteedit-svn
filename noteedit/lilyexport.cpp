@@ -147,6 +147,7 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 	out_ << "%           \"noteedit\"             %" << endl;
 	out_ << "%                                  %" << endl;
 	out_ << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl << endl;
+    out_ << "\\version \"2.0\"" << endl << endl;        // We currently support LilyPond version 2.0 syntax for sure. We must mention this in order to make convert-ly working.
 	if (!exportDialog_->lilyVoice->isChecked()) {
 		if (NResource::lilyProperties_.lilyProperties) {
 			out_ << "\\include \"paper" << exportDialog_->lilyFont->currentText() << ".ly\"" << endl << endl;
@@ -291,13 +292,13 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 					case TREBLE_CLEF: lastLine_ = -2; str = 1; break;
 				} 
 				for (k = 0; k < str; k++) out_ << '\'';
-				out_ << " {";
+                out_ << " {" << endl << '\t';
 				if (!(exportDialog_->lilyStem->isChecked())) {
 					switch(j) {
-						case 0: out_ << " \\voiceOne "; break;
-						case 1: out_ << " \\voiceTwo "; break;
-						case 2: out_ << " \\voiceThree "; break;
-						case 3: out_ << " \\voiceFour "; break;
+						case 0: out_ << "\\voiceOne "; break;
+						case 1: out_ << "\\voiceTwo "; break;
+						case 2: out_ << "\\voiceThree "; break;
+						case 3: out_ << "\\voiceFour "; break;
 					}
 				}
 				out_ <<  endl << '\t';
@@ -954,7 +955,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 							if (!noStrongPizzMsg_)
 								KMessageBox::sorry
 									(0,
-									 i18n("Sorry, strong Pizzicato is not available under LilyPoint. Take musixtex, to enjoy this feature."),
+                                     i18n("Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to enjoy this feature."),
 									 kapp->makeStdCaption(i18n("???"))
 									);
 							noStrongPizzMsg_ = true;

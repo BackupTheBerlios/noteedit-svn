@@ -238,8 +238,8 @@ x_libraries = @x_libraries@
 
 #>- POFILES = AUTO
 #>+ 2
-POFILES = de.po es.po fr.po hu.po it.po ru.po sk.po sv.po
-GMOFILES = de.gmo es.gmo fr.gmo hu.gmo it.gmo ru.gmo sk.gmo sv.gmo
+POFILES = de.po es.po fr.po hu.po it.po ru.po sk.po sv.po sl.po
+GMOFILES = de.gmo es.gmo fr.gmo hu.gmo it.gmo ru.gmo sk.gmo sv.gmo sl.gmo
 mkinstalldirs = $(SHELL) $(top_srcdir)/admin/mkinstalldirs
 CONFIG_HEADER = ../config.h
 CONFIG_CLEAN_FILES = 
@@ -248,7 +248,7 @@ DIST_COMMON =  Makefile.am Makefile.in
 
 #>- DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 #>+ 4
-KDE_DIST=sv.po fr.po es.po it.po ru.po de.po hu.po sk.po 
+KDE_DIST=sv.po fr.po es.po it.po ru.po de.po hu.po sk.po sl.po
 
 #>- DISTFILES= $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST) $(KDE_DIST)
 #>+ 1
@@ -397,6 +397,9 @@ sk.gmo: sk.po
 sv.gmo: sv.po
 	rm -f sv.gmo; $(GMSGFMT) -o sv.gmo $(srcdir)/sv.po
 	test ! -f sv.gmo || touch sv.gmo
+sl.gmo: sl.po
+	rm -f sl.gmo; $(GMSGFMT) -o sl.gmo $(srcdir)/sl.po
+	test ! -f sl.gmo || touch sl.gmo
 
 #>+ 3
 clean-nls:

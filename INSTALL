@@ -9,7 +9,7 @@ How to obtain NoteEdit
 
 NoteEdit can be found at
 
-http://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/noteedit.html.
+http://developer.berlios.de/projects/noteedit.
 
 
 Installing NoteEdit from RPMs
@@ -207,9 +207,7 @@ and restart NoteEdit.
 
 (see also: Working with TSE3)
 
-BTW: The quality depends on soundcard. Hear the beginning of example2.not
-on AWE 64/ 24 MB RAM and soundfont 8mbgmsfx.sf2: 
-example2.mp3 (http://rnvs.informatik.tu-chemnitz.de/cgi-bin/nph-sendbin.cgi/~jan/noteedit/example2.mp3)  (3.6 Mbyte)
+BTW: The quality depends on soundcard.
 
 The TiMidity server
 -------------------

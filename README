@@ -1,7 +1,7 @@
 Note editor on Linux
 ===================
 
-http://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/noteedit.html
+http://developer.berlios.de/projects/noteedit
 
 Properties
 ----------
@@ -134,7 +134,7 @@ root. This increases the priority of the TiMidity++ process.
 Bug reports
 -----------
 
-Please send bug reports or compiling problems to ja@informatik.tu-chemnitz.de.
+Please send bug reports or compiling problems to TBD ja@informatik.tu-chemnitz.de.
 
 DO NOT USE THE MAILING LISTS BELOW!
 
@@ -154,17 +154,13 @@ versions and features at(but do not uses these groups for bug reports, see Bug r
 Mailing lists
 -------------
 
-There is no special Noteedit mailing list.You can find information about new
-versions and features at(but do not uses these groups for bug reports, see Bug reports):
-
-   * tex-music@sunsite.dk
-   * lilypond-user@gnu.org
-   * kde-multimedia@mail.kde.org
+noteedit-user@lists.berlios.de
+noteedit-devel@lists.berlios.de
 
 Documentation
 --------------
 
-The documentation is available from:
+The documentation is available from TBD:
 
   http://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/noteedit.html#docu
 
@@ -180,6 +176,7 @@ useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 Public License (http://www.fsf.org/copyleft/gpl.html) for more details.
 
+Leon Vinken, based on original README by
 J.Anders,
 Professur Rechnernetz u. verteilte Systeme
 TU-Chemnitz

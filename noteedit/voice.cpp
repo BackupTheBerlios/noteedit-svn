@@ -2162,6 +2162,10 @@ int NVoice::quant(int l, int *dotcount, int maxlength) {
 }
 #endif
 
+// collectAndInsertPlayable -- remove all elements in patterns from this voice
+// and replace them by the minimum number of equivalent elements of total length
+// targetlength
+
 void NVoice::collectAndInsertPlayable(int startTime, QList<NMusElement> *patterns, int targetLength, bool useExistingElement) {
 	int len, restlen;
 	bool isChord;
@@ -2218,7 +2222,7 @@ void NVoice::collectAndInsertPlayable(int startTime, QList<NMusElement> *pattern
 					note->status |= STAT_TIED;
 				}
 			}
-			if (akpos == musElementList_.count()) {
+			if (akpos == (int) musElementList_.count()) {
 				musElementList_.append(elem2);
 			}
 			else {
@@ -4301,6 +4305,7 @@ int NVoice::findPos(int BarNr) {
 }
 
 #ifdef AAA
+// experimental code follows
 void NVoice::computeMidiTime(bool insertBars, bool doAutoBeam) {
 #define MAXGRACENOTES 5
 	int mtime = 0;
@@ -4395,16 +4400,22 @@ void NVoice::computeMidiTime(bool insertBars, bool doAutoBeam) {
 }
 #else
 
+// computeMidiTime -- compute the midiTime_ for all notes in this voice
+// plus the midiEndTime_ for this voice
+// in:		insertBars: create new bar if necessary
+//		doAutoBeam: try to build beam
+// note:	if insertBars is true, the last element in the first voice
+//		may be split to make it fit in the bar
 
 void NVoice::computeMidiTime(bool insertBars,  bool doAutoBeam) {
 #define MAXGRACENOTES 5
 	int mtime = 0;
 	int timeOfLastBar = 0;
 	int indexOfLastBar = 0;
-	int i, idx, idx0, len1, len2, countBefore, maxticks;
+	int i, idx, len1, len2, maxticks;
 	int num_grace_notes = 0;
 	int last_note_time = -1;
-	bool chord_seen;
+	bool chord_seen = false;
 	bool not_grace_seen;
 	QList <NMusElement> elems;
 	NMusElement *elem;
@@ -4456,26 +4467,36 @@ void NVoice::computeMidiTime(bool insertBars,  bool doAutoBeam) {
 	midiEndTime_ = mtime;
 	if (!insertBars || !firstVoice_) {if (doAutoBeam) checkBeams(indexOfLastBar, &current_timesig); return;}
 	if (midiEndTime_ - timeOfLastBar <= (maxticks = MULTIPLICATOR * current_timesig.numOf128th())) {if (doAutoBeam) checkBeams(indexOfLastBar, &current_timesig);return;}
+	// current (last) bar is overfull
 	elem = musElementList_.at(indexOfLastBar);
 	while (elem && elem->midiTime_ + elem->getMidiLength() <= timeOfLastBar + maxticks) {
 		elem = musElementList_.next();
 	}
 	if (!elem) {if (doAutoBeam) checkBeams(indexOfLastBar, &current_timesig); return;}
+	// an overfull bar (containing more midi time than fits in it) was found,
+	// elem is pointing to the element causing that
+	int countBefore = 0;
+	int idx0 = 0;
 	idx = musElementList_.at();
-	switch (elem->getType()) {
-		case T_CHORD: 
-		case T_REST: 
-			     len2 = elem->midiTime_ + elem->getMidiLength() - (timeOfLastBar + maxticks);
-			     len1 = elem->getMidiLength() - len2;
-			     elems.append(elem);
-			     countBefore = musElementList_.count();
-			     collectAndInsertPlayable(elem->midiTime_, &elems, len1, false);
-			     idx0 = idx;
-			     idx = musElementList_.at();
-			     musElementList_.insert(idx, new NSign(main_props_, &(theStaff_->staff_props_), SIMPLE_BAR));
-			     elems.append(elem);
-			     collectAndInsertPlayable(elem->midiTime_ + len1, &elems, len2, true);
-			     break;
+	if ((elem->getType() == T_CHORD)
+	    || ((elem->getType() == T_REST) && (elem->getSubType() != MULTIREST))) {
+		// split chords and normal rests in two, separated by a simple bar
+		len2 = elem->midiTime_ + elem->getMidiLength() - (timeOfLastBar + maxticks);
+		len1 = elem->getMidiLength() - len2;
+		elems.append(elem);
+		countBefore = musElementList_.count();
+		collectAndInsertPlayable(elem->midiTime_, &elems, len1, false);
+		idx0 = idx;
+		idx = musElementList_.at();
+		musElementList_.insert(idx, new NSign(main_props_, &(theStaff_->staff_props_), SIMPLE_BAR));
+		elems.append(elem);
+		collectAndInsertPlayable(elem->midiTime_ + len1, &elems, len2, true);
+	} else if ((elem->getType() == T_REST) && (elem->getSubType() == MULTIREST)) {
+		// behind the multirest, just append a simple bar
+		countBefore = musElementList_.count();
+		idx0 = idx + 1;
+		idx = idx + 1;
+		musElementList_.insert(idx, new NSign(main_props_, &(theStaff_->staff_props_), SIMPLE_BAR));
 	}
 	createUndoElement(idx0, 0, musElementList_.count() - countBefore);
 	elem = musElementList_.at(indexOfLastBar);

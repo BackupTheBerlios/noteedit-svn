@@ -169,7 +169,11 @@ void NMusicXMLExport::debugDumpElem(NMusElement *elem) {
 			break;
 		case T_REST:
 			out_ << "T_REST";
-			out_ << " len=" << elem->getSubType();
+			if (elem->getSubType() == MULTIREST) {
+				out_ << " multilen=" << ((NRest *) elem)->getMultiRestLength();
+			} else {
+				out_ << " len=" << elem->getSubType();
+			}
 			break;
 		case T_SIGN:
 			out_ << "T_SIGN";

@@ -65,7 +65,7 @@ KInstance *NoteeditFactory::instance() {
 
 KAboutData *NoteeditFactory::aboutData() {
 	KAboutData *about = new KAboutData
-		("noteedit", I18N_NOOP("NoteEdit"), VERSION,
+		("noteedit", I18N_NOOP("NoteEdit"), "2.7.4", // FIXME, should be: VERSION,
 		 "a KDE3/Qt3 based note editor.\nFor help subscribe to one of the\nmailing lists, or post a message\nin one of the public forums. See",
 		 KAboutData::License_GPL, 0, 0,
 		 //"http://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/noteedit.html",

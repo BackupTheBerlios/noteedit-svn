@@ -71,7 +71,7 @@ class NLilyExport {
 		void writeChordName(QString chordname);
 		void analyseGroup(layoutDef *group, NMainFrameWidget *mainWidget, int staffCount, bool *continuedBars, bool *discontinuedBars);
 		bool continuedOutsideAGroup(NMainFrameWidget *mainWidget, int staffCount);
-		char *LilyPondKeyName(int kind, int count);
+		const char *LilyPondKeyName(int kind, int count);
 		int lastLine_, lastLength_, lastDotted_;
 		int depth_;
 		int actualStemPolicy_;

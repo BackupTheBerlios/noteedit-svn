@@ -150,18 +150,19 @@ also be used to start &noteedit;</para></listitem>
 <title>Inserting notes</title>
 
 <para>Choose a note length on tool bar (<inlinemediaobject><imageobject><imagedata fileref="toolbar.png"/></imageobject></inlinemediaobject>)!
-Choose dotted (<inlinemediaobject><imageobject><imagedata fileref="dotted.png"/></imageobject></inlinemediaobject>), double dot (<inlinemediaobject><imageobject><imagedata fileref="ddot.png"/></imageobject></inlinemediaobject>) tied 
-(<inlinemediaobject><imageobject><imagedata fileref="tied.png"/></imageobject></inlinemediaobject>) staccato (<inlinemediaobject><imageobject><imagedata fileref="staccato.png"/></imageobject></inlinemediaobject>) 
+Choose dotted (<inlinemediaobject><imageobject><imagedata fileref="dotted.png"/></imageobject></inlinemediaobject>),
+double dot (<inlinemediaobject><imageobject><imagedata fileref="ddot.png"/></imageobject></inlinemediaobject>),
+tied (<inlinemediaobject><imageobject><imagedata fileref="tied.png"/></imageobject></inlinemediaobject>),
+triplet (<inlinemediaobject><imageobject><imagedata fileref="triplet.png"/></imageobject></inlinemediaobject>),
+staccato (<inlinemediaobject><imageobject><imagedata fileref="staccato.png"/></imageobject></inlinemediaobject>) 
 sforzato (<inlinemediaobject><imageobject><imagedata fileref="sforzato.png"/></imageobject></inlinemediaobject>),
 portato (<inlinemediaobject><imageobject><imagedata fileref="portato.png"/></imageobject></inlinemediaobject>),
 strong pizzicato  (<inlinemediaobject><imageobject><imagedata fileref="spizzicato.png"/></imageobject></inlinemediaobject>),
 sforzando (<inlinemediaobject><imageobject><imagedata fileref="sforzando.png"/></imageobject></inlinemediaobject>)
 fermata (<inlinemediaobject><imageobject><imagedata fileref="fermata.png"/></imageobject></inlinemediaobject>),
-arpeggio
-(<inlinemediaobject><imageobject><imagedata fileref="arpeggio.png"/></imageobject></inlinemediaobject>),
+arpeggio (<inlinemediaobject><imageobject><imagedata fileref="arpeggio.png"/></imageobject></inlinemediaobject>),
 pedal on (<inlinemediaobject><imageobject><imagedata fileref="pedalon.png"/></imageobject></inlinemediaobject>),
-or pedal off
-(<inlinemediaobject><imageobject><imagedata fileref="pedaloff.png"/></imageobject></inlinemediaobject>)
+or pedal off (<inlinemediaobject><imageobject><imagedata fileref="pedaloff.png"/></imageobject></inlinemediaobject>)
 as needed.</para>
 
 <para id="accidentals"><command>Only if you want to 
@@ -202,6 +203,12 @@ You can force a certain stem direction by pressing the stem Up/Down buttons (<in
 <para>Normally the dot and accidental buttons turn off after
 insertion. Use the glue button(<inlinemediaobject><imageobject><imagedata fileref="rivet.png"/></imageobject></inlinemediaobject>) to change this behaviour.
 </para>
+
+<para>When the triplet button (<inlinemediaobject><imageobject><imagedata fileref="triplet.png"/></imageobject></inlinemediaobject>)
+is pressed when entering notes or rests, &noteedit; will try to build a triplet from the last two or three notes entered. Make sure all
+triplet elements are deselected before the triplet button is depressed, or it will immediately be destroyed again!
+</para>
+
 </sect2>
 
 <sect2><title>Problems with double whole notes</title>

@@ -5147,7 +5147,7 @@ void NVoice::insertAtTime(unsigned int time, NMusElement *elem, bool splitPlayab
 	QList<NNote> *noteList;
 	NNote *note;
 	int dotcount;
-	int idx, lastPlayableIdx = -1;
+	int idx, lastPlayableIdx = -1;		// also a flag if *lastPlayable valid
 	int len, len1, len2, restlen;
 	bool lastPlayableUsed;
 
@@ -5160,8 +5160,12 @@ void NVoice::insertAtTime(unsigned int time, NMusElement *elem, bool splitPlayab
 
 	for (el = musElementList_.first(); el; el = musElementList_.next()) {
 		if (el->midiTime_ >= (int) time && (el->getType() & PLAYABLE)) {
-			if (splitPlayables && !(el->status_ & STAT_TUPLET) && !(lastPlayable->status_ & STAT_TUPLET) && el->midiTime_ > (int) time && lastPlayableIdx >=0 &&
-			    lastPlayable->midiTime_ + lastPlayable->getMidiLength() > time) {
+			if (		splitPlayables &&
+					lastPlayableIdx >=0 &&				// needs to come before lastPlayable data
+					!(el->status_ & STAT_TUPLET) &&
+					!(lastPlayable->status_ & STAT_TUPLET) &&
+					el->midiTime_ > (int) time &&
+			    		lastPlayable->midiTime_ + lastPlayable->getMidiLength() > time) {
 				len1 = time - lastPlayable->midiTime_;
 				len2 = lastPlayable->getMidiLength() - len1;
 				musElementList_.at(lastPlayableIdx);

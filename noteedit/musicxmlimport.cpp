@@ -651,9 +651,10 @@ bool MusicXMLParser::startElement( const QString&, const QString&,
 			Str = "ignoring unknown <slur> type: " + tp;
 			reportWarning(Str);
 		}
-	} else if (qName == "tied") {
-		// note: in MusicXML tie is for sound and tied for notation
-		// Noteedit does not make that distinction
+	// note: in MusicXML tie is for sound and tied for notation
+	// Noteedit does not make that distinction but responds
+	// to either one
+	} else if ((qName == "tie") || (qName == "tied")) {
 		QString tp = attributes.value("type");
 		if (tp == "start") {
 			stTie = true;

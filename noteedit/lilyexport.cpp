@@ -162,7 +162,12 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 		}
 	}
 	if (exportDialog_->lilyDrumNotes->isChecked()) {
-		if (NResource::lilyProperties_.lilyProperties) {
+		if (NResource::lilyProperties_.lilyVersion24) {
+			out_ << "bcr = { \\override Voice.NoteHead #'style = #'cross" << endl << '}' << endl;
+			out_ << "bdf = { \\override Voice.NoteHead #'style = #'default" << endl << '}' << endl;
+			out_ << "bcc = { \\override Voice.NoteHead #'style = #'xcircle" << endl << '}' << endl;
+			out_ << "btr = { \\override Voice.NoteHead #'style = #'triangle" << endl << '}' << endl << endl;
+		} else if (NResource::lilyProperties_.lilyProperties) {
 			out_ << "bcr = {" << endl << "\\context Thread = xcircle" << endl << "\\property Voice.NoteHead \\set #'style = #'cross" << endl << '}' << endl;
 			out_ << "bdf = {" << endl << "\\context Thread = xdefault" << endl << "\\property Voice.NoteHead \\set #'style = #'default" << endl << '}' << endl;
 			out_ << "bcc = {" << endl << "\\context Thread = xcircle" << endl << "\\property Voice.NoteHead \\set #'style = #'xcircle" << endl << '}' << endl;

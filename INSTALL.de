@@ -81,7 +81,7 @@ Dekomprimierung und Konfiguration des Archives:
 
 
   (t)csh  andere shell
-  setenv QTDIR <pfad_zu_ihrer_kde_installation>  export QTDIR=<pfad_zu_ihrer_qt_installation>
+  setenv QTDIR  <pfad_zu_ihrer_qt_installation>   export QTDIR=<pfad_zu_ihrer_qt_installation>
   setenv KDEDIR <pfad_zu_ihrer_kde_installation>  export KDEDIR=<pfad_zu_ihrer_kde_installation>
 
   ./configure --prefix=<pfad_zu_ihrer_kde_installation>

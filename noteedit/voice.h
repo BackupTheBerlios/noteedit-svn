@@ -325,7 +325,8 @@ class NVoice {
 /*------------------------------ voice properies -----------------------------------------*/
 		bool	firstVoice_;
 		QList<NMusElement> musElementList_;
-		NMusElement *currentElement_;
+		NMusElement *currentElement_;			// the selected element (drawn in red)
+								// if no element is selected, then 0
 		NMusElement *specialElement_;
 		NStaff  *theStaff_;
 /*-------------------------------- drawing voice ----------------------------------------------*/
@@ -395,8 +396,8 @@ class NVoice {
 		static undostr redoelem_[MAXUNDO];
 		NMidiEventStr midievents_[MIDI_EVENT_RING], *actualMidiEvent_;
 		NMainFrameWidget *mainWidget_;
-		NMusElement *startElement_, *endElement_;
-		int startElemIdx_, endElementIdx_;
+		NMusElement *startElement_, *endElement_;	// the selected region / marked block
+		int startElemIdx_, endElementIdx_;		// and corresponding index
 		static int undocounter_;
 		static int undoptr_, lastundoptr_;
 		static int redocounter_;

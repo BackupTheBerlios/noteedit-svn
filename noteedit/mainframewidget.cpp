@@ -2846,19 +2846,16 @@ void NMainFrameWidget::setSlured(bool slured) {
 	setEdited();
 }
 
+// setTriplet -- handle the triplet button
 
 void NMainFrameWidget::setTriplet(bool triplet) {
 	main_props_.triplet = triplet;
-	if (!triplet) {
+	if (triplet) {
+		if (!NResource::windowWithSelectedRegion_) return;
+		NResource::voiceWithSelectedRegion_->setTuplet(3, 2);
+	} else {
 		currentVoice_->breakTuplet();
-		computeMidiTimes(false);
-		reposit();
-		repaint();
-		setEdited();
-		return;
 	}
-	if (!NResource::windowWithSelectedRegion_) return;
-	NResource::voiceWithSelectedRegion_->setTuplet(3, 2);
 	computeMidiTimes(false);
 	reposit();
 	repaint();

@@ -193,6 +193,10 @@ class NNote {
 		char needed_acc;
 		char acc_TeX_pos;
 		unsigned int status;
+
+// definition of status bits in NMusElement::status_
+// TBD and also in NNote::status ?
+
 #define STAT_SINGLE_DOT   (1 << 0)
 #define STAT_DOUBLE_DOT   (1 << 1)
 #define DOT_MASK     (STAT_SINGLE_DOT | STAT_DOUBLE_DOT)
@@ -275,6 +279,7 @@ class NMusElement {
 		void change(NMusElement *elem);
 		unsigned int status_;
 		unsigned int status2_;
+// definition of status bits in NMusElement::status2_
 #define STAT2_PEDAL_ON (1 << 0)
 #define STAT2_PEDAL_OFF (1 << 1)
 #define STAT2_AUTO_TRIPLET (1 << 2)
@@ -351,7 +356,7 @@ class NMusElement {
 		double tupm_; double tupn_;
 		double tupTeXn_;
 		int xstart_, xend_;
-		QList<NMusElement> *tupletList_;
+		QList<NMusElement> *tupletList_;	// all elements in this element's tuplet
 };
 
 #endif // MUSELEMENT_H

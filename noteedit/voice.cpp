@@ -1611,6 +1611,10 @@ bool NVoice::checkTuplets(QList<NMusElement> *copielist, QList<NMusElement> *tup
 	return true;
 }
 
+// breakTuplet -- break the tuplet containing the current element
+// in:		void
+// returns:	void
+	
 void NVoice::breakTuplet() {
 	int oldidx;
 	QList<NMusElement> *tupletlist;
@@ -1821,9 +1825,9 @@ void NVoice::setBeamed() {
 //		x1: right index
 //		numNotes: tuplet size
 // inout:	elemlist: list to add elements to
-// returns:	true iff successful
+// returns:	true iff successful (i.e. list created and tupletable)
+// note:	always clears elemlist at start
 // note:	LVIFIX tbd: positions musElementList_ at ???
-//		always clears elemlist at start
 
 bool NVoice::buildTupletList(int x0, int x1, char numNotes, QList<NMusElement> *elemlist) {
 	int count = 0;
@@ -2951,17 +2955,14 @@ int NVoice::findLastBarTime(int xpos) {
 // returns:	void
 
 void NVoice::tryToBuildAutoTriplet() {
-	int ppn = -1;			// index of previous previous note
-	int pn = -1;			// index of previous note
-	int cn = -1;			// index of current note
-	int nn = -1;			// index of next note
-	int nnn = -1;			// index of next next note
-	NMusElement *elem = 0;
-	QList<NMusElement> *elemlist = 0;
 	int oldidx = musElementList_.at();
 	if (oldidx < 0) return;
 
 	// determine index of elements which could become part of triplet
+	int ppn = -1;			// index of previous previous note
+	int pn = -1;			// index of previous note
+	int cn = -1;			// index of current note
+	NMusElement *elem = 0;
 	elem = musElementList_.current();
 	if (elem && (elem->status2_ & STAT2_AUTO_TRIPLET)
 	    && !(elem->status_ & STAT_TUPLET))
@@ -2974,36 +2975,29 @@ void NVoice::tryToBuildAutoTriplet() {
 	if (elem && (elem->status2_ & STAT2_AUTO_TRIPLET)
 	    && !(elem->status_ & STAT_TUPLET))
 		ppn = musElementList_.at();
-	musElementList_.at(oldidx);
-	elem = musElementList_.next();
-	if (elem && (elem->status2_ & STAT2_AUTO_TRIPLET)
-	    && !(elem->status_ & STAT_TUPLET))
-		nn = musElementList_.at();
-	elem = musElementList_.next();
-	if (elem && (elem->status2_ & STAT2_AUTO_TRIPLET)
-	    && !(elem->status_ & STAT_TUPLET))
-		nnn = musElementList_.at();
-	// LVIFIX: remove debug printf
-	printf("tryToBuildAutoTriplet() ppn=%d pn=%d cn=%d nn=%d nnn=%d\n",
-		ppn, pn, cn, nn, nnn);
-	fflush(stdout);
 
-	elemlist = new QList<NMusElement>();
+	QList<NMusElement> *elemlist = new QList<NMusElement>();
 	bool ok = false;
-	int x0 = -1;
-	int x1 = -1;
-	if ((ppn >+ 0) && (pn >= 0) && (cn >= 0)) {
-		if (buildTupletList(ppn, cn, 3, elemlist)) {
-			ok = true;
-			x0 = ppn;
-			x1 = cn;
-		}
+	int x0 = ppn;
+	int x1 = cn;
+	// check if it is possible to build a three element triplet
+	if ((ppn >= 0) && (pn >= 0) && (cn >= 0)) {
+		ok = buildTupletList(x0, x1, 3, elemlist);
 	}
-	// LVIFIX: add other possible cases, e.g pn + cn in 1:2
+	// if building a three element triplet failed,
+	// check if it is possible to build a two element triplet
+	if (!ok && (pn >= 0) && (cn >= 0)) {
+		x0 = pn;
+		ok = buildTupletList(x0, x1, 3, elemlist);
+	}
+	// if succeeded, actually build triplet, else cleanup
 	if (ok) {
 		createUndoElement(x0, x1 - x0 + 1, 0);
 		NMusElement::computeTuplet(elemlist, 3, 2);
 		// note: don't delete elemlist here, all tuplet notes refer to it
+	} else {
+		// if building the tuplet failed, elemlist is not used anymore
+		delete elemlist;
 	}
 	musElementList_.at(oldidx);
 }
@@ -3021,10 +3015,6 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 	NNote *part;
 	NMusElement *specialElem, *startElement = 0;
 	int newcount = 0;
-
-	// LVIFIX: remove debug printf
-	printf("NVoice::insertAtPosition, triplet=%d\n", main_props_->triplet);
-	fflush(stdout);
 	
 	if (currentElement_) {
 		currentElement_->setActual(false);
@@ -3164,8 +3154,6 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 		findTieMember(part);
 	}
 	if ((is_chord || is_rest) && main_props_->triplet) {
-		printf("NVoice::insertAtPosition, try to build triplet\n");
-		fflush(stdout);
 		tryToBuildAutoTriplet();
 	}
 	if (is_chord && NResource::allowInsertEcho_) {

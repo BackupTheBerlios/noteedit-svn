@@ -91,9 +91,9 @@ If you don't have the source distribution to "make uninstall" remove all in
 
 Decompress and configure the archive:
 
-  tar -xvzf noteedit-2.7.3.tgz
+  tar -xvzf noteedit-2.7.4.tgz
 
-  cd noteedit-2.7.3
+  cd noteedit-2.7.4
 
   
 

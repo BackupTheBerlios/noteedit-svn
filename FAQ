@@ -195,7 +195,7 @@ You didn't install NoteEdit (make install) !
 The local installation is very complicated.
 There is a shell script that should place the files and links  correctly in NoteEdit top directory:
 
-     cd <path>/noteedit-2.7.3
+     cd <path>/noteedit-2.7.4
 
      ./admin/locinst.sh
 
@@ -203,8 +203,8 @@ Then set environment variable KDEDIRS to noteedit top directory:
 
 
   Shell  command
-  (t)csh  setenv KDEDIRS <path_to_noteedit-2.7.3_direcory>
-  other shell  export KDEDIRS=<path_to_noteedit-2.7.3_direcory>
+  (t)csh  setenv KDEDIRS <path_to_noteedit-2.7.4_direcory>
+  other shell  export KDEDIRS=<path_to_noteedit-2.7.4_direcory>
 
      cd noteedit
 

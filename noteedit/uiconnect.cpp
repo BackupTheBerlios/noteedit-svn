@@ -615,8 +615,9 @@ void metronomFrm::abortSlot() {
 /*---------------------------------------- smallestRestForm -------------------------------------*/
 
 smallestRestFrm::smallestRestFrm( NMainFrameWidget *parent ) : clRestForm( parent, 0, true ) {
-	for (unsigned int i = 0; NResource::noteVal[i]; ++i)
-	this->sel->insertItem(i18n(NResource::noteVal[i]));
+	for (int i = 0; i < 12; ++i) {
+		this->sel->insertItem(i18n(NResource::noteVal[i]));
+	}
 	this->btOk->setFocus();
 }
 
@@ -673,8 +674,9 @@ int smallestRestFrm::item2length() {
 /*----------------------------------- volumeForm ------------------------------------------------*/
 
 volumeFrm::volumeFrm( QWidget *parent ) : volumeForm( parent, 0, true ) {
-	for (int i = 0; i < 8; ++i)
-	this->sel->insertItem(i18n(NResource::volume[i]));
+	for (int i = 0; i < 8; ++i) {
+		this->sel->insertItem(i18n(NResource::volume[i]));
+	}
 	this->btOk->setFocus();
 	this->scal_ed->setAll(0, 127, 100);
 }

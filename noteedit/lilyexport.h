@@ -63,7 +63,7 @@ class NLilyExport {
 	private:
 		ofstream out_;
 		void writeVoice(int staff_nr, int voice_nr,  NVoice *voi);
-		void writeLyrics(int voice_nr, NVoice *voi);
+		void writeLyrics(int voice_nr, NVoice *voi, const QString& label);
 		void pitchOut( const NNote *note, NClef *ac_clef);
 		bool hasContraryStems(QList<NNote> *note);
 		bool chordHasMixedTies(QList<NNote> *note);
@@ -95,6 +95,9 @@ class NLilyExport {
 		static QRegExp nonAlphas_, digits_, whiteSpaces_, relSyms, starOnly;
 		int noteBody_;
 		bool noStrongPizzMsg_;
+		QList<QString> scoreBlock;
+		void buildScoreBlockAndFlush(int i, const QString& label,
+			long bracketMask, long bracketEndMask, long braceMask, long braceEndMask, bool flush);
 };
 
 #endif // LILYEXPORT_H

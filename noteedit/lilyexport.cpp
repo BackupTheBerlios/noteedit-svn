@@ -89,6 +89,7 @@ NLilyExport::NLilyExport() {
 	os_ = new ostrstream(buffer_, 128);
 #endif
 	noStrongPizzMsg_ = false;
+	scoreBlock.setAutoDelete( TRUE );
 }
 
 void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFrm *expWin, NMainFrameWidget *mainWidget) {
@@ -223,6 +224,23 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 	}
 	if (header_written) {
 		out_ << '}' << endl << endl;
+	}
+	long bracketMask = 0; 		// bit 0: first staff, ...
+	long bracketEndMask = 0;
+	long braceMask = 0;
+	long braceEndMask = 0;
+	long bMaskTmp;
+	for (i = 0, staff_elem = stafflist->first(); staff_elem; staff_elem = stafflist->next(), i++) {
+		if (mainWidget->bracketMatrix_[i].valid) {
+			bMaskTmp = (~0 << mainWidget->bracketMatrix_[i].beg) & ~(~1 << mainWidget->bracketMatrix_[i].end);
+			bracketMask |= bMaskTmp;
+			bracketEndMask |= (1 << mainWidget->bracketMatrix_[i].end);
+		}
+		if (mainWidget->braceMatrix_[i].valid) {
+			bMaskTmp = (~0 << mainWidget->braceMatrix_[i].beg) & ~(~1 << mainWidget->braceMatrix_[i].end);
+			braceMask |= bMaskTmp;
+			braceEndMask |= (1 << mainWidget->braceMatrix_[i].end);
+		}
 	}
 	for (i = 0, staff_elem = stafflist->first(); staff_elem; staff_elem = stafflist->next(), i++) {
 		if (!staffarray_[i].is_selected) continue; 
@@ -384,14 +402,20 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 		removeExceptsFromString(&staffLabel, false);
 		if (staffarray_[i].lyrics_count) {
 			if (NResource::lilyProperties_.lilyVersion24) {
-				out_ << staffLabel << "Text = \\lyricmode ";
+				//out_ << staffLabel << "Text = \\lyricmode ";
 			} else {
 				out_ << staffLabel << "Text = \\lyrics ";
 			}
-			writeLyrics(i, voice_elem);
+			writeLyrics(i, voice_elem, staffLabel);
 		}
+		if (NResource::lilyProperties_.lilyVersion24)
+			buildScoreBlockAndFlush(i, staffLabel, bracketMask, bracketEndMask, braceMask, braceEndMask, false);
 	} // end for (i = 0, staff_elem = stafflist->first(); ...
-	if (!exportDialog_->lilyVoice->isChecked()) {
+	
+	if (NResource::lilyProperties_.lilyVersion24)
+		buildScoreBlockAndFlush(0, "", 0, 0, 0, 0, true);
+
+	if (!exportDialog_->lilyVoice->isChecked() && !NResource::lilyProperties_.lilyVersion24) {
 		out_ << "\\score {" << endl;
 		out_ << "\t\\simultaneous {" << endl;
 		if (NResource::lilyProperties_.lilyProperties) {
@@ -684,6 +708,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	int restlen;
 	int octaviation = 0;
 	NText *pending_text = 0;
+	bool drumNotesChange = true;	// not inside chords implemented, use different voices if needed.
 
 	countof128th_ = 128;
 	currentNumerator_ = currentDenominator_ = 4;
@@ -701,6 +726,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	if (!voi->isFirstVoice()) {
 		actual_staff->resetSpecialElement();
 	}
+
 	do {
 		lastElemIsBar = false;
 		if (!voi->isFirstVoice()) {
@@ -931,7 +957,12 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						out_ << "#(set-octavation -1) ";
 					}
 				     }
-				     if (elem->getNoteList()->count() > 1) out_ << "< ";
+
+				     	if (elem->getNoteList()->count() > 1) {
+						out_ << "< ";
+						drumNotesChange = false;
+					}
+					
 				     first = true;
 			  	     for (note = elem->getNoteList()->first(); note; note = elem->getNoteList()->next()) {
 					     if (first) {
@@ -944,7 +975,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						bad = new badmeasure(LILY_ERR_DRUM_STAFF, staff_nr +1, 3 /* dummy */, total / 3, countof128th_);
 						badlist_.append(bad);
 					     }
-					     if (exportDialog_->lilyDrumNotes->isChecked() && noteBody_ != (note->status & BODY_MASK)) {
+					     if (drumNotesChange && exportDialog_->lilyDrumNotes->isChecked() && noteBody_ != (note->status & BODY_MASK)) {
 						switch (noteBody_ = (note->status & BODY_MASK)) {
 							case STAT_BODY_CROSS:
 							case STAT_BODY_CROSS2:
@@ -1125,8 +1156,10 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     if (diag != 0) {
 					writeChordName(diag->getChordName());
 				     }
-				     if (elem->getNoteList()->count() > 1) {
-				     	out_ << "> ";
+					if (elem->getNoteList()->count() > 1) {
+				     		out_ << "> ";
+						drumNotesChange = true;
+					
 				        if (NResource::lilyProperties_.lilyVersion2 && (length != lastLength_ || lastDotted_ != (elem->status_ & DOT_MASK))) {
 						if (part == DOUBLE_WHOLE_LENGTH) {
 							out_ << "\\breve ";
@@ -1829,13 +1862,15 @@ void NLilyExport::writeChordName(QString chordname) {
 	}
 }
 
-void NLilyExport::writeLyrics(int voice_nr, NVoice *voi) {
+void NLilyExport::writeLyrics(int voice_nr, NVoice *voi, const QString& label) {
 	NMusElement *elem;
 	NChord *chord;
 	QString *ps, s;
 	int lyline;
 	int counter;
 
+if (NResource::lilyProperties_.lilyVersion24) {
+} else {
 	if (staffarray_[voice_nr].lyrics_count > 1) {
 		out_ << "{" << endl << "\t\\simultaneous {" << endl << "\t\t";
 		depth_ = 2;
@@ -1844,11 +1879,17 @@ void NLilyExport::writeLyrics(int voice_nr, NVoice *voi) {
 		out_ << "{" << endl << '\t';
 		depth_ = 1;
 	}
+}
 	
 	for (lyline = 0; lyline < staffarray_[voice_nr].lyrics_count; lyline++) {
 		counter = 0;
 		voi->prepareForWriting();
-		out_ << "{" << endl; depth_++; tabsOut();
+		if (NResource::lilyProperties_.lilyVersion24) {
+			out_ << label.latin1() << "Text" << char(lyline+'A') << " = \\lyricmode ";
+			out_ << "{" << endl; depth_++; tabsOut();
+		} else {
+			out_ << "{" << endl; depth_++; tabsOut();
+		}
 		elem = voi->getCurrentPosition();
 		while (elem) {
 			switch (elem->getType()) {
@@ -1890,14 +1931,133 @@ void NLilyExport::writeLyrics(int voice_nr, NVoice *voi) {
 			elem = voi->getNextPosition();
 		}
 		depth_--;
-		out_ << '}' << endl; tabsOut();
+		out_ << '}' << endl;
+		if (!NResource::lilyProperties_.lilyVersion24) tabsOut();
 	}
 	if (staffarray_[voice_nr].lyrics_count > 1) {
-		out_ << '}' << endl;
+		if (!NResource::lilyProperties_.lilyVersion24)
+			out_ << '}' << endl;
 	}
-	out_ << '}' << endl;
+	if (!NResource::lilyProperties_.lilyVersion24)
+		out_ << '}' << endl;
 }
 
+void NLilyExport::buildScoreBlockAndFlush(	int i,
+						const QString& label,
+						long bracketMask,
+						long bracketEndMask,
+						long braceMask,
+						long braceEndMask,
+						bool flush)
+{
+/*
+	This function is called for every Staff, during this time
+	with flush false. At the end a call with flush true is needed
+	to push everything out. The function draws only whole lines.
+
+	First Character of every line in scoreBlock holds the number of tabs to get
+	a nice printout of the hierachy.
+*/
+	unsigned int m;
+	double wh;
+	QString tmps;
+	static int hy;		// hierarchy
+	static int ii, endDist;	// indices
+	static int braceOn;
+	static int bracketOn;
+
+	if (flush) {		// Flush, initialize for a next export and return.
+        	if (!exportDialog_->lilyVoice->isChecked()) {
+			for (m=0;m<scoreBlock.count();m++) {
+	               		tmps.sprintf("%s", scoreBlock.at(m)->latin1());
+				depth_ = tmps[0].digitValue();		// flush tabs
+				tabsOut();
+	               		out_ << tmps.remove(0,1);		// and flush rest of line
+			}
+
+		}
+		scoreBlock.clear();	// autodelete is on, triggers init block next time
+		return;
+        }
+	
+	if (scoreBlock.isEmpty()) {	// This is the init block
+		scoreBlock.append( new QString("0\\score {\n"));
+		ii = 1;				// Index of the place for next insertion in hierarchy
+		scoreBlock.append( new QString("2\\set Score.skipBars = ##t\n"));	// closing first hy
+		scoreBlock.append( new QString("2\\set Score.melismaBusyProperties = #'()\n"));
+		scoreBlock.append( new QString("1>>\n"));
+
+		tmps.sprintf("1\\layout {%s\n",
+			exportDialog_->lilyLand->isChecked() ? " orientation = \"landscape\"" : "");
+		scoreBlock.append( new QString(tmps));
+		if (sscanf(exportDialog_->lilyWidth->text(), "%lf", &wh) != 1) wh = 250.0;
+		tmps.sprintf("2linewidth = %.3lf \\mm\n", wh );
+		scoreBlock.append( new QString(tmps));
+		if (sscanf(exportDialog_->lilyHeight->text(), "%lf", &wh) != 1) wh = 160.0;
+		tmps.sprintf("2textheight = %.3lf \\mm\n", wh );
+		scoreBlock.append( new QString(tmps));
+		scoreBlock.append( new QString("1}\n"));
+
+		scoreBlock.append( new QString("0}\n"));
+		hy = 1;
+		endDist = 8;
+		bracketOn = 0;
+		braceOn = 0;
+	}
+
+	if (hy==1 /* or hy changed, according to braces ... */ ) {
+		tmps.sprintf("%d\\relative <<    %%  0x%lx   0x%lx\n", hy++, bracketEndMask, braceEndMask );
+		scoreBlock.insert(ii++, new QString(tmps));
+	}
+	if	((braceMask>>i & 1) == 1 && !braceOn ) {		// Piano/GrandStaff open, 0->1 edge
+			tmps.sprintf("%d\\context GrandStaff = c%s%c <<\n", hy++, label.latin1(), i+'A');
+			scoreBlock.insert(ii++, new QString(tmps));
+			braceOn = 1;
+	}
+	if	((i==0) && (bracketMask & 1) == 1 ||			// ChoirStaff open, 0->1 edge
+		(i!=0) && (bracketMask>>(i-1) & 3) == 2) {
+			tmps.sprintf("%d\\context ChoirStaff = c%s%c <<\n", hy++, label.latin1(), i+'A');
+			scoreBlock.insert(ii++, new QString(tmps));
+			bracketOn = 1;
+	}
+
+	if (staffarray_[i].is_selected) {
+		tmps.sprintf("%d\\context Staff = c%s%c <<\n", hy, label.latin1(), i+'A');
+		scoreBlock.insert(ii++, new QString(tmps));
+
+		tmps.sprintf("%d\\context Voice = c%s%c \\%s\n", hy+1, label.latin1(), i+'A',
+							label.latin1());
+		scoreBlock.insert(ii++, new QString(tmps));
+
+		tmps.sprintf("%d>>\n", hy);
+		scoreBlock.insert(ii++, new QString(tmps));
+
+		for (m=0;m<staffarray_[i].lyrics_count;m++) {
+			tmps.sprintf("%d\\context Lyrics = c%s%c { \\set stanza = \"%d.\" }\n",
+				hy, label.latin1(), m+'A', m+1);
+			scoreBlock.insert(ii++, new QString(tmps));
+
+			tmps.sprintf("2\\context Lyrics = c%s%c \\lyricsto c%s%c \\%sText%c\n",
+				label.latin1(), m+'A', label.latin1(), i+'A', label.latin1(), m+'A');
+			// Place of \lyricsto is before the last two braces:
+			scoreBlock.insert(scoreBlock.count()-endDist, new QString(tmps));
+		}
+
+		if	(((i>0) && (bracketMask>>i & 3) == 1 ) ||	// ChoirStaff close, 1->0 edge
+			((bracketEndMask>>i & 1) && bracketOn )) {
+			tmps.sprintf("%d>>\n", --hy);
+			scoreBlock.insert(ii++, new QString(tmps));
+			bracketOn = 0;
+		}
+		if	(((i>0) && (braceMask>>i & 3) == 1 ) ||		// GrandStaff close, 1->0 edge
+			((braceEndMask>>i & 1) && braceOn )) {
+			tmps.sprintf("%d>>\n", --hy);
+			scoreBlock.insert(ii++, new QString(tmps));
+			braceOn = 0;
+		}
+		scoreBlock.insert(ii++, new QString("0\n"));
+	}
+}
 
 void NLilyExport::removeExceptsFromString(QString *str, bool onlyDigits) {
 	int l = str->length();

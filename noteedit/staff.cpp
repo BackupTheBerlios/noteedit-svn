@@ -504,7 +504,13 @@ void NStaff::gotoMarker(bool again) {
 	NVoice *voice_elem;
 	playClef_ = repeatClef_;
 	if (playKeySig_) {
-		delete playKeySig_;
+		/* This delete commented out fixes crash bug #3503, which hitted midi playing
+		and export whith multiple repeats. The tool pmem doesn't show a memory leak
+		caused by this. Similar constructs should come under investigation, see below?
+		The parameter "again" is set but not actually in use. 4/2005.
+		*/
+		// delete playKeySig_;
+		
 	}
 	playKeySig_ = repeatKeySig_;
 	voice_elem = voicelist_.first();

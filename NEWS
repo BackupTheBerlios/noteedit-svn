@@ -1,3 +1,14 @@
+Release 2.7.5
+
+Bugs fixed:
+- 003403 export lilypond 2.4 lyrics problem
+
+Remarks:
+- export to lily of different drum notes inside a chord is
+         suppressed to prevent chocking of lily. The
+         user should use multiple voices instead.
+
+
 Release 2.7.4
 
 New features:

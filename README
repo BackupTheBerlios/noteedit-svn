@@ -160,10 +160,18 @@ noteedit-devel@lists.berlios.de
 Documentation
 --------------
 
-The documentation is available from TBD:
+The documentation is part of the noteedit archive. You find
+it in the doc directory. The german translation can be found
+under "de", the english original is in the noteedit directory
+including all the pictures.
 
-  http://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/noteedit.html#docu
+After having installed noteedit, you can read the documentation
+by selecting the note edit handbook from the help menu.
 
+In case there is an error when trying to open the documentation
+file it might be that KDE can't find it if you compiled it from
+the sources. Try to change the prefix so it points to the KDE 
+directory on your distribution (usually /usr) in that case.
 
 LICENSE
 --------

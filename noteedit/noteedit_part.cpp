@@ -66,12 +66,13 @@ KInstance *NoteeditFactory::instance() {
 KAboutData *NoteeditFactory::aboutData() {
 	KAboutData *about = new KAboutData
 		("noteedit", I18N_NOOP("NoteEdit"), VERSION,
-		 "a KDE2/Qt2 based note editor",
+		 "a KDE3/Qt3 based note editor.\nFor help subscribe to one of the\nmailing lists, or post a message\nin one of the public forums. See",
 		 KAboutData::License_GPL, 0, 0,
-		 "http://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/noteedit.html",
+		 //"http://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/noteedit.html",
+		"http://developer.berlios.de/projects/noteedit",
 		 ADDRESS);
 	about->addAuthor
-		("Joerg Anders", I18N_NOOP("Main author and maintainer"), ADDRESS);
+		("Joerg Anders", I18N_NOOP("Main author"), ADDRESS);
 	about->addAuthor
 		("Christian Fasshauer", I18N_NOOP("programmer"), "mseacf@gmx.net");
 #ifdef WITH_TSE3

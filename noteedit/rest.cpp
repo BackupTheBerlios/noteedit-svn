@@ -282,6 +282,13 @@ void NRest::draw(int flags) {
 		main_props_->tp->drawLine(tuplet0_, tuplet1_);
 		main_props_->tp->drawLine(tuplet1_, tuplet01_);
 	}
+	if (status_ & STAT_FERMT) { //  fermate draw
+		main_props_->tp->drawPixmap(QPoint(
+			xpos_ - (NResource::fermateAbPixmap_->width() / 4),
+			staff_props_->base + (NResource::fermateAbPixmap_->height() / 4) - (int) (1.8 * 20)
+			),
+			actual_ ? *NResource::fermateAbRedPixmap_ : *NResource::fermateAbPixmap_ );
+	}
 	if (cdiagram_) {
 		cdiagram_->draw(main_props_->tp, &cdiagramDrawPoint_, main_props_);
 	}

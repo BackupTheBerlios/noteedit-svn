@@ -1239,6 +1239,11 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					bad = new badmeasure(ERR_NOTE_COUNT, staff_nr, bar_nr_, total / 3, countof128th_);
 					badlist_.append(bad);
 				     }
+				     if (elem->status_ & STAT_FERMT) {
+					out_ << "[with ";
+					out_ << "\"\\(ferm)\"";
+					out_ << ']';
+				     }
 				     out_ << WHOLE_LENGTH / part;
 				     switch (elem->status_ & DOT_MASK) {
 					case 1:	out_ << "."; break;
@@ -1871,6 +1876,11 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 					total = 0;
 					bad = new badmeasure(ERR_NOTE_COUNT, staff_nr, bar_nr_, total / 3, countof128th_);
 					badlist_.append(bad);
+				     }
+				     if (elem->status_ & STAT_FERMT) {
+					out_ << "[with ";
+					out_ << "\"\\(ferm)\"";
+					out_ << ']';
 				     }
 				     out_ << WHOLE_LENGTH / part;
 				     switch (elem->status_ & DOT_MASK) {

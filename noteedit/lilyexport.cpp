@@ -1302,7 +1302,10 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     		}
 						lastDotted_ = elem->status_ & DOT_MASK;
 				     	}
-				      }
+				     }
+				     if (elem->status_ & STAT_FERMT) {
+					out_ << "\\fermata";
+				     }
 				     if (!NResource::lilyProperties_.lilyVersion2) {
 					if (pendingVolSig) {
 						switch (exportDialog_->lilyVol->currentItem()) {

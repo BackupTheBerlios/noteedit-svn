@@ -248,20 +248,34 @@ void NMusicXMLExport::debugDumpStaff(NStaff * staff_elem) {
 
 
 void NMusicXMLExport::debugDump(QList<NStaff> *stafflist, NMainFrameWidget *mainWidget) {
-	out_ << "scTitle=" << mainWidget->scTitle_ << endl;
-	out_ << "scSubtitle=" << mainWidget->scSubtitle_ << endl;
-	out_ << "scAuthor=" << mainWidget->scAuthor_ << endl;
-	out_ << "scLastAuthor=" << mainWidget->scLastAuthor_ << endl;
-	out_ << "scCopyright=" << mainWidget->scCopyright_ << endl;
-	out_ << "scComment=" << mainWidget->scComment_ << endl;
+	if (!mainWidget->scTitle_.isEmpty()) {
+		out_ << "scTitle=" << mainWidget->scTitle_ << endl;
+	}
+	if (!mainWidget->scSubtitle_.isEmpty()) {
+		out_ << "scSubtitle=" << mainWidget->scSubtitle_ << endl;
+	}
+	if (!mainWidget->scAuthor_.isEmpty()) {
+		out_ << "scAuthor=" << mainWidget->scAuthor_ << endl;
+	}
+	if (!mainWidget->scLastAuthor_.isEmpty()) {
+		out_ << "scLastAuthor=" << mainWidget->scLastAuthor_ << endl;
+	}
+	if (!mainWidget->scCopyright_.isEmpty()) {
+		out_ << "scCopyright=" << mainWidget->scCopyright_ << endl;
+	}
+	if (!mainWidget->scComment_.isEmpty()) {
+		out_ << "scComment=" << mainWidget->scComment_ << endl;
+	}
 	// staff list
 	NStaff *staff_elem;
 //	int staffcount;
 	int i;
 	for (i = 0, staff_elem = stafflist->first(); staff_elem; i++, staff_elem = stafflist->next()) {
-		out_ << "*** Staff " << i
-			<< " staffName=" << staff_elem->staffName_
-			<< " #voices="   << staff_elem->voiceCount()
+		out_ << "*** Staff " << i;
+		if (!staff_elem->staffName_.isEmpty()) {
+			out_ << " staffName=" << staff_elem->staffName_;
+		}
+		out_ << " #voices="   << staff_elem->voiceCount()
 			<< " midi-chn="  << staff_elem->getChannel()
 			<< " midi-pgm="  << staff_elem->getVoice()
 			<< endl;
@@ -656,6 +670,11 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 					outputDots(rest);
 					outputTimeMod(rest);
 					bool needNotations = false;
+					bool fermata = false;
+					if (rest->status_ & STAT_FERMT) {
+						fermata = true;
+						needNotations = true;
+					}
 					bool tupletStart = false;
 					if ((rest->status_ & STAT_TUPLET)
 					     && rest->isFirstInTuplet()) {
@@ -663,12 +682,16 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 						needNotations = true;
 					}
 					bool tupletStop = false;
-					if ((rest->status_ & STAT_LAST_TUPLET)) {
+					if (rest->status_ & STAT_LAST_TUPLET) {
 						tupletStop = true;
 						needNotations = true;
 					}
 					if (needNotations) {
 						out_ << "\t\t\t\t<notations>\n";
+						if (fermata) {
+							// LVIFIX: only upright fermata's are generated.
+							out_ << "\t\t\t\t\t<fermata type=\"upright\"/>\n";
+						}
 						if (tupletStop) {
 							out_ << "\t\t\t\t\t<tuplet type=\"stop\"/>\n";
 						}
@@ -816,6 +839,7 @@ bool NMusicXMLExport::writeOtherVoicesTill(int staff_nr, int voice_nr, NVoice *v
 				      break;
 			case T_REST:
 //				     out_ << "writeOtherVoicesTill T_REST" << endl;
+				     // LVIFIX: repair code duplication between this and previous "case T_REST:"
 				     rest = (NRest *) elem;
 				     if (rest->getSubType() == MULTIREST) {
 				        // LVIFIX: this should be reported
@@ -844,6 +868,11 @@ bool NMusicXMLExport::writeOtherVoicesTill(int staff_nr, int voice_nr, NVoice *v
 					outputDots(rest);
 					outputTimeMod(rest);
 					bool needNotations = false;
+					bool fermata = false;
+					if (rest->status_ & STAT_FERMT) {
+						fermata = true;
+						needNotations = true;
+					}
 					bool tupletStart = false;
 					if ((rest->status_ & STAT_TUPLET)
 					     && rest->isFirstInTuplet()) {
@@ -851,12 +880,16 @@ bool NMusicXMLExport::writeOtherVoicesTill(int staff_nr, int voice_nr, NVoice *v
 						needNotations = true;
 					}
 					bool tupletStop = false;
-					if ((rest->status_ & STAT_LAST_TUPLET)) {
+					if (rest->status_ & STAT_LAST_TUPLET) {
 						tupletStop = true;
 						needNotations = true;
 					}
 					if (needNotations) {
 						out_ << "\t\t\t\t<notations>\n";
+						if (fermata) {
+							// LVIFIX: only upright fermata's are generated.
+							out_ << "\t\t\t\t\t<fermata type=\"upright\"/>\n";
+						}
 						if (tupletStop) {
 							out_ << "\t\t\t\t\t<tuplet type=\"stop\"/>\n";
 						}
@@ -1023,6 +1056,7 @@ void NMusicXMLExport::writePendingSigns(int staff_nr) {
 			voiceStatList_->pendingClef = 0;
 		}
 		if (voiceStatList_->pendingMultiRest) {
+			// LVINOTE: if multirests can have fermatas, add support here
 			out_ << "\t\t\t\t<measure-style>\n";
 			out_ << "\t\t\t\t\t<multiple-rest>"
 				<< voiceStatList_->pendingMultiRest->getMultiRestLength()

@@ -1146,6 +1146,11 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 								badMeasures_.append(exerr);
 					    break;
 			     }
+			     if(elem->status_ & STAT_FERMT) {
+				// LVIFIX does fermataup need a parameter and, if so, what should it be ?
+				// the "k" below is a random choice
+				out_ << "\\fermataup k";
+			     }
 			     if (elem->getSubType() == MULTIREST)
 				out_ << "\\Hpause32\\uptext{\\sk\\meterfont{" << ((NRest *)elem)->getMultiRestLength() << "}}\\sk\\sk\\hsk";
 			     else 
@@ -1425,8 +1430,8 @@ QString NMusiXTeX::lyrics2TeX(QString *lyrics) {
 
 void NMusiXTeX::externalCmd (QString command, QString filename) {
   
-  // Führe externes Command aus.
-  // Steht im Kommando ein "%f", ersetze es durch filename
+  // Execute external command.
+  // A "%f" in command is replaced by filename
   QRegExp reg = QRegExp("%f");
   QString setUserPath;
   QString destDir;
@@ -1453,7 +1458,7 @@ void NMusiXTeX::externalCmd (QString command, QString filename) {
   command.append(" >");
   command.append(tempDir);
   command.append(" 2>&1");
-  // Kdo ausführen
+  // Execute kdo
   system (command.latin1());
 
   // Ausgabe aus Tmp-File zusammenfriemeln

@@ -20,6 +20,8 @@
 /*											*/
 /****************************************************************************************/
 
+// LVIFIX: this source file is not 7-bit clean, see NABCExport::lyrics2ABC(..
+
 #include <qstring.h>
 #include <qregexp.h>
 #include <qspinbox.h>
@@ -497,6 +499,9 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 					writeChord(diag);
 				     }
 				     writePendingSigns(idx);
+				     if (rest->status_ & STAT_FERMT) {
+					out_ << "!fermata!";
+				     }
 				     if (rest->getSubType() == MULTIREST) {
 				     	out_ << 'Z';
 					len = rest->getMultiRestLength() * QUARTER_LENGTH;
@@ -746,7 +751,9 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 					out_ << '}';
 				     }
 				     if (!inTuplet) out_ << ' ';
-
+				     if (rest->status_ & STAT_FERMT) {
+					out_ << "!fermata!";
+				     }
 				     if (rest->getSubType() == MULTIREST) {
 				     	out_ << 'Z';
 					len = rest->getMultiRestLength() * QUARTER_LENGTH;

@@ -1654,24 +1654,31 @@ void NVoice::setDotted() {
 
 void NVoice::setAccent(unsigned int type){
 	if (!currentElement_) return;
-	if (currentElement_->getType() != T_CHORD) return;
+	if ((currentElement_->getType() != T_CHORD)
+	    && (currentElement_->getType() != T_REST))
+		return;
 	createUndoElement(currentElement_, 1, 0);
-	NChord *chord = (NChord *) currentElement_;
-	if (chord->status_ & STAT_STACC)
-	    chord->status_ ^= STAT_STACC;
-    	for (int i = 19; i <= 23; i++)
-	    if (chord->status_ & (1 << i))
-    	        chord->status_ ^= (1 << i);
-	switch(type){
-	    case STAT_STACC: SET_STATUS(main_props_->staccato, chord->status_, STAT_STACC); break;
-	    case STAT_SFORZ: SET_STATUS(main_props_->sforzato, chord->status_, STAT_SFORZ); break;
-	    case STAT_PORTA: SET_STATUS(main_props_->portato, chord->status_, STAT_PORTA); break;
-	    case STAT_STPIZ: SET_STATUS(main_props_->strong_pizzicato, chord->status_, STAT_STPIZ); break;
-	    case STAT_SFZND: SET_STATUS(main_props_->sforzando, chord->status_, STAT_SFZND); break;
-	    case STAT_FERMT: SET_STATUS(main_props_->fermate, chord->status_, STAT_FERMT); break;
-	    default: printf("illegal accent, ID: %i\n", type);
-	             fflush(stdout);
-	             break;
+	if (currentElement_->status_ & STAT_STACC)
+	    currentElement_->status_ ^= STAT_STACC;
+	for (int i = 19; i <= 23; i++)
+	    if (currentElement_->status_ & (1 << i))
+	        currentElement_->status_ ^= (1 << i);
+	if (currentElement_->getType() == T_CHORD) {
+	    switch(type){
+	        case STAT_STACC: SET_STATUS(main_props_->staccato, currentElement_->status_, STAT_STACC); break;
+	        case STAT_SFORZ: SET_STATUS(main_props_->sforzato, currentElement_->status_, STAT_SFORZ); break;
+	        case STAT_PORTA: SET_STATUS(main_props_->portato, currentElement_->status_, STAT_PORTA); break;
+	        case STAT_STPIZ: SET_STATUS(main_props_->strong_pizzicato, currentElement_->status_, STAT_STPIZ); break;
+	        case STAT_SFZND: SET_STATUS(main_props_->sforzando, currentElement_->status_, STAT_SFZND); break;
+	        case STAT_FERMT: SET_STATUS(main_props_->fermate, currentElement_->status_, STAT_FERMT); break;
+	        default: printf("illegal accent, ID: %i\n", type); fflush(stdout); break;
+	    }
+	} else if ((currentElement_->getType() == T_REST) && (currentElement_->getSubType() != MULTIREST)) {
+	    // on normal rest, fermata is allowed
+	    switch(type){
+	        case STAT_FERMT: SET_STATUS(main_props_->fermate, currentElement_->status_, STAT_FERMT); break;
+	        default: /* ignore other accents */ break;
+	    }
 	}
 }
 
@@ -3106,6 +3113,7 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 		case T_REST:
 			is_rest = true;
 			status = main_props_->dotcount | (main_props_->hidden ? STAT_HIDDEN : 0);
+			if ((sub_type != MULTIREST) && main_props_->fermate) status |= STAT_FERMT;
 			new_elem = 
 			new NRest(main_props_, &(theStaff_->staff_props_), &yRestOffs_, sub_type, status);
 		break;

@@ -6617,11 +6617,11 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd&nbsp;</"
-"userinput><replaceable>path</replaceable><userinput>/noteedit-2.7.3</"
+"userinput><replaceable>path</replaceable><userinput>/noteedit-2.7.4</"
 "userinput>"
 msgstr ""
 "<userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd&nbsp;</"
-"userinput><replaceable>pfad</replaceable><userinput>/noteedit-2.7.3</"
+"userinput><replaceable>pfad</replaceable><userinput>/noteedit-2.7.4</"
 "userinput>"
 
 #. Tag: para
@@ -6662,10 +6662,10 @@ msgstr "(t)csh"
 #: index.docbook:2519
 #, no-c-format
 msgid ""
-"setenv&nbsp;KDEDIRS&nbsp;<replaceable>path_to_noteedit-2.7.3_direcory</"
+"setenv&nbsp;KDEDIRS&nbsp;<replaceable>path_to_noteedit-2.7.4_direcory</"
 "replaceable>"
 msgstr ""
-"setenv&nbsp;KDEDIRS&nbsp;<replaceable>pfad_zu_noteedit-2.7.3_direcory</"
+"setenv&nbsp;KDEDIRS&nbsp;<replaceable>pfad_zu_noteedit-2.7.4_direcory</"
 "replaceable>"
 
 #. Tag: entry
@@ -6678,10 +6678,10 @@ msgstr "andere shell"
 #: index.docbook:2520
 #, no-c-format
 msgid ""
-"export&nbsp;KDEDIRS=<replaceable>path_to_noteedit-2.7.3_direcory</"
+"export&nbsp;KDEDIRS=<replaceable>path_to_noteedit-2.7.4_direcory</"
 "replaceable>"
 msgstr ""
-"export&nbsp;KDEDIRS=<replaceable>pfad_zum_noteedit-2.7.3_direcory</"
+"export&nbsp;KDEDIRS=<replaceable>pfad_zum_noteedit-2.7.4_direcory</"
 "replaceable>"
 
 #. Tag: userinput
@@ -10060,14 +10060,14 @@ msgstr "Dekomprimierung und Konfiguration des Archives:"
 #. Tag: para
 #: index.docbook:3801
 #, no-c-format
-msgid "&nbsp;&nbsp;<userinput>tar -xvzf noteedit-2.7.3.tgz</userinput>"
-msgstr "&nbsp;&nbsp;<userinput>tar -xvzf noteedit-2.7.3.tgz</userinput>"
+msgid "&nbsp;&nbsp;<userinput>tar -xvzf noteedit-2.7.4.tgz</userinput>"
+msgstr "&nbsp;&nbsp;<userinput>tar -xvzf noteedit-2.7.4.tgz</userinput>"
 
 #. Tag: para
 #: index.docbook:3802
 #, no-c-format
-msgid "&nbsp;&nbsp;<userinput>cd noteedit-2.7.3</userinput>"
-msgstr "&nbsp;&nbsp;<userinput>cd noteedit-2.7.3</userinput>"
+msgid "&nbsp;&nbsp;<userinput>cd noteedit-2.7.4</userinput>"
+msgstr "&nbsp;&nbsp;<userinput>cd noteedit-2.7.4</userinput>"
 
 #. Tag: para
 #: index.docbook:3803

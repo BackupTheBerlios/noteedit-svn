@@ -3989,7 +3989,7 @@ the MIDI device to work.</para>
 <para><option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 --enable-audio=alsa --enable-server --enable-alsaseq</option></para>
 
-<para>You sould also try to change "the orchestra" by installing a different
+<para>You should also try to change "the orchestra" by installing a different
 soundfont. Please have a look at <ulink url="http://www.hammersound.net">http://www.hammersound.net</ulink> and search for
 <filename>FluidR3</filename> soundfont!</para>
 

@@ -231,7 +231,7 @@ A presupposition is that TiMidity++ is compiled with (at least) the configure op
         
 --enable-audio=alsa --enable-server --enable-alsaseq
 
-You sould also try to change "the orchestra" by installing a different
+You should also try to change "the orchestra" by installing a different
 soundfont. Please have a look at http://www.hammersound.net and search for
 FluidR3 soundfont!
 

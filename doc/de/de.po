@@ -10548,7 +10548,7 @@ msgstr ""
 #: index.docbook:3929
 #, no-c-format
 msgid ""
-"You sould also try to change \"the orchestra\" by installing a different "
+"You should also try to change \"the orchestra\" by installing a different "
 "soundfont. Please have a look at <ulink url=\"http://www.hammersound.net"
 "\">http://www.hammersound.net</ulink> and search for <filename>FluidR3</"
 "filename> soundfont!"

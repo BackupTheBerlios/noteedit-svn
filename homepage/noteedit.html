@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=iso-8859-15">
+	<TITLE>Noteedit - a score editor</TITLE>
+</HEAD>
+<BODY LANG="en-EN" TEXT="#000000" LINK="#0000ef" VLINK="#51188e" BGCOLOR="#ffffff"><h1>Noteedit - a score editor for Linux
+  <br>
+</h1>
+<br>
+ Noteedit is an editor for music notation that supports an unlimited
+  number of staffs and up to 9 voices per staff. You can use it to
+  create sheets of notes. You can import and export into many formats
+  like midi, musicxml and lilypond.
+<br><br><br>
+<IMG src="noteedit-main.png" alt="Noteedit screenshot" width="863" height="563" hspace="0" vspace="0" align="middle" border="0">
+<br>
+<br>
+We want to thank Berlios for hosting the noteedit project!
+<br>
+<br>
+<a href="http://developer.berlios.de/project/showfiles.php?group_id=2232">Download Noteedit...</a>
+<br>
+<br>
+<a href="http://developer.berlios.de/projects/noteedit">Noteedit project page</a>
+<br>
+<br>
+<h2>Properties</h2>
+<br>
+   * insertion/deletion/modification of notes, rests, dotted notes/rests,
+     tied notes, slured notes, clefs with/without shift, time signatures,
+     key signatures, volume signatures, tempo signatures, triplets, repeat
+     groups with/without special ending and instrument changes on different
+     staves;
+<br>
+   * stem up/down
+<br>
+   * building chords;
+<br>
+   * building groups of beamed notes;
+<br>
+   * zoom;
+<br>
+   * fermata, trills, (de-)crescendo,
+<br>
+   * sforzato, portato, strong pizzicato, sforzando
+<br>
+   * multiple voices per staff
+<br>
+     (see/hear: example10.not);
+<br>
+   * drum notes 
+<br>
+   * Multi rests
+<br>
+   * double whole notes
+<br>
+   * konqueror (still experimental)
+<br>
+   * playing on /dev/sequencer (if correctly configured) whereby:
+<br>
+        o giving each staff a different voice;
+<br>
+        o giving each staff a different channel;
+<br>
+        o giving each staff a different reverbation and chorus;
+<br>
+        o highlighting the played notes;
+<br>
+        o muting staves;
+<br>
+   * lyrics
+<br>
+   * export MusiXTeX;
+<br>
+   * export PMX;
+<br>
+   * export MIDI;
+<br>
+   * export LilyPond;
+<br>
+   * import MIDI;
+<br>
+   * read from MIDI keyboard;
+<br>
+   * Application of MIDI event filters to eliminate
+     some dirty effects (especially on human played MIDI files);
+   * record from MIDI keyboard;
+<br>
+   * saving an restoring the files. The fileformat is similarily to the
+     format of the music publication program (MUP). So you if you are a MUP
+     user you have the possibility to convert the files into MIDI and
+     Postscript. But this is no longer necessary because noteedit can export
+     MusiXTeX, PMX, MIDI and LilyPond.
+<br>
+   * konqueror embedding (see below)
+<br>
+<br>
+<h2>Mailing lists</h2>
+<br>
+<a
+href="http://lists.berlios.de/mailman/listinfo/noteedit-user">noteedit-user@lists.berlios.de:
+Note Edit User Mailing List</a>
+<br>
+<br>
+<a
+href="http://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel@lists.berlios.de:
+Note Edit Develop Mailing List</a>
+<br>
+<br>
+<h2>The TSE3 library</h2>
+<br>
+
+From version 1.5.0 on "noteedit" bases on a new library by Pete Goodliffe
+called TSE3 (<a href="http://TSE3.sourceforge.net">TSE3 Homepage<a>). It is
+a powerful open source sequencer engine written in C++. The libkmid version
+is further supported but this version doesn't offer all features (MIDI
+import).
+<br>
+<br>
+TSE3 has its own file format and "noteedit" can produce it by means of TSE3
+function calls. So the "noteedit" data are interchangable with sequencer
+applications basing on TSE3.
+<br>
+<br>
+The TSE3 library is not as much tested as the libkmid. So if you have
+problems with MIDI playback, installation or other realated functions please
+contact Pete Goodliffe. The TSE3 library comes with an application called
+tse3play. So you can test whether it works on your system. If so "noteedit"
+sould work, too!
+<br>
+<h2>Konqueror embedding(experimental)</h2>
+<br>
+You can configure the Konqueror browser such a way that it starts noteedit
+as embedded part. This requires to install "noteedit" in KDE system.
+<br>
+<br>
+To configure embedding, first search for a file noteedit.desktop in
+$HOME/.kde or $HOME/.kde2 and delete it!
+<br>
+<br>
+Then start Konqueror and choose:
+<br>
+<br>
+      Settings --> Configure Konqueror ... --> File Associations -->
+     Add ...  (Group) audio --> (Type name:) x-notes
+<br>
+<br>
+In field Application Preference Order there should be already noteedit. In
+File patterns: insert: *.not and *.not.sav
+<br>
+<br>
+Press Apply and Ok! Now if you select a *.not and *.not.sav file the
+Konqueror should show the noteedit program embedded in Konqueror surface.
+And it should start playing.
+<br>
+<br>
+
+<h2><a href="FAQ">Frequently Asked Questions (FAQ)</a></h2>
+<br>
+<br>
+<h2>The TiMidity server</h2>
+<br>
+(only with TSE3) Version 2.10.2 of the MIDI to WAVE converter and
+player TiMidity++ ( http://www.goice.co.jp/member/mo/timidity) now has a
+server mode. In this mode TiMidity++ behaves like a hardware MIDI
+synthesizer. This approach is interesting for all those who can't bring the
+MIDI device to work. A presupposition is that TiMidity++ is compiled with
+(at least) the configure options:
+<br>
+<br>
+         --enable-audio=alsa --enable-server --enable-alsaseq
+<br>
+<br>
+If so, you can start TiMidity++ with:
+<br>
+<br>
+         timidity -iA -B8,2 -Os    (if this doesn't work try -Od)
+<br>
+<br>
+Make sure that "noteedit" uses an TSE3 ALSA MIDI scheduler! Select Noteedit
+sound configure dialog ( Configure Noteedit --> Sound). Make sure Noteedit
+uses an ALSA MIDI scheduler! You should see 2 new MIDI devices:
+
+   * Timidity port 0 128:0
+   * Timidity port 1 128:0
+<br>
+<br>
+Choose one of them and the replay sould work!
+<br>
+<br>
+You sould also try to change "the orchestra" by installing a different GUS
+patch. GUS patches can by found in the "Links" section at the TiMidity++
+page.
+<br>
+<br>
+Tip: If the replay interrupts during turn over then start TiMidity++ as
+root. This increases the priority of the TiMidity++ process.
+<br>
+<br>
+<h2>Documentation</h2>
+<br>
+The documentation is part of the noteedit archive. You find
+it in the doc directory. The german translation can be found
+under "de", the english original is in the noteedit directory
+including all the pictures.
+<br>
+<br>
+After having installed noteedit, you can read the documentation
+by selecting the note edit handbook from the help menu.
+<br>
+<br>
+In case there is an error when trying to open the documentation
+file it might be that KDE can't find it if you compiled it from
+the sources. Try to change the prefix so it points to the KDE 
+directory on your distribution (usually /usr) in that case.
+<br>
+<br>
+<h2>LICENSE</h2>
+<br>
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 2 of the License, or (at your option)
+any later version. This program is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License (http://www.fsf.org/copyleft/gpl.html) for more details.
+<br>
+<P STYLE="margin-bottom: 0cm"><BR>&nbsp; <BR>&nbsp; <BR>&nbsp; 
+</P>
+<HR>
+Last change: 03.02 2005 <BR>&nbsp; <BR>&nbsp; 
+</BODY>
+</HTML>

@@ -1,0 +1,22 @@
+The files in this directory are partly modified portions of
+the "kguitar" program version 0.4.1. As of this writing the whole programs
+was available from:
+
+    http://kguitar.sourceforge.net
+
+I found the algorithms very surprising and I can't make it better.
+
+The modifications mainly concern KDE3/Qt3 support.
+
+I include the following files from original distribution:
+
+AUTHORS
+COPYING
+DEVELOPERS
+ChangeLog
+INSTALL
+NEWS
+README
+VERSION
+
+J.Anders <ja@informatik.tu-chemnitz.de> 04.09.2002

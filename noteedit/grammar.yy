@@ -1508,7 +1508,9 @@ note : length pitch
      ;
 
 rest : length 'r'
-	{$$.element.muselem = new NRest(&(parser_params.mainWidget->main_props_), &(current_staff->staff_props_), &(current_voice->yRestOffs_), $1.length, $1.status);
+	{int stat = 0;
+	 if (current_modificators & STAT_FERMT) stat = STAT_FERMT;
+	 $$.element.muselem = new NRest(&(parser_params.mainWidget->main_props_), &(current_staff->staff_props_), &(current_voice->yRestOffs_), $1.length, $1.status | stat);
 	 $$.beamstatus = 0;
 	}
      | length 's'

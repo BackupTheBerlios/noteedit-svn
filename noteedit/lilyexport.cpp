@@ -363,7 +363,7 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 			out_ << staffLabel << "Text = \\lyrics ";
 			writeLyrics(i, voice_elem);
 		}
-	}
+	} // end for (i = 0, staff_elem = stafflist->first(); ...
 	if (!exportDialog_->lilyVoice->isChecked()) {
 		out_ << "\\score {" << endl;
 		out_ << "\t\\simultaneous {" << endl;
@@ -661,13 +661,25 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	do {
 		lastElemIsBar = false;
 		if (!voi->isFirstVoice()) {
+			// Handle relevant special elements (T_KEYSIG, T_CLEF and T_SIGN/BAR_SYM)
+			// between the previous and the current element.
+			// Note that special elements are all stored in the first voice.
 			while (specialElem = actual_staff->checkSpecialElement(elem->getXpos())) {
 				switch (specialElem->getType()) {
-					case T_KEYSIG: actual_staff->actualKeysig_.change((NKeySig *) specialElem); break;
+					case T_KEYSIG:
+						     actual_staff->actualKeysig_.change((NKeySig *) specialElem);
+						     break;
 					case T_CLEF: c4Line = actual_staff->actualClef_.lineOfC4();
 						     actual_staff->actualClef_.change((NClef *) specialElem);
 						     lastLine_ += actual_staff->actualClef_.lineOfC4() - c4Line;
-						     break; 
+						     break;
+					case T_SIGN: if (specialElem->getSubType() & BAR_SYMS) {
+							if (((++counter) % MEASURES_PER_LINE) == 0) {
+								out_ << "  % " << ((NSign *) specialElem)->getBarNr();
+								out_ << endl; tabsOut();
+							}
+						     }
+						     break;
 				}
 			}
 		}
@@ -1066,7 +1078,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						saveLine = lastLine_;
 					     }
 				     	     out_ << ' ';
-				     }
+				     } // end for (note = elem->getNoteList()->first() ...
 				     if (diag != 0) {
 					writeChordName(diag->getChordName());
 				     }
@@ -1717,7 +1729,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     pending_text = (NText *) elem;
 				     break;
 				    
-		}
+		} // end switch (elem->getType())
 		elem = voi->getNextPosition();
 	}
 	while (elem);

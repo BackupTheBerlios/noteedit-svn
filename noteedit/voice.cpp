@@ -4598,6 +4598,17 @@ NMusElement *NVoice::countBarSymsBetween(int firstXpos, int actualXpos, int *cou
 	return lastBarSym;
 }
 
+// checkSpecialElement -- return the next special element between the previous
+// element (as maintained in specialElement_) and xpos
+// in:		xpos: stop position
+// out:		volta: non-zero indicates special ending
+// returns:	next special element (if any), else 0.
+// note:	typically used when reading sequentially through higher voices
+//		to handle the corresponding special elements stored in the
+//		first voice.
+// note:	should be called repeatedly, until it returns 0
+// note:	specialElement_ is initialized by calling resetSpecialElement()
+
 NMusElement *NVoice::checkSpecialElement(int xpos, int *volta) {
 	NMusElement *elem;
 	if (volta) *volta = 0;

@@ -615,7 +615,7 @@ class NMainFrameWidget : public QWidget
 		QList<NMidiEventStr> stopList_;
 		void cleanupSelections();
 /*-------------------------------- static dadabase -------------------------------*/
-		static char *keySigTab_[15];
+		static const char *keySigTab_[15];
 };
 
 #ifdef WITH_DIRECT_PRINTING

@@ -156,7 +156,7 @@
 
 
 
-char *NMainFrameWidget::keySigTab_[15] =
+const char *NMainFrameWidget::keySigTab_[15] =
 {I18N_NOOP("C Major; a minor"),           I18N_NOOP("F Major; d minor"),
  I18N_NOOP("B flat Major; g minor"),      I18N_NOOP("E flat Major; c minor"),
  I18N_NOOP("A flat Major; f minor"),      I18N_NOOP("D flat Major; b minor"),

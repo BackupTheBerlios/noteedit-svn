@@ -627,11 +627,11 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 
 void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	NMusElement *elem, *elem2, *specialElem;
-	char *hiddenRepeat = "\\repeat \"volta\" 2 {";
+	const char *hiddenRepeat = "\\repeat \"volta\" 2 {";
 	int total = 0, i;
 	bool first;
 	bool AfterFirstBar = false;
-	char *pendingVolSig = 0;
+	const char *pendingVolSig = 0;
 	int pending_tempo = -1;
 	unsigned int pending_segnos_rirads_accels = 0;
 #define PENDING_SEGNO		  (1 << 0)
@@ -671,7 +671,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	int kind, count;
 	NStaff *actual_staff;
 	int dynEndPos = 0;
-	char *lastDynSym = 0;
+	const char *lastDynSym = 0;
 	bool textpropset = false;
 	bool fatTextWritten = false;
 	bool inLongacciaccatura = false;
@@ -1914,8 +1914,8 @@ void NLilyExport::removeExceptsFromString(QString *str, bool onlyDigits) {
 		
 }
 		
-char *NLilyExport::LilyPondKeyName(int kind, int count) {
-	char *err = "LilyPondKeyName: internal error";
+const char *NLilyExport::LilyPondKeyName(int kind, int count) {
+	const char *err = "LilyPondKeyName: internal error";
 	if (kind == STAT_CROSS) {
 		switch (count) {
 			case 0: return "c";

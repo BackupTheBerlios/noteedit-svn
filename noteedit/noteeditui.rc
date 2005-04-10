@@ -1,28 +1,26 @@
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd" >
-<kpartgui name="NoteEdit" version="1"><!-- Update version number when making a change -->
+<kpartgui name="NoteEdit" version="2"><!-- Update version number when making a change -->
 <MenuBar>
  <Menu name="file"><text>&amp;File</text>
   <!-- Standard actions (new/open/save/saveas) go here automatically -->
-  <Action name="export_midi"/>
-  <Action name="export_musixtex"/>
-  <Action name="export_abc"/>
-  <Action name="export_pmx"/>
-  <Action name="export_lily"/>
-  <Action name="export_musicxml"/>
-  <Separator/>
-  <Action name="import_musicxml"/>
-  <Action name="import_midi"/>
-  <Separator/>
-  <Action name="set_params"/>
-  <Separator/>
-  <Action name="layout_dialog"/>
-  <Separator/>
-  <Action name="close_all"/>
-  <Separator/>
-  <Action name="score_information"/>
-  <Separator/>
+  <Action name="window_new_window"/>
+  <Separator />
+  <Menu name="import"><text>Import</text>
+   <Action name="import_musicxml"/>
+   <Action name="import_midi"/>
+  </Menu>
+  <Menu name="export"><text>Export</text>
+   <Action name="export_midi"/>
+   <Action name="export_musixtex"/>
+   <Action name="export_abc"/>
+   <Action name="export_pmx"/>
+   <Action name="export_lily"/>
+   <Action name="export_musicxml"/>
+  </Menu>
+  <Separator />
   <Action name="quit"/>
- </Menu>
+  <Action name="close_all"/>
+  </Menu>
  <Menu name="edit"><text>&amp;Edit</text>
   <!-- Standard actions (undo/redo/cut/copy/paste) go here automatically -->
   <Action name="edit_multistaff"/>
@@ -33,6 +31,7 @@
   <Action name="set_ntime_repeat"/>
  </Menu>
  <Menu name="view"><text>&amp;View</text>
+  <!-- Standard actions (undo/redo/cut/) go here automatically -->
   <Action name="view_show_bar_numbers"/>
   <Action name="view_show_staff_names"/>
   <Action name="view_staff_context"/>
@@ -75,17 +74,14 @@
   <Action name="staff_move"/>
   <Action name="voice_dialog"/>
   <Action name="staff_mute"/>
-  <Action name="staff_properties"/>
   <Action name="staff_lyrics"/>
   <Action name="staff_importrec"/>
  </Menu>
- <Menu name="tools"><text>&amp;Tools</text>
-  <Action name="tools_accidentals"/>
-  <Action name="tools_collect"/>
-  <Action name="tools_transpose"/>
-  <Action name="tools_change_clef"/>
-  <Action name="tools_set_sharp"/>
-  <Action name="tools_set_flat"/>
+ <Menu name="format"><text>F&amp;ormat</text>
+  <Action name="layout_dialog"/>
+  <Action name="staff_properties"/>
+  <Separator />
+  <Action name="score_information"/>
  </Menu>
  <Menu name="TSE3"><text>TSE&amp;3</text>
   <Action name="tse3_createsong"/>
@@ -99,14 +95,21 @@
   <Action name="tse3_merge"/>
   <Action name="tse3_score"/>
  </Menu>
- <Menu name="settings"><text>&amp;Settings</text>
-  <Action name="midi_devices"/>
-  <Action name="keyconfig"/>
+ <Menu name="tools"><text>&amp;Tools</text>
+  <Action name="tools_accidentals"/>
+  <Action name="tools_collect"/>
+  <Action name="tools_transpose"/>
+  <Action name="tools_change_clef"/>
+  <Action name="tools_set_sharp"/>
+  <Action name="tools_set_flat"/>
  </Menu>
- <Menu name="window"><text>&amp;Window</text>
-  <Action name="window_new_window"/>
+ <Menu name="settings"><text>&amp;Settings</text>
+  <Action name="keyconfig"/>
+  <Action name="midi_devices"/>
+  <Action name="set_params"/>
  </Menu>
  <Menu name="help"><text>&amp;Help</text>
+  <!-- Standard actions (handbook/whatsthis/about/aboutkde) go here automatically -->
   <Action name="help_tipoftheday"/>
  </Menu>
 </MenuBar>

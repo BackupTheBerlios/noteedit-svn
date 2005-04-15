@@ -416,7 +416,7 @@ void NMidiExport::writeTrack(NVoice *voice, NTimeSig *firstTsig) {
 	while (m_events) {
 		noteoff = MY2MIDITIME(m_events->ev_time) - 3;
 		for (note = m_events->notelist->first(); note; note = m_events->notelist->next()) {
-			if (!(note->status & STAT_TIED) || (m_evt->special & TRILL_SPECS)) {
+			if (!(note->status & STAT_TIED) || (m_events->special & TRILL_SPECS)) {
 				writeNoteOff(noteoff - lastEventTime, m_events->midi_channel, note->midiPitch, m_events->volume);
 				lastEventTime = noteoff;
 			}

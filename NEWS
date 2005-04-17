@@ -1,10 +1,14 @@
 Release 2.7.5
 
+New features:
+- updated Slovenian translation and fixed Makefile
+
 Bugs fixed:
 - 003403 export lilypond 2.4 lyrics problem
 - 003484 crash on midi import
 - 003503 hard crash on midi export
 - 003786 midi export crashes noteedit
+- 003791 staff->delete / import recording warnings wrong
 
 Remarks:
 - export to lily of different drum notes inside a chord is

@@ -403,11 +403,11 @@ sl.gmo: sl.po
 
 #>+ 3
 clean-nls:
-	-rm -f  de.gmo es.gmo fr.gmo hu.gmo it.gmo ru.gmo sk.gmo sv.gmo
+	-rm -f  de.gmo es.gmo fr.gmo hu.gmo it.gmo ru.gmo sk.gmo sv.gmo sl.gmo
 
 #>+ 8
 install-nls:
-	@for base in de es fr hu it ru sk sv ; do \
+	@for base in de es fr hu it ru sk sv sl ; do \
 	  echo $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
 	  $(mkinstalldirs) $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES ; \
 	  test ! -f $$base.gmo || $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
@@ -424,6 +424,7 @@ uninstall-nls:
 	rm -f $(DESTDIR)$(kde_locale)/ru/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/sk/LC_MESSAGES/$(PACKAGE).mo
 	rm -f $(DESTDIR)$(kde_locale)/sv/LC_MESSAGES/$(PACKAGE).mo
+	rm -f $(DESTDIR)$(kde_locale)/sl/LC_MESSAGES/$(PACKAGE).mo
 
 #>+ 2
 all-nls: $(GMOFILES)

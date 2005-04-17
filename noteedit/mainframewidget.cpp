@@ -4230,7 +4230,7 @@ void NMainFrameWidget::deleteStaff() {
 	}
 	if (KMessageBox::warningYesNo
 	     (0,
-	      i18n("This deletes current voice! Are you sure?"),
+	      i18n("This deletes current staff! Are you sure?"),
 	      kapp->makeStdCaption(i18n("Delete Staff")),
 	      i18n("&Delete")
 	     )
@@ -5165,7 +5165,7 @@ void NMainFrameWidget::importRecording() {
 	if (recordButton_->isChecked()) return;
 	if (KMessageBox::warningYesNo
 	     (this,
-	      i18n("This overrides the current voice! Continue?"),
+	      i18n("This overrides the current staff! Continue?"),
 	      kapp->makeStdCaption(i18n("Import Recording")),
 	      i18n("&Import Recording"),
 	      i18n("&Cancel")

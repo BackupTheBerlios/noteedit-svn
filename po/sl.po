@@ -923,7 +923,7 @@ msgid "&Multi rest..."
 msgstr "Ve&čtaktne pavze ..."
 
 #: mainframewidget.cpp:335
-msgid "&New"
+msgid "&New staff"
 msgstr "&Nov sistem"
 
 #: mainframewidget.cpp:337

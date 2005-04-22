@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-20 00:37+0200\n"
+"POT-Creation-Date: 2005-04-15 11:29+0200\n"
 "PO-Revision-Date: 2005-04-20 00:38+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -1410,7 +1410,7 @@ msgstr ""
 
 #: mainframewidget.cpp:3344
 msgid "New"
-msgstr "Novo"
+msgstr "Nov dokument"
 
 #: mainframewidget.cpp:3678
 msgid "Couldn't translate into ABC format, aborting"
@@ -4305,34 +4305,3 @@ msgstr "Pokaži diagram"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Ustvarjanje akordov"
-
-#, fuzzy
-#~ msgid "staff menu option"
-#~ msgstr "Loči sisteme:"
-
-#~ msgid "&New"
-#~ msgstr "&Nov sistem"
-
-#~ msgid "Main author and maintainer"
-#~ msgstr "Glavni avtor in vzdrževalec"
-
-#~ msgid "Score information - NoteEdit"
-#~ msgstr "Podatki o skladbi - NoteEdit"
-
-#~ msgid "Author:"
-#~ msgstr "&Avtor:"
-
-#~ msgid "Last Author:"
-#~ msgstr "&Zadnji avtor:"
-
-#~ msgid "Subject:"
-#~ msgstr "&Tema:"
-
-#~ msgid "Title:"
-#~ msgstr "&Naslov:"
-
-#~ msgid "&Comments"
-#~ msgstr "&Komentarji:"
-
-#~ msgid "Comments:"
-#~ msgstr "Komentarji:"

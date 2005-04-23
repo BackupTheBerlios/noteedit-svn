@@ -77,13 +77,13 @@ class NClef : public NMusElement {
 		static const char line2musixtexBass_[MAXLINE-MINLINE+1];
 		static const char line2musixtexAlto_[MAXLINE-MINLINE+1];
 		static const char line2musixtexTenor_[MAXLINE-MINLINE+1];
-		static const char bassCrossPos_[7];
+		static const char bassSharpPos_[7];
 		static const char bassFlatPos_[7];
-		static const char altoCrossPos_[7];
+		static const char altoSharpPos_[7];
 		static const char altoFlatPos_[7];
-		static const char voiCrossPos_[7];
-		static const char voiFlatPos_[7];
-		static const char tenorCrossPos_[7];
+		static const char trebleSharpPos_[7];
+		static const char trebleFlatPos_[7];
+		static const char tenorSharpPos_[7];
 		static const char tenorFlatPos_[7];
 		
 };

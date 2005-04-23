@@ -85,16 +85,15 @@ const char NClef::line2musixtexTenor_[MAXLINE-MINLINE+1] = {
  'f' /* F */, 'g' /* G */, 'h' /* A */, 'i' /* B */, 'j' /* C */, 'k' /* D */, 'l' /* E */,
  'm' /* F */, 'n' /* G */, 'o' /* A */, 'p' /* B */, 'q' /* C */};
 
-const char NClef::bassCrossPos_[7] = {6, 3, 7, 4, 1, 5, 2};
+/* accidentals positions of clefs: 0-the bottom line, 1-first space, 2-second line, -1-below the bottom line */
+const char NClef::trebleSharpPos_[7] = {8, 5, 9, 6, 3, 7, 4};
+const char NClef::trebleFlatPos_[7]  = {4, 7, 3, 6, 2, 5, 1}; 
+const char NClef::bassSharpPos_[7] = {6, 3, 7, 4, 1, 5, 2};
 const char NClef::bassFlatPos_[7]  = {2, 5, 1, 4, 0, 3, -1};
-const char NClef::altoCrossPos_[7] = {7, 4, 8, 5, 2, 6, 3};
+const char NClef::altoSharpPos_[7] = {7, 4, 8, 5, 2, 6, 3};
 const char NClef::altoFlatPos_[7]  = {3, 6, 2, 5, 1, 4, 0};
-const char NClef::voiCrossPos_[7] = {8, 5, 9, 6, 3, 7, 4};
-const char NClef::voiFlatPos_[7]  = {4, 7, 3, 6, 2, 5, 1}; 
-const char NClef::tenorCrossPos_[7] = {9, 6, 3, 7, 4, 8, 5};
+const char NClef::tenorSharpPos_[7] = {9, 6, 3, 7, 4, 8, 5};
 const char NClef::tenorFlatPos_[7]  = {5, 8, 4, 7, 3, 6, 2}; 
-
-
 
 NClef::NClef(main_props_str *main_props, staff_props_str *staff_props, int kind, int shift) :
 		 NMusElement(main_props, staff_props) {
@@ -108,28 +107,28 @@ NClef::NClef(main_props_str *main_props, staff_props_str *staff_props, int kind,
 	switch (clefKind_ = kind) {
 		case ALTO_CLEF: line2midiTab_ = line2midiAlto_; 
 			 	line2TexTab_ = line2musixtexAlto_;
-			 	crossPosTab_ = altoCrossPos_; 
+			 	crossPosTab_ = altoSharpPos_; 
 			 	flatPosTab_ = altoFlatPos_;
 			 	break;
 		case DRUM_BASS_CLEF: line2midiTab_ = line2midiBass_; 
 			 	line2TexTab_ = line2musixtexTreble_; /* !!! DRUM_BASS_CLEF is no real clef */
-			 	crossPosTab_ = bassCrossPos_;
+			 	crossPosTab_ = bassSharpPos_;
 			 	flatPosTab_ = bassFlatPos_;
 			 	break;
 		case BASS_CLEF: line2midiTab_ = line2midiBass_; 
 			 	line2TexTab_ = line2musixtexBass_;
-			 	crossPosTab_ = bassCrossPos_;
+			 	crossPosTab_ = bassSharpPos_;
 			 	flatPosTab_ = bassFlatPos_;
 			 	break;
 		case TENOR_CLEF: line2midiTab_ = line2midiTenor_; 
 			 	line2TexTab_ = line2musixtexTenor_;
-			 	crossPosTab_ = tenorCrossPos_;
+			 	crossPosTab_ = tenorSharpPos_;
 			 	flatPosTab_ = tenorFlatPos_;
 			 	break;
 		default: line2midiTab_ = line2midiTreble_; 
 			 line2TexTab_ = line2musixtexTreble_;
-			 crossPosTab_ = voiCrossPos_;
-			 flatPosTab_ = voiFlatPos_;
+			 crossPosTab_ = trebleSharpPos_;
+			 flatPosTab_ = trebleFlatPos_;
 			 break;
 	}
 	calculateDimensionsAndPixmaps();
@@ -180,28 +179,28 @@ void NClef::changeKind(int kind) {
 	switch (clefKind_ = kind) {
 		case ALTO_CLEF: line2midiTab_ = line2midiAlto_; 
 			 	line2TexTab_ = line2musixtexAlto_;
-			 	crossPosTab_ = altoCrossPos_; 
+			 	crossPosTab_ = altoSharpPos_; 
 			 	flatPosTab_ = altoFlatPos_;
 			 	break;
 		case DRUM_BASS_CLEF: line2midiTab_ = line2midiBass_; 
 			 	line2TexTab_ = line2musixtexTreble_; /* !!! DRUM_BASS_CLEF is no real clef */
-			 	crossPosTab_ = bassCrossPos_;
+			 	crossPosTab_ = bassSharpPos_;
 			 	flatPosTab_ = bassFlatPos_;
 			 	break;
 		case BASS_CLEF: line2midiTab_ = line2midiBass_; 
 			 	line2TexTab_ = line2musixtexBass_;
-			 	crossPosTab_ = bassCrossPos_;
+			 	crossPosTab_ = bassSharpPos_;
 			 	flatPosTab_ = bassFlatPos_;
 			 	break;
 		case TENOR_CLEF: line2midiTab_ = line2midiTenor_; 
 			 	line2TexTab_ = line2musixtexTenor_;
-			 	crossPosTab_ = tenorCrossPos_;
+			 	crossPosTab_ = tenorSharpPos_;
 			 	flatPosTab_ = tenorFlatPos_;
 			 	break;
 		default: line2midiTab_ = line2midiTreble_; 
 			 line2TexTab_ = line2musixtexTreble_;
-			 crossPosTab_ = voiCrossPos_;
-			 flatPosTab_ = voiFlatPos_;
+			 crossPosTab_ = trebleSharpPos_;
+			 flatPosTab_ = trebleFlatPos_;
 			 break;
 	}
 	calculateDimensionsAndPixmaps();

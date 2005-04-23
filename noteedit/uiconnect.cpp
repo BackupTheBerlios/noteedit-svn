@@ -1150,15 +1150,16 @@ void staffelFrm::slOk() {
 		}
 		break;
 	case IS_CLEF_DISTANCE:
-		if (selClass_->getSelection() < 12) {
-			if( selClass_->getSelection() > 3 ) oct = 8;
-			if( selClass_->getSelection() > 7 ) oct = -8;
+		/* We do the same when changing the clef */
+		if (selClass_->getSelection() < 15) {
+			if( selClass_->getSelection() > 4 ) oct = 8;
+			if( selClass_->getSelection() > 9 ) oct = -8;
 		}
-		if (selClass_->getSelection() < 12) {
-			mainWidget_->performClefChange( ( 1 <<  ( selClass_->getSelection() % 4 )  ), oct );
+		if (selClass_->getSelection() < 15) {
+			mainWidget_->performClefChange( ( 1 <<  ( selClass_->getSelection() % 5 )  ), oct );
 		}
 		else {
-			mainWidget_->performClefChange( ( 1 <<  ( selClass_->getSelection() - 8 ) ), 0);
+			mainWidget_->performClefChange( ( 1 <<  ( selClass_->getSelection() - 10 ) ), 0);
 		}
 		break;
     	}

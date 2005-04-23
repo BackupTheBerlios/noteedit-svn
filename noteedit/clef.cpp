@@ -43,6 +43,13 @@ const unsigned int NClef::line2midiBass_[MAXLINE-MINLINE+1] = {
  59 /* B */, 60 /* C */, 62 /* D */, 64 /* E */, 65 /* F */, 67 /* G */, 69 /* A */,
  71 /* B */, 72 /* C */, 74 /* D */, 76 /* E */, 78 /* F */};
 
+const unsigned int NClef::line2midiSoprano_[MAXLINE-MINLINE+1] = {
+ 40 /* E */, 41 /* F */, 43 /* G */, 45 /* A */, 47 /* B */, 48 /* C */, 50 /* D */,
+ 52 /* E */, 53 /* F */, 55 /* G */, 57 /* A */, 59 /* B */, 60 /* C */, 62 /* D */,
+ 64 /* E */, 65 /* F */, 67 /* G */, 69 /* A */, 71 /* B */, 72 /* C */, 74 /* D */,
+ 76 /* E */, 77 /* F */, 79 /* G */, 81 /* A */, 83 /* B */, 84 /* C */, 86 /* D */,
+ 88 /* E */, 89 /* F */, 91 /* G */, 93 /* A */, 95 /* B */};
+
 const unsigned int NClef::line2midiAlto_[MAXLINE-MINLINE+1] = {
  33 /* A */, 35 /* B */, 36 /* C */, 38 /* D */, 40 /* E */, 41 /* F */, 43 /* G */,
  45 /* A */, 47 /* B */, 48 /* C */, 50 /* D */, 52 /* E */, 53 /* F */, 55 /* G */,
@@ -71,6 +78,13 @@ const char NClef::line2musixtexBass_[MAXLINE-MINLINE+1] = {
  'P' /* B */, 'c' /* C */, 'd' /* D */, 'e' /* E */, 'f' /* F */, 'g' /* G */, 'h' /* A */,
  'i' /* B */, 'j' /* C */, 'k' /* D */, 'l' /* E */, 'm' /* F */};
 
+const char NClef::line2musixtexSoprano_[MAXLINE-MINLINE+1] = { /* FIXME: Just copy of Alto clef! */
+ 'A' /* A */, 'B' /* B */, 'C' /* C */, 'D' /* D */, 'E' /* E */, 'F' /* F */, 'F' /* G */,
+ 'G' /* A */, 'H' /* B */, 'I' /* C */, 'K' /* D */, 'L' /* E */, 'M' /* F */, 'N' /* G */,
+ 'O' /* A */, 'P' /* B */, 'c' /* C */, 'd' /* D */, 'e' /* E */, 'f' /* F */, 'g' /* G */, 
+ 'h' /* A */, 'i' /* B */, 'j' /* C */, 'k' /* D */, 'l' /* E */, 'm' /* F */, 'n' /* G */,
+ 'o' /* A */, 'p' /* B */, 'q' /* C */, 'r' /* D */, 's' /* E */};
+
 const char NClef::line2musixtexAlto_[MAXLINE-MINLINE+1] = {
  'A' /* A */, 'B' /* B */, 'C' /* C */, 'D' /* D */, 'E' /* E */, 'F' /* F */, 'F' /* G */,
  'G' /* A */, 'H' /* B */, 'I' /* C */, 'K' /* D */, 'L' /* E */, 'M' /* F */, 'N' /* G */,
@@ -90,6 +104,8 @@ const char NClef::trebleSharpPos_[7] = {8, 5, 9, 6, 3, 7, 4};
 const char NClef::trebleFlatPos_[7]  = {4, 7, 3, 6, 2, 5, 1}; 
 const char NClef::bassSharpPos_[7] = {6, 3, 7, 4, 1, 5, 2};
 const char NClef::bassFlatPos_[7]  = {2, 5, 1, 4, 0, 3, -1};
+const char NClef::soprSharpPos_[7] = {3, 0, 4, 1, 5, 2, 6};
+const char NClef::soprFlatPos_[7]  = {6, 2, 5, 1, 4, 0, 3};
 const char NClef::altoSharpPos_[7] = {7, 4, 8, 5, 2, 6, 3};
 const char NClef::altoFlatPos_[7]  = {3, 6, 2, 5, 1, 4, 0};
 const char NClef::tenorSharpPos_[7] = {9, 6, 3, 7, 4, 8, 5};
@@ -105,29 +121,34 @@ NClef::NClef(main_props_str *main_props, staff_props_str *staff_props, int kind,
 		default: shift_ =   0; break;
 	}
 	switch (clefKind_ = kind) {
-		case ALTO_CLEF: line2midiTab_ = line2midiAlto_; 
-			 	line2TexTab_ = line2musixtexAlto_;
-			 	crossPosTab_ = altoSharpPos_; 
-			 	flatPosTab_ = altoFlatPos_;
-			 	break;
-		case DRUM_BASS_CLEF: line2midiTab_ = line2midiBass_; 
-			 	line2TexTab_ = line2musixtexTreble_; /* !!! DRUM_BASS_CLEF is no real clef */
-			 	crossPosTab_ = bassSharpPos_;
-			 	flatPosTab_ = bassFlatPos_;
-			 	break;
 		case BASS_CLEF: line2midiTab_ = line2midiBass_; 
 			 	line2TexTab_ = line2musixtexBass_;
-			 	crossPosTab_ = bassSharpPos_;
+			 	sharpPosTab_ = bassSharpPos_;
 			 	flatPosTab_ = bassFlatPos_;
+			 	break;
+		case SOPRANO_CLEF: line2midiTab_ = line2midiSoprano_; 
+			 	line2TexTab_ = line2musixtexSoprano_;
+			 	sharpPosTab_ = soprSharpPos_; 
+			 	flatPosTab_ = soprFlatPos_;
+			 	break;
+		case ALTO_CLEF: line2midiTab_ = line2midiAlto_; 
+			 	line2TexTab_ = line2musixtexAlto_;
+			 	sharpPosTab_ = altoSharpPos_; 
+			 	flatPosTab_ = altoFlatPos_;
 			 	break;
 		case TENOR_CLEF: line2midiTab_ = line2midiTenor_; 
 			 	line2TexTab_ = line2musixtexTenor_;
-			 	crossPosTab_ = tenorSharpPos_;
+			 	sharpPosTab_ = tenorSharpPos_;
 			 	flatPosTab_ = tenorFlatPos_;
 			 	break;
-		default: line2midiTab_ = line2midiTreble_; 
+		case DRUM_BASS_CLEF: line2midiTab_ = line2midiBass_; 
+			 	line2TexTab_ = line2musixtexTreble_; /* !!! DRUM_BASS_CLEF is no real clef */
+			 	sharpPosTab_ = bassSharpPos_;
+			 	flatPosTab_ = bassFlatPos_;
+			 	break;
+		default: line2midiTab_ = line2midiTreble_; /* treble and drum clef */
 			 line2TexTab_ = line2musixtexTreble_;
-			 crossPosTab_ = trebleSharpPos_;
+			 sharpPosTab_ = trebleSharpPos_;
 			 flatPosTab_ = trebleFlatPos_;
 			 break;
 	}
@@ -147,14 +168,16 @@ NClef *NClef::clone() {
 int NClef::lineOfC4() {
 	int line;
 	switch (clefKind_) {
-		case ALTO_CLEF: line = 4;
+		case BASS_CLEF:
+		case DRUM_BASS_CLEF: line = 10;
 			 	break;
-		case DRUM_BASS_CLEF:
-		case BASS_CLEF: line = 10;
+		case SOPRANO_CLEF: line = 0;
+			 	break;
+		case ALTO_CLEF: line = 4;
 			 	break;
 		case TENOR_CLEF: line = 6;
 			 	break;
-		default: line = -2;
+		default: line = -2; /* treble and drum clef */
 			 break;
 	}
 	switch (shift_) {
@@ -170,36 +193,41 @@ void NClef::change(NClef *clef) {
 	clefKind_ = clef->clefKind_;
 	line2midiTab_ = clef->line2midiTab_;
  	line2TexTab_ =  clef->line2TexTab_;
- 	crossPosTab_ =  clef->crossPosTab_;
+ 	sharpPosTab_ =  clef->sharpPosTab_;
  	flatPosTab_ =   clef->flatPosTab_;
 	calculateDimensionsAndPixmaps();
 }
 
 void NClef::changeKind(int kind) {
 	switch (clefKind_ = kind) {
-		case ALTO_CLEF: line2midiTab_ = line2midiAlto_; 
-			 	line2TexTab_ = line2musixtexAlto_;
-			 	crossPosTab_ = altoSharpPos_; 
-			 	flatPosTab_ = altoFlatPos_;
-			 	break;
-		case DRUM_BASS_CLEF: line2midiTab_ = line2midiBass_; 
-			 	line2TexTab_ = line2musixtexTreble_; /* !!! DRUM_BASS_CLEF is no real clef */
-			 	crossPosTab_ = bassSharpPos_;
-			 	flatPosTab_ = bassFlatPos_;
-			 	break;
 		case BASS_CLEF: line2midiTab_ = line2midiBass_; 
 			 	line2TexTab_ = line2musixtexBass_;
-			 	crossPosTab_ = bassSharpPos_;
+			 	sharpPosTab_ = bassSharpPos_;
 			 	flatPosTab_ = bassFlatPos_;
+			 	break;
+		case SOPRANO_CLEF: line2midiTab_ = line2midiSoprano_; 
+			 	line2TexTab_ = line2musixtexSoprano_;
+			 	sharpPosTab_ = soprSharpPos_; 
+			 	flatPosTab_ = soprFlatPos_;
+			 	break;
+		case ALTO_CLEF: line2midiTab_ = line2midiAlto_; 
+			 	line2TexTab_ = line2musixtexAlto_;
+			 	sharpPosTab_ = altoSharpPos_; 
+			 	flatPosTab_ = altoFlatPos_;
 			 	break;
 		case TENOR_CLEF: line2midiTab_ = line2midiTenor_; 
 			 	line2TexTab_ = line2musixtexTenor_;
-			 	crossPosTab_ = tenorSharpPos_;
+			 	sharpPosTab_ = tenorSharpPos_;
 			 	flatPosTab_ = tenorFlatPos_;
 			 	break;
-		default: line2midiTab_ = line2midiTreble_; 
+		case DRUM_BASS_CLEF: line2midiTab_ = line2midiBass_; 
+			 	line2TexTab_ = line2musixtexTreble_; /* !!! DRUM_BASS_CLEF is no real clef */
+			 	sharpPosTab_ = bassSharpPos_;
+			 	flatPosTab_ = bassFlatPos_;
+			 	break;
+		default: line2midiTab_ = line2midiTreble_; /* treble and drum clef */
 			 line2TexTab_ = line2musixtexTreble_;
-			 crossPosTab_ = trebleSharpPos_;
+			 sharpPosTab_ = trebleSharpPos_;
 			 flatPosTab_ = trebleFlatPos_;
 			 break;
 	}
@@ -217,6 +245,7 @@ void NClef::changeShift(int shift) {
 void NClef::setShift(int octave) {
 	switch (clefKind_) {
 		case TREBLE_CLEF:
+		case SOPRANO_CLEF:
 		case ALTO_CLEF:
 		case TENOR_CLEF:
 			switch (octave) {
@@ -242,10 +271,11 @@ void NClef::setShift(int octave) {
 
 int NClef::getOctave() {
 	switch (clefKind_) {
-		case DRUM_CLEF:
 		case TREBLE_CLEF:
+		case SOPRANO_CLEF:
 		case ALTO_CLEF:
 		case TENOR_CLEF:
+		case DRUM_CLEF:
 			switch (shift_) {
 				case -12: return 3;
 				case  12: return 5;
@@ -265,7 +295,7 @@ int NClef::getOctave() {
 }
 		
 	
-
+/* Returns the note pitch on the given note's vertical position. Arguments: int line - note position (0-bottom line, 1-first space, 2-second line, -1-space below the bottom line) ... */
 char NClef::line2Name(int line, int *octave, bool lilyexport, bool abcexport) const {
 	*octave = 0;
 	char c;
@@ -275,8 +305,9 @@ char NClef::line2Name(int line, int *octave, bool lilyexport, bool abcexport) co
 	}
 	else if (!abcexport) {
 		switch (kind) {
-			case TENOR_CLEF: line -= 1; break;
+			case SOPRANO_CLEF: line -= 2; break;
 			case ALTO_CLEF: line -= 6; break;
+			case TENOR_CLEF: line -= 1; break;
 			case DRUM_BASS_CLEF:
 			case BASS_CLEF:  line -= 5; break;
 			case DRUM_CLEF: break;
@@ -285,8 +316,9 @@ char NClef::line2Name(int line, int *octave, bool lilyexport, bool abcexport) co
 	}
 	if (!lilyexport && abcexport) {
 		switch (kind) {
-			case TENOR_CLEF: line -= 1; break;
+			case SOPRANO_CLEF: line -= 2; break;
 			case ALTO_CLEF: line -= 6; break;
+			case TENOR_CLEF: line -= 1; break;
 			case DRUM_BASS_CLEF: 
 			case BASS_CLEF:  line -= 5; break;
 			case DRUM_CLEF: break;
@@ -312,6 +344,7 @@ char NClef::line2Name(int line, int *octave, bool lilyexport, bool abcexport) co
 	return c;
 }
 
+/* Returns the note pitch on the given note's vertical position in PMX format. */
 char NClef::line2PMXName(int line, int *octave) const {
 	*octave = 0;
 	char c = 'c';
@@ -334,6 +367,41 @@ char NClef::line2PMXName(int line, int *octave) const {
 				case  2: c = 'g'; break;
 				case  3: c = 'a'; break;
 				case  4: c = 'b'; break;
+			}
+			break;
+		case DRUM_BASS_CLEF:
+		case BASS_CLEF:  *octave = 3;
+			while (line > 9) {
+				line -= 7; (*octave)++;
+			}
+			while (line < 3) {
+				line += 7; (*octave)--;
+			}
+			switch (line) {
+				case  3: c = 'c'; break;
+				case  4: c = 'd'; break;
+				case  5: c = 'e'; break;
+				case  6: c = 'f'; break;
+				case  7: c = 'g'; break;
+				case  8: c = 'a'; break;
+				case  9: c = 'b'; break;
+			}
+		case SOPRANO_CLEF:
+			*octave = 4;
+			while (line > 6) {
+				line -= 7; (*octave)++;
+			}
+			while (line < 0) {
+				line += 7; (*octave)--;
+			}
+			switch (line) {
+				case  0: c = 'c'; break;
+				case  1: c = 'd'; break;
+				case  2: c = 'e'; break;
+				case  3: c = 'f'; break;
+				case  4: c = 'g'; break;
+				case  5: c = 'a'; break;
+				case  6: c = 'b'; break;
 			}
 			break;
 		case ALTO_CLEF:
@@ -372,23 +440,6 @@ char NClef::line2PMXName(int line, int *octave) const {
 				case 12: c = 'b'; break;
 			}
 			break;
-		case DRUM_BASS_CLEF:
-		case BASS_CLEF:  *octave = 3;
-			while (line > 9) {
-				line -= 7; (*octave)++;
-			}
-			while (line < 3) {
-				line += 7; (*octave)--;
-			}
-			switch (line) {
-				case  3: c = 'c'; break;
-				case  4: c = 'd'; break;
-				case  5: c = 'e'; break;
-				case  6: c = 'f'; break;
-				case  7: c = 'g'; break;
-				case  8: c = 'a'; break;
-				case  9: c = 'b'; break;
-			}
 		default: break;
 	}
 	return c;
@@ -397,10 +448,11 @@ char NClef::line2PMXName(int line, int *octave) const {
 int NClef::line2note(int line) const {
 	int c = 0;
 	switch (clefKind_) {
-		case TENOR_CLEF: line -= 8; break;
-		case ALTO_CLEF: line -= 6; break;
 		case DRUM_BASS_CLEF:
 		case BASS_CLEF:  line -= 5; break;
+		case SOPRANO_CLEF: line -= 2; break;
+		case ALTO_CLEF: line -= 6; break;
+		case TENOR_CLEF: line -= 8; break;
 		default: break;
 	}
 
@@ -442,6 +494,7 @@ int NClef::name2Line(char name) const {
 	switch (clefKind_) {
 		case DRUM_BASS_CLEF:
 		case BASS_CLEF: line += 5; break;
+		case SOPRANO_CLEF: line += 2; break;
 		case ALTO_CLEF: line += 6; break;
 		case TENOR_CLEF: line += 1; break;
 		default: break;
@@ -451,7 +504,7 @@ int NClef::name2Line(char name) const {
 
 int NClef::getAccPos(int kind, int nr) {
 	switch (kind) {
-		case STAT_CROSS: return crossPosTab_[nr];
+		case STAT_CROSS: return sharpPosTab_[nr];
 		case STAT_FLAT: return flatPosTab_[nr];
 		default: NResource::abort("internal error in NClef::getAccPos");
 	}
@@ -460,18 +513,21 @@ int NClef::getAccPos(int kind, int nr) {
 
 int NClef::noteNumber2Line(int note_number) const {
 	switch (clefKind_) {
-		case TENOR_CLEF:
-			if ((note_number += 6) > 9) return note_number - 7;
-			return note_number;
-		case ALTO_CLEF:
-			if ((note_number += 4) > 9) return note_number - 7;
-			return note_number;
 		case DRUM_BASS_CLEF:
 		case BASS_CLEF:
 			return note_number + 3;
 		case DRUM_CLEF:
 		case TREBLE_CLEF:
 			if ((note_number += 5) > 9) return note_number - 7;
+			return note_number;
+		case SOPRANO_CLEF:
+			if ((note_number += 7) > 9) return note_number - 7;
+			return note_number;
+		case ALTO_CLEF:
+			if ((note_number += 4) > 9) return note_number - 7;
+			return note_number;
+		case TENOR_CLEF:
+			if ((note_number += 6) > 9) return note_number - 7;
 			return note_number;
 	}
 	return note_number;
@@ -481,7 +537,6 @@ void NClef::midi2Line(unsigned int midival, int *line, int *offs, NKeySig *ksig)
 	int i, kind, count;
 	*line = 0;
 	*offs = 0;
-	
 
 	midival -= shift_;
 	for (i = 0; i < MAXLINE-MINLINE+1; i++) {
@@ -620,6 +675,24 @@ void NClef::calculateDimensionsAndPixmaps() {
 	int ypos, yoffs;
 	if (!staff_props_->base) return;
 	switch (clefKind_) {
+		case TREBLE_CLEF: switch(shift_) {
+					case  12: blackPixmap_ = NResource::treblepPixmap_;
+						 redPixmap_   = NResource::treblepRedPixmap_;
+						 yoffs = 0;
+						 break;
+					case -12: blackPixmap_ = NResource::treblemPixmap_;
+						 redPixmap_   = NResource::treblemRedPixmap_;
+						 yoffs = 18;
+						 break;
+					default: blackPixmap_ = NResource::treblePixmap_;
+					         redPixmap_   = NResource::trebleRedPixmap_;
+						 yoffs = 5;
+						 break;
+				}
+				ypos = staff_props_->base - 5 * LINE_DIST/2;
+				pixmapHeight_ = blackPixmap_->height();
+				pixmapWidth_ = blackPixmap_->width();
+				break;
 		case BASS_CLEF: switch (shift_) {
 					case  12: blackPixmap_ = NResource::basspPixmap_;
 						 redPixmap_   = NResource::basspRedPixmap_;
@@ -635,6 +708,60 @@ void NClef::calculateDimensionsAndPixmaps() {
 						 break;
 				}
 				ypos = staff_props_->base - 2* LINE_DIST / 2;
+				pixmapHeight_ = blackPixmap_->height();
+				pixmapWidth_ = blackPixmap_->width();
+				break;
+		case SOPRANO_CLEF: switch(shift_) {
+					case 12: blackPixmap_ = NResource::altopPixmap_;
+						 redPixmap_   = NResource::altopRedPixmap_;
+						 yoffs = -13;
+						 break;
+					case -12: blackPixmap_ = NResource::altomPixmap_;
+						 redPixmap_   = NResource::altomRedPixmap_;
+						 yoffs = 17;
+						 break;
+					default: blackPixmap_ = NResource::altoPixmap_;
+					         redPixmap_   = NResource::altoRedPixmap_;
+						 yoffs = 4;
+						 break;
+				}
+				ypos = staff_props_->base + LINE_DIST;
+				pixmapHeight_ = blackPixmap_->height();
+				pixmapWidth_ = blackPixmap_->width();
+				break;
+		case ALTO_CLEF: switch(shift_) {
+					case 12: blackPixmap_ = NResource::altopPixmap_;
+						 redPixmap_   = NResource::altopRedPixmap_;
+						 yoffs = -22;
+						 break;
+					case -12: blackPixmap_ = NResource::altomPixmap_;
+						 redPixmap_   = NResource::altomRedPixmap_;
+						 yoffs = 8;
+						 break;
+					default: blackPixmap_ = NResource::altoPixmap_;
+					         redPixmap_   = NResource::altoRedPixmap_;
+						 yoffs = -4;
+						 break;
+				}
+				ypos = staff_props_->base - LINE_DIST/2;
+				pixmapHeight_ = blackPixmap_->height();
+				pixmapWidth_ = blackPixmap_->width();
+				break;
+		case TENOR_CLEF: switch(shift_) {
+					case 12: blackPixmap_ = NResource::altopPixmap_;
+						 redPixmap_   = NResource::altopRedPixmap_;
+						 yoffs = -24;
+						 break;
+					case -12: blackPixmap_ = NResource::altomPixmap_;
+						 redPixmap_   = NResource::altomRedPixmap_;
+						 yoffs = 6;
+						 break;
+					default: blackPixmap_ = NResource::altoPixmap_;
+					         redPixmap_   = NResource::altoRedPixmap_;
+						 yoffs = -7;
+						 break;
+				}
+				ypos = staff_props_->base - 3 * LINE_DIST/2;
 				pixmapHeight_ = blackPixmap_->height();
 				pixmapWidth_ = blackPixmap_->width();
 				break;
@@ -654,62 +781,7 @@ void NClef::calculateDimensionsAndPixmaps() {
 				pixmapHeight_ = blackPixmap_->height();
 				pixmapWidth_ = blackPixmap_->width();
 				break;
-		case TREBLE_CLEF: switch(shift_) {
-					case  12: blackPixmap_ = NResource::treblepPixmap_;
-						 redPixmap_   = NResource::treblepRedPixmap_;
-						 yoffs = 0;
-						 break;
-					case -12: blackPixmap_ = NResource::treblemPixmap_;
-						 redPixmap_   = NResource::treblemRedPixmap_;
-						 yoffs = 18;
-						 break;
-					default: blackPixmap_ = NResource::treblePixmap_;
-					         redPixmap_   = NResource::trebleRedPixmap_;
-						 yoffs = 5;
-						 break;
-				}
-				ypos = staff_props_->base - 5 * LINE_DIST/2;
-				pixmapHeight_ = blackPixmap_->height();
-				pixmapWidth_ = blackPixmap_->width();
-				break;
-		case ALTO_CLEF: switch(shift_) {
-					case  12: blackPixmap_ = NResource::altopPixmap_;
-						 redPixmap_   = NResource::altopRedPixmap_;
-						 yoffs = -22;
-						 break;
-					case -12: blackPixmap_ = NResource::altomPixmap_;
-						 redPixmap_   = NResource::altomRedPixmap_;
-						 yoffs = 8;
-						 break;
-					default: blackPixmap_ = NResource::altoPixmap_;
-					         redPixmap_   = NResource::altoRedPixmap_;
-						 yoffs = -4;
-						 break;
-				}
-				ypos = staff_props_->base - LINE_DIST/2;
-				pixmapHeight_ = blackPixmap_->height();
-				pixmapWidth_ = blackPixmap_->width();
-				break;
-		case TENOR_CLEF: switch(shift_) {
-					case  12: blackPixmap_ = NResource::altopPixmap_;
-						 redPixmap_   = NResource::altopRedPixmap_;
-						 yoffs = -24;
-						 break;
-					case -12: blackPixmap_ = NResource::altomPixmap_;
-						 redPixmap_   = NResource::altomRedPixmap_;
-						 yoffs = 6;
-						 break;
-					default: blackPixmap_ = NResource::altoPixmap_;
-					         redPixmap_   = NResource::altoRedPixmap_;
-						 yoffs = -7;
-						 break;
-				}
-				ypos = staff_props_->base - 3 * LINE_DIST/2;
-				pixmapHeight_ = blackPixmap_->height();
-				pixmapWidth_ = blackPixmap_->width();
-				break;
 		default: NResource::abort("unknown clef");
-
 				break;
 	}
 	nbaseDrawPoint_ = QPoint (xpos_, ypos+yoffs);

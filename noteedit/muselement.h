@@ -46,10 +46,11 @@
 // please study uiconnect before you make any clef changes!
 #define TREBLE_CLEF (1 << 0)
 #define BASS_CLEF (1 << 1)
-#define ALTO_CLEF (1 << 2)
-#define TENOR_CLEF (1 << 3)
-#define DRUM_CLEF (1 << 4)
-#define DRUM_BASS_CLEF (1 << 5)
+#define SOPRANO_CLEF (1 << 2)
+#define ALTO_CLEF (1 << 3)
+#define TENOR_CLEF (1 << 4)
+#define DRUM_CLEF (1 << 5)
+#define DRUM_BASS_CLEF (1 << 6)
 
 // signs:
 

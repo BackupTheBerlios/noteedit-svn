@@ -254,8 +254,9 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 			switch (clef->getSubType()) {
 				case DRUM_BASS_CLEF:
 				case DRUM_CLEF: lastLine_ = -3; str = 0; break;
-				case TENOR_CLEF: lastLine_ = 3; str = 1; break;
+				case SOPRANO_CLEF: lastLine_ = 6; str = 1; break;
 				case ALTO_CLEF: lastLine_ = 4; str = 1; break;
+				case TENOR_CLEF: lastLine_ = 3; str = 1; break;
 				case BASS_CLEF: lastLine_ = 3; str = 0; break;
 				case TREBLE_CLEF: lastLine_ = -2; str = 1;			// violin clef lowered an octave?
 						if (NResource::lilyProperties_.lilyVersion24 && clef->getShift() == -12) str = 0;
@@ -314,8 +315,9 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 				switch (clef->getSubType()) {
 					case DRUM_BASS_CLEF:
 					case DRUM_CLEF: lastLine_ = -3; str = 0; break;
-					case TENOR_CLEF: lastLine_ = 3; str = 1; break;
+					case SOPRANO_CLEF: lastLine_ = 6; str = 1; break;
 					case ALTO_CLEF: lastLine_ = 4; str = 1; break;
+					case TENOR_CLEF: lastLine_ = 3; str = 1; break;
 					case BASS_CLEF: lastLine_ = 3; str = 0; break;
 					case TREBLE_CLEF: lastLine_ = -2; str = 1;			// violin clef lowered an octave?
 							if (NResource::lilyProperties_.lilyVersion24 && clef->getShift() == -12) str = 0;
@@ -1536,8 +1538,9 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 												out_ << "violin"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
 											}
 											break;
-					 case TENOR_CLEF: out_ << "tenor"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";"; break;
+					 case SOPRANO_CLEF: out_ << "soprano"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";"; break;
 					 case ALTO_CLEF: out_ << "alto"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";"; break;
+					 case TENOR_CLEF: out_ << "tenor"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";"; break;
 					 case DRUM_BASS_CLEF: out_ << "percussion"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";"; break;
 					 case BASS_CLEF: out_ << "bass"; if (NResource::lilyProperties_.lilySemicolons) out_ << ";"; break;
 				     }

@@ -1590,6 +1590,13 @@ bool NFileHandler::writeClef(NClef * clef, int voice_nr) {
 			badlist_.append(new badmeasure(ERR_DRUM_STAFF, voice_nr, 0 /*dummy */, 3 /* dummy */, countof128th_));
 		}
 		break;
+	case SOPRANO_CLEF:
+		out_ << "\tclef=soprano" << endl;
+		switch (clef->getShift()) {
+	 		case -12: out_ << "\tdefoct=3" << endl; break; 
+	   		case  12: out_ << "\tdefoct=5" << endl; break; 
+		}
+		break;
 	case ALTO_CLEF:
 		out_ << "\tclef=alto" << endl;
 		switch (clef->getShift()) {

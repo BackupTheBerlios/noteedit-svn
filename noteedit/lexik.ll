@@ -105,8 +105,9 @@ clefchange	{return Y_CLEFCHANGE;}
 cm		{return Y_CM;}
 treble		{YYLVAL.clefkind = TREBLE_CLEF; return Y_CLEFKIND;}
 bass		{YYLVAL.clefkind = BASS_CLEF; return Y_CLEFKIND;}
-tenor		{YYLVAL.clefkind = TENOR_CLEF; return Y_CLEFKIND;}
+soprano		{YYLVAL.clefkind = SOPRANO_CLEF; return Y_CLEFKIND;}
 alto		{YYLVAL.clefkind = ALTO_CLEF; return Y_CLEFKIND;}
+tenor		{YYLVAL.clefkind = TENOR_CLEF; return Y_CLEFKIND;}
 {coda}		{return Y_CODA;}
 dblbar		{return Y_DBLBAR;}
 drum		{YYLVAL.clefkind = DRUM_CLEF; return Y_CLEFKIND;}

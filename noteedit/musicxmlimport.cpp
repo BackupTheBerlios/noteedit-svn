@@ -87,7 +87,7 @@ Accents		supported: staccato, sforzato, portato, strong pizzicato, sforzando, fe
 Accidentals	supported: sharp, flat and natural, including double sharp and flat
 Bar separators	supported: simple, double, end
 Beams		supported
-Clefs		supported: alto, bass, tenor and treble clef, not supported: drum and drum_bass clef
+Clefs		supported: treble, bass, soprano, alto and tenor clef, not supported: drum and drum_bass clef
 Clef change	supported
 Chords		supported
 Chord diagrams	supported, but excluding bass
@@ -1787,6 +1787,8 @@ void MusicXMLParser::handleClef(NStaff *staff, QString& cli, QString& coc, QStri
 			kind = TREBLE_CLEF;
 		} else if ((csi == "F") && (cli == "4")) {
 			kind = BASS_CLEF;
+		} else if ((csi == "C") && (cli == "1")) {
+			kind = SOPRANO_CLEF;
 		} else if ((csi == "C") && (cli == "3")) {
 			kind = ALTO_CLEF;
 		} else if ((csi == "C") && (cli == "4")) {

@@ -1156,6 +1156,7 @@ bool NABCExport::outputClefInfo(NClef *clef) {
 	switch (clef->getSubType()) {
 		case TREBLE_CLEF: out_ << "clef=treble"; break;
 		case BASS_CLEF: out_ << "clef=bass"; break;
+		case SOPRANO_CLEF: out_ << "clef=alto1"; break;
 		case ALTO_CLEF: out_ << "clef=alto"; break;
 		case TENOR_CLEF: out_ << "clef=alto4"; break;
 		case DRUM_CLEF: out_ << "clef=perc"; break;

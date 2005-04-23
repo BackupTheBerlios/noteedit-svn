@@ -1280,11 +1280,14 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 			     if (barNr_ <= 2) break;
 			     staff_elem->actualClef_.change((NClef *) elem);
 			     switch(elem->getSubType()) {
+				case TREBLE_CLEF:
+					mStaffInf_->noticeClefChange(real_staff_nr, 0);
+			     		break;
 				case BASS_CLEF:
 					mStaffInf_->noticeClefChange(real_staff_nr, 6);
 			     		break;
-				case TREBLE_CLEF:
-					mStaffInf_->noticeClefChange(real_staff_nr, 0);
+				case SOPRANO_CLEF:
+					mStaffInf_->noticeClefChange(real_staff_nr, 1);
 			     		break;
 				case ALTO_CLEF:
 					mStaffInf_->noticeClefChange(real_staff_nr, 3);

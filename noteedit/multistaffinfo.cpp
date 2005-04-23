@@ -67,6 +67,7 @@ NMultistaffInfo::NMultistaffInfo(NMainFrameWidget *mainWidget, QList<NStaff> *st
 		clef = stafflist->at(i)->getVoiceNr(0)->getFirstClef();
 		switch (clef->getSubType()) {
 			case BASS_CLEF:clinfo[0]=6; break;
+			case SOPRANO_CLEF:clinfo[0]=1; break;
 			case ALTO_CLEF:clinfo[0]=3; break;
 			case TENOR_CLEF:clinfo[0]=4; break;
 			case DRUM_BASS_CLEF:
@@ -99,6 +100,7 @@ NMultistaffInfo::NMultistaffInfo(NMainFrameWidget *mainWidget, QList<NStaff> *st
 					clef = stafflist->at(i)->getVoiceNr(0)->getFirstClef();
 					switch (clef->getSubType()) {
 						case BASS_CLEF:clinfo[k]=6; break;
+						case SOPRANO_CLEF:clinfo[k]=1; break;
 						case ALTO_CLEF:clinfo[k]=3; break;
 						case TENOR_CLEF:clinfo[k]=4; break;
 						case DRUM_BASS_CLEF:

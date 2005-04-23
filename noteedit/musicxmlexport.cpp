@@ -50,7 +50,7 @@ Accents		supported: staccato, sforzato, portato, strong pizzicato, sforzando, fe
 			   arpeggio and pedal on/off
 Bar separators	supported: simple, double, end
 Beams		supported
-Clefs		supported: alto, bass, tenor and treble clef, not supported: drum and drum_bass clef
+Clefs		supported: treble, bass, soprano, alto and tenor clef, not supported: drum and drum_bass clef
 Clef change	supported
 Chords		supported
 Chord diagrams	supported, but excluding bass and degree
@@ -1709,8 +1709,11 @@ void NMusicXMLExport::outputClefInfo(NClef *clef, int staff_nr) {
 	QString sign = "";
 	int line = 0;
 	switch (clef->getSubType()) {
-		case ALTO_CLEF:      sign="C"; line=3; break;
+		case TREBLE_CLEF:    sign="G"; line=2; break;
 		case BASS_CLEF:      sign="F"; line=4; break;
+		case SOPRANO_CLEF:   sign="C"; line=1; break;
+		case ALTO_CLEF:      sign="C"; line=3; break;
+		case TENOR_CLEF:     sign="C"; line=4; break;
 		case DRUM_CLEF:	     sign="TBD"; line=2; // LVIFIX
 				     bad = new badinfo(MUSICXML_ERRDRUM_CLEF, staff_nr, 0);
 				     badlist_.append(bad);
@@ -1719,8 +1722,6 @@ void NMusicXMLExport::outputClefInfo(NClef *clef, int staff_nr) {
 				     bad = new badinfo(MUSICXML_ERRDRUM_CLEF, staff_nr, 0);
 				     badlist_.append(bad);
 				     break;
-		case TENOR_CLEF:     sign="C"; line=4; break;
-		case TREBLE_CLEF:    sign="G"; line=2; break;
 		default:             NResource::abort("NMusicXMLExport::outputClefInfo");
 	}
 	// LVIFIX: add number= to clef when using multiple (combined) staffs as in piano music

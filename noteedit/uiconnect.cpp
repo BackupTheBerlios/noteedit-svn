@@ -1133,16 +1133,20 @@ void staffelFrm::slOk() {
     switch (type_) {
     	case IS_CLEF:
 		
-		if (selClass_->getSelection() < 12) {
-			if( selClass_->getSelection() > 3 ) oct = 8;
-			if( selClass_->getSelection() > 7 ) oct = -8;
+		/* WARNING: constants below depend on number of melodic/non-melodic clefs! For now, all melodic (octaviable) clefs appear at the beginning of list and non-melodic (non-octaviable) at the end. */
+		/* First we read and set clef octaviation, */
+		if (selClass_->getSelection() < 15) {
+			if( selClass_->getSelection() > 4 ) oct = 8;
+			if( selClass_->getSelection() > 9 ) oct = -8;
 		}
 		
-		if (selClass_->getSelection() < 12) {
-			mainWidget_->generateClef( ( 1 <<  ( selClass_->getSelection() % 4 ) ), oct );
+		/* then we read clefs for melodic intstruments ... */
+		if (selClass_->getSelection() < 15) {
+			mainWidget_->generateClef( ( 1 <<  ( selClass_->getSelection() % 5 ) ), oct );
 		}
+		/* or percussion clefs. */
 		else {
-			mainWidget_->generateClef( ( 1 <<  ( selClass_->getSelection() - 8 ) ), 0);
+			mainWidget_->generateClef( ( 1 <<  ( selClass_->getSelection() - 10 ) ), 0);
 		}
 		break;
 	case IS_CLEF_DISTANCE:
@@ -1159,7 +1163,7 @@ void staffelFrm::slOk() {
 		break;
     	}
 
-    }
+	}
 
 void staffelFrm::slCh() {
 

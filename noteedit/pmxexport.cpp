@@ -283,19 +283,20 @@ void NPmxExport::doExport() {
 		voice_elem = staff_elem->getVoiceNr(0);
 		clef = voice_elem->getFirstClef();
 		switch (clef->getSubType()) {
-			case DRUM_BASS_CLEF: if (!drum_problem_written_) {
-						drum_problem_written_ = true;
-						bad = new badmeasure(PMX_ERR_DRUM_STAFF, i+1, 0, 3 /*dummy */,  128 /*dummy */);
-						badlist_.append(bad);
-					    }
 			case BASS_CLEF: out_ << "b"; break;
+			case SOPRANO_CLEF: out_ << "s"; break;
 			case ALTO_CLEF: out_ << "a"; break;
+			case TENOR_CLEF: out_ << "n"; break;
 			case DRUM_CLEF: if (!drum_problem_written_) {
 						drum_problem_written_ = true;
 						bad = new badmeasure(PMX_ERR_DRUM_STAFF, i+1, 0, 3 /*dummy */,  128 /*dummy */);
 						badlist_.append(bad);
 					}
-			case TENOR_CLEF: out_ << "n"; break;
+			case DRUM_BASS_CLEF: if (!drum_problem_written_) {
+						drum_problem_written_ = true;
+						bad = new badmeasure(PMX_ERR_DRUM_STAFF, i+1, 0, 3 /*dummy */,  128 /*dummy */);
+						badlist_.append(bad);
+					    }
 			default: out_ << "t"; break;
 		}
 		for (j = 0; j < voice_count && j < 2; j++)  {
@@ -878,19 +879,20 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				actual_staff->actualClef_.change(clef);
 				if (barNr_ < 2) break;
 				switch (clef->getSubType()) {
-					case DRUM_BASS_CLEF: if (!drum_problem_written_) {
-								drum_problem_written_ = true;
-								bad = new badmeasure(PMX_ERR_DRUM_STAFF, i+1, 0, 3 /*dummy */,  128 /*dummy */);
-								badlist_.append(bad);
-							    }
 					case BASS_CLEF: specialChar = QString("Cb "); break;
+					case SOPRANO_CLEF: specialChar = QString("Cs "); break;
 					case ALTO_CLEF: specialChar = QString("Ca "); break;
+					case TENOR_CLEF: specialChar = QString("Cn "); break;
 					case DRUM_CLEF: if (!drum_problem_written_) {
 								drum_problem_written_ = true;
 								bad = new badmeasure(PMX_ERR_DRUM_STAFF, i+1, 0, 3 /*dummy */,  128 /*dummy */);
 								badlist_.append(bad);
 							}
-					case TENOR_CLEF: specialChar = QString("Cn "); break;
+					case DRUM_BASS_CLEF: if (!drum_problem_written_) {
+								drum_problem_written_ = true;
+								bad = new badmeasure(PMX_ERR_DRUM_STAFF, i+1, 0, 3 /*dummy */,  128 /*dummy */);
+								badlist_.append(bad);
+							    }							
 					default: specialChar = QString("Ct "); break;
 				}
 				handleSpecialChar(elempos, &specialChar, voice_count, false);

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-04-15 11:29+0200\n"
-"PO-Revision-Date: 2005-04-20 00:38+0200\n"
+"PO-Revision-Date: 2005-04-23 20:04+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
@@ -45,8 +45,7 @@ msgstr "-----------------------------------------------------\n"
 
 #: abcexport.cpp:282
 msgid "Staff %1, measure %2: ABC music cannot deal with such kind of tuplets\n"
-msgstr ""
-"Sistem %1, takt %2: \"ABC music\" format ne podpira takih oblik poddelitev\n"
+msgstr "Sistem %1, takt %2: \"ABC music\" format ne podpira takih oblik poddelitev\n"
 
 #: abcexport.cpp:286
 msgid "Staff %1 has irregular keysig. This cannot be expressed in ABC music\n"
@@ -63,16 +62,14 @@ msgid "ABC music cannot deal with a one-staff bracket\n"
 msgstr "\"ABC music\" format ne podpira akolade za en sam sitem\n"
 
 #: abcexport.cpp:298
-msgid ""
-"Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
+msgid "Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
 msgstr ""
 "Sistem %1, takt %2: \"ABC music\" format ne podpira simbolov za oktaviacijo "
 "(8va simboli)\n"
 
 #: abcexport.cpp:302
 msgid "ABC music produced. But there are some problems."
-msgstr ""
-"Izvoz v \"ABC music\" format je končan, vendar je prišlo do nekaj napak."
+msgstr "Izvoz v \"ABC music\" format je končan, vendar je prišlo do nekaj napak."
 
 #: clef.cpp:439
 msgid "name2Line: internal error"
@@ -157,8 +154,7 @@ msgstr "&Namig dneva"
 
 #: configuredialog.cpp:127
 msgid "A tip is shown when the application has started if this is enabled."
-msgstr ""
-"Če je to vključeno, bo namig dneva vsakič prikazan ob zagonu aplikacije."
+msgstr "Če je to vključeno, bo namig dneva vsakič prikazan ob zagonu aplikacije."
 
 #: configuredialog.cpp:130
 msgid "Load la&st score"
@@ -477,8 +473,7 @@ msgstr ""
 
 #: filehandler.cpp:602
 msgid "staff %1; measure %2: Mup cannot deal with trills without \"tr\" sign\n"
-msgstr ""
-"Sistem %1, takt %2: MUP format ne podpira trilčkov brez oznake \"tr\"\n"
+msgstr "Sistem %1, takt %2: MUP format ne podpira trilčkov brez oznake \"tr\"\n"
 
 #: filehandler.cpp:607
 msgid "Staff %1 has irregular key, this may not work with MUP.\n"
@@ -492,8 +487,7 @@ msgstr "Sistem %1 ima preveč glasov! MUP format sprejme največ 3 glasove.\n"
 
 #: filehandler.cpp:617
 msgid "Staff %1 contains drum staff. This cannot be expressed in MUP.\n"
-msgstr ""
-"Sistem %1 vsebuje stavek za tolkala, ki ne more biti izražen v MUP formatu.\n"
+msgstr "Sistem %1 vsebuje stavek za tolkala, ki ne more biti izražen v MUP formatu.\n"
 
 #: filehandler.cpp:622
 msgid "staff %1; measure %2: Mup cannot deal with costum beams in graces\n"
@@ -509,8 +503,7 @@ msgstr "Sistem %1, takt %2: MUP format ne podpira okrasnih not potem\n"
 msgid ""
 "staff %1; measure %2: MUP cannot deal with clef changes in the middle of "
 "measure\n"
-msgstr ""
-"Sistem %1, takt %2: MUP format ne podpira zamenjave ključa sredi takta\n"
+msgstr "Sistem %1, takt %2: MUP format ne podpira zamenjave ključa sredi takta\n"
 
 #: filehandler.cpp:637
 msgid ""
@@ -521,10 +514,8 @@ msgstr ""
 "takta\n"
 
 #: filehandler.cpp:642
-msgid ""
-"MUP cannot deal with some chord annotations with and some without grids\n"
-msgstr ""
-"MUP format ne podpira notacije nekaterih akordov z in nekaterih brez mreže\n"
+msgid "MUP cannot deal with some chord annotations with and some without grids\n"
+msgstr "MUP format ne podpira notacije nekaterih akordov z in nekaterih brez mreže\n"
 
 #: filehandler.cpp:646
 msgid "MUP cannot deal with more than one bracket per system\n"
@@ -536,8 +527,7 @@ msgstr "MUP format ne podpira večih akolad na en sam sistem\n"
 
 #: filehandler.cpp:654
 msgid "MUP cannot correctly write more than one slurred grace\n"
-msgstr ""
-"MUP format ne more pravilno zapisati več kot eno okrasno noto pod lokom\n"
+msgstr "MUP format ne more pravilno zapisati več kot eno okrasno noto pod lokom\n"
 
 #: layout.cpp:55
 msgid "set brace"
@@ -608,8 +598,7 @@ msgstr ""
 
 #: lilyexport.cpp:618
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
-msgstr ""
-"Sistem %1: Ta verzija LilyPonda ne podpira lokov znotraj okrasnih not\n"
+msgstr "Sistem %1: Ta verzija LilyPonda ne podpira lokov znotraj okrasnih not\n"
 
 #: lilyexport.cpp:623
 msgid ""
@@ -620,15 +609,13 @@ msgstr ""
 "biti zapisan v LilyPond formatu\n"
 
 #: lilyexport.cpp:627
-msgid ""
-"A piano staff without continued bar rules cannot be expressed in LilyPond\n"
+msgid "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Klavirski stavek brez povezljive taktnice med sistemoma ne more biti zapisan "
 "v LilyPond formatu\n"
 
 #: lilyexport.cpp:631
-msgid ""
-"Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
+msgid "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Povezljiva taktnica zunaj območja akolade ali oglatega oklepaja ne more biti "
 "zapisana v LilyPond formatu\n"
@@ -964,7 +951,7 @@ msgstr "&Uvozi posnetek"
 
 #: mainframewidget.cpp:347
 msgid "&MultiStaff"
-msgstr "&Več sistemov hkrati"
+msgstr "Izberi vsebino &večih sistemov"
 
 #: mainframewidget.cpp:348
 msgid "&Goto"
@@ -1605,8 +1592,7 @@ msgstr ""
 
 #: musicxmlexport.cpp:468
 msgid "Staff %1 has irregular keysig. This is currently not supported.\n"
-msgstr ""
-"Sistem %1 ima nenormativne stalne predznake. Trenutno to še ni podprto.\n"
+msgstr "Sistem %1 ima nenormativne stalne predznake. Trenutno to še ni podprto.\n"
 
 #: musicxmlexport.cpp:473
 msgid "Staff %1 contains drum clef. This is currently not supported.\n"
@@ -1625,10 +1611,8 @@ msgid "Staff %1 contains 8va start without 8va stop.\n"
 msgstr "Sistem %1 vsebuje začetek oktaviacije brez zaključka.\n"
 
 #: musicxmlexport.cpp:493
-msgid ""
-"Staff %1 contains 8va over a single note. This is currently not supported.\n"
-msgstr ""
-"Sistem %1 vsebuje oktaviacijo za eno samo noto. Trenutno to še ni podprto.\n"
+msgid "Staff %1 contains 8va over a single note. This is currently not supported.\n"
+msgstr "Sistem %1 vsebuje oktaviacijo za eno samo noto. Trenutno to še ni podprto.\n"
 
 #: musicxmlexport.cpp:498
 msgid "Staff %1 contains dynamic start without dynamic stop.\n"
@@ -1668,8 +1652,7 @@ msgstr "Preveč lokov v taktu %2; največje dovoljeno število lokov je %3\n"
 
 #: musixtex.cpp:640
 msgid "Too many trills in measure: %1: maximum = 6\n"
-msgstr ""
-"Preveč trilčkov v taktu %2; največje dovoljeno število trilčkov je %3\n"
+msgstr "Preveč trilčkov v taktu %2; največje dovoljeno število trilčkov je %3\n"
 
 #: musixtex.cpp:644
 msgid "Nested va lines in measure: %2 ;\n"
@@ -1677,8 +1660,7 @@ msgstr "Gnezdene oktaviacijske označbe v taktu %2;\n"
 
 #: musixtex.cpp:648 pmxexport.cpp:460
 msgid "Too many va lines in measure: %1: maximum = 6\n"
-msgstr ""
-"Preveč oktaviacijskih označb v taktu: %1; največje število označb je 6\n"
+msgstr "Preveč oktaviacijskih označb v taktu: %1; največje število označb je 6\n"
 
 #: musixtex.cpp:652
 msgid "Nested va lines in measure: %1 ;\n"
@@ -1787,8 +1769,7 @@ msgstr ""
 
 #: pmxexport.cpp:419
 msgid "Staff %1, measure %2: In PMX tuplet cannot end with a rest\n"
-msgstr ""
-"Sistem %1, takt %2: V PMX formatu se poddelitev ne more končati s pavzo\n"
+msgstr "Sistem %1, takt %2: V PMX formatu se poddelitev ne more končati s pavzo\n"
 
 #: pmxexport.cpp:424
 msgid "PMX cannot deal with more than 2 voices per staff\n"
@@ -1796,8 +1777,7 @@ msgstr "PMX ne podpira več kot 2 glasova na sistem\n"
 
 #: pmxexport.cpp:428
 msgid "Staff %1 contains drum staff. This cannot be expressed in PMX.\n"
-msgstr ""
-"Sistem %1 vsebuje ključ za tolkala. To ne more biti zapisano v PMX formatu.\n"
+msgstr "Sistem %1 vsebuje ključ za tolkala. To ne more biti zapisano v PMX formatu.\n"
 
 #: pmxexport.cpp:433
 msgid "Staff %1, measure %2: PMX cannot deal with mixed graces\n"
@@ -1911,7 +1891,7 @@ msgstr "&MIDI format"
 #: rc.cpp:86
 #, no-c-format
 msgid "MIDI information line:"
-msgstr "informacije o &MIDI:"
+msgstr "Informacije o MIDI:"
 
 #: rc.cpp:88
 #, no-c-format
@@ -1956,12 +1936,12 @@ msgstr "Dodatno"
 #: rc.cpp:104
 #, no-c-format
 msgid "&With tempo signs"
-msgstr "Z označbami za &tempo"
+msgstr "Označbe za &tempo"
 
 #: rc.cpp:106
 #, no-c-format
 msgid "With &volume signs"
-msgstr "Z označbami za &jakost"
+msgstr "Označbe za &jakost"
 
 #: rc.cpp:108
 #, no-c-format
@@ -1981,7 +1961,7 @@ msgstr "Izbira &sistemov"
 #: rc.cpp:114
 #, no-c-format
 msgid "Page generation"
-msgstr "Pripravi stran"
+msgstr "Priprava strani"
 
 #: rc.cpp:116
 #, no-c-format
@@ -1991,7 +1971,7 @@ msgstr ""
 #: rc.cpp:118
 #, no-c-format
 msgid "L&imit line measures"
-msgstr "&Omeji število taktov na vrstico"
+msgstr "&Omejitev števila taktov na vrstico"
 
 #: rc.cpp:120
 #, no-c-format
@@ -2001,7 +1981,7 @@ msgstr "&Pridrži nastavitve za vezaje"
 #: rc.cpp:122
 #, no-c-format
 msgid "With bar &numbers"
-msgstr "&Vključi oštevilčenje taktov"
+msgstr "&Oštevilči takte"
 
 #: rc.cpp:124 rc.cpp:195
 #, no-c-format
@@ -2191,7 +2171,7 @@ msgstr "Velikost pisave:"
 #: rc.cpp:223
 #, no-c-format
 msgid "Volumes:"
-msgstr "Jakosti izvajanja:"
+msgstr "Označbe za dinamiko:"
 
 #: rc.cpp:225
 #, no-c-format
@@ -2226,17 +2206,17 @@ msgstr "26"
 #: rc.cpp:237
 #, no-c-format
 msgid "no volume signs"
-msgstr "Brez jakostnih označb"
+msgstr "Brez dinamičnih označb"
 
 #: rc.cpp:239
 #, no-c-format
 msgid "volume signs above"
-msgstr "Jakostne označbe nad sistemom"
+msgstr "Dinamične označbe nad sistemom"
 
 #: rc.cpp:241
 #, no-c-format
 msgid "volume signs below"
-msgstr "Jakostne označbe pod sistemom"
+msgstr "Dinamične označbe pod sistemom"
 
 #: rc.cpp:243
 #, no-c-format
@@ -2261,7 +2241,7 @@ msgstr "Največje števi&lo taktov v sistemu"
 #: rc.cpp:251
 #, no-c-format
 msgid "Sparse &ties"
-msgstr "Op&timiziraj vezaje"
+msgstr "Poenos&tavi vezaje, če lahko"
 
 #: rc.cpp:253
 #, no-c-format
@@ -2301,7 +2281,7 @@ msgstr "MusicXML format"
 #: rc.cpp:267
 #, no-c-format
 msgid "The MusicXML exporter does not need any parameters"
-msgstr "MusicXML filter ne potrebuje nobenih dodatnih nastavitev"
+msgstr "Izvoz v MusicXML format ne potrebuje nobenih posebnih nastavitev"
 
 #: rc.cpp:269
 #, no-c-format
@@ -2326,7 +2306,7 @@ msgstr "Vključi"
 #: rc.cpp:281
 #, no-c-format
 msgid "with measure numbers"
-msgstr "Vključi oštevilčenje taktov"
+msgstr "Oštevilči takte"
 
 #: rc.cpp:283
 #, no-c-format
@@ -4305,3 +4285,4 @@ msgstr "Pokaži diagram"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Ustvarjanje akordov"
+

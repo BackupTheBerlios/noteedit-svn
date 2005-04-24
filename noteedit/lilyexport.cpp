@@ -68,7 +68,7 @@
 #define LILY_ERR_PIANO_DISCONT     9
 #define LILY_ERR_CONT_OUTSIDE     10
 
-// Pitpositions used in scoreBraceMasks
+// Bitpositions used in scoreBraceMasks
 #define BRACE_START	(1 << 0)
 #define BRACE_END	(1 << 1)
 #define BRACKET_START	(1 << 2)
@@ -1994,7 +1994,7 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 	NStaff *staff_elem;
 	unsigned int m;
 	double wh;
-	QString tmps;
+	QString tmps, stanzaNStr;
 	static int hy;		// hierarchy, help determine indentation with tabs
 	static int ii, endDist;	// indices
 	static bool currentlyInGrandStaff, lyricsInGrandStaff;
@@ -2069,8 +2069,13 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 		scoreBlock.insert(ii++, new QString(tmps));
 
 		for (m=0;m<staffarray_[i].lyrics_count;m++) {
-			tmps.sprintf("%d\\context Lyrics = c%s%c { \\set stanza = \"%d.\" }\n",
-				hy, label.latin1(), m+'A', m+1);
+			if (staffarray_[i].lyrics_count>1)		// number only when 2 verses and more
+				stanzaNStr.sprintf("%d.", m+1);
+			else
+				stanzaNStr.sprintf("");
+			tmps.sprintf("%d\\context Lyrics = c%s%c { \\set stanza = \"%s\" }\n",
+				hy, label.latin1(), m+'A', stanzaNStr.latin1());
+
 			scoreBlock.insert(ii++, new QString(tmps));
 
 			tmps.sprintf("2\\context Lyrics = c%s%c \\lyricsto c%s%c \\%sText%c\n",

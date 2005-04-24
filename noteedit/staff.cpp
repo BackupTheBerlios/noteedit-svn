@@ -346,6 +346,8 @@ void NStaff::transpose(int semitones) {
 	NVoice *voice_elem;
 	bool first;
 
+	if (semitones==0) return; //don't touch the score if transposing for 0 semitones
+	
 	if (actualVoiceNr_ == -1) {
 		for (voice_elem = voicelist_.first(), first = true; voice_elem; voice_elem = voicelist_.next(), first = false) {
 			if (NResource::windowWithSelectedRegion_ && voice_elem != NResource::voiceWithSelectedRegion_) {

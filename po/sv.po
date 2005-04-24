@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-15 11:29+0200\n"
+"POT-Creation-Date: 2005-04-24 19:07+0200\n"
 "PO-Revision-Date: 2002-11-11 23:22+0100\n"
 "Last-Translator: Jörg Anders <ja@informatik.tu-chemnitz.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
@@ -16,10 +16,10 @@ msgstr ""
 "X-Generator: KBabel 0.9.6\n"
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1076 filehandler.cpp:1078
-#: filehandler.cpp:1937 lilyexport.cpp:127 lilyexport.cpp:130
-#: lilyexport.cpp:1022 mainframewidget.cpp:1172 mainframewidget.cpp:1176
+#: filehandler.cpp:1944 lilyexport.cpp:127 lilyexport.cpp:130
+#: lilyexport.cpp:1030 mainframewidget.cpp:1172 mainframewidget.cpp:1176
 #: mainframewidget.cpp:1189 mainframewidget.cpp:1202 mainframewidget.cpp:1207
-#: mainframewidget.cpp:3696 mainframewidget.cpp:4356 midiexport.cpp:147
+#: mainframewidget.cpp:3696 mainframewidget.cpp:4361 midiexport.cpp:147
 #: midiexport.cpp:150 musicxmlexport.cpp:317 musicxmlexport.cpp:320
 #: musixtex.cpp:164 musixtex.cpp:166 musixtex.cpp:184 musixtex.cpp:186
 #: musixtex.cpp:201 musixtex.cpp:203 tse3handler.cpp:437 tse3handler.cpp:446
@@ -37,8 +37,8 @@ msgstr ""
 "Notredigeraren har exporterat partituret till PMX men det uppstod några\n"
 "problem som antagligen kommer att förhindra riktiga utdata från PMX.\n"
 
-#: abcexport.cpp:277 filehandler.cpp:582 lilyexport.cpp:586
-#: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:391
+#: abcexport.cpp:277 filehandler.cpp:582 lilyexport.cpp:594
+#: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
 
@@ -73,11 +73,11 @@ msgstr "Notrad %1, takt %2: Trioler kan inte sluta med en paus i PMX\n"
 msgid "ABC music produced. But there are some problems."
 msgstr "MusiXTeX skapat, men det uppstod några problem."
 
-#: clef.cpp:439
+#: clef.cpp:490
 msgid "name2Line: internal error"
 msgstr "name2Line: internt fel"
 
-#: clef.cpp:440
+#: clef.cpp:491
 msgid "name2Line"
 msgstr "name2Line"
 
@@ -572,7 +572,7 @@ msgstr "flytta till slutet"
 msgid "discontinue bar"
 msgstr ""
 
-#: lilyexport.cpp:584
+#: lilyexport.cpp:592
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -581,21 +581,21 @@ msgstr ""
 "några\n"
 "problem som troligtvis kommer att förindra riktiga utdata från LilyPond.\n"
 
-#: lilyexport.cpp:591
+#: lilyexport.cpp:599
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr "Notrad %1, takt %2: 128-del i takt; minsta tillåtna är 64-del\n"
 
-#: lilyexport.cpp:595
+#: lilyexport.cpp:603
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr ""
 "Notrad %1 har oregelbunden nyckelsignatur. Detta kan inte uttryckas i "
 "LilyPond\n"
 
-#: lilyexport.cpp:599
+#: lilyexport.cpp:607
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "Notrad %1, takt %2: har %3 128-delar, borde vara %4\n"
 
-#: lilyexport.cpp:604
+#: lilyexport.cpp:612
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -603,12 +603,12 @@ msgstr ""
 "Notrad %1, takt %2: LilyPond < 1.5.2 kan inte hantera trillar med olika "
 "längd (vågstreck)\n"
 
-#: lilyexport.cpp:609
+#: lilyexport.cpp:617
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr ""
 "Notrad %1, takt %2: Endast en del av noterna i ackordet har bindebågar!\n"
 
-#: lilyexport.cpp:613
+#: lilyexport.cpp:621
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -616,17 +616,17 @@ msgstr ""
 "Notrad %1 innehåller trumnoter. Lägg märke till att LilyPond-exporten inte "
 "är helt riktig!\n"
 
-#: lilyexport.cpp:618
+#: lilyexport.cpp:626
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr ""
 
-#: lilyexport.cpp:623
+#: lilyexport.cpp:631
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
 msgstr ""
 
-#: lilyexport.cpp:627
+#: lilyexport.cpp:635
 #, fuzzy
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
@@ -634,7 +634,7 @@ msgstr ""
 "Notrad %1 har oregelbunden nyckelsignatur. Detta kan inte uttryckas i "
 "LilyPond\n"
 
-#: lilyexport.cpp:631
+#: lilyexport.cpp:639
 #, fuzzy
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
@@ -642,11 +642,11 @@ msgstr ""
 "Notrad %1 har oregelbunden nyckelsignatur. Detta kan inte uttryckas i "
 "LilyPond\n"
 
-#: lilyexport.cpp:635
+#: lilyexport.cpp:643
 msgid "LilyPond produced. But there are some problems."
 msgstr "LilyPond skapat, men det uppstod några problem."
 
-#: lilyexport.cpp:1021
+#: lilyexport.cpp:1029
 #, fuzzy
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "
@@ -1496,139 +1496,149 @@ msgstr "Flytta notrad"
 msgid "Please choose the target position:"
 msgstr "Välj mål:"
 
-#: mainframewidget.cpp:4309
+#: mainframewidget.cpp:4303
+#, fuzzy
+msgid "Please select a region first!"
+msgstr "Välj en not!"
+
+#: mainframewidget.cpp:4303
+#, fuzzy
+msgid "MultiStaff"
+msgstr "&Flera notrader"
+
+#: mainframewidget.cpp:4314
 msgid "<center>Set tempo:</center>"
 msgstr "<center>Sätt tempo:</center>"
 
-#: mainframewidget.cpp:4312
+#: mainframewidget.cpp:4317
 msgid "Set new tempo"
 msgstr "Sätt nytt tempo"
 
-#: mainframewidget.cpp:4313
+#: mainframewidget.cpp:4318
 msgid "Set new temp&o"
 msgstr "Sätt nytt temp&o"
 
-#: mainframewidget.cpp:4319
+#: mainframewidget.cpp:4324
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Välj antal takter:</center>"
 
-#: mainframewidget.cpp:4322
+#: mainframewidget.cpp:4327
 msgid "multi rest"
 msgstr "mångpauser"
 
-#: mainframewidget.cpp:4323
+#: mainframewidget.cpp:4328
 msgid "Set count of m&easures"
 msgstr "Välj antal takt&er"
 
-#: mainframewidget.cpp:4340
+#: mainframewidget.cpp:4345
 msgid "<center>How many notes:</center>"
 msgstr "<center>Hur många noter:</center>"
 
-#: mainframewidget.cpp:4344
+#: mainframewidget.cpp:4349
 msgid "Autobeam"
 msgstr "Balkar"
 
-#: mainframewidget.cpp:4356
+#: mainframewidget.cpp:4361
 #, fuzzy
 msgid "Please choose a repeat close sign!"
 msgstr "Välj en not!"
 
-#: mainframewidget.cpp:4360
+#: mainframewidget.cpp:4365
 #, fuzzy
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Välj mål!</center>"
 
-#: mainframewidget.cpp:4364
+#: mainframewidget.cpp:4369
 #, fuzzy
 msgid "Repeat count"
 msgstr "Upprepning &börjar"
 
-#: mainframewidget.cpp:4365
+#: mainframewidget.cpp:4370
 #, fuzzy
 msgid "&Set"
 msgstr "&Markera allt"
 
-#: mainframewidget.cpp:4381
+#: mainframewidget.cpp:4386
 msgid "<center>Semitones:</center>"
 msgstr "<center>Halvtoner:</center>"
 
-#: mainframewidget.cpp:4385
+#: mainframewidget.cpp:4390
 msgid "Transpose"
 msgstr "Transponera"
 
-#: mainframewidget.cpp:4386
+#: mainframewidget.cpp:4391
 msgid "&Transpose"
 msgstr "&Transponera"
 
-#: mainframewidget.cpp:4412
+#: mainframewidget.cpp:4417
 msgid "Voice selection"
 msgstr "Välj stämma"
 
-#: mainframewidget.cpp:4413
+#: mainframewidget.cpp:4418
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Välj stämma:</center>"
 
-#: mainframewidget.cpp:5151 mainframewidget.cpp:5291
+#: mainframewidget.cpp:5156 mainframewidget.cpp:5296
 msgid "Error writing file \"%1\"."
 msgstr "Fel vid skrivning till fil \"%1\"."
 
-#: mainframewidget.cpp:5152
+#: mainframewidget.cpp:5157
 msgid "Write TSE3"
 msgstr "Skriv TSE3"
 
-#: mainframewidget.cpp:5168
+#: mainframewidget.cpp:5173
 #, fuzzy
 msgid "This overrides the current staff! Continue?"
 msgstr "Detta ersätter den valda stämman! Fortsätt?"
 
-#: mainframewidget.cpp:5169
+#: mainframewidget.cpp:5174
 msgid "Import Recording"
 msgstr "Importera inspelning"
 
-#: mainframewidget.cpp:5170 rc.cpp:311
+#: mainframewidget.cpp:5175 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "&Importera inspelning"
 
-#: mainframewidget.cpp:5212
+#: mainframewidget.cpp:5217
 #, fuzzy
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Detta tar bort den valda stämman! Är du säker?"
 
-#: mainframewidget.cpp:5213
+#: mainframewidget.cpp:5218
 #, fuzzy
 msgid "Confirmation"
 msgstr "Sånginformation"
 
-#: mainframewidget.cpp:5239
+#: mainframewidget.cpp:5244
 msgid "Error creating Score"
 msgstr "Fel vid skapande av partitur."
 
-#: mainframewidget.cpp:5240
+#: mainframewidget.cpp:5245
 msgid "Creating Score"
 msgstr "Skapar partitur"
 
-#: mainframewidget.cpp:5292 tse3handler.cpp:365
+#: mainframewidget.cpp:5297 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "TSE3 MIDI ut"
 
-#: mainframewidget.cpp:5307 mainframewidget.cpp:5338
+#: mainframewidget.cpp:5312 mainframewidget.cpp:5343
 msgid "File read error \"%1\"."
 msgstr "Fel vid läsning av filen \"%1\". "
 
-#: mainframewidget.cpp:5308
+#: mainframewidget.cpp:5313
 msgid "TSE3 MIDI in"
 msgstr "TSE3 MIDI in"
 
-#: mainframewidget.cpp:5339
+#: mainframewidget.cpp:5344
 msgid "Read TSE3"
 msgstr "Läs TSE3"
 
-#: mainframewidget.cpp:5452
+#: mainframewidget.cpp:5457
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Filen \"%1\" finns redan! Skriv över?"
 
-#: mainframewidget.cpp:5453
+#: mainframewidget.cpp:5458
 msgid "File already exists"
 msgstr "Filen finns redan"
 
@@ -1724,7 +1734,7 @@ msgstr "För många trillar i takt %1, högsta tillåtna antal är 6\n"
 msgid "Nested va lines in measure: %2 ;\n"
 msgstr "Nästlade trillar i takt %2;\n"
 
-#: musixtex.cpp:648 pmxexport.cpp:460
+#: musixtex.cpp:648 pmxexport.cpp:461
 #, fuzzy
 msgid "Too many va lines in measure: %1: maximum = 6\n"
 msgstr "För många trillar i takt %1, högsta tillåtna antal är 6\n"
@@ -1738,7 +1748,7 @@ msgstr "Nästlade trillar i takt %2;\n"
 msgid "too many beams in measure: %1; maximum: %2\n"
 msgstr "för många balkar i takt: %1; högsta tillåtna: %2\n"
 
-#: musixtex.cpp:660 pmxexport.cpp:448
+#: musixtex.cpp:660 pmxexport.cpp:449
 msgid ""
 "The score has individual bar layout (partial continued and partial "
 "discontinued)\n"
@@ -1758,7 +1768,7 @@ msgstr ""
 msgid "MusiXTeX produced. But there are some problems."
 msgstr "MusiXTeX skapat, men det uppstod några problem."
 
-#: musixtex.cpp:1474
+#: musixtex.cpp:1477
 msgid "Output from MusiXTeX-Cmd"
 msgstr ""
 
@@ -1799,7 +1809,7 @@ msgstr ""
 msgid "PMX export"
 msgstr "Exportera till PMX"
 
-#: pmxexport.cpp:389
+#: pmxexport.cpp:390
 msgid ""
 "Noteedit has exported the score to PMX but there are some\n"
 "problems which will probably prevent successful PMX output.\n"
@@ -1807,26 +1817,26 @@ msgstr ""
 "Notredigeraren har exporterat partituret till PMX men det uppstod några\n"
 "problem som antagligen kommer att förhindra riktiga utdata från PMX.\n"
 
-#: pmxexport.cpp:396
+#: pmxexport.cpp:397
 msgid "Staff %1, measure %2: %3 128th, should be: %4\n"
 msgstr "Notrad %1, takt %2: %3 128-del, borde vara: %4\n"
 
-#: pmxexport.cpp:401
+#: pmxexport.cpp:402
 msgid ""
 "Staff %1, measure %2: PMX cannot deal with multi rests if more than 1 staff "
 "is exported"
 msgstr ""
 "notrad %1, takt %2: PMX kan inte hantera mångpauser om än 1 notrad exporteras"
 
-#: pmxexport.cpp:406
+#: pmxexport.cpp:407
 msgid "measure %1: Too many opened ties\n"
 msgstr "takt %1: För många öppnade bindeågar\n"
 
-#: pmxexport.cpp:410
+#: pmxexport.cpp:411
 msgid "measure %1: Too many opened slurs\n"
 msgstr "takt %1: För många öppnade legatobågar\n"
 
-#: pmxexport.cpp:414
+#: pmxexport.cpp:415
 #, fuzzy
 msgid ""
 "Staff %1, measure %2: PMX can only deal with equal tuplet members or members "
@@ -1835,49 +1845,49 @@ msgstr ""
 "Notrad %1, takt %2: PMX kan endast hantera 3 likadana triolmedlemmar eller 2 "
 "i med förhållandet 2:1\n"
 
-#: pmxexport.cpp:419
+#: pmxexport.cpp:420
 #, fuzzy
 msgid "Staff %1, measure %2: In PMX tuplet cannot end with a rest\n"
 msgstr "Notrad %1, takt %2: Trioler kan inte sluta med en paus i PMX\n"
 
-#: pmxexport.cpp:424
+#: pmxexport.cpp:425
 msgid "PMX cannot deal with more than 2 voices per staff\n"
 msgstr "PMX kan inte hantera mer än 2 stämmor per notrad.\n"
 
-#: pmxexport.cpp:428
+#: pmxexport.cpp:429
 msgid "Staff %1 contains drum staff. This cannot be expressed in PMX.\n"
 msgstr "Notrad %1 innehåller trumnoter. Detta kan inte uttryckas i PMX.\n"
 
-#: pmxexport.cpp:433
+#: pmxexport.cpp:434
 #, fuzzy
 msgid "Staff %1, measure %2: PMX cannot deal with mixed graces\n"
 msgstr "Notrad %1, takt %2: Trioler kan inte sluta med en paus i PMX\n"
 
-#: pmxexport.cpp:438
+#: pmxexport.cpp:439
 #, fuzzy
 msgid "Staff %1, measure %2: grace has no main note. PMX will not work\n"
 msgstr "Notrad %1, takt %2: Trioler kan inte sluta med en paus i PMX\n"
 
-#: pmxexport.cpp:443
+#: pmxexport.cpp:444
 #, fuzzy
 msgid ""
 "Staff %1, measure %2: Tuplet must be expressible by on (ev. dotted) note. "
 "PMX will not work\n"
 msgstr "Notrad %1, takt %2: Trioler kan inte sluta med en paus i PMX\n"
 
-#: pmxexport.cpp:452
+#: pmxexport.cpp:453
 #, fuzzy
 msgid ""
 "The score has piano staffs with discontinued bar rules. This cannot be "
 "expressed in PMX\n"
 msgstr "Notrad %1 innehåller trumnoter. Detta kan inte uttryckas i PMX.\n"
 
-#: pmxexport.cpp:456
+#: pmxexport.cpp:457
 #, fuzzy
 msgid "Nested trills in measure: %1 ;\n"
 msgstr "Nästlade trillar i takt %2;\n"
 
-#: pmxexport.cpp:464
+#: pmxexport.cpp:465
 msgid "PMX produced. But there are some problems."
 msgstr "PMX skapat, men det uppstod några problem."
 
@@ -2587,7 +2597,7 @@ msgstr "MIDI-inställningar - Notredigerare"
 msgid "MUP warning"
 msgstr "MUP-varning"
 
-#: rc.cpp:395 uiconnect.cpp:1260
+#: rc.cpp:395 uiconnect.cpp:1265
 #, no-c-format
 msgid "Saved, but MUP does not work!"
 msgstr "Sparad, men fungerar ej med MUP!"
@@ -3548,11 +3558,11 @@ msgstr "Ta bort stämma"
 msgid "This deletes voice %1! Are you sure?"
 msgstr "Detta tar bort stämma %1! Är du säker?"
 
-#: staff.cpp:586
+#: staff.cpp:588
 msgid "The destination staff has less voices than source staff"
 msgstr "Målnotraden har färre stämmor än källnotraden"
 
-#: staff.cpp:611
+#: staff.cpp:613
 msgid ""
 "You paste a first voice to no-first voice! This deletes all non-first-voice "
 "elements!"

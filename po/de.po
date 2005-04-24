@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-15 11:29+0200\n"
+"POT-Creation-Date: 2005-04-24 19:07+0200\n"
 "PO-Revision-Date: 2004-07-23 20:07+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <en@li.org>\n"
@@ -27,10 +27,10 @@ msgstr ""
 "X-Generator: KBabel 1.3.1\n"
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1076 filehandler.cpp:1078
-#: filehandler.cpp:1937 lilyexport.cpp:127 lilyexport.cpp:130
-#: lilyexport.cpp:1022 mainframewidget.cpp:1172 mainframewidget.cpp:1176
+#: filehandler.cpp:1944 lilyexport.cpp:127 lilyexport.cpp:130
+#: lilyexport.cpp:1030 mainframewidget.cpp:1172 mainframewidget.cpp:1176
 #: mainframewidget.cpp:1189 mainframewidget.cpp:1202 mainframewidget.cpp:1207
-#: mainframewidget.cpp:3696 mainframewidget.cpp:4356 midiexport.cpp:147
+#: mainframewidget.cpp:3696 mainframewidget.cpp:4361 midiexport.cpp:147
 #: midiexport.cpp:150 musicxmlexport.cpp:317 musicxmlexport.cpp:320
 #: musixtex.cpp:164 musixtex.cpp:166 musixtex.cpp:184 musixtex.cpp:186
 #: musixtex.cpp:201 musixtex.cpp:203 tse3handler.cpp:437 tse3handler.cpp:446
@@ -48,8 +48,8 @@ msgstr ""
 "Probleme, die möglicherweise eine erfolgreiche Weiterverarbeitung "
 "verhindern.\n"
 
-#: abcexport.cpp:277 filehandler.cpp:582 lilyexport.cpp:586
-#: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:391
+#: abcexport.cpp:277 filehandler.cpp:582 lilyexport.cpp:594
+#: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr ""
 
@@ -85,11 +85,11 @@ msgstr ""
 msgid "ABC music produced. But there are some problems."
 msgstr "ABC-Music wurde erzeugt. Aber es gibt Probleme."
 
-#: clef.cpp:439
+#: clef.cpp:490
 msgid "name2Line: internal error"
 msgstr "name2Line: interner Fehler"
 
-#: clef.cpp:440
+#: clef.cpp:491
 msgid "name2Line"
 msgstr "name2Line"
 
@@ -578,7 +578,7 @@ msgstr "eckige Klammer entfernen"
 msgid "discontinue bar"
 msgstr "Taktrich unterbrechen"
 
-#: lilyexport.cpp:584
+#: lilyexport.cpp:592
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -586,21 +586,21 @@ msgstr ""
 "Noteedit hat die Partitur nach LilyPond exportiert. Aber es gibt\n"
 "einige Probleme, die ein erfolgreiches Arbeiten von LilyPond verhindert.\n"
 
-#: lilyexport.cpp:591
+#: lilyexport.cpp:599
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr "Zeile %1; Takt %2: Eine 128tel im Takt. Das Minimum ist eine 64tel.\n"
 
-#: lilyexport.cpp:595
+#: lilyexport.cpp:603
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr ""
 "Zeile %1: hat eine ungebräuchliche Vorzeichnung! Das kann in LilyPond nicht "
 "ausgedrückt werden.\n"
 
-#: lilyexport.cpp:599
+#: lilyexport.cpp:607
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "Zeile %1; Takt %2 hat %3: 128tel; es sollten aber %4 sein\n"
 
-#: lilyexport.cpp:604
+#: lilyexport.cpp:612
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -608,12 +608,12 @@ msgstr ""
 "Zeile %1; Takt %2: Lilypondversionen kleiner als 1.5.2 kennen keine Triller "
 "mit Wellenlinien (variabel lange Triller)\n"
 
-#: lilyexport.cpp:609
+#: lilyexport.cpp:617
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr ""
 "Zeile %1; Takt %2: Nur eine Untermenge von Akkorden hat einen Haltebogen!\n"
 
-#: lilyexport.cpp:613
+#: lilyexport.cpp:621
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -621,13 +621,13 @@ msgstr ""
 "Notenzeile %1 besitzt Schlagzeugelemente! Achtung! Der LilyPond Export "
 "arbeitet nicht ganz korrekt!\n"
 
-#: lilyexport.cpp:618
+#: lilyexport.cpp:626
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr ""
 "Staff %1: Diese LilyPond-Version kann nicht mit Haltebögen im Vorschlag "
 "umgehen\n"
 
-#: lilyexport.cpp:623
+#: lilyexport.cpp:631
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
@@ -635,25 +635,25 @@ msgstr ""
 "Eine eckige Klammer mit teilweise durchgezogenen, teilweise unterbreochenen\n"
 "Taktstrichen kann in LilyPond nicht ausgedrückt werden\n"
 
-#: lilyexport.cpp:627
+#: lilyexport.cpp:635
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Pianozeilen mit nicht durchgezogenen Taktstrichen sind in LilyPond nicht "
 "möglich.\n"
 
-#: lilyexport.cpp:631
+#: lilyexport.cpp:639
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Durchgezogene Taktriche außerhalb geschweifter oder eckiger Klammern können "
 "in LilyPond nicht ausgedrückt werden\n"
 
-#: lilyexport.cpp:635
+#: lilyexport.cpp:643
 msgid "LilyPond produced. But there are some problems."
 msgstr "LilyPond wurde erzeugt. Aber es gibt Probleme."
 
-#: lilyexport.cpp:1021
+#: lilyexport.cpp:1029
 #, fuzzy
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "
@@ -1485,135 +1485,145 @@ msgstr "Zeile verschieben"
 msgid "Please choose the target position:"
 msgstr "Bitte eine Ziel-Position auswählen!"
 
-#: mainframewidget.cpp:4309
+#: mainframewidget.cpp:4303
+#, fuzzy
+msgid "Please select a region first!"
+msgstr "Bitte eine Note oder Pause auswählen!"
+
+#: mainframewidget.cpp:4303
+#, fuzzy
+msgid "MultiStaff"
+msgstr "&Zeilenübergreifend..."
+
+#: mainframewidget.cpp:4314
 msgid "<center>Set tempo:</center>"
 msgstr "<center>setze Tempo</center>"
 
-#: mainframewidget.cpp:4312
+#: mainframewidget.cpp:4317
 msgid "Set new tempo"
 msgstr "Neues Tempo"
 
-#: mainframewidget.cpp:4313
+#: mainframewidget.cpp:4318
 msgid "Set new temp&o"
 msgstr "neues &Tempo setzten"
 
-#: mainframewidget.cpp:4319
+#: mainframewidget.cpp:4324
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Anzahl der Takte</center>"
 
-#: mainframewidget.cpp:4322
+#: mainframewidget.cpp:4327
 msgid "multi rest"
 msgstr "Mehrtaktpause"
 
-#: mainframewidget.cpp:4323
+#: mainframewidget.cpp:4328
 msgid "Set count of m&easures"
 msgstr "Anzahl der &Takte"
 
-#: mainframewidget.cpp:4340
+#: mainframewidget.cpp:4345
 msgid "<center>How many notes:</center>"
 msgstr "<center>Wie viele Noten:</center>"
 
-#: mainframewidget.cpp:4344
+#: mainframewidget.cpp:4349
 msgid "Autobeam"
 msgstr "Auto-Balken"
 
-#: mainframewidget.cpp:4356
+#: mainframewidget.cpp:4361
 msgid "Please choose a repeat close sign!"
 msgstr "Bitte ein Wiederholungsende-Zeichen wählen!"
 
-#: mainframewidget.cpp:4360
+#: mainframewidget.cpp:4365
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Bitte die Wiederholzahl auswählen!</center>"
 
-#: mainframewidget.cpp:4364
+#: mainframewidget.cpp:4369
 msgid "Repeat count"
 msgstr "Wiederholzahl"
 
-#: mainframewidget.cpp:4365
+#: mainframewidget.cpp:4370
 msgid "&Set"
 msgstr "&Setzen"
 
-#: mainframewidget.cpp:4381
+#: mainframewidget.cpp:4386
 msgid "<center>Semitones:</center>"
 msgstr "<center>Halbtöne:</center>"
 
-#: mainframewidget.cpp:4385
+#: mainframewidget.cpp:4390
 msgid "Transpose"
 msgstr "Transponieren"
 
-#: mainframewidget.cpp:4386
+#: mainframewidget.cpp:4391
 msgid "&Transpose"
 msgstr "&Transponieren"
 
-#: mainframewidget.cpp:4412
+#: mainframewidget.cpp:4417
 msgid "Voice selection"
 msgstr "Stimmauswahl"
 
-#: mainframewidget.cpp:4413
+#: mainframewidget.cpp:4418
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Stimme auswählen:</center>"
 
-#: mainframewidget.cpp:5151 mainframewidget.cpp:5291
+#: mainframewidget.cpp:5156 mainframewidget.cpp:5296
 msgid "Error writing file \"%1\"."
 msgstr "Fehler beim Schreiben von:\"%1\"."
 
-#: mainframewidget.cpp:5152
+#: mainframewidget.cpp:5157
 msgid "Write TSE3"
 msgstr "TSE3 Datei schreiben"
 
-#: mainframewidget.cpp:5168
+#: mainframewidget.cpp:5173
 #, fuzzy
 msgid "This overrides the current staff! Continue?"
 msgstr "Notenzeile wird überschrieben! Weiter?"
 
-#: mainframewidget.cpp:5169
+#: mainframewidget.cpp:5174
 msgid "Import Recording"
 msgstr "Aufnahme importieren"
 
-#: mainframewidget.cpp:5170 rc.cpp:311
+#: mainframewidget.cpp:5175 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "&Aufnahme importieren"
 
-#: mainframewidget.cpp:5212
+#: mainframewidget.cpp:5217
 #, fuzzy
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Soll diese Zeile wirklich gelöscht werden?"
 
-#: mainframewidget.cpp:5213
+#: mainframewidget.cpp:5218
 #, fuzzy
 msgid "Confirmation"
 msgstr "Song Informationen"
 
-#: mainframewidget.cpp:5239
+#: mainframewidget.cpp:5244
 msgid "Error creating Score"
 msgstr "Fehler bei der Partiturerzeugung"
 
-#: mainframewidget.cpp:5240
+#: mainframewidget.cpp:5245
 msgid "Creating Score"
 msgstr "Partiturerzeugung"
 
-#: mainframewidget.cpp:5292 tse3handler.cpp:365
+#: mainframewidget.cpp:5297 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "TSE3-MIDI-Ausgabe"
 
-#: mainframewidget.cpp:5307 mainframewidget.cpp:5338
+#: mainframewidget.cpp:5312 mainframewidget.cpp:5343
 msgid "File read error \"%1\"."
 msgstr "Lesefehler:\"%1\"."
 
-#: mainframewidget.cpp:5308
+#: mainframewidget.cpp:5313
 msgid "TSE3 MIDI in"
 msgstr "TSE3-MIDI-Eingabe"
 
-#: mainframewidget.cpp:5339
+#: mainframewidget.cpp:5344
 msgid "Read TSE3"
 msgstr "TSE3 einlesen"
 
-#: mainframewidget.cpp:5452
+#: mainframewidget.cpp:5457
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Die Datei \"%1\" existiert bereits! Überschreiben?"
 
-#: mainframewidget.cpp:5453
+#: mainframewidget.cpp:5458
 msgid "File already exists"
 msgstr "Die Datei existiert bereits"
 
@@ -1706,7 +1716,7 @@ msgstr "Zu viele Triller in Takt: %1; Maximum = 6\n"
 msgid "Nested va lines in measure: %2 ;\n"
 msgstr "Geschachtelte Oktavierungen in Takt: %2;\n"
 
-#: musixtex.cpp:648 pmxexport.cpp:460
+#: musixtex.cpp:648 pmxexport.cpp:461
 msgid "Too many va lines in measure: %1: maximum = 6\n"
 msgstr "Zu viele Oktavierungen in Takt: %1; Maximum = 6\n"
 
@@ -1718,7 +1728,7 @@ msgstr "Geschachtelte Oktavierungen in Takt: %2;\n"
 msgid "too many beams in measure: %1; maximum: %2\n"
 msgstr "Zu viele Balken in Takt: %1; Maximum = %2\n"
 
-#: musixtex.cpp:660 pmxexport.cpp:448
+#: musixtex.cpp:660 pmxexport.cpp:449
 msgid ""
 "The score has individual bar layout (partial continued and partial "
 "discontinued)\n"
@@ -1740,7 +1750,7 @@ msgstr ""
 msgid "MusiXTeX produced. But there are some problems."
 msgstr "MusiXTeX wurde erzeugt. Aber es gibt Probleme."
 
-#: musixtex.cpp:1474
+#: musixtex.cpp:1477
 msgid "Output from MusiXTeX-Cmd"
 msgstr "Ausgabe des MusiXTeX-Kommandos"
 
@@ -1782,7 +1792,7 @@ msgstr "MusicXML interface"
 msgid "PMX export"
 msgstr "PMX Export"
 
-#: pmxexport.cpp:389
+#: pmxexport.cpp:390
 msgid ""
 "Noteedit has exported the score to PMX but there are some\n"
 "problems which will probably prevent successful PMX output.\n"
@@ -1790,11 +1800,11 @@ msgstr ""
 "Noteedit hat die Partitur nach PMX exportiert. Aber es gibt einige\n"
 "Probleme, die ein erfolgreiches Arbeiten von PMX verhindern.\n"
 
-#: pmxexport.cpp:396
+#: pmxexport.cpp:397
 msgid "Staff %1, measure %2: %3 128th, should be: %4\n"
 msgstr "Zeile: %1; Takt %2: %3 128tel; es sollten %4 sein\n"
 
-#: pmxexport.cpp:401
+#: pmxexport.cpp:402
 msgid ""
 "Staff %1, measure %2: PMX cannot deal with multi rests if more than 1 staff "
 "is exported"
@@ -1802,15 +1812,15 @@ msgstr ""
 "Zeile %1: Takt %2: PMX akzeptiert keine Mehrfachpausen, wenn die Partitur "
 "mehr als eine Zeile umfasst."
 
-#: pmxexport.cpp:406
+#: pmxexport.cpp:407
 msgid "measure %1: Too many opened ties\n"
 msgstr "Takt %1: Zu viele Haltebögen\n"
 
-#: pmxexport.cpp:410
+#: pmxexport.cpp:411
 msgid "measure %1: Too many opened slurs\n"
 msgstr "Takt %1: Zu viele Bindebögen\n"
 
-#: pmxexport.cpp:414
+#: pmxexport.cpp:415
 msgid ""
 "Staff %1, measure %2: PMX can only deal with equal tuplet members or members "
 "in ratio 2:1\n"
@@ -1818,32 +1828,32 @@ msgstr ""
 "Zeile %1, Takt %2: PMX kann nur mit solchen N-Tupeln umgehen, deren "
 "Mitglieder entweder gleich lang sind oder im Verhältnis 2:1 stehen\n"
 
-#: pmxexport.cpp:419
+#: pmxexport.cpp:420
 msgid "Staff %1, measure %2: In PMX tuplet cannot end with a rest\n"
 msgstr ""
 "Zeile %1; Takt %2: In PMX dürfen N-Tuplets nicht mit einer Pause enden\n"
 
-#: pmxexport.cpp:424
+#: pmxexport.cpp:425
 msgid "PMX cannot deal with more than 2 voices per staff\n"
 msgstr "PMX kann nicht mehr als 2 Stimmen pro Notenzeile verarbeiten.\n"
 
-#: pmxexport.cpp:428
+#: pmxexport.cpp:429
 msgid "Staff %1 contains drum staff. This cannot be expressed in PMX.\n"
 msgstr ""
 "Zeile %1 enthält Schlagzeugnoten. Das kann in PMX nicht ausgedrückt werden.\n"
 
-#: pmxexport.cpp:433
+#: pmxexport.cpp:434
 msgid "Staff %1, measure %2: PMX cannot deal with mixed graces\n"
 msgstr ""
 "Zeile %1; Takt %2: In PMX kann nicht mit gemischten Vorschlag-Noten umgehen\n"
 
-#: pmxexport.cpp:438
+#: pmxexport.cpp:439
 msgid "Staff %1, measure %2: grace has no main note. PMX will not work\n"
 msgstr ""
 "Zeile %1; Takt %2: Der Vorschlag hat keine Hauptnote: PMX wird nicht "
 "funktionieren.\n"
 
-#: pmxexport.cpp:443
+#: pmxexport.cpp:444
 msgid ""
 "Staff %1, measure %2: Tuplet must be expressible by on (ev. dotted) note. "
 "PMX will not work\n"
@@ -1851,7 +1861,7 @@ msgstr ""
 "Zeile %1, Takt %2: Ein N-Tuplet muss durch eine (ev. punktierte) Note "
 "ausdrückbar sein. PMX wird nicht funktionieren\n"
 
-#: pmxexport.cpp:452
+#: pmxexport.cpp:453
 msgid ""
 "The score has piano staffs with discontinued bar rules. This cannot be "
 "expressed in PMX\n"
@@ -1859,11 +1869,11 @@ msgstr ""
 "Die Partitur hat Klavierzeilen mit unterbrochenen Taktstrichen. Da kann in "
 "PMX nicht ausgedrückt werden\n"
 
-#: pmxexport.cpp:456
+#: pmxexport.cpp:457
 msgid "Nested trills in measure: %1 ;\n"
 msgstr "Geschachtelte Triller in Takt: %2;\n"
 
-#: pmxexport.cpp:464
+#: pmxexport.cpp:465
 msgid "PMX produced. But there are some problems."
 msgstr "PMX erzeugt. Aber es gibt Probleme."
 
@@ -2575,7 +2585,7 @@ msgstr "MIDI-Einstellungen - Noteneditor"
 msgid "MUP warning"
 msgstr "MUP-Warnung"
 
-#: rc.cpp:395 uiconnect.cpp:1260
+#: rc.cpp:395 uiconnect.cpp:1265
 #, no-c-format
 msgid "Saved, but MUP does not work!"
 msgstr "Gespeichert! Aber MUP wird nicht funktionieren!"
@@ -3536,11 +3546,11 @@ msgstr "Stimme löschen"
 msgid "This deletes voice %1! Are you sure?"
 msgstr "Soll die %1. Stimme wirklich gelöscht werden?"
 
-#: staff.cpp:586
+#: staff.cpp:588
 msgid "The destination staff has less voices than source staff"
 msgstr "Die Zielnotenzeile hat weniger Stimmen als die Quellnotenzeile"
 
-#: staff.cpp:611
+#: staff.cpp:613
 msgid ""
 "You paste a first voice to no-first voice! This deletes all non-first-voice "
 "elements!"

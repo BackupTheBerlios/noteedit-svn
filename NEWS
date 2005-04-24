@@ -5,6 +5,7 @@ New features:
 - RFE #573 - Soprano clef added
 
 Bugs fixed:
+- 003183 multistaff broken - warning message added
 - 003403 export lilypond 2.4 lyrics problem
 - 003484 crash on midi import
 - 003503 hard crash on midi export

@@ -4299,6 +4299,11 @@ void NMainFrameWidget::cancelMultiStaff() {
 }
 
 void NMainFrameWidget::multiStaffDialog() {
+	if (NResource::windowWithSelectedRegion_ == 0) {	//returns immediately if selection iz none
+		KMessageBox::sorry(this, i18n("Please select a region first!"), kapp->makeStdCaption(i18n("MultiStaff")));
+		return;
+	}
+	
 	if (NResource::staffSelMulti_) delete [] NResource::staffSelMulti_;
 	NResource::staffSelMulti_ = 0;
 	NResource::numOfMultiStaffs_ = staffList_.count();

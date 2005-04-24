@@ -42,6 +42,7 @@ void NTextDialogImpl::slOk() {
 }
 
 void NTextDialogImpl::slCanc() {
+	hide();
 	text_.truncate(0);
 }
 

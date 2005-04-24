@@ -10,6 +10,8 @@ Bugs fixed:
 - 003503 hard crash on midi export
 - 003786 midi export crashes noteedit
 - 003791 staff->delete / import recording warnings wrong
+- Integrated patch 403: Better menu structure
+- Fixed typo in staff properties dialog ("Voice:" -> "Instrument:")
 
 Remarks:
 - export to lily of different drum notes inside a chord is

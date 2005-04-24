@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-04-15 11:29+0200\n"
-"PO-Revision-Date: 2005-04-23 20:04+0200\n"
+"PO-Revision-Date: 2005-04-24 16:52+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
@@ -130,7 +130,7 @@ msgstr "Zagon"
 
 #: configuredialog.cpp:113
 msgid "&MusixWarn"
-msgstr "&MusiXTex opozorila"
+msgstr "Opozorilo pri &MusiXTex izvozu"
 
 #: configuredialog.cpp:115
 msgid "enable MusiXTeX warning."
@@ -206,7 +206,7 @@ msgstr "Barve"
 
 #: configuredialog.cpp:191
 msgid "&Backgrounds:"
-msgstr "%Ozadja:"
+msgstr "Ozadje:"
 
 #: configuredialog.cpp:199
 msgid "Selection bac&kgrounds:"
@@ -246,11 +246,11 @@ msgstr "Izbrane oznak&e tempa:"
 
 #: configuredialog.cpp:262
 msgid "&Volume signatures:"
-msgstr "Oznake &jakosti:"
+msgstr "Dinamične o&značbe:"
 
 #: configuredialog.cpp:271
 msgid "Selected volume si&gnatures:"
-msgstr "Izbrane oznake jakost&i:"
+msgstr "Izbrane dinamične oz&načbe:"
 
 #: configuredialog.cpp:280
 msgid "&Program changes:"
@@ -278,7 +278,7 @@ msgstr "Izbrana imena siste&mov:"
 
 #: configuredialog.cpp:327
 msgid "L&yrics:"
-msgstr "&Besedila:"
+msgstr "&Besedilo pesmi:"
 
 #: configuredialog.cpp:335
 msgid "staff con&text:"
@@ -770,23 +770,23 @@ msgstr "&Zapri vse"
 
 #: mainframewidget.cpp:265
 msgid "Show &bar numbers"
-msgstr "&Prikaži oštevilčenje taktov"
+msgstr "&Pokaži številke taktov"
 
 #: mainframewidget.cpp:268
 msgid "Show &staff names"
-msgstr "Prikaži &imena sistemov"
+msgstr "Pokaži &imena sistemov"
 
 #: mainframewidget.cpp:271
 msgid "Show &aux lines"
-msgstr "Prikaži &pomožne črte"
+msgstr "Pokaži &pomožne črte"
 
 #: mainframewidget.cpp:274
 msgid "Show staff &context"
-msgstr "Prikaži &vsebino sistema"
+msgstr "Pokaži &vsebino sistema"
 
 #: mainframewidget.cpp:277
 msgid "Show &drum tools"
-msgstr "Prikaži orodja za &tolkala"
+msgstr "Pokaži orodja za &tolkala"
 
 #: mainframewidget.cpp:279
 msgid "Reduce &accidentals..."
@@ -814,7 +814,7 @@ msgstr "&Zamenjaj ključ ..."
 
 #: mainframewidget.cpp:285
 msgid "T&uplet..."
-msgstr "Po&ddelitve ..."
+msgstr "Po&ddelitve (triole, duole) ..."
 
 #: mainframewidget.cpp:287
 msgid "&Clef..."
@@ -862,7 +862,7 @@ msgstr "Oznake za te&mpo ..."
 
 #: mainframewidget.cpp:309
 msgid "&Volume change..."
-msgstr "Sprememba &jakosti ..."
+msgstr "Sprememba &dinamike ..."
 
 #: mainframewidget.cpp:311
 msgid "V&oice change..."
@@ -887,15 +887,15 @@ msgstr "\"Se&gno\""
 
 #: mainframewidget.cpp:321
 msgid "&dal segno"
-msgstr "&od \"segno\"-a dalje"
+msgstr "&Od \"segno\"-a naprej"
 
 #: mainframewidget.cpp:323
 msgid "dal segno &al fine"
-msgstr "&od \"segno\"-a do konca"
+msgstr "&Od \"segno\"-a do konca"
 
 #: mainframewidget.cpp:325
 msgid "dal segno al c&oda"
-msgstr "&od \"segno\"-a do \"coda\"-e"
+msgstr "&Od \"segno\"-a do \"coda\"-e"
 
 #: mainframewidget.cpp:327
 msgid "&fine"
@@ -943,7 +943,7 @@ msgstr "&Izgled dokumenta"
 
 #: mainframewidget.cpp:343
 msgid "&Lyrics..."
-msgstr "&Besedila ..."
+msgstr "&Besedilo pesmi ..."
 
 #: mainframewidget.cpp:345
 msgid "&Import recording"
@@ -1941,7 +1941,7 @@ msgstr "Označbe za &tempo"
 #: rc.cpp:106
 #, no-c-format
 msgid "With &volume signs"
-msgstr "Označbe za &jakost"
+msgstr "Dinamične o&značbe"
 
 #: rc.cpp:108
 #, no-c-format
@@ -2669,7 +2669,7 @@ msgstr "Oznake"
 #: rc.cpp:481
 #, no-c-format
 msgid "Enter text:"
-msgstr "Vpiši oznako:"
+msgstr "Besedilo:"
 
 #: rc.cpp:483 rc.cpp:543
 #, no-c-format
@@ -2734,7 +2734,7 @@ msgstr "Kanal"
 #: rc.cpp:526
 #, no-c-format
 msgid "Volume"
-msgstr "Jakost"
+msgstr "MIDI jakost"
 
 #: rc.cpp:528
 #, no-c-format
@@ -2749,7 +2749,7 @@ msgstr "Shift"
 #: rc.cpp:534
 #, no-c-format
 msgid "Tuplets"
-msgstr "Ritmične spremembe"
+msgstr "Ritmične posebnosti"
 
 #: rc.cpp:537
 #, no-c-format
@@ -2809,7 +2809,7 @@ msgstr "<center>Pozicija pavz</center>"
 #: rc.cpp:569
 #, no-c-format
 msgid "Insert volume - NoteEdit"
-msgstr "Spremembo jakosti - NoteEdit"
+msgstr "Sprememba dinamike - NoteEdit"
 
 #: rc.cpp:575
 #, no-c-format
@@ -2819,7 +2819,7 @@ msgstr "Jakost"
 #: rc.cpp:577
 #, no-c-format
 msgid "Musical express:"
-msgstr "Glasbena oznaka:"
+msgstr "Glasbena označba:"
 
 #: resource.cpp:74
 msgid "ppp"
@@ -4108,7 +4108,7 @@ msgstr "Utišaj sisteme"
 
 #: uiconnect.cpp:983
 msgid "&Mute"
-msgstr "&Tiho"
+msgstr "&Utišaj"
 
 #: uiconnect.cpp:988
 msgid "Select staffs for autobar"

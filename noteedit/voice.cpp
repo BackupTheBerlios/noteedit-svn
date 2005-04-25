@@ -4255,7 +4255,13 @@ NPositStr* NVoice::getElementAfter(int mtime) {
 					}
 					else if (playPosition_->getType() == T_SIGN && 
 						(playPosition_->getSubType() & BAR_SYMS)) {
-						((NSign *) playPosition_)->setBarNr(barNr_++);
+						if ((musElementList_.prev()->getType() == T_REST) && (musElementList_.current()->getSubType() == MULTIREST)) {
+							((NSign *) playPosition_)->setBarNr( (barNr_ += ((NRest *) musElementList_.current())->getMultiRestLength()) - 1);
+							musElementList_.next();
+						} else {
+							musElementList_.next();
+							((NSign *) playPosition_)->setBarNr(barNr_++);
+						}
 						theStaff_->actualKeysig_.resetAtBar();
 					}
 					oldidx = musElementList_.at();

@@ -4255,13 +4255,22 @@ NPositStr* NVoice::getElementAfter(int mtime) {
 					}
 					else if (playPosition_->getType() == T_SIGN && 
 						(playPosition_->getSubType() & BAR_SYMS)) {
-						if ((musElementList_.prev()->getType() == T_REST) && (musElementList_.current()->getSubType() == MULTIREST)) {
-							((NSign *) playPosition_)->setBarNr( (barNr_ += ((NRest *) musElementList_.current())->getMultiRestLength()) - 1);
-							musElementList_.next();
-						} else {
-							musElementList_.next();
-							((NSign *) playPosition_)->setBarNr(barNr_++);
-						}
+						
+						/* if multirest is present anywhere in the previous measure, count additional multiRestLength amount of measures */
+						int pointerOffset = 0;
+						do {
+							if ((musElementList_.prev()->getType() == T_REST) && (musElementList_.current()->getSubType() == MULTIREST)) 
+								((NSign *) playPosition_)->setBarNr( (barNr_ += ((NRest *) musElementList_.current())->getMultiRestLength() - 1) );
+							pointerOffset++;
+						/* walk through every element until the measureline or the beginning of the document is found */
+						} while (!( ((musElementList_.current()->getType() == T_SIGN) && (musElementList_.current()->getSubType() & BAR_SYMS)) || (musElementList_.current() == musElementList_.getFirst()) ));
+						
+						/* set the current musElementList_ item index to the previous value*/
+						int i; for (i=0; i < pointerOffset; i++) musElementList_.next();
+						
+						/* if multirest isn't found, increase the next bar number by 1 */
+						((NSign *) playPosition_)->setBarNr(barNr_++);
+						
 						theStaff_->actualKeysig_.resetAtBar();
 					}
 					oldidx = musElementList_.at();

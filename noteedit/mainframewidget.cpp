@@ -5020,7 +5020,7 @@ void NMainFrameWidget::reposit() {
 void NMainFrameWidget::computeMidiTimes(bool insertBars, bool doAutoBeam) {
 	NVoice *voice_elem;
 	for (voice_elem = voiceList_.first(); voice_elem; voice_elem = voiceList_.next()) {
-		voice_elem->getStaff()->staff_props_.measureLength = 4*QUARTER_LENGTH;
+		voice_elem->getStaff()->staff_props_.measureLength = voice_elem->getCurrentMesaureMidiLength();
 		voice_elem->computeMidiTime(insertBars, doAutoBeam && voice_elem == currentVoice_);
 	}
 }

@@ -3580,6 +3580,60 @@ int NVoice::getMidiPos() const {
 	return 0;
 }
 
+/* The whole masure length in MIDI units */
+int NVoice::getCurrentMesaureMidiLength() {
+	int i; int pointerOffset = 0;
+	int numerator; int denominator; int midiLength;
+	
+	if (musElementList_.count() == 0) return 4*QUARTER_LENGTH; /* returns default value if musElementList_ is still empty */
+	
+	/* we try seek out the last placed time signature */
+	while (!(
+			(musElementList_.current() == musElementList_.getFirst()) || /* if the current elt. is the first one */
+			(musElementList_.at() == -1) || /* if the current elt. is the null one */
+			(musElementList_.current()->getType() == T_TIMESIG) )) /* if the current element is a time signature */ {
+		musElementList_.prev();
+		pointerOffset++;
+	}
+	
+	if ((musElementList_.at() == -1) || (musElementList_.current()->getType() != T_TIMESIG)) 
+		midiLength = 4 * QUARTER_LENGTH; /* sets the default midi length if no time signatures found */
+	else {
+		numerator = ((NTimeSig *) musElementList_.current())->getNumerator();
+		switch ( ((NTimeSig *) musElementList_.current())->getDenominator() ) {
+			case 1:
+				midiLength = numerator * WHOLE_LENGTH;
+				break;
+			case 2:
+				midiLength = numerator * HALF_LENGTH;
+				break;
+			case 4:
+				midiLength = numerator * QUARTER_LENGTH;
+				break;
+			case 8:
+				midiLength = numerator * NOTE8_LENGTH;
+				break;
+			case 16:
+				midiLength = numerator * NOTE16_LENGTH;
+				break;
+			case 32:
+				midiLength = numerator * NOTE32_LENGTH;
+				break;
+			case 64:
+				midiLength = numerator * NOTE64_LENGTH;
+				break;
+			case 128:
+				midiLength = numerator * NOTE128_LENGTH;
+				break;
+		}
+	}
+	
+	/* set the current musElementList item to the original one */
+	for (i=0; i < pointerOffset; i++) musElementList_.next();
+	
+	return midiLength;
+}
+
 void NVoice::startPlaying(int starttime) {
 	NSign *sign;
 	bool programChangeSeen = false;

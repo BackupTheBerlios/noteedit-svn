@@ -5,6 +5,7 @@ New features:
 - RFE #573 - Soprano clef added
 
 Bugs fixed:
+- 003504 bad file save without clef
 - 003861 Multirests in non-4/4 measure broken
 - 003862 measures after multirests not numbered correctly
 - 003183 multistaff broken - warning message added

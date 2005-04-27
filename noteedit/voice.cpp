@@ -4847,19 +4847,23 @@ NTimeSig* NVoice::getFirstTimeSig() {
 NKeySig *NVoice::getFirstKeysig() {
 	int i = 0;
 	int oldidx;
+	bool clefFound = false;
 	NMusElement *elem;
 
 	oldidx = musElementList_.at();
 	for (elem = musElementList_.first(); elem; elem = musElementList_.next()) {
 		i++;
 		switch(elem->getType()) {
+			case T_CLEF:
+				clefFound = true;
+				break;
 			case T_KEYSIG:
 				if (oldidx >= 0) musElementList_.at(oldidx);
 				return (NKeySig *) elem;
 			case T_SIGN:
 				if (elem->getSubType() == SIMPLE_BAR) {
 					if (oldidx >= 0) musElementList_.at(oldidx);
-					return NResource::nullKeySig_;
+					return (clefFound ? NResource::nullKeySig_ : 0); /* if clef found, but no key sig. return no accidentals key sig. (C-major), if no clef found, return null */
 				}
 				break;
 		}

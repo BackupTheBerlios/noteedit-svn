@@ -3303,18 +3303,18 @@ bool NVoice::insertNewNoteAtCurrent(int line, int offs) {
 void NVoice::insertAfterCurrent(int el_type, int subtype) {
 	int idx;
 	NMusElement *new_elem;
-	if (!currentElement_) return;
+	if ( (!musElementList_.isEmpty()) && (!currentElement_) ) return;
 	
 	switch (el_type) {
 		case T_SIGN: new_elem = new NSign(main_props_, &(theStaff_->staff_props_), subtype);
 				break;
 		default: return;
 	}
-	currentElement_->setActual(false);
-	if (musElementList_.find(currentElement_) == -1) {
+	if (currentElement_) currentElement_->setActual(false);
+	if ( (currentElement_) && (musElementList_.find(currentElement_) == -1) ) {
 		NResource::abort("insertAfterCurrent: internal error");
 	}
-	if (musElementList_.next()) {
+	if ((!musElementList_.isEmpty()) && (musElementList_.next()) ) {
 		idx = musElementList_.at();
 		musElementList_.insert(idx, new_elem);
 	}
@@ -3330,8 +3330,8 @@ bool NVoice::insertAfterCurrent(NMusElement *elem) {
 	int idx;
 	bool is_chord = false;
 	NNote *note;
-	if (!currentElement_) return false;
-	if (musElementList_.find(currentElement_) == -1) {
+	if ( (!musElementList_.isEmpty()) && (!currentElement_) ) return false;
+	if ( (currentElement_) && (musElementList_.find(currentElement_) == -1) ) {
 		NResource::abort("insertAfterCurrent: internal error");
 	}
 	if (elem->getType() == T_CHORD) {
@@ -3339,7 +3339,7 @@ bool NVoice::insertAfterCurrent(NMusElement *elem) {
 		note = elem->getNoteList()->first();
 	}
 	if (currentElement_) currentElement_->setActual(false);
-	if (musElementList_.next()) {
+	if ((!musElementList_.isEmpty()) && (musElementList_.next())) {
 		idx = musElementList_.at();
 		musElementList_.insert(idx, elem);
 	}
@@ -4313,6 +4313,7 @@ NPositStr* NVoice::getElementAfter(int mtime) {
 						/* if multirest is present anywhere in the previous measure, count additional multiRestLength amount of measures */
 						int pointerOffset = 0;
 						do {
+							if (musElementList_.current() == musElementList_.getFirst()) break;
 							if ((musElementList_.prev()->getType() == T_REST) && (musElementList_.current()->getSubType() == MULTIREST)) 
 								((NSign *) playPosition_)->setBarNr( (barNr_ += ((NRest *) musElementList_.current())->getMultiRestLength() - 1) );
 							pointerOffset++;

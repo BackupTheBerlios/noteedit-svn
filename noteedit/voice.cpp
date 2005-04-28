@@ -328,8 +328,8 @@ void NVoice::grabElements() {
 	NMusElement *ac_elem;
 
 	clipBoard_.clear();
-	if (startElement_ == 0) printf("startElement_ == 0\n");
-	if (endElement_ == 0) printf("endElement_ == 0\n");
+	// if (startElement_ == 0) printf("startElement_ == 0\n");
+	// if (endElement_ == 0) printf("endElement_ == 0\n");
 
 	if (!startElement_ || !endElement_) return;
 	x0 = (endElementIdx_ > startElemIdx_) ? startElemIdx_ : endElementIdx_;
@@ -405,7 +405,7 @@ void NVoice::trimmRegion(int *x0, int *x1) {
 	found = false;
 	if (startElemIdx_ < 0) return;
 	ac_elem = musElementList_.at(startElemIdx_);
-	if (ac_elem == 0) printf("ac_elem nicht gefunden\n");
+	// if (ac_elem == 0) printf("ac_elem nicht gefunden\n");
 	if (*x0 <= *x1) {
 		x0n = startElement_->getBbox()->left();
 		while (!found && ac_elem != 0) {
@@ -3581,7 +3581,7 @@ int NVoice::getMidiPos() const {
 }
 
 /* The whole masure length in MIDI units */
-int NVoice::getCurrentMesaureMidiLength() {
+int NVoice::getCurrentMeasureMidiLength() {
 	int i; int pointerOffset = 0;
 	int numerator; int denominator; int midiLength;
 	
@@ -3774,7 +3774,7 @@ NMidiEventStr* NVoice::getNextMidiEvent(int mtime, bool reachInfo) {
 	NSign *sign;
 	int ending1Time;
 	if (muted_ || stopped_at_fine_)  return 0;
-	if (actualMidiEvent_ == 0) {printf("actualMidiEvent_ == 0, firstVoice_ = %d\n", firstVoice_);}
+	// if (actualMidiEvent_ == 0) {printf("actualMidiEvent_ == 0, firstVoice_ = %d\n", firstVoice_);}
 	else if (actualMidiEvent_->valid) {
 		return actualMidiEvent_;
 	}

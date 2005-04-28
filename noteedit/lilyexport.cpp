@@ -695,7 +695,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	int dynEndPos = 0;
 	const char *lastDynSym = 0;
 	bool textpropset = false;
-	bool fatTextWritten = false;
+	bool fatTextWritten = true;	// Text will not influence the horizontal spacing of notes
 	bool inLongacciaccatura = false;
 	bool inA_tura = false;
 	int edgetext = EDGE_TEXT_NOT_SET;
@@ -1252,6 +1252,9 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						lastDynSym = " \\! ";
 					}
 				     }
+				     if (hasATie(elem->getNoteList())) {
+					out_ << "~ ";
+				     }
 				     if (vaendpos != 0 && chord->getBbox()->right() > vaendpos) {
 					vaendpos = 0;
 					if (octaviation > 0) {
@@ -1268,9 +1271,9 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						out_ << "] "; inbeam = false;
 				     	}
 				     }
-				     if (hasATie(elem->getNoteList())) {
-					out_ << "~ ";
-				     }
+				     //if (hasATie(elem->getNoteList())) {
+				//	out_ << "~ ";
+				 //    }
 				     lastLine_ = saveLine;
 				     if (elem->status_ & STAT_LAST_TUPLET) {
 					intuplet = false;

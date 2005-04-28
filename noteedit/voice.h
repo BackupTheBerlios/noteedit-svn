@@ -122,7 +122,7 @@ class NVoice {
 		int determineAnacrusis();
 		int getMidiTime() const;
 		int getMidiPos() const;
-		int getCurrentMesaureMidiLength();
+		int getCurrentMeasureMidiLength();
 		int octave_;
 		bool voiceSet_;
 		int yRestOffs_;

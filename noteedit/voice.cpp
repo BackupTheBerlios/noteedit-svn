@@ -4533,6 +4533,7 @@ void NVoice::computeMidiTime(bool insertBars,  bool doAutoBeam) {
 			num_grace_notes = 0;
 		}
 	}
+	if (!current_timesig.getDenominator()) return;
 	midiEndTime_ = mtime;
 	if (!insertBars || !firstVoice_) {if (doAutoBeam) checkBeams(indexOfLastBar, &current_timesig); return;}
 	if (midiEndTime_ - timeOfLastBar <= (maxticks = MULTIPLICATOR * current_timesig.numOf128th())) {if (doAutoBeam) checkBeams(indexOfLastBar, &current_timesig);return;}

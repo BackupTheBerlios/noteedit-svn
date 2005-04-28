@@ -34,7 +34,7 @@ NTimeSig::NTimeSig(main_props_str *main_props, staff_props_str *staff_props) :
 		 NMusElement(main_props, staff_props) {
 	actual_ = false;
 	xpos_   = 0;
-	numerator_ = denominator_ =  4;
+	numerator_ = denominator_ =  0;
 
 }
 

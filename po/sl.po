@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-24 19:07+0200\n"
-"PO-Revision-Date: 2005-04-24 19:18+0200\n"
+"POT-Creation-Date: 2005-04-29 16:21+0200\n"
+"PO-Revision-Date: 2005-04-29 16:28+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
@@ -17,15 +17,15 @@ msgstr ""
 "X-Generator: KBabel 1.9.1\n"
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1076 filehandler.cpp:1078
-#: filehandler.cpp:1944 lilyexport.cpp:127 lilyexport.cpp:130
+#: filehandler.cpp:1945 lilyexport.cpp:127 lilyexport.cpp:130
 #: lilyexport.cpp:1030 mainframewidget.cpp:1172 mainframewidget.cpp:1176
 #: mainframewidget.cpp:1189 mainframewidget.cpp:1202 mainframewidget.cpp:1207
-#: mainframewidget.cpp:3696 mainframewidget.cpp:4361 midiexport.cpp:147
-#: midiexport.cpp:150 musicxmlexport.cpp:317 musicxmlexport.cpp:320
-#: musixtex.cpp:164 musixtex.cpp:166 musixtex.cpp:184 musixtex.cpp:186
-#: musixtex.cpp:201 musixtex.cpp:203 tse3handler.cpp:437 tse3handler.cpp:446
-#: tse3handler.cpp:455 tse3handler.cpp:956 tse3handler.cpp:1021
-#: tse3handler.cpp:1028 tse3handler.cpp:1036
+#: mainframewidget.cpp:3698 mainframewidget.cpp:3700 mainframewidget.cpp:4366
+#: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
+#: musicxmlexport.cpp:320 musixtex.cpp:164 musixtex.cpp:166 musixtex.cpp:184
+#: musixtex.cpp:186 musixtex.cpp:201 musixtex.cpp:203 tse3handler.cpp:437
+#: tse3handler.cpp:446 tse3handler.cpp:455 tse3handler.cpp:956
+#: tse3handler.cpp:1021 tse3handler.cpp:1028 tse3handler.cpp:1036
 msgid "???"
 msgstr "???"
 
@@ -198,7 +198,7 @@ msgstr "Premakni trenutno &tonaliteto"
 
 #: configuredialog.cpp:174
 msgid "autom. bar insertion"
-msgstr "Samodejno oštevilčenje taktov"
+msgstr "Samodejna postavitev taktnic"
 
 #: configuredialog.cpp:180
 msgid "Colors"
@@ -764,7 +764,7 @@ msgstr "Informacije o dokumentu ..."
 msgid "&Key configuration"
 msgstr "&Nastavi bližnjice ..."
 
-#: mainframewidget.cpp:263 mainframewidget.cpp:3879
+#: mainframewidget.cpp:263 mainframewidget.cpp:3884
 msgid "&Close all"
 msgstr "&Zapri vse"
 
@@ -798,11 +798,11 @@ msgstr "&Zberi note ..."
 
 #: mainframewidget.cpp:281
 msgid "Set all to sharp"
-msgstr "Pretolmači vse na tone z &višaje"
+msgstr "Pretolmači vse predznake na &višaje"
 
 #: mainframewidget.cpp:282
 msgid "Set all to flat"
-msgstr "Pretolmači vse na tone z &nižaji"
+msgstr "Pretolmači vse predznake na &nižaje"
 
 #: mainframewidget.cpp:283
 msgid "&Transpose..."
@@ -846,7 +846,7 @@ msgstr "Poseben zaključek&2"
 
 #: mainframewidget.cpp:301
 msgid "&DoubleBar"
-msgstr "&Dvojna črta taktnica"
+msgstr "&Dvojna črta"
 
 #: mainframewidget.cpp:303
 msgid "&EndBar"
@@ -962,7 +962,7 @@ msgid "&AutoBar"
 msgstr "&Samodejna postavitev taktnic"
 
 #: mainframewidget.cpp:352
-msgid "Auto&beam..."
+msgid "Auto&Beam..."
 msgstr "Samodejna vezava notnih &vratov"
 
 #: mainframewidget.cpp:353
@@ -1217,7 +1217,7 @@ msgstr "Tolkala 5"
 msgid "voice sel."
 msgstr "Trenutno izbran glas"
 
-#: mainframewidget.cpp:571 mainframewidget.cpp:4160
+#: mainframewidget.cpp:571 mainframewidget.cpp:4165
 msgid "Key"
 msgstr "Ključ"
 
@@ -1315,31 +1315,31 @@ msgstr "Način za vnos preko tipkovnice"
 
 #: mainframewidget.cpp:680
 msgid "pitch C"
-msgstr "višina C"
+msgstr "Višina C"
 
 #: mainframewidget.cpp:682
 msgid "pitch D"
-msgstr "višina D"
+msgstr "Višina D"
 
 #: mainframewidget.cpp:684
 msgid "pitch E"
-msgstr "višina E"
+msgstr "Višina E"
 
 #: mainframewidget.cpp:686
 msgid "pitch F"
-msgstr "višina F"
+msgstr "Višina F"
 
 #: mainframewidget.cpp:688
 msgid "pitch G"
-msgstr "višina G"
+msgstr "Višina G"
 
 #: mainframewidget.cpp:690
 msgid "pitch A"
-msgstr "višina A"
+msgstr "Višina A"
 
 #: mainframewidget.cpp:692
 msgid "pitch B"
-msgstr "višina H"
+msgstr "Višina H"
 
 #: mainframewidget.cpp:717 mainframewidget.cpp:737 mainframewidget.cpp:752
 msgid "enabled"
@@ -1387,7 +1387,7 @@ msgid "nothing to play"
 msgstr "Nič ni za predvajati"
 
 #: mainframewidget.cpp:3342 mainframewidget.cpp:3420 mainframewidget.cpp:3480
-#: mainframewidget.cpp:3816
+#: mainframewidget.cpp:3821
 msgid ""
 "Your document contains unsaved changes.\n"
 "Do you want to save your changes or discard them?"
@@ -1403,186 +1403,195 @@ msgstr "Nov dokument"
 msgid "Couldn't translate into ABC format, aborting"
 msgstr "Nisem mogel prevesti v ABC format, prekinjam"
 
-#: mainframewidget.cpp:3695
+#: mainframewidget.cpp:3698
 msgid ""
-"MIDI import is performed by the TSE3 library!\n"
-"See MIDI import section in documentation or read\n"
-"\thttp://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/doc/midiimport.html"
+"MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
+"other tools for better score layout.\n"
+"You can also read more about MIDI import and other useful tools in "
+"documentation!"
 msgstr ""
-"MIDI uvoz je izveden s pomočjo TSE3 knjižnice!\n"
-"Poglejte \"MIDI import\" sekcijo v dokumentaciji ali preberite\n"
-"\thttp://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/doc/midiimport.html"
+"Uvoz iz MIDI datoteke je sedaj uspešno zaključen. Prosimo, uporabite Uredi-->Samodejna postavitev taktnic, Uredi-->Samodejna vezava vratov in ostala orodja za boljši izgled skladbe.\n"
+"O podrobnejših informacijah o uvozu iz MIDI datoteke in ostalih uporabnih orodjih se lahko pozanimate v dokumentaciji!"
 
-#: mainframewidget.cpp:3877
+#: mainframewidget.cpp:3700
+msgid ""
+"MIDI import is performed by the TSE3 library, but the library is not "
+"present!\n"
+"Please look in the MIDI import section in documentation for more information!"
+msgstr ""
+"MIDI uvoz izvaja TSE3 knjižnica, ki pa ni na voljo!\n"
+"Prosimo, poglejte v MIDI import sekcijo v dokumentaciji za več informacij!"
+
+#: mainframewidget.cpp:3882
 msgid "Do you really want to close all windows?"
 msgstr "Ali res žeilte zapreti vsa okna aplikacije?"
 
-#: mainframewidget.cpp:3878
+#: mainframewidget.cpp:3883
 msgid "Close all"
 msgstr "Zapri vse"
 
-#: mainframewidget.cpp:3914
+#: mainframewidget.cpp:3919
 msgid "<center>Please choose the target point!</center>"
 msgstr "<center>Prosim, izberite cilj!</center>"
 
-#: mainframewidget.cpp:3917 mainframewidget.cpp:3918
+#: mainframewidget.cpp:3922 mainframewidget.cpp:3923
 msgid "Goto"
 msgstr "Pojdi na"
 
-#: mainframewidget.cpp:4226
+#: mainframewidget.cpp:4231
 msgid "Can't delete last staff."
 msgstr "Ne morem izbrisati zadnjega ostalega sistema"
 
-#: mainframewidget.cpp:4227 mainframewidget.cpp:4234
+#: mainframewidget.cpp:4232 mainframewidget.cpp:4239
 msgid "Delete Staff"
 msgstr "Izbriši sistem"
 
-#: mainframewidget.cpp:4233
+#: mainframewidget.cpp:4238
 msgid "This deletes current staff! Are you sure?"
 msgstr "Izbrisal bom trenutno izbran sistem! Ali ste prepričani?"
 
-#: mainframewidget.cpp:4267
+#: mainframewidget.cpp:4272
 msgid "Staff moving"
 msgstr "Premakni sistem"
 
-#: mainframewidget.cpp:4268
+#: mainframewidget.cpp:4273
 msgid "Please choose the target position:"
 msgstr "Prosim, izberite želeno pozicijo:"
 
-#: mainframewidget.cpp:4303
+#: mainframewidget.cpp:4308
 msgid "Please select a region first!"
 msgstr "Prosim, najprej izberite območje."
 
-#: mainframewidget.cpp:4303
+#: mainframewidget.cpp:4308
 msgid "MultiStaff"
 msgstr "Izbira večih sistemov"
 
-#: mainframewidget.cpp:4314
+#: mainframewidget.cpp:4319
 msgid "<center>Set tempo:</center>"
 msgstr "<center>Nastavi tempo:</center>"
 
-#: mainframewidget.cpp:4317
+#: mainframewidget.cpp:4322
 msgid "Set new tempo"
 msgstr "Nastavi nov tempo"
 
-#: mainframewidget.cpp:4318
+#: mainframewidget.cpp:4323
 msgid "Set new temp&o"
 msgstr "Nastavi nov temp&o"
 
-#: mainframewidget.cpp:4324
+#: mainframewidget.cpp:4329
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Nastavi število taktov:</center>"
 
-#: mainframewidget.cpp:4327
+#: mainframewidget.cpp:4332
 msgid "multi rest"
 msgstr "Večtaktne pavze"
 
-#: mainframewidget.cpp:4328
+#: mainframewidget.cpp:4333
 msgid "Set count of m&easures"
 msgstr "Nastavi število taktov"
 
-#: mainframewidget.cpp:4345
+#: mainframewidget.cpp:4350
 msgid "<center>How many notes:</center>"
 msgstr "<center>Koliko not?</center> "
 
-#: mainframewidget.cpp:4349
+#: mainframewidget.cpp:4354
 msgid "Autobeam"
 msgstr "Samodejna vezava vratov"
 
-#: mainframewidget.cpp:4361
+#: mainframewidget.cpp:4366
 msgid "Please choose a repeat close sign!"
 msgstr "Prosim, izberite zaprt ponavljaj!"
 
-#: mainframewidget.cpp:4365
+#: mainframewidget.cpp:4370
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Nastavi število ponovitev!</center>"
 
-#: mainframewidget.cpp:4369
+#: mainframewidget.cpp:4374
 msgid "Repeat count"
 msgstr "Število ponovitev"
 
-#: mainframewidget.cpp:4370
+#: mainframewidget.cpp:4375
 msgid "&Set"
 msgstr "&Nastavi"
 
-#: mainframewidget.cpp:4386
+#: mainframewidget.cpp:4391
 msgid "<center>Semitones:</center>"
 msgstr "<center>Poltoni:</center>"
 
-#: mainframewidget.cpp:4390
+#: mainframewidget.cpp:4395
 msgid "Transpose"
 msgstr "Transponiraj"
 
-#: mainframewidget.cpp:4391
+#: mainframewidget.cpp:4396
 msgid "&Transpose"
 msgstr "&Transponiraj"
 
-#: mainframewidget.cpp:4417
+#: mainframewidget.cpp:4422
 msgid "Voice selection"
 msgstr "Izbira glasov"
 
-#: mainframewidget.cpp:4418
+#: mainframewidget.cpp:4423
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Izberite želen glas tukaj:</center>"
 
-#: mainframewidget.cpp:5156 mainframewidget.cpp:5296
+#: mainframewidget.cpp:5161 mainframewidget.cpp:5303
 msgid "Error writing file \"%1\"."
 msgstr "Napaka pri pisanju datoteke \"%1\"."
 
-#: mainframewidget.cpp:5157
+#: mainframewidget.cpp:5162
 msgid "Write TSE3"
 msgstr "Zapiši TSE3"
 
-#: mainframewidget.cpp:5173
+#: mainframewidget.cpp:5178
 msgid "This overrides the current staff! Continue?"
 msgstr "To bo prekrilo trenutno izbran sistem! Nadaljujem?"
 
-#: mainframewidget.cpp:5174
+#: mainframewidget.cpp:5179
 msgid "Import Recording"
 msgstr "Uvozi snemanje"
 
-#: mainframewidget.cpp:5175 rc.cpp:311
+#: mainframewidget.cpp:5180 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "Uvozi sne&manje"
 
-#: mainframewidget.cpp:5217
+#: mainframewidget.cpp:5222
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Izbrisal bom trenutni dokument. Ali ste prepričani?"
 
-#: mainframewidget.cpp:5218
+#: mainframewidget.cpp:5223
 msgid "Confirmation"
 msgstr "Potrditev"
 
-#: mainframewidget.cpp:5244
+#: mainframewidget.cpp:5251
 msgid "Error creating Score"
 msgstr "Napaka pri ustvarjanju dokumenta"
 
-#: mainframewidget.cpp:5245
+#: mainframewidget.cpp:5252
 msgid "Creating Score"
 msgstr "Ustvarjam dokument"
 
-#: mainframewidget.cpp:5297 tse3handler.cpp:365
+#: mainframewidget.cpp:5304 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "TSE3 MIDI izhod"
 
-#: mainframewidget.cpp:5312 mainframewidget.cpp:5343
+#: mainframewidget.cpp:5319 mainframewidget.cpp:5354
 msgid "File read error \"%1\"."
 msgstr "Napaka pri branju datoteke \"%1\"."
 
-#: mainframewidget.cpp:5313
+#: mainframewidget.cpp:5320
 msgid "TSE3 MIDI in"
 msgstr "TSE3 MIDI izhod"
 
-#: mainframewidget.cpp:5344
+#: mainframewidget.cpp:5355
 msgid "Read TSE3"
 msgstr "Preberi TSE3"
 
-#: mainframewidget.cpp:5457
+#: mainframewidget.cpp:5468
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Datoteka \"%1\" že obstaja. Prekrijem?"
 
-#: mainframewidget.cpp:5458
+#: mainframewidget.cpp:5469
 msgid "File already exists"
 msgstr "Datoteka že obstaja"
 
@@ -3427,7 +3436,7 @@ msgid ""
 "1\"<br>Error Code is: %2</i><br><br>The program must be interrupted.<br>"
 msgstr ""
 "<b>Pojavila se je notranja napaka v programu.<br><br></b>Sporočilo napake je:"
-"<br><i>\"%1\"<br>Napaka št.:%2</i><br><br>Program mora žal biti prekinjen."
+"<br><i>\"%1\"<br>Napaka št.:%2</i><br><br>Program mora biti žal prekinjen."
 "<br>"
 
 #: resource.cpp:611
@@ -3735,8 +3744,8 @@ msgid ""
 msgstr ""
 "<b>... da lahko izberete odsek skladbe čez več sistemov skupaj?</b><br/><br/"
 ">\n"
-"Če aktivirate <code>Urejanje --&gt; Izberi vsebino večih sistemov ...i</code>, se bodo "
-"zahteve\n"
+"Če aktivirate <code>Urejanje --&gt; Izberi vsebino večih sistemov ...i</"
+"code>, se bodo zahteve\n"
 "nad odsekom (npr. kopiranje) izvršile v vseh izbranih sistemih.\n"
 
 #: tips.cpp:128
@@ -4162,11 +4171,11 @@ msgstr "&Izberi"
 msgid "Multi staff select"
 msgstr "Izbira večih sistemov skupaj"
 
-#: voice.cpp:4218
+#: voice.cpp:4272
 msgid "posit: chord skipped"
 msgstr ""
 
-#: voice.cpp:4219
+#: voice.cpp:4273
 msgid "Repositioning voice"
 msgstr "Premikam glasove"
 

@@ -349,7 +349,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	criticalButtons_.append
 		(new KAction( i18n("&AutoBar"),  0, this, SLOT(autoBar()), actionCollection(), "edit_autobar" ));
 	//new KAction( i18n("Auto&beam..."),  0, this, SLOT(autoBeamDialog()), actionCollection(), "edit_autobeam" );
-	new KAction( i18n("Auto&beam..."),  0, this, SLOT(doAutoBeam()), actionCollection(), "edit_autobeam" );
+	new KAction( i18n("Auto&Beam..."),  0, this, SLOT(doAutoBeam()), actionCollection(), "edit_autobeam" );
 	new KAction( i18n("&Cleanup rests..."), 0, this, SLOT(cleanRestsDialog()), actionCollection(), "edit_cleanuprests" );
 	new KAction( i18n("Set N time repeat"), "repntimes", 0, this, SLOT(repeatCountDialog()), actionCollection(), "set_ntime_repeat");
 	// TODO add Redo/Cut/Copy/Paste to the Edit menu
@@ -3692,8 +3692,13 @@ void NMainFrameWidget::setOutputParam() {	this->exportManager( PARAM_PAGE ); }
 void NMainFrameWidget::exportMusicXML() {	this->exportManager( MUSICXML_PAGE ); }
 
 void NMainFrameWidget::importMidi() {
-	KMessageBox::sorry(this, i18n("MIDI import is performed by the TSE3 library!\nSee MIDI import section in documentation or read\n\
-	http://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/doc/midiimport.html"), kapp->makeStdCaption(i18n("???")));
+#ifdef WITH_TSE3
+	if (!TSE3MidiIn()) return;
+	if (!TSE3toScore()) return;
+	KMessageBox::information(this, i18n("MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and other tools for better score layout.\nYou can also read more about MIDI import and other useful tools in documentation!"), kapp->makeStdCaption(i18n("???")));
+#else
+	KMessageBox::sorry(this, i18n("MIDI import is performed by the TSE3 library, but the library is not present!\nPlease look in the MIDI import section in documentation for more information!"), kapp->makeStdCaption(i18n("???")));
+#endif
 }
 
 void NMainFrameWidget::exportManager( int type ) {
@@ -5210,17 +5215,19 @@ void NMainFrameWidget::completeRecording(bool ok) {
 #endif
 }
 
-void NMainFrameWidget::TSE3toScore() {
+bool NMainFrameWidget::TSE3toScore() {
 #ifdef WITH_TSE3
-	if (recordButton_->isChecked()) return;
-	if (playing_) return;
+	if (recordButton_->isChecked()) return false;
+	if (playing_) return false;
 	if (KMessageBox::warningYesNo(0, i18n("This will clear the existing document. Are you sure?"),
 					kapp->makeStdCaption(i18n("Confirmation"))) == KMessageBox::No)
-		return;
+		return false;
 	kbbutton_->setOn(false);
 	newPaper();
 	tse3Handler_->TSE3toScore(&staffList_, &voiceList_, false);
+	return true;
 #endif
+	return false;
 }
 
 void NMainFrameWidget::TSE3ParttoScore() {
@@ -5299,21 +5306,25 @@ void NMainFrameWidget::TSE3MidiOut() {
 #endif
 }
 
-void NMainFrameWidget::TSE3MidiIn() {
+bool NMainFrameWidget::TSE3MidiIn() {
 #ifdef WITH_TSE3
-	if (recordButton_->isChecked()) return;
-	if (playing_) return;
+	if (recordButton_->isChecked()) return false;
+	if (playing_) return false;
 	kbbutton_->setOn(false);
 	QString fileName = KFileDialog::getOpenFileName( QString::null, midi_file_pattern, this );
-	if (fileName.isNull() )  return;
-	if (!tse3Handler_->TSE3MidiIn(fileName.ascii()))
+	if (fileName.isNull() )  return false;
+	if (!tse3Handler_->TSE3MidiIn(fileName.ascii())) {
 		KMessageBox::sorry
 		  (this,
 		   i18n("File read error \"%1\".").arg(fileName),
 		   kapp->makeStdCaption(i18n("TSE3 MIDI in"))
 		  );
+		return false;
+	}
 	repaint();
+	return true;
 #endif
+	return false;
 }
 
 void NMainFrameWidget::TSE3record(bool on) {

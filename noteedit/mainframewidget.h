@@ -557,8 +557,8 @@ class NMainFrameWidget : public QWidget
 		void writeTSE3();
 		void readTSE3();
 		void TSE3MidiOut();
-		void TSE3MidiIn();
-		void TSE3toScore();
+		bool TSE3MidiIn();
+		bool TSE3toScore();
 		void TSE3ParttoScore();
 		void TSE3Filter();
 		void completeRecording(bool);

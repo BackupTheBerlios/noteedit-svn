@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-24 19:07+0200\n"
+"POT-Creation-Date: 2005-04-29 16:21+0200\n"
 "PO-Revision-Date: 2002-06-12 15:19+0200\n"
 "Last-Translator: Jörg Anders <ja@informatik.tu-chemnitz.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
@@ -16,15 +16,15 @@ msgstr ""
 "X-Generator: KBabel 0.9.6\n"
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1076 filehandler.cpp:1078
-#: filehandler.cpp:1944 lilyexport.cpp:127 lilyexport.cpp:130
+#: filehandler.cpp:1945 lilyexport.cpp:127 lilyexport.cpp:130
 #: lilyexport.cpp:1030 mainframewidget.cpp:1172 mainframewidget.cpp:1176
 #: mainframewidget.cpp:1189 mainframewidget.cpp:1202 mainframewidget.cpp:1207
-#: mainframewidget.cpp:3696 mainframewidget.cpp:4361 midiexport.cpp:147
-#: midiexport.cpp:150 musicxmlexport.cpp:317 musicxmlexport.cpp:320
-#: musixtex.cpp:164 musixtex.cpp:166 musixtex.cpp:184 musixtex.cpp:186
-#: musixtex.cpp:201 musixtex.cpp:203 tse3handler.cpp:437 tse3handler.cpp:446
-#: tse3handler.cpp:455 tse3handler.cpp:956 tse3handler.cpp:1021
-#: tse3handler.cpp:1028 tse3handler.cpp:1036
+#: mainframewidget.cpp:3698 mainframewidget.cpp:3700 mainframewidget.cpp:4366
+#: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
+#: musicxmlexport.cpp:320 musixtex.cpp:164 musixtex.cpp:166 musixtex.cpp:184
+#: musixtex.cpp:186 musixtex.cpp:201 musixtex.cpp:203 tse3handler.cpp:437
+#: tse3handler.cpp:446 tse3handler.cpp:455 tse3handler.cpp:956
+#: tse3handler.cpp:1021 tse3handler.cpp:1028 tse3handler.cpp:1036
 msgid "???"
 msgstr "???"
 
@@ -806,7 +806,7 @@ msgstr "In&formazioni sullo spartito..."
 msgid "&Key configuration"
 msgstr "Configura le associazioni di &tasti"
 
-#: mainframewidget.cpp:263 mainframewidget.cpp:3879
+#: mainframewidget.cpp:263 mainframewidget.cpp:3884
 msgid "&Close all"
 msgstr "Chiudi &tutto"
 
@@ -1010,7 +1010,8 @@ msgid "&AutoBar"
 msgstr "&Battute automatiche"
 
 #: mainframewidget.cpp:352
-msgid "Auto&beam..."
+#, fuzzy
+msgid "Auto&Beam..."
 msgstr "Unione automatica delle &crome"
 
 #: mainframewidget.cpp:353
@@ -1269,7 +1270,7 @@ msgstr "Batteria 5"
 msgid "voice sel."
 msgstr "Selezione voce"
 
-#: mainframewidget.cpp:571 mainframewidget.cpp:4160
+#: mainframewidget.cpp:571 mainframewidget.cpp:4165
 msgid "Key"
 msgstr "Tonalita' di chiave"
 
@@ -1447,7 +1448,7 @@ msgid "nothing to play"
 msgstr "Non c'è nulla da suonare"
 
 #: mainframewidget.cpp:3342 mainframewidget.cpp:3420 mainframewidget.cpp:3480
-#: mainframewidget.cpp:3816
+#: mainframewidget.cpp:3821
 msgid ""
 "Your document contains unsaved changes.\n"
 "Do you want to save your changes or discard them?"
@@ -1463,193 +1464,201 @@ msgstr "Nuovo"
 msgid "Couldn't translate into ABC format, aborting"
 msgstr ""
 
-#: mainframewidget.cpp:3695
+#: mainframewidget.cpp:3698
 msgid ""
-"MIDI import is performed by the TSE3 library!\n"
-"See MIDI import section in documentation or read\n"
-"\thttp://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/doc/midiimport.html"
+"MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
+"other tools for better score layout.\n"
+"You can also read more about MIDI import and other useful tools in "
+"documentation!"
 msgstr ""
 
-#: mainframewidget.cpp:3877
+#: mainframewidget.cpp:3700
+msgid ""
+"MIDI import is performed by the TSE3 library, but the library is not "
+"present!\n"
+"Please look in the MIDI import section in documentation for more information!"
+msgstr ""
+
+#: mainframewidget.cpp:3882
 msgid "Do you really want to close all windows?"
 msgstr "Vuoi realmente chiudere tutte le finestre?"
 
-#: mainframewidget.cpp:3878
+#: mainframewidget.cpp:3883
 msgid "Close all"
 msgstr "Chiudi tutto"
 
-#: mainframewidget.cpp:3914
+#: mainframewidget.cpp:3919
 msgid "<center>Please choose the target point!</center>"
 msgstr "<center>Per favore scegli la destinazione!</center>"
 
-#: mainframewidget.cpp:3917 mainframewidget.cpp:3918
+#: mainframewidget.cpp:3922 mainframewidget.cpp:3923
 msgid "Goto"
 msgstr "Vai a"
 
-#: mainframewidget.cpp:4226
+#: mainframewidget.cpp:4231
 msgid "Can't delete last staff."
 msgstr "Non è possibile cancellare l'ultimo rigo"
 
-#: mainframewidget.cpp:4227 mainframewidget.cpp:4234
+#: mainframewidget.cpp:4232 mainframewidget.cpp:4239
 msgid "Delete Staff"
 msgstr "Cancella il pentagramma"
 
-#: mainframewidget.cpp:4233
+#: mainframewidget.cpp:4238
 #, fuzzy
 msgid "This deletes current staff! Are you sure?"
 msgstr "Quest'operazione eliminerà la voce corrente! Ne sei certo?"
 
-#: mainframewidget.cpp:4267
+#: mainframewidget.cpp:4272
 msgid "Staff moving"
 msgstr "Sposta il rigo"
 
-#: mainframewidget.cpp:4268
+#: mainframewidget.cpp:4273
 msgid "Please choose the target position:"
 msgstr "Per favore scegli la destinazione:"
 
-#: mainframewidget.cpp:4303
+#: mainframewidget.cpp:4308
 #, fuzzy
 msgid "Please select a region first!"
 msgstr "Per favore scegli una nota!"
 
-#: mainframewidget.cpp:4303
+#: mainframewidget.cpp:4308
 #, fuzzy
 msgid "MultiStaff"
 msgstr "Righi &multipli"
 
-#: mainframewidget.cpp:4314
+#: mainframewidget.cpp:4319
 msgid "<center>Set tempo:</center>"
 msgstr "<center>Imposta il tempo:</center>"
 
-#: mainframewidget.cpp:4317
+#: mainframewidget.cpp:4322
 msgid "Set new tempo"
 msgstr "Imposta il nuovo tempo"
 
-#: mainframewidget.cpp:4318
+#: mainframewidget.cpp:4323
 msgid "Set new temp&o"
 msgstr "Imposta il nuovo temp&o"
 
-#: mainframewidget.cpp:4324
+#: mainframewidget.cpp:4329
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Imposta il numero di battute:</center>"
 
-#: mainframewidget.cpp:4327
+#: mainframewidget.cpp:4332
 msgid "multi rest"
 msgstr "Battute vuote"
 
-#: mainframewidget.cpp:4328
+#: mainframewidget.cpp:4333
 msgid "Set count of m&easures"
 msgstr "Imposta il num&ero di battute:"
 
-#: mainframewidget.cpp:4345
+#: mainframewidget.cpp:4350
 msgid "<center>How many notes:</center>"
 msgstr "<center>Quante note:</center>"
 
-#: mainframewidget.cpp:4349
+#: mainframewidget.cpp:4354
 msgid "Autobeam"
 msgstr "Unione automatica delle crome"
 
-#: mainframewidget.cpp:4361
+#: mainframewidget.cpp:4366
 #, fuzzy
 msgid "Please choose a repeat close sign!"
 msgstr "Per favore scegli una nota!"
 
-#: mainframewidget.cpp:4365
+#: mainframewidget.cpp:4370
 #, fuzzy
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Per favore scegli la destinazione!</center>"
 
-#: mainframewidget.cpp:4369
+#: mainframewidget.cpp:4374
 #, fuzzy
 msgid "Repeat count"
 msgstr "&Inizio ritornello"
 
-#: mainframewidget.cpp:4370
+#: mainframewidget.cpp:4375
 #, fuzzy
 msgid "&Set"
 msgstr "&Seleziona tutto"
 
-#: mainframewidget.cpp:4386
+#: mainframewidget.cpp:4391
 msgid "<center>Semitones:</center>"
 msgstr "<center>Semitoni:</center>"
 
-#: mainframewidget.cpp:4390
+#: mainframewidget.cpp:4395
 msgid "Transpose"
 msgstr "Trasporta"
 
-#: mainframewidget.cpp:4391
+#: mainframewidget.cpp:4396
 msgid "&Transpose"
 msgstr "&Trasporta"
 
-#: mainframewidget.cpp:4417
+#: mainframewidget.cpp:4422
 msgid "Voice selection"
 msgstr "Selezione voce"
 
-#: mainframewidget.cpp:4418
+#: mainframewidget.cpp:4423
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Seleziona la voce qui:</center>"
 
-#: mainframewidget.cpp:5156 mainframewidget.cpp:5296
+#: mainframewidget.cpp:5161 mainframewidget.cpp:5303
 msgid "Error writing file \"%1\"."
 msgstr "Errore nella scrittura del file \"%1\"."
 
-#: mainframewidget.cpp:5157
+#: mainframewidget.cpp:5162
 msgid "Write TSE3"
 msgstr "Scrivi TSE3"
 
-#: mainframewidget.cpp:5173
+#: mainframewidget.cpp:5178
 #, fuzzy
 msgid "This overrides the current staff! Continue?"
 msgstr "Quest'operazione sovrascriverà la voce corrente! Continuare?"
 
-#: mainframewidget.cpp:5174
+#: mainframewidget.cpp:5179
 msgid "Import Recording"
 msgstr "Importa registrazione"
 
-#: mainframewidget.cpp:5175 rc.cpp:311
+#: mainframewidget.cpp:5180 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "&Importa registrazione"
 
-#: mainframewidget.cpp:5217
+#: mainframewidget.cpp:5222
 #, fuzzy
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Quest'operazione eliminerà la voce corrente! Ne sei certo?"
 
-#: mainframewidget.cpp:5218
+#: mainframewidget.cpp:5223
 #, fuzzy
 msgid "Confirmation"
 msgstr "Informazioni sul brano"
 
-#: mainframewidget.cpp:5244
+#: mainframewidget.cpp:5251
 msgid "Error creating Score"
 msgstr "Errore nella creazione dello spartito"
 
-#: mainframewidget.cpp:5245
+#: mainframewidget.cpp:5252
 msgid "Creating Score"
 msgstr "Creazione dello spartito"
 
-#: mainframewidget.cpp:5297 tse3handler.cpp:365
+#: mainframewidget.cpp:5304 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "Esporta da TSE3 a MIDI"
 
-#: mainframewidget.cpp:5312 mainframewidget.cpp:5343
+#: mainframewidget.cpp:5319 mainframewidget.cpp:5354
 msgid "File read error \"%1\"."
 msgstr "Errore nella lettura del file \"%1\"."
 
-#: mainframewidget.cpp:5313
+#: mainframewidget.cpp:5320
 msgid "TSE3 MIDI in"
 msgstr "Importa da MIDI a TSE3"
 
-#: mainframewidget.cpp:5344
+#: mainframewidget.cpp:5355
 msgid "Read TSE3"
 msgstr "Leggi TSE3"
 
-#: mainframewidget.cpp:5457
+#: mainframewidget.cpp:5468
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Il file \"%1\" già esiste! Sovrascriverlo?"
 
-#: mainframewidget.cpp:5458
+#: mainframewidget.cpp:5469
 msgid "File already exists"
 msgstr "Il file già esiste"
 
@@ -4245,11 +4254,11 @@ msgstr "&Seleziona tutto"
 msgid "Multi staff select"
 msgstr "Seleziona pentagrammi multipli"
 
-#: voice.cpp:4218
+#: voice.cpp:4272
 msgid "posit: chord skipped"
 msgstr "posizione: accordo saltato"
 
-#: voice.cpp:4219
+#: voice.cpp:4273
 msgid "Repositioning voice"
 msgstr "Riposizionamento voce"
 

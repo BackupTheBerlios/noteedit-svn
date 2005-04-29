@@ -1927,6 +1927,7 @@ int NVoice::deleteActualElem(int *state, int *state2, bool backspace) {
 	NNote *note;
 	QList<NNote> *partlist;
 	NChord *chord;
+	bool removedLast = false; /* are we deleting the last element? */
 	*state2 = *state = 0;
 	if (!currentElement_) return -1;
 	if (musElementList_.isEmpty()) {
@@ -1947,6 +1948,7 @@ int NVoice::deleteActualElem(int *state, int *state2, bool backspace) {
 		if (musElementList_.find(currentElement_) == -1) {
 			NResource::abort("deleteActualElem: internal error", 1);
 		}
+		removedLast = (musElementList_.current() == musElementList_.getLast());
 		musElementList_.remove();
 		partlist = chord->getNoteList();
 		for (note = partlist->first(); note; note = partlist->next()) {
@@ -1962,6 +1964,7 @@ int NVoice::deleteActualElem(int *state, int *state2, bool backspace) {
 		if (musElementList_.find(currentElement_) == -1) {
 			NResource::abort("deleteActualElem: internal error", 2);
 		}
+		removedLast = (musElementList_.current() == musElementList_.getLast());
 		musElementList_.remove();
 	}
 	currentElement_ = musElementList_.current();
@@ -1973,19 +1976,22 @@ int NVoice::deleteActualElem(int *state, int *state2, bool backspace) {
 			musElementList_.prev();
 		}
 	}
-	if (!musElementList_.current())  musElementList_.first(); 
+	if (!musElementList_.current()) musElementList_.first(); 
 	if (currentElement_ = musElementList_.current()) {
-		currentElement_->setActual(true);
 		*state = currentElement_->status_;
 		if (currentElement_->getType() == T_CHORD) {
 			partlist = currentElement_->getNoteList();
 			*state |= partlist->first()->status;
 		}
 		*state2 = currentElement_->status2_;
-		if (currentElement_->getType() & PLAYABLE) {
+		
+		if ( backspace || (!removedLast) ) {
+			currentElement_->setActual(true);
 			return currentElement_->getSubType();
+		} else {
+			currentElement_ = 0; /* the last element was deleted by KE_del, none get selected */
+			return 0; /* 0 is returned as we didn't encounter an error, but actually isn't any element selected */
 		}
-		return -1;
 	}
 	return -1;
 }

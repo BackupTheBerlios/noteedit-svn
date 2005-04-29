@@ -1646,7 +1646,9 @@ void NMainFrameWidget::KE_delete() {
 	if (playing_) return;
 	NMusElement *elem;
 	QPoint curpos;
-	deleteElem(false);
+	if (NResource::windowWithSelectedRegion_) deleteBlock();
+	else deleteElem(false);
+	
 	if (!NResource::allowKeyboardInsert_) return;
 	if ((elem = currentVoice_->getCurrentElement()) == 0) return;
 	curpos = notePart_->mapFromGlobal(cursor().pos());
@@ -3865,11 +3867,13 @@ void NMainFrameWidget::quitDialog2() {
 	if (NResource::windowList_.count() > 1) {
 		NMainWindow *mainWindow = static_cast<NMainWindow *>(parentWidget());
 		NResource::windowList_.removeRef(mainWindow);
+		mainWindow->setCloseFromApplication();
 	}
 	else {
 		NMainWindow *mainWindow = static_cast<NMainWindow *>(parentWidget());
 		NResource::windowList_.removeRef(mainWindow);
 		delete NResource::nresourceobj_;
+		mainWindow->setCloseFromApplication();
 	}
 }
 
@@ -5417,7 +5421,7 @@ void NMainFrameWidget::deleteElem(bool backspace) {
 		main_props_.actualLength = val;
 	}
 	computeMidiTimes(false);
-	setEdited(val != -1);
+	if (!editiones_) setEdited(val != -1);
 	reposit();
 	repaint();
 }
@@ -5452,7 +5456,7 @@ NMainFrameWidget * NMainWindow::mainFrameWidget() const
 
 void NMainWindow::closeEvent ( QCloseEvent * e ) {
 	if (!closeFromApplication_) mainFrameWidget()->quitDialog2();
-	KMainWindow::closeEvent(e);
+	if (closeFromApplication_) KMainWindow::closeEvent(e);
 }
 
 /*------------------------------------- tools ------------------------------------*/

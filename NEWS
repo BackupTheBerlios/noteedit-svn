@@ -9,6 +9,8 @@ New features:
 - allow bar placement in empty staffs with no clef/key/time signature
 
 Bugs fixed:
+- 003935 deleting element doesn't make document edited - also some rework in delete element code
+- 003934 discard changes dialog ignored on exit
 - 003914 crash when a pasting to new staff
 - 003504 bad file save without clef
 - 003861 Multirests in non-4/4 measure broken

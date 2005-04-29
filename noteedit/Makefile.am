@@ -120,13 +120,6 @@ xmlui_DATA = noteeditui.rc noteedit_part.rc
 	sed '/yy_state_buf.*= *yyalloc/s/yyalloc/(yy_state_type*) yyalloc/' lex.yy1.c > $@
 	rm lex.yy.c lex.yy1.c
 
-midimapper.lo: midimapper.cpp
-	$(LTCXXCOMPILE) $(USE_EXCEPTIONS) -c $<
-
-tse3handler.lo: tse3handler.cpp
-	$(LTCXXCOMPILE) $(USE_EXCEPTIONS) -c $<
-
-
 filehandler.lo: filehandler.cpp
 	$(LTCXXCOMPILE) $(PREFIX_DEF) -c $<
 

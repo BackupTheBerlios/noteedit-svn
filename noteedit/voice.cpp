@@ -4329,8 +4329,8 @@ NPositStr* NVoice::getElementAfter(int mtime) {
 						/* set the current musElementList_ item index to the previous value*/
 						int i; for (i=0; i < pointerOffset; i++) musElementList_.next();
 						
-						/* if multirest isn't found, increase the next bar number by 1 */
-						((NSign *) playPosition_)->setBarNr(barNr_++);
+						/* increase the next bar number by 1 */
+						((NSign *) playPosition_)->setBarNr(++barNr_);
 						
 						theStaff_->actualKeysig_.resetAtBar();
 					}
@@ -4357,7 +4357,7 @@ NPositStr* NVoice::getElementAfter(int mtime) {
 void NVoice::startRepositioning() {
 	theStaff_->actualClef_.change(NResource::nullClef_);
 	pPtr_ = 0;
-	barNr_ = 2;
+	barNr_ = 1;
 	theStaff_->actualKeysig_.change(NResource::nullKeySig_);
 	theStaff_->actualKeysig_.setClef(NResource::nullClef_);
 	playPosition_ = musElementList_.first();

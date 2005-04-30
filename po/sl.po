@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-04-29 16:21+0200\n"
-"PO-Revision-Date: 2005-04-29 16:28+0200\n"
+"PO-Revision-Date: 2005-04-30 02:18+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
@@ -955,7 +955,7 @@ msgstr "Izberi vsebino &večih sistemov ..."
 
 #: mainframewidget.cpp:348
 msgid "&Goto"
-msgstr "&Pojdi na"
+msgstr "&Pojdi na takt ..."
 
 #: mainframewidget.cpp:350
 msgid "&AutoBar"
@@ -1432,11 +1432,11 @@ msgstr "Zapri vse"
 
 #: mainframewidget.cpp:3919
 msgid "<center>Please choose the target point!</center>"
-msgstr "<center>Prosim, izberite cilj!</center>"
+msgstr "<center>Prosimo, izberite ciljni takt!</center>"
 
 #: mainframewidget.cpp:3922 mainframewidget.cpp:3923
 msgid "Goto"
-msgstr "Pojdi na"
+msgstr "Pojdi"
 
 #: mainframewidget.cpp:4231
 msgid "Can't delete last staff."

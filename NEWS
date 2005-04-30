@@ -3,12 +3,14 @@ Release 2.7.5
 New features:
 - updated Slovenian translation and fixed Makefile
 - RFE #573 - Soprano clef added
+- score info fields and staff names can now include double quotes ("), updated export filters
 - RFE #730 - Direct MIDI import - one-click MIDI file import implemented
 - RFE #729 - warning message before TSE3 -> Score added
 - automatic bar placement disabled if no time signature defined
 - allow bar placement in empty staffs with no clef/key/time signature
 
 Bugs fixed:
+- 003595 dbl quotes in some score info fields leads to invalid files
 - 003935 deleting element doesn't make document edited - also some rework in delete element code
 - 003934 discard changes dialog ignored on exit
 - 003914 crash when a pasting to new staff

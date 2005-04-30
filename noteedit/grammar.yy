@@ -458,6 +458,8 @@ singlestaffproperty: label | overlength | underlength | lyricsdist | playtranspo
 
 label : Y_LABEL '=' Y_STRING
 		{current_staff->staffName_ = QString::fromUtf8($3);
+		 current_staff->staffName_.replace("\\\"", "\""); /* replace all \" symbols with " */
+		 current_staff->staffName_.replace("\\\\", "\\"); /* replace all \\ symbols with \ */
 		 free($3);
 		}
 

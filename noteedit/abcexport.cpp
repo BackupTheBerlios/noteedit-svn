@@ -1147,6 +1147,10 @@ void NABCExport::outputVoiceParams(NVoice *voice, QString staffName) {
 	out_ << ' ';
 
 	if (!staffName.isEmpty()) {
+		staffName.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+		staffName.replace ('\n', "\\n"); /* replace all newlines with \n two character symbols */
+		staffName.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */	
+
 		out_ << "name=\"" << staffName << '"';
 	}
 }

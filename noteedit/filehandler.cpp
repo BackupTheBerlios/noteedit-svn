@@ -194,33 +194,45 @@ bool NFileHandler::writeStaffs(QString fname, QList<NStaff> *stafflist, NMainFra
 	out_ << "header" << endl;
 	if (!mainWidget->scTitle_.isEmpty()) {
 		outstring = mainWidget->scTitle_;
-		outstring.replace (newLines_, "\\n");
+		outstring.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+		outstring.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
+		outstring.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
 		out_ << "\ttitle bold (" <<  SC_TITLE_FONT_SIZE << ") \"" << outstring.utf8() << '"' << endl;
 	}
 	if (!mainWidget->scSubtitle_.isEmpty()) {
 		outstring = mainWidget->scSubtitle_;
-		outstring.replace (newLines_, "\\n");
+		outstring.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+		outstring.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
+		outstring.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
 		out_ << "\ttitle bold (" << SC_SUBTITLE_FONT_SIZE << ") \"" << outstring.utf8() << '"' << endl;
 	}
 	if (!mainWidget->scAuthor_.isEmpty()) {
 		outstring = mainWidget->scAuthor_;
-		outstring.replace (newLines_, "\\n");
+		outstring.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+		outstring.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
+		outstring.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
 		out_ << "\ttitle bold (" << SC_AUTHOR_FONT_SIZE << ") \"" << outstring.utf8() << '"' << endl;
 	}
 	if (!mainWidget->scLastAuthor_.isEmpty()) {
 		outstring = mainWidget->scLastAuthor_;
-		outstring.replace (newLines_, "\\n");
+		outstring.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+		outstring.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
+		outstring.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
 		out_ << "\ttitle bold (" << SC_LAST_AUTHOR_FONT_SIZE << ") \"" << outstring.utf8() << '"' << endl;
 	}
 	if (!mainWidget->scComment_.isEmpty()) {
 		outstring = mainWidget->scComment_;
-		outstring.replace (newLines_, "\\n");
+		outstring.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+		outstring.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
+		outstring.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
 		out_ << "\ttitle bold (" << SC_COMMENT_FONT_SIZE << ") \"" <<  outstring.utf8() << '"' << endl;
 	}
 	if (!mainWidget->scCopyright_.isEmpty()) {
 		out_ << "footer" << endl;
 		outstring = mainWidget->scCopyright_;
-		outstring.replace (newLines_, "\\n");
+		outstring.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+		outstring.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
+		outstring.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
 		out_ << "\ttitle bold (" << SC_COPYRIGHT_FONT_SIZE << ") \"" <<  outstring.utf8() << '"' << endl;
 	}
 	out_ << "score" << endl;
@@ -696,7 +708,12 @@ void NFileHandler::writeScoreInfo(int staff_nr, NVoice *voi, bool firstcall, NMa
 							}
 						}
 						if (!actual_staff->staffName_.isEmpty()) {
-							out_ << "label = \"" << actual_staff->staffName_.utf8() << '"' << endl;
+							QString staffName = actual_staff->staffName_;
+							staffName.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+							staffName.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
+							staffName.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
+
+							out_ << "label = \"" << staffName.utf8() << '"' << endl;
 						}
 						out_ << "// overlength = " << actual_staff->overlength_ << endl;
 						out_ << "// underlength = " << actual_staff->underlength_ << endl;
@@ -721,7 +738,7 @@ void NFileHandler::writeScoreInfo(int staff_nr, NVoice *voi, bool firstcall, NMa
 				actual_staff->actualClef_.change(clef);
 				break;
 			case T_KEYSIG:
-			        if (musicmode_) {
+				   if (musicmode_) {
 				   musicmode_ = false;
 				   out_ << "score" << endl;
 				}
@@ -747,10 +764,7 @@ void NFileHandler::writeScoreInfo(int staff_nr, NVoice *voi, bool firstcall, NMa
 				curr_num_ = timesig->getNumerator();
 				curr_denom_ = timesig->getDenominator();
 				break;
-			default: if (firstcall && !keysigWritten && voi->isFirstVoice()) {
-					ksig = voi->getFirstKeysig();
-					writeKeySig(ksig, staff_nr);
-				}
+			default:
 				return;
 		}
 		elem = voi->getNextPosition();
@@ -1973,11 +1987,29 @@ bool NFileHandler::readStaffs(const char *fname, QList<NVoice> *voilist, QList<N
 		stafflist->append(staff_elem);
 	}
 	mainWidget->scTitle_ = parser_params.scTitle_;
+	mainWidget->scTitle_.replace("\\\"", "\""); /* replace all \" symbols with " */
+	mainWidget->scTitle_.replace("\\\\", "\\"); /* replace all \\ symbols with \ */
+
 	mainWidget->scSubtitle_ = parser_params.scSubtitle_;
+	mainWidget->scSubtitle_.replace("\\\"", "\""); /* replace all \" symbols with " */
+	mainWidget->scSubtitle_.replace("\\\\", "\\"); /* replace all \\ symbols with \ */
+
 	mainWidget->scAuthor_ = parser_params.scAuthor_;
+	mainWidget->scAuthor_.replace("\\\"", "\""); /* replace all \" symbols with " */
+	mainWidget->scAuthor_.replace("\\\\", "\\"); /* replace all \\ symbols with \ */
+
 	mainWidget->scLastAuthor_ = parser_params.scLastAuthor_;
+	mainWidget->scLastAuthor_.replace("\\\"", "\""); /* replace all \" symbols with " */
+	mainWidget->scLastAuthor_.replace("\\\\", "\\"); /* replace all \\ symbols with \ */
+
 	mainWidget->scCopyright_ = parser_params.scCopyright_;
+	mainWidget->scCopyright_.replace("\\\"", "\""); /* replace all \" symbols with " */
+	mainWidget->scCopyright_.replace("\\\\", "\\"); /* replace all \\ symbols with \ */
+
 	mainWidget->scComment_ = parser_params.scComment_;
+	mainWidget->scComment_.replace("\\\"", "\""); /* replace all \" symbols with " */
+	mainWidget->scComment_.replace("\\\\", "\\"); /* replace all \\ symbols with \ */
+
 	mainWidget->setParamsEnabled(parser_params.enableParams);
 	mainWidget->setSaveWidth(parser_params.paperwidth);
 	mainWidget->setSaveHeight(parser_params.paperheight);

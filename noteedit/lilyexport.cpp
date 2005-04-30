@@ -201,12 +201,18 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 	out_ << endl;
 
 
+	QString outString;
 	if (!mainWidget->scTitle_.isEmpty() && !mainWidget->scTitle_.isNull()) {
 		if (!header_written) {
 			header_written = true;
 			out_ << endl << "\\header {" << endl;
 		}
-		out_ << "\ttitle = \"" << mainWidget->scTitle_ << '"';
+		outString = mainWidget->scTitle_;
+		outString.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+		outString.replace ('\n', "\\n"); /* replace all newlines with \n two character symbols */
+		outString.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
+
+		out_ << "\ttitle = \"" << outString << '"';
 		if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
 		out_ << endl;
 	}
@@ -215,7 +221,12 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 			header_written = true;
 			out_ << endl << "\\header {" << endl;
 		}
-		out_ << "\tcomposer = \"" << mainWidget->scAuthor_ << '"';
+		outString = mainWidget->scAuthor_;
+		outString.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+		outString.replace ('\n', "\\n"); /* replace all newlines with \n two character symbols */
+		outString.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
+		
+		out_ << "\tcomposer = \"" << outString << '"';
 		if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
 		out_ << endl;
 	}
@@ -224,7 +235,12 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 			header_written = true;
 			out_ << endl << "\\header {" << endl;
 		}
-		out_ << "\tcopyright = \"" << mainWidget->scCopyright_ << '"';
+		outString = mainWidget->scCopyright_;
+		outString.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+		outString.replace ('\n', "\\n"); /* replace all newlines with \n two character symbols */
+		outString.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
+		
+		out_ << "\tcopyright = \"" << outString << '"';
 		if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
 		out_ << endl;
 	}
@@ -284,11 +300,15 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 				}
 			}
 			if (!voice_elem->getStaff()->staffName_.isNull() && !voice_elem->getStaff()->staffName_.isEmpty()) {
+				outString = voice_elem->getStaff()->staffName_;
+				outString.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+				outString.replace ('\n', "\\n"); /* replace all newlines with \n two character symbols */
+				outString.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
 				if (NResource::lilyProperties_.lilyProperties) {
-					out_ << "\\property Staff.instrument = #\"" << staff_elem->staffName_ << '"' << endl << '\t';
+					out_ << "\\property Staff.instrument = #\"" << outString << '"' << endl << '\t';
 				}
 				else {
-					out_ << "\\set Staff.instrument = #\"" << staff_elem->staffName_ << '"' << endl << '\t';
+					out_ << "\\set Staff.instrument = #\"" << outString << '"' << endl << '\t';
 				}
 			}
 			voice_elem->prepareForWriting();
@@ -372,11 +392,15 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 			removeExceptsFromString(&staffLabel, false);
 			out_ << staffLabel << " = \\simultaneous {" << endl;
 			if (!staff_elem->staffName_.isNull() && !staff_elem->staffName_.isEmpty()) {
+				outString = staff_elem->staffName_;
+				outString.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+				outString.replace ('\n', "\\n"); /* replace all newlines with \n two character symbols */
+				outString.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
 				if (NResource::lilyProperties_.lilyProperties) {
-					out_ << "\t\\property Staff.instrument = #\"" << staff_elem->staffName_ << '"' << endl;
+					out_ << "\t\\property Staff.instrument = #\"" << outString << '"' << endl;
 				}
 				else {
-					out_ << "\t\\set Staff.instrument = #\"" << staff_elem->staffName_ << '"' << endl;
+					out_ << "\t\\set Staff.instrument = #\"" << outString << '"' << endl;
 				}
 			}
 			for (j = 0, voice_elem = staff_elem->getVoiceNr(0); j < voice_count; j++) {

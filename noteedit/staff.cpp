@@ -34,7 +34,7 @@
 #define OVER 10
 
 #define XLABEL_DIST 40
-#define YLABEL_DIST 20
+#define YLABEL_DIST 30
 
 NStaff::NStaff(int base, int midi_channel, int voice, NMainFrameWidget *mainWidget) : 
 actualKeysig_(&(mainWidget->main_props_) , &staff_props_),

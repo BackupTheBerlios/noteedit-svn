@@ -1942,6 +1942,7 @@ if (NResource::lilyProperties_.lilyVersion24) {
 				}
 				else {
 					s = QString(*ps);
+					s.replace(QChar('"'), "''");
 					s.replace(relSyms, "");
 					s.replace(whiteSpaces_, "_");
 					removeExceptsFromString(&s, true);

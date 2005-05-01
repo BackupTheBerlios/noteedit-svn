@@ -1,151 +1,133 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HEAD>
 	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=iso-8859-15">
-	<TITLE>Noteedit - a score editor</TITLE>
+	<TITLE>NoteEdit - a music score editor</TITLE>
 </HEAD>
-<BODY LANG="en-EN" TEXT="#000000" LINK="#0000ef" VLINK="#51188e" BGCOLOR="#ffffff"><h1>Noteedit - a score editor for Linux
+<BODY LANG="en-EN" TEXT="#000000" LINK="#0000ef" VLINK="#51188e" BGCOLOR="#ffffff"><h1>NoteEdit - a music score editor for Linux
   <br>
 </h1>
 <br>
- Noteedit is an editor for music notation that supports an unlimited
-  number of staffs and up to 9 voices per staff. You can use it to
-  create sheets of notes. You can import and export into many formats
-  like midi, musicxml and lilypond.
+  NoteEdit is a specialized music score editor that supports an unlimited
+  number of staffs, un unlimited length of staffs, up to 9 voices per staff, a
+  MIDI playback of written notes, a number of import and export filters to many
+  formats like MIDI, MusicXML, ABC Music, PMX, MusiXTeX and LilyPond.
 <br><br><br>
 <IMG src="noteedit-main.png" alt="Noteedit screenshot" width="863" height="563" hspace="0" vspace="0" align="middle" border="0">
 <br>
 <br>
 We want to thank <a href="http://developer.berlios.de">
-<img src="http://developer.berlios.de/bslogo.php?group_id=0&type=1" width="124" height="32" border="0" alt="BerliOS Logo"></A> for hosting the noteedit project!
+<img src="http://developer.berlios.de/bslogo.php?group_id=0&type=1" width="124" height="32" border="0" alt="BerliOS Logo"></A> for hosting the NoteEdit project!
 <br>
 <br>
-<a href="http://developer.berlios.de/project/showfiles.php?group_id=2232">Download Noteedit...</a>
+<a href="http://developer.berlios.de/project/showfiles.php?group_id=2232">Download NoteEdit...</a>
 <br>
 <br>
-<a href="http://developer.berlios.de/projects/noteedit">Noteedit project page</a>
+<a href="http://developer.berlios.de/projects/noteedit">NoteEdit project page</a>
 <br>
 <br>
-<h2>Properties</h2>
+<h2>Features</h2>
 <br>
-   * insertion/deletion/modification of notes, rests, dotted notes/rests,
-     tied notes, slured notes, clefs with/without shift, time signatures,
-     key signatures, volume signatures, tempo signatures, triplets, repeat
-     groups with/without special ending and instrument changes on different
-     staves;
+   * Insertion/deletion/modification of notes, rests (and multirests),
+     ties/slurs, stem/beam control, instrument changes, repeats,
+     clef/time/key/volume/tempo and all other classical music notation
+     signatures.
 <br>
-   * stem up/down
+   * Chords markings (based on
+     <a href="http://kguitar.sourceforge.net/">KGuitar project</a>).
 <br>
-   * building chords;
+   * Dynamic expression markings ((de)crescendo, octaviation, arpeggio, fermata,
+     trills, grace notes etc.).
 <br>
-   * building groups of beamed notes;
+   * Fixed expression markings (staccato, sforzato, portato, strong pizzicato,
+     sforzando etc.).
 <br>
-   * zoom;
+   * Multiple voices per staff (polyphony).
 <br>
-   * fermata, trills, (de-)crescendo,
+   * Drum notes (including drum and bass drum clef).
 <br>
-   * sforzato, portato, strong pizzicato, sforzando
+   * Flexible UI based on Qt/KDE. Supports zoom, multiple windows, many keyboard
+     shortcuts, Konqueror embedding and other candies.
 <br>
-   * multiple voices per staff
+   * Playback and other MIDI operations (reading and recording from MIDI
+     keyboard) are done using <a href="http://tse3.sourceforge.net/">TSE3
+     library</a>. Each staff can have its own channel, own intsrument and own
+     MIDI settings (reverbation, chorus). Currently played element is
+     highlighted!
 <br>
-     (see/hear: example10.not);
+   * Support for lyrics.
 <br>
-   * drum notes 
+   * Basic score layout operations (setting brackets, braces, continuing bars
+     over staffs etc.).
 <br>
-   * Multi rests
+   * Many useful tools like automatic placment of bars, automatic placement of
+     beams, transposition, copying&pasting of elements, optimization and
+     resetting of accidentals, MIDI importing (or recording from MIDI keyboard)
+     filters etc.   
 <br>
-   * double whole notes
+   * Exports MIDI (using TSE3 library), MusicXML, ABC Music, PMX, MusiXTeX and
+     LilyPond.
 <br>
-   * konqueror (still experimental)
+   * Imports MIDI and MusicXML.
 <br>
-   * playing on /dev/sequencer (if correctly configured) whereby:
+   * The NoteEdit fileformat is similar to the format of the music publication
+     program (MUP). It's a plaintext format, with a simple syntax for describing
+     the music, so computer geeks can edit it by hand if they want to:).
 <br>
-        o giving each staff a different voice;
-<br>
-        o giving each staff a different channel;
-<br>
-        o giving each staff a different reverbation and chorus;
-<br>
-        o highlighting the played notes;
-<br>
-        o muting staves;
-<br>
-   * lyrics
-<br>
-   * export MusiXTeX;
-<br>
-   * export PMX;
-<br>
-   * export MIDI;
-<br>
-   * export LilyPond;
-<br>
-   * export ABC;
-<br>
-   * import MIDI;
-<br>
-   * read from MIDI keyboard;
-<br>
-   * Application of MIDI event filters to eliminate
-     some dirty effects (especially on human played MIDI files);
-   * record from MIDI keyboard;
-<br>
-   * saving an restoring the files. The fileformat is similarily to the
-     format of the music publication program (MUP). So you if you are a MUP
-     user you have the possibility to convert the files into MIDI and
-     Postscript. But this is no longer necessary because noteedit can export
-     MusiXTeX, PMX, MIDI and LilyPond.
-<br>
-   * konqueror embedding (see below)
+   * NoteEdit is translated into the following languages: German, Spanish,
+     French, Hungarian, Italian, Russian, Slovak, Slovene and Swedish. It
+     supports UTF-8 encodings for lyrics, score title, composer, copyright and
+     other document strings.
 <br>
 <br>
 <h2>Mailing lists</h2>
 <br>
 <a
 href="http://lists.berlios.de/mailman/listinfo/noteedit-user">noteedit-user@lists.berlios.de:
-Note Edit User Mailing List</a>
+NoteEdit User Mailing List</a>
 <br>
 <br>
 <a
 href="http://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel@lists.berlios.de:
-Note Edit Develop Mailing List</a>
+NoteEdit Development Mailing List</a>
 <br>
 <br>
 <h2>The TSE3 library</h2>
 <br>
 
-From version 1.5.0 on "noteedit" bases on a new library by Pete Goodliffe
+From version 1.5.0 on, NoteEdit bases on a library by Pete Goodliffe
 called TSE3 (<a href="http://TSE3.sourceforge.net">TSE3 Homepage<a>). It is
 a powerful open source sequencer engine written in C++. The libkmid version
 is further supported but this version doesn't offer all features (MIDI
-import).
+import for eg.).
 <br>
 <br>
-TSE3 has its own file format and "noteedit" can produce it by means of TSE3
-function calls. So the "noteedit" data are interchangable with sequencer
+TSE3 has its own file format and NoteEdit can produce it by means of TSE3
+function calls. So the NoteEdit data are interchangable with sequencer
 applications basing on TSE3.
 <br>
 <br>
 The TSE3 library is not as much tested as the libkmid. So if you have
 problems with MIDI playback, installation or other realated functions please
 contact Pete Goodliffe. The TSE3 library comes with an application called
-tse3play. So you can test whether it works on your system. If so "noteedit"
-should work, too!
+tse3play. So you can test whether it works on your system. If so NoteEdit
+should work too!
 <br>
-<h2>Konqueror embedding(experimental)</h2>
+<h2>Konqueror embedding (experimental)</h2>
 <br>
-You can configure the Konqueror browser such a way that it starts noteedit
-as embedded part. This requires to install "noteedit" in KDE system.
+You can configure the Konqueror browser such a way that it starts NoteEdit
+as an embedded application. This requires installation of NoteEdit in KDE
+system.
 <br>
 <br>
 To configure embedding, first search for a file noteedit.desktop in
-$HOME/.kde or $HOME/.kde2 and delete it!
+$HOME/.kde (or $HOME/.kde2 or 3) and delete it!
 <br>
 <br>
 Then start Konqueror and choose:
 <br>
 <br>
-      Settings --> Configure Konqueror ... --> File Associations -->
-     Add ...  (Group) audio --> (Type name:) x-notes
+      Settings --> Configure Konqueror... --> File Associations -->
+      Add...  (Group) audio --> (Type name:) x-notes
 <br>
 <br>
 In field Application Preference Order there should be already noteedit. In
@@ -153,8 +135,8 @@ File patterns: insert: *.not and *.not.sav
 <br>
 <br>
 Press Apply and Ok! Now if you select a *.not and *.not.sav file the
-Konqueror should show the noteedit program embedded in Konqueror surface.
-And it should start playing.
+Konqueror should show the NoteEdit program embedded in Konqueror surface.
+It should start playing as well.
 <br>
 <br>
 
@@ -164,11 +146,12 @@ And it should start playing.
 <h2>The TiMidity server</h2>
 <br>
 (only with TSE3) Version 2.10.2 of the MIDI to WAVE converter and
-player TiMidity++ ( http://www.goice.co.jp/member/mo/timidity) now has a
+player <a href="http://timidity.sourceforge.net/">TiMidity++</a> now has a
 server mode. In this mode TiMidity++ behaves like a hardware MIDI
 synthesizer. This approach is interesting for all those who can't bring the
-MIDI device to work. A presupposition is that TiMidity++ is compiled with
-(at least) the configure options:
+MIDI device to work (mostly all non-SoundBlaster based cards). TiMidity++ needs
+to be compiled with (at least) the configure options (most Linux distributions
+already include these):
 <br>
 <br>
          --enable-audio=alsa --enable-server --enable-alsaseq
@@ -180,20 +163,21 @@ If so, you can start TiMidity++ with:
          timidity -iA -B8,2 -Os    (if this doesn't work try -Od)
 <br>
 <br>
-Make sure that "noteedit" uses an TSE3 ALSA MIDI scheduler! Select Noteedit
-sound configure dialog ( Configure Noteedit --> Sound). Make sure Noteedit
+Make sure that NoteEdit uses an TSE3 ALSA MIDI scheduler! Select NoteEdit
+sound configure dialog (Configure NoteEdit-->Sound). Make sure NoteEdit
 uses an ALSA MIDI scheduler! You should see 2 new MIDI devices:
-
+<br>
    * Timidity port 0 128:0
+<br>
    * Timidity port 1 128:0
 <br>
 <br>
-Choose one of them and the replay should work!
+Choose one of them and the playback should work!
 <br>
 <br>
 You should also try to change "the orchestra" by installing a different GUS
-patch. GUS patches can by found in the "Links" section at the TiMidity++
-page.
+patch (or so called SoundFonts). Please look at the "Links" section at the
+TiMidity++ page.
 <br>
 <br>
 Tip: If the replay interrupts during turn over then start TiMidity++ as
@@ -202,17 +186,17 @@ root. This increases the priority of the TiMidity++ process.
 <br>
 <h2>Documentation</h2>
 <br>
-The documentation is part of the noteedit archive. You find
+The documentation is part of the NoteEdit archive. You find
 it in the doc directory. The german translation can be found
-under "de", the english original is in the noteedit directory
+under "de", the english original is in the NoteEdit directory
 including all the pictures.
 <br>
 <br>
-After having installed noteedit, you can read the documentation
-by selecting the note edit handbook from the help menu.
+After having installed NoteEdit, you can read the documentation
+by selecting the NoteEdit Handbook option from the Help menu.
 <br>
 <br>
-In case there is an error when trying to open the documentation
+In case of an error when trying to open the documentation
 file it might be that KDE can't find it if you compiled it from
 the sources. Try to change the prefix so it points to the KDE 
 directory on your distribution (usually /usr) in that case.
@@ -231,6 +215,6 @@ Public License (http://www.fsf.org/copyleft/gpl.html) for more details.
 <P STYLE="margin-bottom: 0cm"><BR>&nbsp; <BR>&nbsp; <BR>&nbsp; 
 </P>
 <HR>
-Last change: 03.02 2005 <BR>&nbsp; <BR>&nbsp; 
+Last change: 01.05.2005 <BR>&nbsp; <BR>&nbsp; 
 </BODY>
 </HTML>

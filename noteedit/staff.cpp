@@ -27,6 +27,7 @@
 #include "transpainter.h"
 #include "chord.h"
 #include "voicedialog.h"
+#include "staffPropFrm.h"
 #include <stdio.h>
 #include <kmessagebox.h>
 #include <klocale.h>
@@ -168,7 +169,7 @@ NVoice *NStaff::deleteVoice(NVoice *oldVoice) {
 
 #else
 
-int NStaff::deleteVoice(NVoice *oldVoice, VoiceDialog *voicedialog) {
+int NStaff::deleteVoice(NVoice *oldVoice, VoiceDialog *voicedialog, staffPropFrm *staffPropForm) {
 	int voiceNr;
 	if (oldVoice->isFirstVoice()) {
 		KMessageBox::sorry
@@ -181,14 +182,24 @@ int NStaff::deleteVoice(NVoice *oldVoice, VoiceDialog *voicedialog) {
 	if ((voiceNr = voicelist_.find(oldVoice)) == -1) {
 		NResource::abort("NStaff::deleteVoice: internal error", 1);
 	}
-	if (KMessageBox::warningYesNo
-		(voicedialog,
-		 i18n("This deletes voice %1! Are you sure?").arg(voiceNr + 1),
-		 kapp->makeStdCaption(i18n("Delete voice")),
-		 i18n("&Delete")
-		)
-	    != KMessageBox::Yes
-	   ) return -1 ;
+	if( staffPropForm )
+		if (KMessageBox::warningYesNo
+			(staffPropForm,
+			i18n("This deletes voice %1! Are you sure?").arg(voiceNr + 1),
+			kapp->makeStdCaption(i18n("Delete voice")),
+			i18n("&Delete")
+			)
+		!= KMessageBox::Yes
+		) return -1 ;
+	else if( voicedialog )
+		if (KMessageBox::warningYesNo
+			(voicedialog,
+			i18n("This deletes voice %1! Are you sure?").arg(voiceNr + 1),
+			kapp->makeStdCaption(i18n("Delete voice")),
+			i18n("&Delete")
+			)
+		!= KMessageBox::Yes
+		) return -1 ;
 	voicelist_.remove();
 	if ((actualVoice_ = voicelist_.current()) == 0)  {
 		NResource::abort("NStaff::deleteVoice: internal error", 3);

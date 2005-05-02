@@ -25,11 +25,11 @@
 
 #include <kapp.h>
 #include <qbuttongroup.h> 
+#include <qhbox.h>
 
 #include "config.h"
 #include "lines.h"
 #include "exports.h"
-#include "staffProps.h"
 #include "scaleEd.h"
 #include "smRest.h"
 #include "volume.h"
@@ -126,26 +126,6 @@ class exportFrm : public exportForm {
 	NMainFrameWidget *mainWidget_;
 
     };    
-
-class staffPropFrm : public staffPropForm {
-
-    public:
-	staffPropFrm( QWidget *parent = 0 );
-	void boot( NStaff *staff );
-
-    private slots:
-	void slotStaffCancel();
-	void slotStaffOk();
-
-    private:
-	void refresh();
-
-    private:
-	NStaff *actualStaff_;
-	NMainFrameWidget *mw_;
-	int values[10];
-
-    };
 
 class scaleFrm : public scaleForm {
 

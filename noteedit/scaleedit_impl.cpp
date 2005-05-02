@@ -11,6 +11,7 @@ NScaleEdit::NScaleEdit(  QWidget* parent,  const char* name, WFlags fl )
     : scaleEdit( parent, name, fl )
 {
 	parent_ = parent;
+	connect( text, SIGNAL( returnPressed() ), this, SLOT( slotReturnPressed()));
 }
 
 
@@ -35,6 +36,12 @@ void NScaleEdit::changeSliderPos(const QString& s)
 	if (val < ruler->minValue() || val > ruler->maxValue()) return;
 	ruler->setValue(val);
 }
+
+void NScaleEdit::slotReturnPressed()
+{
+  emit returnPressed();
+}
+
 /* 
  * public slot
  */
@@ -44,5 +51,6 @@ void NScaleEdit::setEditValue(int val)
 	if (val < ruler->minValue() || val > ruler->maxValue()) return;
 	s.sprintf("%d", val);
 	text->setText(s);
+	emit valueChanged(val);
 }
 

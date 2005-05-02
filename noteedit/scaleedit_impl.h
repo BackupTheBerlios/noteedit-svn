@@ -24,6 +24,8 @@ public:
 public slots:
     void changeSliderPos(const QString&);
     void setEditValue(int);
+    void slotReturnPressed();
+
 private:
     QWidget* parent_;
 

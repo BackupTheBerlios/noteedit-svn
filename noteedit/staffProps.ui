@@ -1,442 +1,456 @@
-<!DOCTYPE UI><UI>
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>staffPropForm</class>
-<widget>
-    <class>QDialog</class>
-    <property stdset="1">
-        <name>name</name>
+<widget class="QDialog">
+    <property name="name">
         <cstring>staffPropForm</cstring>
     </property>
-    <property stdset="1">
-        <name>geometry</name>
+    <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>504</width>
-            <height>395</height>
+            <width>536</width>
+            <height>448</height>
         </rect>
     </property>
-    <property stdset="1">
-        <name>caption</name>
+    <property name="caption">
         <string>Staff properties - NoteEdit</string>
     </property>
     <grid>
-        <property stdset="1">
-            <name>margin</name>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
             <number>11</number>
         </property>
-        <property stdset="1">
-            <name>spacing</name>
+        <property name="spacing">
             <number>6</number>
         </property>
-        <widget row="1"  column="2" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>apply</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;Apply</string>
-            </property>
-        </widget>
-        <widget row="1"  column="3" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="1" column="3">
+            <property name="name">
                 <cstring>staffChancel</cstring>
             </property>
-            <property stdset="1">
-                <name>enabled</name>
+            <property name="enabled">
                 <bool>true</bool>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;Cancel</string>
             </property>
+            <property name="accel">
+                <string>Alt+C</string>
+            </property>
         </widget>
-        <widget row="0"  column="1"  rowspan="1"  colspan="4" >
-            <class>QGroupBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>x2</cstring>
+        <widget class="QTabWidget" row="0" column="0" rowspan="1" colspan="4">
+            <property name="name">
+                <cstring>tabWidget_</cstring>
             </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Options</string>
-            </property>
-            <grid>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
                 </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
+                <attribute name="title">
+                    <string>Staff</string>
+                </attribute>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <property name="margin">
+                        <number>6</number>
+                    </property>
+                    <property name="spacing">
+                        <number>2</number>
+                    </property>
+                    <widget class="QGroupBox" row="0" column="0">
+                        <property name="name">
+                            <cstring>x1</cstring>
+                        </property>
+                        <property name="title">
+                            <string>Staff</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>11</number>
+                            </property>
+                            <property name="spacing">
+                                <number>6</number>
+                            </property>
+                            <widget class="QLabel" row="0" column="0">
+                                <property name="name">
+                                    <cstring>l1</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Name:</string>
+                                </property>
+                            </widget>
+                            <widget class="QComboBox" row="1" column="1">
+                                <property name="name">
+                                    <cstring>staffChannel</cstring>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="1" column="0">
+                                <property name="name">
+                                    <cstring>l2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Channel:</string>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="2" column="0">
+                                <property name="name">
+                                    <cstring>l3</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Instrument:</string>
+                                </property>
+                            </widget>
+                            <widget class="QListBox" row="3" column="0" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>staffVoice</cstring>
+                                </property>
+                            </widget>
+                            <widget class="QComboBox" row="0" column="1">
+                                <property name="name">
+                                    <cstring>staffName</cstring>
+                                </property>
+                                <property name="editable">
+                                    <bool>true</bool>
+                                </property>
+                            </widget>
+                        </grid>
+                    </widget>
+                    <widget class="QGroupBox" row="0" column="1">
+                        <property name="name">
+                            <cstring>x2</cstring>
+                        </property>
+                        <property name="title">
+                            <string>Options</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>11</number>
+                            </property>
+                            <property name="spacing">
+                                <number>6</number>
+                            </property>
+                            <widget class="QLabel" row="1" column="0">
+                                <property name="name">
+                                    <cstring>l5</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Overlength:</string>
+                                </property>
+                            </widget>
+                            <widget class="NScaleEdit" row="7" column="1">
+                                <property name="name">
+                                    <cstring>staffPlay</cstring>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>163</width>
+                                        <height>32</height>
+                                    </size>
+                                </property>
+                                <property name="maximumSize">
+                                    <size>
+                                        <width>32767</width>
+                                        <height>33</height>
+                                    </size>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="7" column="0">
+                                <property name="name">
+                                    <cstring>l11</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Play&lt;br&gt;transposed:</string>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="6" column="0">
+                                <property name="name">
+                                    <cstring>l10</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Chorus:</string>
+                                </property>
+                            </widget>
+                            <widget class="NScaleEdit" row="6" column="1">
+                                <property name="name">
+                                    <cstring>staffChorus</cstring>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>163</width>
+                                        <height>32</height>
+                                    </size>
+                                </property>
+                                <property name="maximumSize">
+                                    <size>
+                                        <width>32767</width>
+                                        <height>33</height>
+                                    </size>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="5" column="0">
+                                <property name="name">
+                                    <cstring>l9</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Reverb:</string>
+                                </property>
+                            </widget>
+                            <widget class="NScaleEdit" row="5" column="1">
+                                <property name="name">
+                                    <cstring>staffReverb</cstring>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>163</width>
+                                        <height>32</height>
+                                    </size>
+                                </property>
+                                <property name="maximumSize">
+                                    <size>
+                                        <width>32767</width>
+                                        <height>33</height>
+                                    </size>
+                                </property>
+                            </widget>
+                            <widget class="NScaleEdit" row="4" column="1">
+                                <property name="name">
+                                    <cstring>staffStereo</cstring>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>163</width>
+                                        <height>32</height>
+                                    </size>
+                                </property>
+                                <property name="maximumSize">
+                                    <size>
+                                        <width>32767</width>
+                                        <height>33</height>
+                                    </size>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="4" column="0">
+                                <property name="name">
+                                    <cstring>l8</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Stereo Pos:</string>
+                                </property>
+                            </widget>
+                            <widget class="NScaleEdit" row="3" column="1">
+                                <property name="name">
+                                    <cstring>staffLyrics</cstring>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>163</width>
+                                        <height>32</height>
+                                    </size>
+                                </property>
+                                <property name="maximumSize">
+                                    <size>
+                                        <width>32767</width>
+                                        <height>33</height>
+                                    </size>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="3" column="0">
+                                <property name="name">
+                                    <cstring>l7</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Lyrics dist.:</string>
+                                </property>
+                            </widget>
+                            <widget class="NScaleEdit" row="2" column="1">
+                                <property name="name">
+                                    <cstring>staffUnder</cstring>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>163</width>
+                                        <height>32</height>
+                                    </size>
+                                </property>
+                                <property name="maximumSize">
+                                    <size>
+                                        <width>32767</width>
+                                        <height>33</height>
+                                    </size>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="2" column="0">
+                                <property name="name">
+                                    <cstring>l6</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Underlength:</string>
+                                </property>
+                            </widget>
+                            <widget class="NScaleEdit" row="1" column="1">
+                                <property name="name">
+                                    <cstring>staffOver</cstring>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>163</width>
+                                        <height>32</height>
+                                    </size>
+                                </property>
+                                <property name="maximumSize">
+                                    <size>
+                                        <width>32767</width>
+                                        <height>33</height>
+                                    </size>
+                                </property>
+                            </widget>
+                            <widget class="NScaleEdit" row="0" column="1">
+                                <property name="name">
+                                    <cstring>staffVol</cstring>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>163</width>
+                                        <height>32</height>
+                                    </size>
+                                </property>
+                                <property name="maximumSize">
+                                    <size>
+                                        <width>32767</width>
+                                        <height>33</height>
+                                    </size>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="0" column="0">
+                                <property name="name">
+                                    <cstring>l4</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Volume:</string>
+                                </property>
+                            </widget>
+                        </grid>
+                    </widget>
+                </grid>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
                 </property>
-                <widget row="1"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>l5</cstring>
+                <attribute name="title">
+                    <string>Voice</string>
+                </attribute>
+                <vbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Overlength:</string>
-                    </property>
-                </widget>
-                <widget row="7"  column="1" >
-                    <class>NScaleEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>staffPlay</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>minimumSize</name>
-                        <size>
-                            <width>163</width>
-                            <height>32</height>
-                        </size>
-                    </property>
-                    <property stdset="1">
-                        <name>maximumSize</name>
-                        <size>
-                            <width>32767</width>
-                            <height>33</height>
-                        </size>
-                    </property>
-                </widget>
-                <widget row="7"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>l11</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Play&lt;br&gt;transposed:</string>
-                    </property>
-                </widget>
-                <widget row="6"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>l10</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Chorus:</string>
-                    </property>
-                </widget>
-                <widget row="6"  column="1" >
-                    <class>NScaleEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>staffChorus</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>minimumSize</name>
-                        <size>
-                            <width>163</width>
-                            <height>32</height>
-                        </size>
-                    </property>
-                    <property stdset="1">
-                        <name>maximumSize</name>
-                        <size>
-                            <width>32767</width>
-                            <height>33</height>
-                        </size>
-                    </property>
-                </widget>
-                <widget row="5"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>l9</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Reverb:</string>
-                    </property>
-                </widget>
-                <widget row="5"  column="1" >
-                    <class>NScaleEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>staffReverb</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>minimumSize</name>
-                        <size>
-                            <width>163</width>
-                            <height>32</height>
-                        </size>
-                    </property>
-                    <property stdset="1">
-                        <name>maximumSize</name>
-                        <size>
-                            <width>32767</width>
-                            <height>33</height>
-                        </size>
-                    </property>
-                </widget>
-                <widget row="4"  column="1" >
-                    <class>NScaleEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>staffStereo</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>minimumSize</name>
-                        <size>
-                            <width>163</width>
-                            <height>32</height>
-                        </size>
-                    </property>
-                    <property stdset="1">
-                        <name>maximumSize</name>
-                        <size>
-                            <width>32767</width>
-                            <height>33</height>
-                        </size>
-                    </property>
-                </widget>
-                <widget row="4"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>l8</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Stereo Pos:</string>
-                    </property>
-                </widget>
-                <widget row="3"  column="1" >
-                    <class>NScaleEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>staffLyrics</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>minimumSize</name>
-                        <size>
-                            <width>163</width>
-                            <height>32</height>
-                        </size>
-                    </property>
-                    <property stdset="1">
-                        <name>maximumSize</name>
-                        <size>
-                            <width>32767</width>
-                            <height>33</height>
-                        </size>
-                    </property>
-                </widget>
-                <widget row="3"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>l7</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Lyrics dist.:</string>
-                    </property>
-                </widget>
-                <widget row="2"  column="1" >
-                    <class>NScaleEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>staffUnder</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>minimumSize</name>
-                        <size>
-                            <width>163</width>
-                            <height>32</height>
-                        </size>
-                    </property>
-                    <property stdset="1">
-                        <name>maximumSize</name>
-                        <size>
-                            <width>32767</width>
-                            <height>33</height>
-                        </size>
-                    </property>
-                </widget>
-                <widget row="2"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>l6</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Underlength:</string>
-                    </property>
-                </widget>
-                <widget row="1"  column="1" >
-                    <class>NScaleEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>staffOver</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>minimumSize</name>
-                        <size>
-                            <width>163</width>
-                            <height>32</height>
-                        </size>
-                    </property>
-                    <property stdset="1">
-                        <name>maximumSize</name>
-                        <size>
-                            <width>32767</width>
-                            <height>33</height>
-                        </size>
-                    </property>
-                </widget>
-                <widget row="0"  column="1" >
-                    <class>NScaleEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>staffVol</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>minimumSize</name>
-                        <size>
-                            <width>163</width>
-                            <height>32</height>
-                        </size>
-                    </property>
-                    <property stdset="1">
-                        <name>maximumSize</name>
-                        <size>
-                            <width>32767</width>
-                            <height>33</height>
-                        </size>
-                    </property>
-                </widget>
-                <widget row="0"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>l4</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Volume:</string>
-                    </property>
-                </widget>
-            </grid>
+                    <widget class="QHBox">
+                        <property name="name">
+                            <cstring>voiceBoxFrame_</cstring>
+                        </property>
+                        <property name="frameShape">
+                            <enum>NoFrame</enum>
+                        </property>
+                        <property name="frameShadow">
+                            <enum>Plain</enum>
+                        </property>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout2</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QPushButton">
+                                <property name="name">
+                                    <cstring>createVoice</cstring>
+                                </property>
+                                <property name="sizePolicy">
+                                    <sizepolicy>
+                                        <hsizetype>4</hsizetype>
+                                        <vsizetype>0</vsizetype>
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                </property>
+                                <property name="text">
+                                    <string>C&amp;reate Voice</string>
+                                </property>
+                                <property name="accel">
+                                    <string>Alt+R</string>
+                                </property>
+                            </widget>
+                            <spacer>
+                                <property name="name">
+                                    <cstring>Spacer2</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Expanding</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>393</width>
+                                        <height>20</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                        </hbox>
+                    </widget>
+                </vbox>
+            </widget>
         </widget>
-        <widget row="1"  column="4" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>staffOk</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>&amp;OK</string>
-            </property>
-        </widget>
-        <spacer row="1"  column="1" >
-            <property>
-                <name>name</name>
+        <spacer row="1" column="0">
+            <property name="name">
                 <cstring>Spacer1</cstring>
             </property>
-            <property stdset="1">
-                <name>orientation</name>
+            <property name="orientation">
                 <enum>Horizontal</enum>
             </property>
-            <property stdset="1">
-                <name>sizeType</name>
+            <property name="sizeType">
                 <enum>Expanding</enum>
             </property>
-            <property>
-                <name>sizeHint</name>
+            <property name="sizeHint">
                 <size>
-                    <width>20</width>
+                    <width>18</width>
                     <height>20</height>
                 </size>
             </property>
         </spacer>
-        <widget row="0"  column="0"  rowspan="2"  colspan="1" >
-            <class>QGroupBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>x1</cstring>
+        <widget class="QPushButton" row="1" column="1">
+            <property name="name">
+                <cstring>staffOk</cstring>
             </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Staff</string>
+            <property name="text">
+                <string>&amp;OK</string>
             </property>
-            <grid>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget row="0"  column="1" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>staffName</cstring>
-                    </property>
-                </widget>
-                <widget row="0"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>l1</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Name:</string>
-                    </property>
-                </widget>
-                <widget row="1"  column="1" >
-                    <class>QComboBox</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>staffChannel</cstring>
-                    </property>
-                </widget>
-                <widget row="1"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>l2</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Channel:</string>
-                    </property>
-                </widget>
-                <widget row="2"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>l3</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Instrument:</string>
-                    </property>
-                </widget>
-                <widget row="3"  column="0"  rowspan="1"  colspan="2" >
-                    <class>QListBox</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>staffVoice</cstring>
-                    </property>
-                </widget>
-            </grid>
+            <property name="accel">
+                <string>Alt+O</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="1" column="2">
+            <property name="name">
+                <cstring>apply</cstring>
+            </property>
+            <property name="text">
+                <string>&amp;Test</string>
+            </property>
+            <property name="accel">
+                <string>Alt+T</string>
+            </property>
         </widget>
     </grid>
 </widget>
@@ -452,14 +466,15 @@
         <sizepolicy>
             <hordata>5</hordata>
             <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
         </sizepolicy>
         <pixmap>image0</pixmap>
     </customwidget>
 </customwidgets>
 <images>
-    <image>
-        <name>image0</name>
-        <data format="XPM.GZ" length="646">789c6dd2c10ac2300c00d07bbf2234b7229d1ddec44f503c0ae2a154410f53d0ed20e2bf6bdb656dd6861dd23d9a66591b0587fd1654235ebded6f0edcd53e419d87ae7b1f4f9b8f906d0bfe012317426a70b07bdc2f3ec77f8ed6b89559061a0343d06a124cc105596482585094bc0ae599b04646c9018926491b2205e140c485cace25755c175d0a967b622ff900b8cc9c7d29af594ea722d589167f813aa852ba07d94b9dce296e883fe7bb163f23896753</data>
+    <image name="image0">
+        <data format="XBM.GZ" length="79">789c534e494dcbcc4b554829cdcdad8c2fcf4c29c95030e0524611cd48cd4ccf28010a1797249664262b2467241641a592324b8aa363156c15aab914146aadb90067111b1f</data>
     </image>
 </images>
 <connections>
@@ -476,13 +491,65 @@
         <slot>slotStaffOk()</slot>
     </connection>
     <connection>
+        <sender>staffName</sender>
+        <signal>activated(int)</signal>
+        <receiver>staffPropForm</receiver>
+        <slot>slotStaffNameActivated(int)</slot>
+    </connection>
+    <connection>
+        <sender>createVoice</sender>
+        <signal>clicked()</signal>
+        <receiver>staffPropForm</receiver>
+        <slot>slotCreateVoice()</slot>
+    </connection>
+    <connection>
         <sender>apply</sender>
         <signal>clicked()</signal>
         <receiver>staffPropForm</receiver>
         <slot>refresh()</slot>
     </connection>
-    <slot access="public">refresh()</slot>
-    <slot access="public">slotStaffCancel()</slot>
-    <slot access="public">slotStaffOk()</slot>
+    <connection>
+        <sender>staffChannel</sender>
+        <signal>activated(int)</signal>
+        <receiver>staffPropForm</receiver>
+        <slot>slotPropertyChanged()</slot>
+    </connection>
+    <connection>
+        <sender>staffVoice</sender>
+        <signal>selectionChanged()</signal>
+        <receiver>staffPropForm</receiver>
+        <slot>slotPropertyChanged()</slot>
+    </connection>
+    <connection>
+        <sender>staffName</sender>
+        <signal>activated(int)</signal>
+        <receiver>staffPropForm</receiver>
+        <slot>slotPropertyChanged()</slot>
+    </connection>
 </connections>
+<includes>
+    <include location="global" impldecl="in implementation">qhbox.h</include>
+</includes>
+<forwards>
+    <forward>class QHBox;</forward>
+</forwards>
+<slots>
+    <slot>refresh()</slot>
+    <slot>slotStaffCancel()</slot>
+    <slot>slotStaffOk()</slot>
+    <slot>slotStaffNameActivated(int)</slot>
+    <slot>slotCreateVoice()</slot>
+    <slot>slotPropertyChanged()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>nscaleedit.h</includehint>
+    <includehint>nscaleedit.h</includehint>
+    <includehint>nscaleedit.h</includehint>
+    <includehint>nscaleedit.h</includehint>
+    <includehint>nscaleedit.h</includehint>
+    <includehint>nscaleedit.h</includehint>
+    <includehint>nscaleedit.h</includehint>
+    <includehint>nscaleedit.h</includehint>
+</includehints>
 </UI>

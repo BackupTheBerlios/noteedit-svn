@@ -84,10 +84,7 @@ void staffPropFrm::boot( int staffNr, QList<NStaff> *staffList ) {
     voiceList_.clear();
     voiceBoxFrame_->update();
     i = 0;
-    
-    // Registerkarte "Staff" anzeigen
-    tabWidget_->setCurrentPage( 0 );
-    
+        
     // Temporary memory for changed staff property values
     values_     = new int[ PROPERTYNUM * staffIterator.count() ];
     staffNames_ = new QString[ staffIterator.count() ];

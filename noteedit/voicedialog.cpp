@@ -39,11 +39,11 @@
 #include "mainframewidget.h"
 
 #include "voicedialog.h"
-
+#include "staffPropFrm.h"
 
 VoiceBox::VoiceBox
-	(QHBox *parent, VoiceDialog *voiceDialog, unsigned int VoiceNumber, NVoice *voice) :
-	QVBox(parent), parent_(parent), theVoice_(voice), voiceDialog_(voiceDialog) {
+	(QHBox *parent, VoiceDialog *voiceDialog, staffPropFrm *staffPropForm, unsigned int VoiceNumber, NVoice *voice) :
+	QVBox(parent), parent_(parent), theVoice_(voice), voiceDialog_(voiceDialog), staffPropForm_(staffPropForm)  {
 
 	this->setSpacing(KDialog::spacingHint());
 
@@ -154,7 +154,12 @@ void VoiceBox::apply() {
 
 
 void VoiceBox::destroy() {
+    if(staffPropForm_)
+	if (staffPropForm_->destroyVoice(this, theVoice_)) this->close(true);
+    else if(voiceDialog_)
 	if (voiceDialog_->destroyVoice(this, theVoice_)) this->close(true);
+    else
+        printf("Fatal Error: Could not destroy voice, parent widget is missing.\n");
 }
 
 
@@ -198,7 +203,7 @@ VoiceDialog::VoiceDialog
 			 ++voiceIterator, ++j
 			) {
 			pageList_.current()->append
-				(new VoiceBox(currentPage, this, j, voiceIterator.current()));
+				(new VoiceBox(currentPage, this, 0, j, voiceIterator.current()));
 		}
 	}
 	firstPageIdx_ = pageIndex(firstHBox); /* there seems to be a bug in activePageIndex() it does not start with 0 */
@@ -233,7 +238,7 @@ void VoiceDialog::slotUser1() { /* create voice */
 	num = voice_box_list->count() + 1;
 	VoiceBox *vb;
 	voice_box_list->append(
-		vb = new VoiceBox (currentPage, this, num, new_voice)
+		vb = new VoiceBox (currentPage, this, 0, num, new_voice)
 	);
 	unsigned int i = 1;
 	for
@@ -278,7 +283,7 @@ bool VoiceDialog::destroyVoice(VoiceBox *rem_box, NVoice *voice) {
 	if ((current_staff = staffList_->at(myActivePageIndex ())) == NULL) {
 		NResource::abort("VoiceDialog::destroyVoice: internal error", 1);
 	}
-	if (current_staff->deleteVoice(voice, this) == -1) {
+	if (current_staff->deleteVoice(voice, this, 0) == -1) {
 		return false;
 	}
 	if ((voice_box_list = pageList_.at(myActivePageIndex ())) == 0) {

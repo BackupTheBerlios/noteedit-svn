@@ -38,6 +38,7 @@
 #include "staff.h"
 
 class VoiceDialog;
+class staffPropFrm;
 class NMainFrameWidget;
 
 
@@ -45,7 +46,7 @@ class VoiceBox : public QVBox {
 	Q_OBJECT
 
 public:
-	VoiceBox(QHBox *, VoiceDialog *, unsigned int, NVoice *);
+	VoiceBox(QHBox *, VoiceDialog *, staffPropFrm *, unsigned int, NVoice *);
 	~VoiceBox();
 	QHBox *getContainer() {return parent_;}
 	void apply();
@@ -65,6 +66,7 @@ private:
 	QHBox *parent_;
 	NVoice *theVoice_;
 	VoiceDialog *voiceDialog_;
+	staffPropFrm *staffPropForm_;
 	QLabel *voiceNumber_;
 
 };

@@ -29,7 +29,7 @@ libnoteedit_la_SOURCES = abcexport.cpp mididevicelistbox.cpp \
 	scaleedit.ui \
 	resource.cpp rest.cpp \
 	scaleEd.ui ScoreEditor.cpp scoreinfo.cpp sign.cpp \
-	smRest.ui staff.cpp staffElem.ui staffProps.ui staffSel.ui \
+	smRest.ui staff.cpp staffElem.ui staffProps.ui staffSel.ui staffPropFrm.cpp \
 	text.cpp textDialog.ui textDialog_impl.cpp tempotrack.cpp timesig.cpp timesigDia.ui tip.ui transpainter.cpp tse3handler.cpp \
 	tse3Info.ui tupletdialog.ui tupletdialog_impl.cpp scaleedit_impl.cpp \
 	uiconnect.cpp \

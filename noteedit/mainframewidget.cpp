@@ -79,6 +79,7 @@
 #include "chorddiagram.h"
 #include "layout.h"
 #include "abcexport.h"
+#include "staffPropFrm.h"
 #ifdef WITH_TSE3
 #include "tse3handler.h"
 #endif
@@ -514,7 +515,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	connect(rectDrumBu_, SIGNAL(toggled(bool)), this, SLOT(setRectBody(bool)));
 	connect(triaDrumBu_, SIGNAL(toggled(bool)), this, SLOT(setTrianBody(bool)));
 	editMode_ = false;
-	notePart_ = new NDbufferWidget(this, "notepart");
+	notePart_ = new NDbufferWidget(this, (char *)"notepart");
 	scrollx_ = new QScrollBar(QScrollBar::Horizontal, this, "scrollx");
 	connect(scrollx_, SIGNAL(valueChanged(int)), this , SLOT(xscrollFromWidget(int)));
 	scrolly_ = new QScrollBar(QScrollBar::Vertical, this, "scrolly");
@@ -3597,7 +3598,7 @@ void NMainFrameWidget::fileSave() {
 
 
 void NMainFrameWidget::fileSaveAs() {
-	QString fileName = this->checkFileName(KFileDialog::getSaveFileName( QString::null, noteedit_file_pattern, this ), ".not");
+	QString fileName = this->checkFileName(KFileDialog::getSaveFileName( QString::null, noteedit_file_pattern, this ), (char *)".not");
 
 	if (!fileName.isNull() ) {
 		writeStaffs(fileName);
@@ -3949,12 +3950,12 @@ void NMainFrameWidget::voiceDialog() {
 }
 
 void NMainFrameWidget::setStaffProperties() {
-	staffPropFrm_->boot( currentStaff_ );
+	staffPropFrm_->boot( staffList_.find(currentStaff_), &staffList_ );
 	createLayoutPixmap();
 }
 
 void NMainFrameWidget::layoutDialog() {
-	NStaffLayout *layout = new NStaffLayout(staffCount_, braceMatrix_, bracketMatrix_, barCont_, &staffList_, 0, "layout"); 
+	NStaffLayout *layout = new NStaffLayout(staffCount_, braceMatrix_, bracketMatrix_, barCont_, &staffList_, 0, (char *)"layout"); 
 #if QT_VERSION >= 300
     	layout->exec();
 #else
@@ -4282,7 +4283,7 @@ void NMainFrameWidget::staffMoveDialog() {
 
 	int cur_idx;
 	lastYHeight_ = 0;
-	char *err = "moveStaff: internal error";
+	char *err = (char *)"moveStaff: internal error";
 	if (staffList_.find(currentStaff_) == -1) {
 		NResource::abort(err, 1);
 	}
@@ -5157,7 +5158,7 @@ void NMainFrameWidget::writeTSE3() {
 	if (recordButton_->isChecked()) return;
 	if (playing_) return;
 	kbbutton_->setOn(false);
-	QString fileName = this->checkFileName(KFileDialog::getSaveFileName( QString::null, tse3_file_pattern, this ),".tse3");
+	QString fileName = this->checkFileName(KFileDialog::getSaveFileName( QString::null, tse3_file_pattern, this ), (char *)".tse3");
 	if (fileName.isNull() )  return;
 
 	if (!tse3Handler_->writeTSE3(QFile::encodeName(fileName)))
@@ -5300,7 +5301,7 @@ void NMainFrameWidget::TSE3MidiOut() {
 	if (recordButton_->isChecked()) return;
 	if (playing_) return;
 	kbbutton_->setOn(false);
-	QString fileName = this->checkFileName(KFileDialog::getSaveFileName(QString::null, midi_file_pattern, this), ".mid");
+	QString fileName = this->checkFileName(KFileDialog::getSaveFileName(QString::null, midi_file_pattern, this), (char *)".mid");
 	if (fileName.isNull() )  return;
 	if (!tse3Handler_->TSE3MidiOut(fileName.ascii()))
 		KMessageBox::sorry

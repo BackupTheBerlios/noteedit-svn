@@ -158,8 +158,8 @@ void exportFrm::startExport() {
     }
 		
 
-    char *ext[] = { ".mid", ".tex", ".abc", ".pmx", ".ly", ".xml" };
-    char *desc[] = { "MIDI", "MusiXTeX", "ABC", "PMX",  "LilyPond",  "MusicXML"};
+    char *ext[] = { (char *)".mid", (char *)".tex", (char *)".abc", (char *)".pmx", (char *)".ly", (char *)".xml" };
+    char *desc[] = { (char *)"MIDI", (char *)"MusiXTeX", (char *)"ABC", (char *)"PMX",  (char *)"LilyPond", (char *)"MusicXML" };
 
 
     if( card->currentPageIndex() == MUSIX_PAGE || card->currentPageIndex() == LILY_PAGE ) {
@@ -358,87 +358,6 @@ bool exportFrm::withMeasureNums() {return paramMeasureNums->isChecked();}
 void exportFrm::setWithMeasureNums(bool with) {paramMeasureNums->setChecked(with);}
 void exportFrm::setSaveWidth(int width)  {pWidth->setValue(width);}
 void exportFrm::setSaveHeight(int height) {pHeight->setValue(height);}
-
-/*------------------------------------- staffPropsForm ------------------------------------------*/
-
-staffPropFrm::staffPropFrm(QWidget *parent)  : staffPropForm(parent, 0, true)
-{
-	for (int i = 0; i < 128; ++i)
-		staffVoice->insertItem(i18n("%1. %2").arg(i).arg(i18n(NResource::instrTab[i])));
-	for (int i = 0; i < 16; ++i)
-		staffChannel->insertItem(i18n("Channel %1").arg(i + 1 ));
-
-	this->staffVol->setAll(0, 127, 80);
-	this->staffOver->setAll(1, 200, 60);
-	this->staffUnder->setAll(1, 200, 60);
-	this->staffLyrics->setAll(1, 200, 60);
-	this->staffStereo->setAll(0, 127, 80);
-	this->staffReverb->setAll(0, 127, 0);
-	this->staffChorus->setAll(0, 127, 0);
-	this->staffPlay->setAll(-12, 17, 0);
-
-	mw_ = (NMainFrameWidget *) parent;
-	this->staffOk->setFocus();
-}
-
-void staffPropFrm::boot( NStaff *staff ) {
-
-    actualStaff_ = staff;
-    this->staffVol->setStartVal( values[0] =  actualStaff_->getVolume() );
-    this->staffOver->setStartVal( values[1] = actualStaff_->overlength_ );
-    this->staffUnder->setStartVal( values[2] = actualStaff_->underlength_ );
-    this->staffLyrics->setStartVal( values[3] = actualStaff_->staff_props_.lyricsdist );
-    this->staffStereo->setStartVal( values[4] = actualStaff_->pan_ );
-    this->staffReverb->setStartVal( values[5] = actualStaff_->reverb_ );
-    this->staffChorus->setStartVal( values[6] = actualStaff_->chorus_ );
-    this->staffChannel->setCurrentItem( values[7] = actualStaff_->getChannel() );
-    this->staffName->setText( actualStaff_->staffName_ );
-    this->staffVoice->setCurrentItem( values[8] = actualStaff_->getVoice() );
-    this->staffPlay->setStartVal( values[9] = actualStaff_->transpose_ );
-    this->show();
-    
-    }
-    
-void staffPropFrm::slotStaffCancel() {
-
-    this->close();
-    actualStaff_->setVolume( values[0] );
-    actualStaff_->overlength_ = values[1];
-    actualStaff_->underlength_ = values[2];
-    actualStaff_->staff_props_.lyricsdist = values[3];
-    actualStaff_->pan_ = values[4];
-    actualStaff_->reverb_ = values[5];
-    actualStaff_->chorus_ = values[6];
-    actualStaff_->setChannel( values[7] );
-    actualStaff_->changeVoice( values[8] );
-    actualStaff_->transpose_ = values[9];
-    mw_->arrangeStaffs(true);
-
-    }
-
-void staffPropFrm::slotStaffOk() {
-
-    refresh();
-    close();
-        
-    }
-    
-void staffPropFrm::refresh() {
-    
-    actualStaff_->setVolume( this->staffVol->getValue() );
-    actualStaff_->overlength_ = this->staffOver->getValue();
-    actualStaff_->underlength_ = this->staffUnder->getValue();
-    actualStaff_->staff_props_.lyricsdist = this->staffLyrics->getValue();
-    actualStaff_->pan_ = this->staffStereo->getValue();
-    actualStaff_->reverb_ = this->staffReverb->getValue();
-    actualStaff_->chorus_ = this->staffChorus->getValue();
-    actualStaff_->setChannel( this->staffChannel->currentItem() );
-    actualStaff_->staffName_ = QString( this->staffName->text() );
-    actualStaff_->changeVoice( this->staffVoice->currentItem() );
-    actualStaff_->transpose_ = this->staffPlay->getValue();
-    mw_->arrangeStaffs(true);
-
-    }
 
 /*----------------------------------------- scaleForm --------------------------------------------*/
 
@@ -952,7 +871,7 @@ staffFrm::staffFrm( QWidget *parent ) : staffForm( parent, 0, true ) {
 #undef isOn  /* setChecked and all "isOn" are redefined to "setChecked" which causes errors.(?) */
 
 void staffFrm::boot( QList<NStaff> *stafflist, char unsigned id, int amount ) {
-	char *na = I18N_NOOP("[not available]");
+	char *na = (char *)I18N_NOOP("[not available]");
 	this->elem->clear();
 	int i = 0;
 	if (amount)	staffAmount_ = amount;

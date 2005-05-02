@@ -852,7 +852,7 @@ void NMainFrameWidget::setEdited(bool edited) {
 	editiones_ = edited;
 	if (inPart_) return;
 	static_cast<KMainWindow *>(parentWidget())
-	->setCaption(actualFname_, edited);
+	->setCaption((scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_), edited);
 }
 
 void NMainFrameWidget::scoreInfo() {
@@ -3360,6 +3360,13 @@ void NMainFrameWidget::newPaper() {
 	staffList_.setAutoDelete(true);
 	staffList_.clear();
 	staffList_.setAutoDelete(false);
+	setEdited(false);
+	scTitle_.truncate(0);
+	scSubtitle_.truncate(0);
+	scAuthor_.truncate(0);
+	scLastAuthor_.truncate(0);
+	scCopyright_.truncate(0);
+	scComment_.truncate(0);
 	currentStaff_ = staffList_.first();
 	staffList_.append(currentStaff_ = new NStaff(Y_STAFF_BASE +  NResource::overlength_, 0, 0, this));
 	voiceList_.append(currentVoice_ = currentStaff_->getVoiceNr(0));
@@ -3373,8 +3380,8 @@ void NMainFrameWidget::newPaper() {
 	currentStaff_->setBase( NResource::overlength_  + Y_STAFF_BASE);
 	lastYHeight_ = voiceList_.last()->getStaff()->getBase()+voiceList_.last()->getStaff()->underlength_;
 	actualFname_ = QString();
-	setCaption("noteedit");
-	emit caption("noteedit");
+	parentWidget()->setCaption( scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
+	emit caption("NoteEdit");
 	tempo_ = DEFAULT_TEMPO;
 	NVoice::resetUndo();
 	NResource::windowWithSelectedRegion_ = 0;
@@ -3382,13 +3389,6 @@ void NMainFrameWidget::newPaper() {
 	currentStaff_->setVolume(80);
 	reposit();
 	setScrollableNotePage();
-	setEdited(false);
-	scTitle_.truncate(0);
-	scSubtitle_.truncate(0);
-	scAuthor_.truncate(0);
-	scLastAuthor_.truncate(0);
-	scCopyright_.truncate(0);
-	scComment_.truncate(0);
 	setSaveWidth(170);
 	setSaveHeight(250);
 	setParamsEnabled(false);
@@ -3452,7 +3452,7 @@ bool NMainFrameWidget::loadFile( const QString & fileName )
 #endif
 	if (readStaffs(fileName)) {
 		actualFname_ = fileName;
-		parentWidget()->setCaption(actualFname_);
+		parentWidget()->setCaption( scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
 		tempo_ = DEFAULT_TEMPO;
 		setScrollableNotePage();
 		NResource::windowWithSelectedRegion_ = 0;
@@ -3546,7 +3546,7 @@ void NMainFrameWidget::readStaffsFromXMLFile(const char *fname) {
 		actualFname_.truncate(actualFname_.length() - 4);
 		actualFname_ += ".not";
 	}
-	parentWidget()->setCaption(actualFname_);
+	parentWidget()->setCaption( scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
 	tempo_ = DEFAULT_TEMPO;
 	setScrollableNotePage();
 	NResource::windowWithSelectedRegion_ = 0;
@@ -3602,7 +3602,8 @@ void NMainFrameWidget::fileSaveAs() {
 	if (!fileName.isNull() ) {
 		writeStaffs(fileName);
 		actualFname_ = fileName;
-		emit caption(actualFname_);
+		emit caption( scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
+
 		KURL url;
 		url.setPath( fileName );
 		m_recentFilesAction->addURL( url );

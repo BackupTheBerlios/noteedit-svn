@@ -31,6 +31,7 @@
 #include <qpoint.h>
 
 class VoiceDialog;
+class staffPropFrm;
 
 class NStaff {
 	public:
@@ -111,7 +112,7 @@ class NStaff {
 		void updateVoiceList(QList<NVoice> *voicelist);
 		void setMuted(bool muted);
 		bool getMuted() {return actualVoice_->muted_;}
-		int deleteVoice(NVoice *oldVoice, VoiceDialog *voicedialog);
+		int deleteVoice(NVoice *oldVoice, VoiceDialog *voicedialog, staffPropFrm *staffPropForm);
 		int getActualVoiceNr() {return actualVoiceNr_;}
 		NClef *playClef_, *repeatClef_, *segnoClef_;
 		NKeySig *playKeySig_, *repeatKeySig_, *segnoKeySig_;

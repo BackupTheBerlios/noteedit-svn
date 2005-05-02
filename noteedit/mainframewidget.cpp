@@ -318,23 +318,23 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	criticalButtons_.append
 		(new KAction( i18n("Se&gno"), 0, this, SLOT(insertSegno()), actionCollection(), "insert_segno" ));
 	criticalButtons_.append
-		(new KAction( i18n("&dal segno"), 0, this, SLOT(insertDalSegno()), actionCollection(), "insert_dal_segno" ));
+		(new KAction( i18n("&dal Segno"), 0, this, SLOT(insertDalSegno()), actionCollection(), "insert_dal_segno" ));
 	criticalButtons_.append
-		(new KAction( i18n("dal segno &al fine"), 0, this, SLOT(insertDalSegnoAlFine()), actionCollection(), "insert_dal_segno_al_fine" ));
+		(new KAction( i18n("dal Segno &al Fine"), 0, this, SLOT(insertDalSegnoAlFine()), actionCollection(), "insert_dal_segno_al_fine" ));
 	criticalButtons_.append
-		(new KAction( i18n("dal segno al c&oda"), 0, this, SLOT(insertDalSegnoAlCoda()), actionCollection(), "insert_dal_segno_al_coda" ));
+		(new KAction( i18n("dal Segno al C&oda"), 0, this, SLOT(insertDalSegnoAlCoda()), actionCollection(), "insert_dal_segno_al_coda" ));
 	criticalButtons_.append
-		(new KAction( i18n("&fine"), 0, this, SLOT(insertFine()), actionCollection(), "insert_fine" ));
+		(new KAction( i18n("&Fine"), 0, this, SLOT(insertFine()), actionCollection(), "insert_fine" ));
 	criticalButtons_.append
-		(new KAction( i18n("&coda"), 0, this, SLOT(insertCoda()), actionCollection(), "insert_coda" ));
+		(new KAction( i18n("&Coda"), 0, this, SLOT(insertCoda()), actionCollection(), "insert_coda" ));
 	criticalButtons_.append
 		(new KAction( i18n("&Ritardando"), 0, this, SLOT(insertRitardando()), actionCollection(), "insert_ritardando" ));
 	criticalButtons_.append
 		(new KAction( i18n("&Accelerando"), 0, this, SLOT(insertAccelerando()), actionCollection(), "insert_accelerando" ));
-	new KAction( i18n("&Multi rest..."),  0, this, SLOT(multiRestDialog()), actionCollection(), "insert_multi_rest" );
-	new KAction( i18n("&New"), "filenew", 0, this, SLOT(newStaff()), actionCollection(), "staff_new" );
-	new KAction( i18n("&Delete"), "editdelete", 0, this, SLOT(deleteStaff()), actionCollection(), "staff_delete" );
-	new KAction( i18n("&Move..."), "editcopy", 0, this, SLOT(staffMoveDialog()), actionCollection(), "staff_move" );
+	new KAction( i18n("&Multimeasure rest..."),  0, this, SLOT(multiRestDialog()), actionCollection(), "insert_multi_rest" );
+	new KAction( i18n("&New staff"), "filenew", 0, this, SLOT(newStaff()), actionCollection(), "staff_new" );
+	new KAction( i18n("&Delete staff"), "editdelete", 0, this, SLOT(deleteStaff()), actionCollection(), "staff_delete" );
+	new KAction( i18n("&Move staff..."), "editcopy", 0, this, SLOT(staffMoveDialog()), actionCollection(), "staff_move" );
 	new KAction( i18n("M&ute staffs..."), 0, this, SLOT(muteDialog()), actionCollection(), "staff_mute" );
 	new KAction( i18n("&Voices..."), 0, this, SLOT(voiceDialog()), actionCollection(), "voice_dialog" );
 	new KAction( i18n("&Staff properties..."), "configure", 0, this, SLOT(setStaffProperties()), actionCollection(), "staff_properties" );

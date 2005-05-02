@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-29 16:21+0200\n"
+"POT-Creation-Date: 2005-05-02 18:59+0200\n"
 "PO-Revision-Date: 2003-12-27 02:08-0600\n"
 "Last-Translator: \n"
 "Language-Team:  <es@li.org>\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.2\n"
 
-#: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1076 filehandler.cpp:1078
-#: filehandler.cpp:1945 lilyexport.cpp:127 lilyexport.cpp:130
-#: lilyexport.cpp:1030 mainframewidget.cpp:1172 mainframewidget.cpp:1176
+#: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
+#: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
+#: lilyexport.cpp:1054 mainframewidget.cpp:1172 mainframewidget.cpp:1176
 #: mainframewidget.cpp:1189 mainframewidget.cpp:1202 mainframewidget.cpp:1207
-#: mainframewidget.cpp:3698 mainframewidget.cpp:3700 mainframewidget.cpp:4366
+#: mainframewidget.cpp:3701 mainframewidget.cpp:3703 mainframewidget.cpp:4371
 #: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
 #: musicxmlexport.cpp:320 musixtex.cpp:164 musixtex.cpp:166 musixtex.cpp:184
 #: musixtex.cpp:186 musixtex.cpp:201 musixtex.cpp:203 tse3handler.cpp:437
@@ -43,7 +43,7 @@ msgstr ""
 "NoteEdit ha exportado la partitura a ABC music pero han habido algunos\n"
 "problemas que pueden evitar salida PostScript exitosa\n"
 
-#: abcexport.cpp:277 filehandler.cpp:582 lilyexport.cpp:594
+#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:618
 #: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
@@ -407,7 +407,7 @@ msgstr "Escribir pentagramas"
 msgid "error opening file "
 msgstr "Error al abrir archivo "
 
-#: filehandler.cpp:543
+#: filehandler.cpp:555
 msgid ""
 "staff %1; measure %2: you mixed different bar types; this cannot be "
 "expressed in MUP and causes data loss\n"
@@ -415,16 +415,16 @@ msgstr ""
 "Pentagrama %1: compás %2: ha mezclado diferentes tipos de compases; esto no "
 "se puede expresar en MUP y puede ocasionar pérdida de datos\n"
 
-#: filehandler.cpp:549
+#: filehandler.cpp:561
 msgid "Staff %1 ; measure %2 :The multirests are not aligned\n"
 msgstr ""
 "Pentagrama %1; compás %2 : los silencios multicompás no están alineados\n"
 
-#: filehandler.cpp:554
+#: filehandler.cpp:566
 msgid "staff %1; measure %2: irregulaer key in the middle omitted\n"
 msgstr "Pentagrama %1; compás %2: métrica irregular en el centro omitida\n"
 
-#: filehandler.cpp:559
+#: filehandler.cpp:571
 msgid ""
 "staff %1; measure %2: Mup can only deal with tuplets which sum up to a "
 "single note length\n"
@@ -432,7 +432,7 @@ msgstr ""
 "Pentagrama %1; compás %2: MUP sólo puede manejar grupos de notas que sean "
 "equivalentes hasta la duración de una sola nota\n"
 
-#: filehandler.cpp:564
+#: filehandler.cpp:576
 msgid ""
 "staff %1; measure %2: Mup cannot deal with segno staff at end. The segno "
 "staff is deleted.  Please insert a rest!\n"
@@ -440,7 +440,7 @@ msgstr ""
 "Pentagrama %1; compás %2: MUP no puede manejar el Pentagrama con Signo al "
 "final. Se borrará el pentagrama con Signo. Por favor inserte un silencio!\n"
 
-#: filehandler.cpp:569
+#: filehandler.cpp:581
 msgid ""
 "staff %1; measure %2: Mup cannot deal with pedal marks in non-1st-voice! "
 "This cannot be restored\n"
@@ -448,11 +448,11 @@ msgstr ""
 "Pentagrama %1; compás %2: MUP no puede manejar marcas de pedal en una voz "
 "que no sea la primera. Esto no se puede restaurar.\n"
 
-#: filehandler.cpp:574
+#: filehandler.cpp:586
 msgid "Possible data loss!"
 msgstr "Posible pérdida de datos."
 
-#: filehandler.cpp:580
+#: filehandler.cpp:592
 msgid ""
 "Noteedit will save your score, and it can (probably) restore the score.\n"
 "But the file doesn't conform to MUP, so it will not work with the MUP "
@@ -462,11 +462,11 @@ msgstr ""
 "archivo no se ajusta correctamente a MUP, por lo que no funcionará con el "
 "intérprete MUP.\n"
 
-#: filehandler.cpp:587
+#: filehandler.cpp:599
 msgid "staff %1; measure  %2 : %3 128th, should be: %4\n"
 msgstr "Pentagrama %1; compás %2 : %3 128avo, debería ser: %4\n"
 
-#: filehandler.cpp:592
+#: filehandler.cpp:604
 msgid ""
 "staff %1; measure %2: Mup cannot deal with mixed lyrics/non-lyrics notes in "
 "the same measure\n"
@@ -474,7 +474,7 @@ msgstr ""
 "Pentagrama %1; compás %2: MUP no puede manejar notas y estrofas mezcladas en "
 "el mismo compás.\n"
 
-#: filehandler.cpp:597
+#: filehandler.cpp:609
 msgid ""
 "staff %1; measure %2: Mup up cannot deal with slurs over more than 1 "
 "element, besides in 1st or 2nd voice\n"
@@ -482,36 +482,36 @@ msgstr ""
 "Pentagrama %1; compás %2: MUP no puede manejar ligaduras de más de un "
 "elemento, aparte de primera y segunda voz\n"
 
-#: filehandler.cpp:602
+#: filehandler.cpp:614
 msgid "staff %1; measure %2: Mup cannot deal with trills without \"tr\" sign\n"
 msgstr ""
 "Pentagrama %1; compás %2: MUP no puede manejar trinos sin el signo \"tr\"\n"
 
-#: filehandler.cpp:607
+#: filehandler.cpp:619
 msgid "Staff %1 has irregular key, this may not work with MUP.\n"
 msgstr ""
 "Pentagrama %1 tiene una métrica irregular, esto puede no funcionar con MUP.\n"
 
-#: filehandler.cpp:612
+#: filehandler.cpp:624
 msgid "Staff %1 has too many voices! MUP accepts up to 3 voices.\n"
 msgstr "Pentagrama %1 tiene demasiadas voces! MUP acepta hasta 3 voces.\n"
 
-#: filehandler.cpp:617
+#: filehandler.cpp:629
 msgid "Staff %1 contains drum staff. This cannot be expressed in MUP.\n"
 msgstr ""
 "Pentagrama %1 contiene un pentagrama de percusión. Esto no se puede expresar "
 "en MUP.\n"
 
-#: filehandler.cpp:622
+#: filehandler.cpp:634
 msgid "staff %1; measure %2: Mup cannot deal with costum beams in graces\n"
 msgstr "Pentagrama %1; compás %2: MUP no puede manejar barras en apoyaturas\n"
 
-#: filehandler.cpp:627
+#: filehandler.cpp:639
 msgid "staff %1; measure %2: Mup cannot deal with graces after\n"
 msgstr ""
 "Pentagrama %1; compás %2: MUP no puede manejar apoyaturas posteriores\n"
 
-#: filehandler.cpp:632
+#: filehandler.cpp:644
 msgid ""
 "staff %1; measure %2: MUP cannot deal with clef changes in the middle of "
 "measure\n"
@@ -519,7 +519,7 @@ msgstr ""
 "Pentagrama %1; compás %2: MUP no puede manejar cambios de clave en medio de "
 "un compás\n"
 
-#: filehandler.cpp:637
+#: filehandler.cpp:649
 msgid ""
 "staff %1; measure %2: MUP cannot deal with key changes in the middle of "
 "measure\n"
@@ -527,22 +527,22 @@ msgstr ""
 "Pentagrama %1; compás %2: MUP no puede manejar cambios de armadura en medio "
 "de un compás\n"
 
-#: filehandler.cpp:642
+#: filehandler.cpp:654
 msgid ""
 "MUP cannot deal with some chord annotations with and some without grids\n"
 msgstr ""
 "MUP no puede manejar algunas anotaciones de acordes y algunas anotaciones de "
 "acorde sin cuadrículas\n"
 
-#: filehandler.cpp:646
+#: filehandler.cpp:658
 msgid "MUP cannot deal with more than one bracket per system\n"
 msgstr "MUP no puede manejar más de una llave por pentagrama\n"
 
-#: filehandler.cpp:650
+#: filehandler.cpp:662
 msgid "MUP cannot deal with nested brackets in braces\n"
 msgstr "MUP no puede manejar corchetes anidados dentro de llaves\n"
 
-#: filehandler.cpp:654
+#: filehandler.cpp:666
 #, fuzzy
 msgid "MUP cannot correctly write more than one slurred grace\n"
 msgstr "MUP no puede manejar más de una llave por pentagrama\n"
@@ -571,7 +571,7 @@ msgstr "eliminar corchete"
 msgid "discontinue bar"
 msgstr "Descontinuar compás"
 
-#: lilyexport.cpp:592
+#: lilyexport.cpp:616
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -579,21 +579,21 @@ msgstr ""
 "NoteEdit ha exportado la partitura a LilyPond pero hubo algunos problemas "
 "que pueden prevenir una salida exitosa de LilyPond.\n"
 
-#: lilyexport.cpp:599
+#: lilyexport.cpp:623
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr "Pentagrama %1; compás %2: 128avo en el compás; mínimo es un 64avo\n"
 
-#: lilyexport.cpp:603
+#: lilyexport.cpp:627
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr ""
 "El pentagrama %1 tiene una métrica irregular. Esto no se puede expresar en "
 "LilyPond\n"
 
-#: lilyexport.cpp:607
+#: lilyexport.cpp:631
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "Pentagrama %1, compás %2: tiene %3 128avo, debería ser: %4\n"
 
-#: lilyexport.cpp:612
+#: lilyexport.cpp:636
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -601,13 +601,13 @@ msgstr ""
 "Pentagrama %1, compás %2: Liilypond menor a 1.5.1 no puede manejar trinos de "
 "longitud variable (líneas onduladas)\n"
 
-#: lilyexport.cpp:617
+#: lilyexport.cpp:641
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr ""
 "Pentagrama %1, compás %2: Sólo un subconjunto de notas en el acorde tiene "
 "ligaduras!\n"
 
-#: lilyexport.cpp:621
+#: lilyexport.cpp:645
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -615,13 +615,13 @@ msgstr ""
 "Pentagrama %1 contiene un pentagrama de percusión. La exportación a Lilypond "
 "puede no ser correcta!\n"
 
-#: lilyexport.cpp:626
+#: lilyexport.cpp:650
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr ""
 "Pentagrama %1: Esta versión de Lilypond no puede manejar ligaduras en "
 "apoyaturas\n"
 
-#: lilyexport.cpp:631
+#: lilyexport.cpp:655
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
@@ -629,25 +629,25 @@ msgstr ""
 "Un corchete con reglas de compases discontínuos no se puede expresar en "
 "LilyPond\n"
 
-#: lilyexport.cpp:635
+#: lilyexport.cpp:659
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Un pentagrama de piano con reglas de comopases contínuos no se puede "
 "expresar en LilyPond\n"
 
-#: lilyexport.cpp:639
+#: lilyexport.cpp:663
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Reglas de compases continuadas fuera de una llave o corchete no se pueden "
 "expresar en LilyPond\n"
 
-#: lilyexport.cpp:643
+#: lilyexport.cpp:667
 msgid "LilyPond produced. But there are some problems."
 msgstr "Se generó salida LilyPond. Pero hubo algunos problemas."
 
-#: lilyexport.cpp:1029
+#: lilyexport.cpp:1053
 #, fuzzy
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "
@@ -792,7 +792,7 @@ msgstr "In&formación de la partitura..."
 msgid "&Key configuration"
 msgstr "Configuración de t&eclas"
 
-#: mainframewidget.cpp:263 mainframewidget.cpp:3884
+#: mainframewidget.cpp:263 mainframewidget.cpp:3889
 msgid "&Close all"
 msgstr "&Cerrar todo"
 
@@ -915,23 +915,28 @@ msgid "Se&gno"
 msgstr "Si&gno"
 
 #: mainframewidget.cpp:321
-msgid "&dal segno"
+#, fuzzy
+msgid "&dal Segno"
 msgstr "&dal signo"
 
 #: mainframewidget.cpp:323
-msgid "dal segno &al fine"
+#, fuzzy
+msgid "dal Segno &al Fine"
 msgstr "dal signo &al fine"
 
 #: mainframewidget.cpp:325
-msgid "dal segno al c&oda"
+#, fuzzy
+msgid "dal Segno al C&oda"
 msgstr "dal signo al c&oda"
 
 #: mainframewidget.cpp:327
-msgid "&fine"
+#, fuzzy
+msgid "&Fine"
 msgstr "&fine"
 
 #: mainframewidget.cpp:329
-msgid "&coda"
+#, fuzzy
+msgid "&Coda"
 msgstr "&coda"
 
 #: mainframewidget.cpp:331
@@ -943,16 +948,24 @@ msgid "&Accelerando"
 msgstr "&Accelerando"
 
 #: mainframewidget.cpp:334
-msgid "&Multi rest..."
+#, fuzzy
+msgid "&Multimeasure rest..."
 msgstr "Silencio &Multicompás..."
 
 #: mainframewidget.cpp:335
-msgid "&New"
-msgstr "&Nuevo"
+#, fuzzy
+msgid "&New staff"
+msgstr "Pentagrama"
+
+#: mainframewidget.cpp:336
+#, fuzzy
+msgid "&Delete staff"
+msgstr "Borrar pentagrama"
 
 #: mainframewidget.cpp:337
-msgid "&Move..."
-msgstr "&Mover..."
+#, fuzzy
+msgid "&Move staff..."
+msgstr "Pentagramas m&udos..."
 
 #: mainframewidget.cpp:338
 msgid "M&ute staffs..."
@@ -1187,7 +1200,7 @@ msgstr "Doble sostenido"
 msgid "Double flat"
 msgstr "Doble bemol"
 
-#: mainframewidget.cpp:435 mainframewidget.cpp:2542 mainframewidget.cpp:2582
+#: mainframewidget.cpp:435 mainframewidget.cpp:2544 mainframewidget.cpp:2584
 msgid "Play"
 msgstr "Tocar"
 
@@ -1247,7 +1260,7 @@ msgstr "Perc5"
 msgid "voice sel."
 msgstr "sel. de voz"
 
-#: mainframewidget.cpp:571 mainframewidget.cpp:4165
+#: mainframewidget.cpp:571 mainframewidget.cpp:4170
 msgid "Key"
 msgstr "Tonalidad"
 
@@ -1410,16 +1423,16 @@ msgstr "Escoja una nota!"
 msgid "Please choose a note from first voice"
 msgstr "Escoja una nota de la primer voz"
 
-#: mainframewidget.cpp:2542
+#: mainframewidget.cpp:2544
 msgid "MIDI mapper is already in use!"
 msgstr "Mapeador MIDI ya está en uso!"
 
-#: mainframewidget.cpp:2582
+#: mainframewidget.cpp:2584
 msgid "nothing to play"
 msgstr "Nada que tocar"
 
-#: mainframewidget.cpp:3342 mainframewidget.cpp:3420 mainframewidget.cpp:3480
-#: mainframewidget.cpp:3821
+#: mainframewidget.cpp:3344 mainframewidget.cpp:3422 mainframewidget.cpp:3482
+#: mainframewidget.cpp:3824
 msgid ""
 "Your document contains unsaved changes.\n"
 "Do you want to save your changes or discard them?"
@@ -1427,15 +1440,15 @@ msgstr ""
 "Su documento contiene cambios sin guardar.\n"
 "¿Desea guardar sus cambios o descartarlos?"
 
-#: mainframewidget.cpp:3344
+#: mainframewidget.cpp:3346
 msgid "New"
 msgstr "Nuevo"
 
-#: mainframewidget.cpp:3678
+#: mainframewidget.cpp:3681
 msgid "Couldn't translate into ABC format, aborting"
 msgstr "No se pudo traducir a formato ABC, abortando"
 
-#: mainframewidget.cpp:3698
+#: mainframewidget.cpp:3701
 msgid ""
 "MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
 "other tools for better score layout.\n"
@@ -1443,189 +1456,189 @@ msgid ""
 "documentation!"
 msgstr ""
 
-#: mainframewidget.cpp:3700
+#: mainframewidget.cpp:3703
 msgid ""
 "MIDI import is performed by the TSE3 library, but the library is not "
 "present!\n"
 "Please look in the MIDI import section in documentation for more information!"
 msgstr ""
 
-#: mainframewidget.cpp:3882
+#: mainframewidget.cpp:3887
 msgid "Do you really want to close all windows?"
 msgstr "¿Realmente desea cerrar todas las ventanas?"
 
-#: mainframewidget.cpp:3883
+#: mainframewidget.cpp:3888
 msgid "Close all"
 msgstr "Cerrar todo"
 
-#: mainframewidget.cpp:3919
+#: mainframewidget.cpp:3924
 msgid "<center>Please choose the target point!</center>"
 msgstr "<center>Por favor escoja el punto de destino!</center>"
 
-#: mainframewidget.cpp:3922 mainframewidget.cpp:3923
+#: mainframewidget.cpp:3927 mainframewidget.cpp:3928
 msgid "Goto"
 msgstr "Ir a"
 
-#: mainframewidget.cpp:4231
+#: mainframewidget.cpp:4236
 msgid "Can't delete last staff."
 msgstr "No se puede borrar el último pentagrama."
 
-#: mainframewidget.cpp:4232 mainframewidget.cpp:4239
+#: mainframewidget.cpp:4237 mainframewidget.cpp:4244
 msgid "Delete Staff"
 msgstr "Borrar pentagrama"
 
-#: mainframewidget.cpp:4238
+#: mainframewidget.cpp:4243
 #, fuzzy
 msgid "This deletes current staff! Are you sure?"
 msgstr "Esto borrará la voz actual! ¿Está seguro?"
 
-#: mainframewidget.cpp:4272
+#: mainframewidget.cpp:4277
 msgid "Staff moving"
 msgstr "Moviendo pentagrama"
 
-#: mainframewidget.cpp:4273
+#: mainframewidget.cpp:4278
 msgid "Please choose the target position:"
 msgstr "Por favor escoja el destino"
 
-#: mainframewidget.cpp:4308
+#: mainframewidget.cpp:4313
 #, fuzzy
 msgid "Please select a region first!"
 msgstr "Por favor escoja una nota o silencio!"
 
-#: mainframewidget.cpp:4308
+#: mainframewidget.cpp:4313
 #, fuzzy
 msgid "MultiStaff"
 msgstr "&Multi-pentagramas"
 
-#: mainframewidget.cpp:4319
+#: mainframewidget.cpp:4324
 msgid "<center>Set tempo:</center>"
 msgstr "<center>Definir Tempo</center>"
 
-#: mainframewidget.cpp:4322
+#: mainframewidget.cpp:4327
 msgid "Set new tempo"
 msgstr "Nuevo Tempo"
 
-#: mainframewidget.cpp:4323
+#: mainframewidget.cpp:4328
 msgid "Set new temp&o"
 msgstr "Definir nuevo temp&o"
 
-#: mainframewidget.cpp:4329
+#: mainframewidget.cpp:4334
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Definir cuenta de compases:</center>"
 
-#: mainframewidget.cpp:4332
+#: mainframewidget.cpp:4337
 msgid "multi rest"
 msgstr "Silencio multi-compás"
 
-#: mainframewidget.cpp:4333
+#: mainframewidget.cpp:4338
 msgid "Set count of m&easures"
 msgstr "Definir cuenta de compas&es"
 
-#: mainframewidget.cpp:4350
+#: mainframewidget.cpp:4355
 msgid "<center>How many notes:</center>"
 msgstr "<center>Cuantas notas:</center>"
 
-#: mainframewidget.cpp:4354
+#: mainframewidget.cpp:4359
 msgid "Autobeam"
 msgstr "Autobarra"
 
-#: mainframewidget.cpp:4366
+#: mainframewidget.cpp:4371
 msgid "Please choose a repeat close sign!"
 msgstr "Por favor seleccione un cierre para la repetición!"
 
-#: mainframewidget.cpp:4370
+#: mainframewidget.cpp:4375
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Por favor defina la cuenta de repeticiones!</center>"
 
-#: mainframewidget.cpp:4374
+#: mainframewidget.cpp:4379
 msgid "Repeat count"
 msgstr "Cuenta de repeticiones"
 
-#: mainframewidget.cpp:4375
+#: mainframewidget.cpp:4380
 msgid "&Set"
 msgstr "&Definir"
 
-#: mainframewidget.cpp:4391
+#: mainframewidget.cpp:4396
 msgid "<center>Semitones:</center>"
 msgstr "<center>Semitonos:</center>"
 
-#: mainframewidget.cpp:4395
+#: mainframewidget.cpp:4400
 msgid "Transpose"
 msgstr "Transporte"
 
-#: mainframewidget.cpp:4396
+#: mainframewidget.cpp:4401
 msgid "&Transpose"
 msgstr "&Transporte"
 
-#: mainframewidget.cpp:4422
+#: mainframewidget.cpp:4427
 msgid "Voice selection"
 msgstr "Selección de voces"
 
-#: mainframewidget.cpp:4423
+#: mainframewidget.cpp:4428
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Seleccione la voz aquí:</center>"
 
-#: mainframewidget.cpp:5161 mainframewidget.cpp:5303
+#: mainframewidget.cpp:5166 mainframewidget.cpp:5308
 msgid "Error writing file \"%1\"."
 msgstr "Error al escribir archivo \"%1\"."
 
-#: mainframewidget.cpp:5162
+#: mainframewidget.cpp:5167
 msgid "Write TSE3"
 msgstr "Escribir TSE3"
 
-#: mainframewidget.cpp:5178
+#: mainframewidget.cpp:5183
 #, fuzzy
 msgid "This overrides the current staff! Continue?"
 msgstr "Esto sobre-escribirá la voz actual! ¿Continuar?"
 
-#: mainframewidget.cpp:5179
+#: mainframewidget.cpp:5184
 msgid "Import Recording"
 msgstr "Importar grabación"
 
-#: mainframewidget.cpp:5180 rc.cpp:311
+#: mainframewidget.cpp:5185 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "&Importar grabación"
 
-#: mainframewidget.cpp:5222
+#: mainframewidget.cpp:5227
 #, fuzzy
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Esto borrará la voz actual! ¿Está seguro?"
 
-#: mainframewidget.cpp:5223
+#: mainframewidget.cpp:5228
 #, fuzzy
 msgid "Confirmation"
 msgstr "Información de la canción"
 
-#: mainframewidget.cpp:5251
+#: mainframewidget.cpp:5256
 msgid "Error creating Score"
 msgstr "Error al crear la partitura"
 
-#: mainframewidget.cpp:5252
+#: mainframewidget.cpp:5257
 msgid "Creating Score"
 msgstr "Creando partitura"
 
-#: mainframewidget.cpp:5304 tse3handler.cpp:365
+#: mainframewidget.cpp:5309 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "TSE3 Salida MIDI"
 
-#: mainframewidget.cpp:5319 mainframewidget.cpp:5354
+#: mainframewidget.cpp:5324 mainframewidget.cpp:5359
 msgid "File read error \"%1\"."
 msgstr "Error de lectura \"%1\"."
 
-#: mainframewidget.cpp:5320
+#: mainframewidget.cpp:5325
 msgid "TSE3 MIDI in"
 msgstr "TSE3 Entrada MIDI"
 
-#: mainframewidget.cpp:5355
+#: mainframewidget.cpp:5360
 msgid "Read TSE3"
 msgstr "Leer TSE3"
 
-#: mainframewidget.cpp:5468
+#: mainframewidget.cpp:5473
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Archivo \"%1\" ya existe! ¿Sobre-escribir?"
 
-#: mainframewidget.cpp:5469
+#: mainframewidget.cpp:5474
 msgid "File already exists"
 msgstr "El archivo ya existe"
 
@@ -4237,11 +4250,11 @@ msgstr "&Seleccionar"
 msgid "Multi staff select"
 msgstr "Selección de multi pentagramas"
 
-#: voice.cpp:4272
+#: voice.cpp:4278
 msgid "posit: chord skipped"
 msgstr "posit: acorde saltado"
 
-#: voice.cpp:4273
+#: voice.cpp:4279
 msgid "Repositioning voice"
 msgstr "Reposinionando voz"
 
@@ -4373,9 +4386,11 @@ msgstr "Mostrar diagrama"
 msgid "Chord constructor"
 msgstr "Constructor de acordes"
 
-#, fuzzy
-#~ msgid "staff"
-#~ msgstr "Pentagrama"
+#~ msgid "&Move..."
+#~ msgstr "&Mover..."
+
+#~ msgid "&New"
+#~ msgstr "&Nuevo"
 
 #~ msgid "Main author and maintainer"
 #~ msgstr "Autor principal y mantenedor"

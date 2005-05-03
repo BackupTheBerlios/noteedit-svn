@@ -73,9 +73,9 @@ Bitte deinstallieren Sie ältere Versionen, besonders alle alten noteeditui.rc-Da
 
 Dekomprimierung und Konfiguration des Archives:
 
-  tar -xvzf noteedit-2.7.4.tgz
+  tar -xvzf noteedit-2.8.0-b1.tgz
 
-  cd noteedit-2.7.4
+  cd noteedit-2.8.0-b1
 
   
 

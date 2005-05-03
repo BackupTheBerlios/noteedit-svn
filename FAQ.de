@@ -102,7 +102,7 @@ A 8.
 
 Sie haben NoteEdit nicht installiert (make install)! Die lokale Installation ist sehr kompliziert. Es gibt eine Shell-Datei, die die Dateien und Links korrekt in das NoteEdit Hauptverzeichnis einfügen sollte:
 
-     cd <pfad>/noteedit-2.7.4
+     cd <pfad>/noteedit-2.8.0-b1
 
      ./admin/locinst.sh
 
@@ -110,8 +110,8 @@ Setzen Sie dann die Umgebungsvariable KDEDIRS auf das Hauptverzeichnis von notee
 
 
   Shell  Kommando
-  (t)csh  setenv KDEDIRS <pfad_zu_noteedit-2.7.4_direcory>
-  andere shell  export KDEDIRS=<pfad_zum_noteedit-2.7.4_direcory>
+  (t)csh  setenv KDEDIRS <pfad_zu_noteedit-2.8.0-b1_direcory>
+  andere shell  export KDEDIRS=<pfad_zum_noteedit-2.8.0-b1_direcory>
 
      cd noteedit
 

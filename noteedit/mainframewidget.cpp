@@ -319,23 +319,23 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	criticalButtons_.append
 		(new KAction( i18n("Se&gno"), 0, this, SLOT(insertSegno()), actionCollection(), "insert_segno" ));
 	criticalButtons_.append
-		(new KAction( i18n("&dal segno"), 0, this, SLOT(insertDalSegno()), actionCollection(), "insert_dal_segno" ));
+		(new KAction( i18n("&dal Segno"), 0, this, SLOT(insertDalSegno()), actionCollection(), "insert_dal_segno" ));
 	criticalButtons_.append
-		(new KAction( i18n("dal segno &al fine"), 0, this, SLOT(insertDalSegnoAlFine()), actionCollection(), "insert_dal_segno_al_fine" ));
+		(new KAction( i18n("dal Segno &al Fine"), 0, this, SLOT(insertDalSegnoAlFine()), actionCollection(), "insert_dal_segno_al_fine" ));
 	criticalButtons_.append
-		(new KAction( i18n("dal segno al c&oda"), 0, this, SLOT(insertDalSegnoAlCoda()), actionCollection(), "insert_dal_segno_al_coda" ));
+		(new KAction( i18n("dal Segno al C&oda"), 0, this, SLOT(insertDalSegnoAlCoda()), actionCollection(), "insert_dal_segno_al_coda" ));
 	criticalButtons_.append
-		(new KAction( i18n("&fine"), 0, this, SLOT(insertFine()), actionCollection(), "insert_fine" ));
+		(new KAction( i18n("&Fine"), 0, this, SLOT(insertFine()), actionCollection(), "insert_fine" ));
 	criticalButtons_.append
-		(new KAction( i18n("&coda"), 0, this, SLOT(insertCoda()), actionCollection(), "insert_coda" ));
+		(new KAction( i18n("&Coda"), 0, this, SLOT(insertCoda()), actionCollection(), "insert_coda" ));
 	criticalButtons_.append
 		(new KAction( i18n("&Ritardando"), 0, this, SLOT(insertRitardando()), actionCollection(), "insert_ritardando" ));
 	criticalButtons_.append
 		(new KAction( i18n("&Accelerando"), 0, this, SLOT(insertAccelerando()), actionCollection(), "insert_accelerando" ));
-	new KAction( i18n("&Multi rest..."),  0, this, SLOT(multiRestDialog()), actionCollection(), "insert_multi_rest" );
-	new KAction( i18n("&New"), "filenew", 0, this, SLOT(newStaff()), actionCollection(), "staff_new" );
-	new KAction( i18n("&Delete"), "editdelete", 0, this, SLOT(deleteStaff()), actionCollection(), "staff_delete" );
-	new KAction( i18n("&Move..."), "editcopy", 0, this, SLOT(staffMoveDialog()), actionCollection(), "staff_move" );
+	new KAction( i18n("&Multimeasure rest..."),  0, this, SLOT(multiRestDialog()), actionCollection(), "insert_multi_rest" );
+	new KAction( i18n("&New staff"), "filenew", 0, this, SLOT(newStaff()), actionCollection(), "staff_new" );
+	new KAction( i18n("&Delete staff"), "editdelete", 0, this, SLOT(deleteStaff()), actionCollection(), "staff_delete" );
+	new KAction( i18n("&Move staff..."), "editcopy", 0, this, SLOT(staffMoveDialog()), actionCollection(), "staff_move" );
 	new KAction( i18n("M&ute staffs..."), 0, this, SLOT(muteDialog()), actionCollection(), "staff_mute" );
 	new KAction( i18n("&Voices..."), 0, this, SLOT(voiceDialog()), actionCollection(), "voice_dialog" );
 	new KAction( i18n("&Staff properties..."), "configure", 0, this, SLOT(setStaffProperties()), actionCollection(), "staff_properties" );
@@ -350,7 +350,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	criticalButtons_.append
 		(new KAction( i18n("&AutoBar"),  0, this, SLOT(autoBar()), actionCollection(), "edit_autobar" ));
 	//new KAction( i18n("Auto&beam..."),  0, this, SLOT(autoBeamDialog()), actionCollection(), "edit_autobeam" );
-	new KAction( i18n("Auto&beam..."),  0, this, SLOT(doAutoBeam()), actionCollection(), "edit_autobeam" );
+	new KAction( i18n("Auto&Beam..."),  0, this, SLOT(doAutoBeam()), actionCollection(), "edit_autobeam" );
 	new KAction( i18n("&Cleanup rests..."), 0, this, SLOT(cleanRestsDialog()), actionCollection(), "edit_cleanuprests" );
 	new KAction( i18n("Set N time repeat"), "repntimes", 0, this, SLOT(repeatCountDialog()), actionCollection(), "set_ntime_repeat");
 	// TODO add Redo/Cut/Copy/Paste to the Edit menu
@@ -853,7 +853,7 @@ void NMainFrameWidget::setEdited(bool edited) {
 	editiones_ = edited;
 	if (inPart_) return;
 	static_cast<KMainWindow *>(parentWidget())
-	->setCaption(actualFname_, edited);
+	->setCaption((scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_), edited);
 }
 
 void NMainFrameWidget::scoreInfo() {
@@ -1647,7 +1647,9 @@ void NMainFrameWidget::KE_delete() {
 	if (playing_) return;
 	NMusElement *elem;
 	QPoint curpos;
-	deleteElem(false);
+	if (NResource::windowWithSelectedRegion_) deleteBlock();
+	else deleteElem(false);
+	
 	if (!NResource::allowKeyboardInsert_) return;
 	if ((elem = currentVoice_->getCurrentElement()) == 0) return;
 	curpos = notePart_->mapFromGlobal(cursor().pos());
@@ -3359,6 +3361,13 @@ void NMainFrameWidget::newPaper() {
 	staffList_.setAutoDelete(true);
 	staffList_.clear();
 	staffList_.setAutoDelete(false);
+	setEdited(false);
+	scTitle_.truncate(0);
+	scSubtitle_.truncate(0);
+	scAuthor_.truncate(0);
+	scLastAuthor_.truncate(0);
+	scCopyright_.truncate(0);
+	scComment_.truncate(0);
 	currentStaff_ = staffList_.first();
 	staffList_.append(currentStaff_ = new NStaff(Y_STAFF_BASE +  NResource::overlength_, 0, 0, this));
 	voiceList_.append(currentVoice_ = currentStaff_->getVoiceNr(0));
@@ -3372,8 +3381,8 @@ void NMainFrameWidget::newPaper() {
 	currentStaff_->setBase( NResource::overlength_  + Y_STAFF_BASE);
 	lastYHeight_ = voiceList_.last()->getStaff()->getBase()+voiceList_.last()->getStaff()->underlength_;
 	actualFname_ = QString();
-	setCaption("noteedit");
-	emit caption("noteedit");
+	parentWidget()->setCaption( scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
+	emit caption("NoteEdit");
 	tempo_ = DEFAULT_TEMPO;
 	NVoice::resetUndo();
 	NResource::windowWithSelectedRegion_ = 0;
@@ -3381,13 +3390,6 @@ void NMainFrameWidget::newPaper() {
 	currentStaff_->setVolume(80);
 	reposit();
 	setScrollableNotePage();
-	setEdited(false);
-	scTitle_.truncate(0);
-	scSubtitle_.truncate(0);
-	scAuthor_.truncate(0);
-	scLastAuthor_.truncate(0);
-	scCopyright_.truncate(0);
-	scComment_.truncate(0);
 	setSaveWidth(170);
 	setSaveHeight(250);
 	setParamsEnabled(false);
@@ -3451,7 +3453,7 @@ bool NMainFrameWidget::loadFile( const QString & fileName )
 #endif
 	if (readStaffs(fileName)) {
 		actualFname_ = fileName;
-		parentWidget()->setCaption(actualFname_);
+		parentWidget()->setCaption( scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
 		tempo_ = DEFAULT_TEMPO;
 		setScrollableNotePage();
 		NResource::windowWithSelectedRegion_ = 0;
@@ -3545,7 +3547,7 @@ void NMainFrameWidget::readStaffsFromXMLFile(const char *fname) {
 		actualFname_.truncate(actualFname_.length() - 4);
 		actualFname_ += ".not";
 	}
-	parentWidget()->setCaption(actualFname_);
+	parentWidget()->setCaption( scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
 	tempo_ = DEFAULT_TEMPO;
 	setScrollableNotePage();
 	NResource::windowWithSelectedRegion_ = 0;
@@ -3601,7 +3603,8 @@ void NMainFrameWidget::fileSaveAs() {
 	if (!fileName.isNull() ) {
 		writeStaffs(fileName);
 		actualFname_ = fileName;
-		emit caption(actualFname_);
+		emit caption( scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
+
 		KURL url;
 		url.setPath( fileName );
 		m_recentFilesAction->addURL( url );
@@ -3693,8 +3696,13 @@ void NMainFrameWidget::setOutputParam() {	this->exportManager( PARAM_PAGE ); }
 void NMainFrameWidget::exportMusicXML() {	this->exportManager( MUSICXML_PAGE ); }
 
 void NMainFrameWidget::importMidi() {
-	KMessageBox::sorry(this, i18n("MIDI import is performed by the TSE3 library!\nSee MIDI import section in documentation or read\n\
-	http://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/doc/midiimport.html"), kapp->makeStdCaption(i18n("???")));
+#ifdef WITH_TSE3
+	if (!TSE3MidiIn()) return;
+	if (!TSE3toScore()) return;
+	KMessageBox::information(this, i18n("MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and other tools for better score layout.\nYou can also read more about MIDI import and other useful tools in documentation!"), kapp->makeStdCaption(i18n("???")));
+#else
+	KMessageBox::sorry(this, i18n("MIDI import is performed by the TSE3 library, but the library is not present!\nPlease look in the MIDI import section in documentation for more information!"), kapp->makeStdCaption(i18n("???")));
+#endif
 }
 
 void NMainFrameWidget::exportManager( int type ) {
@@ -3861,11 +3869,13 @@ void NMainFrameWidget::quitDialog2() {
 	if (NResource::windowList_.count() > 1) {
 		NMainWindow *mainWindow = static_cast<NMainWindow *>(parentWidget());
 		NResource::windowList_.removeRef(mainWindow);
+		mainWindow->setCloseFromApplication();
 	}
 	else {
 		NMainWindow *mainWindow = static_cast<NMainWindow *>(parentWidget());
 		NResource::windowList_.removeRef(mainWindow);
 		delete NResource::nresourceobj_;
+		mainWindow->setCloseFromApplication();
 	}
 }
 
@@ -4304,6 +4314,11 @@ void NMainFrameWidget::cancelMultiStaff() {
 }
 
 void NMainFrameWidget::multiStaffDialog() {
+	if (NResource::windowWithSelectedRegion_ == 0) {	//returns immediately if selection iz none
+		KMessageBox::sorry(this, i18n("Please select a region first!"), kapp->makeStdCaption(i18n("MultiStaff")));
+		return;
+	}
+	
 	if (NResource::staffSelMulti_) delete [] NResource::staffSelMulti_;
 	NResource::staffSelMulti_ = 0;
 	NResource::numOfMultiStaffs_ = staffList_.count();
@@ -5020,7 +5035,7 @@ void NMainFrameWidget::reposit() {
 void NMainFrameWidget::computeMidiTimes(bool insertBars, bool doAutoBeam) {
 	NVoice *voice_elem;
 	for (voice_elem = voiceList_.first(); voice_elem; voice_elem = voiceList_.next()) {
-		voice_elem->getStaff()->staff_props_.measureLength = 4*QUARTER_LENGTH;
+		voice_elem->getStaff()->staff_props_.measureLength = voice_elem->getCurrentMeasureMidiLength();
 		voice_elem->computeMidiTime(insertBars, doAutoBeam && voice_elem == currentVoice_);
 	}
 }
@@ -5210,17 +5225,19 @@ void NMainFrameWidget::completeRecording(bool ok) {
 #endif
 }
 
-void NMainFrameWidget::TSE3toScore() {
+bool NMainFrameWidget::TSE3toScore() {
 #ifdef WITH_TSE3
-	if (recordButton_->isChecked()) return;
-	if (playing_) return;
+	if (recordButton_->isChecked()) return false;
+	if (playing_) return false;
 	if (KMessageBox::warningYesNo(0, i18n("This will clear the existing document. Are you sure?"),
 					kapp->makeStdCaption(i18n("Confirmation"))) == KMessageBox::No)
-		return;
+		return false;
 	kbbutton_->setOn(false);
 	newPaper();
 	tse3Handler_->TSE3toScore(&staffList_, &voiceList_, false);
+	return true;
 #endif
+	return false;
 }
 
 void NMainFrameWidget::TSE3ParttoScore() {
@@ -5299,21 +5316,25 @@ void NMainFrameWidget::TSE3MidiOut() {
 #endif
 }
 
-void NMainFrameWidget::TSE3MidiIn() {
+bool NMainFrameWidget::TSE3MidiIn() {
 #ifdef WITH_TSE3
-	if (recordButton_->isChecked()) return;
-	if (playing_) return;
+	if (recordButton_->isChecked()) return false;
+	if (playing_) return false;
 	kbbutton_->setOn(false);
 	QString fileName = KFileDialog::getOpenFileName( QString::null, midi_file_pattern, this );
-	if (fileName.isNull() )  return;
-	if (!tse3Handler_->TSE3MidiIn(fileName.ascii()))
+	if (fileName.isNull() )  return false;
+	if (!tse3Handler_->TSE3MidiIn(fileName.ascii())) {
 		KMessageBox::sorry
 		  (this,
 		   i18n("File read error \"%1\".").arg(fileName),
 		   kapp->makeStdCaption(i18n("TSE3 MIDI in"))
 		  );
+		return false;
+	}
 	repaint();
+	return true;
 #endif
+	return false;
 }
 
 void NMainFrameWidget::TSE3record(bool on) {
@@ -5406,7 +5427,7 @@ void NMainFrameWidget::deleteElem(bool backspace) {
 		main_props_.actualLength = val;
 	}
 	computeMidiTimes(false);
-	setEdited(val != -1);
+	if (!editiones_) setEdited(val != -1);
 	reposit();
 	repaint();
 }
@@ -5441,7 +5462,7 @@ NMainFrameWidget * NMainWindow::mainFrameWidget() const
 
 void NMainWindow::closeEvent ( QCloseEvent * e ) {
 	if (!closeFromApplication_) mainFrameWidget()->quitDialog2();
-	KMainWindow::closeEvent(e);
+	if (closeFromApplication_) KMainWindow::closeEvent(e);
 }
 
 /*------------------------------------- tools ------------------------------------*/

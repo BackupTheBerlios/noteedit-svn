@@ -1,5 +1,6 @@
 Todo list for version 2.8.0. This file gets deleted in final version!
 - update README file (to match the homepage's one)
+- update NoteEdit Docbook
 - fix multivoice LilyPond export bug (Georg)
 - fix multivoice MusicXML import bug
 - remove all strings in application, which include the old e-mail or website address

@@ -142,7 +142,7 @@
 <date
 >2005-02-01</date>
 <releaseinfo
->2.7.4</releaseinfo>
+>2.8.0-b1</releaseinfo>
 <abstract>
 
 <para
@@ -4798,7 +4798,7 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 ><replaceable
 >pfad</replaceable
 ><userinput
->/noteedit-2.7.4</userinput
+>/noteedit-2.8.0-b1</userinput
 ></para>
 <para
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput
@@ -4823,7 +4823,7 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 <entry
 ><userinput
 >setenv&nbsp;KDEDIRS&nbsp;<replaceable
->pfad_zu_noteedit-2.7.4_direcory</replaceable
+>pfad_zu_noteedit-2.8.0-b1_direcory</replaceable
 ></userinput
 ></entry
 ></row>
@@ -4833,7 +4833,7 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 ><entry
 ><userinput
 >export&nbsp;KDEDIRS=<replaceable
->pfad_zum_noteedit-2.7.4_direcory</replaceable
+>pfad_zum_noteedit-2.8.0-b1_direcory</replaceable
 ></userinput
 ></entry
 ></row>
@@ -7125,11 +7125,11 @@ latex $TEXFILE
 >Dekomprimierung und Konfiguration des Archives:</para>
 <para
 >&nbsp;&nbsp;<userinput
->tar -xvzf noteedit-2.7.4.tgz</userinput
+>tar -xvzf noteedit-2.8.0-b1.tgz</userinput
 ></para>
 <para
 >&nbsp;&nbsp;<userinput
->cd noteedit-2.7.4</userinput
+>cd noteedit-2.8.0-b1</userinput
 ></para>
 <para
 >&nbsp;&nbsp;<informaltable

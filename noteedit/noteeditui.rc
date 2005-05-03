@@ -5,11 +5,11 @@
   <!-- Standard actions (new/open/save/saveas) go here automatically -->
   <Action name="window_new_window"/>
   <Separator />
-  <Menu name="import"><text>Import</text>
+  <Menu name="import"><text>&amp;Import</text>
    <Action name="import_musicxml"/>
    <Action name="import_midi"/>
   </Menu>
-  <Menu name="export"><text>Export</text>
+  <Menu name="export"><text>&amp;Export</text>
    <Action name="export_midi"/>
    <Action name="export_musixtex"/>
    <Action name="export_abc"/>
@@ -59,7 +59,7 @@
   <Action name="insert_ritardando"/>
   <Action name="insert_accelerando"/>
   <Action name="insert_text"/>
-  <Menu name="segno_staff"><text>Se&amp;gno</text>
+  <Menu name="segno_staff"><text>Seg&amp;no</text>
   <Action name="insert_segno"/>
   <Action name="insert_dal_segno"/>
   <Action name="insert_dal_segno_al_fine"/>

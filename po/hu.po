@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-02 18:59+0200\n"
+"POT-Creation-Date: 2005-05-03 21:22+0200\n"
 "PO-Revision-Date: 2002-08-28 11:33+0200\n"
 "Last-Translator: Peter Breuer <comp@suselinux.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -17,9 +17,9 @@ msgstr ""
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
-#: lilyexport.cpp:1054 mainframewidget.cpp:1172 mainframewidget.cpp:1176
-#: mainframewidget.cpp:1189 mainframewidget.cpp:1202 mainframewidget.cpp:1207
-#: mainframewidget.cpp:3701 mainframewidget.cpp:3703 mainframewidget.cpp:4371
+#: lilyexport.cpp:1054 mainframewidget.cpp:1173 mainframewidget.cpp:1177
+#: mainframewidget.cpp:1190 mainframewidget.cpp:1203 mainframewidget.cpp:1208
+#: mainframewidget.cpp:3702 mainframewidget.cpp:3704 mainframewidget.cpp:4376
 #: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
 #: musicxmlexport.cpp:320 musixtex.cpp:164 musixtex.cpp:166 musixtex.cpp:184
 #: musixtex.cpp:186 musixtex.cpp:201 musixtex.cpp:203 tse3handler.cpp:437
@@ -676,761 +676,773 @@ msgstr "Ne hozzon létre OSS MIDI időzítőt"
 msgid "Create an aRts midi scheduler"
 msgstr "aRts MIDI időzítő létrehozása"
 
-#: mainframewidget.cpp:160
+#: mainframewidget.cpp:161
 msgid "C Major; a minor"
 msgstr "C-Dúr; a-moll"
 
-#: mainframewidget.cpp:160
+#: mainframewidget.cpp:161
 msgid "F Major; d minor"
 msgstr "F-Dúr, d-moll"
 
-#: mainframewidget.cpp:161
+#: mainframewidget.cpp:162
 msgid "B flat Major; g minor"
 msgstr "B-Dúr; g-moll"
 
-#: mainframewidget.cpp:161
+#: mainframewidget.cpp:162
 msgid "E flat Major; c minor"
 msgstr "Esz-Dúr; c-moll"
 
-#: mainframewidget.cpp:162
+#: mainframewidget.cpp:163
 msgid "A flat Major; f minor"
 msgstr "Asz-Dúr; f-moll"
 
-#: mainframewidget.cpp:162
+#: mainframewidget.cpp:163
 msgid "D flat Major; b minor"
 msgstr "Desz-Dúr; b-moll"
 
-#: mainframewidget.cpp:163
+#: mainframewidget.cpp:164
 msgid "G flat Major; e flat minor"
 msgstr "Gesz-Dúr; disz-moll"
 
-#: mainframewidget.cpp:163
+#: mainframewidget.cpp:164
 #, fuzzy
 msgid "C flat Major; a flat minor"
 msgstr "Gesz-Dúr; disz-moll"
 
-#: mainframewidget.cpp:164
+#: mainframewidget.cpp:165
 msgid "G Major; e minor"
 msgstr "G-Dúr; e-moll"
 
-#: mainframewidget.cpp:164
+#: mainframewidget.cpp:165
 msgid "D Major; b minor"
 msgstr "D-Dúr; h-moll"
 
-#: mainframewidget.cpp:165
+#: mainframewidget.cpp:166
 msgid "A Major; f sharp minor"
 msgstr "A-Dúr; fisz-moll"
 
-#: mainframewidget.cpp:165
+#: mainframewidget.cpp:166
 msgid "E Major; c sharp minor"
 msgstr "E-Dúr; cisz-moll"
 
-#: mainframewidget.cpp:166
+#: mainframewidget.cpp:167
 msgid "B Major; g sharp minor"
 msgstr "H-Dúr; gisz-moll"
 
-#: mainframewidget.cpp:166
+#: mainframewidget.cpp:167
 msgid "F sharp Major; d sharp minor"
 msgstr "Fisz-Dúr; disz-moll"
 
-#: mainframewidget.cpp:167
+#: mainframewidget.cpp:168
 #, fuzzy
 msgid "C sharp Major; a sharp minor"
 msgstr "Fisz-Dúr; disz-moll"
 
-#: mainframewidget.cpp:251
+#: mainframewidget.cpp:252
 #, fuzzy
 msgid "&Import MusicXML..."
 msgstr "Export Musi&XTeX..."
 
-#: mainframewidget.cpp:252
+#: mainframewidget.cpp:253
 msgid "Export &MIDI..."
 msgstr "Export &MIDI..."
 
-#: mainframewidget.cpp:253
+#: mainframewidget.cpp:254
 #, fuzzy
 msgid "Import &MIDI..."
 msgstr "Export &MIDI..."
 
-#: mainframewidget.cpp:254
+#: mainframewidget.cpp:255
 msgid "Export Musi&XTeX..."
 msgstr "Export Musi&XTeX..."
 
-#: mainframewidget.cpp:255
-msgid "Export &PMX..."
-msgstr "Export &PMX..."
-
 #: mainframewidget.cpp:256
-#, fuzzy
-msgid "Export &ABC..."
+msgid "Export &PMX..."
 msgstr "Export &PMX..."
 
 #: mainframewidget.cpp:257
 #, fuzzy
+msgid "Export &ABC..."
+msgstr "Export &PMX..."
+
+#: mainframewidget.cpp:258
+#, fuzzy
 msgid "Export M&usicXML..."
 msgstr "Export Musi&XTeX..."
 
-#: mainframewidget.cpp:258
-msgid "Output Params..."
+#: mainframewidget.cpp:259
+#, fuzzy
+msgid "&Output Params..."
 msgstr "Kimeneti paraméterek..."
 
-#: mainframewidget.cpp:259
+#: mainframewidget.cpp:260
 msgid "Export &LilyPond..."
 msgstr "Export &LilyPond..."
 
-#: mainframewidget.cpp:260
+#: mainframewidget.cpp:261
 msgid "Score in&formation..."
 msgstr "Kotta in&formáció..."
 
-#: mainframewidget.cpp:261
+#: mainframewidget.cpp:262
 msgid "&Key configuration"
 msgstr "&Kulcs beállítása"
 
-#: mainframewidget.cpp:263 mainframewidget.cpp:3889
-msgid "&Close all"
-msgstr "&Mindent bezár"
-
-#: mainframewidget.cpp:265
+#: mainframewidget.cpp:266
 msgid "Show &bar numbers"
 msgstr "Ütemszá&mok megjelenítése"
 
-#: mainframewidget.cpp:268
+#: mainframewidget.cpp:269
 msgid "Show &staff names"
 msgstr "Szólam&nevek megjelenítése"
 
-#: mainframewidget.cpp:271
+#: mainframewidget.cpp:272
 msgid "Show &aux lines"
 msgstr "Kimeneti (&aux) vonalak megjelenítése"
 
-#: mainframewidget.cpp:274
+#: mainframewidget.cpp:275
 #, fuzzy
 msgid "Show staff &context"
 msgstr "Szólam&nevek megjelenítése"
 
-#: mainframewidget.cpp:277
+#: mainframewidget.cpp:278
 msgid "Show &drum tools"
 msgstr "&Dob eszközök megjelenítése..."
 
-#: mainframewidget.cpp:279
+#: mainframewidget.cpp:280
 msgid "Reduce &accidentals..."
 msgstr "&Módosítók csökkentése..."
 
-#: mainframewidget.cpp:280
+#: mainframewidget.cpp:281
 msgid "&Collect notes..."
 msgstr "&Hangjegyek kigyűjtése..."
 
-#: mainframewidget.cpp:281
+#: mainframewidget.cpp:282
 msgid "Set all to sharp"
 msgstr "Az összes #-re"
 
-#: mainframewidget.cpp:282
+#: mainframewidget.cpp:283
 msgid "Set all to flat"
 msgstr "Az összes b-re"
 
-#: mainframewidget.cpp:283
+#: mainframewidget.cpp:284
 msgid "&Transpose..."
 msgstr "&Transzponálás..."
 
-#: mainframewidget.cpp:284
-msgid "&Change Clef..."
+#: mainframewidget.cpp:285
+#, fuzzy
+msgid "C&hange Clef..."
 msgstr "Kulcs &megváltoztatása..."
 
-#: mainframewidget.cpp:285
+#: mainframewidget.cpp:286
 #, fuzzy
 msgid "T&uplet..."
 msgstr "&Több szünetjel..."
 
-#: mainframewidget.cpp:287
-msgid "&Clef..."
+#: mainframewidget.cpp:288
+#, fuzzy
+msgid "Cle&f..."
 msgstr "&Kulcs..."
 
-#: mainframewidget.cpp:289
+#: mainframewidget.cpp:290
 msgid "&Key signature..."
 msgstr "&Kulcs bejegyzés..."
 
-#: mainframewidget.cpp:291
-msgid "&RepeatOpen"
+#: mainframewidget.cpp:292
+#, fuzzy
+msgid "Repeat&Open"
 msgstr "&IsmétlésKezdet"
 
-#: mainframewidget.cpp:293
-msgid "RepeatOpen&Close"
+#: mainframewidget.cpp:294
+#, fuzzy
+msgid "Re&peatOpenClose"
 msgstr "IsmétlésKezdet&Vége"
 
-#: mainframewidget.cpp:295
-msgid "R&epeatClose"
+#: mainframewidget.cpp:296
+#, fuzzy
+msgid "Repeat&Close"
 msgstr "I&smétlésVége"
 
-#: mainframewidget.cpp:297
+#: mainframewidget.cpp:298
 msgid "SpecialEnding&1"
 msgstr "SpeciálisVég&1"
 
-#: mainframewidget.cpp:299
+#: mainframewidget.cpp:300
 msgid "SpecialEnding&2"
 msgstr "SpeciálisVég&2"
 
-#: mainframewidget.cpp:301
+#: mainframewidget.cpp:302
 #, fuzzy
-msgid "&DoubleBar"
+msgid "&Double Bar"
 msgstr "##"
 
-#: mainframewidget.cpp:303
-msgid "&EndBar"
+#: mainframewidget.cpp:304
+msgid "&End Bar"
 msgstr ""
 
-#: mainframewidget.cpp:305
-msgid "T&ime signature..."
+#: mainframewidget.cpp:306
+#, fuzzy
+msgid "Time si&gnature..."
 msgstr "&Idő bejegyzés..."
 
-#: mainframewidget.cpp:307
-msgid "Te&mpo signature..."
+#: mainframewidget.cpp:308
+#, fuzzy
+msgid "Tempo &signature..."
 msgstr "Te&mpó bejegyzés..."
 
-#: mainframewidget.cpp:309
+#: mainframewidget.cpp:310
 msgid "&Volume change..."
 msgstr "&Hangerőváltás..."
 
-#: mainframewidget.cpp:311
-msgid "V&oice change..."
+#: mainframewidget.cpp:312
+#, fuzzy
+msgid "Vo&ice change..."
 msgstr "Han&gszer váltás..."
 
-#: mainframewidget.cpp:313
-msgid "Ch&ord..."
+#: mainframewidget.cpp:314
+#, fuzzy
+msgid "C&hord..."
 msgstr "Akk&ord..."
 
-#: mainframewidget.cpp:315
+#: mainframewidget.cpp:316
 msgid "&Line..."
 msgstr "&Vonal..."
 
-#: mainframewidget.cpp:317
+#: mainframewidget.cpp:318
 #, fuzzy
 msgid "&Text ..."
 msgstr "&Több szünetjel..."
 
-#: mainframewidget.cpp:319 rc.cpp:46
-#, no-c-format
-msgid "Se&gno"
-msgstr ""
+#: mainframewidget.cpp:320
+#, fuzzy
+msgid "&Segno"
+msgstr "&Téma:"
 
-#: mainframewidget.cpp:321
+#: mainframewidget.cpp:322
 msgid "&dal Segno"
 msgstr ""
 
-#: mainframewidget.cpp:323
+#: mainframewidget.cpp:324
 msgid "dal Segno &al Fine"
 msgstr ""
 
-#: mainframewidget.cpp:325
+#: mainframewidget.cpp:326
 msgid "dal Segno al C&oda"
 msgstr ""
 
-#: mainframewidget.cpp:327
+#: mainframewidget.cpp:328
 #, fuzzy
 msgid "&Fine"
 msgstr "&Vonal..."
 
-#: mainframewidget.cpp:329
+#: mainframewidget.cpp:330
 msgid "&Coda"
 msgstr ""
 
-#: mainframewidget.cpp:331
+#: mainframewidget.cpp:332
 msgid "&Ritardando"
 msgstr ""
 
-#: mainframewidget.cpp:333
+#: mainframewidget.cpp:334
 msgid "&Accelerando"
 msgstr ""
 
-#: mainframewidget.cpp:334
+#: mainframewidget.cpp:335
 #, fuzzy
 msgid "&Multimeasure rest..."
 msgstr "&Több szünetjel..."
 
-#: mainframewidget.cpp:335
+#: mainframewidget.cpp:336
 #, fuzzy
 msgid "&New staff"
 msgstr "Szólam"
 
-#: mainframewidget.cpp:336
+#: mainframewidget.cpp:337
 #, fuzzy
 msgid "&Delete staff"
 msgstr "Szólam törlése"
 
-#: mainframewidget.cpp:337
+#: mainframewidget.cpp:338
 #, fuzzy
 msgid "&Move staff..."
 msgstr "Szólamok el&némítása..."
 
-#: mainframewidget.cpp:338
+#: mainframewidget.cpp:339
 msgid "M&ute staffs..."
 msgstr "Szólamok el&némítása..."
 
-#: mainframewidget.cpp:339
+#: mainframewidget.cpp:340
 msgid "&Voices..."
 msgstr "&Hangok..."
 
-#: mainframewidget.cpp:340
+#: mainframewidget.cpp:341
 msgid "&Staff properties..."
 msgstr "&Szólamtulajdonságok..."
 
-#: mainframewidget.cpp:341
+#: mainframewidget.cpp:342
 #, fuzzy
 msgid "Score &layout..."
 msgstr "Kotta in&formáció..."
 
-#: mainframewidget.cpp:343
+#: mainframewidget.cpp:344
 msgid "&Lyrics..."
 msgstr "&Dalszöveg..."
 
-#: mainframewidget.cpp:345
+#: mainframewidget.cpp:346
 msgid "&Import recording"
 msgstr "&Felvétel importálás"
 
-#: mainframewidget.cpp:347
-msgid "&MultiStaff"
+#: mainframewidget.cpp:348
+#, fuzzy
+msgid "Select &Multi Staff..."
 msgstr "Több&szólamú"
 
-#: mainframewidget.cpp:348
-msgid "&Goto"
-msgstr "U&grás"
+#: mainframewidget.cpp:349
+msgid "&Goto bar..."
+msgstr ""
 
-#: mainframewidget.cpp:350
-msgid "&AutoBar"
+#: mainframewidget.cpp:351
+#, fuzzy
+msgid "&Auto Bar..."
 msgstr "&Autoütem"
 
-#: mainframewidget.cpp:352
+#: mainframewidget.cpp:353
 #, fuzzy
-msgid "Auto&Beam..."
+msgid "Auto &Beam..."
 msgstr "Auto&gerenda..."
 
-#: mainframewidget.cpp:353
+#: mainframewidget.cpp:354
 msgid "&Cleanup rests..."
 msgstr "Szünetjelek &törlése"
 
-#: mainframewidget.cpp:354
-msgid "Set N time repeat"
+#: mainframewidget.cpp:355
+msgid "&Set N time repeat"
 msgstr ""
 
-#: mainframewidget.cpp:357
+#: mainframewidget.cpp:358
 msgid "&Create TSE3 song"
 msgstr "&TSE3 zene létrehozása"
 
-#: mainframewidget.cpp:358
+#: mainframewidget.cpp:359
 msgid "&Play TSE3 song"
 msgstr "TSE3 zene &lejátszása"
 
-#: mainframewidget.cpp:359
+#: mainframewidget.cpp:360
 msgid "&Read TSE3 song"
 msgstr "TSE3 zene &beolvasása"
 
-#: mainframewidget.cpp:360
+#: mainframewidget.cpp:361
 msgid "&Write TSE3 song"
 msgstr "TSE3 zene í&rása"
 
-#: mainframewidget.cpp:361
-msgid "MIDI &out"
+#: mainframewidget.cpp:362
+#, fuzzy
+msgid "MIDI &out..."
 msgstr "MIDI &kimenet"
 
-#: mainframewidget.cpp:362
-msgid "MIDI &in"
+#: mainframewidget.cpp:363
+#, fuzzy
+msgid "MIDI &in..."
 msgstr "MIDI &bemenet"
 
-#: mainframewidget.cpp:363
+#: mainframewidget.cpp:364
 msgid "&Filter dialog..."
 msgstr "&Szűrők..."
 
-#: mainframewidget.cpp:364
-msgid "In&formation..."
+#: mainframewidget.cpp:365
+#, fuzzy
+msgid "Inform&ation..."
 msgstr "In&formáció..."
 
-#: mainframewidget.cpp:365
+#: mainframewidget.cpp:366
 msgid "&Merge..."
 msgstr "Összefű&zés..."
 
-#: mainframewidget.cpp:366
+#: mainframewidget.cpp:367
 msgid "TSE3 --> &Score"
 msgstr "TSE3 --> &kotta"
 
-#: mainframewidget.cpp:368
-msgid "&New window"
+#: mainframewidget.cpp:369
+#, fuzzy
+msgid "New &window"
 msgstr "Új a&blak"
 
-#: mainframewidget.cpp:369
+#: mainframewidget.cpp:370
 msgid "Tip of the &day"
 msgstr "A nap &tippje"
 
-#: mainframewidget.cpp:373
+#: mainframewidget.cpp:374
 #, fuzzy
 msgid "select"
 msgstr "törlés"
 
-#: mainframewidget.cpp:374
+#: mainframewidget.cpp:375
 msgid "breve"
 msgstr "címzés"
 
-#: mainframewidget.cpp:375 mainframewidget.cpp:629
+#: mainframewidget.cpp:376 mainframewidget.cpp:630
 msgid "Full note"
 msgstr "Egészhang"
 
-#: mainframewidget.cpp:376 mainframewidget.cpp:631
+#: mainframewidget.cpp:377 mainframewidget.cpp:632
 msgid "Half note"
 msgstr "Félhang"
 
-#: mainframewidget.cpp:377 mainframewidget.cpp:635
+#: mainframewidget.cpp:378 mainframewidget.cpp:636
 msgid "Quarter note"
 msgstr "Negyedhang"
 
-#: mainframewidget.cpp:378 mainframewidget.cpp:637
+#: mainframewidget.cpp:379 mainframewidget.cpp:638
 msgid "Eighth note"
 msgstr "Nyolcadhang"
 
-#: mainframewidget.cpp:379 mainframewidget.cpp:639
+#: mainframewidget.cpp:380 mainframewidget.cpp:640
 msgid "Sixteenth note"
 msgstr "Tizenhatod hang"
 
-#: mainframewidget.cpp:380 mainframewidget.cpp:641
+#: mainframewidget.cpp:381 mainframewidget.cpp:642
 msgid "32nd note"
 msgstr "32. hang"
 
-#: mainframewidget.cpp:381 mainframewidget.cpp:643
+#: mainframewidget.cpp:382 mainframewidget.cpp:644
 msgid "64th note"
 msgstr "64. hang"
 
-#: mainframewidget.cpp:382 mainframewidget.cpp:645
+#: mainframewidget.cpp:383 mainframewidget.cpp:646
 msgid "128th note"
 msgstr "128. hang"
 
-#: mainframewidget.cpp:383
+#: mainframewidget.cpp:384
 msgid "Grace Eighth"
 msgstr "Díszítő nyolcad"
 
-#: mainframewidget.cpp:384
+#: mainframewidget.cpp:385
 msgid "Grace sixteenth"
 msgstr "Díszítő tizenhatod"
 
-#: mainframewidget.cpp:385
+#: mainframewidget.cpp:386
 msgid "Grace Eight Stroken"
 msgstr "Díszítő 8'"
 
-#: mainframewidget.cpp:394
+#: mainframewidget.cpp:395
 msgid "Dotted note"
 msgstr "Pontozott hang "
 
-#: mainframewidget.cpp:396
+#: mainframewidget.cpp:397
 msgid "DoubleDotted note"
 msgstr "Duplán pontozott hang"
 
-#: mainframewidget.cpp:398
+#: mainframewidget.cpp:399
 msgid "Tie"
 msgstr "Kötés"
 
-#: mainframewidget.cpp:399
+#: mainframewidget.cpp:400
 msgid "Beam"
 msgstr "Gerenda"
 
-#: mainframewidget.cpp:400
+#: mainframewidget.cpp:401
 msgid "Slur"
 msgstr "Kötőív"
 
-#: mainframewidget.cpp:401
+#: mainframewidget.cpp:402
 msgid "Triplet"
 msgstr "Triola"
 
-#: mainframewidget.cpp:402
+#: mainframewidget.cpp:403
 msgid "Hidden rests"
 msgstr "Rejtett szünetjelek"
 
-#: mainframewidget.cpp:404
+#: mainframewidget.cpp:405
 msgid "Staccato"
 msgstr "Staccato"
 
-#: mainframewidget.cpp:406
+#: mainframewidget.cpp:407
 msgid "Sforzato"
 msgstr "Sforzato"
 
-#: mainframewidget.cpp:408
+#: mainframewidget.cpp:409
 msgid "Portato"
 msgstr "Portato"
 
-#: mainframewidget.cpp:410
+#: mainframewidget.cpp:411
 msgid "Fermate"
 msgstr "Fermate"
 
-#: mainframewidget.cpp:412
+#: mainframewidget.cpp:413
 #, fuzzy
 msgid "Arpeggio"
 msgstr "Agogo"
 
-#: mainframewidget.cpp:414
+#: mainframewidget.cpp:415
 msgid "Pedal on"
 msgstr ""
 
-#: mainframewidget.cpp:416
+#: mainframewidget.cpp:417
 msgid "Pedal off"
 msgstr ""
 
-#: mainframewidget.cpp:418
+#: mainframewidget.cpp:419
 msgid "Strong pizzicato"
 msgstr "Strong pizzicato"
 
-#: mainframewidget.cpp:420
+#: mainframewidget.cpp:421
 msgid "Sforzando"
 msgstr "Sforzando"
 
-#: mainframewidget.cpp:423
+#: mainframewidget.cpp:424
 msgid "Sharp"
 msgstr "#"
 
-#: mainframewidget.cpp:425
+#: mainframewidget.cpp:426
 msgid "Flat"
 msgstr "b"
 
-#: mainframewidget.cpp:427
+#: mainframewidget.cpp:428
 msgid "Natural"
 msgstr "Természetes"
 
-#: mainframewidget.cpp:429
+#: mainframewidget.cpp:430
 msgid "Double sharp"
 msgstr "##"
 
-#: mainframewidget.cpp:431
+#: mainframewidget.cpp:432
 msgid "Double flat"
 msgstr "bb"
 
-#: mainframewidget.cpp:435 mainframewidget.cpp:2544 mainframewidget.cpp:2584
+#: mainframewidget.cpp:436 mainframewidget.cpp:2545 mainframewidget.cpp:2585
 msgid "Play"
 msgstr "Lejátszás"
 
-#: mainframewidget.cpp:439
+#: mainframewidget.cpp:440
 msgid "Keyboard"
 msgstr "Billentyűzet"
 
-#: mainframewidget.cpp:440
+#: mainframewidget.cpp:441
 msgid "Keyboard insert"
 msgstr "Billentyűzet beszúrása"
 
-#: mainframewidget.cpp:442
+#: mainframewidget.cpp:443
 msgid "Record"
 msgstr "Felvétel"
 
-#: mainframewidget.cpp:444
+#: mainframewidget.cpp:445
 msgid "Edit mode"
 msgstr "Szerkesztési mód"
 
-#: mainframewidget.cpp:445
+#: mainframewidget.cpp:446
 msgid "Insert from keyboard"
 msgstr "Beszúrás billentyűzetről"
 
-#: mainframewidget.cpp:446
+#: mainframewidget.cpp:447
 msgid "glue"
 msgstr "Ragasztó"
 
-#: mainframewidget.cpp:447
+#: mainframewidget.cpp:448
 msgid "Stem up"
 msgstr "szár felfele"
 
-#: mainframewidget.cpp:448
+#: mainframewidget.cpp:449
 msgid "Stem down"
 msgstr "szár lefele"
 
-#: mainframewidget.cpp:452
+#: mainframewidget.cpp:453
 msgid "drum1"
 msgstr "dob1"
 
-#: mainframewidget.cpp:454
+#: mainframewidget.cpp:455
 msgid "drum2"
 msgstr "dob2"
 
-#: mainframewidget.cpp:456
+#: mainframewidget.cpp:457
 msgid "drum3"
 msgstr "dob3"
 
-#: mainframewidget.cpp:458
+#: mainframewidget.cpp:459
 msgid "drum4"
 msgstr "dob4"
 
-#: mainframewidget.cpp:460
+#: mainframewidget.cpp:461
 msgid "drum5"
 msgstr "dob5"
 
-#: mainframewidget.cpp:548
+#: mainframewidget.cpp:549
 msgid "voice sel."
 msgstr "hang v."
 
-#: mainframewidget.cpp:571 mainframewidget.cpp:4170
+#: mainframewidget.cpp:572 mainframewidget.cpp:4175
 msgid "Key"
 msgstr "Hang"
 
-#: mainframewidget.cpp:605
+#: mainframewidget.cpp:606
 msgid "move up"
 msgstr "felfele"
 
-#: mainframewidget.cpp:607
+#: mainframewidget.cpp:608
 msgid "move down"
 msgstr "lefele"
 
-#: mainframewidget.cpp:609
+#: mainframewidget.cpp:610
 #, fuzzy
 msgid "move semi up"
 msgstr "felfele"
 
-#: mainframewidget.cpp:611
+#: mainframewidget.cpp:612
 #, fuzzy
 msgid "move semi down"
 msgstr "lefele"
 
-#: mainframewidget.cpp:613
+#: mainframewidget.cpp:614
 msgid "move left"
 msgstr "balra"
 
-#: mainframewidget.cpp:615
+#: mainframewidget.cpp:616
 msgid "move start"
 msgstr "elejére"
 
-#: mainframewidget.cpp:617
+#: mainframewidget.cpp:618
 msgid "move right"
 msgstr "jobbra"
 
-#: mainframewidget.cpp:619
+#: mainframewidget.cpp:620
 msgid "move end"
 msgstr "végére"
 
-#: mainframewidget.cpp:621 mainframewidget.cpp:665 mainframewidget.cpp:667
+#: mainframewidget.cpp:622 mainframewidget.cpp:666 mainframewidget.cpp:668
 msgid "delete"
 msgstr "törlés"
 
-#: mainframewidget.cpp:623
+#: mainframewidget.cpp:624
 msgid "toggle edit"
 msgstr "szerkesztés ki/be"
 
-#: mainframewidget.cpp:625
+#: mainframewidget.cpp:626
 msgid "insert chord note"
 msgstr "akkord beszúrása"
 
-#: mainframewidget.cpp:627
+#: mainframewidget.cpp:628
 msgid "insert note"
 msgstr "hangjegy beszúrása"
 
-#: mainframewidget.cpp:633
+#: mainframewidget.cpp:634
 msgid "set triplet"
 msgstr "triola"
 
-#: mainframewidget.cpp:647 mainframewidget.cpp:649
+#: mainframewidget.cpp:648 mainframewidget.cpp:650
 msgid "set tied"
 msgstr "kötés"
 
-#: mainframewidget.cpp:651
+#: mainframewidget.cpp:652
 msgid "dot"
 msgstr "pont"
 
-#: mainframewidget.cpp:653
+#: mainframewidget.cpp:654
 msgid "flat"
 msgstr "b"
 
-#: mainframewidget.cpp:655 mainframewidget.cpp:657
+#: mainframewidget.cpp:656 mainframewidget.cpp:658
 msgid "sharp"
 msgstr "#"
 
-#: mainframewidget.cpp:659 mainframewidget.cpp:661
+#: mainframewidget.cpp:660 mainframewidget.cpp:662
 msgid "natural"
 msgstr "természetes"
 
-#: mainframewidget.cpp:663
+#: mainframewidget.cpp:664
 msgid "set bar at"
 msgstr "ütem beállítása itt"
 
-#: mainframewidget.cpp:669
+#: mainframewidget.cpp:670
 msgid "set bar after"
 msgstr "ütem beállítása utána"
 
-#: mainframewidget.cpp:671
+#: mainframewidget.cpp:672
 msgid "insert rest"
 msgstr "szünet beszúrása"
 
-#: mainframewidget.cpp:673
+#: mainframewidget.cpp:674
 msgid "toggle beam"
 msgstr "gerenda bekapcsolása"
 
-#: mainframewidget.cpp:675
+#: mainframewidget.cpp:676
 msgid "keyboard insert mode"
 msgstr "billentyűzet beszúrás mód"
 
-#: mainframewidget.cpp:680
+#: mainframewidget.cpp:681
 msgid "pitch C"
 msgstr "C"
 
-#: mainframewidget.cpp:682
+#: mainframewidget.cpp:683
 msgid "pitch D"
 msgstr "D"
 
-#: mainframewidget.cpp:684
+#: mainframewidget.cpp:685
 msgid "pitch E"
 msgstr "E"
 
-#: mainframewidget.cpp:686
+#: mainframewidget.cpp:687
 msgid "pitch F"
 msgstr "F"
 
-#: mainframewidget.cpp:688
+#: mainframewidget.cpp:689
 msgid "pitch G"
 msgstr "G"
 
-#: mainframewidget.cpp:690
+#: mainframewidget.cpp:691
 msgid "pitch A"
 msgstr "A"
 
-#: mainframewidget.cpp:692
+#: mainframewidget.cpp:693
 msgid "pitch B"
 msgstr "B"
 
-#: mainframewidget.cpp:717 mainframewidget.cpp:737 mainframewidget.cpp:752
+#: mainframewidget.cpp:718 mainframewidget.cpp:738 mainframewidget.cpp:753
 #, fuzzy
 msgid "enabled"
 msgstr "bekapcsolt"
 
-#: mainframewidget.cpp:729
+#: mainframewidget.cpp:730
 #, fuzzy
 msgid "Trill"
 msgstr "triola"
 
-#: mainframewidget.cpp:740
+#: mainframewidget.cpp:741
 msgid "turn"
 msgstr ""
 
-#: mainframewidget.cpp:748
+#: mainframewidget.cpp:749
 msgid "Crescendo"
 msgstr ""
 
-#: mainframewidget.cpp:764 rc.cpp:343
+#: mainframewidget.cpp:765 rc.cpp:343
 #, no-c-format
 msgid "8va"
 msgstr ""
 
-#: mainframewidget.cpp:1172 mainframewidget.cpp:1189
+#: mainframewidget.cpp:1173 mainframewidget.cpp:1190
 msgid "Please choose a note or rest!"
 msgstr "Válasszon ki egy hangjegyet vagy szünetjelet!"
 
-#: mainframewidget.cpp:1176
+#: mainframewidget.cpp:1177
 msgid "Please choose a note or rest from first voice"
 msgstr "Válasszon ki egy hangjegyet vagy szünetjelet az első hangszerhez!"
 
-#: mainframewidget.cpp:1202
+#: mainframewidget.cpp:1203
 msgid "Please choose a note!"
 msgstr "Válasszon ki egy hangjegyet!"
 
-#: mainframewidget.cpp:1207
+#: mainframewidget.cpp:1208
 msgid "Please choose a note from first voice"
 msgstr "Válasszon ki egy hangjegyet az első hangszerhez!"
 
-#: mainframewidget.cpp:2544
+#: mainframewidget.cpp:2545
 msgid "MIDI mapper is already in use!"
 msgstr "A MIDI leképező már használatban van!"
 
-#: mainframewidget.cpp:2584
+#: mainframewidget.cpp:2585
 msgid "nothing to play"
 msgstr "nincs mit játszani"
 
-#: mainframewidget.cpp:3344 mainframewidget.cpp:3422 mainframewidget.cpp:3482
-#: mainframewidget.cpp:3824
+#: mainframewidget.cpp:3345 mainframewidget.cpp:3423 mainframewidget.cpp:3483
+#: mainframewidget.cpp:3825
 msgid ""
 "Your document contains unsaved changes.\n"
 "Do you want to save your changes or discard them?"
@@ -1438,15 +1450,15 @@ msgstr ""
 "A dokumentum nem mentett változásokat tartalmaz \n"
 "Szeretné most menteni, vagy elvetni?"
 
-#: mainframewidget.cpp:3346
+#: mainframewidget.cpp:3347
 msgid "New"
 msgstr "Új"
 
-#: mainframewidget.cpp:3681
+#: mainframewidget.cpp:3682
 msgid "Couldn't translate into ABC format, aborting"
 msgstr ""
 
-#: mainframewidget.cpp:3701
+#: mainframewidget.cpp:3702
 msgid ""
 "MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
 "other tools for better score layout.\n"
@@ -1454,193 +1466,197 @@ msgid ""
 "documentation!"
 msgstr ""
 
-#: mainframewidget.cpp:3703
+#: mainframewidget.cpp:3704
 msgid ""
 "MIDI import is performed by the TSE3 library, but the library is not "
 "present!\n"
 "Please look in the MIDI import section in documentation for more information!"
 msgstr ""
 
-#: mainframewidget.cpp:3887
+#: mainframewidget.cpp:3888
 msgid "Do you really want to close all windows?"
 msgstr "Biztos hogy bezárja az összes ablakot?"
 
-#: mainframewidget.cpp:3888
+#: mainframewidget.cpp:3889
 msgid "Close all"
 msgstr "Mindent bezár"
 
-#: mainframewidget.cpp:3924
+#: mainframewidget.cpp:3890
+msgid "&Close all"
+msgstr "&Mindent bezár"
+
+#: mainframewidget.cpp:3925
 msgid "<center>Please choose the target point!</center>"
 msgstr "<center>Válassza ki a célpontot!</center>"
 
-#: mainframewidget.cpp:3927 mainframewidget.cpp:3928
+#: mainframewidget.cpp:3928 mainframewidget.cpp:3929
 msgid "Goto"
 msgstr "Ugrás"
 
-#: mainframewidget.cpp:4236
+#: mainframewidget.cpp:4241
 msgid "Can't delete last staff."
 msgstr "Nem törölhető az utolsó szólam."
 
-#: mainframewidget.cpp:4237 mainframewidget.cpp:4244
+#: mainframewidget.cpp:4242 mainframewidget.cpp:4249
 msgid "Delete Staff"
 msgstr "Szólam törlése"
 
-#: mainframewidget.cpp:4243
+#: mainframewidget.cpp:4248
 #, fuzzy
 msgid "This deletes current staff! Are you sure?"
 msgstr "Ez törli az aktuális hangszert! Biztos benne?"
 
-#: mainframewidget.cpp:4277
+#: mainframewidget.cpp:4282
 msgid "Staff moving"
 msgstr "Szólam mozgatása"
 
-#: mainframewidget.cpp:4278
+#: mainframewidget.cpp:4283
 msgid "Please choose the target position:"
 msgstr "Válassza ki a célpozíciót:"
 
-#: mainframewidget.cpp:4313
+#: mainframewidget.cpp:4318
 #, fuzzy
 msgid "Please select a region first!"
 msgstr "Válasszon ki egy hangjegyet vagy szünetjelet!"
 
-#: mainframewidget.cpp:4313
+#: mainframewidget.cpp:4318
 #, fuzzy
 msgid "MultiStaff"
 msgstr "Több&szólamú"
 
-#: mainframewidget.cpp:4324
+#: mainframewidget.cpp:4329
 msgid "<center>Set tempo:</center>"
 msgstr "<center>Tempó beállítása:</center>"
 
-#: mainframewidget.cpp:4327
+#: mainframewidget.cpp:4332
 msgid "Set new tempo"
 msgstr "Új tempó beállítása"
 
-#: mainframewidget.cpp:4328
+#: mainframewidget.cpp:4333
 msgid "Set new temp&o"
 msgstr "Új tempó beállítás&a"
 
-#: mainframewidget.cpp:4334
+#: mainframewidget.cpp:4339
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>ütemszámláló beállítása:</center>"
 
-#: mainframewidget.cpp:4337
+#: mainframewidget.cpp:4342
 msgid "multi rest"
 msgstr "több szünetjel"
 
-#: mainframewidget.cpp:4338
+#: mainframewidget.cpp:4343
 msgid "Set count of m&easures"
 msgstr "Ütemszá&mláló beállítása"
 
-#: mainframewidget.cpp:4355
+#: mainframewidget.cpp:4360
 msgid "<center>How many notes:</center>"
 msgstr "<center>Hány hangjegy van:</center>"
 
-#: mainframewidget.cpp:4359
+#: mainframewidget.cpp:4364
 msgid "Autobeam"
 msgstr "Autogerenda"
 
-#: mainframewidget.cpp:4371
+#: mainframewidget.cpp:4376
 #, fuzzy
 msgid "Please choose a repeat close sign!"
 msgstr "Válasszon ki egy hangjegyet vagy szünetjelet!"
 
-#: mainframewidget.cpp:4375
+#: mainframewidget.cpp:4380
 #, fuzzy
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Válassza ki a célpontot!</center>"
 
-#: mainframewidget.cpp:4379
+#: mainframewidget.cpp:4384
 #, fuzzy
 msgid "Repeat count"
 msgstr "&IsmétlésKezdet"
 
-#: mainframewidget.cpp:4380
+#: mainframewidget.cpp:4385
 #, fuzzy
 msgid "&Set"
 msgstr "&Téma:"
 
-#: mainframewidget.cpp:4396
+#: mainframewidget.cpp:4401
 msgid "<center>Semitones:</center>"
 msgstr "<center>Félhangok:</center>"
 
-#: mainframewidget.cpp:4400
+#: mainframewidget.cpp:4405
 msgid "Transpose"
 msgstr "Transzponálás"
 
-#: mainframewidget.cpp:4401
+#: mainframewidget.cpp:4406
 msgid "&Transpose"
 msgstr "&Transzponálás"
 
-#: mainframewidget.cpp:4427
+#: mainframewidget.cpp:4432
 msgid "Voice selection"
 msgstr "Hangszer kiválasztása"
 
-#: mainframewidget.cpp:4428
+#: mainframewidget.cpp:4433
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Válassza ki a hangszert:</center>"
 
-#: mainframewidget.cpp:5166 mainframewidget.cpp:5308
+#: mainframewidget.cpp:5171 mainframewidget.cpp:5313
 msgid "Error writing file \"%1\"."
 msgstr "Hiba a fájl írása közben: \"%1\"."
 
-#: mainframewidget.cpp:5167
+#: mainframewidget.cpp:5172
 msgid "Write TSE3"
 msgstr "TSE3 írása"
 
-#: mainframewidget.cpp:5183
+#: mainframewidget.cpp:5188
 #, fuzzy
 msgid "This overrides the current staff! Continue?"
 msgstr "Ez felülírja az aktuális hangszert! Folytatja?"
 
-#: mainframewidget.cpp:5184
+#: mainframewidget.cpp:5189
 msgid "Import Recording"
 msgstr "Felvétel importálása"
 
-#: mainframewidget.cpp:5185 rc.cpp:311
+#: mainframewidget.cpp:5190 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "&Felvétel importálása"
 
-#: mainframewidget.cpp:5227
+#: mainframewidget.cpp:5232
 #, fuzzy
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Ez törli az aktuális hangszert! Biztos benne?"
 
-#: mainframewidget.cpp:5228
+#: mainframewidget.cpp:5233
 #, fuzzy
 msgid "Confirmation"
 msgstr "Zene információ"
 
-#: mainframewidget.cpp:5256
+#: mainframewidget.cpp:5261
 msgid "Error creating Score"
 msgstr "Hiba a kotta létrehozásakor"
 
-#: mainframewidget.cpp:5257
+#: mainframewidget.cpp:5262
 msgid "Creating Score"
 msgstr "Kotta létrehozása"
 
-#: mainframewidget.cpp:5309 tse3handler.cpp:365
+#: mainframewidget.cpp:5314 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "TSE3 MIDI kimenet"
 
-#: mainframewidget.cpp:5324 mainframewidget.cpp:5359
+#: mainframewidget.cpp:5329 mainframewidget.cpp:5364
 msgid "File read error \"%1\"."
 msgstr "Fájl olvasási hiba:  \"%1\"."
 
-#: mainframewidget.cpp:5325
+#: mainframewidget.cpp:5330
 msgid "TSE3 MIDI in"
 msgstr "TSE3 MIDI bemenet"
 
-#: mainframewidget.cpp:5360
+#: mainframewidget.cpp:5365
 msgid "Read TSE3"
 msgstr "TSE3 beolvasása"
 
-#: mainframewidget.cpp:5473
+#: mainframewidget.cpp:5478
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "A(z) \"%1\" fájl már létezik! Felülírjam?"
 
-#: mainframewidget.cpp:5474
+#: mainframewidget.cpp:5479
 msgid "File already exists"
 msgstr "A fájl már létezik"
 
@@ -1778,31 +1794,39 @@ msgstr "NoteEdit"
 
 #: noteedit_part.cpp:75
 #, fuzzy
-msgid "Main author"
-msgstr "&Utolsó szerző:"
+msgid "Main author and maintainer until September 2004"
+msgstr "Készítő és karbantartó"
 
 #: noteedit_part.cpp:77
+msgid "project manager"
+msgstr ""
+
+#: noteedit_part.cpp:79
 msgid "programmer"
 msgstr "Programozó"
 
-#: noteedit_part.cpp:80
+#: noteedit_part.cpp:82
 msgid "TSE3 sequencer library"
 msgstr "TSE3 szekvenszer könyvtár"
 
-#: noteedit_part.cpp:83
+#: noteedit_part.cpp:85
 msgid "developer"
 msgstr "Fejlesztő"
 
-#: noteedit_part.cpp:85
+#: noteedit_part.cpp:87
 msgid "KDE User Interface"
 msgstr "KDE felhasználói felület"
 
-#: noteedit_part.cpp:88
+#: noteedit_part.cpp:90
 msgid "MusicXML interface"
 msgstr ""
 
-#: noteedit_part.cpp:90
+#: noteedit_part.cpp:92
 msgid "lilypond interface"
+msgstr ""
+
+#: noteedit_part.cpp:93
+msgid "developer and composer"
 msgstr ""
 
 #: pmxexport.cpp:151 pmxexport.cpp:154
@@ -1924,7 +1948,7 @@ msgstr "Vezérlés"
 msgid "Score control"
 msgstr "Kotta vezérlés"
 
-#: rc.cpp:26 rc.cpp:66 rc.cpp:516
+#: rc.cpp:26 rc.cpp:66 rc.cpp:530
 #, no-c-format
 msgid "Notes"
 msgstr "hangjegyek"
@@ -1943,6 +1967,21 @@ msgstr "egyebek"
 #, no-c-format
 msgid "Accent Toolbar"
 msgstr "Hangsúly eszköztár"
+
+#: rc.cpp:36
+#, fuzzy, no-c-format
+msgid "&Import"
+msgstr "&Export"
+
+#: rc.cpp:38 uiconnect.cpp:224
+#, no-c-format
+msgid "&Export"
+msgstr "&Export"
+
+#: rc.cpp:46
+#, no-c-format
+msgid "Seg&no"
+msgstr ""
 
 #: rc.cpp:50
 #, fuzzy, no-c-format
@@ -2547,7 +2586,7 @@ msgstr "Strophe - Noteneditor"
 msgid "Lyrics"
 msgstr "Strophen"
 
-#: rc.cpp:363 uiconnect.cpp:840
+#: rc.cpp:363 uiconnect.cpp:759
 #, no-c-format
 msgid "C&lear"
 msgstr "&Törlés"
@@ -2602,7 +2641,7 @@ msgstr "MIDI beállítások - NoteEdit"
 msgid "MUP warning"
 msgstr "MUP figyelmeztetés"
 
-#: rc.cpp:395 uiconnect.cpp:1265
+#: rc.cpp:395 uiconnect.cpp:1184
 #, no-c-format
 msgid "Saved, but MUP does not work!"
 msgstr "Mentve, de a MUP nem működik!"
@@ -2652,252 +2691,282 @@ msgstr "szólamForma"
 msgid "Staff properties - NoteEdit"
 msgstr "Szólam tulajdonságok - NoteEdit"
 
-#: rc.cpp:436
+#: rc.cpp:432
 #, no-c-format
-msgid "Overlength:"
-msgstr "Túl.hossz:"
+msgid "Alt+C"
+msgstr ""
 
-#: rc.cpp:438
-#, no-c-format
-msgid "Play<br>transposed:"
-msgstr "Transzponált<br>lejátszás:"
-
-#: rc.cpp:440
-#, no-c-format
-msgid "Chorus:"
-msgstr "Kórus:"
-
-#: rc.cpp:442
-#, no-c-format
-msgid "Reverb:"
-msgstr "Zengetés:"
-
-#: rc.cpp:444
-#, no-c-format
-msgid "Stereo Pos:"
-msgstr "Sztereó pozíció:"
-
-#: rc.cpp:446
-#, no-c-format
-msgid "Lyrics dist.:"
-msgstr "Dalszöveg táv.:"
-
-#: rc.cpp:448
-#, no-c-format
-msgid "Underlength:"
-msgstr "Alsó hossz:"
-
-#: rc.cpp:450
-#, no-c-format
-msgid "Volume:"
-msgstr "Hangerő:"
-
-#: rc.cpp:454
+#: rc.cpp:434 rc.cpp:436
 #, no-c-format
 msgid "Staff"
 msgstr "Szólam"
 
-#: rc.cpp:456
+#: rc.cpp:438
 #, no-c-format
 msgid "Name:"
 msgstr "Név:"
 
-#: rc.cpp:458
+#: rc.cpp:440
 #, no-c-format
 msgid "Channel:"
 msgstr "Csatorna:"
 
-#: rc.cpp:460
+#: rc.cpp:442
 #, no-c-format
 msgid "Instrument:"
 msgstr ""
 
-#: rc.cpp:463 rc.cpp:520
+#: rc.cpp:446
 #, no-c-format
-msgid "Staff No."
-msgstr "Szólam No."
+msgid "Overlength:"
+msgstr "Túl.hossz:"
 
-#: rc.cpp:465 rc.cpp:522
+#: rc.cpp:448
+#, no-c-format
+msgid "Play<br>transposed:"
+msgstr "Transzponált<br>lejátszás:"
+
+#: rc.cpp:450
+#, no-c-format
+msgid "Chorus:"
+msgstr "Kórus:"
+
+#: rc.cpp:452
+#, no-c-format
+msgid "Reverb:"
+msgstr "Zengetés:"
+
+#: rc.cpp:454
+#, no-c-format
+msgid "Stereo Pos:"
+msgstr "Sztereó pozíció:"
+
+#: rc.cpp:456
+#, no-c-format
+msgid "Lyrics dist.:"
+msgstr "Dalszöveg táv.:"
+
+#: rc.cpp:458
+#, no-c-format
+msgid "Underlength:"
+msgstr "Alsó hossz:"
+
+#: rc.cpp:460
+#, no-c-format
+msgid "Volume:"
+msgstr "Hangerő:"
+
+#: rc.cpp:462 rc.cpp:479 rc.cpp:536
 #, no-c-format
 msgid "Voice"
 msgstr "Hang"
 
-#: rc.cpp:467
+#: rc.cpp:464
+#, fuzzy, no-c-format
+msgid "C&reate Voice"
+msgstr "&Szólam létrehozása"
+
+#: rc.cpp:466
+#, no-c-format
+msgid "Alt+R"
+msgstr ""
+
+#: rc.cpp:470
+#, no-c-format
+msgid "Alt+O"
+msgstr ""
+
+#: rc.cpp:472
+#, fuzzy, no-c-format
+msgid "&Test"
+msgstr "&Téma:"
+
+#: rc.cpp:474
+#, no-c-format
+msgid "Alt+T"
+msgstr ""
+
+#: rc.cpp:477 rc.cpp:534
+#, no-c-format
+msgid "Staff No."
+msgstr "Szólam No."
+
+#: rc.cpp:481
 #, no-c-format
 msgid "Staff name"
 msgstr "Szólam név"
 
-#: rc.cpp:469
+#: rc.cpp:483
 #, no-c-format
 msgid "&Select all"
 msgstr "&Mindent kijelöl"
 
-#: rc.cpp:471
+#: rc.cpp:485
 #, no-c-format
 msgid "&Unselect all"
 msgstr "Kijelölés &megszüntetése"
 
-#: rc.cpp:477
+#: rc.cpp:491
 #, no-c-format
 msgid "Text Dialog"
 msgstr ""
 
-#: rc.cpp:479
+#: rc.cpp:493
 #, no-c-format
 msgid "Text"
 msgstr ""
 
-#: rc.cpp:481
+#: rc.cpp:495
 #, no-c-format
 msgid "Enter text:"
 msgstr ""
 
-#: rc.cpp:483 rc.cpp:543
+#: rc.cpp:497 rc.cpp:557
 #, no-c-format
 msgid "Ok"
 msgstr ""
 
-#: rc.cpp:487
+#: rc.cpp:501
 #, no-c-format
 msgid "Uptext"
 msgstr ""
 
-#: rc.cpp:489
+#: rc.cpp:503
 #, fuzzy, no-c-format
 msgid "DownText"
 msgstr "&Le"
 
-#: rc.cpp:491
+#: rc.cpp:505
 #, no-c-format
 msgid "TimeSignature"
 msgstr "Idő bejegyzés"
 
-#: rc.cpp:493
+#: rc.cpp:507
 #, no-c-format
 msgid "Choose time signature"
 msgstr "Idő bejegyzés kiválasztása"
 
-#: rc.cpp:499
+#: rc.cpp:513
 #, no-c-format
 msgid "Predefined time signatures"
 msgstr "Előre megadott időbejegyzések"
 
-#: rc.cpp:506
+#: rc.cpp:520
 #, no-c-format
 msgid "Tip of the day - NoteEdit"
 msgstr "A nap tippje - NoteEdit"
 
-#: rc.cpp:508
+#: rc.cpp:522
 #, no-c-format
 msgid "&Show tips in future"
 msgstr "&Mutassa a tippeket a jövőben"
 
-#: rc.cpp:512
+#: rc.cpp:526
 #, no-c-format
 msgid "Information about the TSE3 song - NoteEdit"
 msgstr "Információk a TSE3 zenéről - NoteEdit"
 
-#: rc.cpp:514
+#: rc.cpp:528
 #, no-c-format
 msgid "Track No."
 msgstr "Sáv No."
 
-#: rc.cpp:518
+#: rc.cpp:532
 #, no-c-format
 msgid "Splitted"
 msgstr "Felosztott"
 
-#: rc.cpp:524
+#: rc.cpp:538
 #, no-c-format
 msgid "Channel"
 msgstr "Csatorna"
 
-#: rc.cpp:526
+#: rc.cpp:540
 #, no-c-format
 msgid "Volume"
 msgstr "Hangerő"
 
-#: rc.cpp:528
+#: rc.cpp:542
 #, no-c-format
 msgid "Clef"
 msgstr "Kulcs"
 
-#: rc.cpp:530
+#: rc.cpp:544
 #, no-c-format
 msgid "Shift"
 msgstr "Eltolás"
 
-#: rc.cpp:534
+#: rc.cpp:548
 #, fuzzy, no-c-format
 msgid "Tuplets"
 msgstr "Triola"
 
-#: rc.cpp:537
+#: rc.cpp:551
 #, no-c-format
 msgid "Number of notes:"
 msgstr ""
 
-#: rc.cpp:541
+#: rc.cpp:555
 #, no-c-format
 msgid "Real length (in notes above)"
 msgstr ""
 
-#: rc.cpp:545
+#: rc.cpp:559
 #, no-c-format
 msgid "Voices - NoteEdit"
 msgstr "Hangszerek - NoteEdit"
 
-#: rc.cpp:547
+#: rc.cpp:561
 #, no-c-format
 msgid "Stem direction"
 msgstr "Szár iránya"
 
-#: rc.cpp:549
+#: rc.cpp:563
 #, no-c-format
 msgid "&Up"
 msgstr "&Fel"
 
-#: rc.cpp:551
+#: rc.cpp:565
 #, no-c-format
 msgid "Do&wn"
 msgstr "&Le"
 
-#: rc.cpp:553
+#: rc.cpp:567
 #, no-c-format
 msgid "&Indiviual"
 msgstr "&Egyéni"
 
-#: rc.cpp:555
+#: rc.cpp:569
 #, no-c-format
 msgid "Create &voice"
 msgstr "Hangszer &létrehozása"
 
-#: rc.cpp:557
+#: rc.cpp:571
 #, no-c-format
 msgid "&Delete voice"
 msgstr "Hangszer &törlése"
 
-#: rc.cpp:565
+#: rc.cpp:579
 #, no-c-format
 msgid "Voice number:"
 msgstr "Hangszer száma:"
 
-#: rc.cpp:567
+#: rc.cpp:581
 #, no-c-format
 msgid "<center>Rest position</center>"
 msgstr "<center>Szünet pozíció</center>"
 
-#: rc.cpp:569
+#: rc.cpp:583
 #, no-c-format
 msgid "Insert volume - NoteEdit"
 msgstr "Hangerő beszúrása - NoteEdit"
 
-#: rc.cpp:575
+#: rc.cpp:589
 #, no-c-format
 msgid "volume"
 msgstr "hangerő"
 
-#: rc.cpp:577
+#: rc.cpp:591
 #, no-c-format
 msgid "Musical express:"
 msgstr "Musical express:"
@@ -3546,33 +3615,45 @@ msgstr ""
 msgid "Co&mments"
 msgstr "Me&gjegyzések:"
 
-#: staff.cpp:85
+#: staff.cpp:86
 msgid "Cannot create more than 9 voices per staff."
 msgstr "Nem lehet létrehozni szólamonként 9 hangszernél többet"
 
-#: staff.cpp:143 staff.cpp:176
+#: staff.cpp:144 staff.cpp:177
 msgid "Cannot remove first voice"
 msgstr "Nem lehet törölni az első hangszert"
 
-#: staff.cpp:144 staff.cpp:154 staff.cpp:177 staff.cpp:187
+#: staff.cpp:145 staff.cpp:155 staff.cpp:178 staff.cpp:189 staff.cpp:198
 msgid "Delete voice"
 msgstr "Hangszer törlése"
 
-#: staff.cpp:153 staff.cpp:186
+#: staff.cpp:154 staff.cpp:188 staff.cpp:197
 msgid "This deletes voice %1! Are you sure?"
 msgstr "Ez művelet törli a %1 hangszert! Biztos benne?"
 
-#: staff.cpp:588
+#: staff.cpp:599
 msgid "The destination staff has less voices than source staff"
 msgstr "A célszólam kevesebb hangszert tartalmaz a forrásszólamnál"
 
-#: staff.cpp:613
+#: staff.cpp:624
 msgid ""
 "You paste a first voice to no-first voice! This deletes all non-first-voice "
 "elements!"
 msgstr ""
 "Az első hangszert egy nem első hangszerre illesztette! Ez törli az összes "
 "nem első hangszer elemet!"
+
+#: staffPropFrm.cpp:24 uiconnect.cpp:641
+msgid "%1. %2"
+msgstr "%1. %2"
+
+#: staffPropFrm.cpp:26 tse3handler.cpp:540
+msgid "Channel %1"
+msgstr "Csatorna %1"
+
+#: staffPropFrm.cpp:104 voicedialog.cpp:192
+msgid "Staff %1"
+msgstr "sor: %1"
 
 #: tips.cpp:3
 msgid ""
@@ -4024,14 +4105,10 @@ msgstr "Sáv %1%2"
 msgid "%1 Notes"
 msgstr "%1 Hangjegyek"
 
-#: tse3handler.cpp:538 uiconnect.cpp:964 uiconnect.cpp:972
+#: tse3handler.cpp:538 uiconnect.cpp:883 uiconnect.cpp:891
 #, c-format
 msgid "Staff %1%2"
 msgstr "Szólam %1%2"
-
-#: tse3handler.cpp:540 uiconnect.cpp:369
-msgid "Channel %1"
-msgstr "Csatorna %1"
 
 #: tse3handler.cpp:541
 msgid "Volume %1"
@@ -4093,135 +4170,127 @@ msgstr ""
 msgid "LilyPond export"
 msgstr "LilyPond export"
 
-#: uiconnect.cpp:224
-msgid "&Export"
-msgstr "&Export"
-
-#: uiconnect.cpp:367 uiconnect.cpp:722
-msgid "%1. %2"
-msgstr "%1. %2"
-
-#: uiconnect.cpp:532 uiconnect.cpp:533
+#: uiconnect.cpp:451 uiconnect.cpp:452
 #, fuzzy
 msgid "Auto"
 msgstr "Verfasser:"
 
-#: uiconnect.cpp:534
+#: uiconnect.cpp:453
 msgid "None"
 msgstr "Semmi"
 
-#: uiconnect.cpp:566
+#: uiconnect.cpp:485
 msgid "Dynamic:"
 msgstr "Dinamika:"
 
-#: uiconnect.cpp:567
+#: uiconnect.cpp:486
 msgid "Set min volume"
 msgstr "Minimális hangerő megadása"
 
-#: uiconnect.cpp:727
+#: uiconnect.cpp:646
 msgid "Staff %1, %2, %3"
 msgstr "Sor %1, %2, %3"
 
-#: uiconnect.cpp:729 uiconnect.cpp:967
+#: uiconnect.cpp:648 uiconnect.cpp:886
 msgid "[unnamed]"
 msgstr "[nevenincs]"
 
-#: uiconnect.cpp:827
+#: uiconnect.cpp:746
 msgid "Verse no %1 %2"
 msgstr "Verze: %1 %2"
 
-#: uiconnect.cpp:829
+#: uiconnect.cpp:748
 msgid "[empty]"
 msgstr "[üres]"
 
-#: uiconnect.cpp:838
+#: uiconnect.cpp:757
 msgid "Are you sure to clear the current verse?"
 msgstr "Tényleg szeretné törölni az aktuális verzét?"
 
-#: uiconnect.cpp:839
+#: uiconnect.cpp:758
 msgid "Clear verse"
 msgstr "Verze törlése"
 
-#: uiconnect.cpp:867
+#: uiconnect.cpp:786
 msgid "File open aborted."
 msgstr "A fájl megnyitása megszakadt."
 
-#: uiconnect.cpp:868
+#: uiconnect.cpp:787
 msgid "Import lyrics"
 msgstr "Dalszöveg importálása"
 
-#: uiconnect.cpp:874
+#: uiconnect.cpp:793
 msgid "Unable to open this file."
 msgstr "Nem tudom megnyitni ezt a fájlt."
 
-#: uiconnect.cpp:875
+#: uiconnect.cpp:794
 msgid "Import Lyrics"
 msgstr "Dalszöveg importálása"
 
-#: uiconnect.cpp:930
+#: uiconnect.cpp:849
 msgid "<b><i><u><center>Tip of day #%1"
 msgstr "<b><i><u><center> A nap tippje (%1):"
 
-#: uiconnect.cpp:931
+#: uiconnect.cpp:850
 msgid "<b><i><u>Did you know ... </u></i></b><br><br>%2"
 msgstr "<b><i><u>Tudta-e, hogy ... </u></i></b><br><br>%2"
 
-#: uiconnect.cpp:955
+#: uiconnect.cpp:874
 msgid "[not available]"
 msgstr "[nincs megadva]"
 
-#: uiconnect.cpp:982
+#: uiconnect.cpp:901
 msgid "Mute staffs"
 msgstr "Szólamok elnémítása"
 
-#: uiconnect.cpp:983
+#: uiconnect.cpp:902
 msgid "&Mute"
 msgstr "&Elnémít"
 
-#: uiconnect.cpp:988
+#: uiconnect.cpp:907
 msgid "Select staffs for autobar"
 msgstr "Válassza ki a szólamokat az automatikus ütemvonalhoz"
 
-#: uiconnect.cpp:989
+#: uiconnect.cpp:908
 msgid "Aut&obar"
 msgstr "Auto&ütem"
 
-#: uiconnect.cpp:995
+#: uiconnect.cpp:914
 msgid "Select staffs for autobeam"
 msgstr "Válassza ki a szólamokat az automatikus gerendához"
 
-#: uiconnect.cpp:996
+#: uiconnect.cpp:915
 msgid "Aut&obeam"
 msgstr "Auto&gerenda"
 
-#: uiconnect.cpp:1001
+#: uiconnect.cpp:920
 msgid "Merge staffs"
 msgstr "Szólamok összefűzése"
 
-#: uiconnect.cpp:1002
+#: uiconnect.cpp:921
 msgid "&Merge"
 msgstr "Össze&fűzés"
 
-#: uiconnect.cpp:1007
+#: uiconnect.cpp:926
 #, fuzzy
 msgid "Create staff from TSE3"
 msgstr "TSE3 szólam létrehozása"
 
-#: uiconnect.cpp:1008
+#: uiconnect.cpp:927
 #, fuzzy
 msgid "&Create"
 msgstr "&Szólam létrehozása"
 
-#: uiconnect.cpp:1013
+#: uiconnect.cpp:932
 msgid "Select staffs for export"
 msgstr "Szólamok kiválasztása exportálásra"
 
-#: uiconnect.cpp:1014 uiconnect.cpp:1020
+#: uiconnect.cpp:933 uiconnect.cpp:939
 #, fuzzy
 msgid "&Select"
 msgstr "&Mindent kijelöl"
 
-#: uiconnect.cpp:1019
+#: uiconnect.cpp:938
 msgid "Multi staff select"
 msgstr "Többszólamú kiválasztás"
 
@@ -4289,17 +4358,13 @@ msgstr "A(z) %1. szólam törlése. A törlést jóvá kell hagyni."
 msgid "<center><b>%1</b></center>"
 msgstr "<center><b>%1</b></center>"
 
-#: voicedialog.cpp:165
+#: voicedialog.cpp:170
 msgid "Voices"
 msgstr "Szólamok"
 
-#: voicedialog.cpp:172
+#: voicedialog.cpp:177
 msgid "C&reate voice"
 msgstr "&Szólam létrehozása"
-
-#: voicedialog.cpp:187
-msgid "Staff %1"
-msgstr "sor: %1"
 
 #: ../kguitar_excerpt/chord.cpp:223 ../kguitar_excerpt/chord.cpp:513
 msgid "Guitar"
@@ -4357,14 +4422,18 @@ msgstr "diagram megtekintése"
 msgid "Chord constructor"
 msgstr "Akkordszerkesztő"
 
+#~ msgid "&Goto"
+#~ msgstr "U&grás"
+
+#, fuzzy
+#~ msgid "Main author"
+#~ msgstr "&Utolsó szerző:"
+
 #~ msgid "&Move..."
 #~ msgstr "&Mozgatás..."
 
 #~ msgid "&New"
 #~ msgstr "Ú&j"
-
-#~ msgid "Main author and maintainer"
-#~ msgstr "Készítő és karbantartó"
 
 #~ msgid "Score information - NoteEdit"
 #~ msgstr "Partiturinformation - Noteneditor"

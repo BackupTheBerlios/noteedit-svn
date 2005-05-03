@@ -11,6 +11,8 @@ New features:
 - merged staff properties and voice dialog
 - staff properties can now change all staffs at once, not only the current one
 - menu point staff -> voices invokes the staff properties.
+- more improvements to the menu: Easier access via keys, some better
+  menu names (like Close / Quit, Select Multi Staff)
 
 Bugs fixed:
 - 003595 dbl quotes in some score info fields leads to invalid files

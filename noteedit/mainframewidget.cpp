@@ -256,12 +256,12 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	new KAction( i18n("Export &PMX..."), 0, this, SLOT(exportPMX()), actionCollection(), "export_pmx" );
 	new KAction( i18n("Export &ABC..."), 0, this, SLOT(exportABC()), actionCollection(), "export_abc" );
 	new KAction( i18n("Export M&usicXML..."), 0, this, SLOT(exportMusicXML()), actionCollection(), "export_musicxml" );
-	new KAction( i18n("Output Params..."), 0, this, SLOT(setOutputParam()), actionCollection(), "set_params" );
+	new KAction( i18n("&Output Params..."), 0, this, SLOT(setOutputParam()), actionCollection(), "set_params" );
 	lilyPort_ = new KAction( i18n("Export &LilyPond..."), 0, this, SLOT(exportLilyPond()), actionCollection(), "export_lily" );
 	new KAction( i18n("Score in&formation..."), "readme", 0, this, SLOT(scoreInfo()), actionCollection(), "score_information" );
 	new KAction( i18n("&Key configuration"), 0, this, SLOT(keyConfig()), actionCollection(), "keyconfig" );
-	new KAction( i18n("Quit"), "exit", 0, this, SLOT(quitDialog()), actionCollection(), "quit" );
-	new KAction( i18n("&Close all"), 0, this, SLOT(closeAllWindows()), actionCollection(), "close_all" );
+	new KAction( i18n("&Close"), "exit", 0, this, SLOT(quitDialog()), actionCollection(), "quit" );
+	new KAction( i18n("&Quit"), 0, this, SLOT(closeAllWindows()), actionCollection(), "close_all" );
 	KToggleAction *actionToggleBarNumbers = new KToggleAction
 	  (i18n("Show &bar numbers"), 0, this, SLOT(toggleBarNumbers()), actionCollection(), "view_show_bar_numbers");
 	actionToggleBarNumbers->setChecked(NResource::showStaffNrs_);
@@ -282,42 +282,42 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	new KAction( i18n("Set all to sharp"), 0, this, SLOT(setAllSharp()), actionCollection(), "tools_set_sharp" );
 	new KAction( i18n("Set all to flat"), 0, this, SLOT(setAllFlat()), actionCollection(), "tools_set_flat" );
 	new KAction( i18n("&Transpose..."),  0, this, SLOT(transposeDialog()), actionCollection(), "tools_transpose" );
-	new KAction( i18n("&Change Clef..."),  0, this, SLOT(changeClefDialog()), actionCollection(), "tools_change_clef" );
+	new KAction( i18n("C&hange Clef..."),  0, this, SLOT(changeClefDialog()), actionCollection(), "tools_change_clef" );
 	new KAction( i18n("T&uplet..."),  0, this, SLOT(createTuplet()), actionCollection(), "create_tuplet" );
 	criticalButtons_.append
-		(new KAction( i18n("&Clef..."), "cleficon", 0, this, SLOT(clefDialog()), actionCollection(), "insert_clef"));
+		(new KAction( i18n("Cle&f..."), "cleficon", 0, this, SLOT(clefDialog()), actionCollection(), "insert_clef"));
 	criticalButtons_.append
 		(new KAction( i18n("&Key signature..."), "keyicon", 0, this, SLOT(keyDialog()), actionCollection(), "insert_keysig" ));
 	criticalButtons_.append
-		(new KAction( i18n("&RepeatOpen"), "repopen", 0, this, SLOT(insertRepeatOpen()), actionCollection(), "insert_repeatopen"));
+		(new KAction( i18n("Repeat&Open"), "repopen", 0, this, SLOT(insertRepeatOpen()), actionCollection(), "insert_repeatopen"));
 	criticalButtons_.append
-		(new KAction( i18n("RepeatOpen&Close"), "repopenclose", 0, this, SLOT(insertRepeatOpenClose()), actionCollection(), "insert_repeatopenclose"));
+		(new KAction( i18n("Re&peatOpenClose"), "repopenclose", 0, this, SLOT(insertRepeatOpenClose()), actionCollection(), "insert_repeatopenclose"));
 	criticalButtons_.append
-		(new KAction( i18n("R&epeatClose"), "repclose", 0, this, SLOT(insertRepeatClose()), actionCollection(), "insert_repeatclose"));
+		(new KAction( i18n("Repeat&Close"), "repclose", 0, this, SLOT(insertRepeatClose()), actionCollection(), "insert_repeatclose"));
 	criticalButtons_.append
 		(new KAction( i18n("SpecialEnding&1"), 0, this, SLOT(insertspecEnding1()), actionCollection(), "insert_specialending1" ));
 	criticalButtons_.append
 		(new KAction( i18n("SpecialEnding&2"), 0, this, SLOT(insertspecEnding2()), actionCollection(), "insert_specialending2" ));
 	criticalButtons_.append
-		(new KAction( i18n("&DoubleBar"), "doublebar", 0, this, SLOT(insertDoubleBar()), actionCollection(), "insert_double_bar"));
+		(new KAction( i18n("&Double Bar"), "doublebar", 0, this, SLOT(insertDoubleBar()), actionCollection(), "insert_double_bar"));
 	criticalButtons_.append
-		(new KAction( i18n("&EndBar"), "endbar", 0, this, SLOT(insertEndBar()), actionCollection(), "insert_end_bar"));
+		(new KAction( i18n("&End Bar"), "endbar", 0, this, SLOT(insertEndBar()), actionCollection(), "insert_end_bar"));
 	criticalButtons_.append
-		(new KAction( i18n("T&ime signature..."), "timeicon", 0, this, SLOT(timesigDialog()), actionCollection(), "insert_timesig" ));
+		(new KAction( i18n("Time si&gnature..."), "timeicon", 0, this, SLOT(timesigDialog()), actionCollection(), "insert_timesig" ));
 	criticalButtons_.append
-		(new KAction( i18n("Te&mpo signature..."), 0, this, SLOT(tempoSigDialog()), actionCollection(), "insert_temposig" ));
+		(new KAction( i18n("Tempo &signature..."), 0, this, SLOT(tempoSigDialog()), actionCollection(), "insert_temposig" ));
 	criticalButtons_.append
 		(new KAction( i18n("&Volume change..."), "speaker", 0, this, SLOT(volChangeDialog()), actionCollection(), "insert_volumechange"));
 	criticalButtons_.append
-		(new KAction( i18n("V&oice change..."), "voichange", 0, this, SLOT(voiceChangeDialog()), actionCollection(), "insert_voicechange"));
+		(new KAction( i18n("Vo&ice change..."), "voichange", 0, this, SLOT(voiceChangeDialog()), actionCollection(), "insert_voicechange"));
 	criticalButtons_.append
-		(new KAction( i18n("Ch&ord..."), 0, this, SLOT(chordDialog()), actionCollection(), "insert_chord"));
+		(new KAction( i18n("C&hord..."), 0, this, SLOT(chordDialog()), actionCollection(), "insert_chord"));
 	criticalButtons_.append
 		(new KAction( i18n("&Line..."), 0, this, SLOT(insertLine()), actionCollection(), "insert_line" )); // HINT: The associated function is located in mainframewidget2.cpp
 	criticalButtons_.append
 		(new KAction( i18n("&Text ..."), 0, this, SLOT(insertText()), actionCollection(), "insert_text" )); 
 	criticalButtons_.append
-		(new KAction( i18n("Se&gno"), 0, this, SLOT(insertSegno()), actionCollection(), "insert_segno" ));
+		(new KAction( i18n("&Segno"), 0, this, SLOT(insertSegno()), actionCollection(), "insert_segno" ));
 	criticalButtons_.append
 		(new KAction( i18n("&dal Segno"), 0, this, SLOT(insertDalSegno()), actionCollection(), "insert_dal_segno" ));
 	criticalButtons_.append
@@ -345,14 +345,14 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 #ifdef WITH_TSE3
 	new KAction( i18n("&Import recording"), "folder_sound", 0, this, SLOT(importRecording()), actionCollection(), "staff_importrec" );
 #endif
-	new KAction( i18n("&MultiStaff"),  0, this, SLOT(multiStaffDialog()), actionCollection(), "edit_multistaff" );
-	new KAction( i18n("&Goto"), "goto", 0, this, SLOT(gotoDialog()), actionCollection(), "edit_goto" );
+	new KAction( i18n("Select &Multi Staff..."),  0, this, SLOT(multiStaffDialog()), actionCollection(), "edit_multistaff" );
+	new KAction( i18n("&Goto bar..."), "goto", 0, this, SLOT(gotoDialog()), actionCollection(), "edit_goto" );
 	criticalButtons_.append
-		(new KAction( i18n("&AutoBar"),  0, this, SLOT(autoBar()), actionCollection(), "edit_autobar" ));
+		(new KAction( i18n("&Auto Bar..."),  0, this, SLOT(autoBar()), actionCollection(), "edit_autobar" ));
 	//new KAction( i18n("Auto&beam..."),  0, this, SLOT(autoBeamDialog()), actionCollection(), "edit_autobeam" );
-	new KAction( i18n("Auto&Beam..."),  0, this, SLOT(doAutoBeam()), actionCollection(), "edit_autobeam" );
+	new KAction( i18n("Auto &Beam..."),  0, this, SLOT(doAutoBeam()), actionCollection(), "edit_autobeam" );
 	new KAction( i18n("&Cleanup rests..."), 0, this, SLOT(cleanRestsDialog()), actionCollection(), "edit_cleanuprests" );
-	new KAction( i18n("Set N time repeat"), "repntimes", 0, this, SLOT(repeatCountDialog()), actionCollection(), "set_ntime_repeat");
+	new KAction( i18n("&Set N time repeat"), "repntimes", 0, this, SLOT(repeatCountDialog()), actionCollection(), "set_ntime_repeat");
 	// TODO add Redo/Cut/Copy/Paste to the Edit menu
 #ifdef WITH_TSE3
 	new KAction( i18n("&Create TSE3 song"), "Wizard", 0, this, SLOT(createTSE3()), actionCollection(), "tse3_createsong" );
@@ -362,11 +362,11 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	new KAction( i18n("MIDI &out"), "midi", 0, this, SLOT(TSE3MidiOut()), actionCollection(), "tse3_midiout" );
 	new KAction( i18n("MIDI &in"), "fileopen", 0, this, SLOT(TSE3MidiIn()), actionCollection(), "tse3_midiin" );
 	new KAction( i18n("&Filter dialog..."), "filter", 0, this, SLOT(TSE3Filter()), actionCollection(), "tse3_filterdlg" );
-	new KAction( i18n("In&formation..."), "help", 0, tse3Handler_, SLOT(printSongInformation()), actionCollection(), "tse3_information" );
+	new KAction( i18n("Inform&ation..."), "help", 0, tse3Handler_, SLOT(printSongInformation()), actionCollection(), "tse3_information" );
 	new KAction( i18n("&Merge..."), "view_right", 0, tse3Handler_, SLOT(TSE3Merge()), actionCollection(), "tse3_merge" );
 	new KAction( i18n("TSE3 --> &Score"), 0, this, SLOT(TSE3toScore()), actionCollection(), "tse3_score" );
 #endif
-	new KAction( i18n("&New window"), "window_new", 0, this, SLOT(openNewWindow()), actionCollection(), "window_new_window" );
+	new KAction( i18n("New &window"), "window_new", 0, this, SLOT(openNewWindow()), actionCollection(), "window_new_window" );
 	new KAction( i18n("Tip of the &day"), "idea", 0, this, SLOT(showTipOfTheDay()), actionCollection(), "help_tipoftheday" );
 
 

@@ -69,10 +69,12 @@ KAboutData *NoteeditFactory::aboutData() {
 		 "a KDE3/Qt3 based note editor.\nFor help subscribe to one of the\nmailing lists, or post a message\nin one of the public forums. See",
 		 KAboutData::License_GPL, 0, 0,
 		 //"http://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/noteedit.html",
-		"http://developer.berlios.de/projects/noteedit",
+		"http://noteedit.berlios.de",
 		 ADDRESS);
 	about->addAuthor
-		("Joerg Anders", I18N_NOOP("Main author"), ADDRESS);
+		("Joerg Anders", I18N_NOOP("Main author and maintainer until September 2004"), ADDRESS);
+	about->addAuthor
+		("Reinhard Katzmann", I18N_NOOP("project manager"), "reinhard@suamor.de");
 	about->addAuthor
 		("Christian Fasshauer", I18N_NOOP("programmer"), "mseacf@gmx.net");
 #ifdef WITH_TSE3
@@ -88,6 +90,7 @@ KAboutData *NoteeditFactory::aboutData() {
 		("Leon Vinken", I18N_NOOP("MusicXML interface"),
 		 "leon.vinken@hetnet.nl");
 	about->addAuthor("Georg Rudolph", I18N_NOOP("lilypond interface"), "georg.rudolph@schwaben.de");
+	about->addAuthor("Matev¸ Jekovec", I18N_NOOP("developer and composer"), "whiteangel@users.berlios.de");
 	return about;
 }
 

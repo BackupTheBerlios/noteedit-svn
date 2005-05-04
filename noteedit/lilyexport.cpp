@@ -390,6 +390,7 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 				staffLabel = staff_elem->staffName_ + s.sprintf("%c", i + 'A');
 			}
 			removeExceptsFromString(&staffLabel, false);
+
 			out_ << staffLabel << " = \\simultaneous {" << endl;
 			if (!staff_elem->staffName_.isNull() && !staff_elem->staffName_.isEmpty()) {
 				outString = staff_elem->staffName_;
@@ -431,11 +432,11 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 			writeLyrics(i, voice_elem, staffLabel);
 		}
 		if (NResource::lilyProperties_.lilyVersion24)
-			buildScoreBlockAndFlush(i, staffLabel, stafflist, scoreBraceMasks, false);
+			buildScoreBlockAndFlush(i, staff_elem, staffLabel, stafflist, scoreBraceMasks, false);
 	} // end for (i = 0, staff_elem = stafflist->first(); ...
 	
 	if (NResource::lilyProperties_.lilyVersion24)
-		buildScoreBlockAndFlush(0, "", stafflist, scoreBraceMasks, true);
+		buildScoreBlockAndFlush(0, NULL, "", stafflist, scoreBraceMasks, true);
 
 	if (!exportDialog_->lilyVoice->isChecked() && !NResource::lilyProperties_.lilyVersion24) {
 		out_ << "\\score {" << endl;
@@ -2022,15 +2023,18 @@ void NLilyExport::buildBraceMasks(QList<NStaff> *stafflist, const NMainFrameWidg
 	beeing false. At the end of this a call with flush true is needed
 	to push everything out. The first Character of every line in scoreBlock
 	holds the number of tabs to get a nice printout of the hierachy.
+
+	NoteEdit allows to attach lyrics with one or multiple verses only
+	to the first voice of a stave.
 */
 
 void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
+						NStaff *staff_elem,
 						const QString& label,
 						QList<NStaff> *stafflist,
 						const QByteArray braceMasks,
 						bool flush )
 {
-	NStaff *staff_elem;
 	unsigned int m;
 	double wh;
 	QString tmps, stanzaNStr;
@@ -2080,7 +2084,7 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 		lyricsInGrandStaff = false;
 	}
 
-	if (hy==1) {
+	if (hy==1) {						// Beginning of the block, hierachy is 1
 		tmps.sprintf("%d\\relative <<\n",			hy++ );
 		scoreBlock.insert(ii++, new QString(tmps));
 		currentlyInGrandStaff = false;
@@ -2097,12 +2101,20 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 			scoreBlock.insert(ii++, new QString(tmps));
 		}
 
-		tmps.sprintf("%d\\context Staff = c%s%c <<\n", hy, label.latin1(), i+'A');
+		tmps.sprintf("%d\\context Staff = c%s%c <<\n", hy, label.latin1(), 0+'A');
 		scoreBlock.insert(ii++, new QString(tmps));
 
-		tmps.sprintf("%d\\context Voice = c%s%c \\%s\n", hy+1, label.latin1(), i+'A',
-							label.latin1());
-		scoreBlock.insert(ii++, new QString(tmps));
+		if (staff_elem->voiceCount() > 1) {
+			for (m=0;m<staff_elem->voiceCount();m++) {
+				tmps.sprintf("%d\\context Voice = c%sVoice%c \\%sVoice%c\n", hy+1, label.latin1(), m+'A',
+							label.latin1(), m+'A');
+				scoreBlock.insert(ii++, new QString(tmps));
+			}
+		} else {
+			// the last letter 'A' is a spare letter if you want to add more voices in the lily file
+			tmps.sprintf("%d\\context Voice = c%s%c \\%s\n", hy+1, label.latin1(), 0+'A', label.latin1());
+				scoreBlock.insert(ii++, new QString(tmps));
+		}
 
 		tmps.sprintf("%d>>\n", hy);
 		scoreBlock.insert(ii++, new QString(tmps));
@@ -2112,13 +2124,20 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 				stanzaNStr.sprintf("%d.", m+1);
 			else
 				stanzaNStr.sprintf("");
-			tmps.sprintf("%d\\context Lyrics = c%s%c { \\set stanza = \"%s\" }\n",
-				hy, label.latin1(), m+'A', stanzaNStr.latin1());
+			tmps.sprintf("%d\\context Lyrics = c%s%s%c { \\set stanza = \"%s\" }\n",
+				hy, label.latin1(),
+				staff_elem->voiceCount() > 1 ? "Voice" : "",
+				m+'A', stanzaNStr.latin1());
 
 			scoreBlock.insert(ii++, new QString(tmps));
 
-			tmps.sprintf("2\\context Lyrics = c%s%c \\lyricsto c%s%c \\%sText%c\n",
-				label.latin1(), m+'A', label.latin1(), i+'A', label.latin1(), m+'A');
+			tmps.sprintf("2\\context Lyrics = c%s%s%c \\lyricsto c%s%s%c \\%sText%c\n",
+				label.latin1(),
+				staff_elem->voiceCount() > 1 ? "Voice" : "",
+				m+'A', label.latin1(),
+				staff_elem->voiceCount() > 1 ? "Voice" : "",
+				0+'A',				// because of spare letter 'A'
+				label.latin1(), m+'A');
 			// Place of \lyricsto is before the last two braces:
 			scoreBlock.insert(scoreBlock.count()-endDist, new QString(tmps));
 
@@ -2126,7 +2145,7 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 			lyricsInGrandStaff = lyricsInGrandStaff || currentlyInGrandStaff;
 		}
 
-		if (scoreBraceMasks[i] & BRACKET_END) {		// ChoirStaff close, h--
+		if (scoreBraceMasks[i] & BRACKET_END) {		// ChoirStaff close, hy--
 			tmps.sprintf("%d>>\n", --hy);
 			scoreBlock.insert(ii++, new QString(tmps));
 		}

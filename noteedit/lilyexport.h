@@ -98,7 +98,7 @@ class NLilyExport {
 		QByteArray scoreBraceMasks;
 		void buildBraceMasks(QList<NStaff> *stafflist, const NMainFrameWidget *mainWidget);
 		QList<QString> scoreBlock;
-		void buildScoreBlockAndFlush(int i, const QString& label, QList<NStaff> *stafflist,
+		void buildScoreBlockAndFlush(int i, NStaff *staff_elem, const QString& label, QList<NStaff> *stafflist,
 			const QByteArray braceMasks, bool flush);
 };
 

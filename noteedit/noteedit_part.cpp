@@ -90,7 +90,7 @@ KAboutData *NoteeditFactory::aboutData() {
 		("Leon Vinken", I18N_NOOP("MusicXML interface"),
 		 "leon.vinken@hetnet.nl");
 	about->addAuthor("Georg Rudolph", I18N_NOOP("lilypond interface"), "georg.rudolph@schwaben.de");
-	about->addAuthor("Matev¸ Jekovec", I18N_NOOP("developer and composer"), "whiteangel@users.berlios.de");
+	about->addAuthor("Matevz Jekovec", I18N_NOOP("developer and composer"), "matevz.jekovec@guest.arnes.si");
 	return about;
 }
 

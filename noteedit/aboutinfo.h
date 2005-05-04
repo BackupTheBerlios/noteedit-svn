@@ -1,1 +1,1 @@
-#define ADDRESS "ja@informatik.tu-chemnitz.de"
+#define ADDRESS "http://noteedit.berlios.de"

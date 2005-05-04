@@ -1,149 +1,137 @@
-Note editor on Linux
-===================
+NoteEdit - a music score editor for Linux
+http://noteedit.berlios.de
+=========================================
 
-http://developer.berlios.de/projects/noteedit
+Summary
+-------
+NoteEdit is a music score editor that supports an unlimited number of staffs,
+an unlimited length of staffs, up to 9 voices per staff, a MIDI playback of
+written notes, a number of import and export filters to many formats like MIDI,
+MusicXML, ABC Music, PMX, MusiXTeX and LilyPond and more! 
 
-Properties
-----------
-
-   * insertion/deletion/modification of notes, rests, dotted notes/rests,
-     tied notes, slured notes, clefs with/without shift, time signatures,
-     key signatures, volume signatures, tempo signatures, triplets, repeat
-     groups with/without special ending and instrument changes on different
-     staves;
-   * stem up/down
-   * building chords;
-   * building groups of beamed notes;
-   * zoom;
-   * fermata, trills, (de-)crescendo,
-   * sforzato, portato, strong pizzicato, sforzando
-   * multiple voices per staff
-     (see/hear: example10.not);
-   * drum notes 
-   * Multi rests
-   * double whole notes
-   * konqueror (still experimental)
-   * playing on /dev/sequencer (if correctly configured) whereby:
-        o giving each staff a different voice;
-        o giving each staff a different channel;
-        o giving each staff a different reverbation and chorus;
-        o highlighting the played notes;
-        o muting staves;
-   * lyrics
-   * export MusiXTeX;
-   * export PMX;
-   * export MIDI;
-   * export LilyPond;
-   * import MIDI;
-   * read from MIDI keyboard;
-   * Application of MIDI event filters to eliminate
-     some dirty effects (especially on human played MIDI files);
-   * record from MIDI keyboard;
-   * saving an restoring the files. The fileformat is similarily to the
-     format of the music publication program (MUP). So you if you are a MUP
-     user you have the possibility to convert the files into MIDI and
-     Postscript. But this is no longer necessary because noteedit can export
-     MusiXTeX, PMX, MIDI and LilyPond.
-   * konqueror embedding (see below)
+Main features
+-------------
+* Insertion/deletion/modification of notes, rests (and multirests),
+  ties/slurs, stem/beam control, instrument changes, repeats,
+  clef/time/key/volume/tempo and all other classical music notation
+  signatures.
+* Chords markings (based on KGuitar project).
+* Dynamic expression markings ((de)crescendo, octaviation, arpeggio, fermata,
+  trills, grace notes etc.).
+* Fixed expression markings (staccato, sforzato, portato, strong pizzicato,
+  sforzando etc.).
+* Multiple voices per staff (polyphony).
+* Drum notes (including drum and bass drum clef).
+* Flexible UI based on Qt/KDE. Supports zoom, multiple windows, many keyboard
+  shortcuts, Konqueror embedding and other candies.
+* Playback and other MIDI operations (reading and recording from MIDI keyboard)
+  are done using TSE3 library. Each staff can have its own channel, own
+  intsrument and own MIDI settings (reverbation, chorus). Currently played
+  element is highlighted!
+* Support for lyrics.
+* Basic score layout operations (setting brackets, braces, continuing bars over
+  staffs etc.).
+* Many useful tools like automatic placment of bars, automatic placement of
+  beams, transposition, copying&pasting of elements, optimization and resetting
+  of accidentals, MIDI importing (or recording from MIDI keyboard) filters etc.
+* Exports MIDI (using TSE3 library), MusicXML, ABC Music, PMX, MusiXTeX and
+  LilyPond.
+* Imports MIDI and MusicXML.
+* The NoteEdit fileformat is similar to the format of the music publication
+  program (MUP). It's a plaintext format, with a simple syntax for describing
+  the music, so computer geeks can edit it by hand if they want to:).
+* NoteEdit is translated into the following languages: German, Spanish, French,
+  Hungarian, Italian, Russian, Slovak, Slovene and Swedish. It supports UTF-8
+  encodings for lyrics, score title, composer, copyright and other document
+  strings. 
 
 
 The TSE3 library
-------------------
+----------------
+From version 1.5.0 on, NoteEdit bases on a library by Pete Goodliffe called TSE3
+(TSE3 Homepage). It is a powerful open source sequencer engine written in C++.
+The libkmid version is further supported but this version doesn't offer all
+features (MIDI import for eg.).
 
-From version 1.5.0 on "noteedit" bases on a new library by Pete Goodliffe
-<pete.goodliffe@pace.co.uk> called TSE3(http://TSE3.sourceforge.net). It is
-a powerful open source sequencer engine written in C++. The libkmid version
-is further supported but this version doesn't offer all features (MIDI
-import).
-
-TSE3 has its own file format and "noteedit" can produce it by means of TSE3
-function calls. So the "noteedit" data are interchangable with sequencer
+TSE3 has its own file format and NoteEdit can produce it by means of TSE3
+function calls. So the NoteEdit data are interchangable with sequencer
 applications basing on TSE3.
 
-The TSE3 library is not as much tested as the libkmid. So if you have
-problems with MIDI playback, installation or other realated functions please
-contact Pete Goodliffe. The TSE3 library comes with an application called
-tse3play. So you can test whether it works on your system. If so "noteedit"
-should work, too!
+The TSE3 library is not as much tested as the libkmid. So if you have problems
+with MIDI playback, installation or other realated functions please contact Pete
+Goodliffe. The TSE3 library comes with an application called tse3play. So you
+can test whether it works on your system. If so NoteEdit should work too! 
 
 Installation
 ------------
+See INSTALL!
 
-see: INSTALL
+Konqueror embedding (experimental)
+----------------------------------
+You can configure the Konqueror browser such a way that it starts NoteEdit as an
+embedded application. This requires installation of NoteEdit in KDE system.
 
-Konqueror embedding(experimental)
----------------------------------
-
-You can configure the Konqueror browser such a way that it starts noteedit
-as embedded part. This requires to install "noteedit" in KDE system.
-
-To configure embedding, first search for a file noteedit.desktop in
-$HOME/.kde or $HOME/.kde2 and delete it!
+To configure embedding, first search for a file noteedit.desktop in $HOME/.kde
+(or $HOME/.kde2 or 3) and delete it!
 
 Then start Konqueror and choose:
 
-      Settings --> Configure Konqueror ... --> File Associations -->
-     Add ...  (Group) audio --> (Type name:) x-notes
+  Settings --> Configure Konqueror... --> File Associations -->
+  Add... (Group) audio --> (Type name:) x-notes
 
-In field Application Preference Order there should be already noteedit. In
-File patterns: insert: *.not and *.not.sav
+In field Application Preference Order there should be already noteedit. In File
+patterns: insert: *.not and *.not.sav
 
-Press Apply and Ok! Now if you select a *.not and *.not.sav file the
-Konqueror should show the noteedit program embedded in Konqueror surface.
-And it should start playing.
+Press Apply and Ok! Now if you select a *.not and *.not.sav file the Konqueror
+should show the NoteEdit program embedded in Konqueror surface. It should start
+playing as well. 
 
 
 FAQ
 ---
-
-see: FAQ
-
+See FAQ!
 
 The TiMidity server
---------------------
+-------------------
+(only with TSE3) Version 2.10.2 of the MIDI to WAVE converter and player
+TiMidity++ now has a server mode. In this mode TiMidity++ behaves like a
+hardware MIDI synthesizer. This approach is interesting for all those who can't
+bring the MIDI device to work (mostly all non-SoundBlaster based cards).
+TiMidity++ needs to be compiled with (at least) the configure options (most
+Linux distributions already include these):
 
-(only with TSE3) Version 2.10.2 of the MIDI to WAVE converter and
-player TiMidity++ ( http://www.goice.co.jp/member/mo/timidity) now has a
-server mode. In this mode TiMidity++ behaves like a hardware MIDI
-synthesizer. This approach is interesting for all those who can't bring the
-MIDI device to work. A presupposition is that TiMidity++ is compiled with
-(at least) the configure options:
-
-         --enable-audio=alsa --enable-server --enable-alsaseq
+ --enable-audio=alsa --enable-server --enable-alsaseq
 
 If so, you can start TiMidity++ with:
 
-         timidity -iA -B8,2 -Os    (if this doesn't work try -Od)
+ timidity -iA -B8,2 -Os (if this doesn't work try -Od)
 
-Make sure that "noteedit" uses an TSE3 ALSA MIDI scheduler! Select Noteedit
-sound configure dialog ( Configure Noteedit --> Sound). Make sure Noteedit
-uses an ALSA MIDI scheduler! You should see 2 new MIDI devices:
+Make sure that NoteEdit uses an TSE3 ALSA MIDI scheduler! Select NoteEdit sound
+configure dialog (Configure NoteEdit-->Sound). Make sure NoteEdit uses an ALSA
+MIDI scheduler! You should see 2 new MIDI devices:
+* Timidity port 0 128:0
+* Timidity port 1 128:0
 
-   * Timidity port 0 128:0
-   * Timidity port 1 128:0
-
-Choose one of them and the replay should work!
+Choose one of them and the playback should work!
 
 You should also try to change "the orchestra" by installing a different GUS
-patch. GUS patches can by found in the "Links" section at the TiMidity++
-page.
+patch (or so called SoundFonts). Please look at the "Links" section at the
+TiMidity++ page.
 
-Tip: If the replay interrupts during turn over then start TiMidity++ as
-root. This increases the priority of the TiMidity++ process.
+Tip: If the replay interrupts during turn over then start TiMidity++ as root.
+This increases the priority of the TiMidity++ process. 
 
 Bug reports
 -----------
-
-Please send bug reports or compiling problems to TBD ja@informatik.tu-chemnitz.de.
-
-DO NOT USE THE MAILING LISTS BELOW!
-
+Should you encounter any bugs, you have any requests or would like to contact
+the NoteEdit development team for any reason, please send us an email to
+noteedit-devel@lists.berlios.de mailing list.
 
 News Groups
 -----------
-
-Noteedit has no special news group. You can find information about new
-versions and features at(but do not uses these groups for bug reports, see Bug reports):
+NoteEdit has no special news group. You can find information about new
+versions and features at (but do not uses these groups for bug reports, see Bug
+reports):
 
     * alt.music.midi                    * comp.text.tex
     * comp.music.midi                   * de.comp.text.tex
@@ -153,29 +141,26 @@ versions and features at(but do not uses these groups for bug reports, see Bug r
 
 Mailing lists
 -------------
-
 noteedit-user@lists.berlios.de
 noteedit-devel@lists.berlios.de
 
 Documentation
---------------
+-------------
+The documentation is part of the NoteEdit archive. You find it in the doc
+directory. The german translation can be found under "de", the english original
+is in the NoteEdit directory including all the pictures.
 
-The documentation is part of the noteedit archive. You find
-it in the doc directory. The german translation can be found
-under "de", the english original is in the noteedit directory
-including all the pictures.
+After having installed NoteEdit, you can read the documentation by selecting the
+NoteEdit Handbook option from the Help menu.
 
-After having installed noteedit, you can read the documentation
-by selecting the note edit handbook from the help menu.
+In case of an error when trying to open the documentation file it might be that
+KDE can't find it if you compiled the program from the sources. Try to change
+the prefix so it points to the KDE directory on your distribution (usually /usr)
+in that
+case. 
 
-In case there is an error when trying to open the documentation
-file it might be that KDE can't find it if you compiled it from
-the sources. Try to change the prefix so it points to the KDE 
-directory on your distribution (usually /usr) in that case.
-
-LICENSE
---------
-
+License
+-------
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by the Free
 Software Foundation; either version 2 of the License, or (at your option)
@@ -184,7 +169,6 @@ useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 Public License (http://www.fsf.org/copyleft/gpl.html) for more details.
 
-Leon Vinken, based on original README by
-J.Anders,
-Professur Rechnernetz u. verteilte Systeme
-TU-Chemnitz
+
+NoteEdit team, based on original README by
+J. Anders, Professur Rechnernetz u. verteilte Systeme TU-Chemnitz

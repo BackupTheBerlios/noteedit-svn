@@ -1,60 +1,63 @@
 Release 2.8.0 Beta 1
-
+--------------------
 New features:
-- updated Slovenian translation and fixed Makefile
-- RFE #573 - Soprano clef added
-- score info fields and staff names can now include double quotes ("), updated export filters
-- RFE #730 - Direct MIDI import - one-click MIDI file import implemented
-- RFE #729 - warning message before TSE3 -> Score added
-- automatic bar placement disabled if no time signature defined
-- allow bar placement in empty staffs with no clef/key/time signature
-- merged staff properties and voice dialog
-- staff properties can now change all staffs at once, not only the current one
-- menu point staff -> voices invokes the staff properties.
-- more improvements to the menu: Easier access via keys, some better
-  menu names (like Close / Quit, Select Multi Staff)
+- Updated Slovenian translation and fixed Makefile.
+- RFE #573 - Soprano clef added.
+- Score info fields and staff names can now include double quotes ("), updated
+export filters.
+- RFE #730 - Direct MIDI import - one-click MIDI file import implemented.
+- RFE #729 - warning message before TSE3 -> Score added.
+- Automatic bar placement disabled if no time signature defined.
+- Allow bar placement in empty staffs with no clef/key/time signature.
+- Merged staff properties and voice dialog.
+- Staff properties can now change all staffs at once, not only the current one.
+- Menu point staff -> voices invokes the staff properties.
+- More improvements to the menu: Easier access via keys, some better menu names
+  (like Close / Quit, Select Multi Staff).
+- Main window title now includes score title and subtitle by default, if none
+  defined yet, it uses filename.
 
-Bugs fixed:
-- 003595 dbl quotes in some score info fields leads to invalid files
-- 003935 deleting element doesn't make document edited - also some rework in delete element code
-- 003934 discard changes dialog ignored on exit
-- 003914 crash when a pasting to new staff
-- 003504 bad file save without clef
-- 003861 Multirests in non-4/4 measure broken
-- 003862 measures after multirests not numbered correctly
-- 003183 multistaff broken - warning message added
-- 003403 export lilypond 2.4 lyrics problem
-- 003484 crash on midi import
-- 003503 hard crash on midi export
-- 003786 midi export crashes noteedit
-- 003791 staff->delete / import recording warnings wrong
-- Integrated patch 403: Better menu structure
+Bug fixes:
+- Fixed #3595 - dbl quotes in some score info fields leads to invalid files.
+- Fixed #3935 - deleting element doesn't make document edited - also some rework
+  in delete element code.
+- Fixed #3934 - discard changes dialog ignored on exit.
+- Fixed #3914 - crash when a pasting to new staff.
+- Fixed #3504 - bad file save without clef.
+- Fixed #3861 - Multirests in non-4/4 measure broken.
+- Fixed #3862 - measures after multirests not numbered correctly.
+- Fixed #3183 - multistaff broken - warning message added.
+- Fixed #3403 - export lilypond 2.4 lyrics problem.
+- Fixed #3484 - crash on midi import.
+- Fixed #3503 - hard crash on midi export.
+- Fixed #3786 - midi export crashes noteedit.
+- Fixed #3791 - staff->delete / import recording warnings wrong.
+- Integrated patch 403 - Better menu structure
 - Fixed typo in staff properties dialog ("Voice:" -> "Instrument:")
 
 Remarks:
-- export to lily of different drum notes inside a chord is
-         suppressed to prevent chocking of lily. The
-         user should use multiple voices instead.
+- LilyPond export of different drum notes inside a single chord is suppressed to
+  prevent choking of Lily. The user should use multiple voices instead.
 
 
 Release 2.7.4
-
+-------------
 New features:
-- improved LilyPond support : added export in lilypond-2.4.2 format
-- added Slovenian translation, thanks to Matevz Jekovec
+- Improved LilyPond support : added export in lilypond-2.4.2 format.
+- Added Slovenian translation, thanks to Matevz Jekovec.
 
 Patches included (Matevz Jekovec):
-- 000255 added \version "2.0", so convert-ly now works out of the box
-         moved \voiceOne,\voiceTwo etc. to the separate lines
-  fixed a small typo (LilyPoint -> LilyPond)
+- Patch #255 - added \version "2.0", so convert-ly now works out of the box,
+  moved \voiceOne,\voiceTwo etc. to the separate lines, fixed a small typo
+  (LilyPoint -> LilyPond)
 
 Bugs fixed:
-- 002487 noteedit doesn't consider ties on MusicXML import
-- 002528 triplets unfunctional
-- 002532 multirests with one bar
-- 002580 small type in INSTALL.de
-- 002581 rest symbol printed twice
-- 002807 rests should have fermatas as well
-- 002809 measure numbers for other voices not printed in .ly file
-- 003249 2.7.4 beta crash on RH7.2
-- 003296 crash when ALSA synth not running
+- Fixed #2487 - noteedit doesn't consider ties on MusicXML import.
+- Fixed #2528 - triplets unfunctional.
+- Fixed #2532 - multirests with one bar.
+- Fixed #2580 - small type in INSTALL.de.
+- Fixed #2581 - rest symbol printed twice.
+- Fixed #2807 - rests should have fermatas as well.
+- Fixed #2809 - measure numbers for other voices not printed in .ly file.
+- Fixed #3249 - 2.7.4 beta crash on RH7.2.
+- Fixed #3296 - crash when ALSA synth not running.

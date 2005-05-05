@@ -1,9 +1,9 @@
 Todo list for version 2.8.0. This file gets deleted in final version!
 - update NoteEdit Docbook
-- update FAQ
-- fix multivoice LilyPond export bug (Georg)
+- replace an ugly MusiXTeX warning with a simple warning dialog
 - fix multivoice MusicXML import bug
-- remove all strings in application, which include the old e-mail or website address
+- remove all strings in application, which include the old e-mail or website
+  address
 - reread and rewrite any wierdly placed or written strings in UI
 - implement splash
 - change icon
@@ -13,7 +13,7 @@ Todo list for version 2.8.0. This file gets deleted in final version!
 - update Swede translation
 - update Slovak translation
 - update Spanish translation
-- update Slovenian translation
+- update Slovene translation
 - update French translation
 - update Russian translation
 - remove report bug dialog

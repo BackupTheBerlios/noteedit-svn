@@ -150,13 +150,13 @@ Now, you can run NoteEdit with:
     cd noteedit
     ./noteedit  [<file>.not]
 
-     
+
 Q 7.
 During file load an error concerning klauncher occurs:
 "... Could not read network connection list. Please check that the 'dcopserver'
 program is running!"
 and: "can't talk to klauncher".
-     
+
 A 7.
 You use NoteEdit outside KDE and the KDE binaries are not in your PATH. Add the
 KDE binaries to your PATH!
@@ -164,7 +164,7 @@ If this doesn't help, clean up some temporary DCOP files manually:
     rm /tmp/.ICE-unix/*
     rm $HOME/.DCOPserver_*
 
- 
+
 Q 8.
 I loaded a .not file made with a previous NoteEdit version. It seems the the
 first tempo signature appears in last instead of first staff. What shall I do?
@@ -191,7 +191,7 @@ words is to large!
 
 A 10.
 We don't know what's wrong! It has to do with font management of your X11
-system. Try to change in 
+system. Try to change in
 noteedit/chord.cpp near line 97:
 #if QT_VERSION >= 300
 #define LYRICSWIDTH_FAC(x) ((int) (1.5 * x))
@@ -206,7 +206,7 @@ or with (if the spacing is too large):
 #define LYRICSWIDTH_FAC(x) (x)
 
 Note that in the first case, you can increase a factor 1.5 if you still aren't
-satisfied with the words spacing. 
+satisfied with the words spacing.
 
 
 Q 11.
@@ -281,10 +281,10 @@ NoteEdit ALSA sequencer by running NoteEdit with --noalsa parameter.
 
 Note!
 -----
-NoteEdit uses the so-called ALSA-OSS emulation in when using the OSS only sound
-system (--noalsa parameter). The ALSA-OSS emulation doesn't permit the read
-direction from the MIDI device. Therfore, read and record from MIDI keyboard
-isn't possible.
+NoteEdit uses the so-called ALSA-OSS emulation when using OSS as the only sound
+system (--noalsa parameter). The ALSA-OSS emulation doesn't support the read
+direction from the MIDI device. Therefore, reading and recording from MIDI
+keyboard isn't possible.
 
 A 14.
 Remove ALSA and use the pre-ALSA sound modules!
@@ -316,10 +316,10 @@ solution you can start NoteEdit without creating an ALSA MIDI scheduler:
 
 Note!
 -----
-NoteEdit uses the so-called ALSA-OSS emulation in when using the OSS only sound
-system (--noalsa parameter). The ALSA-OSS emulation doesn't permit the read
-direction from the MIDI device. Therfore, read and record from MIDI keyboard
-isn't possible.
+NoteEdit uses the so-called ALSA-OSS emulation when using OSS as the only sound
+system (--noalsa parameter). The ALSA-OSS emulation doesn't support the read
+direction from the MIDI device. Therefore, reading and recording from MIDI
+keyboard isn't possible.
 
 A 15.
 Remove ALSA and use the pre-ALSA sound modules!

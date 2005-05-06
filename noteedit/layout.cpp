@@ -27,7 +27,7 @@
 #include <klocale.h>
 
 #define LAYOUT_BORDER 10 
-#define MINWIDTH 600
+#define MINWIDTH 750
 #define STAFF_LINE_DIST 4
 #define STAFF_HEIGHT (STAFF_LINE_DIST*4)
 #define STAFF_DIST (STAFF_LINE_DIST * 3)
@@ -52,14 +52,14 @@
 
 NStaffLayout::NStaffLayout(int staffCount, layoutDef *braceMatrix, layoutDef *bracketMatrix, layoutDef *barCont, QList<NStaff> *stafflist, QWidget *parent, char *name) :
 	QDialog(parent, name), 
-	quit_("Ok", this), cancel_(i18n ("Cancel"), this), brace_(i18n ("set brace"), this), bracket_(i18n ("set bracket"), this), bar_ ( i18n ("continue bar"), this),
-	rembrace_( i18n ("remove brace"), this), rembracket_(i18n("remove bracket"), this), rembar_ ( i18n ("discontinue bar"), this),
+	quit_("Ok", this), cancel_(i18n ("Cancel"), this), brace_(i18n ("Set brace"), this), bracket_(i18n ("Set bracket"), this), bar_ ( i18n ("Continue bar"), this),
+	rembrace_( i18n ("Remove brace"), this), rembracket_(i18n("Remove bracket"), this), rembar_ ( i18n ("Discontinue bar"), this),
 	grayColor_(160, 160, 160), whiteBrush_(QColor(255, 255,255)), blackPen_(QColor(0, 0, 0)), bluePen_(QColor(0, 0, 255)), selRectValid_(false), 
 	backpixmap_(0), hasChanged_(true) {
 		staffCount_ = staffCount;
     		setMinimumSize( MINWIDTH, 
 		staffCount_ * (STAFF_HEIGHT+STAFF_DIST)+STAFF_DIST +2*LAYOUT_BORDER+4*BUTTON_Y_DIST+3*BUTTON_HEIGHT);
-    		setBackgroundColor( QColor( 200, 200, 200) );
+    		setBackgroundColor( QColor(200, 200, 200) );
 		staffList_ = stafflist;
 		braceMatrix_ = braceMatrix;
 		bracketMatrix_ = bracketMatrix;
@@ -401,7 +401,8 @@ void NStaffLayout::mousePressEvent ( QMouseEvent * evt ) {
 
 
 void NStaffLayout::mouseMoveEvent ( QMouseEvent * evt ) {
-	selRect_ = QRect(p0_, QPoint(evt->x(), evt->y()));
+	/* sets the current set area and changes orientation if selected from bottom-up */
+	selRect_ = (p0_.y() < evt->y()) ? (QRect(p0_, QPoint( evt->x(), evt->y()))): (QRect(QPoint(evt->x(), evt->y()), p0_));
 	selRectValid_ = true;
 	repaint();
 }

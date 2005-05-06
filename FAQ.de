@@ -310,8 +310,8 @@ Achtung!
 
 NoteEdit benutzt die sogenannte ALSA-OSS Emulation, wenn Sie OSS als einziges
 Soundsystem benutzen (--noalsa Parameter). Die ALSA-OSS-Emulation
-erlaubt es nicht, von einem MIDI Device zu lesen. Also sind Lesen und Aufnehmen 
-mit Hilfe eines MIDI-Keyboards nicht möglich.
+unterstützt nicht das Lesen von einem MIDI Gerät. Also sind Lesen und Aufnehmen
+mit einem MIDI-Keyboards nicht möglich.
 
 Wenn diese Maßnahme ebenfalls nicht greift, gibt es noch folgende Möglichkeiten:
 - Löschen Sie ALSA und nutzen Sie die Prä-Alsa-Sound-Module. 

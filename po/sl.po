@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 00:18+0200\n"
-"PO-Revision-Date: 2005-05-02 19:02+0200\n"
+"POT-Creation-Date: 2005-05-08 01:16+0200\n"
+"PO-Revision-Date: 2005-05-08 01:26+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
@@ -429,9 +429,8 @@ msgid ""
 "staff %1; measure %2: Mup cannot deal with segno staff at end. The segno "
 "staff is deleted.  Please insert a rest!\n"
 msgstr ""
-"Sistem %1, takt %2: MUP format ne podpira \"segno\" simbola ob koncu skladbe "
-"in zato ta sistem ni bil shranjen. Prosimo, da simbol \"segno\" zamenjate s "
-"pavzo!\n"
+"Sistem %1, takt %2: MUP format ne podpira Segno simbola ob koncu skladbe in "
+"zato ta sistem ni bil shranjen. Prosimo, da simbol Segno zamenjate s pavzo!\n"
 
 #: filehandler.cpp:581
 msgid ""
@@ -540,39 +539,32 @@ msgstr ""
 "MUP format ne more pravilno zapisati več kot eno okrasno noto pod lokom\n"
 
 #: layout.cpp:55
-#, fuzzy
 msgid "Set brace"
 msgstr "Dodaj akolado"
 
 #: layout.cpp:55
-#, fuzzy
 msgid "Set bracket"
 msgstr "Dodaj oglat oklepaj"
 
 #: layout.cpp:55
-#, fuzzy
 msgid "Continue bar"
 msgstr "Poveži s taktnico"
 
 #: layout.cpp:56
-#, fuzzy
 msgid "Remove brace"
 msgstr "Odstrani akolado"
 
 #: layout.cpp:56
-#, fuzzy
 msgid "Remove bracket"
 msgstr "Odstrani oglat oklepaj"
 
 #: layout.cpp:56
-#, fuzzy
 msgid "Discontinue bar"
 msgstr "Taktnice ločene"
 
 #: layout.cpp:59
-#, fuzzy
 msgid "Score layout"
-msgstr "&Izgled dokumenta"
+msgstr "Izgled dokumenta"
 
 #: lilyexport.cpp:617
 msgid ""
@@ -773,9 +765,8 @@ msgid "Export M&usicXML..."
 msgstr "Izvozi v M&usicXML ..."
 
 #: mainframewidget.cpp:259
-#, fuzzy
 msgid "&Output Params..."
-msgstr "Izhodni parametri ..."
+msgstr "Izh&odni parametri ..."
 
 #: mainframewidget.cpp:260
 msgid "Export &LilyPond..."
@@ -830,7 +821,6 @@ msgid "&Transpose..."
 msgstr "&Transponiraj ..."
 
 #: mainframewidget.cpp:285
-#, fuzzy
 msgid "C&hange Clef..."
 msgstr "&Zamenjaj ključ ..."
 
@@ -839,7 +829,6 @@ msgid "T&uplet..."
 msgstr "Po&ddelitve (triole, duole) ..."
 
 #: mainframewidget.cpp:288
-#, fuzzy
 msgid "Cle&f..."
 msgstr "&Ključ ..."
 
@@ -848,18 +837,15 @@ msgid "&Key signature..."
 msgstr "&Stalni predznaki ..."
 
 #: mainframewidget.cpp:292
-#, fuzzy
-msgid "Repeat&Open"
-msgstr "Ponavlja&j - odprt"
+msgid "Repeat - &Open"
+msgstr "Ponavljaj - &odprt"
 
 #: mainframewidget.cpp:294
-#, fuzzy
-msgid "Re&peatOpenClose"
+msgid "Re&peat- Open and Close"
 msgstr "&Ponavljaj - odprt in zaprt"
 
 #: mainframewidget.cpp:296
-#, fuzzy
-msgid "Repeat&Close"
+msgid "Repeat - &Close"
 msgstr "Ponavljaj - &zaprt"
 
 #: mainframewidget.cpp:298
@@ -871,22 +857,18 @@ msgid "SpecialEnding&2"
 msgstr "Poseben zaključek&2"
 
 #: mainframewidget.cpp:302
-#, fuzzy
 msgid "&Double Bar"
 msgstr "&Dvojna črta"
 
 #: mainframewidget.cpp:304
-#, fuzzy
 msgid "&End Bar"
 msgstr "&Končaj"
 
 #: mainframewidget.cpp:306
-#, fuzzy
 msgid "Time si&gnature..."
 msgstr "&Taktovski način ..."
 
 #: mainframewidget.cpp:308
-#, fuzzy
 msgid "Tempo &signature..."
 msgstr "Oznake za te&mpo ..."
 
@@ -895,12 +877,10 @@ msgid "&Volume change..."
 msgstr "Sprememba &dinamike ..."
 
 #: mainframewidget.cpp:312
-#, fuzzy
-msgid "Vo&ice change..."
+msgid "&Instrument change..."
 msgstr "Sprememba &inštrumenta ..."
 
 #: mainframewidget.cpp:314
-#, fuzzy
 msgid "C&hord..."
 msgstr "&Akord ..."
 
@@ -913,29 +893,28 @@ msgid "&Text ..."
 msgstr "&Besedilo ..."
 
 #: mainframewidget.cpp:320
-#, fuzzy
 msgid "&Segno"
-msgstr "\"Se&gno\""
+msgstr "Se&gno"
 
 #: mainframewidget.cpp:322
 msgid "&dal Segno"
-msgstr "&Od \"segno\"-a naprej"
+msgstr "&Od Segna naprej"
 
 #: mainframewidget.cpp:324
 msgid "dal Segno &al Fine"
-msgstr "&Od \"segno\"-a do konca"
+msgstr "&Od Segna do konca"
 
 #: mainframewidget.cpp:326
 msgid "dal Segno al C&oda"
-msgstr "&Od \"segno\"-a do \"coda\"-e"
+msgstr "&Od Segna do Code"
 
 #: mainframewidget.cpp:328
 msgid "&Fine"
-msgstr "\"&Fine\""
+msgstr "&Fine"
 
 #: mainframewidget.cpp:330
 msgid "&Coda"
-msgstr "\"&Coda\""
+msgstr "&Coda"
 
 #: mainframewidget.cpp:332
 msgid "&Ritardando"
@@ -971,11 +950,11 @@ msgstr "&Glasovi ..."
 
 #: mainframewidget.cpp:341
 msgid "&Staff properties..."
-msgstr "&Lastnosti sistema"
+msgstr "&Lastnosti sistema ..."
 
 #: mainframewidget.cpp:342
 msgid "Score &layout..."
-msgstr "&Izgled dokumenta"
+msgstr "&Izgled dokumenta ..."
 
 #: mainframewidget.cpp:344
 msgid "&Lyrics..."
@@ -986,32 +965,28 @@ msgid "&Import recording"
 msgstr "&Uvozi posnetek"
 
 #: mainframewidget.cpp:348
-#, fuzzy
 msgid "Select &Multi Staff..."
 msgstr "Izberi vsebino &večih sistemov ..."
 
 #: mainframewidget.cpp:349
 msgid "&Goto bar..."
-msgstr ""
+msgstr "&Pojdi na takt ..."
 
 #: mainframewidget.cpp:351
-#, fuzzy
 msgid "&Auto Bar..."
-msgstr "&Samodejna postavitev taktnic"
+msgstr "&Samodejno postavi taktnice ..."
 
 #: mainframewidget.cpp:353
-#, fuzzy
 msgid "Auto &Beam..."
-msgstr "Samodejna vezava notnih &vratov"
+msgstr "Samodejno poveži notne &vratove ..."
 
 #: mainframewidget.cpp:354
 msgid "&Cleanup rests..."
 msgstr "&Počisti odvečne pavze ..."
 
 #: mainframewidget.cpp:355
-#, fuzzy
-msgid "&Set N time repeat"
-msgstr "&Vstavi N-kratni ponavljaj"
+msgid "&Set N time repeat..."
+msgstr "&Vstavi N-kratni ponavljaj ..."
 
 #: mainframewidget.cpp:358
 msgid "&Create TSE3 song"
@@ -1030,21 +1005,18 @@ msgid "&Write TSE3 song"
 msgstr "&Napiši TSE3 skladbo"
 
 #: mainframewidget.cpp:362
-#, fuzzy
 msgid "MIDI &out..."
-msgstr "MIDI &izhod"
+msgstr "MIDI &izhod ..."
 
 #: mainframewidget.cpp:363
-#, fuzzy
 msgid "MIDI &in..."
-msgstr "MIDI &vhod"
+msgstr "MIDI &vhod ..."
 
 #: mainframewidget.cpp:364
 msgid "&Filter dialog..."
 msgstr "&Filtri ..."
 
 #: mainframewidget.cpp:365
-#, fuzzy
 msgid "Inform&ation..."
 msgstr "&Informacije ..."
 
@@ -1057,7 +1029,6 @@ msgid "TSE3 --> &Score"
 msgstr "T&SE3 --> Dokument"
 
 #: mainframewidget.cpp:369
-#, fuzzy
 msgid "New &window"
 msgstr "&Novo okno"
 
@@ -1774,11 +1745,11 @@ msgstr "NoteEdit"
 
 #: noteedit_part.cpp:75
 msgid "Main author and maintainer until September 2004"
-msgstr ""
+msgstr "Prvotni avtor in vzdrževalec do septembra 2004"
 
 #: noteedit_part.cpp:77
 msgid "project manager"
-msgstr ""
+msgstr "vodja projekta"
 
 #: noteedit_part.cpp:79
 msgid "programmer"
@@ -1806,7 +1777,7 @@ msgstr "LilyPond vmesnik"
 
 #: noteedit_part.cpp:93
 msgid "developer and composer"
-msgstr ""
+msgstr "razvijalec in skladatelj"
 
 #: pmxexport.cpp:151 pmxexport.cpp:154
 msgid "PMX export"
@@ -1947,19 +1918,19 @@ msgid "Accent Toolbar"
 msgstr "Orodja za poudarke"
 
 #: rc.cpp:36
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "&Import"
-msgstr "&Izvoz"
+msgstr "&Uvozi"
 
 #: rc.cpp:38 uiconnect.cpp:224
 #, no-c-format
 msgid "&Export"
-msgstr "&Izvoz"
+msgstr "&Izvozi"
 
 #: rc.cpp:46
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Seg&no"
-msgstr "\"Se&gno\""
+msgstr "Se&gno"
 
 #: rc.cpp:50
 #, no-c-format
@@ -2740,9 +2711,9 @@ msgid "Voice"
 msgstr "Glas"
 
 #: rc.cpp:464
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "C&reate Voice"
-msgstr "&Ustvari glas"
+msgstr "&Dodaj glas"
 
 #: rc.cpp:466
 #, no-c-format
@@ -2755,9 +2726,9 @@ msgid "Alt+O"
 msgstr ""
 
 #: rc.cpp:472
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "&Test"
-msgstr "Oznake"
+msgstr "&Preizkus"
 
 #: rc.cpp:474
 #, no-c-format
@@ -4163,7 +4134,7 @@ msgstr ""
 
 #: uiconnect.cpp:223
 msgid "LilyPond export"
-msgstr "Izvoz LilyPond"
+msgstr "Izvozi v LilyPond"
 
 #: uiconnect.cpp:451 uiconnect.cpp:452
 msgid "Auto"
@@ -4287,7 +4258,7 @@ msgstr "Izbira večih sistemov skupaj"
 
 #: voice.cpp:4278
 msgid "posit: chord skipped"
-msgstr ""
+msgstr "posit: akord spuščen"
 
 #: voice.cpp:4279
 msgid "Repositioning voice"
@@ -4412,6 +4383,9 @@ msgstr "Pokaži diagram"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Ustvarjanje akordov"
+
+#~ msgid "Vo&ice change..."
+#~ msgstr "Menjavo &inštrumenta ..."
 
 #~ msgid "&Goto"
 #~ msgstr "&Pojdi na takt ..."

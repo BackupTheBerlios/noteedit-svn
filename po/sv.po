@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 00:18+0200\n"
+"POT-Creation-Date: 2005-05-08 01:16+0200\n"
 "PO-Revision-Date: 2002-11-11 23:22+0100\n"
 "Last-Translator: Jörg Anders <ja@informatik.tu-chemnitz.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
@@ -863,17 +863,17 @@ msgstr "&Förtecken..."
 
 #: mainframewidget.cpp:292
 #, fuzzy
-msgid "Repeat&Open"
+msgid "Repeat - &Open"
 msgstr "Upprepning &börjar"
 
 #: mainframewidget.cpp:294
 #, fuzzy
-msgid "Re&peatOpenClose"
+msgid "Re&peat- Open and Close"
 msgstr "Upprepning &BörjrarSlutar"
 
 #: mainframewidget.cpp:296
 #, fuzzy
-msgid "Repeat&Close"
+msgid "Repeat - &Close"
 msgstr "Upprepning &slutar"
 
 #: mainframewidget.cpp:298
@@ -909,8 +909,8 @@ msgstr "&Ljudstyrkeändring..."
 
 #: mainframewidget.cpp:312
 #, fuzzy
-msgid "Vo&ice change..."
-msgstr "Stämm&obyte..."
+msgid "&Instrument change..."
+msgstr "&Ljudstyrkeändring..."
 
 #: mainframewidget.cpp:314
 #, fuzzy
@@ -1029,7 +1029,7 @@ msgid "&Cleanup rests..."
 msgstr "&Rensa pauser..."
 
 #: mainframewidget.cpp:355
-msgid "&Set N time repeat"
+msgid "&Set N time repeat..."
 msgstr ""
 
 #: mainframewidget.cpp:358
@@ -4428,6 +4428,10 @@ msgstr ""
 #, fuzzy
 msgid "Chord constructor"
 msgstr "Partiturstyrning"
+
+#, fuzzy
+#~ msgid "Vo&ice change..."
+#~ msgstr "Stämm&obyte..."
 
 #~ msgid "&Goto"
 #~ msgstr "&Gå till"

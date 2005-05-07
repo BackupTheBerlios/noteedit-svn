@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 00:18+0200\n"
+"POT-Creation-Date: 2005-05-08 01:16+0200\n"
 "PO-Revision-Date: 2002-08-28 11:33+0200\n"
 "Last-Translator: Peter Breuer <comp@suselinux.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -854,17 +854,17 @@ msgstr "&Kulcs bejegyzés..."
 
 #: mainframewidget.cpp:292
 #, fuzzy
-msgid "Repeat&Open"
+msgid "Repeat - &Open"
 msgstr "&IsmétlésKezdet"
 
 #: mainframewidget.cpp:294
 #, fuzzy
-msgid "Re&peatOpenClose"
+msgid "Re&peat- Open and Close"
 msgstr "IsmétlésKezdet&Vége"
 
 #: mainframewidget.cpp:296
 #, fuzzy
-msgid "Repeat&Close"
+msgid "Repeat - &Close"
 msgstr "I&smétlésVége"
 
 #: mainframewidget.cpp:298
@@ -900,8 +900,8 @@ msgstr "&Hangerőváltás..."
 
 #: mainframewidget.cpp:312
 #, fuzzy
-msgid "Vo&ice change..."
-msgstr "Han&gszer váltás..."
+msgid "&Instrument change..."
+msgstr "&Hangerőváltás..."
 
 #: mainframewidget.cpp:314
 #, fuzzy
@@ -1020,7 +1020,7 @@ msgid "&Cleanup rests..."
 msgstr "Szünetjelek &törlése"
 
 #: mainframewidget.cpp:355
-msgid "&Set N time repeat"
+msgid "&Set N time repeat..."
 msgstr ""
 
 #: mainframewidget.cpp:358
@@ -4426,6 +4426,10 @@ msgstr "diagram megtekintése"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Akkordszerkesztő"
+
+#, fuzzy
+#~ msgid "Vo&ice change..."
+#~ msgstr "Han&gszer váltás..."
 
 #~ msgid "&Goto"
 #~ msgstr "U&grás"

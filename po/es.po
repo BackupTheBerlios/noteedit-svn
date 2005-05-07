@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 00:18+0200\n"
+"POT-Creation-Date: 2005-05-08 01:16+0200\n"
 "PO-Revision-Date: 2003-12-27 02:08-0600\n"
 "Last-Translator: \n"
 "Language-Team:  <es@li.org>\n"
@@ -864,17 +864,17 @@ msgstr "&Armadura..."
 
 #: mainframewidget.cpp:292
 #, fuzzy
-msgid "Repeat&Open"
+msgid "Repeat - &Open"
 msgstr "&Reptn Abrir"
 
 #: mainframewidget.cpp:294
 #, fuzzy
-msgid "Re&peatOpenClose"
+msgid "Re&peat- Open and Close"
 msgstr "Reptn Abrir&Cerrar"
 
 #: mainframewidget.cpp:296
 #, fuzzy
-msgid "Repeat&Close"
+msgid "Repeat - &Close"
 msgstr "R&eptn Cerrar"
 
 #: mainframewidget.cpp:298
@@ -911,8 +911,8 @@ msgstr "Diná&mica..."
 
 #: mainframewidget.cpp:312
 #, fuzzy
-msgid "Vo&ice change..."
-msgstr "Cambio de v&oz..."
+msgid "&Instrument change..."
+msgstr "Diná&mica..."
 
 #: mainframewidget.cpp:314
 #, fuzzy
@@ -1035,7 +1035,7 @@ msgstr "Limpiar silen&cios..."
 
 #: mainframewidget.cpp:355
 #, fuzzy
-msgid "&Set N time repeat"
+msgid "&Set N time repeat..."
 msgstr "Repetición N número"
 
 #: mainframewidget.cpp:358
@@ -4464,6 +4464,10 @@ msgstr "Mostrar diagrama"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Constructor de acordes"
+
+#, fuzzy
+#~ msgid "Vo&ice change..."
+#~ msgstr "Cambio de v&oz..."
 
 #~ msgid "&Goto"
 #~ msgstr "&Ir a"

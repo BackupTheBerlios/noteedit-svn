@@ -289,11 +289,11 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	criticalButtons_.append
 		(new KAction( i18n("&Key signature..."), "keyicon", 0, this, SLOT(keyDialog()), actionCollection(), "insert_keysig" ));
 	criticalButtons_.append
-		(new KAction( i18n("Repeat&Open"), "repopen", 0, this, SLOT(insertRepeatOpen()), actionCollection(), "insert_repeatopen"));
+		(new KAction( i18n("Repeat - &Open"), "repopen", 0, this, SLOT(insertRepeatOpen()), actionCollection(), "insert_repeatopen"));
 	criticalButtons_.append
-		(new KAction( i18n("Re&peatOpenClose"), "repopenclose", 0, this, SLOT(insertRepeatOpenClose()), actionCollection(), "insert_repeatopenclose"));
+		(new KAction( i18n("Re&peat- Open and Close"), "repopenclose", 0, this, SLOT(insertRepeatOpenClose()), actionCollection(), "insert_repeatopenclose"));
 	criticalButtons_.append
-		(new KAction( i18n("Repeat&Close"), "repclose", 0, this, SLOT(insertRepeatClose()), actionCollection(), "insert_repeatclose"));
+		(new KAction( i18n("Repeat - &Close"), "repclose", 0, this, SLOT(insertRepeatClose()), actionCollection(), "insert_repeatclose"));
 	criticalButtons_.append
 		(new KAction( i18n("SpecialEnding&1"), 0, this, SLOT(insertspecEnding1()), actionCollection(), "insert_specialending1" ));
 	criticalButtons_.append
@@ -309,7 +309,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	criticalButtons_.append
 		(new KAction( i18n("&Volume change..."), "speaker", 0, this, SLOT(volChangeDialog()), actionCollection(), "insert_volumechange"));
 	criticalButtons_.append
-		(new KAction( i18n("Vo&ice change..."), "voichange", 0, this, SLOT(voiceChangeDialog()), actionCollection(), "insert_voicechange"));
+		(new KAction( i18n("&Instrument change..."), "voichange", 0, this, SLOT(voiceChangeDialog()), actionCollection(), "insert_voicechange"));
 	criticalButtons_.append
 		(new KAction( i18n("C&hord..."), 0, this, SLOT(chordDialog()), actionCollection(), "insert_chord"));
 	criticalButtons_.append
@@ -352,15 +352,15 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	//new KAction( i18n("Auto&beam..."),  0, this, SLOT(autoBeamDialog()), actionCollection(), "edit_autobeam" );
 	new KAction( i18n("Auto &Beam..."),  0, this, SLOT(doAutoBeam()), actionCollection(), "edit_autobeam" );
 	new KAction( i18n("&Cleanup rests..."), 0, this, SLOT(cleanRestsDialog()), actionCollection(), "edit_cleanuprests" );
-	new KAction( i18n("&Set N time repeat"), "repntimes", 0, this, SLOT(repeatCountDialog()), actionCollection(), "set_ntime_repeat");
+	new KAction( i18n("&Set N time repeat..."), "repntimes", 0, this, SLOT(repeatCountDialog()), actionCollection(), "set_ntime_repeat");
 	// TODO add Redo/Cut/Copy/Paste to the Edit menu
 #ifdef WITH_TSE3
 	new KAction( i18n("&Create TSE3 song"), "Wizard", 0, this, SLOT(createTSE3()), actionCollection(), "tse3_createsong" );
 	new KAction( i18n("&Play TSE3 song"), "1rightarrow", 0, this, SLOT(playSong()), actionCollection(), "tse3_playsong" );
 	new KAction( i18n("&Read TSE3 song"), "filefind", 0, this, SLOT(readTSE3()), actionCollection(), "tse3_readsong" );
 	new KAction( i18n("&Write TSE3 song"), "filesaveas", 0, this, SLOT(writeTSE3()), actionCollection(), "tse3_writesong" );
-	new KAction( i18n("MIDI &out"), "midi", 0, this, SLOT(TSE3MidiOut()), actionCollection(), "tse3_midiout" );
-	new KAction( i18n("MIDI &in"), "fileopen", 0, this, SLOT(TSE3MidiIn()), actionCollection(), "tse3_midiin" );
+	new KAction( i18n("MIDI &out..."), "midi", 0, this, SLOT(TSE3MidiOut()), actionCollection(), "tse3_midiout" );
+	new KAction( i18n("MIDI &in..."), "fileopen", 0, this, SLOT(TSE3MidiIn()), actionCollection(), "tse3_midiin" );
 	new KAction( i18n("&Filter dialog..."), "filter", 0, this, SLOT(TSE3Filter()), actionCollection(), "tse3_filterdlg" );
 	new KAction( i18n("Inform&ation..."), "help", 0, tse3Handler_, SLOT(printSongInformation()), actionCollection(), "tse3_information" );
 	new KAction( i18n("&Merge..."), "view_right", 0, tse3Handler_, SLOT(TSE3Merge()), actionCollection(), "tse3_merge" );

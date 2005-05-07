@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 00:18+0200\n"
+"POT-Creation-Date: 2005-05-08 01:16+0200\n"
 "PO-Revision-Date: 2004-02-13 21:40+0100\n"
 "Last-Translator: Marc Tommasi <marc.tommasi@free.fr>\n"
 "Language-Team: Français <fr@li.org>\n"
@@ -831,17 +831,17 @@ msgstr "&Armure..."
 
 #: mainframewidget.cpp:292
 #, fuzzy
-msgid "Repeat&Open"
+msgid "Repeat - &Open"
 msgstr "Répétition &ouverture"
 
 #: mainframewidget.cpp:294
 #, fuzzy
-msgid "Re&peatOpenClose"
+msgid "Re&peat- Open and Close"
 msgstr "Répétition Ouverture-F&ermeture"
 
 #: mainframewidget.cpp:296
 #, fuzzy
-msgid "Repeat&Close"
+msgid "Repeat - &Close"
 msgstr "Répétition &Fermeture"
 
 #: mainframewidget.cpp:298
@@ -878,8 +878,8 @@ msgstr "Changement de &Volume..."
 
 #: mainframewidget.cpp:312
 #, fuzzy
-msgid "Vo&ice change..."
-msgstr "Changement de Voi&x..."
+msgid "&Instrument change..."
+msgstr "Changement de &Volume..."
 
 #: mainframewidget.cpp:314
 #, fuzzy
@@ -1002,7 +1002,7 @@ msgstr "&Nettoyage des silences..."
 
 #: mainframewidget.cpp:355
 #, fuzzy
-msgid "&Set N time repeat"
+msgid "&Set N time repeat..."
 msgstr "Nombre de répétitions"
 
 #: mainframewidget.cpp:358
@@ -4413,6 +4413,10 @@ msgstr "Montrer le diagramme"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Créateur d'accords"
+
+#, fuzzy
+#~ msgid "Vo&ice change..."
+#~ msgstr "Changement de Voi&x..."
 
 #~ msgid "&Goto"
 #~ msgstr "&Aller à"

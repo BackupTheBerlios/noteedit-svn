@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NoteEdit-1.16.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 00:18+0200\n"
+"POT-Creation-Date: 2005-05-08 01:16+0200\n"
 "PO-Revision-Date: 2002-06-12 15:21+0200\n"
 "Last-Translator: Jörg Anders <ja@informatik.tu-chemnitz.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
@@ -869,17 +869,17 @@ msgstr "Pred&značenie..."
 
 #: mainframewidget.cpp:292
 #, fuzzy
-msgid "Repeat&Open"
+msgid "Repeat - &Open"
 msgstr "&Začiatok opakovania"
 
 #: mainframewidget.cpp:294
 #, fuzzy
-msgid "Re&peatOpenClose"
+msgid "Re&peat- Open and Close"
 msgstr "Ko&niec opakovania"
 
 #: mainframewidget.cpp:296
 #, fuzzy
-msgid "Repeat&Close"
+msgid "Repeat - &Close"
 msgstr "Ko&niec opakovania"
 
 #: mainframewidget.cpp:298
@@ -915,8 +915,8 @@ msgstr "Z&mena hlasitosti..."
 
 #: mainframewidget.cpp:312
 #, fuzzy
-msgid "Vo&ice change..."
-msgstr "Zmena hl&asu..."
+msgid "&Instrument change..."
+msgstr "Z&mena hlasitosti..."
 
 #: mainframewidget.cpp:314
 #, fuzzy
@@ -1035,7 +1035,7 @@ msgid "&Cleanup rests..."
 msgstr "&Prečistiť pomlčky"
 
 #: mainframewidget.cpp:355
-msgid "&Set N time repeat"
+msgid "&Set N time repeat..."
 msgstr ""
 
 #: mainframewidget.cpp:358
@@ -4450,6 +4450,10 @@ msgstr ""
 #, fuzzy
 msgid "Chord constructor"
 msgstr "Ovládanie partitúry"
+
+#, fuzzy
+#~ msgid "Vo&ice change..."
+#~ msgstr "Zmena hl&asu..."
 
 #~ msgid "&Goto"
 #~ msgstr "Í&sť na..."

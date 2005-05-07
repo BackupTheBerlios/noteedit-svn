@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-03 21:22+0200\n"
+"POT-Creation-Date: 2005-05-08 00:18+0200\n"
 "PO-Revision-Date: 2005-05-02 19:02+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
-#: lilyexport.cpp:1054 mainframewidget.cpp:1173 mainframewidget.cpp:1177
+#: lilyexport.cpp:1055 mainframewidget.cpp:1173 mainframewidget.cpp:1177
 #: mainframewidget.cpp:1190 mainframewidget.cpp:1203 mainframewidget.cpp:1208
 #: mainframewidget.cpp:3702 mainframewidget.cpp:3704 mainframewidget.cpp:4376
 #: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
@@ -38,7 +38,7 @@ msgstr ""
 "pojavilo nekaj napak, ki bodo kasneje verjetno preprečile uspešen prevod "
 "dokumenta v PostScript format. \n"
 
-#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:618
+#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:619
 #: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
@@ -540,30 +540,41 @@ msgstr ""
 "MUP format ne more pravilno zapisati več kot eno okrasno noto pod lokom\n"
 
 #: layout.cpp:55
-msgid "set brace"
+#, fuzzy
+msgid "Set brace"
 msgstr "Dodaj akolado"
 
 #: layout.cpp:55
-msgid "set bracket"
+#, fuzzy
+msgid "Set bracket"
 msgstr "Dodaj oglat oklepaj"
 
 #: layout.cpp:55
-msgid "continue bar"
+#, fuzzy
+msgid "Continue bar"
 msgstr "Poveži s taktnico"
 
 #: layout.cpp:56
-msgid "remove brace"
+#, fuzzy
+msgid "Remove brace"
 msgstr "Odstrani akolado"
 
 #: layout.cpp:56
-msgid "remove bracket"
+#, fuzzy
+msgid "Remove bracket"
 msgstr "Odstrani oglat oklepaj"
 
 #: layout.cpp:56
-msgid "discontinue bar"
+#, fuzzy
+msgid "Discontinue bar"
 msgstr "Taktnice ločene"
 
-#: lilyexport.cpp:616
+#: layout.cpp:59
+#, fuzzy
+msgid "Score layout"
+msgstr "&Izgled dokumenta"
+
+#: lilyexport.cpp:617
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -572,21 +583,21 @@ msgstr ""
 " nekaj problemov, ki bodo najverjetneje povzočili neuspešno izvajanje "
 "LilyPonda nad dokumentom\n"
 
-#: lilyexport.cpp:623
+#: lilyexport.cpp:624
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr "Sistem %1, takt %2: 128-inka v taktu, najmanjša je lahko 64-inka\n"
 
-#: lilyexport.cpp:627
+#: lilyexport.cpp:628
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr ""
 "Sistem %1 ima nenormativne stalne predznake, ki ne morajo biti zapisane v "
 "LilyPond formatu\n"
 
-#: lilyexport.cpp:631
+#: lilyexport.cpp:632
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "Sistem %1, takt %2 ima %3 128-inko, morala bi biti %%4\n"
 
-#: lilyexport.cpp:636
+#: lilyexport.cpp:637
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -594,11 +605,11 @@ msgstr ""
 "Sistem %1, takt %2: LilyPond starejši od 1.5.2 ne podpira dinamično dolgih "
 "trilčkov (valujoče črte)\n"
 
-#: lilyexport.cpp:641
+#: lilyexport.cpp:642
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr "Sistem %1, takt %2: Le nekaj not v akordu ima vezaje!\n"
 
-#: lilyexport.cpp:645
+#: lilyexport.cpp:646
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -606,12 +617,12 @@ msgstr ""
 "Sistem %1 vsebuje stavek za tolkala. Pozor! Izvoz v LilyPond format lahko ni "
 "povsem pravilen!\n"
 
-#: lilyexport.cpp:650
+#: lilyexport.cpp:651
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr ""
 "Sistem %1: Ta verzija LilyPonda ne podpira lokov znotraj okrasnih not\n"
 
-#: lilyexport.cpp:655
+#: lilyexport.cpp:656
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
@@ -619,25 +630,25 @@ msgstr ""
 "Oglat oklepaj z deloma povezljivo in deloma nepovezljivo taktnico ne more "
 "biti zapisan v LilyPond formatu\n"
 
-#: lilyexport.cpp:659
+#: lilyexport.cpp:660
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Klavirski stavek brez povezljive taktnice med sistemoma ne more biti zapisan "
 "v LilyPond formatu\n"
 
-#: lilyexport.cpp:663
+#: lilyexport.cpp:664
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Povezljiva taktnica zunaj območja akolade ali oglatega oklepaja ne more biti "
 "zapisana v LilyPond formatu\n"
 
-#: lilyexport.cpp:667
+#: lilyexport.cpp:668
 msgid "LilyPond produced. But there are some problems."
 msgstr "Uspešno Izvoženo v LilyPond format, vendar se je pojavilo nekaj napak."
 
-#: lilyexport.cpp:1053
+#: lilyexport.cpp:1054
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "
 "enjoy this feature."

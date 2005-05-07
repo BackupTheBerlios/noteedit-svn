@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.5.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-03 21:22+0200\n"
+"POT-Creation-Date: 2005-05-08 00:18+0200\n"
 "PO-Revision-Date: 2004-04-20 14:15+0200\n"
 "Last-Translator: Pavlo Bohmat <bohm@ukr.net>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
-#: lilyexport.cpp:1054 mainframewidget.cpp:1173 mainframewidget.cpp:1177
+#: lilyexport.cpp:1055 mainframewidget.cpp:1173 mainframewidget.cpp:1177
 #: mainframewidget.cpp:1190 mainframewidget.cpp:1203 mainframewidget.cpp:1208
 #: mainframewidget.cpp:3702 mainframewidget.cpp:3704 mainframewidget.cpp:4376
 #: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
@@ -36,7 +36,7 @@ msgstr ""
 "некоторые проблемы, которые, возможно, будут препятствовать успешному выводу "
 "PostScript.\n"
 
-#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:618
+#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:619
 #: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
@@ -542,30 +542,41 @@ msgid "MUP cannot correctly write more than one slurred grace\n"
 msgstr "MUP работает с не более чем одной акколадой на систему.\n"
 
 #: layout.cpp:55
-msgid "set brace"
+#, fuzzy
+msgid "Set brace"
 msgstr "установить { акколаду"
 
 #: layout.cpp:55
-msgid "set bracket"
+#, fuzzy
+msgid "Set bracket"
 msgstr "установить [ акколаду"
 
 #: layout.cpp:55
-msgid "continue bar"
+#, fuzzy
+msgid "Continue bar"
 msgstr "продолжить такт"
 
 #: layout.cpp:56
-msgid "remove brace"
+#, fuzzy
+msgid "Remove brace"
 msgstr "удалить { акколаду"
 
 #: layout.cpp:56
-msgid "remove bracket"
+#, fuzzy
+msgid "Remove bracket"
 msgstr "удалить [ акколаду"
 
 #: layout.cpp:56
-msgid "discontinue bar"
+#, fuzzy
+msgid "Discontinue bar"
 msgstr "прервать такт"
 
-#: lilyexport.cpp:616
+#: layout.cpp:59
+#, fuzzy
+msgid "Score layout"
+msgstr "Формат партитуры..."
+
+#: lilyexport.cpp:617
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -573,21 +584,21 @@ msgstr ""
 "Noteedit экспортировал партитуру в LilyPond, но есть некоторые проблемы,\n"
 "которые, возможно, будут препятствовать успешному выводу LilyPond.\n"
 
-#: lilyexport.cpp:623
+#: lilyexport.cpp:624
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr "Нотный стан %1, такт %2: 128-ая в такте; минимум - 64-ая.\n"
 
-#: lilyexport.cpp:627
+#: lilyexport.cpp:628
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr ""
 "На нотном стане %1 нерегулярная тональность. Это не может быть выражено в "
 "LilyPond.\n"
 
-#: lilyexport.cpp:631
+#: lilyexport.cpp:632
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "Нотный стан %1, такт %2: имеет %3 128-ую, должна быть: %4\n"
 
-#: lilyexport.cpp:636
+#: lilyexport.cpp:637
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -595,12 +606,12 @@ msgstr ""
 "Нотный стан %1, такт %2: LilyPond версии меньше 1.5.2 не может работать с "
 "разной длиной трелей (волнистых линий).\n"
 
-#: lilyexport.cpp:641
+#: lilyexport.cpp:642
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr ""
 "Нотный стан %1; такт %2: Только несколько нот в аккорде могут связываться!\n"
 
-#: lilyexport.cpp:645
+#: lilyexport.cpp:646
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -608,12 +619,12 @@ msgstr ""
 "Нотный стан %1 содержит нотный стан барабана. Заметка! Экспорт LilyPond "
 "полностью неверный!\n"
 
-#: lilyexport.cpp:650
+#: lilyexport.cpp:651
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr ""
 "Нотный стан %1: Эта версия LilyPond не может работать с лигами в форшлагах.\n"
 
-#: lilyexport.cpp:655
+#: lilyexport.cpp:656
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
@@ -621,25 +632,25 @@ msgstr ""
 "Акколада [ с частично продолженными и частично непродолженными правилами "
 "такта не может быть выражена в LilyPond\n"
 
-#: lilyexport.cpp:659
+#: lilyexport.cpp:660
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Нотный стан Piano без правил продолженного такта. Это не может быть выражен "
 "в LilyPond.\n"
 
-#: lilyexport.cpp:663
+#: lilyexport.cpp:664
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Правило продолженного такта вне [ или { акколады не может быть выражено в "
 "LilyPond.\n"
 
-#: lilyexport.cpp:667
+#: lilyexport.cpp:668
 msgid "LilyPond produced. But there are some problems."
 msgstr "Был вызван LilyPond. Но есть некоторые проблемы."
 
-#: lilyexport.cpp:1053
+#: lilyexport.cpp:1054
 #, fuzzy
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "

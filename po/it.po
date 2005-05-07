@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-03 21:22+0200\n"
+"POT-Creation-Date: 2005-05-08 00:18+0200\n"
 "PO-Revision-Date: 2002-06-12 15:19+0200\n"
 "Last-Translator: Jörg Anders <ja@informatik.tu-chemnitz.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
-#: lilyexport.cpp:1054 mainframewidget.cpp:1173 mainframewidget.cpp:1177
+#: lilyexport.cpp:1055 mainframewidget.cpp:1173 mainframewidget.cpp:1177
 #: mainframewidget.cpp:1190 mainframewidget.cpp:1203 mainframewidget.cpp:1208
 #: mainframewidget.cpp:3702 mainframewidget.cpp:3704 mainframewidget.cpp:4376
 #: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
@@ -37,7 +37,7 @@ msgstr ""
 "NoteEdit ha esportato lo spartito in PMX ma si sono stati alcuni\n"
 "problemi che potrebbero produrre un risultato errato in PMX.\n"
 
-#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:618
+#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:619
 #: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
@@ -554,33 +554,38 @@ msgstr "PMX non può gestire più di due voci per rigo\n"
 
 #: layout.cpp:55
 #, fuzzy
-msgid "set brace"
+msgid "Set brace"
 msgstr "Barra di misura prima"
 
 #: layout.cpp:55
 #, fuzzy
-msgid "set bracket"
+msgid "Set bracket"
 msgstr "Barra di misura prima"
 
 #: layout.cpp:55
-msgid "continue bar"
+msgid "Continue bar"
 msgstr ""
 
 #: layout.cpp:56
 #, fuzzy
-msgid "remove brace"
+msgid "Remove brace"
 msgstr "Vai alla fine"
 
 #: layout.cpp:56
 #, fuzzy
-msgid "remove bracket"
+msgid "Remove bracket"
 msgstr "Vai alla fine"
 
 #: layout.cpp:56
-msgid "discontinue bar"
+msgid "Discontinue bar"
 msgstr ""
 
-#: lilyexport.cpp:616
+#: layout.cpp:59
+#, fuzzy
+msgid "Score layout"
+msgstr "In&formazioni sullo spartito..."
+
+#: lilyexport.cpp:617
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -588,23 +593,23 @@ msgstr ""
 "NoteEdit ha esportato lo spartito in LilyPond ma ci sono stati alcuni\n"
 "problemi che potrebbero produrre un risultato errato in LilyPond.\n"
 
-#: lilyexport.cpp:623
+#: lilyexport.cpp:624
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr ""
 "Rigo %1; battuta %2: nella battuta c'è una quintupla (1/128); il minimo è "
 "una semibiscroma (1/64)\n"
 
-#: lilyexport.cpp:627
+#: lilyexport.cpp:628
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr ""
 "Il rigo %1 ha una chiave irregolare, che non può essere espressa in "
 "LilyPond\n"
 
-#: lilyexport.cpp:631
+#: lilyexport.cpp:632
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "Rigo %1; battuta %2: c'è %3 un 128esimo, dovrebbe essere: %4\n"
 
-#: lilyexport.cpp:636
+#: lilyexport.cpp:637
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -612,12 +617,12 @@ msgstr ""
 "Rigo %1; battuta %2: le versioni di Lilypond inferiori alla 1.5.2 non "
 "possono gestire il simbolo ondulato del trillo\n"
 
-#: lilyexport.cpp:641
+#: lilyexport.cpp:642
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr ""
 "Rigo %1; battuta %2: Solo una parte delle note dell'accordo ha la legatura\n"
 
-#: lilyexport.cpp:645
+#: lilyexport.cpp:646
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -625,17 +630,17 @@ msgstr ""
 "Il rigo %1 contiene notazione per batteria, la cui esportazione in Lilypond "
 "non è molto corretta.\n"
 
-#: lilyexport.cpp:650
+#: lilyexport.cpp:651
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr ""
 
-#: lilyexport.cpp:655
+#: lilyexport.cpp:656
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
 msgstr ""
 
-#: lilyexport.cpp:659
+#: lilyexport.cpp:660
 #, fuzzy
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
@@ -643,7 +648,7 @@ msgstr ""
 "Il rigo %1 ha una chiave irregolare, che non può essere espressa in "
 "LilyPond\n"
 
-#: lilyexport.cpp:663
+#: lilyexport.cpp:664
 #, fuzzy
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
@@ -651,13 +656,13 @@ msgstr ""
 "Il rigo %1 ha una chiave irregolare, che non può essere espressa in "
 "LilyPond\n"
 
-#: lilyexport.cpp:667
+#: lilyexport.cpp:668
 msgid "LilyPond produced. But there are some problems."
 msgstr ""
 "L'esportazione in LilyPond è stata completata, ma sono si sono stati dei "
 "problemi."
 
-#: lilyexport.cpp:1053
+#: lilyexport.cpp:1054
 #, fuzzy
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "

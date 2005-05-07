@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-03 21:22+0200\n"
+"POT-Creation-Date: 2005-05-08 00:18+0200\n"
 "PO-Revision-Date: 2003-12-27 02:08-0600\n"
 "Last-Translator: \n"
 "Language-Team:  <es@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
-#: lilyexport.cpp:1054 mainframewidget.cpp:1173 mainframewidget.cpp:1177
+#: lilyexport.cpp:1055 mainframewidget.cpp:1173 mainframewidget.cpp:1177
 #: mainframewidget.cpp:1190 mainframewidget.cpp:1203 mainframewidget.cpp:1208
 #: mainframewidget.cpp:3702 mainframewidget.cpp:3704 mainframewidget.cpp:4376
 #: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
@@ -43,7 +43,7 @@ msgstr ""
 "NoteEdit ha exportado la partitura a ABC music pero han habido algunos\n"
 "problemas que pueden evitar salida PostScript exitosa\n"
 
-#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:618
+#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:619
 #: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
@@ -548,30 +548,41 @@ msgid "MUP cannot correctly write more than one slurred grace\n"
 msgstr "MUP no puede manejar más de una llave por pentagrama\n"
 
 #: layout.cpp:55
-msgid "set brace"
+#, fuzzy
+msgid "Set brace"
 msgstr "Definir llave"
 
 #: layout.cpp:55
-msgid "set bracket"
+#, fuzzy
+msgid "Set bracket"
 msgstr "Definir corchete"
 
 #: layout.cpp:55
-msgid "continue bar"
+#, fuzzy
+msgid "Continue bar"
 msgstr "Continuar compás"
 
 #: layout.cpp:56
-msgid "remove brace"
+#, fuzzy
+msgid "Remove brace"
 msgstr "Eliminar llave"
 
 #: layout.cpp:56
-msgid "remove bracket"
+#, fuzzy
+msgid "Remove bracket"
 msgstr "eliminar corchete"
 
 #: layout.cpp:56
-msgid "discontinue bar"
+#, fuzzy
+msgid "Discontinue bar"
 msgstr "Descontinuar compás"
 
-#: lilyexport.cpp:616
+#: layout.cpp:59
+#, fuzzy
+msgid "Score layout"
+msgstr "Disposición de &la partitura..."
+
+#: lilyexport.cpp:617
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -579,21 +590,21 @@ msgstr ""
 "NoteEdit ha exportado la partitura a LilyPond pero hubo algunos problemas "
 "que pueden prevenir una salida exitosa de LilyPond.\n"
 
-#: lilyexport.cpp:623
+#: lilyexport.cpp:624
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr "Pentagrama %1; compás %2: 128avo en el compás; mínimo es un 64avo\n"
 
-#: lilyexport.cpp:627
+#: lilyexport.cpp:628
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr ""
 "El pentagrama %1 tiene una métrica irregular. Esto no se puede expresar en "
 "LilyPond\n"
 
-#: lilyexport.cpp:631
+#: lilyexport.cpp:632
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "Pentagrama %1, compás %2: tiene %3 128avo, debería ser: %4\n"
 
-#: lilyexport.cpp:636
+#: lilyexport.cpp:637
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -601,13 +612,13 @@ msgstr ""
 "Pentagrama %1, compás %2: Liilypond menor a 1.5.1 no puede manejar trinos de "
 "longitud variable (líneas onduladas)\n"
 
-#: lilyexport.cpp:641
+#: lilyexport.cpp:642
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr ""
 "Pentagrama %1, compás %2: Sólo un subconjunto de notas en el acorde tiene "
 "ligaduras!\n"
 
-#: lilyexport.cpp:645
+#: lilyexport.cpp:646
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -615,13 +626,13 @@ msgstr ""
 "Pentagrama %1 contiene un pentagrama de percusión. La exportación a Lilypond "
 "puede no ser correcta!\n"
 
-#: lilyexport.cpp:650
+#: lilyexport.cpp:651
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr ""
 "Pentagrama %1: Esta versión de Lilypond no puede manejar ligaduras en "
 "apoyaturas\n"
 
-#: lilyexport.cpp:655
+#: lilyexport.cpp:656
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
@@ -629,25 +640,25 @@ msgstr ""
 "Un corchete con reglas de compases discontínuos no se puede expresar en "
 "LilyPond\n"
 
-#: lilyexport.cpp:659
+#: lilyexport.cpp:660
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Un pentagrama de piano con reglas de comopases contínuos no se puede "
 "expresar en LilyPond\n"
 
-#: lilyexport.cpp:663
+#: lilyexport.cpp:664
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Reglas de compases continuadas fuera de una llave o corchete no se pueden "
 "expresar en LilyPond\n"
 
-#: lilyexport.cpp:667
+#: lilyexport.cpp:668
 msgid "LilyPond produced. But there are some problems."
 msgstr "Se generó salida LilyPond. Pero hubo algunos problemas."
 
-#: lilyexport.cpp:1053
+#: lilyexport.cpp:1054
 #, fuzzy
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "

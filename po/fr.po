@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-03 21:22+0200\n"
+"POT-Creation-Date: 2005-05-08 00:18+0200\n"
 "PO-Revision-Date: 2004-02-13 21:40+0100\n"
 "Last-Translator: Marc Tommasi <marc.tommasi@free.fr>\n"
 "Language-Team: Français <fr@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
-#: lilyexport.cpp:1054 mainframewidget.cpp:1173 mainframewidget.cpp:1177
+#: lilyexport.cpp:1055 mainframewidget.cpp:1173 mainframewidget.cpp:1177
 #: mainframewidget.cpp:1190 mainframewidget.cpp:1203 mainframewidget.cpp:1208
 #: mainframewidget.cpp:3702 mainframewidget.cpp:3704 mainframewidget.cpp:4376
 #: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
@@ -37,7 +37,7 @@ msgstr ""
 "Des erreurs sont apparues lors de l'exportation vers le format ABC.\n"
 "La génération d'un document PostScript risque d'échouer.\n"
 
-#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:618
+#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:619
 #: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
@@ -531,30 +531,41 @@ msgid "MUP cannot correctly write more than one slurred grace\n"
 msgstr "Le format MUP n'autorise pas plus d'un crochet par système.\n"
 
 #: layout.cpp:55
-msgid "set brace"
+#, fuzzy
+msgid "Set brace"
 msgstr "Ajouter une accolade"
 
 #: layout.cpp:55
-msgid "set bracket"
+#, fuzzy
+msgid "Set bracket"
 msgstr "Ajouter un crochet"
 
 #: layout.cpp:55
-msgid "continue bar"
+#, fuzzy
+msgid "Continue bar"
 msgstr "Barres de mesure continues"
 
 #: layout.cpp:56
-msgid "remove brace"
+#, fuzzy
+msgid "Remove brace"
 msgstr "Enlever une accolade"
 
 #: layout.cpp:56
-msgid "remove bracket"
+#, fuzzy
+msgid "Remove bracket"
 msgstr "Enlever un crochet"
 
 #: layout.cpp:56
-msgid "discontinue bar"
+#, fuzzy
+msgid "Discontinue bar"
 msgstr "Barres  indépendantes"
 
-#: lilyexport.cpp:616
+#: layout.cpp:59
+#, fuzzy
+msgid "Score layout"
+msgstr "Format de la &partition..."
+
+#: lilyexport.cpp:617
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -562,21 +573,21 @@ msgstr ""
 "Noteedit a exporté la partition au format LilyPond mais des problèmes \n"
 "sont apparus et la compilation LilyPond risque de ne pas fonctionner.\n"
 
-#: lilyexport.cpp:623
+#: lilyexport.cpp:624
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr ""
 
-#: lilyexport.cpp:627
+#: lilyexport.cpp:628
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr ""
 "La portée %1 a un clef irrégulière qui ne peut être exprimée dans le format "
 "LilyPond\n"
 
-#: lilyexport.cpp:631
+#: lilyexport.cpp:632
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr ""
 
-#: lilyexport.cpp:636
+#: lilyexport.cpp:637
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -584,41 +595,41 @@ msgstr ""
 "Portée %1, mesure %2. Les versions de LilyPond antérieures à a version 1.5.2 "
 "ne peuvent traiter les trilles de longueur variable.\n"
 
-#: lilyexport.cpp:641
+#: lilyexport.cpp:642
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr ""
 
-#: lilyexport.cpp:645
+#: lilyexport.cpp:646
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
 msgstr ""
 
-#: lilyexport.cpp:650
+#: lilyexport.cpp:651
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr ""
 
-#: lilyexport.cpp:655
+#: lilyexport.cpp:656
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
 msgstr ""
 
-#: lilyexport.cpp:659
+#: lilyexport.cpp:660
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 
-#: lilyexport.cpp:663
+#: lilyexport.cpp:664
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 
-#: lilyexport.cpp:667
+#: lilyexport.cpp:668
 msgid "LilyPond produced. But there are some problems."
 msgstr ""
 
-#: lilyexport.cpp:1053
+#: lilyexport.cpp:1054
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "
 "enjoy this feature."

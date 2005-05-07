@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-03 21:22+0200\n"
+"POT-Creation-Date: 2005-05-08 00:18+0200\n"
 "PO-Revision-Date: 2002-08-28 11:33+0200\n"
 "Last-Translator: Peter Breuer <comp@suselinux.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
-#: lilyexport.cpp:1054 mainframewidget.cpp:1173 mainframewidget.cpp:1177
+#: lilyexport.cpp:1055 mainframewidget.cpp:1173 mainframewidget.cpp:1177
 #: mainframewidget.cpp:1190 mainframewidget.cpp:1203 mainframewidget.cpp:1208
 #: mainframewidget.cpp:3702 mainframewidget.cpp:3704 mainframewidget.cpp:4376
 #: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
@@ -37,7 +37,7 @@ msgstr ""
 "Noteedit exportálta a kottát PMX formátumba, de elképzelhető néhány\n"
 "probléma amely lehetetlenné teszi a sikeres PMX kimenetet.\n"
 
-#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:618
+#: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:619
 #: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
@@ -544,33 +544,38 @@ msgstr "PMX nem kezel többet két hangszernél szólamonként\n"
 
 #: layout.cpp:55
 #, fuzzy
-msgid "set brace"
+msgid "Set brace"
 msgstr "ütem beállítása itt"
 
 #: layout.cpp:55
 #, fuzzy
-msgid "set bracket"
+msgid "Set bracket"
 msgstr "ütem beállítása itt"
 
 #: layout.cpp:55
-msgid "continue bar"
+msgid "Continue bar"
 msgstr ""
 
 #: layout.cpp:56
 #, fuzzy
-msgid "remove brace"
+msgid "Remove brace"
 msgstr "akkord eltávolítása"
 
 #: layout.cpp:56
 #, fuzzy
-msgid "remove bracket"
+msgid "Remove bracket"
 msgstr "akkord eltávolítása"
 
 #: layout.cpp:56
-msgid "discontinue bar"
+msgid "Discontinue bar"
 msgstr ""
 
-#: lilyexport.cpp:616
+#: layout.cpp:59
+#, fuzzy
+msgid "Score layout"
+msgstr "Kotta in&formáció..."
+
+#: lilyexport.cpp:617
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -578,19 +583,19 @@ msgstr ""
 "Noteedit exportálta a kottát a LilyPond-ba, de néhány\n"
 "probléma fennálhat, amely gátolhatja a sikeres LilyPond kimenetet.\n"
 
-#: lilyexport.cpp:623
+#: lilyexport.cpp:624
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr "szólam %1, ütem %2: 128. az ütemben; minimum = 64.\n"
 
-#: lilyexport.cpp:627
+#: lilyexport.cpp:628
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr "szólam %1 valótlan előjegyzéssel. Ez nem vihető át a LilyPond-ba\n"
 
-#: lilyexport.cpp:631
+#: lilyexport.cpp:632
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "szólam %1, ütem %2:  %3 128., ennek %4-nek kell lennie\n"
 
-#: lilyexport.cpp:636
+#: lilyexport.cpp:637
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -598,13 +603,13 @@ msgstr ""
 "szólam %1, ütem %2: a LilyPond verziószáma kevesebb, mint 1.5.2 ez nem "
 "képes kezelni a hosszú triolákat (hullámvonalak)\n"
 
-#: lilyexport.cpp:641
+#: lilyexport.cpp:642
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr ""
 "szólam %1, ütem %2: csak az akkordba tartozó hangjegyeknek lehet "
 "kötésük!\n"
 
-#: lilyexport.cpp:645
+#: lilyexport.cpp:646
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -612,33 +617,33 @@ msgstr ""
 "A %1 szólam dobszólamot tartalmaz. Jegyezze meg! A LilyPond export nem "
 "lesz korrekt!\n"
 
-#: lilyexport.cpp:650
+#: lilyexport.cpp:651
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr "Szólam %1: A LilyPond ezen verziója nem kezeli a díszítéseket\n"
 
-#: lilyexport.cpp:655
+#: lilyexport.cpp:656
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
 msgstr ""
 
-#: lilyexport.cpp:659
+#: lilyexport.cpp:660
 #, fuzzy
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr "szólam %1 valótlan előjegyzéssel. Ez nem vihető át a LilyPond-ba\n"
 
-#: lilyexport.cpp:663
+#: lilyexport.cpp:664
 #, fuzzy
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr "szólam %1 valótlan előjegyzéssel. Ez nem vihető át a LilyPond-ba\n"
 
-#: lilyexport.cpp:667
+#: lilyexport.cpp:668
 msgid "LilyPond produced. But there are some problems."
 msgstr "LilyPond létrejött. Lehetnek azonban problémák."
 
-#: lilyexport.cpp:1053
+#: lilyexport.cpp:1054
 #, fuzzy
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "

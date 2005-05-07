@@ -1,303 +1,210 @@
-
-
-Installation
-------------
+NoteEdit - a music score editor
+http://noteedit.berlios.de
+===============================
 
 How to obtain NoteEdit
 ----------------------
+You can download the latest version of NoteEdit on our project page (http://developer.berlios.de/projects/noteedit). Please visit our website for more information (http://noteedit.berlios.de).
 
 
-NoteEdit can be found at
-
-http://developer.berlios.de/projects/noteedit.
-
-
-Installing NoteEdit from RPMs
------------------------------
-
-If you find an RPM for your Linux distribution, you can install NoteEdit
-from RPM.
+Installing NoteEdit from RPMs or DEBs
+-------------------------------------
+If you find an RPM (RedHat/Fedora, SuSE, Mandriva) or DEB (Debian, Ubuntu)
+package for your Linux distribution, you can install NoteEdit from the RPM or
+DEB.
 
 Note!
 -----
-You need a TSE3 package. So if you find a TSE3 RPM for your Linux distribution install
-TSE3 first. Otherwise compile TSE3 from source (http://TSE3.sourceforge.net) 
+You need a TSE3 package. So if you find a TSE3 RPM/DEB package for your Linux
+distribution, install TSE3 first. Otherwise compile TSE3 from source
+(http://tse3.sourceforge.net).
 
 Note!
 -----
-If you want to use NoteEdit with aRts MIDI scheduler then make sure
-the aRts headers (artsmidi.h) are installed
-before you compile TSE3.
+If you want to use NoteEdit with aRts MIDI scheduler, make sure the aRts headers
+(artsmidi.h) are installed before you compile TSE3.
 
-To install the NoteEdit package from a binary RPM you must be logged in as root.
-Assuming that the name of the RPM is filename.rpm, do the
-following at the command prompt:
+To install the NoteEdit package from a binary RPM or DEB you must be logged in
+as root. Assuming that the name of the package is filename.rpm or filename.deb,
+do the following at the command prompt:
+- For RPM based systems:
+  # rpm -ivh <filename.rpm>
+- For DEB based systems:
+  # dpkg -i <filename.rpm>
 
-% rpm -ivh <filename.rpm>
-
+  
 Installing from source
 ----------------------
-
 Requirements for source compilation
 -----------------------------------
-
 You need the following packages:
-  * g++ compiler (You can use g++-3.x, but make sure QT/KDE (others ???) is also g++-3.x-compiled/You need TSE3-0.2.5 for gcc-3.2!)
-  * X11 (include and libraries)
-  * Qt (include and libraries) Qtdevel2 (>=Qt-2.2.2)
-  * YACC or Bison
-  * LEX or flex
-  * KDE-2.x.y or KDE3
-  * gettext (only for text translation)
-  * extractrc(from kde developement) (only for text translation)
+ * g++ compiler (tested with g++-3.x, usually QT/KDE needs to be compiled with
+    the same major version as NoteEdit)
+ * X11 (includes and libraries)
+ * Qt (includes and libraries) Qtdevel2 (>=Qt-2.2.2)
+ * YACC or Bison
+ * LEX or flex
+ * KDE-2.x.y or KDE3
+ * gettext (only for text translation)
+ * extractrc (from kde development) (only for text translation)
 
-recommended:
-  * TSE3 Library Version (0.1.2, 0.1.3, 0.2.3, 0.2.5) see: http://TSE3.sourceforge.net
-  * A good idea is also: LaTeX (te_latex package), MusiXTeX, xdvi, dvips, gv.
-  * abcm2ps (version 3.x.y!!!)
-http://moinejf.free.fr
-  * and: LilyPond (for LilyPond installation MetaPost and the kpathsea headers)
-  * likewise: LibKMid; see http://www.arrakis.es/~rlarrosa/libkmid.html
-(Note: Not all features are available in this case! (MIDI import))
-  * If you want to use NoteEdit with aRts MIDI scheduler: aRts (include and libraries; especially artsmidi.h)
+Recommended packages:
+ * TSE3 library (0.2.5), see: http://tse3.sourceforge.net
+   or LibKMid, see http://www.arrakis.es/~rlarrosa/libkmid.html.
+   (Note: Not all features are available in this case (eg. MIDI import)!)
+ * If you want to use NoteEdit with aRts MIDI scheduler: aRts (includes and
+   libraries, especially artsmidi.h).
 
-Note!
------
-If you want to use NoteEdit with aRts MIDI scheduler then make sure
-the aRts headers (artsmidi.h) are installed
-before you compile TSE3.
+Possible export filters and its packages:
+ * LilyPond (http://www.lilypond.org): Export works for all versions between
+   2.0 and 2.4. For any newer version, convert-ly should correctly convert the
+   syntax of exported files to the newer version. If no LilyPond found, version
+   2.0 syntax is used by default.
+ * MusicXML import/export (http://www.recordare.com): No special packages
+   needed.
+ * PMX (http://icking-music-archive.org/software/pmx/) and MusiXTeX: Basic
+   export is done. Please test more complex examples! Works fine with pmx 2.5.4
+   and musixtex 0.9.8.
+ * ABC Music (http://moinejf.free.fr): No special packages required for export.
+   Note that NoteEdit exports to abcm (improved abc) file format! Works fine
+   with abcm2ps 4.8.5.
+ * MIDI: TSE3 library for MIDI import/export is needed.
+ * Other basic packages: LaTeX, xdvi (dvi viewer), dvips (dvi to ps converter),
+   gv (postscript viewer), xpdf (pdf viewer).
 
-You can compile the program without any MIDI-library. But in this case an
 
-#include /usr/src/linux/include/linux/soundcard.h
+Building from SVN
+-----------------
+Since we're currently in transition from the old non-SVN based NoteEdit to the
+completely SVN-based project, making from SVN isn't yet working out of the box.
+Instructions are the following:
+- First, get the latest trunk version of NoteEdit, described on Berlios SVN page
+  (https://developer.berlios.de/svn/?group_id=2232).
+- Download the admin-files.tar.gz which can be found in files section at the
+  NoteEdit's project page at Berlios and save them to the NoteEdit main
+  directory.
+- Move to the NoteEdit main directory and invoke:
+  $ tar xfvz admin-files.tar.gz
+- Type:
+  $ make -f Makefile.cvs
 
-occurs which can cause a lot of machine/sound card depencies. Therefore if
-your sound doesn't work and you are sure MIDI works on your machine (you use
-KMid successfully) then try compilation with one of the libraries! Use the
-TSE3 library if you want to use all features including MIDI import!
+This should create an ordanary configure script. From now on, follow the normal
+build instrucions below.
+
+Note that the current SVN project organization is still in testing, so please
+report any problems you may encounter or success stories to the NoteEdit devel
+mailing list (noteedit-devel@berlios.de) and include your configuration in your
+post (version of g++, KDE, Qt, automake and Linux distribution).
+
 
 Building
 --------
-
 Note!
 -----
-If you have different KDE/Qt versions make sure the PATH variable
-only references the KDE/Qt version you wish to use for NoteEdit!
+If you have different KDE/Qt versions, make sure the PATH variable only
+references the KDE/Qt version you wish to use for NoteEdit!
 
-Please uninstall an older version especially all old noteeditui.rc files.
-If you don't have the source distribution to "make uninstall" remove all in
-
-        <path_to_your_kde_installation>/share/apps/noteedit
+Please uninstall an older version especially all old noteeditui.rc files. If you
+don't have the source distribution to "make uninstall" remove all in
+ <path_to_your_kde_installation>/share/apps/noteedit
 
 Decompress and configure the archive:
+ $ tar -xvzf noteedit-2.8.0-b1.tgz
+ $ cd noteedit-2.8.0-b1
 
-  tar -xvzf noteedit-2.8.0-b1.tgz
+Now, for (t)csh:
+ $ setenv QTDIR <path_to_your_qt_installation>
+ $ setenv KDEDIR <path_to_your_kde_installation>
 
-  cd noteedit-2.8.0-b1
+or for the other shells (bash):
+ $ export QTDIR=<path_to_your_qt_installation>
+ $ export KDEDIR=<path_to_your_kde_installation>
 
-  
+Then: 
+ $ ./configure --prefix=<path_to_your_kde_installation>
 
-
-  (t)csh                                        other shell
-  setenv QTDIR <path_to_your_qt_installation>  export QTDIR=<path_to_your_qt_installation>
-  setenv KDEDIR <path_to_your_kde_installation>  export KDEDIR=<path_to_your_kde_installation>
-
-  ./configure --prefix=<path_to_your_kde_installation>
-
-whereby  <path_to_your_kde_installation> is the path there KDE usually
-resides on you system. You can always find out this path my means of the following command:
-
-  kde-config --prefix
+, whereby <path_to_your_kde_installation> is the path where KDE usually resides
+on you system. You can always find out this path by invoking:
+ $ kde-config --prefix
 
 If you installed TSE3 library in an unusual directory:
-
-  ./configure --with-libtse3-include=<dir_to_tse3_includes>  --with-libtse3-libs=<dir_to_tse3_libs>
+ $ ./configure --with-libtse3-include=<dir_to_tse3_includes>
+ --with-libtse3-libs=<dir_to_tse3_libs>
 
 If you want to use libKMid instead of TSE3 library:
+ $ ./configure --with-libkmid
 
-  ./configure --with-libkmid
-
-(Note: Not all features are available in this case! (MIDI Import))
+ (Note: Not all features are available in this case (eg. MIDI import)!)
 
 If you installed libKMid in an unusual directory:
+ $ ./configure --with-libkmid-include=<dir_to_libkmid/libkmid.h>
+ --with-libkmid-libs=<dir_to_libkmid.so>
 
-  ./configure --with-libkmid-include=<dir_to_libkmid/libkmid.h>  --with-libkmid-libs=<dir_to_libkmid.so>
+If you won't use any library (not recommended - see above!):
+ $ ./configure --without-libs
 
-If you won't use any library (not recommended; see above!)
+If you use LilyPond 1.2.x (deprecated):
+ $ ./configure --with-oldlily
 
-  ./configure --without-libs
+In priciple you can use the parameter --enable-final, but this is not
+recommended, because the resulting code is 30% greater. This is because of the
+-fexecption compiler option, which is applied to tho whole source. Without
+--enable-final the -fexecption compiler option is only applied to the necessary
+C modules.
 
-If you use LilyPond 1.2.x
+Now you're ready to compile! Type:
+ $ make
 
-  ./configure --with-oldlily
+This should create NoteEdit from source for you. To install it, type (as root):
+ # make install
 
-In priciple you can use the parameter --enable-final
-But this is not recommended, because the resulting code is 30% greater. This is because of the -fexecption compiler option which
-is applied to tho whole source. Without  --enable-final the -fexecption compiler option is only
-applied to the necessary C modules.
+If you want to remove NoteEdit from your system, type (as root):
+ # make uninstall
 
-Type:
-
-  make
-
-This should create NoteEdit
-
-Type (as root):
-
-  make install
-
-This should install NoteEdit
-
-If you don't like NoteEdit type (as root):
-
-  make uninstall
-
-This should remove NoteEdit
-
-Then start the program: It is recommended to start NoteEdit in KDE environment. If not then make sure
-the kde binaries are in your PATH.
+Then start the program: It is recommended to start NoteEdit in KDE environment.
+If not, then make sure the KDE binaries are in your PATH.
 
 Type:
-
-         noteedit
+ $ noteedit
 
 or:
+ $ noteedit [file.not]
 
-     noteedit < file>.not
+NoteEdit should now start. If there is an "error opening sequencer" error,
+NoteEdit is unable to access your MIDI soundcard and no sounds will be heard.
+If you don't know, what the problem is, please see FAQ for troubleshooting or
+visit our website for more information and try to contact us.
 
-This should start the note editor. If there is an error "error opening sequencer"
-a soundcard depency (as mentioned above) avoids the access to the MIDI device. The editor
-works but you can't play the music :-((.
-
-If you have an AWE-64 (or - 32 (???)) don't forget to load your orchestra 
-(sfxload) before starting noteedit!
+If you have a SoundBlaster based card or other soundacard which supports
+hardware MIDI, don't forget to load your orchestra (sfxload for OSS or asfxload
+for ALSA) before starting NoteEdit!
 
 First test
 ----------
-
-File-->Open examples/example1.not
-
+ File --> Open examples/example1.not
 or:
-
-File-->Open examples/example2.not
-
-or: ...
-
+ File --> Open examples/example2.not
 or:
+ ...
+or:
+ File --> Open examples/example12.not
 
-File-->Open examples/example12.not
+Press the play button. If you hear the music, the program works perfectly:)! If
+not, then try to change the MIDI device (Settings --> Configure NoteEdit -->
+Sound --> MIDI Devices).
 
-Press the play button(
-
-). If you hear the music the
-program works :-))
-
-If not then try to change the MIDI device (
-Settings-->Configure NoteEdit 
--> Sound --> MIDI Devices).
-
-Or (only with TSE3)
- change the TSE3 MIDI scheduler
-by unchecking the ALSA option:
-
-Settings-->Configure NoteEdit 
- --> Sound --> Sequencers
-
-and restart NoteEdit.
+Or (only with TSE3) change the TSE3 MIDI scheduler by unchecking the ALSA
+option and restart NoteEdit:
+ Settings --> Configure NoteEdit --> Sound --> Sequencers
 
 (see also: Working with TSE3)
 
-BTW: The quality depends on soundcard.
-
-The TiMidity server
--------------------
-
-(only with TSE3)
-You can use the MIDI to WAVE converter and player TiMidity++ (
-http://timidity.sourceforge.net) in server mode. 
-This approach is interesting for all those who can't bring
-the MIDI device to work.
-
 Note!
 -----
-Please load the newest version via CVS (as explained on that page)
+The quality of playback depends on your soundcard and computer's performance!
 
-Note!
------
-This requires an ALSA (http://www.alsa-project.org)  sound system!
 
-A presupposition is that TiMidity++ is compiled with (at least) the configure options:
+The TiMidity server (only with TSE3)
+------------------------------------
+See README!
 
-        
---enable-audio=alsa --enable-server --enable-alsaseq
-
-You should also try to change "the orchestra" by installing a different
-soundfont. Please have a look at http://www.hammersound.net and search for
-FluidR3 soundfont!
-
-This soundfont is in sfArk compression format.
-Download the decompressor from
-http://www.melodymachine.com and unpack:
-
-     tar -xvzf sfarkxtc_lx86.tar.gz
-
-Then decopmress the archive FluidR3122501.zip (Because of the spaces in file name the apostrophs are
-necessary):
-
-     unzip FluidR3122501.zip
-
-     ./sfarkxtc "FluidR3 GM.sfArk"
-
-It is recommended to rename the resulting fileFluidR3  GM.SF2
-because the Linux shell has problems dealing with spaces in file names:
-
-     mv "FluidR3 GM.SF2" FluidR3.sf2
-
- Then in /usr/share/timidity/timidity.cfg
-(or /usr/local/share/timidity/timidity.cfg) change:
-
-     dir<<path_to_the_directory_there_the_FluidR3.sf2_file_is_situated>>
-
-and:
-
-     soundfont FluidR3.sf2
-
-Comment all other lines! If all is ok, you can start TiMidity++  with:
-
-        
-	timidity -iA -B2,8 -Os1l -s 44100     
-
-Select on NoteEdit sound configure dialog
-(
-Settings-->Configure NoteEdit --> Sound).
-You should see 4 new MIDI devices:
-  * Timidity port 0 128:0
-  * Timidity port 1 128:1
-  * Timidity port 2 128:2
-  * Timidity port 3 128:3
-
-Choose one of them and the replay should work!
-
-Tip: If the replay interrupts during turn over then start TiMidity++ as root. This 
-increases the priority of the TiMidity++ process. Use the following command in this case:
-
-     timidity --realtime-priority=100 -iA -B2,8 -Os1l -s 44100
-
-Note!
------
- This can lead to operating system problems if your CPU
-performance is too small! If so, then try to decrease the priority
-and/or the frequency:     timidity --realtime-priority=60 -iA -B2,8 -Os1l -s 22050
-
-How to obtain KDE
------------------
-
-KDE can be found on
-The KDE FTP site (ftp://ftp.kde.org)  or one of it's
-mirrors (http://www.kde.org/ftpmirrors.html) .
-
-Compilation and Installation of KDE
------------------------------------
-
-KSnapshot may be installed from the kdegraphics package either by
-installing a binary RPM or by compiling the source package.

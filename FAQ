@@ -1,6 +1,6 @@
 NoteEdit - a music score editor
 http://noteedit.berlios.de
--------------------------------
+===============================
 
 Frequently Asked Questions (FAQ):
 ---------------------------------
@@ -138,17 +138,16 @@ A 6.
 Please install NoteEdit (make install)! If you'd like to run a local version of
 NoteEdit, there is a shell script that should place the files and links
 correctly to the NoteEdit top directory:
-
-    cd <path>/noteedit-2.8.0-b1
-    ./admin/locinst.sh
+ $ cd <path>/noteedit-2.8.0-b1
+ $ ./admin/locinst.sh
 
 Then set the environment variable KDEDIRS to noteedit top directory by invoking:
  - using (t)csh: setenv KDEDIRS <path_to_noteedit-2.8.0-b1_direcory>
  - using other shell: export KDEDIRS=<path_to_noteedit-2.8.0-b1_direcory>
 
 Now, you can run NoteEdit with:
-    cd noteedit
-    ./noteedit  [<file>.not]
+ $ cd noteedit
+ $ ./noteedit  [<file>.not]
 
 
 Q 7.
@@ -161,8 +160,8 @@ A 7.
 You use NoteEdit outside KDE and the KDE binaries are not in your PATH. Add the
 KDE binaries to your PATH!
 If this doesn't help, clean up some temporary DCOP files manually:
-    rm /tmp/.ICE-unix/*
-    rm $HOME/.DCOPserver_*
+ $ rm /tmp/.ICE-unix/*
+ $ rm $HOME/.DCOPserver_*
 
 
 Q 8.
@@ -229,13 +228,13 @@ as root and increase its priority. This way the priority ot the TiMidity process
 increases.
 
 Use the following command in this case:
-    timidity --realtime-priority=100 -iA -B2,8 -Os1l -s 44100
+ # timidity --realtime-priority=100 -iA -B2,8 -Os1l -s 44100
 
 Note!
 -----
 This can lead to operating system problems if your CPU is to slow! If so, then
 try to decrease the priority and/or the frequency:
-    timidity --realtime-priority=60 -iA -B2,8 -Os1l -s 22050
+ # timidity --realtime-priority=60 -iA -B2,8 -Os1l -s 22050
 
 Unfortunately, the context view is a very time consuming issue. If the above
 doesn't help, turn off the context view (minimize the main window or switch to
@@ -262,13 +261,13 @@ In most cases it has nothing to do with NoteEdit itself. It has to do with your
 ALSA sound system or more precisely, with your ALSA module parameters in
 /etc/modules.conf. To clarify this, try the TSE3 test program tse3play. First
 determine the available ports:
-    tse3play -list
+ $ tse3play -list
 
 Or if this doesn't work:
-    tse3play -list <file>.mid
+ $ tse3play -list <file>.mid
 
 Then, on every available MIDI port try to play the MIDI file:
-    tse3play -port <port file>.mid
+ $ tse3play -port <port file>.mid
 
 , until you hear the music or it crashes. If it crashes it is clear that your
 ALSA sound system is the reason why. Please contact ALSA
@@ -292,10 +291,10 @@ Remove ALSA and use the pre-ALSA sound modules!
 A 14.
 You don't have any correctly configured sound device or NoteEdit is badly
 compiled. This can easily be detected if that's the case:
-    tse3play -list
+ $ tse3play -list
 
 Or it this doesn't work:
-    tse3play -list <file>.mid
+ $ tse3play -list <file>.mid
 
 If this doesn't report any devices, a bad NoteEdit compilation could be the
 reason. Try to re-compile NoteEdit and make sure the -fexecptions option is set
@@ -312,7 +311,7 @@ do with this). Even if the program has tons of bugs, tt has to to with you ALSA
 module and/or module parameters. Unfortunately, we can't help you in this case.
 Please contact ALSA developers (http://www.alsa-project.org)! As an interim
 solution you can start NoteEdit without creating an ALSA MIDI scheduler:
-    noteedit --noalsa
+ $ noteedit --noalsa
 
 Note!
 -----

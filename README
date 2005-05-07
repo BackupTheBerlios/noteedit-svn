@@ -9,6 +9,7 @@ an unlimited length of staffs, up to 9 voices per staff, a MIDI playback of
 written notes, a number of import and export filters to many formats like MIDI,
 MusicXML, ABC Music, PMX, MusiXTeX and LilyPond and more! 
 
+
 Main features
 -------------
 * Insertion/deletion/modification of notes, rests (and multirests),
@@ -62,9 +63,11 @@ with MIDI playback, installation or other realated functions please contact Pete
 Goodliffe. The TSE3 library comes with an application called tse3play. So you
 can test whether it works on your system. If so NoteEdit should work too! 
 
+
 Installation
 ------------
 See INSTALL!
+
 
 Konqueror embedding (experimental)
 ----------------------------------
@@ -91,41 +94,76 @@ FAQ
 ---
 See FAQ!
 
-The TiMidity server
--------------------
-(only with TSE3) Version 2.10.2 of the MIDI to WAVE converter and player
-TiMidity++ now has a server mode. In this mode TiMidity++ behaves like a
-hardware MIDI synthesizer. This approach is interesting for all those who can't
-bring the MIDI device to work (mostly all non-SoundBlaster based cards).
-TiMidity++ needs to be compiled with (at least) the configure options (most
-Linux distributions already include these):
+The TiMidity server (only with TSE3)
+------------------------------------
+You can use the MIDI to WAVE converter and player TiMidity++
+(http://timidity.sourceforge.net) in server mode. This approach is interesting
+for all those who can't bring the MIDI device to work or don't have one.
+Usually, TiMidity included in most Linux distros already works in server mode
+out of the box. However, if you compile TiMidity yourself, don't forget to
+include --enable-server paramater when running the configure script!
 
- --enable-audio=alsa --enable-server --enable-alsaseq
+You should also try to change "the orchestra" by installing a different
+soundfont. Please have a look at http://www.hammersound.net and search for
+FluidR3 soundfont! Note that HammerSound includes many high quality soundfonts,
+so you should check the others as well. There are also some nice soundfont
+creator programs (eg. Swami) up there, which might help you with combining and
+editing different soundfonts.
 
-If so, you can start TiMidity++ with:
+FluidR3 soundfont is in sfArk compression format. Download the decompressor from
+http://www.melodymachine.com and unpack:
+ $ tar -xvzf sfarkxtc_lx86.tar.gz
 
- timidity -iA -B8,2 -Os (if this doesn't work try -Od)
+Then decopmress the archive FluidR3122501.zip (Because of the spaces in file
+name the apostrophs are necessary):
+ $ unzip FluidR3122501.zip
+ $ ./sfarkxtc "FluidR3 GM.sfArk"
 
-Make sure that NoteEdit uses an TSE3 ALSA MIDI scheduler! Select NoteEdit sound
-configure dialog (Configure NoteEdit-->Sound). Make sure NoteEdit uses an ALSA
-MIDI scheduler! You should see 2 new MIDI devices:
-* Timidity port 0 128:0
-* Timidity port 1 128:0
+It is recommended to rename the resulting file FluidR3  GM.SF2, because some
+Linux shells have problems dealing with spaces in file names:
+ $ mv "FluidR3 GM.SF2" FluidR3.sf2
+
+ Then in /usr/share/timidity/timidity.cfg
+(or /usr/local/share/timidity/timidity.cfg) change:
+ dir<<path_to_the_directory_there_the_FluidR3.sf2_file_is_situated>>
+and add:
+ soundfont FluidR3.sf2
+
+Comment all other lines! If all is ok, you can start TiMidity++ with:
+ $ timidity -iA -B2,8 -Os1l -s 44100     
+
+Some Linux distros support automatic TiMidity server startup on system startup
+as well. 
+
+In NoteEdit sound configure dialog (Settings --> Configure NoteEdit --> Sound),
+you should see 4 new MIDI devices:
+ * Timidity port 0 128:0
+ * Timidity port 1 128:1
+ * Timidity port 2 128:2
+ * Timidity port 3 128:3
 
 Choose one of them and the playback should work!
 
-You should also try to change "the orchestra" by installing a different GUS
-patch (or so called SoundFonts). Please look at the "Links" section at the
-TiMidity++ page.
+Tip!
+----
+If the playback interrupts during turn over, then start TiMidity as root. This 
+increases the priority of the TiMidity process. Use the following command in
+this case:
+ # timidity --realtime-priority=100 -iA -B2,8 -Os1l -s 44100
 
-Tip: If the replay interrupts during turn over then start TiMidity++ as root.
-This increases the priority of the TiMidity++ process. 
+Note!
+-----
+This can lead to operating system problems if your CPU performance is too weak!
+If so, then try to decrease the priority and/or the frequency: 
+ # timidity --realtime-priority=60 -iA -B2,8 -Os1l -s 22050
 
+ 
 Bug reports
 -----------
 Should you encounter any bugs, you have any requests or would like to contact
 the NoteEdit development team for any reason, please send us an email to
 noteedit-devel@lists.berlios.de mailing list.
+
 
 News Groups
 -----------
@@ -139,10 +177,12 @@ reports):
     * comp.os.linux.announce            * rec.music.makers
     * comp.os.linux.development.apps    * rec.music.misc
 
+    
 Mailing lists
 -------------
 noteedit-user@lists.berlios.de
 noteedit-devel@lists.berlios.de
+
 
 Documentation
 -------------
@@ -158,6 +198,7 @@ KDE can't find it if you compiled the program from the sources. Try to change
 the prefix so it points to the KDE directory on your distribution (usually /usr)
 in that
 case. 
+
 
 License
 -------

@@ -18,6 +18,7 @@ export filters.
   defined yet, it uses filename.
 
 Bug fixes:
+- Fixed #3969 - Score layout: Text on buttons uncomple
 - Fixed #3595 - dbl quotes in some score info fields leads to invalid files.
 - Fixed #3935 - deleting element doesn't make document edited - also some rework
   in delete element code.

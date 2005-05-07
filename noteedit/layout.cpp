@@ -56,6 +56,7 @@ NStaffLayout::NStaffLayout(int staffCount, layoutDef *braceMatrix, layoutDef *br
 	rembrace_( i18n ("Remove brace"), this), rembracket_(i18n("Remove bracket"), this), rembar_ ( i18n ("Discontinue bar"), this),
 	grayColor_(160, 160, 160), whiteBrush_(QColor(255, 255,255)), blackPen_(QColor(0, 0, 0)), bluePen_(QColor(0, 0, 255)), selRectValid_(false), 
 	backpixmap_(0), hasChanged_(true) {
+		this->setCaption(kapp->makeStdCaption(i18n("Score layout")));
 		staffCount_ = staffCount;
     		setMinimumSize( MINWIDTH, 
 		staffCount_ * (STAFF_HEIGHT+STAFF_DIST)+STAFF_DIST +2*LAYOUT_BORDER+4*BUTTON_Y_DIST+3*BUTTON_HEIGHT);

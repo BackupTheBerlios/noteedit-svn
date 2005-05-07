@@ -784,7 +784,7 @@ NResource::NResource() {
 
 	resourceDir_ = locate( "data", "noteedit/resources/" );
 	if (resourceDir_.isEmpty()) {
-		cerr << "Can't find apps/noteedit/resources. Check your installation and $KDEDIR if set" << endl;
+		cerr << "Can't find apps/noteedit/resources. Check your installation and $KDEDIR, if set" << endl;
 		exit(10);
 	}
 	fanfareFile_ = locate("data", "noteedit/resources/fanfare.mp3");

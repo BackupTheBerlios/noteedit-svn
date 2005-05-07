@@ -27,7 +27,7 @@
 #include <klocale.h>
 
 #define LAYOUT_BORDER 10 
-#define MINWIDTH 750
+#define MINWIDTH 700
 #define STAFF_LINE_DIST 4
 #define STAFF_HEIGHT (STAFF_LINE_DIST*4)
 #define STAFF_DIST (STAFF_LINE_DIST * 3)
@@ -35,7 +35,7 @@
 #define BUTTON_Y_DIST 10
 #define BUTTON_X_DIST 10
 #define BUTTON_WIDTH 60
-#define FUNC_BUTTON_WIDTH 190
+#define FUNC_BUTTON_WIDTH 230
 #define BUTTON_HEIGHT 25
 
 #define LEFT_STAFF_BORDER 100

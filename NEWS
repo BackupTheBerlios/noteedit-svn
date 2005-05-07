@@ -1,4 +1,4 @@
-Release 2.8.0 Beta 1
+Release 2.8.0 Beta 2
 --------------------
 New features:
 - Updated Slovenian translation and fixed Makefile.
@@ -15,7 +15,9 @@ export filters.
 - More improvements to the menu: Easier access via keys, some better menu names
   (like Close / Quit, Select Multi Staff).
 - Main window title now includes score title and subtitle by default, if none
-  defined yet, it uses filename.
+  defined yet, it the current uses file name.
+- Many score layout window improvements (bottom-up selection, resized buttons to
+  fit captions on buttons, added form caption)
 
 Bug fixes:
 - Fixed #3969 - Score layout: Text on buttons uncomple

@@ -12,7 +12,7 @@ cross.xbm cross_grey.ppm cross_icon.ppm cross_icon.xbm cross_red.ppm dalSegnoAlC
 dalSegnoAlCoda.xbm  dalSegnoAlCoda_red.ppm  dcross.ppm \
 dcross.xbm dcross_grey.ppm dcross_icon.ppm dcross_icon.xbm dcross_red.ppm dflat.ppm \
 dflat.xbm dflat_grey.ppm dflat_red.ppm endbar.ppm endbar.xbm endbar_red.ppm \
-flat_icon.xbm flat_icon.ppm fanfare.mp3 fermate_ab.ppm fermate_ab.xbm fermate_ab_red.ppm \
+flat_icon.xbm flat_icon.ppm fermate_ab.ppm fermate_ab.xbm fermate_ab_red.ppm \
 drum_bass_clef.ppm  drum_bass_clef.xbm  drum_bass_clef_red.ppm  drum_clef.ppm  drum_clef.xbm  drum_clef_red.ppm \
 fermate_be.ppm fermate_be.xbm fermate_be_red.ppm flag.ppm flag.xbm flag_grey.ppm \
 flag_red.ppm flagdown.ppm flagdown.xbm flagdown_grey.ppm flagdown_red.ppm flat.ppm \
@@ -35,14 +35,14 @@ repOpen_red.ppm rfull.ppm rfull.xbm rfull_grey.ppm rfull_mag.ppm rfull_red.ppm \
 rhalf.ppm rhalf.xbm rhalf_grey.ppm rhalf_mag.ppm rhalf_red.ppm rquarter.ppm \
 rquarter.xbm rquarter_grey.ppm rquarter_mag.ppm rquarter_red.ppm segno.ppm  segno.xbm  segno_red.ppm sforzando.ppm sforzando.xbm \
 sforzando_red.ppm sforzato_ab.ppm sforzato_ab.xbm sforzato_ab_red.ppm sforzato_be.ppm sforzato_be.xbm \
-sforzato_be_red.ppm stop_icon.ppm stop_icon.xbm strong_pizzicato_ab.ppm strong_pizzicato_ab.xbm strong_pizzicato_ab_red.ppm \
+sforzato_be_red.ppm splash.png stop_icon.ppm stop_icon.xbm strong_pizzicato_ab.ppm strong_pizzicato_ab.xbm strong_pizzicato_ab_red.ppm \
 strong_pizzicato_be.ppm strong_pizzicato_be.xbm strong_pizzicato_be_red.ppm time_24.ppm \
 time_24.xbm time_34.ppm time_34.xbm time_38.ppm time_38.xbm time_44.ppm \
 time_44.xbm time_68.ppm time_68.xbm tinybase.ppm tinybase.xbm \
 tinybase_grey.ppm tinybase_red.ppm tinyflag.ppm tinyflag.xbm \
 tinyflag_grey.ppm tinyflag_red.ppm treble.ppm treble.xbm treble_red.ppm \
 treblem.ppm treblem.xbm treblem_red.ppm treblep.ppm treblep.xbm treblep_red.ppm \
-trill.ppm trill.xbm trill_red.ppm warn1.png warn2.png \
+trill.ppm trill.xbm trill_red.ppm \
 tuplet10.ppm  tuplet10.xbm tuplet2.ppm tuplet2.xbm tuplet3.ppm  tuplet3.xbm tuplet4.ppm  tuplet4.xbm  \
 tuplet5.ppm  tuplet5.xbm tuplet6.ppm  tuplet6.xbm tuplet7.ppm \
 tuplet7.xbm tuplet8.ppm tuplet8.xbm  tuplet9.ppm tuplet9.xbm

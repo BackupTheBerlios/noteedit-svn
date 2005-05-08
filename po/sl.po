@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 13:14+0200\n"
+"POT-Creation-Date: 2005-05-08 16:49+0200\n"
 "PO-Revision-Date: 2005-05-08 13:15+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -18,15 +18,15 @@ msgstr ""
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
-#: lilyexport.cpp:1055 mainframewidget.cpp:1173 mainframewidget.cpp:1177
-#: mainframewidget.cpp:1190 mainframewidget.cpp:1203 mainframewidget.cpp:1208
-#: mainframewidget.cpp:3702 mainframewidget.cpp:3704 mainframewidget.cpp:4376
-#: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
-#: musicxmlexport.cpp:320 musixtex.cpp:163 musixtex.cpp:165 musixtex.cpp:183
-#: musixtex.cpp:185 musixtex.cpp:200 musixtex.cpp:202 tse3handler.cpp:437
-#: tse3handler.cpp:446 tse3handler.cpp:455 tse3handler.cpp:956
-#: tse3handler.cpp:1021 tse3handler.cpp:1028 tse3handler.cpp:1036
-#: uiconnect.cpp:208
+#: lilyexport.cpp:1055 mainframewidget.cpp:1175 mainframewidget.cpp:1179
+#: mainframewidget.cpp:1192 mainframewidget.cpp:1205 mainframewidget.cpp:1210
+#: mainframewidget.cpp:3688 mainframewidget.cpp:3710 mainframewidget.cpp:3712
+#: mainframewidget.cpp:4383 midiexport.cpp:147 midiexport.cpp:150
+#: musicxmlexport.cpp:317 musicxmlexport.cpp:320 musixtex.cpp:163
+#: musixtex.cpp:165 musixtex.cpp:183 musixtex.cpp:185 musixtex.cpp:200
+#: musixtex.cpp:202 tse3handler.cpp:437 tse3handler.cpp:446
+#: tse3handler.cpp:455 tse3handler.cpp:956 tse3handler.cpp:1021
+#: tse3handler.cpp:1028 tse3handler.cpp:1036 uiconnect.cpp:208
 msgid "???"
 msgstr "???"
 
@@ -46,7 +46,8 @@ msgstr "-----------------------------------------------------\n"
 
 #: abcexport.cpp:282
 msgid "Staff %1, measure %2: ABC music cannot deal with such kind of tuplets\n"
-msgstr "Sistem %1, takt %2: \"ABC music\" format ne podpira takih oblik poddelitev\n"
+msgstr ""
+"Sistem %1, takt %2: \"ABC music\" format ne podpira takih oblik poddelitev\n"
 
 #: abcexport.cpp:286
 msgid "Staff %1 has irregular keysig. This cannot be expressed in ABC music\n"
@@ -63,14 +64,16 @@ msgid "ABC music cannot deal with a one-staff bracket\n"
 msgstr "\"ABC music\" format ne podpira akolade za en sam sitem\n"
 
 #: abcexport.cpp:298
-msgid "Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
+msgid ""
+"Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
 msgstr ""
 "Sistem %1, takt %2: \"ABC music\" format ne podpira simbolov za oktaviacijo "
 "(8va simboli)\n"
 
 #: abcexport.cpp:302
 msgid "ABC music produced. But there are some problems."
-msgstr "Izvoz v \"ABC music\" format je končan, vendar je prišlo do nekaj napak."
+msgstr ""
+"Izvoz v \"ABC music\" format je končan, vendar je prišlo do nekaj napak."
 
 #: clef.cpp:490
 msgid "name2Line: internal error"
@@ -147,7 +150,8 @@ msgstr "&Namig dneva"
 
 #: configuredialog.cpp:124
 msgid "A tip is shown when the application has started if this is enabled."
-msgstr "Če je to vključeno, bo namig dneva vsakič prikazan ob zagonu aplikacije."
+msgstr ""
+"Če je to vključeno, bo namig dneva vsakič prikazan ob zagonu aplikacije."
 
 #: configuredialog.cpp:127
 msgid "Load la&st score"
@@ -465,7 +469,8 @@ msgstr ""
 
 #: filehandler.cpp:614
 msgid "staff %1; measure %2: Mup cannot deal with trills without \"tr\" sign\n"
-msgstr "Sistem %1, takt %2: MUP format ne podpira trilčkov brez oznake \"tr\"\n"
+msgstr ""
+"Sistem %1, takt %2: MUP format ne podpira trilčkov brez oznake \"tr\"\n"
 
 #: filehandler.cpp:619
 msgid "Staff %1 has irregular key, this may not work with MUP.\n"
@@ -479,7 +484,8 @@ msgstr "Sistem %1 ima preveč glasov! MUP format sprejme največ 3 glasove.\n"
 
 #: filehandler.cpp:629
 msgid "Staff %1 contains drum staff. This cannot be expressed in MUP.\n"
-msgstr "Sistem %1 vsebuje stavek za tolkala, ki ne more biti izražen v MUP formatu.\n"
+msgstr ""
+"Sistem %1 vsebuje stavek za tolkala, ki ne more biti izražen v MUP formatu.\n"
 
 #: filehandler.cpp:634
 msgid "staff %1; measure %2: Mup cannot deal with costum beams in graces\n"
@@ -495,7 +501,8 @@ msgstr "Sistem %1, takt %2: MUP format ne podpira okrasnih not potem\n"
 msgid ""
 "staff %1; measure %2: MUP cannot deal with clef changes in the middle of "
 "measure\n"
-msgstr "Sistem %1, takt %2: MUP format ne podpira zamenjave ključa sredi takta\n"
+msgstr ""
+"Sistem %1, takt %2: MUP format ne podpira zamenjave ključa sredi takta\n"
 
 #: filehandler.cpp:649
 msgid ""
@@ -506,8 +513,10 @@ msgstr ""
 "takta\n"
 
 #: filehandler.cpp:654
-msgid "MUP cannot deal with some chord annotations with and some without grids\n"
-msgstr "MUP format ne podpira notacije nekaterih akordov z in nekaterih brez mreže\n"
+msgid ""
+"MUP cannot deal with some chord annotations with and some without grids\n"
+msgstr ""
+"MUP format ne podpira notacije nekaterih akordov z in nekaterih brez mreže\n"
 
 #: filehandler.cpp:658
 msgid "MUP cannot deal with more than one bracket per system\n"
@@ -519,7 +528,8 @@ msgstr "MUP format ne podpira večih akolad na en sam sistem\n"
 
 #: filehandler.cpp:666
 msgid "MUP cannot correctly write more than one slurred grace\n"
-msgstr "MUP format ne more pravilno zapisati več kot eno okrasno noto pod lokom\n"
+msgstr ""
+"MUP format ne more pravilno zapisati več kot eno okrasno noto pod lokom\n"
 
 #: layout.cpp:55
 msgid "Set brace"
@@ -594,7 +604,8 @@ msgstr ""
 
 #: lilyexport.cpp:651
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
-msgstr "Sistem %1: Ta verzija LilyPonda ne podpira lokov znotraj okrasnih not\n"
+msgstr ""
+"Sistem %1: Ta verzija LilyPonda ne podpira lokov znotraj okrasnih not\n"
 
 #: lilyexport.cpp:656
 msgid ""
@@ -605,13 +616,15 @@ msgstr ""
 "biti zapisan v LilyPond formatu\n"
 
 #: lilyexport.cpp:660
-msgid "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
+msgid ""
+"A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Klavirski stavek brez povezljive taktnice med sistemoma ne more biti zapisan "
 "v LilyPond formatu\n"
 
 #: lilyexport.cpp:664
-msgid "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
+msgid ""
+"Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Povezljiva taktnica zunaj območja akolade ali oglatega oklepaja ne more biti "
 "zapisana v LilyPond formatu\n"
@@ -1024,35 +1037,35 @@ msgstr "Označi"
 msgid "breve"
 msgstr "Nota brevis"
 
-#: mainframewidget.cpp:376 mainframewidget.cpp:630
+#: mainframewidget.cpp:376 mainframewidget.cpp:632
 msgid "Full note"
 msgstr "Celinka"
 
-#: mainframewidget.cpp:377 mainframewidget.cpp:632
+#: mainframewidget.cpp:377 mainframewidget.cpp:634
 msgid "Half note"
 msgstr "Polovinka"
 
-#: mainframewidget.cpp:378 mainframewidget.cpp:636
+#: mainframewidget.cpp:378 mainframewidget.cpp:638
 msgid "Quarter note"
 msgstr "Četrtinka"
 
-#: mainframewidget.cpp:379 mainframewidget.cpp:638
+#: mainframewidget.cpp:379 mainframewidget.cpp:640
 msgid "Eighth note"
 msgstr "Osminka"
 
-#: mainframewidget.cpp:380 mainframewidget.cpp:640
+#: mainframewidget.cpp:380 mainframewidget.cpp:642
 msgid "Sixteenth note"
 msgstr "Šestnajstinka"
 
-#: mainframewidget.cpp:381 mainframewidget.cpp:642
+#: mainframewidget.cpp:381 mainframewidget.cpp:644
 msgid "32nd note"
 msgstr "32-inka"
 
-#: mainframewidget.cpp:382 mainframewidget.cpp:644
+#: mainframewidget.cpp:382 mainframewidget.cpp:646
 msgid "64th note"
 msgstr "64-inka"
 
-#: mainframewidget.cpp:383 mainframewidget.cpp:646
+#: mainframewidget.cpp:383 mainframewidget.cpp:648
 msgid "128th note"
 msgstr "128-inka"
 
@@ -1152,7 +1165,7 @@ msgstr "Dvojni višaj"
 msgid "Double flat"
 msgstr "Dvojni nižaj"
 
-#: mainframewidget.cpp:436 mainframewidget.cpp:2545 mainframewidget.cpp:2585
+#: mainframewidget.cpp:436 mainframewidget.cpp:2551 mainframewidget.cpp:2591
 msgid "Play"
 msgstr "Predvajaj"
 
@@ -1212,7 +1225,7 @@ msgstr "Tolkala 5"
 msgid "voice sel."
 msgstr "Trenutno izbran glas"
 
-#: mainframewidget.cpp:572 mainframewidget.cpp:4175
+#: mainframewidget.cpp:572 mainframewidget.cpp:4182
 msgid "Key"
 msgstr "Ključ"
 
@@ -1248,141 +1261,146 @@ msgstr "Premakni desno"
 msgid "move end"
 msgstr "Premakni na konec"
 
-#: mainframewidget.cpp:622 mainframewidget.cpp:666 mainframewidget.cpp:668
+#: mainframewidget.cpp:622 mainframewidget.cpp:668 mainframewidget.cpp:670
 msgid "delete"
 msgstr "Izbriši"
 
 #: mainframewidget.cpp:624
+#, fuzzy
+msgid "toggle play"
+msgstr "Vezava/Nevezava vratov"
+
+#: mainframewidget.cpp:626
 msgid "toggle edit"
 msgstr "Urejanje/Predvajanje"
 
-#: mainframewidget.cpp:626
+#: mainframewidget.cpp:628
 msgid "insert chord note"
 msgstr "Vnos akordičnih not"
 
-#: mainframewidget.cpp:628
+#: mainframewidget.cpp:630
 msgid "insert note"
 msgstr "Vnos not"
 
-#: mainframewidget.cpp:634
+#: mainframewidget.cpp:636
 msgid "set triplet"
 msgstr "Postavi triolo"
 
-#: mainframewidget.cpp:648 mainframewidget.cpp:650
+#: mainframewidget.cpp:650 mainframewidget.cpp:652
 msgid "set tied"
 msgstr "Postavi vezaj"
 
-#: mainframewidget.cpp:652
+#: mainframewidget.cpp:654
 msgid "dot"
 msgstr "Pika"
 
-#: mainframewidget.cpp:654
+#: mainframewidget.cpp:656
 msgid "flat"
 msgstr "Nižaj"
 
-#: mainframewidget.cpp:656 mainframewidget.cpp:658
+#: mainframewidget.cpp:658 mainframewidget.cpp:660
 msgid "sharp"
 msgstr "Višaj"
 
-#: mainframewidget.cpp:660 mainframewidget.cpp:662
+#: mainframewidget.cpp:662 mainframewidget.cpp:664
 msgid "natural"
 msgstr "Razveznik"
 
-#: mainframewidget.cpp:664
+#: mainframewidget.cpp:666
 msgid "set bar at"
 msgstr "Nastavi takt prej"
 
-#: mainframewidget.cpp:670
+#: mainframewidget.cpp:672
 msgid "set bar after"
 msgstr "Nastavi takt za tem"
 
-#: mainframewidget.cpp:672
+#: mainframewidget.cpp:674
 msgid "insert rest"
 msgstr "Vnesi pavzo"
 
-#: mainframewidget.cpp:674
+#: mainframewidget.cpp:676
 msgid "toggle beam"
 msgstr "Vezava/Nevezava vratov"
 
-#: mainframewidget.cpp:676
+#: mainframewidget.cpp:678
 msgid "keyboard insert mode"
 msgstr "Način za vnos preko tipkovnice"
 
-#: mainframewidget.cpp:681
+#: mainframewidget.cpp:683
 msgid "pitch C"
 msgstr "Višina C"
 
-#: mainframewidget.cpp:683
+#: mainframewidget.cpp:685
 msgid "pitch D"
 msgstr "Višina D"
 
-#: mainframewidget.cpp:685
+#: mainframewidget.cpp:687
 msgid "pitch E"
 msgstr "Višina E"
 
-#: mainframewidget.cpp:687
+#: mainframewidget.cpp:689
 msgid "pitch F"
 msgstr "Višina F"
 
-#: mainframewidget.cpp:689
+#: mainframewidget.cpp:691
 msgid "pitch G"
 msgstr "Višina G"
 
-#: mainframewidget.cpp:691
+#: mainframewidget.cpp:693
 msgid "pitch A"
 msgstr "Višina A"
 
-#: mainframewidget.cpp:693
+#: mainframewidget.cpp:695
 msgid "pitch B"
 msgstr "Višina H"
 
-#: mainframewidget.cpp:718 mainframewidget.cpp:738 mainframewidget.cpp:753
+#: mainframewidget.cpp:720 mainframewidget.cpp:740 mainframewidget.cpp:755
 msgid "enabled"
 msgstr "Vključeno"
 
-#: mainframewidget.cpp:730
+#: mainframewidget.cpp:732
 msgid "Trill"
 msgstr "Trilček"
 
-#: mainframewidget.cpp:741
+#: mainframewidget.cpp:743
 msgid "turn"
 msgstr "Vklopi"
 
-#: mainframewidget.cpp:749
+#: mainframewidget.cpp:751
 msgid "Crescendo"
 msgstr "Crescendo"
 
-#: mainframewidget.cpp:765 rc.cpp:343
+#: mainframewidget.cpp:767 rc.cpp:343
 #, no-c-format
 msgid "8va"
 msgstr "oktaviacija (8va)"
 
-#: mainframewidget.cpp:1173 mainframewidget.cpp:1190
+#: mainframewidget.cpp:1175 mainframewidget.cpp:1192
 msgid "Please choose a note or rest!"
 msgstr "Prosim, izberi noto ali pavzo!"
 
-#: mainframewidget.cpp:1177
+#: mainframewidget.cpp:1179
 msgid "Please choose a note or rest from first voice"
 msgstr "Prosim, izberi noto ali pavzo v prvem glasu"
 
-#: mainframewidget.cpp:1203
+#: mainframewidget.cpp:1205
 msgid "Please choose a note!"
 msgstr "Prosim, izberi noto!"
 
-#: mainframewidget.cpp:1208
+#: mainframewidget.cpp:1210
 msgid "Please choose a note from first voice"
 msgstr "Prosim, izberi noto v prvem glasu"
 
-#: mainframewidget.cpp:2545
+#: mainframewidget.cpp:2551
 msgid "MIDI mapper is already in use!"
 msgstr "MIDI razvrščevalnik je že v uporabi"
 
-#: mainframewidget.cpp:2585
+#: mainframewidget.cpp:2591
 msgid "nothing to play"
 msgstr "Nič ni za predvajati"
 
-#: mainframewidget.cpp:3345 mainframewidget.cpp:3423 mainframewidget.cpp:3483
-#: mainframewidget.cpp:3825
+#: mainframewidget.cpp:3351 mainframewidget.cpp:3429 mainframewidget.cpp:3489
+#: mainframewidget.cpp:3832
 msgid ""
 "Your document contains unsaved changes.\n"
 "Do you want to save your changes or discard them?"
@@ -1390,15 +1408,15 @@ msgstr ""
 "Vaš dokument vsebuje še neshranjene spremembe.\n"
 "Ali jih želite shraniti ali zavreči?"
 
-#: mainframewidget.cpp:3347
+#: mainframewidget.cpp:3353
 msgid "New"
 msgstr "Nov dokument"
 
-#: mainframewidget.cpp:3682
+#: mainframewidget.cpp:3688
 msgid "Couldn't translate into ABC format, aborting"
 msgstr "Nisem mogel prevesti v ABC format, prekinjam"
 
-#: mainframewidget.cpp:3702
+#: mainframewidget.cpp:3710
 msgid ""
 "MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
 "other tools for better score layout.\n"
@@ -1411,7 +1429,7 @@ msgstr ""
 "O podrobnejših informacijah o uvozu iz MIDI datoteke in ostalih uporabnih "
 "orodjih se lahko pozanimate v dokumentaciji!"
 
-#: mainframewidget.cpp:3704
+#: mainframewidget.cpp:3712
 msgid ""
 "MIDI import is performed by the TSE3 library, but the library is not "
 "present!\n"
@@ -1420,180 +1438,180 @@ msgstr ""
 "MIDI uvoz izvaja TSE3 knjižnica, ki pa ni na voljo!\n"
 "Prosimo, poglejte v MIDI import sekcijo v dokumentaciji za več informacij!"
 
-#: mainframewidget.cpp:3888
+#: mainframewidget.cpp:3895
 msgid "Do you really want to close all windows?"
 msgstr "Ali res žeilte zapreti vsa okna aplikacije?"
 
-#: mainframewidget.cpp:3889
+#: mainframewidget.cpp:3896
 msgid "Close all"
 msgstr "Zapri vse"
 
-#: mainframewidget.cpp:3890
+#: mainframewidget.cpp:3897
 msgid "&Close all"
 msgstr "&Zapri vse"
 
-#: mainframewidget.cpp:3925
+#: mainframewidget.cpp:3932
 msgid "<center>Please choose the target point!</center>"
 msgstr "<center>Prosimo, izberite ciljni takt!</center>"
 
-#: mainframewidget.cpp:3928 mainframewidget.cpp:3929
+#: mainframewidget.cpp:3935 mainframewidget.cpp:3936
 msgid "Goto"
 msgstr "Pojdi"
 
-#: mainframewidget.cpp:4241
+#: mainframewidget.cpp:4248
 msgid "Can't delete last staff."
 msgstr "Ne morem izbrisati zadnjega ostalega sistema"
 
-#: mainframewidget.cpp:4242 mainframewidget.cpp:4249
+#: mainframewidget.cpp:4249 mainframewidget.cpp:4256
 msgid "Delete Staff"
 msgstr "Izbriši sistem"
 
-#: mainframewidget.cpp:4248
+#: mainframewidget.cpp:4255
 msgid "This deletes current staff! Are you sure?"
 msgstr "Izbrisal bom trenutno izbran sistem! Ali ste prepričani?"
 
-#: mainframewidget.cpp:4282
+#: mainframewidget.cpp:4289
 msgid "Staff moving"
 msgstr "Premakni sistem"
 
-#: mainframewidget.cpp:4283
+#: mainframewidget.cpp:4290
 msgid "Please choose the target position:"
 msgstr "Prosim, izberite želeno pozicijo:"
 
-#: mainframewidget.cpp:4318
+#: mainframewidget.cpp:4325
 msgid "Please select a region first!"
 msgstr "Prosim, najprej izberite območje."
 
-#: mainframewidget.cpp:4318
+#: mainframewidget.cpp:4325
 msgid "MultiStaff"
 msgstr "Izbira večih sistemov"
 
-#: mainframewidget.cpp:4329
+#: mainframewidget.cpp:4336
 msgid "<center>Set tempo:</center>"
 msgstr "<center>Nastavi tempo:</center>"
 
-#: mainframewidget.cpp:4332
+#: mainframewidget.cpp:4339
 msgid "Set new tempo"
 msgstr "Nastavi nov tempo"
 
-#: mainframewidget.cpp:4333
+#: mainframewidget.cpp:4340
 msgid "Set new temp&o"
 msgstr "Nastavi nov temp&o"
 
-#: mainframewidget.cpp:4339
+#: mainframewidget.cpp:4346
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Nastavi število taktov:</center>"
 
-#: mainframewidget.cpp:4342
+#: mainframewidget.cpp:4349
 msgid "multi rest"
 msgstr "Večtaktne pavze"
 
-#: mainframewidget.cpp:4343
+#: mainframewidget.cpp:4350
 msgid "Set count of m&easures"
 msgstr "Nastavi število taktov"
 
-#: mainframewidget.cpp:4360
+#: mainframewidget.cpp:4367
 msgid "<center>How many notes:</center>"
 msgstr "<center>Koliko not?</center> "
 
-#: mainframewidget.cpp:4364
+#: mainframewidget.cpp:4371
 msgid "Autobeam"
 msgstr "Samodejna vezava vratov"
 
-#: mainframewidget.cpp:4376
+#: mainframewidget.cpp:4383
 msgid "Please choose a repeat close sign!"
 msgstr "Prosim, izberite zaprt ponavljaj!"
 
-#: mainframewidget.cpp:4380
+#: mainframewidget.cpp:4387
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Nastavi število ponovitev!</center>"
 
-#: mainframewidget.cpp:4384
+#: mainframewidget.cpp:4391
 msgid "Repeat count"
 msgstr "Število ponovitev"
 
-#: mainframewidget.cpp:4385
+#: mainframewidget.cpp:4392
 msgid "&Set"
 msgstr "&Nastavi"
 
-#: mainframewidget.cpp:4401
+#: mainframewidget.cpp:4408
 msgid "<center>Semitones:</center>"
 msgstr "<center>Poltoni:</center>"
 
-#: mainframewidget.cpp:4405
+#: mainframewidget.cpp:4412
 msgid "Transpose"
 msgstr "Transponiraj"
 
-#: mainframewidget.cpp:4406
+#: mainframewidget.cpp:4413
 msgid "&Transpose"
 msgstr "&Transponiraj"
 
-#: mainframewidget.cpp:4432
+#: mainframewidget.cpp:4439
 msgid "Voice selection"
 msgstr "Izbira glasov"
 
-#: mainframewidget.cpp:4433
+#: mainframewidget.cpp:4440
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Izberite želen glas tukaj:</center>"
 
-#: mainframewidget.cpp:5171 mainframewidget.cpp:5313
+#: mainframewidget.cpp:5178 mainframewidget.cpp:5320
 msgid "Error writing file \"%1\"."
 msgstr "Napaka pri pisanju datoteke \"%1\"."
 
-#: mainframewidget.cpp:5172
+#: mainframewidget.cpp:5179
 msgid "Write TSE3"
 msgstr "Zapiši TSE3"
 
-#: mainframewidget.cpp:5188
+#: mainframewidget.cpp:5195
 msgid "This overrides the current staff! Continue?"
 msgstr "To bo prekrilo trenutno izbran sistem! Nadaljujem?"
 
-#: mainframewidget.cpp:5189
+#: mainframewidget.cpp:5196
 msgid "Import Recording"
 msgstr "Uvozi snemanje"
 
-#: mainframewidget.cpp:5190 rc.cpp:311
+#: mainframewidget.cpp:5197 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "Uvozi sne&manje"
 
-#: mainframewidget.cpp:5232
+#: mainframewidget.cpp:5239
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Izbrisal bom trenutni dokument. Ali ste prepričani?"
 
-#: mainframewidget.cpp:5233
+#: mainframewidget.cpp:5240
 msgid "Confirmation"
 msgstr "Potrditev"
 
-#: mainframewidget.cpp:5261
+#: mainframewidget.cpp:5268
 msgid "Error creating Score"
 msgstr "Napaka pri ustvarjanju dokumenta"
 
-#: mainframewidget.cpp:5262
+#: mainframewidget.cpp:5269
 msgid "Creating Score"
 msgstr "Ustvarjam dokument"
 
-#: mainframewidget.cpp:5314 tse3handler.cpp:365
+#: mainframewidget.cpp:5321 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "TSE3 MIDI izhod"
 
-#: mainframewidget.cpp:5329 mainframewidget.cpp:5364
+#: mainframewidget.cpp:5336 mainframewidget.cpp:5371
 msgid "File read error \"%1\"."
 msgstr "Napaka pri branju datoteke \"%1\"."
 
-#: mainframewidget.cpp:5330
+#: mainframewidget.cpp:5337
 msgid "TSE3 MIDI in"
 msgstr "TSE3 MIDI izhod"
 
-#: mainframewidget.cpp:5365
+#: mainframewidget.cpp:5372
 msgid "Read TSE3"
 msgstr "Preberi TSE3"
 
-#: mainframewidget.cpp:5478
+#: mainframewidget.cpp:5485
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Datoteka \"%1\" že obstaja. Prekrijem?"
 
-#: mainframewidget.cpp:5479
+#: mainframewidget.cpp:5486
 msgid "File already exists"
 msgstr "Datoteka že obstaja"
 
@@ -1611,7 +1629,8 @@ msgstr ""
 
 #: musicxmlexport.cpp:468
 msgid "Staff %1 has irregular keysig. This is currently not supported.\n"
-msgstr "Sistem %1 ima nenormativne stalne predznake. Trenutno to še ni podprto.\n"
+msgstr ""
+"Sistem %1 ima nenormativne stalne predznake. Trenutno to še ni podprto.\n"
 
 #: musicxmlexport.cpp:473
 msgid "Staff %1 contains drum clef. This is currently not supported.\n"
@@ -1630,8 +1649,10 @@ msgid "Staff %1 contains 8va start without 8va stop.\n"
 msgstr "Sistem %1 vsebuje začetek oktaviacije brez zaključka.\n"
 
 #: musicxmlexport.cpp:493
-msgid "Staff %1 contains 8va over a single note. This is currently not supported.\n"
-msgstr "Sistem %1 vsebuje oktaviacijo za eno samo noto. Trenutno to še ni podprto.\n"
+msgid ""
+"Staff %1 contains 8va over a single note. This is currently not supported.\n"
+msgstr ""
+"Sistem %1 vsebuje oktaviacijo za eno samo noto. Trenutno to še ni podprto.\n"
 
 #: musicxmlexport.cpp:498
 msgid "Staff %1 contains dynamic start without dynamic stop.\n"
@@ -1671,7 +1692,8 @@ msgstr "Preveč lokov v taktu %2; največje dovoljeno število lokov je %3\n"
 
 #: musixtex.cpp:639
 msgid "Too many trills in measure: %1: maximum = 6\n"
-msgstr "Preveč trilčkov v taktu %2; največje dovoljeno število trilčkov je %3\n"
+msgstr ""
+"Preveč trilčkov v taktu %2; največje dovoljeno število trilčkov je %3\n"
 
 #: musixtex.cpp:643
 msgid "Nested va lines in measure: %2 ;\n"
@@ -1679,7 +1701,8 @@ msgstr "Gnezdene oktaviacijske označbe v taktu %2;\n"
 
 #: musixtex.cpp:647 pmxexport.cpp:461
 msgid "Too many va lines in measure: %1: maximum = 6\n"
-msgstr "Preveč oktaviacijskih označb v taktu: %1; največje število označb je 6\n"
+msgstr ""
+"Preveč oktaviacijskih označb v taktu: %1; največje število označb je 6\n"
 
 #: musixtex.cpp:651
 msgid "Nested va lines in measure: %1 ;\n"
@@ -1796,7 +1819,8 @@ msgstr ""
 
 #: pmxexport.cpp:420
 msgid "Staff %1, measure %2: In PMX tuplet cannot end with a rest\n"
-msgstr "Sistem %1, takt %2: V PMX formatu se poddelitev ne more končati s pavzo\n"
+msgstr ""
+"Sistem %1, takt %2: V PMX formatu se poddelitev ne more končati s pavzo\n"
 
 #: pmxexport.cpp:425
 msgid "PMX cannot deal with more than 2 voices per staff\n"
@@ -1804,7 +1828,8 @@ msgstr "PMX ne podpira več kot 2 glasova na sistem\n"
 
 #: pmxexport.cpp:429
 msgid "Staff %1 contains drum staff. This cannot be expressed in PMX.\n"
-msgstr "Sistem %1 vsebuje ključ za tolkala. To ne more biti zapisano v PMX formatu.\n"
+msgstr ""
+"Sistem %1 vsebuje ključ za tolkala. To ne more biti zapisano v PMX formatu.\n"
 
 #: pmxexport.cpp:434
 msgid "Staff %1, measure %2: PMX cannot deal with mixed graces\n"
@@ -3574,10 +3599,6 @@ msgstr "%1. %2"
 msgid "Channel %1"
 msgstr "Kanal %1"
 
-#: staffPropFrm.cpp:104 voicedialog.cpp:192
-msgid "Staff %1"
-msgstr "Sistem %1"
-
 #: tips.cpp:3
 msgid ""
 "<b>...how to edit with the mouse?</b><br/><br/>\n"
@@ -4104,7 +4125,8 @@ msgid ""
 "parser for compilation and not latex!"
 msgstr ""
 "Izvoz v MusiXTeX format je sedaj končan.\n"
-"Pozor! Izvožena datoteka ni v LaTeX formatu! Prosimo, uporabite musixtex ali pmx prevajalnika za gradnjo in ne latex!"
+"Pozor! Izvožena datoteka ni v LaTeX formatu! Prosimo, uporabite musixtex ali "
+"pmx prevajalnika za gradnjo in ne latex!"
 
 #: uiconnect.cpp:223
 msgid ""
@@ -4310,6 +4332,10 @@ msgstr "Glasovi"
 msgid "C&reate voice"
 msgstr "&Ustvari glas"
 
+#: voicedialog.cpp:192
+msgid "Staff %1"
+msgstr "Sistem %1"
+
 #: ../kguitar_excerpt/chord.cpp:223 ../kguitar_excerpt/chord.cpp:513
 msgid "Guitar"
 msgstr "Kitara"
@@ -4390,4 +4416,3 @@ msgstr "Ustvarjanje akordov"
 
 #~ msgid "&New"
 #~ msgstr "Nov sistem"
-

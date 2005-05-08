@@ -853,7 +853,7 @@ void NMainFrameWidget::setEdited(bool edited) {
 	editiones_ = edited;
 	if (inPart_) return;
 	static_cast<KMainWindow *>(parentWidget())
-	->setCaption((scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_), edited);
+	->setCaption((!scTitle_.isEmpty() ? (!scSubtitle_.isEmpty() ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_), edited);
 }
 
 void NMainFrameWidget::scoreInfo() {
@@ -3338,7 +3338,7 @@ void NMainFrameWidget::updateChordnames() {
 
 /*--------------------------- reaction on menu events -----------------------------------*/
 
-void NMainFrameWidget::newPaper() {
+bool NMainFrameWidget::newPaper() {
 	if (editiones_) {
 		switch (KMessageBox::warningYesNoCancel
 		         (this,
@@ -3349,7 +3349,7 @@ void NMainFrameWidget::newPaper() {
 		          i18n("&Discard")
 		         )
 		       ) {
-			case KMessageBox::Cancel: return;
+			case KMessageBox::Cancel: return false;
 			case KMessageBox::No:     break;
 			default:
 				fileSave();
@@ -3381,7 +3381,7 @@ void NMainFrameWidget::newPaper() {
 	currentStaff_->setBase( NResource::overlength_  + Y_STAFF_BASE);
 	lastYHeight_ = voiceList_.last()->getStaff()->getBase()+voiceList_.last()->getStaff()->underlength_;
 	actualFname_ = QString();
-	parentWidget()->setCaption( scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
+	parentWidget()->setCaption( !scTitle_.isEmpty() ? (!scSubtitle_.isEmpty() ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
 	emit caption("NoteEdit");
 	tempo_ = DEFAULT_TEMPO;
 	NVoice::resetUndo();
@@ -3406,7 +3406,7 @@ void NMainFrameWidget::newPaper() {
 	main_props_.context_keysig_xpos = DEFAULT_CONTEXT_KEYSIG_X_POS;
 	context_rect_left_right_ = DEFAULT_CONTEXT_REC_LEFT_RIGHT;
 	repaint();
-
+	return true;
 }
 
 const char* noteedit_file_pattern = "*.not|NoteEdit (*.not)\n*|All Files (*)";
@@ -3453,7 +3453,7 @@ bool NMainFrameWidget::loadFile( const QString & fileName )
 #endif
 	if (readStaffs(fileName)) {
 		actualFname_ = fileName;
-		parentWidget()->setCaption( scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
+		parentWidget()->setCaption( !scTitle_.isEmpty() ? (!scSubtitle_.isEmpty() ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
 		tempo_ = DEFAULT_TEMPO;
 		setScrollableNotePage();
 		NResource::windowWithSelectedRegion_ = 0;
@@ -3547,7 +3547,7 @@ void NMainFrameWidget::readStaffsFromXMLFile(const char *fname) {
 		actualFname_.truncate(actualFname_.length() - 4);
 		actualFname_ += ".not";
 	}
-	parentWidget()->setCaption( scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
+	parentWidget()->setCaption( !scTitle_.isEmpty() ? (!scSubtitle_.isEmpty() ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
 	tempo_ = DEFAULT_TEMPO;
 	setScrollableNotePage();
 	NResource::windowWithSelectedRegion_ = 0;
@@ -3603,7 +3603,7 @@ void NMainFrameWidget::fileSaveAs() {
 	if (!fileName.isNull() ) {
 		writeStaffs(fileName);
 		actualFname_ = fileName;
-		emit caption( scTitle_ ? (scSubtitle_ ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
+		emit caption( !scTitle_.isEmpty() ? (!scSubtitle_.isEmpty() ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
 
 		KURL url;
 		url.setPath( fileName );
@@ -3679,7 +3679,7 @@ void NMainFrameWidget::filePrint(bool preview) {
          }
       }
     else {
-      KMessageBox::error(0,i18n("Couldn't translate into ABC format, aborting"), "Noteeditor");
+      KMessageBox::error(0,i18n("Couldn't translate into ABC format, aborting"), kapp->makeStdCaption(i18n("???")));
       }
     }
 //    unlink(tmpFile+".ps");
@@ -3696,6 +3696,8 @@ void NMainFrameWidget::setOutputParam() {	this->exportManager( PARAM_PAGE ); }
 void NMainFrameWidget::exportMusicXML() {	this->exportManager( MUSICXML_PAGE ); }
 
 void NMainFrameWidget::importMidi() {
+	if (playing_) return;
+	
 #ifdef WITH_TSE3
 	if (!TSE3MidiIn()) return;
 	if (!TSE3toScore()) return;
@@ -3706,7 +3708,6 @@ void NMainFrameWidget::importMidi() {
 }
 
 void NMainFrameWidget::exportManager( int type ) {
-
     if (playing_) return;
 
     exportDialog_->card->setCurrentPage( type );

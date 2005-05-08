@@ -244,7 +244,7 @@ class NMainFrameWidget : public QWidget
 /*--------------------------- reaction on menu events -----------------------------------*/
 		void scoreInfo();
 		void configure();
-		void newPaper();
+		bool newPaper();
 		void openNewWindow();
 		void zoomIn();
 		void zoomOut();

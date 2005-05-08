@@ -22,10 +22,11 @@ export filters.
   (others will have fuzzyness as well until translated).
 - Removed a thrilling MusiXTeX warning when exporting and replaced it with a
   nice notice dialog.
-- New icon
+- New icon and splash
 - New playback shortcut. Changed Edit Mode and Insert Rest default shortcuts.
 
 Bug fixes:
+- Fixed #3944 - polyphony importing wrong in MusicXML
 - Fixed #3969 - Score layout: Text on buttons uncomplete
 - Fixed #3595 - dbl quotes in some score info fields leads to invalid files.
 - Fixed #3935 - deleting element doesn't make document edited - also some rework

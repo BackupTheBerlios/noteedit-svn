@@ -331,6 +331,7 @@ class NMainFrameWidget : public QWidget
 		void KE_moveEnd();
 		void KE_moveRight();
 		void KE_delete();
+		void KE_play();
 		void KE_edit();
 		void KE_insertnote();
 		void KE_insertchordnote();

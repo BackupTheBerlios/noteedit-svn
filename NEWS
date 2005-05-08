@@ -23,6 +23,7 @@ export filters.
 - Removed a thrilling MusiXTeX warning when exporting and replaced it with a
   nice notice dialog.
 - New icon
+- New playback shortcut. Changed Edit Mode and Insert Rest default shortcuts.
 
 Bug fixes:
 - Fixed #3969 - Score layout: Text on buttons uncomplete

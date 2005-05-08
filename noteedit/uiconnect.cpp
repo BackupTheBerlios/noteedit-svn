@@ -200,24 +200,25 @@ void exportFrm::startExport() {
 
     if( !fileName.isNull() ) {
         switch( this->card->currentPageIndex() ) {
-    	    case MIDI_PAGE:    
+    	case MIDI_PAGE:    
     		me.exportMidi( fileName, voiceList_, (char *) this->midiInfo->text().ascii());
-		break;
+			break;
 	    case MUSIX_PAGE:  
-		mt.exportStaffs( fileName, staffList_, this,  mainWidget_);
-		break;
+			mt.exportStaffs( fileName, staffList_, this,  mainWidget_);
+			KMessageBox::information(this, i18n("MusiXTeX export is now complete.\nWarning! The exported file is NOT a LaTeX file! Please use musixtex or pmx parser for compilation and not latex!"), kapp->makeStdCaption(i18n("???")));
+			break;
 	    case ABC_PAGE:
-		abc.exportStaffs( fileName, staffList_, voiceList_->count(), this, mainWidget_ );
-		break;
+			abc.exportStaffs( fileName, staffList_, voiceList_->count(), this, mainWidget_ );
+			break;
 	    case MUSICXML_PAGE:
-		muxml.exportStaffs( fileName, staffList_, voiceList_->count(), this, mainWidget_ );
-		break;
+			muxml.exportStaffs( fileName, staffList_, voiceList_->count(), this, mainWidget_ );
+			break;
 	    case PMX_PAGE:
-		pe.exportStaffs( fileName, staffList_, this, mainWidget_ );
-		break;
+			pe.exportStaffs( fileName, staffList_, this, mainWidget_ );
+			break;
 	    case LILY_PAGE:
-		if( !NResource::lilyProperties_.lilyAvailable ) {
-	    if (KMessageBox::warningContinueCancel
+			if( !NResource::lilyProperties_.lilyAvailable ) {
+	    	if (KMessageBox::warningContinueCancel
 				(this,
 				 i18n("Actually LilyPond is not supported by your system. Do you realy want to make such an export?"),
 				 kapp->makeStdCaption(i18n("LilyPond export")),
@@ -229,9 +230,9 @@ void exportFrm::startExport() {
 				NResource::staffSelExport_ = 0;
 				return;
 			}
-		}
-		le.exportStaffs( fileName, staffList_, this , mainWidget_);
-		break;
+			}
+			le.exportStaffs( fileName, staffList_, this , mainWidget_);
+			break;
 	    }
 	this->close();
 	}
@@ -239,7 +240,7 @@ void exportFrm::startExport() {
 	delete [] NResource::staffSelExport_;
 	NResource::staffSelExport_ = 0;
 	}
-    }
+}
 
 void exportFrm::texMeasures() {
 

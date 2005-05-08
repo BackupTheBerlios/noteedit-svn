@@ -439,7 +439,6 @@ class NResource : public QObject  {
 		static unsigned int turnOverPoint_;
 
 		//  Startup
-		static bool musixWarn_;
 		static bool startupLoadLastScore_;
 
 

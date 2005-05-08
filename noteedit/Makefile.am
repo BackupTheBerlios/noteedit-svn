@@ -20,7 +20,7 @@ libnoteedit_la_SOURCES = abcexport.cpp mididevicelistbox.cpp \
 	lexik.ll lilyexport.cpp lilytest.cpp lines.ui listSel.ui lyrics.ui \
 	mainframewidget2.cpp mainframewidget.cpp metronom.ui \
 	midiexport.cpp midimapper.cpp midi.ui mupWarning.ui muselement.cpp \
-	multistaffinfo.cpp musixhint.cpp \
+	multistaffinfo.cpp \
 	musicxmlcommon.cpp musicxmlimport.cpp musicxmlexport.cpp \
 	musixtex.cpp miditimescale.cpp \
 	noteedit_part.cpp notesel.cpp numberdisplay.cpp \

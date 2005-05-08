@@ -110,9 +110,6 @@ ConfigureDialog::ConfigureDialog(NMainFrameWidget *mainWidget) :
 	//  Startup
 	QGroupBox *startupGroup = new QGroupBox
 		(2, Horizontal, i18n("Startup"), pageGeneral);
-	musixWarn = new QCheckBox(i18n("&MusixWarn"), startupGroup);
-	musixWarn->setChecked(NResource::musixWarn_);
-	QToolTip::add (musixWarn, i18n("enable MusiXTeX warning."));
 
 	useMidiPedal = new QCheckBox(i18n("useMidi&Pedal"), startupGroup);
 	useMidiPedal->setChecked(NResource::useMidiPedal_);
@@ -432,7 +429,6 @@ void ConfigureDialog::slotApply() {
 	NResource::turnOverPoint_	= turnOverPoint->value();
 
 	//  Startup
-	NResource::musixWarn_            = musixWarn           ->isChecked();
 	NResource::useMidiPedal_	 = useMidiPedal         ->isChecked();
 	NResource::startupLoadLastScore_ = startupLoadLastScore->isChecked();
 
@@ -530,7 +526,6 @@ void ConfigureDialog::slotDefault() {
 	turnOverPoint->setValue(TURN_OVER_MIN);
 
 	//  Startup
-	musixWarn           ->setChecked(MUSIX_WARN);
 	useMidiPedal        ->setChecked(MIDI_PEDAL);
 	startupLoadLastScore->setChecked(STARTUP_TIP);
 	startupShowTip      ->setChecked(STARTUP_LOAD_LAST_SCORE);

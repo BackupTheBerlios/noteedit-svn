@@ -59,7 +59,6 @@ private:
 	KIntNumInput *turnOverPoint;
 
 	//  Startup
-	QCheckBox *musixWarn;
 	QCheckBox *useMidiPedal;
 	QCheckBox *startupLoadLastScore;
 	QCheckBox *startupShowTip;

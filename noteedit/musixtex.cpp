@@ -60,7 +60,6 @@
 #include "chorddiagram.h"
 #include "outputbox.h"
 #include "text.h"
-#include "musixhint.h"
 #include "multistaffinfo.h"
 #include "layout.h"
 
@@ -687,9 +686,6 @@ void NMusiXTeX::doExport() {
 	  externalCmd(exportDialog_->musixtexcmd->text(),fileName);
 	  NResource::musixScript_ = exportDialog_->musixtexcmd->text();
   	}
-	if (NResource::musixWarn_) {
-		NResource::musixHint_->show();
-	}
 	
 }
 

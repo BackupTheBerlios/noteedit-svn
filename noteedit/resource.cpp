@@ -61,7 +61,6 @@
 #include "clef.h"
 #include "uiconnect.h"
 #include "lilytest.h"
-#include "musixhint.h"
 #define HELP_LINE_COLOR (20, 250, 20)
 #define DUMMY_NOTE_COLOR (100, 100, 100)
 #define DUMMY_NOTE_WIDTH 2
@@ -394,7 +393,6 @@ QPixmap *NResource::perTrianGreyPixmap_;
 
 QPixmap *NResource::musixwarn1_;
 QPixmap *NResource::musixwarn2_;
-NMusixHint *NResource::musixHint_;
 
 int       NResource::nbasePixmapHeight_;
 int       NResource::narrow_dist_;
@@ -450,7 +448,6 @@ unsigned int NResource::autosaveInterval_;
 unsigned int NResource::turnOverPoint_;
 
 //  Startup
-bool NResource::musixWarn_;
 bool NResource::startupLoadLastScore_;
 
 
@@ -635,7 +632,6 @@ NResource::NResource() {
 		turnOverPoint_ = TURN_OVER_MIN;
 
 	kapp->config()->setGroup("Startup");
-	musixWarn_ = kapp->config()->readBoolEntry("MusixWarn", MUSIX_WARN);
 	startupLoadLastScore_ = kapp->config()->readBoolEntry
 		("LoadLastScore", STARTUP_LOAD_LAST_SCORE);
 
@@ -741,7 +737,6 @@ NResource::NResource() {
 	  );
 
 	kapp->config()->setGroup("Startup");
-	musixWarn_ = kapp->config()->readBoolEntry("MusixWarn", MUSIX_WARN);
 	startupLoadLastScore_ =
 		kapp->config()->readBoolEntry("LoadLastScore", STARTUP_LOAD_LAST_SCORE);
 
@@ -941,20 +936,6 @@ NResource::NResource() {
 	cursor_quarternote_ = loadCursor("cursor_quarternote.xbm");
 	cursor_tinysixteenth_ = loadCursor("cursor_tinysixteenth.xbm");
 
-	musixHint_ = new NMusixHint();
-	s = resourceDir_ + QString("warn1.png");
-	musixwarn1_ = new QPixmap(s);
-	if (musixwarn1_->isNull()) {
-		sprintf (e, "Error in loading image [%s]",s.ascii());
-		abort(e);
-	}
-	s = resourceDir_ + QString("warn2.png");
-	musixwarn2_ = new QPixmap(s);
-	if (musixwarn2_->isNull()) {
-		sprintf (e, "Error in loading image [%s]",s.ascii());
-		abort(e);
-	}
-
 	naturPixWidth_ = naturPixmap_->width();
 	nbasePixmapHeight_ = nbasePixmap_->height();
 	nbasePixmapWidth2_ = nbasePixmap_->width() / 2;
@@ -1003,7 +984,6 @@ NResource::~NResource() {
 	kapp->config()->writeEntry(QString("TurnOver"), turnOverPoint_);
 
 	kapp->config()->setGroup("Startup");
-	kapp->config()->writeEntry(QString("MusixWarn"), musixWarn_);
 	kapp->config()->writeEntry(QString("LoadLastScore"), startupLoadLastScore_);
 
 

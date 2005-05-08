@@ -1,12 +1,7 @@
 Todo list for version 2.8.0. This file gets deleted in final version!
-- update NoteEdit Docbook
-- replace an ugly MusiXTeX warning with a simple warning dialog
+- update NoteEdit Docbook, especialy the mail and website addresses
 - fix multivoice MusicXML import bug
-- remove all strings in application, which include the old e-mail or website
-  address
-- reread and rewrite any wierdly placed or written strings in UI
 - implement splash
-- change icon
 - update German translation
 - update Hungarian translation
 - update Italian translation

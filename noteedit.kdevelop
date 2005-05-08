@@ -1,9 +1,9 @@
 <?xml version = '1.0'?>
 <kdevelop>
   <general>
-    <author>Joerg Anders</author>
-    <email>j.anders@informatik.tu-chemnitz.de</email>
-    <version>2.7.5</version>
+    <author>NoteEdit development team</author>
+    <email>noteedit-devel@berlios.de</email>
+    <version>2.8.0</version>
     <projectmanagement>KDevKDEAutoProject</projectmanagement>
     <primarylanguage>C++</primarylanguage>
     <keywords>

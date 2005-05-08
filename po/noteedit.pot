@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 01:16+0200\n"
+"POT-Creation-Date: 2005-05-08 13:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,10 +22,11 @@ msgstr ""
 #: mainframewidget.cpp:1190 mainframewidget.cpp:1203 mainframewidget.cpp:1208
 #: mainframewidget.cpp:3702 mainframewidget.cpp:3704 mainframewidget.cpp:4376
 #: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
-#: musicxmlexport.cpp:320 musixtex.cpp:164 musixtex.cpp:166 musixtex.cpp:184
-#: musixtex.cpp:186 musixtex.cpp:201 musixtex.cpp:203 tse3handler.cpp:437
+#: musicxmlexport.cpp:320 musixtex.cpp:163 musixtex.cpp:165 musixtex.cpp:183
+#: musixtex.cpp:185 musixtex.cpp:200 musixtex.cpp:202 tse3handler.cpp:437
 #: tse3handler.cpp:446 tse3handler.cpp:455 tse3handler.cpp:956
 #: tse3handler.cpp:1021 tse3handler.cpp:1028 tse3handler.cpp:1036
+#: uiconnect.cpp:208
 msgid "???"
 msgstr ""
 
@@ -36,7 +37,7 @@ msgid ""
 msgstr ""
 
 #: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:619
-#: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:392
+#: musicxmlexport.cpp:463 musixtex.cpp:617 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr ""
 
@@ -117,249 +118,241 @@ msgstr ""
 msgid "Startup"
 msgstr ""
 
-#: configuredialog.cpp:113
-msgid "&MusixWarn"
-msgstr ""
-
-#: configuredialog.cpp:115
-msgid "enable MusiXTeX warning."
-msgstr ""
-
-#: configuredialog.cpp:117
+#: configuredialog.cpp:114
 msgid "useMidi&Pedal"
 msgstr ""
 
-#: configuredialog.cpp:119
+#: configuredialog.cpp:116
 msgid ""
 "enable MIDI pedal instruction (does not work on all sound cards; especially "
 "TiMidity++)"
 msgstr ""
 
-#: configuredialog.cpp:121
+#: configuredialog.cpp:118
 msgid "&Tip of the day"
 msgstr ""
 
-#: configuredialog.cpp:127
+#: configuredialog.cpp:124
 msgid "A tip is shown when the application has started if this is enabled."
 msgstr ""
 
-#: configuredialog.cpp:130
+#: configuredialog.cpp:127
 msgid "Load la&st score"
 msgstr ""
 
-#: configuredialog.cpp:135
+#: configuredialog.cpp:132
 msgid ""
 "The last score that was open the last time the appliaction was used will be "
 "loaded if this is enabled."
 msgstr ""
 
-#: configuredialog.cpp:140
+#: configuredialog.cpp:137
 msgid "Turn Over"
 msgstr ""
 
-#: configuredialog.cpp:148
+#: configuredialog.cpp:145
 msgid "page turn point:"
 msgstr ""
 
-#: configuredialog.cpp:152
+#: configuredialog.cpp:149
 msgid "Determine the offset at which the turn over takes place."
 msgstr ""
 
-#: configuredialog.cpp:158
+#: configuredialog.cpp:155
 msgid "Editing"
 msgstr ""
 
-#: configuredialog.cpp:165
+#: configuredialog.cpp:162
 msgid "auto &beam insertion"
 msgstr ""
 
-#: configuredialog.cpp:168
+#: configuredialog.cpp:165
 msgid "insert &echo"
 msgstr ""
 
-#: configuredialog.cpp:171
+#: configuredialog.cpp:168
 msgid "Move according ke&ysig"
 msgstr ""
 
-#: configuredialog.cpp:174
+#: configuredialog.cpp:171
 msgid "autom. bar insertion"
 msgstr ""
 
-#: configuredialog.cpp:180
+#: configuredialog.cpp:177
 msgid "Colors"
 msgstr ""
 
-#: configuredialog.cpp:191
+#: configuredialog.cpp:188
 msgid "&Backgrounds:"
 msgstr ""
 
-#: configuredialog.cpp:199
+#: configuredialog.cpp:196
 msgid "Selection bac&kgrounds:"
 msgstr ""
 
-#: configuredialog.cpp:206
+#: configuredialog.cpp:203
 msgid "&Staffs:"
 msgstr ""
 
-#: configuredialog.cpp:213
+#: configuredialog.cpp:210
 msgid "Selected sta&ffs:"
 msgstr ""
 
-#: configuredialog.cpp:219
+#: configuredialog.cpp:216
 msgid "Ba&rs:"
 msgstr ""
 
-#: configuredialog.cpp:226
+#: configuredialog.cpp:223
 msgid "Sele&cted bars:"
 msgstr ""
 
-#: configuredialog.cpp:233
+#: configuredialog.cpp:230
 msgid "Bar n&umbers:"
 msgstr ""
 
-#: configuredialog.cpp:240
+#: configuredialog.cpp:237
 msgid "Selected bar nu&mbers:"
 msgstr ""
 
-#: configuredialog.cpp:247
+#: configuredialog.cpp:244
 msgid "&Tempo signatures:"
 msgstr ""
 
-#: configuredialog.cpp:255
+#: configuredialog.cpp:252
 msgid "Selected temp&o signatures:"
 msgstr ""
 
-#: configuredialog.cpp:262
+#: configuredialog.cpp:259
 msgid "&Volume signatures:"
 msgstr ""
 
-#: configuredialog.cpp:271
+#: configuredialog.cpp:268
 msgid "Selected volume si&gnatures:"
 msgstr ""
 
-#: configuredialog.cpp:280
+#: configuredialog.cpp:277
 msgid "&Program changes:"
 msgstr ""
 
-#: configuredialog.cpp:289
+#: configuredialog.cpp:286
 msgid "Selected program c&hanges:"
 msgstr ""
 
-#: configuredialog.cpp:298
+#: configuredialog.cpp:295
 msgid "Special &endings:"
 msgstr ""
 
-#: configuredialog.cpp:306
+#: configuredialog.cpp:303
 msgid "Selected spec&ial endings:"
 msgstr ""
 
-#: configuredialog.cpp:313
+#: configuredialog.cpp:310
 msgid "Staff &names:"
 msgstr ""
 
-#: configuredialog.cpp:320
+#: configuredialog.cpp:317
 msgid "Se&lected staff names:"
 msgstr ""
 
-#: configuredialog.cpp:327
+#: configuredialog.cpp:324
 msgid "L&yrics:"
 msgstr ""
 
-#: configuredialog.cpp:335
+#: configuredialog.cpp:332
 msgid "staff con&text:"
 msgstr ""
 
-#: configuredialog.cpp:341
+#: configuredialog.cpp:338
 msgid "Sound"
 msgstr ""
 
-#: configuredialog.cpp:346
+#: configuredialog.cpp:343
 msgid "Sequencers"
 msgstr ""
 
-#: configuredialog.cpp:347
+#: configuredialog.cpp:344
 msgid "A&LSA"
 msgstr ""
 
-#: configuredialog.cpp:352
+#: configuredialog.cpp:349
 msgid "Attempt to create an ALSA MIDI scheduler at startup."
 msgstr ""
 
-#: configuredialog.cpp:357
+#: configuredialog.cpp:354
 msgid ""
 "The TSE3 sequencer library will attempt to create an ALSA (Advanced Linux "
 "Sound Architecture) MIDI scheduler when the application starts if this is "
 "enabled. Enable this if you use ALSA to acces your soundcard."
 msgstr ""
 
-#: configuredialog.cpp:363
+#: configuredialog.cpp:360
 msgid "O&SS"
 msgstr ""
 
-#: configuredialog.cpp:368
+#: configuredialog.cpp:365
 msgid "Attempt to create an OSS MIDI scheduler at startup."
 msgstr ""
 
-#: configuredialog.cpp:373
+#: configuredialog.cpp:370
 msgid ""
 "The TSE3 sequencer library will attempt to create an OSS (Open Sound System) "
 "MIDI scheduler when the application starts if this is enabled. Enable this "
 "if you use OSS to acces your soundcard."
 msgstr ""
 
-#: configuredialog.cpp:382
+#: configuredialog.cpp:379
 msgid "&MIDI devices"
 msgstr ""
 
-#: configuredialog.cpp:387
+#: configuredialog.cpp:384
 msgid "Chords"
 msgstr ""
 
-#: configuredialog.cpp:390 configuredialog.cpp:391
+#: configuredialog.cpp:387 configuredialog.cpp:388
 msgid "Chordnames"
 msgstr ""
 
-#: configuredialog.cpp:392
+#: configuredialog.cpp:389
 msgid "American, sharps"
 msgstr ""
 
-#: configuredialog.cpp:393
+#: configuredialog.cpp:390
 msgid "American, flats"
 msgstr ""
 
-#: configuredialog.cpp:394
+#: configuredialog.cpp:391
 msgid "American, mixed"
 msgstr ""
 
-#: configuredialog.cpp:395
+#: configuredialog.cpp:392
 msgid "European, sharps"
 msgstr ""
 
-#: configuredialog.cpp:396
+#: configuredialog.cpp:393
 msgid "European, flats"
 msgstr ""
 
-#: configuredialog.cpp:397
+#: configuredialog.cpp:394
 msgid "European, mixed"
 msgstr ""
 
-#: configuredialog.cpp:398
+#: configuredialog.cpp:395
 msgid "Jazz, sharps"
 msgstr ""
 
-#: configuredialog.cpp:399
+#: configuredialog.cpp:396
 msgid "Jazz, flats"
 msgstr ""
 
-#: configuredialog.cpp:400
+#: configuredialog.cpp:397
 msgid "Jazz, mixed"
 msgstr ""
 
-#: configuredialog.cpp:405 configuredialog.cpp:406
+#: configuredialog.cpp:402 configuredialog.cpp:403
 msgid "Dominant 7"
 msgstr ""
 
-#: configuredialog.cpp:413 configuredialog.cpp:414
+#: configuredialog.cpp:410 configuredialog.cpp:411
 msgid "Alterations"
 msgstr ""
 
@@ -1582,67 +1575,67 @@ msgstr ""
 msgid "MusicXML produced. But there are some problems."
 msgstr ""
 
-#: musixtex.cpp:615
+#: musixtex.cpp:614
 msgid ""
 "Noteedit has exported the score to MusiXTeX but there are some\n"
 "constructs which cannot be expressed in MusiXTeX. The score will\n"
 "work with MusiXTeX but Noteedit omitted these constructs.\n"
 msgstr ""
 
-#: musixtex.cpp:623
+#: musixtex.cpp:622
 msgid "128th in measure: %2; maximum = %3 flags\n"
 msgstr ""
 
-#: musixtex.cpp:628
+#: musixtex.cpp:627
 msgid "Staff %1 has irregular keysig. This cannot be expressed in MusiXTeX\n"
 msgstr ""
 
-#: musixtex.cpp:632
+#: musixtex.cpp:631
 msgid "Too many ties in measure: %2; maximum = %3\n"
 msgstr ""
 
-#: musixtex.cpp:636
+#: musixtex.cpp:635
 msgid "Too many slurs in measure: %1, ; maximum = %2\n"
 msgstr ""
 
-#: musixtex.cpp:640
+#: musixtex.cpp:639
 msgid "Too many trills in measure: %1: maximum = 6\n"
 msgstr ""
 
-#: musixtex.cpp:644
+#: musixtex.cpp:643
 msgid "Nested va lines in measure: %2 ;\n"
 msgstr ""
 
-#: musixtex.cpp:648 pmxexport.cpp:461
+#: musixtex.cpp:647 pmxexport.cpp:461
 msgid "Too many va lines in measure: %1: maximum = 6\n"
 msgstr ""
 
-#: musixtex.cpp:652
+#: musixtex.cpp:651
 msgid "Nested va lines in measure: %1 ;\n"
 msgstr ""
 
-#: musixtex.cpp:656
+#: musixtex.cpp:655
 msgid "too many beams in measure: %1; maximum: %2\n"
 msgstr ""
 
-#: musixtex.cpp:660 pmxexport.cpp:449
+#: musixtex.cpp:659 pmxexport.cpp:449
 msgid ""
 "The score has individual bar layout (partial continued and partial "
 "discontinued)\n"
 "Please install \"musixdbr.tex\" by  Rainer Dunker\n"
 msgstr ""
 
-#: musixtex.cpp:664
+#: musixtex.cpp:663
 msgid ""
 "The score has piano staffs with discontinued bar rules. This cannot be "
 "expressed in MusiXTeX.\n"
 msgstr ""
 
-#: musixtex.cpp:673
+#: musixtex.cpp:672
 msgid "MusiXTeX produced. But there are some problems."
 msgstr ""
 
-#: musixtex.cpp:1477
+#: musixtex.cpp:1473
 msgid "Output from MusiXTeX-Cmd"
 msgstr ""
 
@@ -1815,7 +1808,7 @@ msgstr ""
 msgid "&Import"
 msgstr ""
 
-#: rc.cpp:38 uiconnect.cpp:224
+#: rc.cpp:38 uiconnect.cpp:225
 #, no-c-format
 msgid "&Export"
 msgstr ""
@@ -2424,7 +2417,7 @@ msgstr ""
 msgid "Lyrics"
 msgstr ""
 
-#: rc.cpp:363 uiconnect.cpp:759
+#: rc.cpp:363 uiconnect.cpp:760
 #, no-c-format
 msgid "C&lear"
 msgstr ""
@@ -2479,7 +2472,7 @@ msgstr ""
 msgid "MUP warning"
 msgstr ""
 
-#: rc.cpp:395 uiconnect.cpp:1184
+#: rc.cpp:395 uiconnect.cpp:1185
 #, no-c-format
 msgid "Saved, but MUP does not work!"
 msgstr ""
@@ -2809,605 +2802,605 @@ msgstr ""
 msgid "Musical express:"
 msgstr ""
 
-#: resource.cpp:74
+#: resource.cpp:73
 msgid "ppp"
 msgstr ""
 
-#: resource.cpp:74
+#: resource.cpp:73
 msgid "pp"
 msgstr ""
 
-#: resource.cpp:74
+#: resource.cpp:73
 msgid "p"
 msgstr ""
 
-#: resource.cpp:74
+#: resource.cpp:73
 msgid "mp"
 msgstr ""
 
-#: resource.cpp:75
+#: resource.cpp:74
 msgid "mf"
 msgstr ""
 
-#: resource.cpp:75
+#: resource.cpp:74
 msgid "f"
 msgstr ""
 
-#: resource.cpp:75
+#: resource.cpp:74
 msgid "ff"
 msgstr ""
 
-#: resource.cpp:75
+#: resource.cpp:74
 msgid "fff"
 msgstr ""
 
-#: resource.cpp:79
+#: resource.cpp:78
 msgid "full"
 msgstr ""
 
-#: resource.cpp:79
+#: resource.cpp:78
 msgid "dotted half"
 msgstr ""
 
-#: resource.cpp:79 resource.cpp:86
+#: resource.cpp:78 resource.cpp:85
 msgid "half"
 msgstr ""
 
-#: resource.cpp:80
+#: resource.cpp:79
 msgid "dotted quarter"
 msgstr ""
 
-#: resource.cpp:80 resource.cpp:87
+#: resource.cpp:79 resource.cpp:86
 msgid "quarter"
 msgstr ""
 
-#: resource.cpp:80
+#: resource.cpp:79
 msgid "dotted 8th"
 msgstr ""
 
-#: resource.cpp:81 resource.cpp:88
+#: resource.cpp:80 resource.cpp:87
 msgid "8th"
 msgstr ""
 
-#: resource.cpp:81
+#: resource.cpp:80
 msgid "dotted 16th"
 msgstr ""
 
-#: resource.cpp:81 resource.cpp:89
+#: resource.cpp:80 resource.cpp:88
 msgid "16th"
 msgstr ""
 
-#: resource.cpp:82
+#: resource.cpp:81
 msgid "dotted 32th"
 msgstr ""
 
-#: resource.cpp:82
+#: resource.cpp:81
 msgid "32th"
 msgstr ""
 
-#: resource.cpp:82
+#: resource.cpp:81
 msgid "64th"
 msgstr ""
 
-#: resource.cpp:93
+#: resource.cpp:92
 msgid "Piano 1"
 msgstr ""
 
-#: resource.cpp:93
+#: resource.cpp:92
 msgid "Piano 2"
 msgstr ""
 
-#: resource.cpp:94
+#: resource.cpp:93
 msgid "Piano 3"
 msgstr ""
 
-#: resource.cpp:94
+#: resource.cpp:93
 msgid "Honky-tonk"
 msgstr ""
 
-#: resource.cpp:95
+#: resource.cpp:94
 msgid "E.Piano 1"
 msgstr ""
 
-#: resource.cpp:95
+#: resource.cpp:94
 msgid "E.Piano 2"
 msgstr ""
 
-#: resource.cpp:96
+#: resource.cpp:95
 msgid "Harpsichord"
 msgstr ""
 
-#: resource.cpp:96
+#: resource.cpp:95
 msgid "Clavinet"
 msgstr ""
 
-#: resource.cpp:97
+#: resource.cpp:96
 msgid "Celesta"
 msgstr ""
 
-#: resource.cpp:97
+#: resource.cpp:96
 msgid "Glockenspiel"
 msgstr ""
 
-#: resource.cpp:98
+#: resource.cpp:97
 msgid "Music Box"
 msgstr ""
 
-#: resource.cpp:98
+#: resource.cpp:97
 msgid "Vibraphone"
 msgstr ""
 
-#: resource.cpp:99
+#: resource.cpp:98
 msgid "Marimba"
 msgstr ""
 
-#: resource.cpp:99
+#: resource.cpp:98
 msgid "Xylophone"
 msgstr ""
 
-#: resource.cpp:100
+#: resource.cpp:99
 msgid "Tubular Bells"
 msgstr ""
 
-#: resource.cpp:100
+#: resource.cpp:99
 msgid "Dulcimer"
 msgstr ""
 
-#: resource.cpp:101
+#: resource.cpp:100
 msgid "Organ 1"
 msgstr ""
 
-#: resource.cpp:101
+#: resource.cpp:100
 msgid "Organ 2"
 msgstr ""
 
-#: resource.cpp:102
+#: resource.cpp:101
 msgid "Organ 3"
 msgstr ""
 
-#: resource.cpp:102
+#: resource.cpp:101
 msgid "Church Organ"
 msgstr ""
 
-#: resource.cpp:103
+#: resource.cpp:102
 msgid "Reed Organ"
 msgstr ""
 
-#: resource.cpp:103
+#: resource.cpp:102
 msgid "Accordion"
 msgstr ""
 
-#: resource.cpp:104
+#: resource.cpp:103
 msgid "Harmonica"
 msgstr ""
 
-#: resource.cpp:104
+#: resource.cpp:103
 msgid "Bandoneon"
 msgstr ""
 
-#: resource.cpp:105
+#: resource.cpp:104
 msgid "Nylon Guitar"
 msgstr ""
 
-#: resource.cpp:105
+#: resource.cpp:104
 msgid "Steel Guitar"
 msgstr ""
 
-#: resource.cpp:106
+#: resource.cpp:105
 msgid "Jazz Guitar"
 msgstr ""
 
-#: resource.cpp:106
+#: resource.cpp:105
 msgid "Clean Guitar"
 msgstr ""
 
-#: resource.cpp:107
+#: resource.cpp:106
 msgid "Guitar Mutes"
 msgstr ""
 
-#: resource.cpp:107
+#: resource.cpp:106
 msgid "Overdrive Guitar"
 msgstr ""
 
-#: resource.cpp:108
+#: resource.cpp:107
 msgid "Guitar Harmonics"
 msgstr ""
 
-#: resource.cpp:109
+#: resource.cpp:108
 msgid "Acoustic Bass"
 msgstr ""
 
-#: resource.cpp:109
+#: resource.cpp:108
 msgid "Fingered Bass"
 msgstr ""
 
-#: resource.cpp:110
+#: resource.cpp:109
 msgid "Picked Bass"
 msgstr ""
 
-#: resource.cpp:110
+#: resource.cpp:109
 msgid "Fretless Bass"
 msgstr ""
 
-#: resource.cpp:111
+#: resource.cpp:110
 msgid "Slap Bass 1"
 msgstr ""
 
-#: resource.cpp:111
+#: resource.cpp:110
 msgid "Slap Bass 2"
 msgstr ""
 
-#: resource.cpp:112
+#: resource.cpp:111
 msgid "Synth Bass 1"
 msgstr ""
 
-#: resource.cpp:112
+#: resource.cpp:111
 msgid "Synth Bass 2"
 msgstr ""
 
-#: resource.cpp:113
+#: resource.cpp:112
 msgid "Violin"
 msgstr ""
 
-#: resource.cpp:113
+#: resource.cpp:112
 msgid "Viola"
 msgstr ""
 
-#: resource.cpp:114
+#: resource.cpp:113
 msgid "Cello"
 msgstr ""
 
-#: resource.cpp:114
+#: resource.cpp:113
 msgid "Contrabass"
 msgstr ""
 
-#: resource.cpp:115
+#: resource.cpp:114
 msgid "Tremolo Strings"
 msgstr ""
 
-#: resource.cpp:115
+#: resource.cpp:114
 msgid "Pizzicato"
 msgstr ""
 
-#: resource.cpp:116
+#: resource.cpp:115
 msgid "Harp"
 msgstr ""
 
-#: resource.cpp:116
+#: resource.cpp:115
 msgid "Timpani"
 msgstr ""
 
-#: resource.cpp:117
+#: resource.cpp:116
 msgid "Strings"
 msgstr ""
 
-#: resource.cpp:117
+#: resource.cpp:116
 msgid "Slow Strings"
 msgstr ""
 
-#: resource.cpp:118
+#: resource.cpp:117
 msgid "Synth Strings 1"
 msgstr ""
 
-#: resource.cpp:118
+#: resource.cpp:117
 msgid "Synth Strings 2"
 msgstr ""
 
-#: resource.cpp:119
+#: resource.cpp:118
 msgid "Choir Aahs"
 msgstr ""
 
-#: resource.cpp:119
+#: resource.cpp:118
 msgid "Voice Oohs"
 msgstr ""
 
-#: resource.cpp:120
+#: resource.cpp:119
 msgid "Synth Vox"
 msgstr ""
 
-#: resource.cpp:120
+#: resource.cpp:119
 msgid "Orchestra Hit"
 msgstr ""
 
-#: resource.cpp:121
+#: resource.cpp:120
 msgid "Trumpet"
 msgstr ""
 
-#: resource.cpp:121
+#: resource.cpp:120
 msgid "Trombone"
 msgstr ""
 
-#: resource.cpp:122
+#: resource.cpp:121
 msgid "Tuba"
 msgstr ""
 
-#: resource.cpp:122
+#: resource.cpp:121
 msgid "Mute Trumpet"
 msgstr ""
 
-#: resource.cpp:123
+#: resource.cpp:122
 msgid "French Horns"
 msgstr ""
 
-#: resource.cpp:123
+#: resource.cpp:122
 msgid "Brass"
 msgstr ""
 
-#: resource.cpp:124
+#: resource.cpp:123
 msgid "Synth Brass 1"
 msgstr ""
 
-#: resource.cpp:124
+#: resource.cpp:123
 msgid "Synth Brass 2"
 msgstr ""
 
-#: resource.cpp:125
+#: resource.cpp:124
 msgid "Soprano Sax"
 msgstr ""
 
-#: resource.cpp:125
+#: resource.cpp:124
 msgid "Alto Sax"
 msgstr ""
 
-#: resource.cpp:126
+#: resource.cpp:125
 msgid "Tenor Sax"
 msgstr ""
 
-#: resource.cpp:126
+#: resource.cpp:125
 msgid "Baritone Sax"
 msgstr ""
 
-#: resource.cpp:127
+#: resource.cpp:126
 msgid "Oboe"
 msgstr ""
 
-#: resource.cpp:127
+#: resource.cpp:126
 msgid "English Horn"
 msgstr ""
 
-#: resource.cpp:128
+#: resource.cpp:127
 msgid "Bassoon"
 msgstr ""
 
-#: resource.cpp:128
+#: resource.cpp:127
 msgid "Clarinet"
 msgstr ""
 
-#: resource.cpp:129
+#: resource.cpp:128
 msgid "Piccolo"
 msgstr ""
 
-#: resource.cpp:129
+#: resource.cpp:128
 msgid "Flute"
 msgstr ""
 
-#: resource.cpp:130
+#: resource.cpp:129
 msgid "Recorder"
 msgstr ""
 
-#: resource.cpp:130
+#: resource.cpp:129
 msgid "Pan Flute"
 msgstr ""
 
-#: resource.cpp:131
+#: resource.cpp:130
 msgid "Bottle Chiff"
 msgstr ""
 
-#: resource.cpp:131
+#: resource.cpp:130
 msgid "Shakuhachi"
 msgstr ""
 
-#: resource.cpp:132
+#: resource.cpp:131
 msgid "Whistle"
 msgstr ""
 
-#: resource.cpp:132
+#: resource.cpp:131
 msgid "Ocarina"
 msgstr ""
 
-#: resource.cpp:133
+#: resource.cpp:132
 msgid "Square Wave"
 msgstr ""
 
-#: resource.cpp:133
+#: resource.cpp:132
 msgid "Saw Wave"
 msgstr ""
 
-#: resource.cpp:134
+#: resource.cpp:133
 msgid "Synth Calliope"
 msgstr ""
 
-#: resource.cpp:134
+#: resource.cpp:133
 msgid "Chiffer Lead"
 msgstr ""
 
-#: resource.cpp:135
+#: resource.cpp:134
 msgid "Charang"
 msgstr ""
 
-#: resource.cpp:135
+#: resource.cpp:134
 msgid "Solo Vox"
 msgstr ""
 
-#: resource.cpp:136
+#: resource.cpp:135
 msgid "5th Saw Wave"
 msgstr ""
 
-#: resource.cpp:136
+#: resource.cpp:135
 msgid "Bass & Lead"
 msgstr ""
 
-#: resource.cpp:137
+#: resource.cpp:136
 msgid "Fantasia"
 msgstr ""
 
-#: resource.cpp:137
+#: resource.cpp:136
 msgid "Warm Pad"
 msgstr ""
 
-#: resource.cpp:138
+#: resource.cpp:137
 msgid "Poly Synth"
 msgstr ""
 
-#: resource.cpp:138
+#: resource.cpp:137
 msgid "Space Voice"
 msgstr ""
 
-#: resource.cpp:139
+#: resource.cpp:138
 msgid "Bowed Glass"
 msgstr ""
 
-#: resource.cpp:139
+#: resource.cpp:138
 msgid "Metal Pad"
 msgstr ""
 
-#: resource.cpp:140
+#: resource.cpp:139
 msgid "Halo Pad"
 msgstr ""
 
-#: resource.cpp:140
+#: resource.cpp:139
 msgid "Sweep Pad"
 msgstr ""
 
-#: resource.cpp:141
+#: resource.cpp:140
 msgid "Ice Rain"
 msgstr ""
 
-#: resource.cpp:141
+#: resource.cpp:140
 msgid "Soundtrack"
 msgstr ""
 
-#: resource.cpp:142
+#: resource.cpp:141
 msgid "Crystal"
 msgstr ""
 
-#: resource.cpp:142
+#: resource.cpp:141
 msgid "Atmosphere"
 msgstr ""
 
-#: resource.cpp:143
+#: resource.cpp:142
 msgid "Brightness"
 msgstr ""
 
-#: resource.cpp:143
+#: resource.cpp:142
 msgid "Goblin"
 msgstr ""
 
-#: resource.cpp:144
+#: resource.cpp:143
 msgid "Echo Drops"
 msgstr ""
 
-#: resource.cpp:144
+#: resource.cpp:143
 msgid "Star Theme"
 msgstr ""
 
-#: resource.cpp:145
+#: resource.cpp:144
 msgid "Sitar"
 msgstr ""
 
-#: resource.cpp:145
+#: resource.cpp:144
 msgid "Banjo"
 msgstr ""
 
-#: resource.cpp:146
+#: resource.cpp:145
 msgid "Shamisen"
 msgstr ""
 
-#: resource.cpp:146
+#: resource.cpp:145
 msgid "Koto"
 msgstr ""
 
-#: resource.cpp:147
+#: resource.cpp:146
 msgid "Kalimba"
 msgstr ""
 
-#: resource.cpp:147
+#: resource.cpp:146
 msgid "Bagpipe"
 msgstr ""
 
-#: resource.cpp:148
+#: resource.cpp:147
 msgid "Fiddle"
 msgstr ""
 
-#: resource.cpp:148
+#: resource.cpp:147
 msgid "Shenai"
 msgstr ""
 
-#: resource.cpp:149
+#: resource.cpp:148
 msgid "Tinker Bell"
 msgstr ""
 
-#: resource.cpp:149
+#: resource.cpp:148
 msgid "Agogo"
 msgstr ""
 
-#: resource.cpp:150
+#: resource.cpp:149
 msgid "Steel Drum"
 msgstr ""
 
-#: resource.cpp:150
+#: resource.cpp:149
 msgid "Wood Block"
 msgstr ""
 
-#: resource.cpp:151
+#: resource.cpp:150
 msgid "Taiko Drum"
 msgstr ""
 
-#: resource.cpp:151
+#: resource.cpp:150
 msgid "Melodic Tom"
 msgstr ""
 
-#: resource.cpp:152
+#: resource.cpp:151
 msgid "Synth Drum"
 msgstr ""
 
-#: resource.cpp:152
+#: resource.cpp:151
 msgid "Reverse Cymbal"
 msgstr ""
 
-#: resource.cpp:153
+#: resource.cpp:152
 msgid "Fret Noise"
 msgstr ""
 
-#: resource.cpp:153
+#: resource.cpp:152
 msgid "Breath Noise"
 msgstr ""
 
-#: resource.cpp:154
+#: resource.cpp:153
 msgid "Seashore"
 msgstr ""
 
-#: resource.cpp:154
+#: resource.cpp:153
 msgid "Bird"
 msgstr ""
 
-#: resource.cpp:155
+#: resource.cpp:154
 msgid "Telephone"
 msgstr ""
 
-#: resource.cpp:155
+#: resource.cpp:154
 msgid "Helicopter"
 msgstr ""
 
-#: resource.cpp:156
+#: resource.cpp:155
 msgid "Applause"
 msgstr ""
 
-#: resource.cpp:156
+#: resource.cpp:155
 msgid "Gun Shot"
 msgstr ""
 
-#: resource.cpp:556
+#: resource.cpp:553
 msgid "Details:"
 msgstr ""
 
-#: resource.cpp:607
+#: resource.cpp:604
 msgid ""
 "<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%"
 "1\"<br>Error Code is: %2</i><br><br>The program must be interrupted.<br>"
 msgstr ""
 
-#: resource.cpp:611
+#: resource.cpp:608
 msgid "Internal error"
 msgstr ""
 
@@ -3477,7 +3470,7 @@ msgid ""
 "elements!"
 msgstr ""
 
-#: staffPropFrm.cpp:24 uiconnect.cpp:641
+#: staffPropFrm.cpp:24 uiconnect.cpp:642
 msgid "%1. %2"
 msgstr ""
 
@@ -3794,7 +3787,7 @@ msgstr ""
 msgid "%1 Notes"
 msgstr ""
 
-#: tse3handler.cpp:538 uiconnect.cpp:883 uiconnect.cpp:891
+#: tse3handler.cpp:538 uiconnect.cpp:884 uiconnect.cpp:892
 #, c-format
 msgid "Staff %1%2"
 msgstr ""
@@ -3847,133 +3840,140 @@ msgstr ""
 msgid "No staff selected for export."
 msgstr ""
 
-#: uiconnect.cpp:222
+#: uiconnect.cpp:208
+msgid ""
+"MusiXTeX export is now complete.\n"
+"Warning! The exported file is NOT a LaTeX file! Please use musixtex or pmx "
+"parser for compilation and not latex!"
+msgstr ""
+
+#: uiconnect.cpp:223
 msgid ""
 "Actually LilyPond is not supported by your system. Do you realy want to make "
 "such an export?"
 msgstr ""
 
-#: uiconnect.cpp:223
+#: uiconnect.cpp:224
 msgid "LilyPond export"
 msgstr ""
 
-#: uiconnect.cpp:451 uiconnect.cpp:452
+#: uiconnect.cpp:452 uiconnect.cpp:453
 msgid "Auto"
 msgstr ""
 
-#: uiconnect.cpp:453
+#: uiconnect.cpp:454
 msgid "None"
 msgstr ""
 
-#: uiconnect.cpp:485
+#: uiconnect.cpp:486
 msgid "Dynamic:"
 msgstr ""
 
-#: uiconnect.cpp:486
+#: uiconnect.cpp:487
 msgid "Set min volume"
 msgstr ""
 
-#: uiconnect.cpp:646
+#: uiconnect.cpp:647
 msgid "Staff %1, %2, %3"
 msgstr ""
 
-#: uiconnect.cpp:648 uiconnect.cpp:886
+#: uiconnect.cpp:649 uiconnect.cpp:887
 msgid "[unnamed]"
 msgstr ""
 
-#: uiconnect.cpp:746
+#: uiconnect.cpp:747
 msgid "Verse no %1 %2"
 msgstr ""
 
-#: uiconnect.cpp:748
+#: uiconnect.cpp:749
 msgid "[empty]"
 msgstr ""
 
-#: uiconnect.cpp:757
+#: uiconnect.cpp:758
 msgid "Are you sure to clear the current verse?"
 msgstr ""
 
-#: uiconnect.cpp:758
+#: uiconnect.cpp:759
 msgid "Clear verse"
 msgstr ""
 
-#: uiconnect.cpp:786
+#: uiconnect.cpp:787
 msgid "File open aborted."
 msgstr ""
 
-#: uiconnect.cpp:787
+#: uiconnect.cpp:788
 msgid "Import lyrics"
 msgstr ""
 
-#: uiconnect.cpp:793
+#: uiconnect.cpp:794
 msgid "Unable to open this file."
 msgstr ""
 
-#: uiconnect.cpp:794
+#: uiconnect.cpp:795
 msgid "Import Lyrics"
 msgstr ""
 
-#: uiconnect.cpp:849
+#: uiconnect.cpp:850
 msgid "<b><i><u><center>Tip of day #%1"
 msgstr ""
 
-#: uiconnect.cpp:850
+#: uiconnect.cpp:851
 msgid "<b><i><u>Did you know ... </u></i></b><br><br>%2"
 msgstr ""
 
-#: uiconnect.cpp:874
+#: uiconnect.cpp:875
 msgid "[not available]"
 msgstr ""
 
-#: uiconnect.cpp:901
+#: uiconnect.cpp:902
 msgid "Mute staffs"
 msgstr ""
 
-#: uiconnect.cpp:902
+#: uiconnect.cpp:903
 msgid "&Mute"
 msgstr ""
 
-#: uiconnect.cpp:907
+#: uiconnect.cpp:908
 msgid "Select staffs for autobar"
 msgstr ""
 
-#: uiconnect.cpp:908
+#: uiconnect.cpp:909
 msgid "Aut&obar"
 msgstr ""
 
-#: uiconnect.cpp:914
+#: uiconnect.cpp:915
 msgid "Select staffs for autobeam"
 msgstr ""
 
-#: uiconnect.cpp:915
+#: uiconnect.cpp:916
 msgid "Aut&obeam"
 msgstr ""
 
-#: uiconnect.cpp:920
+#: uiconnect.cpp:921
 msgid "Merge staffs"
 msgstr ""
 
-#: uiconnect.cpp:921
+#: uiconnect.cpp:922
 msgid "&Merge"
 msgstr ""
 
-#: uiconnect.cpp:926
+#: uiconnect.cpp:927
 msgid "Create staff from TSE3"
 msgstr ""
 
-#: uiconnect.cpp:927
+#: uiconnect.cpp:928
 msgid "&Create"
 msgstr ""
 
-#: uiconnect.cpp:932
+#: uiconnect.cpp:933
 msgid "Select staffs for export"
 msgstr ""
 
-#: uiconnect.cpp:933 uiconnect.cpp:939
+#: uiconnect.cpp:934 uiconnect.cpp:940
 msgid "&Select"
 msgstr ""
 
-#: uiconnect.cpp:938
+#: uiconnect.cpp:939
 msgid "Multi staff select"
 msgstr ""
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 01:16+0200\n"
+"POT-Creation-Date: 2005-05-08 13:14+0200\n"
 "PO-Revision-Date: 2002-08-28 11:33+0200\n"
 "Last-Translator: Peter Breuer <comp@suselinux.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -21,10 +21,11 @@ msgstr ""
 #: mainframewidget.cpp:1190 mainframewidget.cpp:1203 mainframewidget.cpp:1208
 #: mainframewidget.cpp:3702 mainframewidget.cpp:3704 mainframewidget.cpp:4376
 #: midiexport.cpp:147 midiexport.cpp:150 musicxmlexport.cpp:317
-#: musicxmlexport.cpp:320 musixtex.cpp:164 musixtex.cpp:166 musixtex.cpp:184
-#: musixtex.cpp:186 musixtex.cpp:201 musixtex.cpp:203 tse3handler.cpp:437
+#: musicxmlexport.cpp:320 musixtex.cpp:163 musixtex.cpp:165 musixtex.cpp:183
+#: musixtex.cpp:185 musixtex.cpp:200 musixtex.cpp:202 tse3handler.cpp:437
 #: tse3handler.cpp:446 tse3handler.cpp:455 tse3handler.cpp:956
 #: tse3handler.cpp:1021 tse3handler.cpp:1028 tse3handler.cpp:1036
+#: uiconnect.cpp:208
 msgid "???"
 msgstr "???"
 
@@ -38,7 +39,7 @@ msgstr ""
 "probléma amely lehetetlenné teszi a sikeres PMX kimenetet.\n"
 
 #: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:619
-#: musicxmlexport.cpp:463 musixtex.cpp:618 pmxexport.cpp:392
+#: musicxmlexport.cpp:463 musixtex.cpp:617 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
 
@@ -131,177 +132,169 @@ msgstr "A két mentés között eltelt idő."
 msgid "Startup"
 msgstr "Programindítás"
 
-#: configuredialog.cpp:113
-msgid "&MusixWarn"
-msgstr ""
-
-#: configuredialog.cpp:115
-msgid "enable MusiXTeX warning."
-msgstr ""
-
-#: configuredialog.cpp:117
+#: configuredialog.cpp:114
 msgid "useMidi&Pedal"
 msgstr ""
 
-#: configuredialog.cpp:119
+#: configuredialog.cpp:116
 msgid ""
 "enable MIDI pedal instruction (does not work on all sound cards; especially "
 "TiMidity++)"
 msgstr ""
 
-#: configuredialog.cpp:121
+#: configuredialog.cpp:118
 msgid "&Tip of the day"
 msgstr "A nap &tippje"
 
-#: configuredialog.cpp:127
+#: configuredialog.cpp:124
 msgid "A tip is shown when the application has started if this is enabled."
 msgstr "Egy tipp jelenjen meg az alkalmazás indításakor."
 
-#: configuredialog.cpp:130
+#: configuredialog.cpp:127
 msgid "Load la&st score"
 msgstr "Utol&só kotta betöltése"
 
-#: configuredialog.cpp:135
+#: configuredialog.cpp:132
 msgid ""
 "The last score that was open the last time the appliaction was used will be "
 "loaded if this is enabled."
 msgstr ""
 "Az alkalmazás előző használatakor utoljára megnyitott kotta betöltése."
 
-#: configuredialog.cpp:140
+#: configuredialog.cpp:137
 msgid "Turn Over"
 msgstr "Átfordulás"
 
-#: configuredialog.cpp:148
+#: configuredialog.cpp:145
 msgid "page turn point:"
 msgstr "Oldal átfordulási pont:"
 
-#: configuredialog.cpp:152
+#: configuredialog.cpp:149
 msgid "Determine the offset at which the turn over takes place."
 msgstr "A fordulás helyének offszet értéke."
 
-#: configuredialog.cpp:158
+#: configuredialog.cpp:155
 msgid "Editing"
 msgstr "Szerkesztés"
 
-#: configuredialog.cpp:165
+#: configuredialog.cpp:162
 #, fuzzy
 msgid "auto &beam insertion"
 msgstr "automatikus ütembeszúrás"
 
-#: configuredialog.cpp:168
+#: configuredialog.cpp:165
 msgid "insert &echo"
 msgstr "MIDI-&visszhang beszúrása"
 
-#: configuredialog.cpp:171
+#: configuredialog.cpp:168
 msgid "Move according ke&ysig"
 msgstr "Előjeg&yzés mozgatása"
 
-#: configuredialog.cpp:174
+#: configuredialog.cpp:171
 msgid "autom. bar insertion"
 msgstr "automatikus ütembeszúrás"
 
-#: configuredialog.cpp:180
+#: configuredialog.cpp:177
 msgid "Colors"
 msgstr "Színek"
 
-#: configuredialog.cpp:191
+#: configuredialog.cpp:188
 msgid "&Backgrounds:"
 msgstr "&Hátterek:"
 
-#: configuredialog.cpp:199
+#: configuredialog.cpp:196
 msgid "Selection bac&kgrounds:"
 msgstr "Szele&kció hátterek:"
 
-#: configuredialog.cpp:206
+#: configuredialog.cpp:203
 msgid "&Staffs:"
 msgstr "&Szólamok:"
 
-#: configuredialog.cpp:213
+#: configuredialog.cpp:210
 msgid "Selected sta&ffs:"
 msgstr "Kiválas&ztott szólamok:"
 
-#: configuredialog.cpp:219
+#: configuredialog.cpp:216
 msgid "Ba&rs:"
 msgstr "Üte&mek:"
 
-#: configuredialog.cpp:226
+#: configuredialog.cpp:223
 msgid "Sele&cted bars:"
 msgstr "Ki&választott ütemek:"
 
-#: configuredialog.cpp:233
+#: configuredialog.cpp:230
 msgid "Bar n&umbers:"
 msgstr "Ütemszá&mozás:"
 
-#: configuredialog.cpp:240
+#: configuredialog.cpp:237
 msgid "Selected bar nu&mbers:"
 msgstr "Kiválasz&tott ütemszámok:"
 
-#: configuredialog.cpp:247
+#: configuredialog.cpp:244
 msgid "&Tempo signatures:"
 msgstr "&Tempó jelölések:"
 
-#: configuredialog.cpp:255
+#: configuredialog.cpp:252
 msgid "Selected temp&o signatures:"
 msgstr "Kiválaszott tempó je&lölések:"
 
-#: configuredialog.cpp:262
+#: configuredialog.cpp:259
 msgid "&Volume signatures:"
 msgstr "&Hangerő jelölések:"
 
-#: configuredialog.cpp:271
+#: configuredialog.cpp:268
 msgid "Selected volume si&gnatures:"
 msgstr "Kiválasztott hangerő &jelölések:"
 
-#: configuredialog.cpp:280
+#: configuredialog.cpp:277
 msgid "&Program changes:"
 msgstr "&Programváltások:"
 
-#: configuredialog.cpp:289
+#: configuredialog.cpp:286
 msgid "Selected program c&hanges:"
 msgstr "Kiválasztott program&váltások:"
 
-#: configuredialog.cpp:298
+#: configuredialog.cpp:295
 msgid "Special &endings:"
 msgstr "Speciális vé&gződések:"
 
-#: configuredialog.cpp:306
+#: configuredialog.cpp:303
 msgid "Selected spec&ial endings:"
 msgstr "Kiválasz&tott speciális végződések:"
 
-#: configuredialog.cpp:313
+#: configuredialog.cpp:310
 msgid "Staff &names:"
 msgstr "&Szólam nevek:"
 
-#: configuredialog.cpp:320
+#: configuredialog.cpp:317
 msgid "Se&lected staff names:"
 msgstr "Kiválasztott s&zólam nevek:"
 
-#: configuredialog.cpp:327
+#: configuredialog.cpp:324
 msgid "L&yrics:"
 msgstr "Dalszö&veg:"
 
-#: configuredialog.cpp:335
+#: configuredialog.cpp:332
 msgid "staff con&text:"
 msgstr ""
 
-#: configuredialog.cpp:341
+#: configuredialog.cpp:338
 msgid "Sound"
 msgstr "Hang"
 
-#: configuredialog.cpp:346
+#: configuredialog.cpp:343
 msgid "Sequencers"
 msgstr "Szekvenszerek"
 
-#: configuredialog.cpp:347
+#: configuredialog.cpp:344
 msgid "A&LSA"
 msgstr "A&LSA"
 
-#: configuredialog.cpp:352
+#: configuredialog.cpp:349
 msgid "Attempt to create an ALSA MIDI scheduler at startup."
 msgstr "ALSA MIDI időzítő létrehozása indításkor."
 
-#: configuredialog.cpp:357
+#: configuredialog.cpp:354
 msgid ""
 "The TSE3 sequencer library will attempt to create an ALSA (Advanced Linux "
 "Sound Architecture) MIDI scheduler when the application starts if this is "
@@ -312,15 +305,15 @@ msgstr ""
 "alkalmazás elindul. Akkor kapcsolja be, ha az ALSA-t használja "
 "hangkártyája elérésére."
 
-#: configuredialog.cpp:363
+#: configuredialog.cpp:360
 msgid "O&SS"
 msgstr "O&SS"
 
-#: configuredialog.cpp:368
+#: configuredialog.cpp:365
 msgid "Attempt to create an OSS MIDI scheduler at startup."
 msgstr "OSS MIDI időzítő létrehozása indításkor."
 
-#: configuredialog.cpp:373
+#: configuredialog.cpp:370
 msgid ""
 "The TSE3 sequencer library will attempt to create an OSS (Open Sound System) "
 "MIDI scheduler when the application starts if this is enabled. Enable this "
@@ -330,59 +323,59 @@ msgstr ""
 "SoundSystem) MIDI időzítő létrehozását, amikor az alkalmazás elindul. "
 "Akkor kapcsolja be, ha az OSS-t használja hangkártyája elérésére."
 
-#: configuredialog.cpp:382
+#: configuredialog.cpp:379
 msgid "&MIDI devices"
 msgstr "&MIDI-eszközök"
 
-#: configuredialog.cpp:387
+#: configuredialog.cpp:384
 msgid "Chords"
 msgstr "Akkordok"
 
-#: configuredialog.cpp:390 configuredialog.cpp:391
+#: configuredialog.cpp:387 configuredialog.cpp:388
 msgid "Chordnames"
 msgstr "Akkordnevek"
 
-#: configuredialog.cpp:392
+#: configuredialog.cpp:389
 msgid "American, sharps"
 msgstr "Amerikai, #-ek"
 
-#: configuredialog.cpp:393
+#: configuredialog.cpp:390
 msgid "American, flats"
 msgstr "Amerikai, b-k"
 
-#: configuredialog.cpp:394
+#: configuredialog.cpp:391
 msgid "American, mixed"
 msgstr "Amerikai, kevert"
 
-#: configuredialog.cpp:395
+#: configuredialog.cpp:392
 msgid "European, sharps"
 msgstr "Európai, #-ek"
 
-#: configuredialog.cpp:396
+#: configuredialog.cpp:393
 msgid "European, flats"
 msgstr "Európai, b-k"
 
-#: configuredialog.cpp:397
+#: configuredialog.cpp:394
 msgid "European, mixed"
 msgstr "Európai, kevert"
 
-#: configuredialog.cpp:398
+#: configuredialog.cpp:395
 msgid "Jazz, sharps"
 msgstr "Jazz, #-ek"
 
-#: configuredialog.cpp:399
+#: configuredialog.cpp:396
 msgid "Jazz, flats"
 msgstr "Jazz, b-k"
 
-#: configuredialog.cpp:400
+#: configuredialog.cpp:397
 msgid "Jazz, mixed"
 msgstr "Jazz, kevert"
 
-#: configuredialog.cpp:405 configuredialog.cpp:406
+#: configuredialog.cpp:402 configuredialog.cpp:403
 msgid "Dominant 7"
 msgstr "Domináns 7"
 
-#: configuredialog.cpp:413 configuredialog.cpp:414
+#: configuredialog.cpp:410 configuredialog.cpp:411
 msgid "Alterations"
 msgstr "Alterációk"
 
@@ -1718,7 +1711,7 @@ msgstr ""
 msgid "MusicXML produced. But there are some problems."
 msgstr "MusiXTeX elkészült. Viszont lehet néhány apró probléma."
 
-#: musixtex.cpp:615
+#: musixtex.cpp:614
 msgid ""
 "Noteedit has exported the score to MusiXTeX but there are some\n"
 "constructs which cannot be expressed in MusiXTeX. The score will\n"
@@ -1728,55 +1721,55 @@ msgstr ""
 "néhány elem nem vihető át a MusiXTeX-be. A kotta\n"
 "működik a MusiXTeX-ben, de a Noteedit kihagyta ezeket az elemeket.\n"
 
-#: musixtex.cpp:623
+#: musixtex.cpp:622
 msgid "128th in measure: %2; maximum = %3 flags\n"
 msgstr "128. a %2 ütemben; maximum = %3 jelzővel\n"
 
-#: musixtex.cpp:628
+#: musixtex.cpp:627
 msgid "Staff %1 has irregular keysig. This cannot be expressed in MusiXTeX\n"
 msgstr ""
 "A(z) %1 szólamnak valótlan előjegyzése van. Ez nem vihető át a MusiXTeX "
 "formátumba.\n"
 
-#: musixtex.cpp:632
+#: musixtex.cpp:631
 msgid "Too many ties in measure: %2; maximum = %3\n"
 msgstr "Túl sok kötés van a %2 ütemben; maximum = %3\n"
 
-#: musixtex.cpp:636
+#: musixtex.cpp:635
 msgid "Too many slurs in measure: %1, ; maximum = %2\n"
 msgstr "Túl sok kötőív van a %1 ütemben; maximum = %2\n"
 
-#: musixtex.cpp:640
+#: musixtex.cpp:639
 msgid "Too many trills in measure: %1: maximum = 6\n"
 msgstr "Túl sok triola van a %1 ütemben; maximum = 6\n"
 
-#: musixtex.cpp:644
+#: musixtex.cpp:643
 #, fuzzy
 msgid "Nested va lines in measure: %2 ;\n"
 msgstr "Beágyazott triolák a(z) %2. ütemben; \n"
 
-#: musixtex.cpp:648 pmxexport.cpp:461
+#: musixtex.cpp:647 pmxexport.cpp:461
 #, fuzzy
 msgid "Too many va lines in measure: %1: maximum = 6\n"
 msgstr "Túl sok triola van a %1 ütemben; maximum = 6\n"
 
-#: musixtex.cpp:652
+#: musixtex.cpp:651
 #, fuzzy
 msgid "Nested va lines in measure: %1 ;\n"
 msgstr "Beágyazott triolák a(z) %2. ütemben; \n"
 
-#: musixtex.cpp:656
+#: musixtex.cpp:655
 msgid "too many beams in measure: %1; maximum: %2\n"
 msgstr "túl sok gerenda van a %1 ütemben; maximum = %2\n"
 
-#: musixtex.cpp:660 pmxexport.cpp:449
+#: musixtex.cpp:659 pmxexport.cpp:449
 msgid ""
 "The score has individual bar layout (partial continued and partial "
 "discontinued)\n"
 "Please install \"musixdbr.tex\" by  Rainer Dunker\n"
 msgstr ""
 
-#: musixtex.cpp:664
+#: musixtex.cpp:663
 #, fuzzy
 msgid ""
 "The score has piano staffs with discontinued bar rules. This cannot be "
@@ -1785,11 +1778,11 @@ msgstr ""
 "A(z) %1 szólamnak valótlan előjegyzése van. Ez nem vihető át a MusiXTeX "
 "formátumba.\n"
 
-#: musixtex.cpp:673
+#: musixtex.cpp:672
 msgid "MusiXTeX produced. But there are some problems."
 msgstr "MusiXTeX elkészült. Viszont lehet néhány apró probléma."
 
-#: musixtex.cpp:1477
+#: musixtex.cpp:1473
 msgid "Output from MusiXTeX-Cmd"
 msgstr ""
 
@@ -1978,7 +1971,7 @@ msgstr "Hangsúly eszköztár"
 msgid "&Import"
 msgstr "&Export"
 
-#: rc.cpp:38 uiconnect.cpp:224
+#: rc.cpp:38 uiconnect.cpp:225
 #, no-c-format
 msgid "&Export"
 msgstr "&Export"
@@ -2591,7 +2584,7 @@ msgstr "Strophe - Noteneditor"
 msgid "Lyrics"
 msgstr "Strophen"
 
-#: rc.cpp:363 uiconnect.cpp:759
+#: rc.cpp:363 uiconnect.cpp:760
 #, no-c-format
 msgid "C&lear"
 msgstr "&Törlés"
@@ -2646,7 +2639,7 @@ msgstr "MIDI beállítások - NoteEdit"
 msgid "MUP warning"
 msgstr "MUP figyelmeztetés"
 
-#: rc.cpp:395 uiconnect.cpp:1184
+#: rc.cpp:395 uiconnect.cpp:1185
 #, no-c-format
 msgid "Saved, but MUP does not work!"
 msgstr "Mentve, de a MUP nem működik!"
@@ -2976,599 +2969,599 @@ msgstr "hangerő"
 msgid "Musical express:"
 msgstr "Musical express:"
 
-#: resource.cpp:74
+#: resource.cpp:73
 msgid "ppp"
 msgstr "ppp"
 
-#: resource.cpp:74
+#: resource.cpp:73
 msgid "pp"
 msgstr "pp"
 
-#: resource.cpp:74
+#: resource.cpp:73
 msgid "p"
 msgstr "p"
 
-#: resource.cpp:74
+#: resource.cpp:73
 msgid "mp"
 msgstr "mp"
 
-#: resource.cpp:75
+#: resource.cpp:74
 msgid "mf"
 msgstr "mf"
 
-#: resource.cpp:75
+#: resource.cpp:74
 msgid "f"
 msgstr "f"
 
-#: resource.cpp:75
+#: resource.cpp:74
 msgid "ff"
 msgstr "ff"
 
-#: resource.cpp:75
+#: resource.cpp:74
 msgid "fff"
 msgstr "fff"
 
-#: resource.cpp:79
+#: resource.cpp:78
 msgid "full"
 msgstr "egész"
 
-#: resource.cpp:79
+#: resource.cpp:78
 msgid "dotted half"
 msgstr "pontozott fél"
 
-#: resource.cpp:79 resource.cpp:86
+#: resource.cpp:78 resource.cpp:85
 msgid "half"
 msgstr "fél"
 
-#: resource.cpp:80
+#: resource.cpp:79
 msgid "dotted quarter"
 msgstr "pontozott negyed"
 
-#: resource.cpp:80 resource.cpp:87
+#: resource.cpp:79 resource.cpp:86
 msgid "quarter"
 msgstr "negyed"
 
-#: resource.cpp:80
+#: resource.cpp:79
 msgid "dotted 8th"
 msgstr "pontozott nyolcad"
 
-#: resource.cpp:81 resource.cpp:88
+#: resource.cpp:80 resource.cpp:87
 msgid "8th"
 msgstr "nyolcad"
 
-#: resource.cpp:81
+#: resource.cpp:80
 msgid "dotted 16th"
 msgstr "pontozott tizenhatod"
 
-#: resource.cpp:81 resource.cpp:89
+#: resource.cpp:80 resource.cpp:88
 msgid "16th"
 msgstr "tizenhatod"
 
-#: resource.cpp:82
+#: resource.cpp:81
 msgid "dotted 32th"
 msgstr "pontozott 32."
 
-#: resource.cpp:82
+#: resource.cpp:81
 msgid "32th"
 msgstr "32."
 
-#: resource.cpp:82
+#: resource.cpp:81
 msgid "64th"
 msgstr "64."
 
-#: resource.cpp:93
+#: resource.cpp:92
 msgid "Piano 1"
 msgstr "Zongora 1"
 
-#: resource.cpp:93
+#: resource.cpp:92
 msgid "Piano 2"
 msgstr "Zongora 2"
 
-#: resource.cpp:94
+#: resource.cpp:93
 msgid "Piano 3"
 msgstr "Zongora 3"
 
-#: resource.cpp:94
+#: resource.cpp:93
 msgid "Honky-tonk"
 msgstr "Honky-tonk zongora"
 
-#: resource.cpp:95
+#: resource.cpp:94
 msgid "E.Piano 1"
 msgstr "E.zongora 1"
 
-#: resource.cpp:95
+#: resource.cpp:94
 msgid "E.Piano 2"
 msgstr "E.zongora 2"
 
-#: resource.cpp:96
+#: resource.cpp:95
 msgid "Harpsichord"
 msgstr "Harpsichord"
 
-#: resource.cpp:96
+#: resource.cpp:95
 msgid "Clavinet"
 msgstr "Klavinet"
 
-#: resource.cpp:97
+#: resource.cpp:96
 msgid "Celesta"
 msgstr "Celesta"
 
-#: resource.cpp:97
+#: resource.cpp:96
 msgid "Glockenspiel"
 msgstr "Harangjáték"
 
-#: resource.cpp:98
+#: resource.cpp:97
 msgid "Music Box"
 msgstr "Zeneláda"
 
-#: resource.cpp:98
+#: resource.cpp:97
 msgid "Vibraphone"
 msgstr "Vibrafon"
 
-#: resource.cpp:99
+#: resource.cpp:98
 msgid "Marimba"
 msgstr "Marimba"
 
-#: resource.cpp:99
+#: resource.cpp:98
 msgid "Xylophone"
 msgstr "Xylophon"
 
-#: resource.cpp:100
+#: resource.cpp:99
 msgid "Tubular Bells"
 msgstr "Csőharangok"
 
-#: resource.cpp:100
+#: resource.cpp:99
 msgid "Dulcimer"
 msgstr "Dulcimer"
 
-#: resource.cpp:101
+#: resource.cpp:100
 msgid "Organ 1"
 msgstr "Orgona 1"
 
-#: resource.cpp:101
+#: resource.cpp:100
 msgid "Organ 2"
 msgstr "Orgona 2"
 
-#: resource.cpp:102
+#: resource.cpp:101
 msgid "Organ 3"
 msgstr "Orgona 3"
 
-#: resource.cpp:102
+#: resource.cpp:101
 msgid "Church Organ"
 msgstr "Templomi orgona"
 
-#: resource.cpp:103
+#: resource.cpp:102
 msgid "Reed Organ"
 msgstr "Harmónium"
 
-#: resource.cpp:103
+#: resource.cpp:102
 msgid "Accordion"
 msgstr "Akkordion"
 
-#: resource.cpp:104
+#: resource.cpp:103
 msgid "Harmonica"
 msgstr "Harmonika"
 
-#: resource.cpp:104
+#: resource.cpp:103
 msgid "Bandoneon"
 msgstr "Bandoneon"
 
-#: resource.cpp:105
+#: resource.cpp:104
 msgid "Nylon Guitar"
 msgstr "Nylongitár"
 
-#: resource.cpp:105
+#: resource.cpp:104
 msgid "Steel Guitar"
 msgstr "Fémhúros gitár"
 
-#: resource.cpp:106
+#: resource.cpp:105
 msgid "Jazz Guitar"
 msgstr "Jazz gitár"
 
-#: resource.cpp:106
+#: resource.cpp:105
 msgid "Clean Guitar"
 msgstr "Tiszta gitár"
 
-#: resource.cpp:107
+#: resource.cpp:106
 msgid "Guitar Mutes"
 msgstr "Némított gitár"
 
-#: resource.cpp:107
+#: resource.cpp:106
 msgid "Overdrive Guitar"
 msgstr "Overdrive gitár"
 
-#: resource.cpp:108
+#: resource.cpp:107
 msgid "Guitar Harmonics"
 msgstr "Harmonics gitár"
 
-#: resource.cpp:109
+#: resource.cpp:108
 msgid "Acoustic Bass"
 msgstr "Akusztikus basszus"
 
-#: resource.cpp:109
+#: resource.cpp:108
 msgid "Fingered Bass"
 msgstr "Pengetett basszus"
 
-#: resource.cpp:110
+#: resource.cpp:109
 msgid "Picked Bass"
 msgstr "Ütött basszus"
 
-#: resource.cpp:110
+#: resource.cpp:109
 msgid "Fretless Bass"
 msgstr "Fretless (bund nélküli) basszus"
 
-#: resource.cpp:111
+#: resource.cpp:110
 msgid "Slap Bass 1"
 msgstr "Slap basszus 1"
 
-#: resource.cpp:111
+#: resource.cpp:110
 msgid "Slap Bass 2"
 msgstr "Slap basszus 2"
 
-#: resource.cpp:112
+#: resource.cpp:111
 msgid "Synth Bass 1"
 msgstr "Szinti basszus 1"
 
-#: resource.cpp:112
+#: resource.cpp:111
 msgid "Synth Bass 2"
 msgstr "Szinti basszus 2"
 
-#: resource.cpp:113
+#: resource.cpp:112
 msgid "Violin"
 msgstr "Hegedű"
 
-#: resource.cpp:113
+#: resource.cpp:112
 msgid "Viola"
 msgstr "Viola"
 
-#: resource.cpp:114
+#: resource.cpp:113
 msgid "Cello"
 msgstr "Cselló"
 
-#: resource.cpp:114
+#: resource.cpp:113
 msgid "Contrabass"
 msgstr "Kontrabasszus"
 
-#: resource.cpp:115
+#: resource.cpp:114
 msgid "Tremolo Strings"
 msgstr "Tremolo vonósok"
 
-#: resource.cpp:115
+#: resource.cpp:114
 msgid "Pizzicato"
 msgstr "Pizzicato"
 
-#: resource.cpp:116
+#: resource.cpp:115
 msgid "Harp"
 msgstr "Hárfa"
 
-#: resource.cpp:116
+#: resource.cpp:115
 msgid "Timpani"
 msgstr "Timpani"
 
-#: resource.cpp:117
+#: resource.cpp:116
 msgid "Strings"
 msgstr "Vonósok"
 
-#: resource.cpp:117
+#: resource.cpp:116
 msgid "Slow Strings"
 msgstr "Lassú vonósok"
 
-#: resource.cpp:118
+#: resource.cpp:117
 msgid "Synth Strings 1"
 msgstr "Szinti vonósok 1"
 
-#: resource.cpp:118
+#: resource.cpp:117
 msgid "Synth Strings 2"
 msgstr "Szinti vonósok 1"
 
-#: resource.cpp:119
+#: resource.cpp:118
 msgid "Choir Aahs"
 msgstr "Kórus Aah"
 
-#: resource.cpp:119
+#: resource.cpp:118
 msgid "Voice Oohs"
 msgstr "Hang Ooh"
 
-#: resource.cpp:120
+#: resource.cpp:119
 msgid "Synth Vox"
 msgstr "Szinti vokál"
 
-#: resource.cpp:120
+#: resource.cpp:119
 msgid "Orchestra Hit"
 msgstr "Orchestra Hit"
 
-#: resource.cpp:121
+#: resource.cpp:120
 msgid "Trumpet"
 msgstr "Trombita"
 
-#: resource.cpp:121
+#: resource.cpp:120
 msgid "Trombone"
 msgstr "Trombone"
 
-#: resource.cpp:122
+#: resource.cpp:121
 msgid "Tuba"
 msgstr "Tuba"
 
-#: resource.cpp:122
+#: resource.cpp:121
 msgid "Mute Trumpet"
 msgstr "Némított trombita"
 
-#: resource.cpp:123
+#: resource.cpp:122
 msgid "French Horns"
 msgstr "Franciakürtök"
 
-#: resource.cpp:123
+#: resource.cpp:122
 msgid "Brass"
 msgstr "Fúvósok"
 
-#: resource.cpp:124
+#: resource.cpp:123
 msgid "Synth Brass 1"
 msgstr "Szinti fúvós 1"
 
-#: resource.cpp:124
+#: resource.cpp:123
 msgid "Synth Brass 2"
 msgstr "Szinti fúvós 1"
 
-#: resource.cpp:125
+#: resource.cpp:124
 msgid "Soprano Sax"
 msgstr "Szopránszaxofox"
 
-#: resource.cpp:125
+#: resource.cpp:124
 msgid "Alto Sax"
 msgstr "Altszaxofon"
 
-#: resource.cpp:126
+#: resource.cpp:125
 msgid "Tenor Sax"
 msgstr "Tenorszaxofon"
 
-#: resource.cpp:126
+#: resource.cpp:125
 msgid "Baritone Sax"
 msgstr "Baritonszaxofon"
 
-#: resource.cpp:127
+#: resource.cpp:126
 msgid "Oboe"
 msgstr "Oboa"
 
-#: resource.cpp:127
+#: resource.cpp:126
 msgid "English Horn"
 msgstr "Angolkürt"
 
-#: resource.cpp:128
+#: resource.cpp:127
 msgid "Bassoon"
 msgstr "Bassoon"
 
-#: resource.cpp:128
+#: resource.cpp:127
 msgid "Clarinet"
 msgstr "Klarinét"
 
-#: resource.cpp:129
+#: resource.cpp:128
 msgid "Piccolo"
 msgstr "Piccolo"
 
-#: resource.cpp:129
+#: resource.cpp:128
 msgid "Flute"
 msgstr "Fuvola"
 
-#: resource.cpp:130
+#: resource.cpp:129
 msgid "Recorder"
 msgstr "Recorder"
 
-#: resource.cpp:130
+#: resource.cpp:129
 msgid "Pan Flute"
 msgstr "Pánsíp"
 
-#: resource.cpp:131
+#: resource.cpp:130
 msgid "Bottle Chiff"
 msgstr "Bottle Chiff"
 
-#: resource.cpp:131
+#: resource.cpp:130
 msgid "Shakuhachi"
 msgstr "Shakuhachi"
 
-#: resource.cpp:132
+#: resource.cpp:131
 msgid "Whistle"
 msgstr "Whistle"
 
-#: resource.cpp:132
+#: resource.cpp:131
 msgid "Ocarina"
 msgstr "Ocarina"
 
-#: resource.cpp:133
+#: resource.cpp:132
 msgid "Square Wave"
 msgstr "Négyszögjel"
 
-#: resource.cpp:133
+#: resource.cpp:132
 msgid "Saw Wave"
 msgstr "Háromszögjel"
 
-#: resource.cpp:134
+#: resource.cpp:133
 msgid "Synth Calliope"
 msgstr "Szinti Calliope"
 
-#: resource.cpp:134
+#: resource.cpp:133
 msgid "Chiffer Lead"
 msgstr "Chiffer Lead"
 
-#: resource.cpp:135
+#: resource.cpp:134
 msgid "Charang"
 msgstr "Charang"
 
-#: resource.cpp:135
+#: resource.cpp:134
 msgid "Solo Vox"
 msgstr "Szóló vokál"
 
-#: resource.cpp:136
+#: resource.cpp:135
 msgid "5th Saw Wave"
 msgstr "5th Saw Wave"
 
-#: resource.cpp:136
+#: resource.cpp:135
 msgid "Bass & Lead"
 msgstr "Bass & Lead"
 
-#: resource.cpp:137
+#: resource.cpp:136
 msgid "Fantasia"
 msgstr "Fantázia"
 
-#: resource.cpp:137
+#: resource.cpp:136
 msgid "Warm Pad"
 msgstr "Warm Pad"
 
-#: resource.cpp:138
+#: resource.cpp:137
 msgid "Poly Synth"
 msgstr "Poly Synth"
 
-#: resource.cpp:138
+#: resource.cpp:137
 msgid "Space Voice"
 msgstr "Space Voice"
 
-#: resource.cpp:139
+#: resource.cpp:138
 msgid "Bowed Glass"
 msgstr "Bowed Glass"
 
-#: resource.cpp:139
+#: resource.cpp:138
 msgid "Metal Pad"
 msgstr "Metal Pad"
 
-#: resource.cpp:140
+#: resource.cpp:139
 msgid "Halo Pad"
 msgstr "Halo Pad"
 
-#: resource.cpp:140
+#: resource.cpp:139
 msgid "Sweep Pad"
 msgstr "Sweep Pad"
 
-#: resource.cpp:141
+#: resource.cpp:140
 msgid "Ice Rain"
 msgstr "Ice Rain"
 
-#: resource.cpp:141
+#: resource.cpp:140
 msgid "Soundtrack"
 msgstr "Soundtrack"
 
-#: resource.cpp:142
+#: resource.cpp:141
 msgid "Crystal"
 msgstr "Kristály"
 
-#: resource.cpp:142
+#: resource.cpp:141
 msgid "Atmosphere"
 msgstr "Atmoszféra"
 
-#: resource.cpp:143
+#: resource.cpp:142
 msgid "Brightness"
 msgstr "Brightness"
 
-#: resource.cpp:143
+#: resource.cpp:142
 msgid "Goblin"
 msgstr "Goblin"
 
-#: resource.cpp:144
+#: resource.cpp:143
 msgid "Echo Drops"
 msgstr "Echo Drops"
 
-#: resource.cpp:144
+#: resource.cpp:143
 msgid "Star Theme"
 msgstr "Star Theme"
 
-#: resource.cpp:145
+#: resource.cpp:144
 msgid "Sitar"
 msgstr "Szitár"
 
-#: resource.cpp:145
+#: resource.cpp:144
 msgid "Banjo"
 msgstr "Bendzsó"
 
-#: resource.cpp:146
+#: resource.cpp:145
 msgid "Shamisen"
 msgstr "Shamisen"
 
-#: resource.cpp:146
+#: resource.cpp:145
 msgid "Koto"
 msgstr "Koto"
 
-#: resource.cpp:147
+#: resource.cpp:146
 msgid "Kalimba"
 msgstr "Kalimba"
 
-#: resource.cpp:147
+#: resource.cpp:146
 msgid "Bagpipe"
 msgstr "Bagpipe"
 
-#: resource.cpp:148
+#: resource.cpp:147
 msgid "Fiddle"
 msgstr "Fiddle"
 
-#: resource.cpp:148
+#: resource.cpp:147
 msgid "Shenai"
 msgstr "Shenai"
 
-#: resource.cpp:149
+#: resource.cpp:148
 msgid "Tinker Bell"
 msgstr "Tinker Bell"
 
-#: resource.cpp:149
+#: resource.cpp:148
 msgid "Agogo"
 msgstr "Agogo"
 
-#: resource.cpp:150
+#: resource.cpp:149
 msgid "Steel Drum"
 msgstr "Steel Drum"
 
-#: resource.cpp:150
+#: resource.cpp:149
 msgid "Wood Block"
 msgstr "Wood Block"
 
-#: resource.cpp:151
+#: resource.cpp:150
 msgid "Taiko Drum"
 msgstr "Taiko Drum"
 
-#: resource.cpp:151
+#: resource.cpp:150
 msgid "Melodic Tom"
 msgstr "Melodic Tom"
 
-#: resource.cpp:152
+#: resource.cpp:151
 msgid "Synth Drum"
 msgstr "Synth Drum"
 
-#: resource.cpp:152
+#: resource.cpp:151
 msgid "Reverse Cymbal"
 msgstr "Reverse Cymbal"
 
-#: resource.cpp:153
+#: resource.cpp:152
 msgid "Fret Noise"
 msgstr "Fret Noise"
 
-#: resource.cpp:153
+#: resource.cpp:152
 msgid "Breath Noise"
 msgstr "Breath Noise"
 
-#: resource.cpp:154
+#: resource.cpp:153
 msgid "Seashore"
 msgstr "Tenger"
 
-#: resource.cpp:154
+#: resource.cpp:153
 msgid "Bird"
 msgstr "Madár"
 
-#: resource.cpp:155
+#: resource.cpp:154
 msgid "Telephone"
 msgstr "Telefon"
 
-#: resource.cpp:155
+#: resource.cpp:154
 msgid "Helicopter"
 msgstr "Helikopter"
 
-#: resource.cpp:156
+#: resource.cpp:155
 msgid "Applause"
 msgstr "Tapsvihar"
 
-#: resource.cpp:156
+#: resource.cpp:155
 msgid "Gun Shot"
 msgstr "Lövés"
 
-#: resource.cpp:556
+#: resource.cpp:553
 msgid "Details:"
 msgstr "Részletek:"
 
-#: resource.cpp:607
+#: resource.cpp:604
 msgid ""
 "<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%"
 "1\"<br>Error Code is: %2</i><br><br>The program must be interrupted.<br>"
@@ -3576,7 +3569,7 @@ msgstr ""
 "<b>Belső hiba lépett fel valahol.<br><br></b>Az üzenet:<br><i>\"%1"
 "\"<br>Hibakód: %2</i><br><br>A program futása leáll.<br>"
 
-#: resource.cpp:611
+#: resource.cpp:608
 msgid "Internal error"
 msgstr "Belső hiba"
 
@@ -3648,7 +3641,7 @@ msgstr ""
 "Az első hangszert egy nem első hangszerre illesztette! Ez törli az összes "
 "nem első hangszer elemet!"
 
-#: staffPropFrm.cpp:24 uiconnect.cpp:641
+#: staffPropFrm.cpp:24 uiconnect.cpp:642
 msgid "%1. %2"
 msgstr "%1. %2"
 
@@ -4110,7 +4103,7 @@ msgstr "Sáv %1%2"
 msgid "%1 Notes"
 msgstr "%1 Hangjegyek"
 
-#: tse3handler.cpp:538 uiconnect.cpp:883 uiconnect.cpp:891
+#: tse3handler.cpp:538 uiconnect.cpp:884 uiconnect.cpp:892
 #, c-format
 msgid "Staff %1%2"
 msgstr "Szólam %1%2"
@@ -4163,7 +4156,14 @@ msgstr "Nincs mit exportálni"
 msgid "No staff selected for export."
 msgstr "Nincs szólam kiválasztva exportálásra."
 
-#: uiconnect.cpp:222
+#: uiconnect.cpp:208
+msgid ""
+"MusiXTeX export is now complete.\n"
+"Warning! The exported file is NOT a LaTeX file! Please use musixtex or pmx "
+"parser for compilation and not latex!"
+msgstr ""
+
+#: uiconnect.cpp:223
 msgid ""
 "Actually LilyPond is not supported by your system. Do you realy want to make "
 "such an export?"
@@ -4171,131 +4171,131 @@ msgstr ""
 "Jelenleg a LilyPond nincsen támogatva a rendszere által. Szeretné a "
 "műveletet mégis mint exportot végrehajtani?"
 
-#: uiconnect.cpp:223
+#: uiconnect.cpp:224
 msgid "LilyPond export"
 msgstr "LilyPond export"
 
-#: uiconnect.cpp:451 uiconnect.cpp:452
+#: uiconnect.cpp:452 uiconnect.cpp:453
 #, fuzzy
 msgid "Auto"
 msgstr "Verfasser:"
 
-#: uiconnect.cpp:453
+#: uiconnect.cpp:454
 msgid "None"
 msgstr "Semmi"
 
-#: uiconnect.cpp:485
+#: uiconnect.cpp:486
 msgid "Dynamic:"
 msgstr "Dinamika:"
 
-#: uiconnect.cpp:486
+#: uiconnect.cpp:487
 msgid "Set min volume"
 msgstr "Minimális hangerő megadása"
 
-#: uiconnect.cpp:646
+#: uiconnect.cpp:647
 msgid "Staff %1, %2, %3"
 msgstr "Sor %1, %2, %3"
 
-#: uiconnect.cpp:648 uiconnect.cpp:886
+#: uiconnect.cpp:649 uiconnect.cpp:887
 msgid "[unnamed]"
 msgstr "[nevenincs]"
 
-#: uiconnect.cpp:746
+#: uiconnect.cpp:747
 msgid "Verse no %1 %2"
 msgstr "Verze: %1 %2"
 
-#: uiconnect.cpp:748
+#: uiconnect.cpp:749
 msgid "[empty]"
 msgstr "[üres]"
 
-#: uiconnect.cpp:757
+#: uiconnect.cpp:758
 msgid "Are you sure to clear the current verse?"
 msgstr "Tényleg szeretné törölni az aktuális verzét?"
 
-#: uiconnect.cpp:758
+#: uiconnect.cpp:759
 msgid "Clear verse"
 msgstr "Verze törlése"
 
-#: uiconnect.cpp:786
+#: uiconnect.cpp:787
 msgid "File open aborted."
 msgstr "A fájl megnyitása megszakadt."
 
-#: uiconnect.cpp:787
+#: uiconnect.cpp:788
 msgid "Import lyrics"
 msgstr "Dalszöveg importálása"
 
-#: uiconnect.cpp:793
+#: uiconnect.cpp:794
 msgid "Unable to open this file."
 msgstr "Nem tudom megnyitni ezt a fájlt."
 
-#: uiconnect.cpp:794
+#: uiconnect.cpp:795
 msgid "Import Lyrics"
 msgstr "Dalszöveg importálása"
 
-#: uiconnect.cpp:849
+#: uiconnect.cpp:850
 msgid "<b><i><u><center>Tip of day #%1"
 msgstr "<b><i><u><center> A nap tippje (%1):"
 
-#: uiconnect.cpp:850
+#: uiconnect.cpp:851
 msgid "<b><i><u>Did you know ... </u></i></b><br><br>%2"
 msgstr "<b><i><u>Tudta-e, hogy ... </u></i></b><br><br>%2"
 
-#: uiconnect.cpp:874
+#: uiconnect.cpp:875
 msgid "[not available]"
 msgstr "[nincs megadva]"
 
-#: uiconnect.cpp:901
+#: uiconnect.cpp:902
 msgid "Mute staffs"
 msgstr "Szólamok elnémítása"
 
-#: uiconnect.cpp:902
+#: uiconnect.cpp:903
 msgid "&Mute"
 msgstr "&Elnémít"
 
-#: uiconnect.cpp:907
+#: uiconnect.cpp:908
 msgid "Select staffs for autobar"
 msgstr "Válassza ki a szólamokat az automatikus ütemvonalhoz"
 
-#: uiconnect.cpp:908
+#: uiconnect.cpp:909
 msgid "Aut&obar"
 msgstr "Auto&ütem"
 
-#: uiconnect.cpp:914
+#: uiconnect.cpp:915
 msgid "Select staffs for autobeam"
 msgstr "Válassza ki a szólamokat az automatikus gerendához"
 
-#: uiconnect.cpp:915
+#: uiconnect.cpp:916
 msgid "Aut&obeam"
 msgstr "Auto&gerenda"
 
-#: uiconnect.cpp:920
+#: uiconnect.cpp:921
 msgid "Merge staffs"
 msgstr "Szólamok összefűzése"
 
-#: uiconnect.cpp:921
+#: uiconnect.cpp:922
 msgid "&Merge"
 msgstr "Össze&fűzés"
 
-#: uiconnect.cpp:926
+#: uiconnect.cpp:927
 #, fuzzy
 msgid "Create staff from TSE3"
 msgstr "TSE3 szólam létrehozása"
 
-#: uiconnect.cpp:927
+#: uiconnect.cpp:928
 #, fuzzy
 msgid "&Create"
 msgstr "&Szólam létrehozása"
 
-#: uiconnect.cpp:932
+#: uiconnect.cpp:933
 msgid "Select staffs for export"
 msgstr "Szólamok kiválasztása exportálásra"
 
-#: uiconnect.cpp:933 uiconnect.cpp:939
+#: uiconnect.cpp:934 uiconnect.cpp:940
 #, fuzzy
 msgid "&Select"
 msgstr "&Mindent kijelöl"
 
-#: uiconnect.cpp:938
+#: uiconnect.cpp:939
 msgid "Multi staff select"
 msgstr "Többszólamú kiválasztás"
 

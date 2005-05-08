@@ -18,11 +18,13 @@ export filters.
   defined yet, it the current uses file name.
 - Many score layout window improvements (bottom-up selection, resized buttons to
   fit captions on buttons, added form caption)
+- Removed fuzzyness from german translation and updated all po(t) files
+  (others will have fuzzyness as well until translated).
 - Removed a thrilling MusiXTeX warning when exporting and replaced it with a
   nice notice dialog.
 
 Bug fixes:
-- Fixed #3969 - Score layout: Text on buttons uncomple
+- Fixed #3969 - Score layout: Text on buttons uncomplete
 - Fixed #3595 - dbl quotes in some score info fields leads to invalid files.
 - Fixed #3935 - deleting element doesn't make document edited - also some rework
   in delete element code.

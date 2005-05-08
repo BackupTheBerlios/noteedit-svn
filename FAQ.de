@@ -1,6 +1,6 @@
 NoteEdit - Ein Partitureditor
 http://noteedit.berlios.de
------------------------------
+=============================
 
 Häufig gestellte Fragen (FAQ)
 -----------------------------
@@ -154,21 +154,16 @@ Bitte installieren Sie NoteEdit (make install)! Falls Sie die lokale Kopie von
 NoteEdit vom Installationsverzeichnis aus starten wollen existiert ein Shell
 Skript, das die Dateien und Links korrekt in das NoteEdit Hauptverzeichnis 
 einfügen sollte:
-
-     cd <pfad>/noteedit-2.8.0-b1
-
-     ./admin/locinst.sh
+$ cd <pfad>/noteedit-2.8.0-b1
+$ ./admin/locinst.sh
 
 Setzen Sie dann die Umgebungsvariable KDEDIRS auf das Hauptverzeichnis von noteedit:
-
 - mit der (t)csh:     setenv KDEDIRS <pfad_zu_noteedit-2.8.0-b1_direcory>
 - mit anderer shell:  export KDEDIRS=<pfad_zum_noteedit-2.8.0-b1_direcory>
 
 Nun können sie NoteEdit wie folgt aufrufen:
-
-     cd noteedit
-
-     ./noteedit  [<file>.not]
+$ cd noteedit
+$ ./noteedit  [<file>.not]
 
 Q 7.
 Während des Ladens einer Datei erscheint eine Fehlermeldung klauncher 
@@ -179,10 +174,8 @@ A.7.
 Sie verwenden NoteEdit außerhalb von KDE und die KDE-Binaries sind nicht in
 Ihrem Pfad. Fügen Sie die KDE-Binaries zu Ihrem Pfad (PATH) hinzu! Wenn das
 nicht hilft, löschen Sie einige temporäre DCOP-Dateien manuell:
-
-     rm /tmp/.ICE-unix/*
-
-     rm $HOME/.DCOPserver_*
+$ rm /tmp/.ICE-unix/*
+$ rm $HOME/.DCOPserver_*
 
 Q 8.
 I habe eine .not Datei geladen, die mit einer Vorgängerversion von NoteEdit
@@ -249,15 +242,13 @@ Sie diesen bitte als root-Nutzer. Auf diese Weise wird die Priorität des
 TiMidity- Prozesses erhöht.
 
 Nutzen Sie in diesem Fall das folgende Kommando:
-
-     timidity --realtime-priority=100 -iA -B2,8 -Os1l -s 44100
+# timidity --realtime-priority=100 -iA -B2,8 -Os1l -s 44100
 
 Achtung!
 --------
 Das kann zu Betriebssystem-Problemen führen, wenn Ihre CPU zu langsam ist!
 Falls das passiert, so setzen Sie die Priorität und/oder die Frequenz herunter:
-
-    timidity --realtime-priority=60 -iA -B2,8 -Os1l -s 22050
+# timidity --realtime-priority=60 -iA -B2,8 -Os1l -s 22050
 
 Unglücklicherweise ist der Notenzeilen-Kontext eine sehr zeitkritische Anzeige.
 Wenn das obige nicht hilft, so schalten Sie bitte die Anzeige des Notenzeilen-
@@ -284,16 +275,13 @@ In den meisten Fällen hat das nichts mit NoteEdit selbst zu tun. Es hat etwas
 mit dem ALSA-System oder genauer mit den ALSA-Modul-Parametern in 
 /etc/modules.conf zu tun. Um das zu klären, starten Sie am besten das 
 TSE3-Test-Programm tse3play. Stellen Sie zunächst die verfügbaren Ports fest:
-
-     tse3play -list
+$ tse3play -list
 
 Oder wenn das nicht funktioniert:
-
-     tse3play -list <file>.mid
+$ tse3play -list <file>.mid
 
 Dann versuchen Sie auf jedem Port ein MIDI-File zu spielen:
-
-     tse3play -port <port> <file>.mid
+$ tse3play -port <port> <file>.mid
 
 bis Sie die Musik hören, oder das Programm abstürzt. Wenn es abstürzt, dann ist
 klar, dass das ALSA-System der Grund ist. Bitte kontaktieren Sie dann das
@@ -318,12 +306,10 @@ Wenn diese Maßnahme ebenfalls nicht greift, gibt es noch folgende Möglichkeiten:
 
 - Sie haben kein korrekt konfiguriertes Sound-Gerät oder NoteEdit wurde falsch
   übersetzt. Das können Sie einfach herausfinden durch:
+$ tse3play -list
 
-     tse3play -list
-
-Oder wenn das nicht funktioniert:
-
-     tse3play -list <file>.mid
+  Oder wenn das nicht funktioniert:
+$ tse3play -list <file>.mid
 
 Wenn das kein Geräte anzeigt und NoteEdit falsch übersetzt wurde, dann könnte
 das die Ursache sein. Versuchen Sie NoteEdit nochmals zu übersetzen und stellen

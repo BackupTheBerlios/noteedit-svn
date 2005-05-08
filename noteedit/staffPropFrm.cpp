@@ -101,7 +101,7 @@ void staffPropFrm::boot( int staffNr, QList<NStaff> *staffList ) {
       // If staff is empty, insert default Staff name
       this->staffName->insertItem
 		(staffIterator.current()->staffName_.isEmpty() ?
-		 i18n("Staff %1").arg(i) :
+		 ("") :
 		 staffIterator.current()->staffName_
                 );
       // Is this the current staff ?

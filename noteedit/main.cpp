@@ -27,6 +27,7 @@
 #include <istream.h>
 #endif
 #include <qapplication.h>
+#include <qsplashscreen.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <kconfig.h>
@@ -76,7 +77,22 @@ int main( int argc, char **argv )
     KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
     KURL u;
     KApplication a( argc, argv );
+    // Create splash picture from file
+    QString s = locate( "data", "noteedit/resources/" ) + QString("splash.png");
+    QPixmap *splashPix_ = new QPixmap( s );
+    // Check if splashscreen picture was successfully loaded
+    if(splashPix_->isNull()) {
+        printf ("Error in loading image [%s]",s.ascii());
+        exit(-1);
+    }
+    // Create splash screen
+    QSplashScreen *splash = new QSplashScreen( *splashPix_ );
+    splash->show();
+    splash->message( "Loading resources" );
+    a.processEvents();
     NResource *nr = new NResource();
+    splash->message( "Parsing command line" );
+    a.processEvents();
     KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
     doExportLilyPond = args->isSet("export-lilypond");
     doExportMusixTeX = args->isSet("export-musixtex");
@@ -161,6 +177,7 @@ int main( int argc, char **argv )
     args->clear(); // Free up memory.
     mainWidget->setGeometry( 0, 0, START_WIDTH, START_HEIGHT );
     //a.setMainWidget( mainWidget );
+    splash->message( "Finished" );
     mainWidget->show();
 #if KDE_VERSION >= 220
 	KTipDialog::showTip(locate("data", "noteedit/tips"));
@@ -169,6 +186,8 @@ int main( int argc, char **argv )
 	nr->loadTips(locate("data", "noteedit/tips"));
 	if (kapp->config()->readBoolEntry("RunOnStart", true))	tipFrm( 0, NResource::tipNo_ );
 #endif
+    //Hide the splash after the main window is shown
+    //splash->finish( mainWidget );
     int res = a.exec();
     //delete nr;
     return res;

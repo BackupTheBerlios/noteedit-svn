@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 16:49+0200\n"
+"POT-Creation-Date: 2005-05-09 07:55+0200\n"
 "PO-Revision-Date: 2003-12-27 02:08-0600\n"
 "Last-Translator: \n"
 "Language-Team:  <es@li.org>\n"
@@ -660,34 +660,46 @@ msgstr ""
 "Lo siento. El pizzicato fuerte no existe en LilyPond. Use musictex para "
 "obtener esta característica."
 
-#: main.cpp:49
+#: main.cpp:50
 msgid "Files to load"
 msgstr "Archivos a cargar"
 
-#: main.cpp:50
+#: main.cpp:51
 msgid "export file to LilyPond"
 msgstr "exportar archivo a LilyPond"
 
-#: main.cpp:51
+#: main.cpp:52
 msgid "export file to MusiXTeX"
 msgstr "Exportar archivo a MusiXTeX..."
 
-#: main.cpp:52
+#: main.cpp:53
 #, fuzzy
 msgid "export file to ABC"
 msgstr "exportar archivo a LilyPond"
 
-#: main.cpp:53
+#: main.cpp:54
 msgid "Do not create an ALSA midi scheduler"
 msgstr "No crear un scheduler midi ALSA"
 
-#: main.cpp:54
+#: main.cpp:55
 msgid "Do not create an OSS midi scheduler"
 msgstr "No crear un scheduler midi OSS"
 
-#: main.cpp:56
+#: main.cpp:57
 msgid "Create an aRts midi scheduler"
 msgstr "Crear un scheduler midi aRts"
+
+#: main.cpp:91
+msgid "Loading resources..."
+msgstr ""
+
+#: main.cpp:94
+msgid "Parsing command line..."
+msgstr ""
+
+#: main.cpp:180
+msgid "Ready."
+msgstr ""
 
 #: mainframewidget.cpp:161
 msgid "C Major; a minor"
@@ -4469,6 +4481,10 @@ msgstr "Mostrar diagrama"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Constructor de acordes"
+
+#, fuzzy
+#~ msgid "Done"
+#~ msgstr "Ninguno"
 
 #~ msgid "&MusixWarn"
 #~ msgstr "&Advertencia de MusiX"

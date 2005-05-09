@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.5.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 16:49+0200\n"
+"POT-Creation-Date: 2005-05-09 07:55+0200\n"
 "PO-Revision-Date: 2004-04-20 14:15+0200\n"
 "Last-Translator: Pavlo Bohmat <bohm@ukr.net>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -652,33 +652,45 @@ msgstr ""
 "Извините, но сильное Пиццикато невозможно в LilyPond . Возьмите MusiXTeX и "
 "пользуйтесь его свойствами."
 
-#: main.cpp:49
+#: main.cpp:50
 msgid "Files to load"
 msgstr "Файлы для загрузки"
 
-#: main.cpp:50
+#: main.cpp:51
 msgid "export file to LilyPond"
 msgstr "Экспорт файла в LilyPond"
 
-#: main.cpp:51
+#: main.cpp:52
 msgid "export file to MusiXTeX"
 msgstr "Экспорт файла в MusiXTeX"
 
-#: main.cpp:52
+#: main.cpp:53
 msgid "export file to ABC"
 msgstr "Экспорт файла в LilyPond"
 
-#: main.cpp:53
+#: main.cpp:54
 msgid "Do not create an ALSA midi scheduler"
 msgstr "Не создавать ALSA midi планировщик"
 
-#: main.cpp:54
+#: main.cpp:55
 msgid "Do not create an OSS midi scheduler"
 msgstr "Не создавать OSS-midi планировщик"
 
-#: main.cpp:56
+#: main.cpp:57
 msgid "Create an aRts midi scheduler"
 msgstr "Создать aRts-midi планировщик"
+
+#: main.cpp:91
+msgid "Loading resources..."
+msgstr ""
+
+#: main.cpp:94
+msgid "Parsing command line..."
+msgstr ""
+
+#: main.cpp:180
+msgid "Ready."
+msgstr ""
 
 #: mainframewidget.cpp:161
 msgid "C Major; a minor"
@@ -4436,6 +4448,10 @@ msgstr "Показывать диаграмму"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Конструктор аккордов"
+
+#, fuzzy
+#~ msgid "Done"
+#~ msgstr "Никакой"
 
 #~ msgid "&MusixWarn"
 #~ msgstr "MusiX предупреждение"

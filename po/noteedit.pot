@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 16:49+0200\n"
+"POT-Creation-Date: 2005-05-09 07:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -572,32 +572,44 @@ msgid ""
 "enjoy this feature."
 msgstr ""
 
-#: main.cpp:49
+#: main.cpp:50
 msgid "Files to load"
 msgstr ""
 
-#: main.cpp:50
+#: main.cpp:51
 msgid "export file to LilyPond"
 msgstr ""
 
-#: main.cpp:51
+#: main.cpp:52
 msgid "export file to MusiXTeX"
 msgstr ""
 
-#: main.cpp:52
+#: main.cpp:53
 msgid "export file to ABC"
 msgstr ""
 
-#: main.cpp:53
+#: main.cpp:54
 msgid "Do not create an ALSA midi scheduler"
 msgstr ""
 
-#: main.cpp:54
+#: main.cpp:55
 msgid "Do not create an OSS midi scheduler"
 msgstr ""
 
-#: main.cpp:56
+#: main.cpp:57
 msgid "Create an aRts midi scheduler"
+msgstr ""
+
+#: main.cpp:91
+msgid "Loading resources..."
+msgstr ""
+
+#: main.cpp:94
+msgid "Parsing command line..."
+msgstr ""
+
+#: main.cpp:180
+msgid "Ready."
 msgstr ""
 
 #: mainframewidget.cpp:161

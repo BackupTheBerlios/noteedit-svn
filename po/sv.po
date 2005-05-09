@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 16:49+0200\n"
+"POT-Creation-Date: 2005-05-09 07:55+0200\n"
 "PO-Revision-Date: 2002-11-11 23:22+0100\n"
 "Last-Translator: Jörg Anders <ja@informatik.tu-chemnitz.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
@@ -653,35 +653,47 @@ msgstr ""
 "Ledsen, stark Pizzicato hanteras inte av LilyPoint. Välj MusiXTeX i stället "
 "för denna funktionalitet."
 
-#: main.cpp:49
+#: main.cpp:50
 msgid "Files to load"
 msgstr "Filer att öppna"
 
-#: main.cpp:50
+#: main.cpp:51
 msgid "export file to LilyPond"
 msgstr "exportera fil till LilyPond"
 
-#: main.cpp:51
+#: main.cpp:52
 msgid "export file to MusiXTeX"
 msgstr "exportera fil till MusiXTeX"
 
-#: main.cpp:52
+#: main.cpp:53
 #, fuzzy
 msgid "export file to ABC"
 msgstr "exportera fil till LilyPond"
 
-#: main.cpp:53
+#: main.cpp:54
 msgid "Do not create an ALSA midi scheduler"
 msgstr "Skapa inte en ALSA-MIDI-schemaläggare"
 
-#: main.cpp:54
+#: main.cpp:55
 msgid "Do not create an OSS midi scheduler"
 msgstr "Skapa inte en OSS-MIDI-scheduler"
 
-#: main.cpp:56
+#: main.cpp:57
 #, fuzzy
 msgid "Create an aRts midi scheduler"
 msgstr "Skapa inte en OSS-MIDI-scheduler"
+
+#: main.cpp:91
+msgid "Loading resources..."
+msgstr ""
+
+#: main.cpp:94
+msgid "Parsing command line..."
+msgstr ""
+
+#: main.cpp:180
+msgid "Ready."
+msgstr ""
 
 #: mainframewidget.cpp:161
 msgid "C Major; a minor"
@@ -4433,6 +4445,10 @@ msgstr ""
 #, fuzzy
 msgid "Chord constructor"
 msgstr "Partiturstyrning"
+
+#, fuzzy
+#~ msgid "Done"
+#~ msgstr "inga"
 
 #, fuzzy
 #~ msgid "Vo&ice change..."

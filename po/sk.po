@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NoteEdit-1.16.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-08 16:49+0200\n"
+"POT-Creation-Date: 2005-05-09 07:55+0200\n"
 "PO-Revision-Date: 2002-06-12 15:21+0200\n"
 "Last-Translator: Jörg Anders <ja@informatik.tu-chemnitz.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
@@ -659,35 +659,47 @@ msgstr ""
 "Ľutujem ale silné Pizzicato nie je možné vytvoriť v LilyPonde. Musíte použiť "
 "MusiXTeX, ak sa chcete tešiť z tejto vlastnosti."
 
-#: main.cpp:49
+#: main.cpp:50
 msgid "Files to load"
 msgstr "Súbor na načítanie"
 
-#: main.cpp:50
+#: main.cpp:51
 msgid "export file to LilyPond"
 msgstr "export súboru do LilyPondu"
 
-#: main.cpp:51
+#: main.cpp:52
 msgid "export file to MusiXTeX"
 msgstr "export súboru do MusiXTeXu"
 
-#: main.cpp:52
+#: main.cpp:53
 #, fuzzy
 msgid "export file to ABC"
 msgstr "export súboru do LilyPondu"
 
-#: main.cpp:53
+#: main.cpp:54
 msgid "Do not create an ALSA midi scheduler"
 msgstr "Nevytvárať ALSA midi scheduler"
 
-#: main.cpp:54
+#: main.cpp:55
 msgid "Do not create an OSS midi scheduler"
 msgstr "Nevytvárať OSS midi scheduler"
 
-#: main.cpp:56
+#: main.cpp:57
 #, fuzzy
 msgid "Create an aRts midi scheduler"
 msgstr "Nevytvárať OSS midi scheduler"
+
+#: main.cpp:91
+msgid "Loading resources..."
+msgstr ""
+
+#: main.cpp:94
+msgid "Parsing command line..."
+msgstr ""
+
+#: main.cpp:180
+msgid "Ready."
+msgstr ""
 
 #: mainframewidget.cpp:161
 msgid "C Major; a minor"
@@ -4455,6 +4467,10 @@ msgstr ""
 #, fuzzy
 msgid "Chord constructor"
 msgstr "Ovládanie partitúry"
+
+#, fuzzy
+#~ msgid "Done"
+#~ msgstr "žiadna"
 
 #, fuzzy
 #~ msgid "Vo&ice change..."

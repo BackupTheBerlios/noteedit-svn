@@ -88,10 +88,10 @@ int main( int argc, char **argv )
     // Create splash screen
     QSplashScreen *splash = new QSplashScreen( *splashPix_ );
     splash->show();
-    splash->message( "Loading resources" );
+    splash->message( i18n("Loading resources...") );
     a.processEvents();
     NResource *nr = new NResource();
-    splash->message( "Parsing command line" );
+    splash->message( i18n("Parsing command line...") );
     a.processEvents();
     KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
     doExportLilyPond = args->isSet("export-lilypond");
@@ -177,7 +177,7 @@ int main( int argc, char **argv )
     args->clear(); // Free up memory.
     mainWidget->setGeometry( 0, 0, START_WIDTH, START_HEIGHT );
     //a.setMainWidget( mainWidget );
-    splash->message( "Finished" );
+    splash->message( i18n("Ready.") );
     mainWidget->show();
 #if KDE_VERSION >= 220
 	KTipDialog::showTip(locate("data", "noteedit/tips"));

@@ -132,6 +132,12 @@ and add:
 Comment all other lines! If all is ok, you can start TiMidity++ with:
  $ timidity -iA -B2,8 -Os1l -s 44100     
 
+If you run the sound applications on your system with jack, you can connect
+timidity to it, like this:
+ $ timidity -iA -Oj -B2,8
+Take care that timidity and jackd (qjackctl) are started by the same user.
+You can optimize the B parameters to the capabilites of your system.
+
 Some Linux distros support automatic TiMidity server startup on system startup
 as well. 
 
@@ -143,6 +149,8 @@ you should see 4 new MIDI devices:
  * Timidity port 3 128:3
 
 Choose one of them and the playback should work!
+An external midi keyboard has to be connected with NoteEdit with an external
+application like kaconnect or qjackctl.
 
 Tip!
 ----

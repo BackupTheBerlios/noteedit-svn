@@ -116,6 +116,15 @@ Wenn dies der Fall ist, können Sie TiMidity++ starten mit:
 
  timidity -iA -B8,2 -Os (if this doesn't work try -Od)
 
+Wenn Sie den jackd auf ihrem System verwenden können sie timidity
+auch so starten:
+
+ timidity -iA -Oj -B8,2
+
+Beachten Sie, dass timidity und jackd (qjackctl) vom gleichen user
+gestartet werden. Mit den B-Parametern kann timidity an die
+Leistungsgegebenheiten ihres Systems angepasst werden.
+
 Stellen Sie sicher, daß NoteEdit einen TSE3 ALSA MIDI Scheduler verwendet!
 Wählen Sie den NoteEdit Sound-Konfigurationsdialog (Einstellungen-->Noteneditor
 einrichten-->Sound). Sie sollten 2 neue MIDI-Geräte sehen:
@@ -124,6 +133,8 @@ einrichten-->Sound). Sie sollten 2 neue MIDI-Geräte sehen:
 * Timidity port 1 128:0
 
 Wählen Sie eines aus und die Wiedergabe sollte funktionieren!
+Ein externes Midi-Keyboard muss über eine externe Applikation wie
+kaconnect oder qjackctl an NoteEdit angeschlossen werden.
 
 Sie sollten ebenfalls versuchen "das Orchester" auszutauschen, indem Sie
 einen anderen Soundfont verwenden. Schauen Sie dazu auf den "Links"
@@ -132,7 +143,7 @@ Abschnitt der experimentellen TiMidity++ Seite, Unterabschnitt SoundFont
 
 Tip: Falls die Wiedergabe während des Umblätterns "hakt", dann starten Sie
 TiMidity++ als root. Dadurch wird die Priorität des TiMidity++ Prozesses
-heraufgesetzt. Weitere Einzelheiten entnehmen Sie bitte dem NoteEdit Handbuches.
+heraufgesetzt. Weitere Einzelheiten entnehmen Sie bitte dem NoteEdit Handbuch.
 
 
 Fehlerberichte

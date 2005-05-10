@@ -118,8 +118,8 @@ Dateien. Wenn Sie die Quell-Distribution nicht verfügbar haben, um in
 <Pfad_zu_Ihrer_KDE_Installation>/share/apps/noteedit
 
 Dekomprimierung und Konfiguration des Archives:
-$ tar -xvzf noteedit-2.8.0-b1.tgz
-$ cd noteedit-2.8.0-b1
+$ tar -xvzf noteedit-2.8.0-b2.tgz
+$ cd noteedit-2.8.0-b2
 
 Für die (t)csh:
 $ setenv QTDIR  <pfad_zu_ihrer_qt_installation>

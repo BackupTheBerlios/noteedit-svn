@@ -76,7 +76,7 @@ no Front-Cover Texts, and with no Back-Cover Texts. A copy of the license is inc
 <link linkend="credits">"GNU Free Documentation License"</link>.</para></legalnotice>
 
 <date>2005-02-01</date>
-<releaseinfo>2.8.0-b1</releaseinfo>
+<releaseinfo>2.8.0-b2</releaseinfo>
 <abstract>
 
 <para>&noteedit; is a score editor for &kde;</para>
@@ -2525,7 +2525,7 @@ You have to re-compile the whole Qt and the whole KDE (takes 3 days).
 <para>You didn't install &noteedit; (make install) !
 The local installation is very complicated.
 There is a shell script that should place the files and links  correctly in &noteedit; top directory:</para>
-<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd&nbsp;</userinput><replaceable>path</replaceable><userinput>/noteedit-2.8.0-b1</userinput></para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd&nbsp;</userinput><replaceable>path</replaceable><userinput>/noteedit-2.8.0-b2</userinput></para>
 <para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>./admin/locinst.sh</userinput></para>
 <para>Then set environment variable <option>KDEDIRS</option> to noteedit top directory:</para>
 <informaltable>
@@ -2533,8 +2533,8 @@ There is a shell script that should place the files and links  correctly in &not
 <tbody>
 <row><entry>Shell</entry><entry>command</entry></row>
 <row><entry>(t)csh</entry>
-<entry><userinput>setenv&nbsp;KDEDIRS&nbsp;<replaceable>path_to_noteedit-2.8.0-b1_direcory</replaceable></userinput></entry></row>
-<row><entry>other shell</entry><entry><userinput>export&nbsp;KDEDIRS=<replaceable>path_to_noteedit-2.8.0-b1_direcory</replaceable></userinput></entry></row>
+<entry><userinput>setenv&nbsp;KDEDIRS&nbsp;<replaceable>path_to_noteedit-2.8.0-b2_direcory</replaceable></userinput></entry></row>
+<row><entry>other shell</entry><entry><userinput>export&nbsp;KDEDIRS=<replaceable>path_to_noteedit-2.8.0-b2_direcory</replaceable></userinput></entry></row>
 </tbody>
 </tgroup>
 </informaltable>
@@ -3861,8 +3861,8 @@ only references the KDE/Qt version you wish to use for NoteEdit!</para>
 If you don't have the source distribution to "make uninstall" remove all in</para>
 <para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<replaceable>path_to_your_kde_installation</replaceable><filename>/share/apps/noteedit</filename></para>
 <para>Decompress and configure the archive:</para>
-<para>&nbsp;&nbsp;<userinput>tar -xvzf noteedit-2.8.0-b1.tgz</userinput></para>
-<para>&nbsp;&nbsp;<userinput>cd noteedit-2.8.0-b1</userinput></para>
+<para>&nbsp;&nbsp;<userinput>tar -xvzf noteedit-2.8.0-b2.tgz</userinput></para>
+<para>&nbsp;&nbsp;<userinput>cd noteedit-2.8.0-b2</userinput></para>
 <para>&nbsp;&nbsp;<informaltable>
 <tgroup cols="2">
 <tbody>

@@ -3890,14 +3890,13 @@ void NMainFrameWidget::closeAllWindows() {
 	NMainFrameWidget *frameWindow;
 	NMainWindow *mainWindow;
 	if (playing_) return;
-	if (KMessageBox::warningYesNo
-	     (this,
-	      i18n("Do you really want to close all windows?"),
-	      kapp->makeStdCaption(i18n("Close all")),
-	      i18n("&Close all")
-	     )
-	    != KMessageBox::Yes
-		 ) return;
+	if (NResource::windowList_.count() > 1) {
+		if (KMessageBox::warningYesNo (this,
+			i18n("Do you really want to close all windows?"),
+			kapp->makeStdCaption(i18n("Close all")),
+			i18n("&Close all")) != KMessageBox::Yes)
+				return;
+	}
 	while (!NResource::windowList_.isEmpty()) {
 		mainWindow = NResource::windowList_.first();
 		frameWindow = (NMainFrameWidget *) mainWindow->centralWidget();

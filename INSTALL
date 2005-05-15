@@ -32,9 +32,9 @@ do the following at the command prompt:
 - For DEB based systems:
   # dpkg -i <filename.rpm>
 
-  
-Installing from source
-----------------------
+
+Installation from the source
+----------------------------
 Requirements for source compilation
 -----------------------------------
 You need the following packages:
@@ -44,7 +44,7 @@ You need the following packages:
  * Qt (includes and libraries) Qtdevel2 (>=Qt-2.2.2)
  * YACC or Bison
  * LEX or flex
- * KDE-2.x.y or KDE3
+ * KDE3.x
  * gettext (only for text translation)
  * extractrc (from kde development) (only for text translation)
 
@@ -76,9 +76,10 @@ Possible export filters and its packages:
 Building from SVN
 -----------------
 Since we're currently in transition from the old non-SVN based NoteEdit to the
-completely SVN-based project, making from SVN isn't yet working out of the box.
-Instructions are the following:
-- First, get the latest trunk version of NoteEdit, described on Berlios SVN page
+completely SVN-based project, it is possible that making from SVN isn't yet
+possible out of the box. If you're missing the correct admin files in admin/
+dir, follow the instructions:
+- Get the latest trunk version of NoteEdit, described on Berlios SVN page
   (https://developer.berlios.de/svn/?group_id=2232).
 - Download the admin-files.tar.gz which can be found in files section at the
   NoteEdit's project page at Berlios and save them to the NoteEdit main
@@ -88,13 +89,13 @@ Instructions are the following:
 - Type:
   $ make -f Makefile.cvs
 
-This should create an ordanary configure script. From now on, follow the normal
-build instrucions below.
+This should generate an ordinary configure script. From now on, follow the
+normal build instructions below.
 
-Note that the current SVN project organization is still in testing, so please
-report any problems you may encounter or success stories to the NoteEdit devel
-mailing list (noteedit-devel@berlios.de) and include your configuration in your
-post (version of g++, KDE, Qt, automake and Linux distribution).
+Note that the current SVN project organization is still in phase of testing, so
+please report any problems you may encounter or success stories to the NoteEdit
+devel mailing list (noteedit-devel@berlios.de) and include your configuration
+in your post (version of g++, KDE, Qt, automake and Linux distribution).
 
 
 Building
@@ -120,7 +121,7 @@ or for the other shells (bash):
  $ export QTDIR=<path_to_your_qt_installation>
  $ export KDEDIR=<path_to_your_kde_installation>
 
-Then: 
+Then:
  $ ./configure --prefix=<path_to_your_kde_installation>
 
 , whereby <path_to_your_kde_installation> is the path where KDE usually resides

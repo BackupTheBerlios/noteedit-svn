@@ -2172,7 +2172,11 @@ int NVoice::quant(int l, int *dotcount, int maxlength) {
 // and replace them by the minimum number of equivalent elements of total length
 // targetlength
 
-void NVoice::collectAndInsertPlayable(int startTime, QList<NMusElement> *patterns, int targetLength, bool useExistingElement) {
+void NVoice::collectAndInsertPlayable(	int startTime,
+					QList<NMusElement> *patterns,
+					int targetLength,
+					bool useExistingElement,
+					bool beforeBarSig) {	// beforeBarSig: first short note, then the long one
 	int len, restlen;
 	bool isChord;
 	int dotcount;
@@ -2216,8 +2220,14 @@ void NVoice::collectAndInsertPlayable(int startTime, QList<NMusElement> *pattern
 		else {
 			elem2 = (NChord *) lastPattern;
 		}
-	        elem2->changeLength(len);
-	        elem2->setDotted(dotcount);
+		if (restlen && beforeBarSig) {	// before bar end first the shorter note value
+	        	elem2->changeLength(restlen);
+	        	elem2->setDotted(0);
+		} else {
+	        	elem2->changeLength(len);
+	        	elem2->setDotted(dotcount);
+		}
+
 		elem2->computeMidiLength();
 		elem2->midiTime_ = startTime;
 		startTime += elem2->getMidiLength();
@@ -4562,7 +4572,7 @@ void NVoice::computeMidiTime(bool insertBars,  bool doAutoBeam) {
 		len1 = elem->getMidiLength() - len2;
 		elems.append(elem);
 		countBefore = musElementList_.count();
-		collectAndInsertPlayable(elem->midiTime_, &elems, len1, false);
+		collectAndInsertPlayable(elem->midiTime_, &elems, len1, false, true);
 		idx0 = idx;
 		idx = musElementList_.at();
 		musElementList_.insert(idx, new NSign(main_props_, &(theStaff_->staff_props_), SIMPLE_BAR));

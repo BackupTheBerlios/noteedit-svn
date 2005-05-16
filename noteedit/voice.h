@@ -392,7 +392,9 @@ class NVoice {
 		main_props_str *main_props_;
 		QList<NMusElement> clipBoard_;
 		void eliminateRests(QList<NMusElement> *foundRests, int restSum, int over, NChord *lastChord);
-		void collectAndInsertPlayable(int startTime, QList<NMusElement> *patterns, int targetLength, bool useExistingElement);
+		void collectAndInsertPlayable(int startTime, QList<NMusElement> *patterns, int targetLength,
+			bool useExistingElement,
+			bool beforeBarSig = false );	// if true: first the short note, then the long one
 		static undostr undoelem_[MAXUNDO];
 		static undostr redoelem_[MAXUNDO];
 		NMidiEventStr midievents_[MIDI_EVENT_RING], *actualMidiEvent_;

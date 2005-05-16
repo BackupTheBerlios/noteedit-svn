@@ -1,7 +1,7 @@
 Release 2.8.0 Beta 2
 --------------------
 New features:
-- Updated Slovenian translation and fixed Makefile.
+- Updated translations and fixed Makefile to include Slovenian translation.
 - RFE #573 - Soprano clef added.
 - Score info fields and staff names can now include double quotes ("), updated
 export filters.
@@ -22,7 +22,8 @@ export filters.
   (others will have fuzzyness as well until translated).
 - Removed a thrilling MusiXTeX warning when exporting and replaced it with a
   nice notice dialog.
-- New icon and splash
+- New icon.
+- Implemented splash screen.
 - New playback shortcut. Changed Edit Mode and Insert Rest default shortcuts.
 
 Bug fixes:

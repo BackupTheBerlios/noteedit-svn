@@ -29,6 +29,7 @@
 #include <qapplication.h>
 #include <qthread.h>
 #include <qsplashscreen.h>
+#include <qdesktopwidget.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <kconfig.h>
@@ -198,7 +199,15 @@ int main( int argc, char **argv )
     default: KCmdLineArgs::usage(); break;
     }
     args->clear(); // Free up memory.
-    mainWidget->setGeometry( 0, 0, START_WIDTH, START_HEIGHT );
+    // Start main window with (default or saved) size
+    QDesktopWidget desktop;
+    // Default size: dependant on desktop
+    QRect mainWinPos( desktop.availableGeometry() );
+    // Read saved window positions
+    kapp->config()->setGroup("Startup");
+    mainWinPos = kapp->config()->readRectEntry( "WindowPos", &mainWinPos );
+    // Set geometry of main window to these settings
+    mainWidget->setGeometry( mainWinPos  );
     //a.setMainWidget( mainWidget );
     mainWidget->show();
 #if KDE_VERSION >= 220
@@ -211,6 +220,9 @@ int main( int argc, char **argv )
     b.changeSplashMessage( i18n("Ready.") );
     b.start();
     int res = a.exec();
+    // Save mainframe widget window settings
+    kapp->config()->setGroup("Startup");
+    kapp->config()->writeEntry("WindowPos", mainWidget->geometry() );
     //delete nr;
     return res;
 }

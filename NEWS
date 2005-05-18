@@ -25,6 +25,7 @@ export filters.
 - New icon.
 - Implemented splash screen.
 - New playback shortcut. Changed Edit Mode and Insert Rest default shortcuts.
+- Save main window position and size (default: available screen geometry).
 
 Bug fixes:
 - Fixed #3944 - polyphony importing wrong in MusicXML

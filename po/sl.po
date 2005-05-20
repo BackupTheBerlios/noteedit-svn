@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-05-09 07:55+0200\n"
-"PO-Revision-Date: 2005-05-09 07:57+0200\n"
+"PO-Revision-Date: 2005-05-20 23:33+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
@@ -1904,7 +1904,7 @@ msgstr "dodatno"
 #: rc.cpp:32 rc.cpp:74 rc.cpp:76
 #, no-c-format
 msgid "Accent Toolbar"
-msgstr "Orodja za poudarke"
+msgstr "Orodja za nemelodične note"
 
 #: rc.cpp:36
 #, no-c-format

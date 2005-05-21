@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-05-09 07:55+0200\n"
-"PO-Revision-Date: 2005-05-20 23:33+0200\n"
+"PO-Revision-Date: 2005-05-21 21:52+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr ""
 #: tse3handler.cpp:455 tse3handler.cpp:956 tse3handler.cpp:1021
 #: tse3handler.cpp:1028 tse3handler.cpp:1036 uiconnect.cpp:208
 msgid "???"
-msgstr "???"
+msgstr ""
 
 #: abcexport.cpp:275
 msgid ""
@@ -4333,31 +4333,31 @@ msgstr "Kitara"
 
 #: ../kguitar_excerpt/chord.cpp:305
 msgid "Root"
-msgstr "Koren"
+msgstr "Osnovna oblika"
 
 #: ../kguitar_excerpt/chord.cpp:306
 msgid "Inv #1"
-msgstr ""
+msgstr "Prvi obrat"
 
 #: ../kguitar_excerpt/chord.cpp:307
 msgid "Inv #2"
-msgstr ""
+msgstr "Drugi obrat"
 
 #: ../kguitar_excerpt/chord.cpp:308
 msgid "Inv #3"
-msgstr ""
+msgstr "Tretji obrat"
 
 #: ../kguitar_excerpt/chord.cpp:309
 msgid "Inv #4"
-msgstr ""
+msgstr "Četrti obrat"
 
 #: ../kguitar_excerpt/chord.cpp:310
 msgid "Inv #5"
-msgstr ""
+msgstr "Peti obrat"
 
 #: ../kguitar_excerpt/chord.cpp:311
 msgid "Inv #6"
-msgstr ""
+msgstr "Šesti obrat"
 
 #: ../kguitar_excerpt/chord.cpp:316
 msgid "Usual"
@@ -4369,7 +4369,7 @@ msgstr "Poredko"
 
 #: ../kguitar_excerpt/chord.cpp:320
 msgid "All"
-msgstr "Vse"
+msgstr "Vsi"
 
 #: ../kguitar_excerpt/chord.cpp:345
 msgid "remove chord"

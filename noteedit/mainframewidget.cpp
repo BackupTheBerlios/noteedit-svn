@@ -259,7 +259,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	new KAction( i18n("&Output Params..."), 0, this, SLOT(setOutputParam()), actionCollection(), "set_params" );
 	lilyPort_ = new KAction( i18n("Export &LilyPond..."), 0, this, SLOT(exportLilyPond()), actionCollection(), "export_lily" );
 	new KAction( i18n("Score in&formation..."), "readme", 0, this, SLOT(scoreInfo()), actionCollection(), "score_information" );
-	new KAction( i18n("&Key configuration"), 0, this, SLOT(keyConfig()), actionCollection(), "keyconfig" );
+	new KAction( i18n("&Key configuration"), "configure_shortcuts", 0, this, SLOT(keyConfig()), actionCollection(), "keyconfig" );
 	new KAction( i18n("&Close"), "exit", 0, this, SLOT(quitDialog()), actionCollection(), "quit" );
 	new KAction( i18n("&Quit"), 0, this, SLOT(closeAllWindows()), actionCollection(), "close_all" );
 	KToggleAction *actionToggleBarNumbers = new KToggleAction

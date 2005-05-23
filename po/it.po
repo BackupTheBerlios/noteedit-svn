@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-09 07:55+0200\n"
+"POT-Creation-Date: 2005-05-23 14:49+0200\n"
 "PO-Revision-Date: 2002-06-12 15:19+0200\n"
 "Last-Translator: Jörg Anders <ja@informatik.tu-chemnitz.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: lilyexport.cpp:1055 mainframewidget.cpp:1175 mainframewidget.cpp:1179
 #: mainframewidget.cpp:1192 mainframewidget.cpp:1205 mainframewidget.cpp:1210
 #: mainframewidget.cpp:3688 mainframewidget.cpp:3710 mainframewidget.cpp:3712
-#: mainframewidget.cpp:4383 midiexport.cpp:147 midiexport.cpp:150
+#: mainframewidget.cpp:4382 midiexport.cpp:147 midiexport.cpp:150
 #: musicxmlexport.cpp:317 musicxmlexport.cpp:320 musixtex.cpp:163
 #: musixtex.cpp:165 musixtex.cpp:183 musixtex.cpp:185 musixtex.cpp:200
 #: musixtex.cpp:202 tse3handler.cpp:437 tse3handler.cpp:446
@@ -664,45 +664,45 @@ msgstr ""
 "Il \"molto staccato\" non è disponibile sotto LilyPond. Si può usare "
 "MusixTeX che ha questa caratteristica."
 
-#: main.cpp:50
+#: main.cpp:52
 msgid "Files to load"
 msgstr "File da caricare"
 
-#: main.cpp:51
+#: main.cpp:53
 msgid "export file to LilyPond"
 msgstr "esporta file in LilyPond"
 
-#: main.cpp:52
+#: main.cpp:54
 msgid "export file to MusiXTeX"
 msgstr "esporta file in MusixTeX"
 
-#: main.cpp:53
+#: main.cpp:55
 #, fuzzy
 msgid "export file to ABC"
 msgstr "esporta file in LilyPond"
 
-#: main.cpp:54
+#: main.cpp:56
 msgid "Do not create an ALSA midi scheduler"
 msgstr "Non è possibile creare uno scheduler midi con ALSA"
 
-#: main.cpp:55
+#: main.cpp:57
 msgid "Do not create an OSS midi scheduler"
 msgstr "Non è possibile creare uno scheduler midi con OSS"
 
-#: main.cpp:57
+#: main.cpp:59
 #, fuzzy
 msgid "Create an aRts midi scheduler"
 msgstr "Non è possibile creare uno scheduler midi con OSS"
 
-#: main.cpp:91
+#: main.cpp:116
 msgid "Loading resources..."
 msgstr ""
 
-#: main.cpp:94
+#: main.cpp:120
 msgid "Parsing command line..."
 msgstr ""
 
-#: main.cpp:180
+#: main.cpp:220
 msgid "Ready."
 msgstr ""
 
@@ -1300,7 +1300,7 @@ msgstr "Batteria 5"
 msgid "voice sel."
 msgstr "Selezione voce"
 
-#: mainframewidget.cpp:572 mainframewidget.cpp:4182
+#: mainframewidget.cpp:572 mainframewidget.cpp:4181
 msgid "Key"
 msgstr "Tonalita' di chiave"
 
@@ -1526,178 +1526,178 @@ msgstr "Chiudi tutto"
 msgid "&Close all"
 msgstr "Chiudi &tutto"
 
-#: mainframewidget.cpp:3932
+#: mainframewidget.cpp:3931
 msgid "<center>Please choose the target point!</center>"
 msgstr "<center>Per favore scegli la destinazione!</center>"
 
-#: mainframewidget.cpp:3935 mainframewidget.cpp:3936
+#: mainframewidget.cpp:3934 mainframewidget.cpp:3935
 msgid "Goto"
 msgstr "Vai a"
 
-#: mainframewidget.cpp:4248
+#: mainframewidget.cpp:4247
 msgid "Can't delete last staff."
 msgstr "Non è possibile cancellare l'ultimo rigo"
 
-#: mainframewidget.cpp:4249 mainframewidget.cpp:4256
+#: mainframewidget.cpp:4248 mainframewidget.cpp:4255
 msgid "Delete Staff"
 msgstr "Cancella il pentagramma"
 
-#: mainframewidget.cpp:4255
+#: mainframewidget.cpp:4254
 #, fuzzy
 msgid "This deletes current staff! Are you sure?"
 msgstr "Quest'operazione eliminerà la voce corrente! Ne sei certo?"
 
-#: mainframewidget.cpp:4289
+#: mainframewidget.cpp:4288
 msgid "Staff moving"
 msgstr "Sposta il rigo"
 
-#: mainframewidget.cpp:4290
+#: mainframewidget.cpp:4289
 msgid "Please choose the target position:"
 msgstr "Per favore scegli la destinazione:"
 
-#: mainframewidget.cpp:4325
+#: mainframewidget.cpp:4324
 #, fuzzy
 msgid "Please select a region first!"
 msgstr "Per favore scegli una nota!"
 
-#: mainframewidget.cpp:4325
+#: mainframewidget.cpp:4324
 #, fuzzy
 msgid "MultiStaff"
 msgstr "Righi &multipli"
 
-#: mainframewidget.cpp:4336
+#: mainframewidget.cpp:4335
 msgid "<center>Set tempo:</center>"
 msgstr "<center>Imposta il tempo:</center>"
 
-#: mainframewidget.cpp:4339
+#: mainframewidget.cpp:4338
 msgid "Set new tempo"
 msgstr "Imposta il nuovo tempo"
 
-#: mainframewidget.cpp:4340
+#: mainframewidget.cpp:4339
 msgid "Set new temp&o"
 msgstr "Imposta il nuovo temp&o"
 
-#: mainframewidget.cpp:4346
+#: mainframewidget.cpp:4345
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Imposta il numero di battute:</center>"
 
-#: mainframewidget.cpp:4349
+#: mainframewidget.cpp:4348
 msgid "multi rest"
 msgstr "Battute vuote"
 
-#: mainframewidget.cpp:4350
+#: mainframewidget.cpp:4349
 msgid "Set count of m&easures"
 msgstr "Imposta il num&ero di battute:"
 
-#: mainframewidget.cpp:4367
+#: mainframewidget.cpp:4366
 msgid "<center>How many notes:</center>"
 msgstr "<center>Quante note:</center>"
 
-#: mainframewidget.cpp:4371
+#: mainframewidget.cpp:4370
 msgid "Autobeam"
 msgstr "Unione automatica delle crome"
 
-#: mainframewidget.cpp:4383
+#: mainframewidget.cpp:4382
 #, fuzzy
 msgid "Please choose a repeat close sign!"
 msgstr "Per favore scegli una nota!"
 
-#: mainframewidget.cpp:4387
+#: mainframewidget.cpp:4386
 #, fuzzy
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Per favore scegli la destinazione!</center>"
 
-#: mainframewidget.cpp:4391
+#: mainframewidget.cpp:4390
 #, fuzzy
 msgid "Repeat count"
 msgstr "&Inizio ritornello"
 
-#: mainframewidget.cpp:4392
+#: mainframewidget.cpp:4391
 #, fuzzy
 msgid "&Set"
 msgstr "&Seleziona tutto"
 
-#: mainframewidget.cpp:4408
+#: mainframewidget.cpp:4407
 msgid "<center>Semitones:</center>"
 msgstr "<center>Semitoni:</center>"
 
-#: mainframewidget.cpp:4412
+#: mainframewidget.cpp:4411
 msgid "Transpose"
 msgstr "Trasporta"
 
-#: mainframewidget.cpp:4413
+#: mainframewidget.cpp:4412
 msgid "&Transpose"
 msgstr "&Trasporta"
 
-#: mainframewidget.cpp:4439
+#: mainframewidget.cpp:4438
 msgid "Voice selection"
 msgstr "Selezione voce"
 
-#: mainframewidget.cpp:4440
+#: mainframewidget.cpp:4439
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Seleziona la voce qui:</center>"
 
-#: mainframewidget.cpp:5178 mainframewidget.cpp:5320
+#: mainframewidget.cpp:5177 mainframewidget.cpp:5319
 msgid "Error writing file \"%1\"."
 msgstr "Errore nella scrittura del file \"%1\"."
 
-#: mainframewidget.cpp:5179
+#: mainframewidget.cpp:5178
 msgid "Write TSE3"
 msgstr "Scrivi TSE3"
 
-#: mainframewidget.cpp:5195
+#: mainframewidget.cpp:5194
 #, fuzzy
 msgid "This overrides the current staff! Continue?"
 msgstr "Quest'operazione sovrascriverà la voce corrente! Continuare?"
 
-#: mainframewidget.cpp:5196
+#: mainframewidget.cpp:5195
 msgid "Import Recording"
 msgstr "Importa registrazione"
 
-#: mainframewidget.cpp:5197 rc.cpp:311
+#: mainframewidget.cpp:5196 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "&Importa registrazione"
 
-#: mainframewidget.cpp:5239
+#: mainframewidget.cpp:5238
 #, fuzzy
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Quest'operazione eliminerà la voce corrente! Ne sei certo?"
 
-#: mainframewidget.cpp:5240
+#: mainframewidget.cpp:5239
 #, fuzzy
 msgid "Confirmation"
 msgstr "Informazioni sul brano"
 
-#: mainframewidget.cpp:5268
+#: mainframewidget.cpp:5267
 msgid "Error creating Score"
 msgstr "Errore nella creazione dello spartito"
 
-#: mainframewidget.cpp:5269
+#: mainframewidget.cpp:5268
 msgid "Creating Score"
 msgstr "Creazione dello spartito"
 
-#: mainframewidget.cpp:5321 tse3handler.cpp:365
+#: mainframewidget.cpp:5320 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "Esporta da TSE3 a MIDI"
 
-#: mainframewidget.cpp:5336 mainframewidget.cpp:5371
+#: mainframewidget.cpp:5335 mainframewidget.cpp:5370
 msgid "File read error \"%1\"."
 msgstr "Errore nella lettura del file \"%1\"."
 
-#: mainframewidget.cpp:5337
+#: mainframewidget.cpp:5336
 msgid "TSE3 MIDI in"
 msgstr "Importa da MIDI a TSE3"
 
-#: mainframewidget.cpp:5372
+#: mainframewidget.cpp:5371
 msgid "Read TSE3"
 msgstr "Leggi TSE3"
 
-#: mainframewidget.cpp:5485
+#: mainframewidget.cpp:5484
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Il file \"%1\" già esiste! Sovrascriverlo?"
 
-#: mainframewidget.cpp:5486
+#: mainframewidget.cpp:5485
 msgid "File already exists"
 msgstr "Il file già esiste"
 
@@ -4349,11 +4349,11 @@ msgstr "&Seleziona tutto"
 msgid "Multi staff select"
 msgstr "Seleziona pentagrammi multipli"
 
-#: voice.cpp:4278
+#: voice.cpp:4288
 msgid "posit: chord skipped"
 msgstr "posizione: accordo saltato"
 
-#: voice.cpp:4279
+#: voice.cpp:4289
 msgid "Repositioning voice"
 msgstr "Riposizionamento voce"
 

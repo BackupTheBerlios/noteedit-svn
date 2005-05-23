@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-09 07:55+0200\n"
+"POT-Creation-Date: 2005-05-23 14:49+0200\n"
 "PO-Revision-Date: 2004-02-13 21:40+0100\n"
 "Last-Translator: Marc Tommasi <marc.tommasi@free.fr>\n"
 "Language-Team: Français <fr@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: lilyexport.cpp:1055 mainframewidget.cpp:1175 mainframewidget.cpp:1179
 #: mainframewidget.cpp:1192 mainframewidget.cpp:1205 mainframewidget.cpp:1210
 #: mainframewidget.cpp:3688 mainframewidget.cpp:3710 mainframewidget.cpp:3712
-#: mainframewidget.cpp:4383 midiexport.cpp:147 midiexport.cpp:150
+#: mainframewidget.cpp:4382 midiexport.cpp:147 midiexport.cpp:150
 #: musicxmlexport.cpp:317 musicxmlexport.cpp:320 musixtex.cpp:163
 #: musixtex.cpp:165 musixtex.cpp:183 musixtex.cpp:185 musixtex.cpp:200
 #: musixtex.cpp:202 tse3handler.cpp:437 tse3handler.cpp:446
@@ -628,43 +628,43 @@ msgid ""
 "enjoy this feature."
 msgstr ""
 
-#: main.cpp:50
+#: main.cpp:52
 msgid "Files to load"
 msgstr "Fichier à lire"
 
-#: main.cpp:51
+#: main.cpp:53
 msgid "export file to LilyPond"
 msgstr "exporter vers LilyPond"
 
-#: main.cpp:52
+#: main.cpp:54
 msgid "export file to MusiXTeX"
 msgstr "exporter vers MusiXTeX"
 
-#: main.cpp:53
+#: main.cpp:55
 msgid "export file to ABC"
 msgstr "exporter vers ABC"
 
-#: main.cpp:54
+#: main.cpp:56
 msgid "Do not create an ALSA midi scheduler"
 msgstr "Ne pas créer un lecteur MIDI ALSA"
 
-#: main.cpp:55
+#: main.cpp:57
 msgid "Do not create an OSS midi scheduler"
 msgstr "Ne pas créer un lecteur MIDI OSS"
 
-#: main.cpp:57
+#: main.cpp:59
 msgid "Create an aRts midi scheduler"
 msgstr "Créer un lecteur MIDI aRts"
 
-#: main.cpp:91
+#: main.cpp:116
 msgid "Loading resources..."
 msgstr ""
 
-#: main.cpp:94
+#: main.cpp:120
 msgid "Parsing command line..."
 msgstr ""
 
-#: main.cpp:180
+#: main.cpp:220
 msgid "Ready."
 msgstr ""
 
@@ -1258,7 +1258,7 @@ msgstr "Percussion 5"
 msgid "voice sel."
 msgstr "Numéro de voix"
 
-#: mainframewidget.cpp:572 mainframewidget.cpp:4182
+#: mainframewidget.cpp:572 mainframewidget.cpp:4181
 msgid "Key"
 msgstr "Clé"
 
@@ -1478,174 +1478,174 @@ msgstr "Fermer tout"
 msgid "&Close all"
 msgstr "Fermer &tout"
 
-#: mainframewidget.cpp:3932
+#: mainframewidget.cpp:3931
 msgid "<center>Please choose the target point!</center>"
 msgstr "<center>Choisissez la cible</center>"
 
-#: mainframewidget.cpp:3935 mainframewidget.cpp:3936
+#: mainframewidget.cpp:3934 mainframewidget.cpp:3935
 msgid "Goto"
 msgstr "Aller"
 
-#: mainframewidget.cpp:4248
+#: mainframewidget.cpp:4247
 msgid "Can't delete last staff."
 msgstr "Suppression de la dernière portée impossible."
 
-#: mainframewidget.cpp:4249 mainframewidget.cpp:4256
+#: mainframewidget.cpp:4248 mainframewidget.cpp:4255
 msgid "Delete Staff"
 msgstr "Suppression de la portée"
 
-#: mainframewidget.cpp:4255
+#: mainframewidget.cpp:4254
 #, fuzzy
 msgid "This deletes current staff! Are you sure?"
 msgstr "Ceci détruira la voix 1. Êtes-vous sûr ?"
 
-#: mainframewidget.cpp:4289
+#: mainframewidget.cpp:4288
 msgid "Staff moving"
 msgstr "Déplacement de la portée"
 
-#: mainframewidget.cpp:4290
+#: mainframewidget.cpp:4289
 msgid "Please choose the target position:"
 msgstr "Choisissez une destination"
 
-#: mainframewidget.cpp:4325
+#: mainframewidget.cpp:4324
 #, fuzzy
 msgid "Please select a region first!"
 msgstr "Sélectionnez une note ou un silence"
 
-#: mainframewidget.cpp:4325
+#: mainframewidget.cpp:4324
 #, fuzzy
 msgid "MultiStaff"
 msgstr "Portées &multiples"
 
-#: mainframewidget.cpp:4336
+#: mainframewidget.cpp:4335
 msgid "<center>Set tempo:</center>"
 msgstr "<center>définir le tempo :</center>"
 
-#: mainframewidget.cpp:4339
+#: mainframewidget.cpp:4338
 msgid "Set new tempo"
 msgstr "Définir le nouveau tempo"
 
-#: mainframewidget.cpp:4340
+#: mainframewidget.cpp:4339
 msgid "Set new temp&o"
 msgstr "Définir temp&o"
 
-#: mainframewidget.cpp:4346
+#: mainframewidget.cpp:4345
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Définir le nombre de mesures :</center>"
 
-#: mainframewidget.cpp:4349
+#: mainframewidget.cpp:4348
 msgid "multi rest"
 msgstr "Silences multiples"
 
-#: mainframewidget.cpp:4350
+#: mainframewidget.cpp:4349
 msgid "Set count of m&easures"
 msgstr "Définir le nombre de m&esures"
 
-#: mainframewidget.cpp:4367
+#: mainframewidget.cpp:4366
 msgid "<center>How many notes:</center>"
 msgstr "<center>Combien de notes </center> "
 
-#: mainframewidget.cpp:4371
+#: mainframewidget.cpp:4370
 msgid "Autobeam"
 msgstr "Ligature automatique"
 
-#: mainframewidget.cpp:4383
+#: mainframewidget.cpp:4382
 msgid "Please choose a repeat close sign!"
 msgstr "Choisissez un signe de début/fin de répétition"
 
-#: mainframewidget.cpp:4387
+#: mainframewidget.cpp:4386
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Définissez le nombre de répétitions</center>"
 
-#: mainframewidget.cpp:4391
+#: mainframewidget.cpp:4390
 msgid "Repeat count"
 msgstr "Nombre de répétitions"
 
-#: mainframewidget.cpp:4392
+#: mainframewidget.cpp:4391
 msgid "&Set"
 msgstr "&Définir"
 
-#: mainframewidget.cpp:4408
+#: mainframewidget.cpp:4407
 msgid "<center>Semitones:</center>"
 msgstr "<center>Demi tons:</center>"
 
-#: mainframewidget.cpp:4412
+#: mainframewidget.cpp:4411
 msgid "Transpose"
 msgstr "Transposition"
 
-#: mainframewidget.cpp:4413
+#: mainframewidget.cpp:4412
 msgid "&Transpose"
 msgstr "&Transposition"
 
-#: mainframewidget.cpp:4439
+#: mainframewidget.cpp:4438
 msgid "Voice selection"
 msgstr "Sélection de voix"
 
-#: mainframewidget.cpp:4440
+#: mainframewidget.cpp:4439
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Sélectionnez la voix ici</center>"
 
-#: mainframewidget.cpp:5178 mainframewidget.cpp:5320
+#: mainframewidget.cpp:5177 mainframewidget.cpp:5319
 msgid "Error writing file \"%1\"."
 msgstr "Erreur lors de l'enregistrement de \"%1\"."
 
-#: mainframewidget.cpp:5179
+#: mainframewidget.cpp:5178
 msgid "Write TSE3"
 msgstr "Enregistre TSE3"
 
-#: mainframewidget.cpp:5195
+#: mainframewidget.cpp:5194
 #, fuzzy
 msgid "This overrides the current staff! Continue?"
 msgstr "Ceci remplacera la voix actuelle. Voulez-vous continuer ?"
 
-#: mainframewidget.cpp:5196
+#: mainframewidget.cpp:5195
 msgid "Import Recording"
 msgstr "Importer un enregistrement"
 
-#: mainframewidget.cpp:5197 rc.cpp:311
+#: mainframewidget.cpp:5196 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "&Import d'enregistrement"
 
-#: mainframewidget.cpp:5239
+#: mainframewidget.cpp:5238
 #, fuzzy
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Ceci détruira la voix 1. Êtes-vous sûr ?"
 
-#: mainframewidget.cpp:5240
+#: mainframewidget.cpp:5239
 #, fuzzy
 msgid "Confirmation"
 msgstr "Informations sur la chanson"
 
-#: mainframewidget.cpp:5268
+#: mainframewidget.cpp:5267
 msgid "Error creating Score"
 msgstr "Erreur pendant la création de la partition."
 
-#: mainframewidget.cpp:5269
+#: mainframewidget.cpp:5268
 msgid "Creating Score"
 msgstr "Créer une partition"
 
-#: mainframewidget.cpp:5321 tse3handler.cpp:365
+#: mainframewidget.cpp:5320 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "Sortie TSE3 MIDI"
 
-#: mainframewidget.cpp:5336 mainframewidget.cpp:5371
+#: mainframewidget.cpp:5335 mainframewidget.cpp:5370
 msgid "File read error \"%1\"."
 msgstr "Erreur de lecture du fichier \"%1\"."
 
-#: mainframewidget.cpp:5337
+#: mainframewidget.cpp:5336
 msgid "TSE3 MIDI in"
 msgstr "Entrée TSE3 MIDI"
 
-#: mainframewidget.cpp:5372
+#: mainframewidget.cpp:5371
 msgid "Read TSE3"
 msgstr "Lire TSE3"
 
-#: mainframewidget.cpp:5485
+#: mainframewidget.cpp:5484
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Le fichier \"%1\" existe. Le remplacer?"
 
-#: mainframewidget.cpp:5486
+#: mainframewidget.cpp:5485
 msgid "File already exists"
 msgstr "Fichier existant"
 
@@ -4301,11 +4301,11 @@ msgstr "&Sélectionner"
 msgid "Multi staff select"
 msgstr "Sélection multi portée"
 
-#: voice.cpp:4278
+#: voice.cpp:4288
 msgid "posit: chord skipped"
 msgstr ""
 
-#: voice.cpp:4279
+#: voice.cpp:4289
 msgid "Repositioning voice"
 msgstr ""
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.5.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-09 07:55+0200\n"
+"POT-Creation-Date: 2005-05-23 14:49+0200\n"
 "PO-Revision-Date: 2004-04-20 14:15+0200\n"
 "Last-Translator: Pavlo Bohmat <bohm@ukr.net>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: lilyexport.cpp:1055 mainframewidget.cpp:1175 mainframewidget.cpp:1179
 #: mainframewidget.cpp:1192 mainframewidget.cpp:1205 mainframewidget.cpp:1210
 #: mainframewidget.cpp:3688 mainframewidget.cpp:3710 mainframewidget.cpp:3712
-#: mainframewidget.cpp:4383 midiexport.cpp:147 midiexport.cpp:150
+#: mainframewidget.cpp:4382 midiexport.cpp:147 midiexport.cpp:150
 #: musicxmlexport.cpp:317 musicxmlexport.cpp:320 musixtex.cpp:163
 #: musixtex.cpp:165 musixtex.cpp:183 musixtex.cpp:185 musixtex.cpp:200
 #: musixtex.cpp:202 tse3handler.cpp:437 tse3handler.cpp:446
@@ -652,43 +652,43 @@ msgstr ""
 "Извините, но сильное Пиццикато невозможно в LilyPond . Возьмите MusiXTeX и "
 "пользуйтесь его свойствами."
 
-#: main.cpp:50
+#: main.cpp:52
 msgid "Files to load"
 msgstr "Файлы для загрузки"
 
-#: main.cpp:51
+#: main.cpp:53
 msgid "export file to LilyPond"
 msgstr "Экспорт файла в LilyPond"
 
-#: main.cpp:52
+#: main.cpp:54
 msgid "export file to MusiXTeX"
 msgstr "Экспорт файла в MusiXTeX"
 
-#: main.cpp:53
+#: main.cpp:55
 msgid "export file to ABC"
 msgstr "Экспорт файла в LilyPond"
 
-#: main.cpp:54
+#: main.cpp:56
 msgid "Do not create an ALSA midi scheduler"
 msgstr "Не создавать ALSA midi планировщик"
 
-#: main.cpp:55
+#: main.cpp:57
 msgid "Do not create an OSS midi scheduler"
 msgstr "Не создавать OSS-midi планировщик"
 
-#: main.cpp:57
+#: main.cpp:59
 msgid "Create an aRts midi scheduler"
 msgstr "Создать aRts-midi планировщик"
 
-#: main.cpp:91
+#: main.cpp:116
 msgid "Loading resources..."
 msgstr ""
 
-#: main.cpp:94
+#: main.cpp:120
 msgid "Parsing command line..."
 msgstr ""
 
-#: main.cpp:180
+#: main.cpp:220
 msgid "Ready."
 msgstr ""
 
@@ -1282,7 +1282,7 @@ msgstr "Барабан 5"
 msgid "voice sel."
 msgstr "Выбор голоса"
 
-#: mainframewidget.cpp:572 mainframewidget.cpp:4182
+#: mainframewidget.cpp:572 mainframewidget.cpp:4181
 msgid "Key"
 msgstr "Тональность"
 
@@ -1500,174 +1500,174 @@ msgstr "Закрыть все"
 msgid "&Close all"
 msgstr "Закрыть все"
 
-#: mainframewidget.cpp:3932
+#: mainframewidget.cpp:3931
 msgid "<center>Please choose the target point!</center>"
 msgstr "<center>Пожалуйста выберите целевую точку!</center>"
 
-#: mainframewidget.cpp:3935 mainframewidget.cpp:3936
+#: mainframewidget.cpp:3934 mainframewidget.cpp:3935
 msgid "Goto"
 msgstr "Перейти"
 
-#: mainframewidget.cpp:4248
+#: mainframewidget.cpp:4247
 msgid "Can't delete last staff."
 msgstr "Не могу удалить последний нотный стан."
 
-#: mainframewidget.cpp:4249 mainframewidget.cpp:4256
+#: mainframewidget.cpp:4248 mainframewidget.cpp:4255
 msgid "Delete Staff"
 msgstr "Удалить нотный стан"
 
-#: mainframewidget.cpp:4255
+#: mainframewidget.cpp:4254
 #, fuzzy
 msgid "This deletes current staff! Are you sure?"
 msgstr "Это удалит текущий голос! Вы уверенны?"
 
-#: mainframewidget.cpp:4289
+#: mainframewidget.cpp:4288
 msgid "Staff moving"
 msgstr "Переместить нотный стан"
 
-#: mainframewidget.cpp:4290
+#: mainframewidget.cpp:4289
 msgid "Please choose the target position:"
 msgstr "Пожалуйста выберите целевую точку:"
 
-#: mainframewidget.cpp:4325
+#: mainframewidget.cpp:4324
 #, fuzzy
 msgid "Please select a region first!"
 msgstr "Пожалуйста, выберите ноту или паузу!"
 
-#: mainframewidget.cpp:4325
+#: mainframewidget.cpp:4324
 #, fuzzy
 msgid "MultiStaff"
 msgstr "Множественный нотный стан..."
 
-#: mainframewidget.cpp:4336
+#: mainframewidget.cpp:4335
 msgid "<center>Set tempo:</center>"
 msgstr "<center>Установить темп:</center>"
 
-#: mainframewidget.cpp:4339
+#: mainframewidget.cpp:4338
 msgid "Set new tempo"
 msgstr "Установить новый темп"
 
-#: mainframewidget.cpp:4340
+#: mainframewidget.cpp:4339
 msgid "Set new temp&o"
 msgstr "Установить новый темп"
 
-#: mainframewidget.cpp:4346
+#: mainframewidget.cpp:4345
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Установить счет тактов:</center>"
 
-#: mainframewidget.cpp:4349
+#: mainframewidget.cpp:4348
 msgid "multi rest"
 msgstr "множественная пауза"
 
-#: mainframewidget.cpp:4350
+#: mainframewidget.cpp:4349
 msgid "Set count of m&easures"
 msgstr "Установить счет тактов"
 
-#: mainframewidget.cpp:4367
+#: mainframewidget.cpp:4366
 msgid "<center>How many notes:</center>"
 msgstr "<center>Сколько нот:</center>"
 
-#: mainframewidget.cpp:4371
+#: mainframewidget.cpp:4370
 msgid "Autobeam"
 msgstr "Автогруппировка"
 
-#: mainframewidget.cpp:4383
+#: mainframewidget.cpp:4382
 msgid "Please choose a repeat close sign!"
 msgstr "Пожалуйста, выберите знак 'Повторить закрытие'!"
 
-#: mainframewidget.cpp:4387
+#: mainframewidget.cpp:4386
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Пожалуйста, установите количество повторений!</center>"
 
-#: mainframewidget.cpp:4391
+#: mainframewidget.cpp:4390
 msgid "Repeat count"
 msgstr "Количество повторений"
 
-#: mainframewidget.cpp:4392
+#: mainframewidget.cpp:4391
 msgid "&Set"
 msgstr "Установить"
 
-#: mainframewidget.cpp:4408
+#: mainframewidget.cpp:4407
 msgid "<center>Semitones:</center>"
 msgstr "<center>Полутона:</center>"
 
-#: mainframewidget.cpp:4412
+#: mainframewidget.cpp:4411
 msgid "Transpose"
 msgstr "Транспонировать"
 
-#: mainframewidget.cpp:4413
+#: mainframewidget.cpp:4412
 msgid "&Transpose"
 msgstr "Транспонировать"
 
-#: mainframewidget.cpp:4439
+#: mainframewidget.cpp:4438
 msgid "Voice selection"
 msgstr "Выбор звучания"
 
-#: mainframewidget.cpp:4440
+#: mainframewidget.cpp:4439
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Выберите здесь ваше звучание:</center>"
 
-#: mainframewidget.cpp:5178 mainframewidget.cpp:5320
+#: mainframewidget.cpp:5177 mainframewidget.cpp:5319
 msgid "Error writing file \"%1\"."
 msgstr "Ошибка записи файла \"%1\"."
 
-#: mainframewidget.cpp:5179
+#: mainframewidget.cpp:5178
 msgid "Write TSE3"
 msgstr "Записать TSE3"
 
-#: mainframewidget.cpp:5195
+#: mainframewidget.cpp:5194
 #, fuzzy
 msgid "This overrides the current staff! Continue?"
 msgstr "Это перезапишет текущий голос! Продолжать?"
 
-#: mainframewidget.cpp:5196
+#: mainframewidget.cpp:5195
 msgid "Import Recording"
 msgstr "Импорт записи"
 
-#: mainframewidget.cpp:5197 rc.cpp:311
+#: mainframewidget.cpp:5196 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "Импорт записи"
 
-#: mainframewidget.cpp:5239
+#: mainframewidget.cpp:5238
 #, fuzzy
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Это удалит текущий голос! Вы уверенны?"
 
-#: mainframewidget.cpp:5240
+#: mainframewidget.cpp:5239
 #, fuzzy
 msgid "Confirmation"
 msgstr "Информация о песне"
 
-#: mainframewidget.cpp:5268
+#: mainframewidget.cpp:5267
 msgid "Error creating Score"
 msgstr "Ошибка создания партитуры"
 
-#: mainframewidget.cpp:5269
+#: mainframewidget.cpp:5268
 msgid "Creating Score"
 msgstr "Создание партитуры"
 
-#: mainframewidget.cpp:5321 tse3handler.cpp:365
+#: mainframewidget.cpp:5320 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "TSE3 MIDI выход"
 
-#: mainframewidget.cpp:5336 mainframewidget.cpp:5371
+#: mainframewidget.cpp:5335 mainframewidget.cpp:5370
 msgid "File read error \"%1\"."
 msgstr "Ошибка чтения файла \"%1\"."
 
-#: mainframewidget.cpp:5337
+#: mainframewidget.cpp:5336
 msgid "TSE3 MIDI in"
 msgstr "TSE3 MIDI вход"
 
-#: mainframewidget.cpp:5372
+#: mainframewidget.cpp:5371
 msgid "Read TSE3"
 msgstr "Читать TSE3"
 
-#: mainframewidget.cpp:5485
+#: mainframewidget.cpp:5484
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Файл \"%1\" уже существует! Перезаписать?"
 
-#: mainframewidget.cpp:5486
+#: mainframewidget.cpp:5485
 msgid "File already exists"
 msgstr "Файл уже существует"
 
@@ -4317,11 +4317,11 @@ msgstr "Выбрать"
 msgid "Multi staff select"
 msgstr "Выбрать множественный нотный стан"
 
-#: voice.cpp:4278
+#: voice.cpp:4288
 msgid "posit: chord skipped"
 msgstr "Позиция: пропущен аккорд"
 
-#: voice.cpp:4279
+#: voice.cpp:4289
 msgid "Repositioning voice"
 msgstr "Репозиция голоса"
 

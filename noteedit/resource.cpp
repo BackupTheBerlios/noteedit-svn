@@ -1068,6 +1068,34 @@ NResource::~NResource() {
 	
 }
 
+// Read toolbar settings from noteedit config file
+// toolBarIterator: Iterator over all toolbars from main windows
+void NResource::readToolbarSettings(QPtrListIterator<KToolBar> toolBarIterator)
+{
+    kapp->config()->setGroup("ToolBar");
+    if( toolBarIterator.isEmpty() )
+      printf("Warning: No Toolbars\n");
+    for(toolBarIterator.toFirst(); toolBarIterator.current(); ++toolBarIterator )
+    {
+      KToolBar toolBar( toolBarIterator.current() );
+      toolBar.applySettings(kapp->config(), "ToolBar");
+    }
+}
+
+// Write toolbar settings to noteedit config file
+// toolBarIterator: Iterator over all toolbars from main windows
+void NResource::writeToolbarSettings(QPtrListIterator<KToolBar> toolBarIterator)
+{
+    kapp->config()->setGroup("ToolBar");
+    if( toolBarIterator.isEmpty() )
+      printf("Warning: No Toolbars\n");
+    for(toolBarIterator.toFirst(); toolBarIterator.current(); ++toolBarIterator )
+    {
+      KToolBar toolBar( toolBarIterator.current() );
+      toolBar.saveSettings(kapp->config(), "ToolBar");
+    }
+}
+
 void NResource::autosave() {
 	NMainWindow *main_win;
 	int i;

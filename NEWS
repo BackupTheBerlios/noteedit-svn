@@ -46,6 +46,7 @@ Bug fixes:
 - Fixed #3791 - staff->delete / import recording warnings wrong.
 - Integrated patch 403 - Better menu structure
 - Fixed typo in staff properties dialog ("Voice:" -> "Instrument:")
+- Fixed #3505 - ABC export when leading repeat open and other voices
 
 Remarks:
 - LilyPond export of different drum notes inside a single chord is suppressed to

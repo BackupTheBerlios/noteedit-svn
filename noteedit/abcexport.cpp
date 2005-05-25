@@ -643,7 +643,7 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 
 	if (!elem || elem->midiTime_ >= stopTime) return false;
 	actual_staff->resetSpecialElement();
-	actual_staff->syncSpecialElement(elem->getXpos());
+	//actual_staff->syncSpecialElement(elem->getXpos());	// removed for FIX #3505
 	idx = voice_elem->getIdx();
 
 	out_ << "[V: " << createVoiceName(staffName, staff_nr, voice_nr) << "] ";

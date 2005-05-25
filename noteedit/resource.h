@@ -25,6 +25,7 @@
 #define RESOURCE_H
 
 #include <kapp.h>
+#include <ktoolbar.h>
 
 #include <qcolor.h>
 #include <qlist.h>
@@ -139,6 +140,8 @@ class NResource : public QObject  {
 		NResource();
 		~NResource();
 		static void germanUmlautsToTeX(QString *str);
+		static void readToolbarSettings(QPtrListIterator<KToolBar> toolBarIterator); 
+		static void writeToolbarSettings(QPtrListIterator<KToolBar> toolBarIterator); 
 		static NResource *nresourceobj_;
 		static QBrush backgroundBrush_;
 		static QBrush selectionBackgroundBrush_;

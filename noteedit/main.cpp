@@ -76,7 +76,7 @@ class splashThread : public QThread {
 		splash_ = new QSplashScreen( *splashPix_ );
 	}
 	virtual void run() {
-		sleep(3);
+		sleep(1);
 		splash_->close();
 	}
 	void showSplash() {

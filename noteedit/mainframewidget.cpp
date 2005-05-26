@@ -3871,15 +3871,15 @@ void NMainFrameWidget::quitDialog() {
 }
 
 void NMainFrameWidget::quitDialog2() {
+	NMainWindow *mainWindow = static_cast<NMainWindow *>(parentWidget());
 	if (playing_) return;
 	if (!testEditiones()) return;
+        NResource::writeToolbarSettings(mainWindow->toolBarIterator());
 	if (NResource::windowList_.count() > 1) {
-		NMainWindow *mainWindow = static_cast<NMainWindow *>(parentWidget());
 		NResource::windowList_.removeRef(mainWindow);
 		mainWindow->setCloseFromApplication();
 	}
 	else {
-		NMainWindow *mainWindow = static_cast<NMainWindow *>(parentWidget());
 		NResource::windowList_.removeRef(mainWindow);
 		delete NResource::nresourceobj_;
 		mainWindow->setCloseFromApplication();
@@ -3887,8 +3887,8 @@ void NMainFrameWidget::quitDialog2() {
 }
 
 void NMainFrameWidget::closeAllWindows() {
+	NMainWindow *mainWindow = NResource::windowList_.first();
 	NMainFrameWidget *frameWindow;
-	NMainWindow *mainWindow;
 	if (playing_) return;
 	if (NResource::windowList_.count() > 1) {
 		if (KMessageBox::warningYesNo (this,
@@ -3897,6 +3897,7 @@ void NMainFrameWidget::closeAllWindows() {
 			i18n("&Close all")) != KMessageBox::Yes)
 				return;
 	}
+        NResource::writeToolbarSettings(mainWindow->toolBarIterator());
 	while (!NResource::windowList_.isEmpty()) {
 		mainWindow = NResource::windowList_.first();
 		frameWindow = (NMainFrameWidget *) mainWindow->centralWidget();

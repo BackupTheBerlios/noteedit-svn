@@ -208,6 +208,8 @@ int main( int argc, char **argv )
     mainWinPos = kapp->config()->readRectEntry( "WindowPos", &mainWinPos );
     // Set geometry of main window to these settings
     mainWidget->setGeometry( mainWinPos  );
+    // Restore Toolbar settings
+    nr->readToolbarSettings(mainWidget->toolBarIterator());
     //a.setMainWidget( mainWidget );
     mainWidget->show();
 #if KDE_VERSION >= 220

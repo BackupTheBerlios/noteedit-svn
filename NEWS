@@ -27,13 +27,14 @@ export filters.
 - New playback shortcut. Changed Edit Mode and Insert Rest default shortcuts.
 - Save main window position and size (default: available screen geometry).
 - Toolbar settings of every toolbar are saved and restored.
+- Integrated patch 403 - Better menu structure
 
 Bug fixes:
 - Fixed #3944 - polyphony importing wrong in MusicXML
 - Fixed #3969 - Score layout: Text on buttons uncomplete
 - Fixed #3595 - dbl quotes in some score info fields leads to invalid files.
 - Fixed #3935 - deleting element doesn't make document edited - also some rework
-  in delete element code.
+                in delete element code.
 - Fixed #3934 - discard changes dialog ignored on exit.
 - Fixed #3914 - crash when a pasting to new staff.
 - Fixed #3504 - bad file save without clef.
@@ -47,7 +48,6 @@ Bug fixes:
 - Fixed #3505 - ABC export when leading repeat open and other voices
 - Fixed #3786 - midi export crashes noteedit.
 - Fixed #3791 - staff->delete / import recording warnings wrong.
-- Integrated patch 403 - Better menu structure
 - Fixed typo in staff properties dialog ("Voice:" -> "Instrument:")
 
 Remarks:

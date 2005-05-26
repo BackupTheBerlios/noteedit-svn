@@ -369,7 +369,6 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	new KAction( i18n("New &window"), "window_new", 0, this, SLOT(openNewWindow()), actionCollection(), "window_new_window" );
 	new KAction( i18n("Tip of the &day"), "idea", 0, this, SLOT(showTipOfTheDay()), actionCollection(), "help_tipoftheday" );
 
-
 	// ------------ Actions for toolbar buttons, KDE interface --------
 	note_buttons_[0] = new KToggleAction(i18n("select"), "selector", 0, actionCollection(), "select");
 	note_buttons_[1] = new KToggleAction(i18n("breve"), "breve", 0, actionCollection(), "breve");
@@ -5453,6 +5452,15 @@ NMainWindow::NMainWindow(QWidget *parent, const char *name )
 	// Now build the GUI
 	createGUI();
 
+	// Remove "Report Bug" menu item from help menu
+	KAction *rbug = actionCollection()->action(KStdAction::stdName(KStdAction::ReportBug));
+	if( rbug )
+	{
+	  rbug->unplugAll();
+	  actionCollection()->remove(rbug);
+	}
+	else
+	  printf("Could not remove ReportBug menu item\n");
 }
 
 void NMainWindow::slotCaption( const QString & s )

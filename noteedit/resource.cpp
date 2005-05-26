@@ -1078,7 +1078,7 @@ void NResource::readToolbarSettings(QPtrListIterator<KToolBar> toolBarIterator)
       printf("Warning: No Toolbars\n");
     for(toolBarIterator.toFirst(); toolBar = toolBarIterator.current(); ++toolBarIterator )
     {
-      toolBar->applySettings(kapp->config(), "Toolbar");
+      toolBar->applySettings(kapp->config(), QString("ToolBar ") + toolBar->name());
     }
 }
 
@@ -1092,7 +1092,7 @@ void NResource::writeToolbarSettings(QPtrListIterator<KToolBar> toolBarIterator)
       printf("Warning: No Toolbars\n");
     for(toolBarIterator.toFirst(); toolBar = toolBarIterator.current(); ++toolBarIterator )
     {
-      toolBar->saveSettings(kapp->config(), "ToolBar");
+      toolBar->saveSettings(kapp->config(), QString("ToolBar ") + toolBar->name());
     }
 }
 

@@ -1072,13 +1072,13 @@ NResource::~NResource() {
 // toolBarIterator: Iterator over all toolbars from main windows
 void NResource::readToolbarSettings(QPtrListIterator<KToolBar> toolBarIterator)
 {
+    KToolBar *toolBar = 0;
     kapp->config()->setGroup("ToolBar");
     if( toolBarIterator.isEmpty() )
       printf("Warning: No Toolbars\n");
-    for(toolBarIterator.toFirst(); toolBarIterator.current(); ++toolBarIterator )
+    for(toolBarIterator.toFirst(); toolBar = toolBarIterator.current(); ++toolBarIterator )
     {
-      KToolBar toolBar( toolBarIterator.current() );
-      toolBar.applySettings(kapp->config(), "ToolBar");
+      toolBar->applySettings(kapp->config(), "Toolbar");
     }
 }
 
@@ -1086,13 +1086,13 @@ void NResource::readToolbarSettings(QPtrListIterator<KToolBar> toolBarIterator)
 // toolBarIterator: Iterator over all toolbars from main windows
 void NResource::writeToolbarSettings(QPtrListIterator<KToolBar> toolBarIterator)
 {
+    KToolBar *toolBar = 0;
     kapp->config()->setGroup("ToolBar");
     if( toolBarIterator.isEmpty() )
       printf("Warning: No Toolbars\n");
-    for(toolBarIterator.toFirst(); toolBarIterator.current(); ++toolBarIterator )
+    for(toolBarIterator.toFirst(); toolBar = toolBarIterator.current(); ++toolBarIterator )
     {
-      KToolBar toolBar( toolBarIterator.current() );
-      toolBar.saveSettings(kapp->config(), "ToolBar");
+      toolBar->saveSettings(kapp->config(), "ToolBar");
     }
 }
 

@@ -1110,30 +1110,37 @@ timesigDiaFrm::timesigDiaFrm( NMainFrameWidget *mainWidget ) {
 }
 
 void timesigDiaFrm::showDialog() {
-	slNumerator->setStartVal(4);
-	slDnom->setStartVal(4);
 	show();
 }
 
-
 void timesigDiaFrm::slot_24() {
 	mainWidget_->setTempTimesig(2, 4);
+	slNumerator->setStartVal(2);
+	slDnom->setStartVal(4);
 	hide();
 }
 void timesigDiaFrm::slot_34() {
 	mainWidget_->setTempTimesig(3, 4);
+	slNumerator->setStartVal(3);
+	slDnom->setStartVal(4);
 	hide();
 }
 void timesigDiaFrm::slot_38() {
 	mainWidget_->setTempTimesig(3, 8);
+	slNumerator->setStartVal(3);
+	slDnom->setStartVal(8);
 	hide();
 }
 void timesigDiaFrm::slot_44() {
 	mainWidget_->setTempTimesig(4, 4);
+	slNumerator->setStartVal(4);
+	slDnom->setStartVal(4);
 	hide();
 }
 void timesigDiaFrm::slot_68() {
 	mainWidget_->setTempTimesig(6, 8);
+	slNumerator->setStartVal(6);
+	slDnom->setStartVal(8);
 	hide();
 }
 

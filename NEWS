@@ -17,7 +17,7 @@ export filters.
 - Main window title now includes score title and subtitle by default, if none
   defined yet, it the current uses file name.
 - Many score layout window improvements (bottom-up selection, resized buttons to
-  fit captions on buttons, added form caption)
+  fit captions on buttons, added form caption).
 - Removed fuzzyness from german translation and updated all po(t) files
   (others will have fuzzyness as well until translated).
 - Removed a thrilling MusiXTeX warning when exporting and replaced it with a
@@ -27,12 +27,12 @@ export filters.
 - New playback shortcut. Changed Edit Mode and Insert Rest default shortcuts.
 - Save main window position and size (default: available screen geometry).
 - Toolbar settings of every toolbar are saved and restored.
-- Integrated patch 403 - Better menu structure
+- Integrated patch 403 - Better menu structure.
 - Removed "Report Bug" menu item from help menu.
 
 Bug fixes:
-- Fixed #3944 - polyphony importing wrong in MusicXML
-- Fixed #3969 - Score layout: Text on buttons uncomplete
+- Fixed #3944 - polyphony importing wrong in MusicXML.
+- Fixed #3969 - Score layout: Text on buttons uncomplete.
 - Fixed #3595 - dbl quotes in some score info fields leads to invalid files.
 - Fixed #3935 - deleting element doesn't make document edited - also some rework
                 in delete element code.
@@ -46,10 +46,11 @@ Bug fixes:
 - Fixed #3418 - Doesn't save icon settings
 - Fixed #3484 - crash on midi import.
 - Fixed #3503 - hard crash on midi export.
-- Fixed #3505 - ABC export when leading repeat open and other voices
+- Fixed #3505 - ABC export when leading repeat open and other voices.
 - Fixed #3786 - midi export crashes noteedit.
 - Fixed #3791 - staff->delete / import recording warnings wrong.
-- Fixed typo in staff properties dialog ("Voice:" -> "Instrument:")
+- Fixed typo in staff properties dialog ("Voice:" -> "Instrument:").
+- Fixed #2930 - noteedit stops playing still held notes in other voices.
 
 Remarks:
 - LilyPond export of different drum notes inside a single chord is suppressed to

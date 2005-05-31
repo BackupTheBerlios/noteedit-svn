@@ -29,6 +29,7 @@ export filters.
 - Toolbar settings of every toolbar are saved and restored.
 - Integrated patch 403 - Better menu structure.
 - Removed "Report Bug" menu item from help menu.
+- Last selected key signature is now remembered in insert key signature dialog.
 
 Bug fixes:
 - Fixed #3944 - polyphony importing wrong in MusicXML.

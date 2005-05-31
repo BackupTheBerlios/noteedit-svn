@@ -520,6 +520,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	scrolly_ = new QScrollBar(QScrollBar::Vertical, this, "scrolly");
 	connect(scrolly_, SIGNAL(valueChanged(int)), this , SLOT(yscroll(int)));
 	width_ = height_ = 0;
+	tmpKeysig_ = 0;	
 	paperScrollWidth_ = paperScrollHeight_ = 0;
 	paperWidth_ = paperHeight_ = 0;
 	tempo_ = DEFAULT_TEMPO;
@@ -1148,7 +1149,7 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 			if (selectedSign_) {
 				checkStaffIntersection(p);
 				switch (selectedSign_) {
-					case  T_KEYSIG:
+					case T_KEYSIG:
 					case T_CLEF:
 					case T_TIMESIG:
 					case TEMPO_SIGNATURE:
@@ -4183,18 +4184,18 @@ void NMainFrameWidget::keyDialog() {
 	keyDialog_->setMinimumSize(LISTWIDTH + LIST_DIST + 7*KEYOFFSWIDTH + RIGHT_BORDER, 24 * (10+2) + PUSHBUTTONHEIGHT);
 	keyDialog_->setMaximumSize(LISTWIDTH + LIST_DIST + 7*KEYOFFSWIDTH + RIGHT_BORDER, 24 * (10+2) + PUSHBUTTONHEIGHT);
 	keyList_->setGeometry(10, 10, LISTWIDTH-50, 24 * 10);
-	tmpKeysig_ = new NKeySig(currentVoice_->getMainPropsAddr(), currentStaff_->getStaffPropsAddr());
-	keyList_->setCurrentItem(0);
+	if (!tmpKeysig_) tmpKeysig_ = new NKeySig(currentVoice_->getMainPropsAddr(), currentStaff_->getStaffPropsAddr());
+	if (keyList_->currentItem()==-1) keyList_->setCurrentItem(0);
+	changeKey(keyList_->currentItem());
 	for (i = 0; i < 7; ++i) {
-		offs_list_[i]->set(STAT_NATUR);
 		offs_list_[i]->setKeysigObj(tmpKeysig_);
 		offs_list_[i]->setGeometry(LISTWIDTH + LIST_DIST+i*KEYOFFSWIDTH, 10, KEYOFFSWIDTH, keyList_->height()/2);
 	}
 	h = (keyList_->height()/2 - KEY_OFFS_UP_DIST-KEY_OFFS_BOTTOM_DIST) / 3;
-	crosslabel_->setGeometry(LISTWIDTH + KEY_OFFS_LABEL_DIST, 10 +  KEY_OFFS_UP_DIST, KEY_OFFS_LABEL_WIDTH, KEY_OFFS_LABEL_HEIGHT);
+	crosslabel_->setGeometry(LISTWIDTH + KEY_OFFS_LABEL_DIST, 10 + KEY_OFFS_UP_DIST, KEY_OFFS_LABEL_WIDTH, KEY_OFFS_LABEL_HEIGHT);
 	flatlabel_->setGeometry(LISTWIDTH + KEY_OFFS_LABEL_DIST, 10 + KEY_OFFS_UP_DIST + h, KEY_OFFS_LABEL_WIDTH, KEY_OFFS_LABEL_HEIGHT);
 	naturlabel_->setGeometry(LISTWIDTH + KEY_OFFS_LABEL_DIST, 10 + KEY_OFFS_UP_DIST + 2*h, KEY_OFFS_LABEL_WIDTH, KEY_OFFS_LABEL_HEIGHT);
-	keyOkButton_->setGeometry(40, keyList_->height() + 24, PUSHBUTTONWIDTH, PUSHBUTTONHEIGHT);
+	keyOkButton_->setGeometry(40, keyList_->height() + 24, 2*PUSHBUTTONWIDTH, PUSHBUTTONHEIGHT);
 	keyCancButton_->setGeometry(40 + 3*PUSHBUTTONWIDTH, keyList_->height() + 24, 2*PUSHBUTTONWIDTH, PUSHBUTTONHEIGHT);
 	keyDialog_->show();
 }
@@ -4511,6 +4512,7 @@ void NMainFrameWidget::setInsertionKey() {
 		offs_list_[i]->setKeysigObj(0);
 	}
 	tmpElem_ = tmpKeysig_;
+	tmpKeysig_ = 0; /* cleans up tmpKeysig so a new one gets created the next time Keydialog() is called */
 	selectedSign_ = T_KEYSIG;
 	keyDialog_->hide();
 }

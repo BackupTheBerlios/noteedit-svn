@@ -77,7 +77,7 @@ A 2.
 Not directly. A score is exported to a music typesetting file format (like
 LilyPond, ABC or MusiXTeX) and the external typesetting programs take care of
 the score layout and printing then. For details, please read the Export file
-section in NoteEdit's docbook.
+section in NoteEdit's Handbook.
 
 Furthermore the NoteEdit storage format is close to the MUP
 (http://www.arkkra.com/) format. Thus, most NoteEdit files are directly

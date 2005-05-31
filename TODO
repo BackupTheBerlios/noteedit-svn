@@ -1,4 +1,5 @@
 Todo list for version 2.8.0. This file gets deleted in final version!
+- fix [Bug #4119] Stem directions in voice dialog don't get rememberd!
 - update NoteEdit Docbook, especialy the mail and website addresses
 - update German translation
 - update Hungarian translation

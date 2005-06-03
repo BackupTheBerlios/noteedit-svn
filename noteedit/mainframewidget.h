@@ -461,7 +461,7 @@ class NMainFrameWidget : public QWidget
 		staffFrm *multistaffDialog_;
 		staffelFrm *clefDialog_;
 		staffPropFrm *staffPropFrm_;
-		voiceDiaFrm *voiceDialog_;
+//		voiceDiaFrm *voiceDialog_; //deprecated
 		tupletDialogImpl *tupletDialog_;
 
 		QDialog *keyDialog_;

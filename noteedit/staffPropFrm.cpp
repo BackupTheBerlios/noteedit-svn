@@ -70,7 +70,6 @@ staffPropFrm::~staffPropFrm()
 }
 
 void staffPropFrm::boot( int staffNr, QList<NStaff> *staffList ) {
-
     // Prevent apply from happen
     mbApply = true;
     QListIterator<NStaff> staffIterator(*staffList); // List of staffs
@@ -78,8 +77,9 @@ void staffPropFrm::boot( int staffNr, QList<NStaff> *staffList ) {
     int i = 0;               // Counter
 
     // Remove Voices from staff
-    for (i = 1, voice_box = voiceList_.first(); voice_box; voice_box = voiceList_.next(), ++i) 
-      delete voice_box;
+    for (i = 1, voice_box = voiceList_.first(); voice_box; voice_box = voiceList_.next(), ++i)
+        delete voice_box;
+
     // Clear list of voice boxes
     voiceList_.clear();
     voiceBoxFrame_->update();
@@ -161,7 +161,6 @@ void staffPropFrm::setValuesFromActualStaff(int staffNr)
 	voiceList_.append(
 	(new VoiceBox(voiceBoxFrame_, 0, this, j, voiceIterator.current())));
     }
-    
     this->show();
 }
 
@@ -273,7 +272,8 @@ void staffPropFrm::slotStaffCancel() {
 }
 
 void staffPropFrm::slotStaffOk() {
-
+	for (voiceList_.first(); voiceList_.current(); voiceList_.next())
+		voiceList_.current()->apply();
     refresh();
     close();
     // Free temporary memory
@@ -311,8 +311,8 @@ bool staffPropFrm::destroyVoice(VoiceBox *rem_box, NVoice *voice) {
 		NResource::abort("VoiceDialog::slotUser1: internal error", 3);
 	}
 	voiceList_.remove();
-	for (i = 1, voice_box = voiceList_.first(); voice_box; voice_box = voiceList_.next(), i++) {
+	for (i = 1, voice_box = voiceList_.first(); voice_box; voice_box = voiceList_.next(), i++)
 		voice_box->renumber(i);
-	}
+		
 	return true;
 }

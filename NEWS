@@ -1,4 +1,4 @@
-Release 2.8.0 Beta 3
+Release 2.8.0 RC1
 --------------------
 New features:
 - Updated translations and fixed Makefile to include Slovenian translation.
@@ -53,6 +53,7 @@ Bug fixes:
 - Fixed #3791 - staff->delete / import recording warnings wrong.
 - Fixed typo in staff properties dialog ("Voice:" -> "Instrument:").
 - Fixed #2930 - noteedit stops playing still held notes in other voices.
+- Fixed #4119 - Stem directions in voice dialog don't get rememberd.
 
 Remarks:
 - LilyPond export of different drum notes inside a single chord is suppressed to

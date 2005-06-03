@@ -272,8 +272,6 @@ void staffPropFrm::slotStaffCancel() {
 }
 
 void staffPropFrm::slotStaffOk() {
-	for (voiceList_.first(); voiceList_.current(); voiceList_.next())
-		voiceList_.current()->apply();
     refresh();
     close();
     // Free temporary memory

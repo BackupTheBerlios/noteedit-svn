@@ -281,14 +281,14 @@ int main() {
 }
 EOF
 	${CXX} -W -Wall -ansi -pedantic -g tse3vtest.cc -I$inc_libtse3 -I$kde_includes -L$lib_libtse3 \
-	 -Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -o tse3vtest 2>/dev/null > /dev/null
+	 -Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -lpthread -o tse3vtest 2>/dev/null > /dev/null
 	if test $? -ne 0
 	then
 		echo ""
 		echo "      ERROR: TSE3 found but unable to link a simple TSE3 example!"
 		echo "	    Please see example file \"tse3vtest.cc\" and try to find out"
 		echo "      why it doesn't compile using the following command:"
-		echo "      ${CXX} -W -Wall -ansi -pedantic -g tse3vtest.cc -I$inc_libtse3 -I$kde_includes -L$lib_libtse3 -Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -o tse3vtest"
+		echo "      ${CXX} -W -Wall -ansi -pedantic -g tse3vtest.cc -I$inc_libtse3 -I$kde_includes -L$lib_libtse3 -Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -lpthread -o tse3vtest"
 		echo ""
 		exit
 	fi
@@ -303,7 +303,7 @@ EOF
 		echo "      ERROR: TSE3 found but unable to run a simple TSE3 example!"
 		echo "	    Please see example file \"tse3vtest.cc\" and try to find out"
 		echo "      why it doesn't run, compiled with:"
-		echo "      ${CXX} -W -Wall -ansi -pedantic -g tse3vtest.cc -I$inc_libtse3 -I$kde_includes -L$lib_libtse3 -Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -o tse3vtest"
+		echo "      ${CXX} -W -Wall -ansi -pedantic -g tse3vtest.cc -I$inc_libtse3 -I$kde_includes -L$lib_libtse3 -Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -lpthread -o tse3vtest"
 		exit
 	fi
 	if test "$tse_maj" -eq 0 -a "$tse_mid" -eq 2 -a "$tse_min" -lt 3  
@@ -377,12 +377,12 @@ EOF
 
 	fi
 		${CXX} -W -Wall -ansi -pedantic -g tse3vtest2.cc -I$inc_libtse3 -I$kde_includes -L$lib_libtse3 \
-	 	-Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -o tse3vtest2  2>/dev/null > /dev/null
+	 	-Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -lpthread -o tse3vtest2  2>/dev/null > /dev/null
 		if test $? -ne 0
 		then
 			echo " no"
 			echo "${CXX} -W -Wall -ansi -pedantic -g tse3vtest2.cc -I$inc_libtse3 -I$kde_includes -L$lib_libtse3 \
-				-Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -o tse3vtest2"
+				-Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -lpthread -o tse3vtest2"
 		else
 			echo " yes"
 			AC_DEFINE(TSE3_HAS_ARTS, 1, [Define if TSE3 has an aRts MIDI scheduler])

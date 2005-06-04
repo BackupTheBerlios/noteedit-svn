@@ -154,12 +154,12 @@ Bitte installieren Sie NoteEdit (make install)! Falls Sie die lokale Kopie von
 NoteEdit vom Installationsverzeichnis aus starten wollen existiert ein Shell
 Skript, das die Dateien und Links korrekt in das NoteEdit Hauptverzeichnis 
 einfügen sollte:
-$ cd <pfad>/noteedit-2.8.0-b2
+$ cd <pfad>/noteedit-2.8.0-rc1
 $ ./admin/locinst.sh
 
 Setzen Sie dann die Umgebungsvariable KDEDIRS auf das Hauptverzeichnis von noteedit:
-- mit der (t)csh:     setenv KDEDIRS <pfad_zu_noteedit-2.8.0-b2_direcory>
-- mit anderer shell:  export KDEDIRS=<pfad_zum_noteedit-2.8.0-b2_direcory>
+- mit der (t)csh:     setenv KDEDIRS <pfad_zu_noteedit-2.8.0-rc1_direcory>
+- mit anderer shell:  export KDEDIRS=<pfad_zum_noteedit-2.8.0-rc1_direcory>
 
 Nun können sie NoteEdit wie folgt aufrufen:
 $ cd noteedit

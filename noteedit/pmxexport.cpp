@@ -26,7 +26,7 @@
 #include <kfiledialog.h> 
 #include <kmessagebox.h>
 #include <klocale.h>
-#include <alloca.h>
+//#include <alloca.h>
 #include <qregexp.h>
 #include <qdial.h>
 #include <qspinbox.h>

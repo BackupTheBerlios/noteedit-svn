@@ -31,7 +31,7 @@
 #include "sign.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <alloca.h>
+//#include <alloca.h>
 #include <math.h>
 
 #define SEGMENT_LEN 1024

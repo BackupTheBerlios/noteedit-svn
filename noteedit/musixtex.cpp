@@ -29,9 +29,9 @@
 #include <strstream.h>
 #endif
 #include <stdlib.h> //  esigra: needed for mkstemp when --without-libs
-#include <alloca.h>
+//#include <alloca.h>
 #include <kfiledialog.h>
-#include <alloca.h>
+//#include <alloca.h>
 #include <kmessagebox.h>
 #include <klocale.h>
 #include <ktextbrowser.h>

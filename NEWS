@@ -31,6 +31,7 @@ export filters.
 - Removed "Report Bug" menu item from help menu.
 - The last selected key or time signature is now remembered and gets selected
   automatically when inserting it the second time.
+- configure now works on FreeBSD (thanks to Raphael Langerhorst)
 
 Bug fixes:
 - Fixed #3944 - polyphony importing wrong in MusicXML.

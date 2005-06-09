@@ -272,8 +272,9 @@ void staffPropFrm::slotStaffCancel() {
 }
 
 void staffPropFrm::slotStaffOk() {
-    refresh();
+	refresh();
     close();
+
     // Free temporary memory
     delete [] values_;
     delete [] staffNames_;    
@@ -292,7 +293,12 @@ void staffPropFrm::refresh() {
     actualStaff_->staffName_ = QString( this->staffName->currentText() );
     actualStaff_->changeVoice( this->staffVoice->currentItem() );
     actualStaff_->transpose_ = this->staffPlay->getValue();
-    mw_->arrangeStaffs(true);
+	
+	/* apply dialog voice properties to actual voices */
+	for (voiceList_.first(); voiceList_.current(); voiceList_.next())
+		voiceList_.current()->apply();
+
+	mw_->arrangeStaffs(true);
 }
 
 bool staffPropFrm::destroyVoice(VoiceBox *rem_box, NVoice *voice) {

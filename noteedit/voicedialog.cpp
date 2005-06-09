@@ -93,7 +93,6 @@ VoiceBox::VoiceBox
 }
 
 VoiceBox::~VoiceBox() {
-	apply();
 	delete stemDirection_;
 	delete restPosition_;
 	delete remove_;

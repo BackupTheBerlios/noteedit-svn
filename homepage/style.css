@@ -1,0 +1,87 @@
+.pageHeader {
+	background: black;
+	width=800px;
+}
+
+.headerContent {
+	background: url(logo.png) no-repeat top right;
+}
+
+.sidebar {
+	position: absolute;
+    top: 90px;
+    left: 1em;
+	width: 150px;
+	background-color: white;
+	color: black;
+	/*padding: 0.5em;*/
+	font-family: sans-serif;
+	font-size: -1
+}
+
+.contentWrapper {
+    position: absolute;
+    top: 80px;
+    right: 7em;
+    left: 13em;
+	width: 650px;
+    /*
+	margin-top: 0em;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	margin-left: 13em;
+    
+	float: right;
+    */
+	background-color: white;
+	color: black;
+}
+
+h1 {
+	margin-top: 0em;
+	font-size: -4;
+	font-family: sans-serif;
+}
+
+a:link, a:visited, a:active {
+	border-bottom: 1px dotted #99c;
+    /*background-color: white;*/
+	color: rgb(204,146,0);
+	margin: 0em;
+	font-family: sans;
+	font-size: 80%;	
+	text-decoration: none;
+}
+
+a:hover {
+	border-bottom: 1px dotted #99c;
+/*    background-color: rgb(251, 251, 212);*/
+    color: black;
+	margin: 0em;
+	font-family: sans;
+    font-size: 80%;
+	text-decoration: none;
+}
+
+a.sidebar_link:link, a.sidebar_link:visited, a.sidebar_link:active {
+	background-color: rgb(103,103,103);
+	color: orange;
+	font-family: sans-serif;
+	font-size: 75%;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a.sidebar_link:hover {
+	color: black;
+	font-family: sans-serif;
+	font-size: 75%;
+	text-decoration: underline;
+    background-color: rgb(251, 251, 212);
+}
+
+pre {
+	margin-bottom: 0em;
+	border: 2px dotted orange;
+	padding: 0.5em;
+}

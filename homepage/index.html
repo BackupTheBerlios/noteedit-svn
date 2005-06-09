@@ -1,224 +1,45 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<HEAD>
-    <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=iso-8859-15">
-    <TITLE>NoteEdit - a music score editor</TITLE>
-</HEAD>
-<BODY LANG="en-EN" TEXT="#000000" LINK="#0000ef" VLINK="#51188e" BGCOLOR="#ffffff"><h1>NoteEdit - a music score editor for Linux
-  <br>
-</h1>
-<br>
-  NoteEdit is a music score editor that supports an unlimited
-  number of staffs, an unlimited length of staffs, up to 9 voices per staff, a
-  MIDI playback of written notes, a number of import and export filters to many
-  formats like MIDI, MusicXML, ABC Music, PMX, MusiXTeX and LilyPond and more!
-<br><br><br>
-<IMG src="noteedit-main.png" alt="Noteedit screenshot" width="863" height="563" hspace="0" vspace="0" align="middle" border="0">
-<br>
-<br>
-We want to thank <a href="http://developer.berlios.de">
-<img src="http://developer.berlios.de/bslogo.php?group_id=0&type=1" width="124" height="32" border="0" alt="BerliOS Logo"></A> for hosting the NoteEdit project!
-<br>
-<br>
-<a href="http://developer.berlios.de/project/showfiles.php?group_id=2232">Download NoteEdit...</a>
-<br>
-  Current development version: <b>2.8.0-RC1</b>
-<br>
-  Current stable version: <b>2.7.4</b>
-<br>
-<br>
-<a href="http://developer.berlios.de/projects/noteedit">NoteEdit project page</a>
-<br>
-<br>
-<h2>Main features</h2>
-<br>
-   * Insertion/deletion/modification of notes, rests (and multirests),
-     ties/slurs, stem/beam control, instrument changes, repeats,
-     clef/time/key/volume/tempo and all other classical music notation
-     signatures.
-<br>
-   * Chords markings (based on
-     <a href="http://kguitar.sourceforge.net/">KGuitar project</a>).
-<br>
-   * Dynamic expression markings ((de)crescendo, octaviation, arpeggio, fermata,
-     trills, grace notes etc.).
-<br>
-   * Fixed expression markings (staccato, sforzato, portato, strong pizzicato,
-     sforzando etc.).
-<br>
-   * Multiple voices per staff (polyphony).
-<br>
-   * Drum notes (including drum and bass drum clef).
-<br>
-   * Flexible UI based on Qt/KDE. Supports zoom, multiple windows, many keyboard
-     shortcuts, Konqueror embedding and other candies.
-<br>
-   * Playback and other MIDI operations (reading and recording from MIDI
-     keyboard) are done using <a href="http://tse3.sourceforge.net/">TSE3
-     library</a>. Each staff can have its own channel, own intsrument and own
-     MIDI settings (reverbation, chorus). Currently played element is
-     highlighted!
-<br>
-   * Support for lyrics.
-<br>
-   * Basic score layout operations (setting brackets, braces, continuing bars
-     over staffs etc.).
-<br>
-   * Many useful tools like automatic placment of bars, automatic placement of
-     beams, transposition, copying&pasting of elements, optimization and
-     resetting of accidentals, MIDI importing (or recording from MIDI keyboard)
-     filters etc.
-<br>
-   * Exports MIDI (using TSE3 library), MusicXML, ABC Music, PMX, MusiXTeX and
-     LilyPond.
-<br>
-   * Imports MIDI and MusicXML.
-<br>
-   * The NoteEdit fileformat is similar to the format of the music publication
-     program (MUP). It's a plaintext format, with a simple syntax for describing
-     the music, so computer geeks can edit it by hand if they want to:).
-<br>
-   * NoteEdit is translated into the following languages: German, Spanish,
-     French, Hungarian, Italian, Russian, Slovak, Slovene and Swedish. It
-     supports UTF-8 encodings for lyrics, score title, composer, copyright and
-     other document strings.
-<br>
-<br>
-<h2>Mailing lists</h2>
-<br>
-<a
-href="http://lists.berlios.de/mailman/listinfo/noteedit-user">noteedit-user@lists.berlios.de:
-NoteEdit User Mailing List</a>
-<br>
-<br>
-<a
-href="http://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel@lists.berlios.de:
-NoteEdit Development Mailing List</a>
-<br>
-<br>
-<h2>The TSE3 library</h2>
-<br>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<link rel="stylesheet" href="style.css">
+		<title>[NoteEdit - About]</title>
+	</head>
+	<body>
+		<div class="header">
+			<font size="24">NoteEdit</font>		
+		</div>
 
-From version 1.5.0 on, NoteEdit bases on a library by Pete Goodliffe
-called TSE3 (<a href="http://TSE3.sourceforge.net">TSE3 Homepage<a>). It is
-a powerful open source sequencer engine written in C++. The libkmid version
-is further supported but this version doesn't offer all features (MIDI
-import for eg.).
-<br>
-<br>
-TSE3 has its own file format and NoteEdit can produce it by means of TSE3
-function calls. So the NoteEdit data are interchangable with sequencer
-applications basing on TSE3.
-<br>
-<br>
-The TSE3 library is not as much tested as the libkmid. So if you have
-problems with MIDI playback, installation or other realated functions please
-contact Pete Goodliffe. The TSE3 library comes with an application called
-tse3play. So you can test whether it works on your system. If so NoteEdit
-should work too!
-<br>
-<h2>Konqueror embedding (experimental)</h2>
-<br>
-You can configure the Konqueror browser such a way that it starts NoteEdit
-as an embedded application. This requires installation of NoteEdit in KDE
-system.
-<br>
-<br>
-To configure embedding, first search for a file noteedit.desktop in
-$HOME/.kde (or $HOME/.kde2 or 3) and delete it!
-<br>
-<br>
-Then start Konqueror and choose:
-<br>
-<br>
-      Settings --> Configure Konqueror... --> File Associations -->
-      Add...  (Group) audio --> (Type name:) x-notes
-<br>
-<br>
-In field Application Preference Order there should be already noteedit. In
-File patterns: insert: *.not and *.not.sav
-<br>
-<br>
-Press Apply and Ok! Now if you select a *.not and *.not.sav file the
-Konqueror should show the NoteEdit program embedded in Konqueror surface.
-It should start playing as well.
-<br>
-<br>
-
-<h2><a href="FAQ">Frequently Asked Questions (FAQ)</a></h2>
-<br>
-<br>
-<h2>The TiMidity server</h2>
-<br>
-(only with TSE3) Version 2.10.2 of the MIDI to WAVE converter and
-player <a href="http://timidity.sourceforge.net/">TiMidity++</a> now has a
-server mode. In this mode TiMidity++ behaves like a hardware MIDI
-synthesizer. This approach is interesting for all those who can't bring the
-MIDI device to work (mostly all non-SoundBlaster based cards). TiMidity++ needs
-to be compiled with (at least) the configure options (most Linux distributions
-already include these):
-<br>
-<br>
-         --enable-audio=alsa --enable-server --enable-alsaseq
-<br>
-<br>
-If so, you can start TiMidity++ with:
-<br>
-<br>
-         timidity -iA -B8,2 -Os    (if this doesn't work try -Od)
-<br>
-<br>
-Make sure that NoteEdit uses an TSE3 ALSA MIDI scheduler! Select NoteEdit
-sound configure dialog (Configure NoteEdit-->Sound). Make sure NoteEdit
-uses an ALSA MIDI scheduler! You should see 2 new MIDI devices:
-<br>
-   * Timidity port 0 128:0
-<br>
-   * Timidity port 1 128:0
-<br>
-<br>
-Choose one of them and the playback should work!
-<br>
-<br>
-You should also try to change "the orchestra" by installing a different GUS
-patch (or so called SoundFonts). Please look at the "Links" section at the
-TiMidity++ page.
-<br>
-<br>
-Tip: If the replay interrupts during turn over then start TiMidity++ as
-root. This increases the priority of the TiMidity++ process.
-<br>
-<br>
-<h2>Documentation</h2>
-<br>
-The documentation is part of the NoteEdit archive. You find
-it in the doc directory. The german translation can be found
-under "de", the english original is in the NoteEdit directory
-including all the pictures.
-<br>
-<br>
-After having installed NoteEdit, you can read the documentation
-by selecting the NoteEdit Handbook option from the Help menu.
-<br>
-<br>
-In case of an error when trying to open the documentation file it
-might be that KDE can't find it if you compiled the program from
-the sources. Try to change the prefix so it points to the KDE
-directory on your distribution (usually /usr) in that case.
-<br>
-<br>
-<h2>License</h2>
-<br>
-This program is free software; you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the Free
-Software Foundation; either version 2 of the License, or (at your option)
-any later version. This program is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
-Public License (http://www.fsf.org/copyleft/gpl.html) for more details.
-<br>
-<P STYLE="margin-bottom: 0cm"><BR>&nbsp; <BR>&nbsp; <BR>&nbsp;
-</P>
-<HR>
-Last change: 12.05.2005 <BR>&nbsp; <BR>&nbsp;
-</BODY>
-</HTML>
+		<div class="sidebar">
+			<p><a href="index.html">About</a></p>
+			<p><a href="features.html">Features</a></p>
+			<p><a href="shots.html">Screenshots</a></p>
+			<p><a href="download.html">Download</a></p>
+			<p><a href="lists.html">Mailing lists</a></p>
+			<p><a href="authors.html">Authors</a></p>
+			<p><a href="docs.html">Documentation</a></p>
+			<p><a href="faq.html">FAQ</a></p>
+			<p><a href="http://developer.berlios.de/"><img src="img/bslogo.png" border="0" alt="berlios.de logo"></a></p>			
+		</div>
+		
+		<div class="contentWrapper">
+			<h2>About NoteEdit</h2>
+			<p> NoteEdit is a music score editor that supports an unlimited number of staffs, 
+			an unlimited length of staffs, up to 9 voices per staff, a MIDI playback of written 
+			notes, a number of import and export filters to many formats like MIDI, MusicXML, 
+			ABC Music, PMX, MusiXTeX and LilyPond and more!</p>
+			<p>This program is free software; you can redistribute it and/or modify it under the 
+			terms of the GNU General Public License as published by the Free Software 
+			Foundation; either version 2 of the License, or (at your option) any later version. 
+			This program is distributed in the hope that it will be useful, but WITHOUT ANY 
+			WARRANTY; without even the implied warranty of MERCHANTABILITY or 
+			FITNESS FOR A PARTICULAR PURPOSE. See the 
+			<a href="http://www.fsf.org/copyleft/gpl.html">GNU General Public License</a> for 
+			more details.</p>
+			<p>We want to thank <a href="http://developer.berlios.de/">Berlios</a> for hosting the
+			NoteEdit project!</p>
+		</div>
+	</body>
+</html>

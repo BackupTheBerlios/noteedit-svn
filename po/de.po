@@ -1,4 +1,5 @@
-# translation of de.po to 
+# translation of de.po to slovenščina
+# translation of de.po to
 # translation of de.po to
 # translation of de.po to
 # translation of de.po to
@@ -12,19 +13,20 @@
 # Erik Sigra <sigra@home.se>, 2001.
 # J. Anders <ja@infornatik.tu-chemnitz.de>, 2003, 2004.
 # Jörg Anders <ja@informatik.tu-chemnitz.de>, 2004.
+# Matevz Jekovec <matevz.jekovec@guest.arnes.si>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-01 00:24+0200\n"
-"PO-Revision-Date: 2005-05-09 20:02+0100\n"
-"Last-Translator: Reinhard Katzmann <reinhard@suamor.de>\n"
-"Language-Team:  <en@li.org>\n"
+"POT-Creation-Date: 2005-06-12 22:18+0200\n"
+"PO-Revision-Date: 2005-06-12 22:23+0200\n"
+"Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
+"Language-Team: slovenščina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3.1\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
@@ -72,12 +74,10 @@ msgstr ""
 
 #: abcexport.cpp:294
 msgid "ABC music cannot deal with a one-staff bracket\n"
-msgstr ""
-"ABC music kann nicht mit eckigen Klammern über nur einer Notenzeile umgehen\n"
+msgstr "ABC music kann nicht mit eckigen Klammern über nur einer Notenzeile umgehen\n"
 
 #: abcexport.cpp:298
-msgid ""
-"Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
+msgid "Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
 msgstr ""
 "Zeile %1; Takt %2: ABC Music kann nicht mit Oktavierungszeichen (va-Linien) "
 "umgehen\n"
@@ -483,8 +483,7 @@ msgstr ""
 
 #: filehandler.cpp:614
 msgid "staff %1; measure %2: Mup cannot deal with trills without \"tr\" sign\n"
-msgstr ""
-"Zeile %1; Takt %2: MUP kann nicht mit Trillern ohne \"tr\"-Symbol umgehen.\n"
+msgstr "Zeile %1; Takt %2: MUP kann nicht mit Trillern ohne \"tr\"-Symbol umgehen.\n"
 
 #: filehandler.cpp:619
 msgid "Staff %1 has irregular key, this may not work with MUP.\n"
@@ -529,8 +528,7 @@ msgstr ""
 "umgehen.\n"
 
 #: filehandler.cpp:654
-msgid ""
-"MUP cannot deal with some chord annotations with and some without grids\n"
+msgid "MUP cannot deal with some chord annotations with and some without grids\n"
 msgstr "MUP kann mit Akkorden mit und ohne Diagramm gemischt nicht umgehen\n"
 
 #: filehandler.cpp:658
@@ -539,13 +537,11 @@ msgstr "MUP\n"
 
 #: filehandler.cpp:662
 msgid "MUP cannot deal with nested brackets in braces\n"
-msgstr ""
-"MUP kann nicht geschweiften Klammern innerhalb eckiger Klammern umgehen\n"
+msgstr "MUP kann nicht geschweiften Klammern innerhalb eckiger Klammern umgehen\n"
 
 #: filehandler.cpp:666
 msgid "MUP cannot correctly write more than one slurred grace\n"
-msgstr ""
-"MUP kann mehr als eine gebundene Vorschlag-Note nicht korrekt notieren\n"
+msgstr "MUP kann mehr als eine gebundene Vorschlag-Note nicht korrekt notieren\n"
 
 #: layout.cpp:55
 msgid "Set brace"
@@ -607,8 +603,7 @@ msgstr ""
 
 #: lilyexport.cpp:642
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
-msgstr ""
-"Zeile %1; Takt %2: Nur eine Untermenge von Akkorden hat einen Haltebogen!\n"
+msgstr "Zeile %1; Takt %2: Nur eine Untermenge von Akkorden hat einen Haltebogen!\n"
 
 #: lilyexport.cpp:646
 msgid ""
@@ -633,15 +628,13 @@ msgstr ""
 "Taktstrichen kann in LilyPond nicht ausgedrückt werden\n"
 
 #: lilyexport.cpp:660
-msgid ""
-"A piano staff without continued bar rules cannot be expressed in LilyPond\n"
+msgid "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Pianozeilen mit nicht durchgezogenen Taktstrichen sind in LilyPond nicht "
 "möglich.\n"
 
 #: lilyexport.cpp:664
-msgid ""
-"Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
+msgid "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Durchgezogene Taktriche außerhalb geschweifter oder eckiger Klammern können "
 "in LilyPond nicht ausgedrückt werden\n"
@@ -719,7 +712,7 @@ msgid "A flat Major; f minor"
 msgstr "As-Dur; f-moll"
 
 #: mainframewidget.cpp:163
-msgid "D flat Major; b minor"
+msgid "D flat Major; b flat minor"
 msgstr "Des-Dur; b-moll"
 
 #: mainframewidget.cpp:164
@@ -1664,26 +1657,22 @@ msgstr ""
 
 #: musicxmlexport.cpp:473
 msgid "Staff %1 contains drum clef. This is currently not supported.\n"
-msgstr ""
-"Zeile %1 hat einen Schlagzeugschlüssel. Das wird zur Zeit nicht unterstüzt.\n"
+msgstr "Zeile %1 hat einen Schlagzeugschlüssel. Das wird zur Zeit nicht unterstüzt.\n"
 
 #: musicxmlexport.cpp:478
 msgid "Staff %1 contains drum staff. This is currently not supported.\n"
-msgstr ""
-"Zeile %1 enthält Schlagzeugelemente. Das wird zur Zeit nicht unterstüzt.\n"
+msgstr "Zeile %1 enthält Schlagzeugelemente. Das wird zur Zeit nicht unterstüzt.\n"
 
 #: musicxmlexport.cpp:483
 msgid "Staff %1 contains voice change. This is currently not supported.\n"
-msgstr ""
-"Zeile %1 enthält einen Stimmen-Wechsel. Das wird zur Zeit nicht unterstüzt.\n"
+msgstr "Zeile %1 enthält einen Stimmen-Wechsel. Das wird zur Zeit nicht unterstüzt.\n"
 
 #: musicxmlexport.cpp:488
 msgid "Staff %1 contains 8va start without 8va stop.\n"
 msgstr "Notenzeile %1 enthält 8va start ohne 8va stop.\n"
 
 #: musicxmlexport.cpp:493
-msgid ""
-"Staff %1 contains 8va over a single note. This is currently not supported.\n"
+msgid "Staff %1 contains 8va over a single note. This is currently not supported.\n"
 msgstr ""
 "Notenzeile %1 enthält 8va über eine einzelne Note. Das wird zur Zeit nicht "
 "unterstützt.\n"
@@ -1854,8 +1843,7 @@ msgstr ""
 
 #: pmxexport.cpp:420
 msgid "Staff %1, measure %2: In PMX tuplet cannot end with a rest\n"
-msgstr ""
-"Zeile %1; Takt %2: In PMX dürfen N-Tuplets nicht mit einer Pause enden\n"
+msgstr "Zeile %1; Takt %2: In PMX dürfen N-Tuplets nicht mit einer Pause enden\n"
 
 #: pmxexport.cpp:425
 msgid "PMX cannot deal with more than 2 voices per staff\n"
@@ -1863,13 +1851,11 @@ msgstr "PMX kann nicht mehr als 2 Stimmen pro Notenzeile verarbeiten.\n"
 
 #: pmxexport.cpp:429
 msgid "Staff %1 contains drum staff. This cannot be expressed in PMX.\n"
-msgstr ""
-"Zeile %1 enthält Schlagzeugnoten. Das kann in PMX nicht ausgedrückt werden.\n"
+msgstr "Zeile %1 enthält Schlagzeugnoten. Das kann in PMX nicht ausgedrückt werden.\n"
 
 #: pmxexport.cpp:434
 msgid "Staff %1, measure %2: PMX cannot deal with mixed graces\n"
-msgstr ""
-"Zeile %1; Takt %2: In PMX kann nicht mit gemischten Vorschlag-Noten umgehen\n"
+msgstr "Zeile %1; Takt %2: In PMX kann nicht mit gemischten Vorschlag-Noten umgehen\n"
 
 #: pmxexport.cpp:439
 msgid "Staff %1, measure %2: grace has no main note. PMX will not work\n"
@@ -4447,6 +4433,9 @@ msgstr "Diagramm anzeigen"
 msgid "Chord constructor"
 msgstr "Akkorderzeugung"
 
+#~ msgid "D flat Major; b minor"
+#~ msgstr "Des-Dur; b-moll"
+
 #, fuzzy
 #~ msgid "Most common time signatures"
 #~ msgstr "Auswahl der Taktvorzeichnung"
@@ -4500,3 +4489,4 @@ msgstr "Akkorderzeugung"
 
 #~ msgid "Voice:"
 #~ msgstr "Stimme:"
+

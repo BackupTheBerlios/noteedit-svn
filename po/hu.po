@@ -1,19 +1,21 @@
+# translation of hu.po to sloven��ina
 # Hungarian translation
 # Copyright (C) 2002 Peter Breuer
 # Peter Breuer <comp@suselinux.hu>, 2002.
-# 
+# Matevz Jekovec <matevz.jekovec@guest.arnes.si>, 2005.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.1\n"
+"Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-01 00:24+0200\n"
-"PO-Revision-Date: 2002-08-28 11:33+0200\n"
-"Last-Translator: Peter Breuer <comp@suselinux.hu>\n"
-"Language-Team: Hungarian <hu@li.org>\n"
+"POT-Creation-Date: 2005-06-12 22:18+0200\n"
+"PO-Revision-Date: 2005-06-12 22:27+0200\n"
+"Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
+"Language-Team: sloven��ina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.6\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
@@ -65,8 +67,7 @@ msgstr ""
 
 #: abcexport.cpp:298
 #, fuzzy
-msgid ""
-"Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
+msgid "Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
 msgstr "szólam %1, ütem %2: PMX nem tudja kezelni a kevert díszítéseket\n"
 
 #: abcexport.cpp:302
@@ -96,8 +97,7 @@ msgstr "&automatikus mentés bekapcsolása"
 
 #: configuredialog.cpp:78
 msgid "The current score will be saved regularly if this is enabled."
-msgstr ""
-"Ennek bekapcsolásakor az aktuális kotta rendszeresen mentésre kerül."
+msgstr "Ennek bekapcsolásakor az aktuális kotta rendszeresen mentésre kerül."
 
 #: configuredialog.cpp:83
 msgid ""
@@ -158,8 +158,7 @@ msgstr "Utol&só kotta betöltése"
 msgid ""
 "The last score that was open the last time the appliaction was used will be "
 "loaded if this is enabled."
-msgstr ""
-"Az alkalmazás előző használatakor utoljára megnyitott kotta betöltése."
+msgstr "Az alkalmazás előző használatakor utoljára megnyitott kotta betöltése."
 
 #: configuredialog.cpp:137
 msgid "Turn Over"
@@ -514,8 +513,7 @@ msgstr ""
 "közepén\n"
 
 #: filehandler.cpp:654
-msgid ""
-"MUP cannot deal with some chord annotations with and some without grids\n"
+msgid "MUP cannot deal with some chord annotations with and some without grids\n"
 msgstr "A MUP nem kezel néhány akkord lejegyzést néhány rács nélkül\n"
 
 #: filehandler.cpp:658
@@ -622,14 +620,12 @@ msgstr ""
 
 #: lilyexport.cpp:660
 #, fuzzy
-msgid ""
-"A piano staff without continued bar rules cannot be expressed in LilyPond\n"
+msgid "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr "szólam %1 valótlan előjegyzéssel. Ez nem vihető át a LilyPond-ba\n"
 
 #: lilyexport.cpp:664
 #, fuzzy
-msgid ""
-"Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
+msgid "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr "szólam %1 valótlan előjegyzéssel. Ez nem vihető át a LilyPond-ba\n"
 
 #: lilyexport.cpp:668
@@ -707,7 +703,7 @@ msgid "A flat Major; f minor"
 msgstr "Asz-Dúr; f-moll"
 
 #: mainframewidget.cpp:163
-msgid "D flat Major; b minor"
+msgid "D flat Major; b flat minor"
 msgstr "Desz-Dúr; b-moll"
 
 #: mainframewidget.cpp:164
@@ -715,9 +711,8 @@ msgid "G flat Major; e flat minor"
 msgstr "Gesz-Dúr; disz-moll"
 
 #: mainframewidget.cpp:164
-#, fuzzy
 msgid "C flat Major; a flat minor"
-msgstr "Gesz-Dúr; disz-moll"
+msgstr "Cesz-Dúr; asz-moll"
 
 #: mainframewidget.cpp:165
 msgid "G Major; e minor"
@@ -744,9 +739,8 @@ msgid "F sharp Major; d sharp minor"
 msgstr "Fisz-Dúr; disz-moll"
 
 #: mainframewidget.cpp:168
-#, fuzzy
 msgid "C sharp Major; a sharp minor"
-msgstr "Fisz-Dúr; disz-moll"
+msgstr "Cisz-Dúr; aisz-moll"
 
 #: mainframewidget.cpp:252
 #, fuzzy
@@ -1696,8 +1690,7 @@ msgstr "szólam %1 valótlan előjegyzéssel. Ez nem vihető át a LilyPond-ba\n
 #: musicxmlexport.cpp:473
 #, fuzzy
 msgid "Staff %1 contains drum clef. This is currently not supported.\n"
-msgstr ""
-"Szólam %1 dobszólamot tartalmaz. Ez nem feldolgozható a PMX számára.\n"
+msgstr "Szólam %1 dobszólamot tartalmaz. Ez nem feldolgozható a PMX számára.\n"
 
 #: musicxmlexport.cpp:478
 #, fuzzy
@@ -1715,8 +1708,7 @@ msgstr ""
 
 #: musicxmlexport.cpp:493
 #, fuzzy
-msgid ""
-"Staff %1 contains 8va over a single note. This is currently not supported.\n"
+msgid "Staff %1 contains 8va over a single note. This is currently not supported.\n"
 msgstr "szólam: %1 dobsávot tartalmaz. Ezt a MUP nem tudja értelmezni.\n"
 
 #: musicxmlexport.cpp:498
@@ -1896,8 +1888,7 @@ msgstr "PMX nem kezel többet két hangszernél szólamonként\n"
 
 #: pmxexport.cpp:429
 msgid "Staff %1 contains drum staff. This cannot be expressed in PMX.\n"
-msgstr ""
-"Szólam %1 dobszólamot tartalmaz. Ez nem feldolgozható a PMX számára.\n"
+msgstr "Szólam %1 dobszólamot tartalmaz. Ez nem feldolgozható a PMX számára.\n"
 
 #: pmxexport.cpp:434
 msgid "Staff %1, measure %2: PMX cannot deal with mixed graces\n"
@@ -1905,24 +1896,21 @@ msgstr "szólam %1, ütem %2: PMX nem tudja kezelni a kevert díszítéseket\n"
 
 #: pmxexport.cpp:439
 msgid "Staff %1, measure %2: grace has no main note. PMX will not work\n"
-msgstr ""
-"szólam %1, ütem %2: a díszítés nem alaphang. PMX nem fog működni\n"
+msgstr "szólam %1, ütem %2: a díszítés nem alaphang. PMX nem fog működni\n"
 
 #: pmxexport.cpp:444
 #, fuzzy
 msgid ""
 "Staff %1, measure %2: Tuplet must be expressible by on (ev. dotted) note. "
 "PMX will not work\n"
-msgstr ""
-"szólam %1, ütem %2: a díszítés nem alaphang. PMX nem fog működni\n"
+msgstr "szólam %1, ütem %2: a díszítés nem alaphang. PMX nem fog működni\n"
 
 #: pmxexport.cpp:453
 #, fuzzy
 msgid ""
 "The score has piano staffs with discontinued bar rules. This cannot be "
 "expressed in PMX\n"
-msgstr ""
-"Szólam %1 dobszólamot tartalmaz. Ez nem feldolgozható a PMX számára.\n"
+msgstr "Szólam %1 dobszólamot tartalmaz. Ez nem feldolgozható a PMX számára.\n"
 
 #: pmxexport.cpp:457
 #, fuzzy
@@ -4444,6 +4432,9 @@ msgstr "diagram megtekintése"
 msgid "Chord constructor"
 msgstr "Akkordszerkesztő"
 
+#~ msgid "D flat Major; b minor"
+#~ msgstr "Desz-Dúr; b-moll"
+
 #, fuzzy
 #~ msgid "Most common time signatures"
 #~ msgstr "Idő bejegyzés kiválasztása"
@@ -4587,3 +4578,4 @@ msgstr "Akkordszerkesztő"
 
 #~ msgid "Allow &keyboard insert"
 #~ msgstr "Ein&fügen von der Tastatur"
+

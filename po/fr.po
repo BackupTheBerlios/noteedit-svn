@@ -1,20 +1,22 @@
+# translation of fr.po to slovenščina
 # translation of fr.po to Français
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Marc Tommasi <marc.tommasi@free.fr>, 2004.
+# Matevz Jekovec <matevz.jekovec@guest.arnes.si>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-01 00:24+0200\n"
-"PO-Revision-Date: 2004-02-13 21:40+0100\n"
-"Last-Translator: Marc Tommasi <marc.tommasi@free.fr>\n"
-"Language-Team: Français <fr@li.org>\n"
+"POT-Creation-Date: 2005-06-12 22:18+0200\n"
+"PO-Revision-Date: 2005-06-12 22:26+0200\n"
+"Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
+"Language-Team: slovenščina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
@@ -65,8 +67,7 @@ msgstr ""
 
 #: abcexport.cpp:298
 #, fuzzy
-msgid ""
-"Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
+msgid "Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
 msgstr ""
 "Portée %1, mesure %2 : le format ABC ne supporte pas de tels groupes "
 "rythmiques.\n"
@@ -97,8 +98,7 @@ msgstr "Enregistrement &automatique"
 
 #: configuredialog.cpp:78
 msgid "The current score will be saved regularly if this is enabled."
-msgstr ""
-"La partition sera enregistrée régulièrement si cette option est activée."
+msgstr "La partition sera enregistrée régulièrement si cette option est activée."
 
 #: configuredialog.cpp:83
 msgid ""
@@ -474,8 +474,7 @@ msgstr ""
 
 #: filehandler.cpp:624
 msgid "Staff %1 has too many voices! MUP accepts up to 3 voices.\n"
-msgstr ""
-"La portée %1 a trop de voix. Le format MUP n'accepte pas plus de 3 voix.\n"
+msgstr "La portée %1 a trop de voix. Le format MUP n'accepte pas plus de 3 voix.\n"
 
 #: filehandler.cpp:629
 msgid "Staff %1 contains drum staff. This cannot be expressed in MUP.\n"
@@ -506,8 +505,7 @@ msgid ""
 msgstr ""
 
 #: filehandler.cpp:654
-msgid ""
-"MUP cannot deal with some chord annotations with and some without grids\n"
+msgid "MUP cannot deal with some chord annotations with and some without grids\n"
 msgstr ""
 
 #: filehandler.cpp:658
@@ -609,13 +607,11 @@ msgid ""
 msgstr ""
 
 #: lilyexport.cpp:660
-msgid ""
-"A piano staff without continued bar rules cannot be expressed in LilyPond\n"
+msgid "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 
 #: lilyexport.cpp:664
-msgid ""
-"Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
+msgid "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 
 #: lilyexport.cpp:668
@@ -689,17 +685,16 @@ msgid "A flat Major; f minor"
 msgstr "La bémol Majeur ; Fa mineur"
 
 #: mainframewidget.cpp:163
-msgid "D flat Major; b minor"
-msgstr "Ré bémol Majeur ; Si mineur"
+msgid "D flat Major; b flat minor"
+msgstr "Ré bémol Majeur ; Si bémol mineur"
 
 #: mainframewidget.cpp:164
 msgid "G flat Major; e flat minor"
 msgstr "Sol bémol Majeur ; Mi bémol mineur"
 
 #: mainframewidget.cpp:164
-#, fuzzy
 msgid "C flat Major; a flat minor"
-msgstr "Sol bémol Majeur ; Mi bémol mineur"
+msgstr "Do bémol Majeur ; La bémol mineur"
 
 #: mainframewidget.cpp:165
 msgid "G Major; e minor"
@@ -726,9 +721,8 @@ msgid "F sharp Major; d sharp minor"
 msgstr "Fa dièse Majeur ; Ré dièse mineur"
 
 #: mainframewidget.cpp:168
-#, fuzzy
 msgid "C sharp Major; a sharp minor"
-msgstr "Fa dièse Majeur ; Ré dièse mineur"
+msgstr "Do dièse Majeur ; La dièse mineur"
 
 #: mainframewidget.cpp:252
 msgid "&Import MusicXML..."
@@ -1675,8 +1669,7 @@ msgstr "La portée %1 est rythmique. Ceci n'est pas supporté.\n"
 
 #: musicxmlexport.cpp:483
 msgid "Staff %1 contains voice change. This is currently not supported.\n"
-msgstr ""
-"La portée %1 comporte un changement de voix. Ceci n'est pas supporté.\n"
+msgstr "La portée %1 comporte un changement de voix. Ceci n'est pas supporté.\n"
 
 #: musicxmlexport.cpp:488
 msgid "Staff %1 contains 8va start without 8va stop.\n"
@@ -1684,10 +1677,8 @@ msgstr ""
 
 #: musicxmlexport.cpp:493
 #, fuzzy
-msgid ""
-"Staff %1 contains 8va over a single note. This is currently not supported.\n"
-msgstr ""
-"La portée %1 comporte un changement de voix. Ceci n'est pas supporté.\n"
+msgid "Staff %1 contains 8va over a single note. This is currently not supported.\n"
+msgstr "La portée %1 comporte un changement de voix. Ceci n'est pas supporté.\n"
 
 #: musicxmlexport.cpp:498
 msgid "Staff %1 contains dynamic start without dynamic stop.\n"
@@ -4333,8 +4324,7 @@ msgstr "Le nombre de voix auxquels les paramètres ci dessus s'appliquent."
 msgid ""
 "All notes in voice number %1 will have their stems pointing up when this is "
 "selected."
-msgstr ""
-"Toutes les notes de la voix %1 auront leur hampe pointant vers le haut."
+msgstr "Toutes les notes de la voix %1 auront leur hampe pointant vers le haut."
 
 #: voicedialog.cpp:114
 msgid ""
@@ -4348,8 +4338,7 @@ msgstr ""
 msgid ""
 "All notes in voice number %1 will have their stems pointing down when this "
 "is selected."
-msgstr ""
-"Toutes les notes dans la voix %1 auront leur hampe pointant vers le bas."
+msgstr "Toutes les notes dans la voix %1 auront leur hampe pointant vers le bas."
 
 #: voicedialog.cpp:129
 msgid "Offset in the Y dimension of rests that belong voice number %1."
@@ -4430,6 +4419,9 @@ msgstr "Montrer le diagramme"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Créateur d'accords"
+
+#~ msgid "D flat Major; b minor"
+#~ msgstr "Ré bémol Majeur ; Si mineur"
 
 #, fuzzy
 #~ msgid "Most common time signatures"
@@ -4533,3 +4525,4 @@ msgstr "Créateur d'accords"
 #~ "restoring!\n"
 #~ msgstr ""
 #~ "La portée %1 ne possède pas de clé. Des données peuvent être perdues.\n"
+

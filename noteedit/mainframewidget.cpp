@@ -160,7 +160,7 @@
 const char *NMainFrameWidget::keySigTab_[15] =
 {I18N_NOOP("C Major; a minor"),           I18N_NOOP("F Major; d minor"),
  I18N_NOOP("B flat Major; g minor"),      I18N_NOOP("E flat Major; c minor"),
- I18N_NOOP("A flat Major; f minor"),      I18N_NOOP("D flat Major; b minor"),
+ I18N_NOOP("A flat Major; f minor"),      I18N_NOOP("D flat Major; b flat minor"),
  I18N_NOOP("G flat Major; e flat minor"), I18N_NOOP("C flat Major; a flat minor"),
  I18N_NOOP("G Major; e minor"),           I18N_NOOP("D Major; b minor"),
  I18N_NOOP("A Major; f sharp minor"),     I18N_NOOP("E Major; c sharp minor"),
@@ -175,7 +175,6 @@ void NMainFrameWidget::add_time(struct timeval *res, struct timeval *now, long m
 	res->tv_sec += res->tv_usec / (unsigned long) 1000000;
 	res->tv_usec = res->tv_usec % 1000000;
 }
-
 		
 /*!Computes the time in milliseconds between 2 values of type struct timeval
  * @param future minuend

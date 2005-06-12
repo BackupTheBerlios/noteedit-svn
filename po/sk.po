@@ -1,19 +1,21 @@
+# translation of sk.po to slovenščina
 # Slovak translation of PACKAGE.
-# Copyright (C) 2001 Free Software Foundation, Inc.
+# Copyright (C) 2001, 2005 Free Software Foundation, Inc.
 # Zdenko Podobný <zdpo@mailbox.sk>, 2001.
+# Matevz Jekovec <matevz.jekovec@guest.arnes.si>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: NoteEdit-1.16.1\n"
+"Project-Id-Version: sk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-01 00:24+0200\n"
-"PO-Revision-Date: 2005-05-21 21:32+0100\n"
-"Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
-"Language-Team: deutsch <de@li.org>\n"
+"POT-Creation-Date: 2005-06-12 22:18+0200\n"
+"PO-Revision-Date: 2005-06-12 22:30+0200\n"
+"Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
+"Language-Team: slovenščina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.6\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
@@ -65,8 +67,7 @@ msgstr ""
 
 #: abcexport.cpp:298
 #, fuzzy
-msgid ""
-"Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
+msgid "Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
 msgstr "Osnova %1; takt %2: V PMX triola nemôže končiť na pomlčku\n"
 
 #: abcexport.cpp:302
@@ -430,8 +431,7 @@ msgstr "osnova %1; takt %2: viacnásobné pomlčky nie sú zarovnané\n"
 msgid ""
 "staff %1; measure %2: Mup can only deal with tuplets which sum up to a "
 "single note length\n"
-msgstr ""
-"osnova %1; takt %2: MUP sa nevie vysporiadať s trilkami bez znaku \"tr\"\n"
+msgstr "osnova %1; takt %2: MUP sa nevie vysporiadať s trilkami bez znaku \"tr\"\n"
 
 #: filehandler.cpp:576
 #, fuzzy
@@ -490,8 +490,7 @@ msgstr ""
 
 #: filehandler.cpp:614
 msgid "staff %1; measure %2: Mup cannot deal with trills without \"tr\" sign\n"
-msgstr ""
-"osnova %1; takt %2: MUP sa nevie vysporiadať s trilkami bez znaku \"tr\"\n"
+msgstr "osnova %1; takt %2: MUP sa nevie vysporiadať s trilkami bez znaku \"tr\"\n"
 
 #: filehandler.cpp:619
 msgid "Staff %1 has irregular key, this may not work with MUP.\n"
@@ -508,14 +507,12 @@ msgstr "Osnova %1 je osnova s bubnami. Toto nie je možné vyjadriť v MUP.\n"
 #: filehandler.cpp:634
 #, fuzzy
 msgid "staff %1; measure %2: Mup cannot deal with costum beams in graces\n"
-msgstr ""
-"osnova %1; takt %2: MUP sa nevie vysporiadať s trilkami bez znaku \"tr\"\n"
+msgstr "osnova %1; takt %2: MUP sa nevie vysporiadať s trilkami bez znaku \"tr\"\n"
 
 #: filehandler.cpp:639
 #, fuzzy
 msgid "staff %1; measure %2: Mup cannot deal with graces after\n"
-msgstr ""
-"osnova %1; takt %2: MUP sa nevie vysporiadať s trilkami bez znaku \"tr\"\n"
+msgstr "osnova %1; takt %2: MUP sa nevie vysporiadať s trilkami bez znaku \"tr\"\n"
 
 #: filehandler.cpp:644
 #, fuzzy
@@ -536,8 +533,7 @@ msgstr ""
 "textu v tom istom takte\n"
 
 #: filehandler.cpp:654
-msgid ""
-"MUP cannot deal with some chord annotations with and some without grids\n"
+msgid "MUP cannot deal with some chord annotations with and some without grids\n"
 msgstr ""
 
 #: filehandler.cpp:658
@@ -548,8 +544,7 @@ msgstr "PMX sa nevie vysporiadať s viac ako 2 hlasmi na osnovu\n"
 #: filehandler.cpp:662
 #, fuzzy
 msgid "MUP cannot deal with nested brackets in braces\n"
-msgstr ""
-"osnova %1; takt %2: MUP sa nevie vysporiadať s trilkami bez znaku \"tr\"\n"
+msgstr "osnova %1; takt %2: MUP sa nevie vysporiadať s trilkami bez znaku \"tr\"\n"
 
 #: filehandler.cpp:666
 #, fuzzy
@@ -646,16 +641,14 @@ msgstr ""
 
 #: lilyexport.cpp:660
 #, fuzzy
-msgid ""
-"A piano staff without continued bar rules cannot be expressed in LilyPond\n"
+msgid "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Osnova %1 má neregulárne označenie kľúča. Toto nie je možné vyjadriť v "
 "LilyPonde\n"
 
 #: lilyexport.cpp:664
 #, fuzzy
-msgid ""
-"Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
+msgid "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Osnova %1 má neregulárne označenie kľúča. Toto nie je možné vyjadriť v "
 "LilyPonde\n"
@@ -736,7 +729,7 @@ msgid "A flat Major; f minor"
 msgstr "As dur; f mol"
 
 #: mainframewidget.cpp:163
-msgid "D flat Major; b minor"
+msgid "D flat Major; b flat minor"
 msgstr "Des dur; b mol"
 
 #: mainframewidget.cpp:164
@@ -744,9 +737,8 @@ msgid "G flat Major; e flat minor"
 msgstr "Ges dur; es mol"
 
 #: mainframewidget.cpp:164
-#, fuzzy
 msgid "C flat Major; a flat minor"
-msgstr "Vedľajší časový krok"
+msgstr "Ces dur; as mol"
 
 #: mainframewidget.cpp:165
 msgid "G Major; e minor"
@@ -773,9 +765,8 @@ msgid "F sharp Major; d sharp minor"
 msgstr "Fis dur; dis mol"
 
 #: mainframewidget.cpp:168
-#, fuzzy
 msgid "C sharp Major; a sharp minor"
-msgstr "Vedľajší časový krok"
+msgstr "Cis dur; ais mol"
 
 #: mainframewidget.cpp:252
 msgid "&Import MusicXML..."
@@ -1729,8 +1720,7 @@ msgstr ""
 
 #: musicxmlexport.cpp:493
 #, fuzzy
-msgid ""
-"Staff %1 contains 8va over a single note. This is currently not supported.\n"
+msgid "Staff %1 contains 8va over a single note. This is currently not supported.\n"
 msgstr "Osnova %1 je osnova s bubnami. Toto nie je možné vyjadriť v MUP.\n"
 
 #: musicxmlexport.cpp:498
@@ -2555,8 +2545,7 @@ msgstr "&Tip dňa"
 msgid ""
 "If Tip of the Day is enabled, NoteEdit will show the Tip of the Day every "
 "time it starts."
-msgstr ""
-"Ak je povolený Tip dňa, tak NoteEdit zobrazí pri každom štarte Tip dňa."
+msgstr "Ak je povolený Tip dňa, tak NoteEdit zobrazí pri každom štarte Tip dňa."
 
 #: rc.cpp:333
 #, no-c-format
@@ -4382,8 +4371,7 @@ msgstr "Počet hlasov, na ktoré sa budú tieto nastavenia aplikovať."
 msgid ""
 "All notes in voice number %1 will have their stems pointing up when this is "
 "selected."
-msgstr ""
-"Všetky nožičky nôt v hlase číslo %1  budú smerovať hore pri tejto voľbe."
+msgstr "Všetky nožičky nôt v hlase číslo %1  budú smerovať hore pri tejto voľbe."
 
 #: voicedialog.cpp:114
 msgid ""
@@ -4397,8 +4385,7 @@ msgstr ""
 msgid ""
 "All notes in voice number %1 will have their stems pointing down when this "
 "is selected."
-msgstr ""
-"Všetky nožičky nôt v hlase číslo %1  budú smerovať dole pri tejto voľbe."
+msgstr "Všetky nožičky nôt v hlase číslo %1  budú smerovať dole pri tejto voľbe."
 
 #: voicedialog.cpp:129
 msgid "Offset in the Y dimension of rests that belong voice number %1."
@@ -4482,6 +4469,9 @@ msgstr "zobraziť diagram"
 msgid "Chord constructor"
 msgstr "Tvorba akordov"
 
+#~ msgid "D flat Major; b minor"
+#~ msgstr "Des dur; b mol"
+
 #, fuzzy
 #~ msgid "Most common time signatures"
 #~ msgstr "Zvoľte označenie taktu"
@@ -4495,3 +4485,4 @@ msgstr "Tvorba akordov"
 
 #~ msgid "Vo&ice change..."
 #~ msgstr "Zm&ena hlasu..."
+

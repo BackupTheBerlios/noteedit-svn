@@ -55,6 +55,8 @@ Bug fixes:
 - Fixed typo in staff properties dialog ("Voice:" -> "Instrument:").
 - Fixed #2930 - noteedit stops playing still held notes in other voices.
 - Fixed #4119 - Stem directions in voice dialog don't get rememberd.
+- Fixed typo in insert Key signature dialog: D flat Major; b minor -> D flat
+  Major; b flat minor and updated translations
 
 Remarks:
 - LilyPond export of different drum notes inside a single chord is suppressed to

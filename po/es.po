@@ -1,4 +1,5 @@
-# translation of es.po to 
+# translation of es.po to slovenščina
+# translation of es.po to
 # translation of es.po to
 # translation of es.po to
 # translation of es.po to
@@ -8,19 +9,20 @@
 # Copyright (C) 2001 Erik Sigra
 # Erik Sigra <sigra@home.se>, 2001.
 # J. Anders <ja@infornatik.tu-chemnitz.de>, 2003.
+# Matevz Jekovec <matevz.jekovec@guest.arnes.si>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-01 00:24+0200\n"
-"PO-Revision-Date: 2003-12-27 02:08-0600\n"
-"Last-Translator: \n"
-"Language-Team:  <es@li.org>\n"
+"POT-Creation-Date: 2005-06-12 22:18+0200\n"
+"PO-Revision-Date: 2005-06-12 22:24+0200\n"
+"Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
+"Language-Team: slovenščina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
@@ -71,8 +73,7 @@ msgstr "ABC music no puede manejar con llaves de un sólo pentagrama\n"
 
 #: abcexport.cpp:298
 #, fuzzy
-msgid ""
-"Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
+msgid "Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
 msgstr ""
 "Pentagrama %1, compás %2: ABC music no puede manejar este tipo de "
 "agrupaciones rítmicas\n"
@@ -410,8 +411,7 @@ msgstr ""
 
 #: filehandler.cpp:561
 msgid "Staff %1 ; measure %2 :The multirests are not aligned\n"
-msgstr ""
-"Pentagrama %1; compás %2 : los silencios multicompás no están alineados\n"
+msgstr "Pentagrama %1; compás %2 : los silencios multicompás no están alineados\n"
 
 #: filehandler.cpp:566
 msgid "staff %1; measure %2: irregulaer key in the middle omitted\n"
@@ -477,13 +477,11 @@ msgstr ""
 
 #: filehandler.cpp:614
 msgid "staff %1; measure %2: Mup cannot deal with trills without \"tr\" sign\n"
-msgstr ""
-"Pentagrama %1; compás %2: MUP no puede manejar trinos sin el signo \"tr\"\n"
+msgstr "Pentagrama %1; compás %2: MUP no puede manejar trinos sin el signo \"tr\"\n"
 
 #: filehandler.cpp:619
 msgid "Staff %1 has irregular key, this may not work with MUP.\n"
-msgstr ""
-"Pentagrama %1 tiene una métrica irregular, esto puede no funcionar con MUP.\n"
+msgstr "Pentagrama %1 tiene una métrica irregular, esto puede no funcionar con MUP.\n"
 
 #: filehandler.cpp:624
 msgid "Staff %1 has too many voices! MUP accepts up to 3 voices.\n"
@@ -501,8 +499,7 @@ msgstr "Pentagrama %1; compás %2: MUP no puede manejar barras en apoyaturas\n"
 
 #: filehandler.cpp:639
 msgid "staff %1; measure %2: Mup cannot deal with graces after\n"
-msgstr ""
-"Pentagrama %1; compás %2: MUP no puede manejar apoyaturas posteriores\n"
+msgstr "Pentagrama %1; compás %2: MUP no puede manejar apoyaturas posteriores\n"
 
 #: filehandler.cpp:644
 msgid ""
@@ -521,8 +518,7 @@ msgstr ""
 "de un compás\n"
 
 #: filehandler.cpp:654
-msgid ""
-"MUP cannot deal with some chord annotations with and some without grids\n"
+msgid "MUP cannot deal with some chord annotations with and some without grids\n"
 msgstr ""
 "MUP no puede manejar algunas anotaciones de acordes y algunas anotaciones de "
 "acorde sin cuadrículas\n"
@@ -634,15 +630,13 @@ msgstr ""
 "LilyPond\n"
 
 #: lilyexport.cpp:660
-msgid ""
-"A piano staff without continued bar rules cannot be expressed in LilyPond\n"
+msgid "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Un pentagrama de piano con reglas de comopases contínuos no se puede "
 "expresar en LilyPond\n"
 
 #: lilyexport.cpp:664
-msgid ""
-"Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
+msgid "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Reglas de compases continuadas fuera de una llave o corchete no se pueden "
 "expresar en LilyPond\n"
@@ -722,17 +716,16 @@ msgid "A flat Major; f minor"
 msgstr "La bemol Mayor; fa menor"
 
 #: mainframewidget.cpp:163
-msgid "D flat Major; b minor"
-msgstr "Re bemol mayor; si menor"
+msgid "D flat Major; b flat minor"
+msgstr "Re bemol mayor; si bemol menor"
 
 #: mainframewidget.cpp:164
 msgid "G flat Major; e flat minor"
 msgstr "Sol bemol mayor; mi bemol menor"
 
 #: mainframewidget.cpp:164
-#, fuzzy
 msgid "C flat Major; a flat minor"
-msgstr "Sol bemol mayor; mi bemol menor"
+msgstr "Do bemol mayor; la bemol menor"
 
 #: mainframewidget.cpp:165
 msgid "G Major; e minor"
@@ -759,9 +752,8 @@ msgid "F sharp Major; d sharp minor"
 msgstr "Fa sostenido mayor; re sostenido menor"
 
 #: mainframewidget.cpp:168
-#, fuzzy
 msgid "C sharp Major; a sharp minor"
-msgstr "Fa sostenido mayor; re sostenido menor"
+msgstr "Do sostenido mayor; la sostenido menor"
 
 #: mainframewidget.cpp:252
 msgid "&Import MusicXML..."
@@ -1714,8 +1706,7 @@ msgstr ""
 
 #: musicxmlexport.cpp:483
 msgid "Staff %1 contains voice change. This is currently not supported.\n"
-msgstr ""
-"Pentagrama %1 contiene un cambio de voz. Esto no es soportado actualmente.\n"
+msgstr "Pentagrama %1 contiene un cambio de voz. Esto no es soportado actualmente.\n"
 
 #: musicxmlexport.cpp:488
 msgid "Staff %1 contains 8va start without 8va stop.\n"
@@ -1723,10 +1714,8 @@ msgstr ""
 
 #: musicxmlexport.cpp:493
 #, fuzzy
-msgid ""
-"Staff %1 contains 8va over a single note. This is currently not supported.\n"
-msgstr ""
-"Pentagrama %1 contiene un cambio de voz. Esto no es soportado actualmente.\n"
+msgid "Staff %1 contains 8va over a single note. This is currently not supported.\n"
+msgstr "Pentagrama %1 contiene un cambio de voz. Esto no es soportado actualmente.\n"
 
 #: musicxmlexport.cpp:498
 msgid "Staff %1 contains dynamic start without dynamic stop.\n"
@@ -1915,8 +1904,7 @@ msgstr ""
 
 #: pmxexport.cpp:434
 msgid "Staff %1, measure %2: PMX cannot deal with mixed graces\n"
-msgstr ""
-"Pentagrama %1, compás %2: PMX no puede manejar grupos mixtos de apoyatura\n"
+msgstr "Pentagrama %1, compás %2: PMX no puede manejar grupos mixtos de apoyatura\n"
 
 #: pmxexport.cpp:439
 msgid "Staff %1, measure %2: grace has no main note. PMX will not work\n"
@@ -4482,6 +4470,9 @@ msgstr "Mostrar diagrama"
 msgid "Chord constructor"
 msgstr "Constructor de acordes"
 
+#~ msgid "D flat Major; b minor"
+#~ msgstr "Re bemol mayor; si menor"
+
 #, fuzzy
 #~ msgid "Most common time signatures"
 #~ msgstr "Escoger métrica"
@@ -4631,3 +4622,4 @@ msgstr "Constructor de acordes"
 
 #~ msgid "Allow &keyboard insert"
 #~ msgstr "Ein&fügen von der Tastatur"
+

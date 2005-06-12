@@ -1,22 +1,24 @@
+# translation of it.po to slovenščina
 # translation of it.po to Italian
 # translation of Noteedit.po to Italian
 # Copyright (C) 2005 Free Software Foundation, Inc.
 # Riccardo Iaconelli <info@ruphy.com>, 2005.
 # Federico Zenith <zenith@chemeng.ntnu.no>, 2005.
 # Nicola Ruggero <nixprog.adsl@tiscali.it>, 2005.
+# Matevz Jekovec <matevz.jekovec@guest.arnes.si>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-01 00:24+0200\n"
-"PO-Revision-Date: 2005-06-12 18:09+0200\n"
-"Last-Translator: Nicola Ruggero <nixprog.adsl@tiscali.it>\n"
-"Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"POT-Creation-Date: 2005-06-12 22:18+0200\n"
+"PO-Revision-Date: 2005-06-12 22:29+0200\n"
+"Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
+"Language-Team: slovenščina <lugos-slo@lugos.si>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: abcexport.cpp:91 abcexport.cpp:94 filehandler.cpp:1090 filehandler.cpp:1092
 #: filehandler.cpp:1959 lilyexport.cpp:127 lilyexport.cpp:130
@@ -47,23 +49,33 @@ msgstr "-----------------------------------------------------\n"
 
 #: abcexport.cpp:282
 msgid "Staff %1, measure %2: ABC music cannot deal with such kind of tuplets\n"
-msgstr "Rigo %1, misura %2: la musica in formato ABC non può contenere questi gruppi irregolari\n"
+msgstr ""
+"Rigo %1, misura %2: la musica in formato ABC non può contenere questi gruppi "
+"irregolari\n"
 
 #: abcexport.cpp:286
 msgid "Staff %1 has irregular keysig. This cannot be expressed in ABC music\n"
-msgstr "Il rigo %1 ha l'armatura in chiave della tonalità, non corretta. Non può essere espressa in formato ABC\n"
+msgstr ""
+"Il rigo %1 ha l'armatura in chiave della tonalità, non corretta. Non può "
+"essere espressa in formato ABC\n"
 
 #: abcexport.cpp:290
 msgid "ABC music cannot deal with nested brackets/braces\n"
-msgstr "La musica in formato ABC non può contenere quadre o graffe per sistemi di pentagrammi nidificati\n"
+msgstr ""
+"La musica in formato ABC non può contenere quadre o graffe per sistemi di "
+"pentagrammi nidificati\n"
 
 #: abcexport.cpp:294
 msgid "ABC music cannot deal with a one-staff bracket\n"
-msgstr "La musica in formato ABC non può contenere una quadra che contenga un solo pentagramma\n"
+msgstr ""
+"La musica in formato ABC non può contenere una quadra che contenga un solo "
+"pentagramma\n"
 
 #: abcexport.cpp:298
 msgid "Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
-msgstr "Rigo %1, misura %2: nella musica in formato ABC non è possibile utilizzare il simbolo di ottava\n"
+msgstr ""
+"Rigo %1, misura %2: nella musica in formato ABC non è possibile utilizzare "
+"il simbolo di ottava\n"
 
 #: abcexport.cpp:302
 msgid "ABC music produced. But there are some problems."
@@ -102,11 +114,12 @@ msgid ""
 "to unnamed<number>.not.sav, where <number> is a positive integer with the "
 "purpouse of making the name unique."
 msgstr ""
-"Se abilitato, la partitura corrente sarà salvata periodicamente. Sarà salvata col nome "
-"<nomefile>.sav, dove <nomefile> è il nome con cui è stato eseguito l'ultimo "
-"salvataggio o, se non è mai stata salvata, il nome del file da cui è stata "
-"caricata. Se la partitura è nuova, sarà salvata con il nome <numero>.not.sav, "
-"dove <numeror> è un numero intero, per evitare un nome già in uso."
+"Se abilitato, la partitura corrente sarà salvata periodicamente. Sarà "
+"salvata col nome <nomefile>.sav, dove <nomefile> è il nome con cui è stato "
+"eseguito l'ultimo salvataggio o, se non è mai stata salvata, il nome del "
+"file da cui è stata caricata. Se la partitura è nuova, sarà salvata con il "
+"nome <numero>.not.sav, dove <numeror> è un numero intero, per evitare un "
+"nome già in uso."
 
 #: configuredialog.cpp:95
 msgid " minutes"
@@ -135,8 +148,8 @@ msgid ""
 "enable MIDI pedal instruction (does not work on all sound cards; especially "
 "TiMidity++)"
 msgstr ""
-"Abilita il pedale Midi, (non funziona con tutte le schede sonore, specialmente "
-"con la scheda TiMidity++)"
+"Abilita il pedale Midi, (non funziona con tutte le schede sonore, "
+"specialmente con la scheda TiMidity++)"
 
 #: configuredialog.cpp:118
 msgid "&Tip of the day"
@@ -406,20 +419,24 @@ msgid ""
 "staff %1; measure %2: Mup can only deal with tuplets which sum up to a "
 "single note length\n"
 msgstr ""
-"Rigo %1; battuta %2: MUP non può contenere gruppi irregolari la cui somma "
-" sia diversa dalla lunghezza di una singola nota\n"
+"Rigo %1; battuta %2: MUP non può contenere gruppi irregolari la cui somma  "
+"sia diversa dalla lunghezza di una singola nota\n"
 
 #: filehandler.cpp:576
 msgid ""
 "staff %1; measure %2: Mup cannot deal with segno staff at end. The segno "
 "staff is deleted.  Please insert a rest!\n"
-msgstr "Rigo %1; battuta %2: MUP non può contenere un rigo con il segno alla fine. Il segno è stato cancellato. Per favore inserisci una pausa!\n"
+msgstr ""
+"Rigo %1; battuta %2: MUP non può contenere un rigo con il segno alla fine. "
+"Il segno è stato cancellato. Per favore inserisci una pausa!\n"
 
 #: filehandler.cpp:581
 msgid ""
 "staff %1; measure %2: Mup cannot deal with pedal marks in non-1st-voice! "
 "This cannot be restored\n"
-msgstr "Rigo %1; battuta %2: MUP non può contenere marcatori per il pedale se non sulla prima voce. Questo non potrà essere ripristinato\n"
+msgstr ""
+"Rigo %1; battuta %2: MUP non può contenere marcatori per il pedale se non "
+"sulla prima voce. Questo non potrà essere ripristinato\n"
 
 #: filehandler.cpp:586
 msgid "Possible data loss!"
@@ -444,8 +461,8 @@ msgid ""
 "staff %1; measure %2: Mup cannot deal with mixed lyrics/non-lyrics notes in "
 "the same measure\n"
 msgstr ""
-"Rigo %1; battuta %2: MUP non può contenere note con e senza testo, nella stessa "
-"battuta\n"
+"Rigo %1; battuta %2: MUP non può contenere note con e senza testo, nella "
+"stessa battuta\n"
 
 #: filehandler.cpp:609
 msgid ""
@@ -475,7 +492,9 @@ msgstr ""
 
 #: filehandler.cpp:634
 msgid "staff %1; measure %2: Mup cannot deal with costum beams in graces\n"
-msgstr "Rigo %1; battuta %2: MUP non può contenere collegamenti grafici delle stanghette personalizzati, nelle fioriture\n"
+msgstr ""
+"Rigo %1; battuta %2: MUP non può contenere collegamenti grafici delle "
+"stanghette personalizzati, nelle fioriture\n"
 
 #: filehandler.cpp:639
 msgid "staff %1; measure %2: Mup cannot deal with graces after\n"
@@ -576,7 +595,9 @@ msgstr ""
 
 #: lilyexport.cpp:642
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
-msgstr "Rigo %1; battuta %2: Solo una parte delle note dell'accordo ha la legatura di valore\n"
+msgstr ""
+"Rigo %1; battuta %2: Solo una parte delle note dell'accordo ha la legatura "
+"di valore\n"
 
 #: lilyexport.cpp:646
 msgid ""
@@ -606,7 +627,9 @@ msgstr ""
 
 #: lilyexport.cpp:664
 msgid "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
-msgstr "Righe continue fuori da una graffa o da una quadra non possono essere espresse in LilyPond\n"
+msgstr ""
+"Righe continue fuori da una graffa o da una quadra non possono essere "
+"espresse in LilyPond\n"
 
 #: lilyexport.cpp:668
 msgid "LilyPond produced. But there are some problems."
@@ -619,8 +642,8 @@ msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "
 "enjoy this feature."
 msgstr ""
-"Spiacente, il \"pizzicato forte\" non è disponibile sotto LilyPond. Si può usare "
-"MusixTeX che ha questa caratteristica."
+"Spiacente, il \"pizzicato forte\" non è disponibile sotto LilyPond. Si può "
+"usare MusixTeX che ha questa caratteristica."
 
 #: main.cpp:52
 msgid "Files to load"
@@ -683,7 +706,7 @@ msgid "A flat Major; f minor"
 msgstr "La bemolle maggiore; fa minore"
 
 #: mainframewidget.cpp:163
-msgid "D flat Major; b minor"
+msgid "D flat Major; b flat minor"
 msgstr "Re bemolle maggiore; si bemolle minore"
 
 #: mainframewidget.cpp:164
@@ -1416,7 +1439,11 @@ msgid ""
 "other tools for better score layout.\n"
 "You can also read more about MIDI import and other useful tools in "
 "documentation!"
-msgstr "L'importazione dal formato MIDI è ora completa.Per favore usa Modifica-->Auto Bar, Modifica-->Auto Beam e gli altri strumenti per un layout del pentagramma migliore. Puoi leggere di più sull'importazione da MIDI e sugli altri strument utili nella documentazione!"
+msgstr ""
+"L'importazione dal formato MIDI è ora completa.Per favore usa Modifica--"
+">Auto Bar, Modifica-->Auto Beam e gli altri strumenti per un layout del "
+"pentagramma migliore. Puoi leggere di più sull'importazione da MIDI e sugli "
+"altri strument utili nella documentazione!"
 
 #: mainframewidget.cpp:3712
 #, fuzzy
@@ -1424,7 +1451,9 @@ msgid ""
 "MIDI import is performed by the TSE3 library, but the library is not "
 "present!\n"
 "Please look in the MIDI import section in documentation for more information!"
-msgstr "import è di è non presente in import in documentation per di più informazione!"
+msgstr ""
+"import è di è non presente in import in documentation per di più "
+"informazione!"
 
 #: mainframewidget.cpp:3895
 msgid "Do you really want to close all windows?"
@@ -1621,7 +1650,9 @@ msgstr "Il rigo %1 ha una chiave irregolare, che non per ora non è supportata\n
 
 #: musicxmlexport.cpp:473
 msgid "Staff %1 contains drum clef. This is currently not supported.\n"
-msgstr "Il rigo %1 contiene notazione per batteria, che non per ora non è supportata\n"
+msgstr ""
+"Il rigo %1 contiene notazione per batteria, che non per ora non è "
+"supportata\n"
 
 #: musicxmlexport.cpp:478
 msgid "Staff %1 contains drum staff. This is currently not supported.\n"
@@ -1847,8 +1878,8 @@ msgid ""
 "The score has piano staffs with discontinued bar rules. This cannot be "
 "expressed in PMX\n"
 msgstr ""
-"Lo spartito contiene righi per piano con barre spazzate, che non può essere espresso in "
-"PMX\n"
+"Lo spartito contiene righi per piano con barre spazzate, che non può essere "
+"espresso in PMX\n"
 
 #: pmxexport.cpp:457
 msgid "Nested trills in measure: %1 ;\n"
@@ -3610,7 +3641,8 @@ msgstr ""
 "<b> a modificare mouse</b><br/><br/> di mouse\n"
 "<dl>\n"
 "<dt> sinistra</dt>\n"
-"<dd><i> selettore o modificare è acceso<i><br></dd> inserisci a note<i> a note è acceso</i><br> inserisci element<i> come</i> a nuovo element\n"
+"<dd><i> selettore o modificare è acceso<i><br></dd> inserisci a note<i> a "
+"note è acceso</i><br> inserisci element<i> come</i> a nuovo element\n"
 "<dt></dt>\n"
 "<dd> per blocco istruzioni</dd>\n"
 "<dt> destra</dt>\n"
@@ -4106,7 +4138,10 @@ msgid ""
 "MusiXTeX export is now complete.\n"
 "Warning! The exported file is NOT a LaTeX file! Please use musixtex or pmx "
 "parser for compilation and not latex!"
-msgstr "Esportazione per MusiXTeX completata.\n Attenzione! Il file esportato NON è un file per LaTeX. Per compilarlo usa MusiXTeX o PmX E NON LaTeX!"
+msgstr ""
+"Esportazione per MusiXTeX completata.\n"
+" Attenzione! Il file esportato NON è un file per LaTeX. Per compilarlo usa "
+"MusiXTeX o PmX E NON LaTeX!"
 
 #: uiconnect.cpp:223
 msgid ""
@@ -4371,4 +4406,7 @@ msgstr "mostra diagramma"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Costruttore di accordi"
+
+#~ msgid "D flat Major; b minor"
+#~ msgstr "Re bemolle maggiore; si bemolle minore"
 

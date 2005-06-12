@@ -1,8 +1,6 @@
-# translation of sk.po to slovenščina
 # Slovak translation of PACKAGE.
 # Copyright (C) 2001, 2005 Free Software Foundation, Inc.
 # Zdenko Podobný <zdpo@mailbox.sk>, 2001.
-# Matevz Jekovec <matevz.jekovec@guest.arnes.si>, 2005.
 #
 msgid ""
 msgstr ""

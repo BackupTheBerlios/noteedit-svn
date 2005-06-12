@@ -1,8 +1,6 @@
-# translation of sv.po to slovenščina
 # Swedish translation
 # Copyright (C) 2001 Erik Sigra.
 # Erik Sigra <sigra@home.se>, 2001.
-# Matevz Jekovec <matevz.jekovec@guest.arnes.si>, 2005.
 #
 msgid ""
 msgstr ""

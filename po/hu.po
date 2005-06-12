@@ -1,8 +1,6 @@
-# translation of hu.po to sloven¹èina
 # Hungarian translation
 # Copyright (C) 2002 Peter Breuer
 # Peter Breuer <comp@suselinux.hu>, 2002.
-# Matevz Jekovec <matevz.jekovec@guest.arnes.si>, 2005.
 #
 msgid ""
 msgstr ""

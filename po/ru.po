@@ -1,10 +1,8 @@
-# translation of ru.po to slovenščina
 # translation of ru.po to Russian
 # translation of noteedit.po to Russian
 # Russian translation
 # Pavlo Bohmat <bohm@ukr.net>, 2003, 2004.
 # Alexandre Prokoudine <alexandre.prokoudine@gmail.com>, 2005.
-# Matevz Jekovec <matevz.jekovec@guest.arnes.si>, 2005.
 #
 msgid ""
 msgstr ""

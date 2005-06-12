@@ -1,15 +1,8 @@
-# translation of es.po to slovenščina
-# translation of es.po to
-# translation of es.po to
-# translation of es.po to
-# translation of es.po to
-# translation of es.po to
 # translation of de.po to deutsch
 # German translation
 # Copyright (C) 2001 Erik Sigra
 # Erik Sigra <sigra@home.se>, 2001.
 # J. Anders <ja@infornatik.tu-chemnitz.de>, 2003.
-# Matevz Jekovec <matevz.jekovec@guest.arnes.si>, 2005.
 #
 msgid ""
 msgstr ""

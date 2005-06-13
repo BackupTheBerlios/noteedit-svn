@@ -4,7 +4,9 @@ http://noteedit.berlios.de
 
 How to obtain NoteEdit
 ----------------------
-You can download the latest version of NoteEdit on our project page (http://developer.berlios.de/projects/noteedit). Please visit our website for more information (http://noteedit.berlios.de).
+You can download the latest version of NoteEdit on our project page
+(http://developer.berlios.de/projects/noteedit). Please visit our website for
+more information (http://noteedit.berlios.de).
 
 
 Installing NoteEdit from RPMs or DEBs
@@ -77,20 +79,25 @@ Building from SVN
 -----------------
 Since we're currently in transition from the old non-SVN based NoteEdit to the
 completely SVN-based project, it is possible that making from SVN isn't yet
-possible out of the box. If you're missing the correct admin files in admin/
-dir, follow the instructions:
-- Get the latest trunk version of NoteEdit, described on Berlios SVN page
-  (https://developer.berlios.de/svn/?group_id=2232).
-- Download the admin-files.tar.gz which can be found in files section at the
-  NoteEdit's project page at Berlios and save them to the NoteEdit main
-  directory.
-- Move to the NoteEdit main directory and invoke:
+possible out of the box. To build NoteEdit from SVN, do the following:
+- Get the latest trunk version of NoteEdit, by typing
+  $ svn checkout svn://svn.berlios.de/noteedit/trunk/noteedit noteedit
+  
+  for anonymous SVN access or follow Berlios'es instructions on
+  https://developer.berlios.de/svn/?group_id=2232 for more secure SVN access.
+  
+- If the correct admin files are not present in admin/ folder, download the
+  admin-files.tar.gz which can be found under files section at the NoteEdit's
+  project page at Berlios and extract them to the main NoteEdit folder by
+  executing:
+  $ cd noteedit
   $ tar xfvz admin-files.tar.gz
-- Type:
+
+- In the main NoteEdit folder, type:
   $ make -f Makefile.cvs
 
-This should generate an ordinary configure script. From now on, follow the
-normal build instructions below.
+This should correctly generate a working configure script. From now on, follow
+the normal build method below.
 
 Note that the current SVN project organization is still in phase of testing, so
 please report any problems you may encounter or success stories to the NoteEdit
@@ -103,7 +110,7 @@ Building
 Note!
 -----
 If you have different KDE/Qt versions, make sure the PATH variable only
-references the KDE/Qt version you wish to use for NoteEdit!
+references the KDE/Qt version you wish to use with NoteEdit!
 
 Please uninstall an older version especially all old noteeditui.rc files. If you
 don't have the source distribution to "make uninstall" remove all in

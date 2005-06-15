@@ -1,11 +1,8 @@
-# translation of it.po to slovenščina
 # translation of it.po to Italian
-# translation of Noteedit.po to Italian
 # Copyright (C) 2005 Free Software Foundation, Inc.
 # Riccardo Iaconelli <info@ruphy.com>, 2005.
 # Federico Zenith <zenith@chemeng.ntnu.no>, 2005.
 # Nicola Ruggero <nixprog.adsl@tiscali.it>, 2005.
-# Matevz Jekovec <matevz.jekovec@guest.arnes.si>, 2005.
 #
 msgid ""
 msgstr ""

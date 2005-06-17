@@ -2540,7 +2540,6 @@ void NMainFrameWidget::playAll(bool on) {
 	NStaff *staff_elem;
 	int midipos;
 	struct timeval now;
-
 	if (playing_) {
 		playStop_ = true;
 		return;
@@ -2587,7 +2586,7 @@ void NMainFrameWidget::playAll(bool on) {
 			voice_elem->stopPlaying();
 		}
 		playButtonReset();
-		KMessageBox::sorry(this, i18n("nothing to play"), kapp->makeStdCaption(i18n("Play")));
+		KMessageBox::sorry(this, i18n("Nothing to play!"), kapp->makeStdCaption(i18n("Play")));
 		notePart_->setMouseTracking(NResource::showAuxLines_);
 		return;
 	}

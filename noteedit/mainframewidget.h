@@ -434,7 +434,7 @@ class NMainFrameWidget : public QWidget
 		KToggleAction *rectDrumBu_;
 		KToggleAction *triaDrumBu_;
 		NInfoTable *about_;
-		NDbufferWidget *notePart_;
+		NDbufferWidget *notePart_; //main view of the score
 		KAction *lilyPort_;
 		int voiceNr_;
 /*------------------------------ Dialogs ------------------------------------------------*/
@@ -595,7 +595,7 @@ class NMainFrameWidget : public QWidget
 		bool playing_;
 		NTempoTrack SortedTempoSigs_;
 		bool firstNoteActive_; // avoid overwriting first red colored note
-		bool playStop_;
+		bool playStop_; //stop playing
 		struct timeval nextPlayTime_;
 		static void add_time(struct timeval *res, struct timeval *now, long msecs);
 		unsigned long sub_time(struct timeval *future, struct timeval *now);

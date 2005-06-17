@@ -1457,8 +1457,8 @@ msgid "MIDI mapper is already in use!"
 msgstr "Mapeador MIDI ya está en uso!"
 
 #: mainframewidget.cpp:2590
-msgid "nothing to play"
-msgstr "Nada que tocar"
+msgid "Nothing to play!"
+msgstr "Nada que tocar!"
 
 #: mainframewidget.cpp:3350 mainframewidget.cpp:3428 mainframewidget.cpp:3488
 #: mainframewidget.cpp:3831

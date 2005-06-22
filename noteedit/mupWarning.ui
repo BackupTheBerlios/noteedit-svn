@@ -1,13 +1,10 @@
-<!DOCTYPE UI><UI>
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>mupWarning</class>
-<widget>
-    <class>QDialog</class>
-    <property stdset="1">
-        <name>name</name>
+<widget class="QDialog">
+    <property name="name">
         <cstring>mupForm</cstring>
     </property>
-    <property stdset="1">
-        <name>geometry</name>
+    <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
@@ -15,76 +12,63 @@
             <height>118</height>
         </rect>
     </property>
-    <property stdset="1">
-        <name>caption</name>
+    <property name="caption">
         <string>MUP warning</string>
     </property>
     <grid>
-        <property stdset="1">
-            <name>margin</name>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
             <number>11</number>
         </property>
-        <property stdset="1">
-            <name>spacing</name>
+        <property name="spacing">
             <number>6</number>
         </property>
-        <widget row="0"  column="0"  rowspan="1"  colspan="2" >
-            <class>QLabel</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QLabel" row="0" column="0" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>Warning</cstring>
             </property>
-            <property stdset="1">
-                <name>font</name>
+            <property name="font">
                 <font>
-                    <pointsize>14</pointsize>
                     <bold>1</bold>
                 </font>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>Saved, but MUP does not work!</string>
             </property>
         </widget>
-        <widget row="1"  column="0"  rowspan="1"  colspan="2" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QCheckBox" row="1" column="0" rowspan="1" colspan="2">
+            <property name="name">
                 <cstring>showAgain</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>Don't &amp;show this message in future</string>
             </property>
-            <property stdset="1">
-                <name>checked</name>
+            <property name="accel">
+                <string>Alt+S</string>
+            </property>
+            <property name="checked">
                 <bool>false</bool>
             </property>
-            <property>
-                <name>Checked</name>
-                <string>true</string>
-            </property>
         </widget>
-        <widget row="2"  column="0" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="2" column="0">
+            <property name="name">
                 <cstring>OkBu</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;OK</string>
             </property>
         </widget>
-        <widget row="2"  column="1" >
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
+        <widget class="QPushButton" row="2" column="1">
+            <property name="name">
                 <cstring>DetBu</cstring>
             </property>
-            <property stdset="1">
-                <name>text</name>
+            <property name="text">
                 <string>&amp;Details &gt;&gt;</string>
+            </property>
+            <property name="accel">
+                <string>Alt+D</string>
             </property>
         </widget>
     </grid>
@@ -102,7 +86,10 @@
         <receiver>mupForm</receiver>
         <slot>slShowDet()</slot>
     </connection>
-    <slot access="public">slShowDet()</slot>
-    <slot access="public">slOk()</slot>
 </connections>
+<slots>
+    <slot>slShowDet()</slot>
+    <slot>slOk()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
 </UI>

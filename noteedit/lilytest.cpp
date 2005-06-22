@@ -84,55 +84,22 @@ void lilytest::check() {
 	}
     }
 
-    printf( "found version: %i.%i.%i\nWITH", ver[0], ver[1], ver[2] );
+    printf( "found version: %i.%i.%i\n", ver[0], ver[1], ver[2] );
     fflush(stdout);
 
     int whish[] = { 1, 3, 145 };
-    NResource::lilyProperties_.lilySemicolons = false;
-    if( this->chkit( &ver[0], &whish[0] ) )
-	printf( "OUT" );
-    else
-	NResource::lilyProperties_.lilySemicolons = true;
+    NResource::lilyProperties_.lilySemicolons = ( !this->chkit( &ver[0], &whish[0] ) );
 
-    printf( " semicolons.\n" );
     int whish2[] = { 1, 5, 3 };
-    printf( "WITH");
-    NResource::lilyProperties_.lilyVarTrills = false;
-    if( this->chkit( &ver[0], &whish2[0] ) )
-	NResource::lilyProperties_.lilyVarTrills = true;
-    else
-	printf( "OUT" );
-    printf( " wavelines (for trills)\n");
-    printf( "WITH");
-    NResource::lilyProperties_.lilySluresInGraces = false;
-    if( this->chkit( &ver[0], &whish2[0] ) )
-	NResource::lilyProperties_.lilySluresInGraces = true;
-    else
-	printf( "OUT" );
-    printf( " slures in graces\n");
+    NResource::lilyProperties_.lilyVarTrills = ( this->chkit( &ver[0], &whish2[0] ) );
+    NResource::lilyProperties_.lilySluresInGraces = ( this->chkit( &ver[0], &whish2[0] ) );
     NResource::lilyProperties_.lilyAvailable = true;
+	
     int whish3[] = { 2, 0, 0 };
-    printf( "NOTE LENGTHs ");
-    if( this->chkit( &ver[0], &whish3[0] ) ) {
-	printf( "after" );
-	NResource::lilyProperties_.lilyVersion2 = true;
-    }
-    else {
-	printf( "inside" );
-	NResource::lilyProperties_.lilyVersion2 = false;
-    }
-    printf( " chords\n");
+	NResource::lilyProperties_.lilyVersion2 = ( this->chkit( &ver[0], &whish3[0] ) );
 
     int whish4[] = { 2, 2, 0};
-    printf( "\"\\property\" keyword ");
-    if( this->chkit( &ver[0], &whish4[0] ) ) {
-	printf( "does not exist\n" );
-	NResource::lilyProperties_.lilyProperties = false;
-    }
-    else {
-	printf( "exists\n" );
-	NResource::lilyProperties_.lilyProperties = true;
-    }
+	NResource::lilyProperties_.lilyProperties = ( !this->chkit( &ver[0], &whish4[0] ) );
 
     int whish5[] = { 2, 4, 0};
 	NResource::lilyProperties_.lilyVersion24 = this->chkit( &ver[0], &whish5[0] );

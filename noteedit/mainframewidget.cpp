@@ -144,7 +144,7 @@
 
 //export pages:
 
-#define TOOL_ELEMENT_WIDTH	200
+#define TOOL_ELEMENT_WIDTH	300
 #define TOOL_ELEMENT_HEIGHT	70
 #define ELEM_SPACE 16
 
@@ -740,7 +740,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	dynamicDisable_->setGeometry( QRect( 2, 2, 100, 16 ) );
 	dynamicDisable_->setChecked( true );
 	dynamicAlignment_ = new QCheckBox( i18n ( "Turn" ) , dynamicBase_ );
-	dynamicAlignment_->setGeometry( QRect( TOOL_ELEMENT_WIDTH - 52, 2, 50, 16 ) );
+	dynamicAlignment_->setGeometry( QRect( TOOL_ELEMENT_WIDTH - 102, 2, 100, 16 ) );
 	dynamicAlignment_->setChecked( true );
 
 	connect( dynamicPos_, SIGNAL( valueChanged(int) ), this, SLOT(dynamicPosChanged( int ) ) );

@@ -1,6 +1,6 @@
 header
 	title bold (20) "Ballade No. 1"
-	title bold (12) "Posvečeno moji Tinki za 18. rojstni dan:)"
+	title bold (12) "Posvečeno moji Tinki za 18. rojstni dan"
 	title bold (11) "Matevž Jekovec"
 footer
 	title bold (13) "(C) 2003, All rights reserved"
@@ -21,7 +21,7 @@ label = "Flute"
 staff 2
 	vscheme = 2o
 label = "Piano"
-// overlength = 66
+// overlength = 88
 // underlength = 146
 // lyricsdist = 60
 // yrestoffs 2 = 2
@@ -33,9 +33,8 @@ staff 3
 // overlength = 60
 // underlength = 60
 // lyricsdist = 60
-// yrestoffs 1 = -4
 // stempolicy 1 = stemup
-// yrestoffs 2 = 4
+// yrestoffs 2 = 6
 // stempolicy 2 = stemdown
 	clef=bass
 	key = 2#
@@ -51,13 +50,14 @@ midi 2 1: 0 "parameter=7,80";
 midi 2 1: 0 "parameter=93,94";
 midi 2 1: 0 "parameter=91,35";
 midi 2 1: 0 "parameter=10,64";
-midi 3 1: 0 "parameter=7,80";
+midi 3 1: 0 "parameter=7,113";
 midi 3 1: 0 "parameter=93,127";
 midi 3 1: 0 "parameter=91,54";
 midi 3 1: 0 "parameter=10,64";
 1 1: 2.r; 
 midi all: 1 "tempo=72";
 rom above all: 1 "( \(sm4n) = 72 )";
+rom (14) above 1: 1 "Andante cantabile";
 2 1: 2.r; 
 2 2: 2.s; 
 3 1: [up]8d bm; [up]8e; [up]8f; [up]8a; [up]8d+; [up]8e+ ebm; 
@@ -68,7 +68,7 @@ bar // 1
 2 1: [down] 8f bm; [down] 8a; 8d+; 8e+; 8f+; 8a+ ebm; 
 pedal 2: 1.000000;
 2 2: 2.s; 
-3 1: 2.r; 
+3 1: 2.s; 
 3 2: [down] 2.d-d; 
 bar // 2
 1 1: 2.r; 
@@ -80,7 +80,7 @@ bar // 3
 1 1: 2.r; 
 2 1: [down] 8c bm; [down] 8e; [down] 8a; 8b; 8c+; 8e+ ebm; 
 2 2: 2.s; 
-3 1: 2.r; 
+3 1: 2.s; 
 3 2: [down] 2.a--a-; 
 bar // 4
 1 1: 2.r; 
@@ -92,7 +92,7 @@ bar // 5
 1 1: 2.r; 
 2 1: [down] 8d bm; [down] 8f; 8b; 8c+; 8d+; 8f+ ebm; 
 2 2: 2.s; 
-3 1: 2.r; 
+3 1: 2.s; 
 3 2: [down] 2.b--b-; 
 bar // 6
 1 1: 2.r; 
@@ -104,7 +104,7 @@ bar // 7
 1 1: 2.r; 
 2 1: 8b- bm; 8d; 8g; 8a; [up]8b; [up]8d+ ebm; 
 2 2: 2.s; 
-3 1: 2.r; 
+3 1: 2.s; 
 3 2: [down] 2.g--g-; 
 bar // 8
 1 1: 2.r; 
@@ -116,49 +116,50 @@ bar // 9
 1 1: 2.r; 
 2 1: [down] 8c bm; [down] 8e; [down] 8a; 8b; 8c+; 8e+ ebm; 
 2 2: 2.s; 
-3 1: 2.r; 
+3 1: 2.s; 
 3 2: [down] 2.a--a-; 
 bar // 10
 1 1: 2.r; 
 2 1: 2.g; 
 2 2: 2r; [down] 8a- bm; [with -] [down] 8e ebm; 
-3 1: 8a-- bm; 8e-; 8a-; [up]8e ebm; 4r; 
+3 1: 8a-- bm; 8e-; 8a-; [up]8e ebm; 4s; 
 3 2: [down] 2.b---~a--~; 
 bar // 11
 1 1: 2.r; 
-2 1: [with >][down] 8a bm; 8e+; 8a+; 8e++; 8a++; 8d+++ ebm; 
+2 1: [with >][down] 8a bm; 8e+; [down] 8a; 8e+; 8a+; 8d++ ebm; 
+octave above 2: 2 "8va" til 1m + 2.000000;
 2 2: 2.s; 
-3 1: 2.r; 
+3 1: 2.s; 
 3 2: [down] 2.b---a--; 
 bar // 12
 1 1: 2.r; 
-2 1: 8b++ bm; 8g++; 8d++; 8b+; 8g+; 8d+ ebm; 
+2 1: 8b+ bm; 8g+; 8d+; 8b+; 8g+; 8d+ ebm; 
 2 2: 2.s; 
-3 1: 2.r; 
+3 1: 2.s; 
 3 2: [down] 2.d-~d~; 
 bar // 13
 1 1: 2.r; 
 2 1: [up]8b bm; 8g; 8d; 8b-; 8g-; 8e- ebm; 
 2 2: 2.s; 
-3 1: 2.r; 
+3 1: 2.s; 
 3 2: [down] 2d-~d~; [down] 16d-d; 16d~; [down] 8d-d; 
 bar // 14
 1 1: 2.r; 
 2 1: 8f- bm; 8a-; 8d; 8e; 8f; 8a ebm; 
 2 2: 2.s; 
-3 1: 2.r; 
+3 1: 2.s; 
 3 2: [down] 2.d--~d-~; 
 bar // 15
 1 1: 2.r; 
 2 1: 8d+ bm; 8e+; 8f+; 8a+; 8d++; 8e++ ebm; 
 2 2: 2.s; 
-3 1: 2.r; 
+3 1: 2.s; 
 3 2: [down] 2.d--~d-~; 
 bar // 16
 1 1: 2.r; 
 2 1: 2.f++; 
 2 2: 2.s; 
-3 1: 2.r; 
+3 1: 2.s; 
 3 2: [down] 2.d--d-; 
 dblbar // 17
 1 1: [up]2.b~; 
@@ -183,7 +184,7 @@ bar // 20
 2 1: 2.r; 
 2 2: 2.s; 
 3 1: [up]8a# bm; [up]8f+; [up]8e+; [up]8c+; [up]8a; [up]8f ebm; 
-3 2: [down] 2c-c; [ grace] 8f--f-; [down] 4f--f-; 
+3 2: [down] 2c-c; [ grace] 8f--~f-~; [down] 4f--f-; 
 bar // 21
 1 1: 2.b~; 
 2 1: 2.r; 
@@ -193,31 +194,31 @@ bar // 21
 bar // 22
 1 1: 4b; 4a; 4g; 
 2 1: 2.r; 
-2 2: 2.r; 
+2 2: 2.s; 
 3 1: [up]8b bm; [up]8g; [up]8d; [up]8g; [up]8b; [up]8d ebm; 
 3 2: [down] 2.g--g-; 
 bar // 23
 1 1: 4g; 4.f; 8e#; 
 2 1: 2.r; 
-2 2: 2.r; 
+2 2: 2.s; 
 3 1: [up]8e bm; 8c; [up]8f; [up]8g; [up]8f; [up]8a# ebm; 
 3 2: [down] 2.f--f-; 
 bar // 24
 1 1: 2f; 4r; 
 2 1: 2.r; 
-2 2: 2.r; 
+2 2: 2.s; 
 3 1: [up]8c+ bm; [up]8f; [up]8a#; [up]8f; 8c; [up]8e ebm; 
 3 2: [down] 2.b#---a#--; 
 bar // 25
 1 1: 4b; 4a#; 4b; 
 2 1: 8b- bm; 8d; 8e; 8c; 8d; 8b- ebm; 
-2 2: 2.r; 
-3 1: [up]8d; 8r; 2r; 
-3 2: [up]4b--b-; [up]4c-c; [up]4b--b-; 
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [up]4b--b-d; [up]4c-c; [up]4b--b-; 
 bar // 26
 1 1: 4.g; [down] 8a bm; 8b; 8c+ ebm; 
 2 1: 4.c; 4.r; 
-2 2: [down] 8c; [down] 8b-; [down] 8a-; 4.r; 
+2 2: [down] 8c; [down] 8b-; [down] 8a-; 4.s; 
 3 1: 4.e-; 8f- bm; 8g-; 8a- ebm; 
 3 2: [up]2.e-e; 
 bar // 27
@@ -229,7 +230,7 @@ bar // 27
 bar // 28
 1 1: 4.b; 8c+ bm; 8d+; 8b ebm; 
 2 1: 4a; 4g; 4r; 
-2 2: [down] 8a; 8r; 2r; 
+2 2: 2.s; 
 3 1: 8g- bm; 8b-; [up]8d; [up]8e; [up]8f; [up]8g ebm; 
 3 2: [up]2.g--g-; 
 bar // 29
@@ -248,10 +249,10 @@ bar // 30
 bar // 31
 1 1: 8f bm; 8g#; 8a#; [up]8c+; 8a; [up]8c+ ebm; 
 phrase  1: 1 til 1m + 3.000000;
-2 1: 2r; { 16f bm; 16a#; [up]16c+ ebm;  } above  3 ; { [down] 16a bm; 16c+; 16e+ ebm;  } above  3 ; 
-<  below 2: 3.5 til 1m + 3.750000;
+2 1: 2s; { 16f bm; 16a#; [up]16c+ ebm;  } above  3 ; { [down] 16a bm; 16c+; 16e+ ebm;  } above  3 ; 
+rom (14) below 2: 1.000000 "crescendo et accelerando...";
 2 2: 2.s; 
-3 1: { 16c bm; [up]16f; [up]16a# ebm;  } above  3 ; { [up]16f bm; [up]16a; [up]16c+ ebm;  } above  3 ; { [up]16a bm; [up]16c+; [up]16f+ ebm;  } above  3 ; { [up]16c+ bm; [up]16f+; [up]16a#+ ebm;  } above  3 ; 4r; 
+3 1: { 16c bm; [up]16f; [up]16a# ebm;  } above  3 ; { [up]16f bm; [up]16a; [up]16c+ ebm;  } above  3 ; { [up]16a bm; [up]16c+; [up]16f+ ebm;  } above  3 ; { [up]16c+ bm; [up]16f+; [up]16a#+ ebm;  } above  3 ; 4s; 
 3 2: [up]2.f--f-; 
 bar // 32
 1 1: 8f+ bm; [down] 8a#; 8c+; 8f+ ebm; 4a#+; 
@@ -260,7 +261,7 @@ bar // 32
 3 1: 16f-- bm; 16f-; 16g-; 16e#-g-; 16f-; 16f--; 16g-; 16g--e-; 16f--; 16f-; 16g-; 16e-g- ebm; 
 3 2: 2.s; 
 bar // 33
-1 1: [with >]4c++; 2r; 
+1 1: [with >]2c++; 4r; 
 2 1: 2.cfa#c+; 
 midi 2 1: 1 "parameter=7,100";
 boldital above 2: 1 "ff"; // volumesign
@@ -280,6 +281,8 @@ staff 3
 music
 1 1: 2.r; 
 2 1: 4.db; 8db; 4db; 
+midi all: 1 "tempo=80";
+rom above all: 1 "( \(sm4n) = 80 )";
 roll 2 1: 3.000000;
 2 2: 2.s; 
 3 1: 4.g-g; 8g-g; 4g-g; 
@@ -290,7 +293,7 @@ bar // 35
 2 1: 4.e&c+; 8ec+; 4ec+; 
 2 2: 2.s; 
 3 1: 4.cg; 8cg; [up]4g; 
-3 2: 4r; 4r; [down] 4b-~; 
+3 2: 2s; [down] 4b-~; 
 bar // 36
 1 1: 2.r; 
 2 1: 4g; 4a; 4fc+; 
@@ -355,7 +358,7 @@ bar // 45
 bar // 46
 1 1: 2.r; 
 2 1: [up]8b& bm; 8g; 8a; 8f; 8g; 8d ebm; 
-2 2: [ grace] 8d; [down] 4d; [down] 4c; [down] 4b&-; 
+2 2: [ grace] 16d~; [down] 4d; [down] 4c; [down] 4b&-; 
 3 1: { 8g- bm; [up]8d; [up]8b& ebm;  } above  3 ; { 8a- bm; [up]8e&; [up]8f# ebm;  } above  3 ; { 8b&- bm; [up]8d; [up]8g ebm;  } above  3 ; 
 3 2: 2.s; 
 bar // 47
@@ -384,6 +387,9 @@ bar // 50
 3 2: 2.s; 
 bar // 51
 1 1: 2.r; 
+midi all: 1 "tempo=80";
+rom above all: 1 "( \(sm4n) = 80 )";
+rom above 1: 1.000000 "accel.";
 2 1: 16d- bm; 16fn-; 16g#-; 16d- ebm; 16fn- bm; 16g-; 16b-; 16d- ebm; 16fn- bm; 16g-; 16b-; 16d ebm; 
 2 2: 2.s; 
 3 1: { 8b--- bm; 8g#--; 8d- ebm;  } above  3 ; { 8d-- bm; 8b--; 8fn- ebm;  } above  3 ; { 8b--- bm; 8g#--; 8d- ebm;  } above  3 ; 
@@ -415,8 +421,9 @@ staff 3
 	key = 2#
 music
 1 1: 8d+ bm; 8f+; 8d+ ebm; 8c+ bm; 8b; 8c+ ebm; 
-midi all: 1 "tempo=120";
-rom above all: 1 "( \(sm4n) = 120 )";
+midi all: 1 "tempo=126";
+rom above all: 1 "( \(sm4n) = 126 )";
+rom (14) above 1: 1.000000 "Vivace";
 2 1: 8a-df; 8r; 8r; 8g-ce; 8r; 8r; 
 roll 2 1: 1.000000;4.000000;
 2 2: 2.s; 
@@ -438,7 +445,7 @@ roll 2 1: 1.000000;4.000000;
 3 2: 2.s; 
 bar // 57
 1 1: 4a; 8r; 4r; 8a; 
-2 1: 8a-ceg; 8r; 8r; 8a++; 8r; 8r; 
+2 1: 8a-ceg; 8r; 8r; [with .]8a++; 8r; 8r; 
 roll 2 1: 1.000000;
 2 2: 2.s; 
 3 1: [with ,]4.c-c; 4.r; 
@@ -596,10 +603,11 @@ score
 music
 1 1: 2.r; 
 2 1: 2.b-~d~f~b~; 
-midi all: 1 "tempo=72";
-rom above all: 1 "( \(sm4n) = 72 )";
+rom (14) above 2: 1.000000 "Meno mosso et marcato";
 2 2: 2.s; 
 3 1: [with >]16d- bm; 16c-; 16b--; 16d- ebm; [with >]16f- bm; 16e-; 16d-; 16c- ebm; [with >]16a- bm; 16g-; 16f-; 16c ebm; 
+midi all: 1.25 "tempo=120";
+rom above all: 1.25 "( \(sm4n) = 120 )";
 bar // 81
 1 1: 2.r; 
 2 1: 4b-dfb; 4cega; 4g-b-dg; 
@@ -633,20 +641,20 @@ bar // 86
 3 1: 16e- bm; 16f-; 16g-; 16c ebm; 16f- bm; 16g-; 16e#-; 16f- ebm; 16a#- bm; 16c; 16f-; 16a- ebm; 
 bar // 87
 1 1: 2.r; 
-2 1: 2a#c+f+a#+; 4cfac+; 
+2 1: 2a#c+f+a#+; [with >]4cfac+; 
 roll 2 1: 1.000000;
 2 2: 2.s; 
 3 1: 16c bm; [up]16f; [up]16e; [up]16d ebm; 16c bm; 16f-; 16c; 16e- ebm; 16a#- bm; 16g-; 16f-; 16e- ebm; 
 bar // 88
 1 1: [ grace; slash 1] 8a+<9>; 8g+ bm; 8f+; 8e+; 8d+; 8c+; 8b ebm; 
-2 1: 4b-b; 4a#-a#; 4b-b; 
+2 1: [with >]4b-b; 4a#-a#; 4b-b; 
 2 2: 2.s; 
 3 1: [with >]16d- bm; 16b--; 16b-; 16f- ebm; 16e- bm; 16c-; 16c; 16a#- ebm; 16b- bm; 16f-; [up]16d; 16c ebm; 
 bar // 89
 1 1: 8a bm; 8g ebm; [up]8g+ bm; [up]8a+; [up]8b+; [up]8c++ ebm; 
 phrase  1: 2 til 2m + 2.500000;
 2 1: 4.g; 8a bm; [up]8b; [up]8c+ ebm; 
-2 2: [with >] [down] 8c; [with >] [down] 8c; [with >] [down] 8c; [down] 8c bm; [down] 8d; [down] 8e ebm; 
+2 2: [with >] [down] 8c; [with >] [down] 8c; [with >] [down] 8c; [with >] [down] 8c bm; [with >] [down] 8d; [with >] [down] 8e ebm; 
 3 1: 16b- bm; 16a-; 16c; 16b- ebm; 16a- bm; 16g-; 16f-; 16a- ebm; 16g- bm; 16b-; 16a-; 16c ebm; 
 bar // 90
 1 1: [up]8d++ bm; [up]8e++; [up]8fn++; [up]8e++; [up]8f++; [up]8d++ ebm; 
@@ -657,15 +665,16 @@ bar // 91
 1 1: [up]8b&+ bm; [up]8b+; [up]8a+; [up]8g+; [up]8b&+; [up]8d++ ebm; 
 phrase  1: 3 til 3m + 1.000000;
 2 1: [up]4.b&; [up]8cn+ bm; [up]8d+; [up]8bn ebm; 
-2 2: [down] 8e; [down] 8e; [down] 8e; [down] 8e bm; [down] 8fn; [down] 8e# ebm; 
+2 2: [with >] [down] 8e; [with >] [down] 8e; [with >] [down] 8e; [with >] [down] 8e bm; [with >] [down] 8fn; [with >] [down] 8e# ebm; 
 3 1: [up]16e bm; [up]16fn; [up]16g; [up]16f ebm; [up]16e bm; [up]16d; 16cn; [up]16e ebm; [up]16d bm; [up]16fn; [up]16e#; [up]16g ebm; 
 bar // 92
-1 1: [up]8e++ bm; [up]8f++; [up]8g++; [up]8f++; [up]8a++; [up]8f++ ebm; 
+1 1: [up]8e+ bm; [up]8f+; [up]8g+; [up]8f+; [up]8a+; [up]8f+ ebm; 
+octave above 1: 1 "8va" til 1m + 3.000000;
 2 1: 4a#; [up]4b; 4an; 
-2 2: [down] 8f bm; [down] 8c; [down] 8g; [down] 8c; [down] 8f; [down] 8c ebm; 
+2 2: [with >] [down] 8f bm; [down] 8c; [down] 8g; [down] 8c; [down] 8f; [down] 8c ebm; 
 3 1: [up]16f bm; [up]16g; [up]16f; [up]16e# ebm; [up]16g bm; [up]16f; [up]16en; [up]16d ebm; 16c bm; 16b-; 16a-; 16g- ebm; 
 bar // 93
-1 1: [up]8e++ bm; [up]8c++; [up]8d++; [up]8c++; [up]8c++; [up]8c+ ebm; 
+1 1: [up]8e+ bm; [up]8c+; [up]8d+; [up]8c+; [up]8c+; [up]8c+ ebm; 
 2 1: 4g; 4f; 4e#; 
 2 2: [down] 8e bm; [down] 8c; [down] 8d; [down] 8c; [down] 8c; [down] 8c ebm; 
 3 1: 16e- bm; 16g-; 16e-; 16g- ebm; 16f- bm; 16a#-; 16f-; 16a- ebm; 16g#- bm; [up]16d; [up]16b; [up]16d ebm; 
@@ -673,11 +682,11 @@ bar // 94
 1 1: [up]2.f+; 
 2 1: 4cfgc+; 4cegbd+; 4cfa#c+e+; 
 roll 2 1: 1.000000;2.000000;3.000000;
-2 2: [down] 4c; [down] 4c; [down] 4c; 
+2 2: [with >] [down] 4c; [with >] [down] 4c; [with >] [down] 4c; 
 3 1: [up]16f bm; [up]16e; [up]16d; 16c; 16b-; 16a#-; 16g#-; 16f-; 16e-; 16d-; 16c-; 16b-- ebm; 
 bar // 95
 1 1: 2.r; 
-2 1: 16g-g bm; 16f-f; 16e-e; 16d-d; 16c-c; 16b--b-; 16a--a-; 16g--g-; 16f- ebm; 8.r; 
+2 1: [with >]16g-g bm; 16f-f; 16e-e; 16d-d; 16c-c; 16b--b-; 16a--a-; 16g--g-; 16f- ebm; 8.s; 
 3 1: 2f--g-; 16f- bm; 16e-e; 16d-d; 16c-c ebm; 
 bar // 96
 1 1: 2.r; 
@@ -689,6 +698,7 @@ midi 1 1: 3 "parameter=7,88";
 boldital above 1: 3 "ppp"; // volumesign
 midi all: 1 "tempo=58";
 rom above all: 1 "( \(sm4n) = 58 )";
+rom (14) above 1: 3.000000 "Calmo et serioso";
 2 1: 2.r; 
 3 1: 2.r; 
 bar // 98
@@ -709,6 +719,6 @@ bar // 101
 3 1: 2.f--c-f-; 
 bar // 102
 1 1: [with "\(ferm)"][up]2.b; 
-2 1: 2.r; 
+2 1: [with "\(ferm)"]2.r; 
 3 1: [with "\(ferm)"]2.b--b-; 
 endbar // 103

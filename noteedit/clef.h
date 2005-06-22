@@ -61,7 +61,7 @@ class NClef : public NMusElement {
 		int getShift() {return shift_;}
 		void setShift(int octave);
 		void midi2Line(unsigned int midival,int *line, int *offs, NKeySig *ksig = 0);
-		static int chooseClefType(staffInfoClass *staffInfos, int minMidi, int MaxMidi, bool drumchannel);
+		static int chooseClefType(staffInfoClass *staffInfos, unsigned int minMidi, unsigned int MaxMidi, bool drumchannel);
 	private:
 		QPixmap *redPixmap_;
 		QPixmap *blackPixmap_;

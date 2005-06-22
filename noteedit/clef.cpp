@@ -558,7 +558,7 @@ void NClef::midi2Line(unsigned int midival, int *line, int *offs, NKeySig *ksig)
 	}
 }
 
-int NClef::chooseClefType(staffInfoClass *staffInfos, int minMidi, int maxMidi, bool drumchannel) {
+int NClef::chooseClefType(staffInfoClass *staffInfos, unsigned int minMidi, unsigned int maxMidi, bool drumchannel) {
 	int treble_clef, bass_clef;
 
 	treble_clef = drumchannel ? DRUM_CLEF : TREBLE_CLEF;

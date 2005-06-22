@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-18 00:27+0200\n"
+"POT-Creation-Date: 2005-06-22 15:51+0200\n"
 "PO-Revision-Date: 2005-06-12 22:30+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -1424,7 +1424,7 @@ msgstr ""
 
 #: mainframewidget.cpp:719 mainframewidget.cpp:739 mainframewidget.cpp:754
 #, fuzzy
-msgid "enabled"
+msgid "Enabled"
 msgstr "Povolené"
 
 #: mainframewidget.cpp:731
@@ -1434,7 +1434,7 @@ msgstr "trilkovanie"
 
 #: mainframewidget.cpp:742
 #, fuzzy
-msgid "turn"
+msgid "Turn"
 msgstr "Otočiť"
 
 #: mainframewidget.cpp:750
@@ -1973,7 +1973,7 @@ msgstr "Ovládanie"
 msgid "Score control"
 msgstr "Ovládanie partitúry"
 
-#: rc.cpp:26 rc.cpp:66 rc.cpp:530
+#: rc.cpp:26 rc.cpp:66 rc.cpp:532
 #, no-c-format
 msgid "Notes"
 msgstr "Poznámky"
@@ -2676,321 +2676,326 @@ msgid "Don't &show this message in future"
 msgstr "Ne&zobrazovať túto správu v budúcnosti"
 
 #: rc.cpp:399
-#, no-c-format
-msgid "true"
-msgstr "pravda"
+#, fuzzy, no-c-format
+msgid "Alt+S"
+msgstr "Alt+C"
 
 #: rc.cpp:405
+#, fuzzy, no-c-format
+msgid "Alt+D"
+msgstr "Alt+C"
+
+#: rc.cpp:407
 #, no-c-format
 msgid "set value"
 msgstr "nastaviť hodnotu"
 
-#: rc.cpp:407
+#: rc.cpp:409
 #, fuzzy, no-c-format
 msgid "scaleForm"
 msgstr "Voľba hud. kľúča"
 
-#: rc.cpp:412
+#: rc.cpp:414
 #, no-c-format
 msgid "&Include rests"
 msgstr "&Vrátane pomlčiek"
 
-#: rc.cpp:414
+#: rc.cpp:416
 #, no-c-format
 msgid "Cleanup rests - NoteEdit"
 msgstr "Zmazať pomlčky - NoteEdit"
 
-#: rc.cpp:416
+#: rc.cpp:418
 #, no-c-format
 msgid "Choose smallest rest:"
 msgstr "Zvoľte najkratšiu pomlčku:"
 
-#: rc.cpp:422
+#: rc.cpp:424
 #, no-c-format
 msgid "staffForm"
 msgstr ""
 
-#: rc.cpp:428
+#: rc.cpp:430
 #, no-c-format
 msgid "Staff properties - NoteEdit"
 msgstr "Nastavenie osnovy - NoteEdit"
 
-#: rc.cpp:432
+#: rc.cpp:434
 #, no-c-format
 msgid "Alt+C"
 msgstr "Alt+C"
 
-#: rc.cpp:434 rc.cpp:436
+#: rc.cpp:436 rc.cpp:438
 #, no-c-format
 msgid "Staff"
 msgstr "Osnova"
 
-#: rc.cpp:438
+#: rc.cpp:440
 #, no-c-format
 msgid "Name:"
 msgstr "Názov:"
 
-#: rc.cpp:440
+#: rc.cpp:442
 #, no-c-format
 msgid "Channel:"
 msgstr "Kanál:"
 
-#: rc.cpp:442
+#: rc.cpp:444
 #, no-c-format
 msgid "Instrument:"
 msgstr "Nástroj:"
 
-#: rc.cpp:446
+#: rc.cpp:448
 #, no-c-format
 msgid "Overlength:"
 msgstr "Horná vzdialenosť"
 
-#: rc.cpp:448
+#: rc.cpp:450
 #, no-c-format
 msgid "Play<br>transposed:"
 msgstr "Hrať<br>transponované:"
 
-#: rc.cpp:450
+#: rc.cpp:452
 #, no-c-format
 msgid "Chorus:"
 msgstr "Chorus:"
 
-#: rc.cpp:452
+#: rc.cpp:454
 #, no-c-format
 msgid "Reverb:"
 msgstr "Odraz:"
 
-#: rc.cpp:454
+#: rc.cpp:456
 #, no-c-format
 msgid "Stereo Pos:"
 msgstr "Stereo poloha:"
 
-#: rc.cpp:456
+#: rc.cpp:458
 #, no-c-format
 msgid "Lyrics dist.:"
 msgstr "Vzdialenosť lyriky"
 
-#: rc.cpp:458
+#: rc.cpp:460
 #, no-c-format
 msgid "Underlength:"
 msgstr "Dolná vzdialenosť"
 
-#: rc.cpp:460
+#: rc.cpp:462
 #, no-c-format
 msgid "Volume:"
 msgstr "Hlasitosť:"
 
-#: rc.cpp:462 rc.cpp:479 rc.cpp:536
+#: rc.cpp:464 rc.cpp:481 rc.cpp:538
 #, no-c-format
 msgid "Voice"
 msgstr "Hlas"
 
-#: rc.cpp:464
+#: rc.cpp:466
 #, no-c-format
 msgid "C&reate Voice"
 msgstr "Vytvo&riť hlas"
 
-#: rc.cpp:466
+#: rc.cpp:468
 #, no-c-format
 msgid "Alt+R"
 msgstr "Alt+R"
 
-#: rc.cpp:470
+#: rc.cpp:472
 #, no-c-format
 msgid "Alt+O"
 msgstr "Alt+O"
 
-#: rc.cpp:472
+#: rc.cpp:474
 #, no-c-format
 msgid "&Test"
 msgstr "&Test"
 
-#: rc.cpp:474
+#: rc.cpp:476
 #, no-c-format
 msgid "Alt+T"
 msgstr "Alt+T"
 
-#: rc.cpp:477 rc.cpp:534
+#: rc.cpp:479 rc.cpp:536
 #, no-c-format
 msgid "Staff No."
 msgstr "Osnova č."
 
-#: rc.cpp:481
+#: rc.cpp:483
 #, no-c-format
 msgid "Staff name"
 msgstr "Názov osnovy"
 
-#: rc.cpp:483
+#: rc.cpp:485
 #, no-c-format
 msgid "&Select all"
 msgstr "&Zvoliť všetko"
 
-#: rc.cpp:485
+#: rc.cpp:487
 #, no-c-format
 msgid "&Unselect all"
 msgstr "&Odznačiť všetko"
 
-#: rc.cpp:491
+#: rc.cpp:493
 #, no-c-format
 msgid "Text Dialog"
 msgstr "Textový dialóg"
 
-#: rc.cpp:493
+#: rc.cpp:495
 #, no-c-format
 msgid "Text"
 msgstr "Text"
 
-#: rc.cpp:495
+#: rc.cpp:497
 #, no-c-format
 msgid "Enter text:"
 msgstr "Vložiť text"
 
-#: rc.cpp:497 rc.cpp:557
+#: rc.cpp:499 rc.cpp:559
 #, no-c-format
 msgid "Ok"
 msgstr "OK"
 
-#: rc.cpp:501
+#: rc.cpp:503
 #, no-c-format
 msgid "Uptext"
 msgstr ""
 
-#: rc.cpp:503
+#: rc.cpp:505
 #, fuzzy, no-c-format
 msgid "DownText"
 msgstr "D&ole"
 
-#: rc.cpp:505
+#: rc.cpp:507
 #, no-c-format
 msgid "TimeSignature"
 msgstr "OznačenieDoby"
 
-#: rc.cpp:507
+#: rc.cpp:509
 #, fuzzy, no-c-format
 msgid "Custom time signature"
 msgstr "Zvoľte označenie taktu"
 
-#: rc.cpp:513
+#: rc.cpp:515
 #, no-c-format
 msgid "Predefined time signatures"
 msgstr "Preddefinované označenia taktu"
 
-#: rc.cpp:520
+#: rc.cpp:522
 #, no-c-format
 msgid "Tip of the day - NoteEdit"
 msgstr "Tip dňa - NoteEdit"
 
-#: rc.cpp:522
+#: rc.cpp:524
 #, no-c-format
 msgid "&Show tips in future"
 msgstr "Zobrazovať tipy aj v budúcnosti"
 
-#: rc.cpp:526
+#: rc.cpp:528
 #, no-c-format
 msgid "Information about the TSE3 song - NoteEdit"
 msgstr "Informácie o TSE3 piesni - NoteEdit"
 
-#: rc.cpp:528
+#: rc.cpp:530
 #, no-c-format
 msgid "Track No."
 msgstr "Stopa č."
 
-#: rc.cpp:532
+#: rc.cpp:534
 #, no-c-format
 msgid "Splitted"
 msgstr "Rozdelené"
 
-#: rc.cpp:538
+#: rc.cpp:540
 #, no-c-format
 msgid "Channel"
 msgstr "Kanál"
 
-#: rc.cpp:540
+#: rc.cpp:542
 #, no-c-format
 msgid "Volume"
 msgstr "Hlasitosť"
 
-#: rc.cpp:542
+#: rc.cpp:544
 #, no-c-format
 msgid "Clef"
 msgstr "Kľúč"
 
-#: rc.cpp:544
+#: rc.cpp:546
 #, fuzzy, no-c-format
 msgid "Shift"
 msgstr "Posun"
 
-#: rc.cpp:548
+#: rc.cpp:550
 #, fuzzy, no-c-format
 msgid "Tuplets"
 msgstr "Triola"
 
-#: rc.cpp:551
+#: rc.cpp:553
 #, fuzzy, no-c-format
 msgid "Number of notes:"
 msgstr "Fakturačné poznámky"
 
-#: rc.cpp:555
+#: rc.cpp:557
 #, no-c-format
 msgid "Real length (in notes above)"
 msgstr ""
 
-#: rc.cpp:559
+#: rc.cpp:561
 #, no-c-format
 msgid "Voices - NoteEdit"
 msgstr "Hlasy - Noteedit"
 
-#: rc.cpp:561
+#: rc.cpp:563
 #, no-c-format
 msgid "Stem direction"
 msgstr "Smer nôt"
 
-#: rc.cpp:563
+#: rc.cpp:565
 #, no-c-format
 msgid "&Up"
 msgstr "&Hore"
 
-#: rc.cpp:565
+#: rc.cpp:567
 #, no-c-format
 msgid "Do&wn"
 msgstr "D&ole"
 
-#: rc.cpp:567
+#: rc.cpp:569
 #, no-c-format
 msgid "&Indiviual"
 msgstr "&Individuálne"
 
-#: rc.cpp:569
+#: rc.cpp:571
 #, no-c-format
 msgid "Create &voice"
 msgstr "Vytvoriť hla&s"
 
-#: rc.cpp:571
+#: rc.cpp:573
 #, no-c-format
 msgid "&Delete voice"
 msgstr "&Zmazať hlas"
 
-#: rc.cpp:579
+#: rc.cpp:581
 #, no-c-format
 msgid "Voice number:"
 msgstr "Číslo hlasu:"
 
-#: rc.cpp:581
+#: rc.cpp:583
 #, no-c-format
 msgid "<center>Rest position</center>"
 msgstr "<center>Pozícia pomlčky</center>"
 
-#: rc.cpp:583
+#: rc.cpp:585
 #, no-c-format
 msgid "Insert volume - NoteEdit"
 msgstr "Vložiť hlasitosť - Noteedit"
 
-#: rc.cpp:589
+#: rc.cpp:591
 #, no-c-format
 msgid "volume"
 msgstr "hlasitosť"
 
-#: rc.cpp:591
+#: rc.cpp:593
 #, no-c-format
 msgid "Musical express:"
 msgstr "Hudobné vyjadrenie:"
@@ -4479,6 +4484,9 @@ msgstr "zobraziť diagram"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Tvorba akordov"
+
+#~ msgid "true"
+#~ msgstr "pravda"
 
 #~ msgid "D flat Major; b minor"
 #~ msgstr "Des dur; b mol"

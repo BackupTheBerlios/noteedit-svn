@@ -716,7 +716,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 
 	trillLengthBase_ = new QFrame( toolContainer_ );
 	trillLengthBase_->setGeometry( QRect(6, 2, TOOL_ELEMENT_WIDTH, 40 ) );
-	trillEnabled_ = new QCheckBox( i18n ( "enabled" ) , trillLengthBase_ );
+	trillEnabled_ = new QCheckBox( i18n ( "Enabled" ) , trillLengthBase_ );
 	trillEnabled_->setChecked( true );
 	trillEnabled_->setGeometry( QRect( 2, 2, 100, 16 ) );
 	trillLength_ = new QSlider( QSlider::Horizontal, trillLengthBase_ );
@@ -736,10 +736,10 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	dynamicPos_->setGeometry( QRect( 2, 18, TOOL_ELEMENT_WIDTH - 4,20 ) );
 	dynamicPos_->setMinValue( 0 );
 	dynamicPos_->setMaxValue( 6000 );
-	dynamicDisable_ = new QCheckBox( i18n ( "enabled" ) , dynamicBase_ );
+	dynamicDisable_ = new QCheckBox( i18n ( "Enabled" ) , dynamicBase_ );
 	dynamicDisable_->setGeometry( QRect( 2, 2, 100, 16 ) );
 	dynamicDisable_->setChecked( true );
-	dynamicAlignment_ = new QCheckBox( i18n ( "turn" ) , dynamicBase_ );
+	dynamicAlignment_ = new QCheckBox( i18n ( "Turn" ) , dynamicBase_ );
 	dynamicAlignment_->setGeometry( QRect( TOOL_ELEMENT_WIDTH - 52, 2, 50, 16 ) );
 	dynamicAlignment_->setChecked( true );
 
@@ -751,7 +751,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 
 	vaLengthBase_ = new QFrame( toolContainer_ );
 	vaLengthBase_->setGeometry( QRect(6, 2, TOOL_ELEMENT_WIDTH, 40 ) );
-	vaDisable_ = new QCheckBox( i18n ( "enabled" ) , vaLengthBase_ );
+	vaDisable_ = new QCheckBox( i18n ( "Enabled" ) , vaLengthBase_ );
 	vaDisable_->setChecked( true );
 	vaDisable_->setGeometry( QRect( 2, 2, 100, 16 ) );
 	vaLength_ = new QSlider( QSlider::Horizontal, vaLengthBase_ );

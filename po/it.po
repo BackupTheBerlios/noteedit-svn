@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-18 00:27+0200\n"
+"POT-Creation-Date: 2005-06-22 15:51+0200\n"
 "PO-Revision-Date: 2005-06-13 22:13+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -1376,16 +1376,16 @@ msgid "pitch B"
 msgstr "Nota Si"
 
 #: mainframewidget.cpp:719 mainframewidget.cpp:739 mainframewidget.cpp:754
-msgid "enabled"
-msgstr "abilitato"
+msgid "Enabled"
+msgstr "Abilitato"
 
 #: mainframewidget.cpp:731
 msgid "Trill"
 msgstr "Trillo"
 
 #: mainframewidget.cpp:742
-msgid "turn"
-msgstr "gira"
+msgid "Turn"
+msgstr "Gira"
 
 #: mainframewidget.cpp:750
 msgid "Crescendo"
@@ -1928,7 +1928,7 @@ msgstr "Controllo"
 msgid "Score control"
 msgstr "Controllo partitura"
 
-#: rc.cpp:26 rc.cpp:66 rc.cpp:530
+#: rc.cpp:26 rc.cpp:66 rc.cpp:532
 #, no-c-format
 msgid "Notes"
 msgstr "Note"
@@ -2631,321 +2631,326 @@ msgid "Don't &show this message in future"
 msgstr "Non mostrare questo me&ssaggio in futuro"
 
 #: rc.cpp:399
-#, no-c-format
-msgid "true"
-msgstr "vero"
+#, fuzzy, no-c-format
+msgid "Alt+S"
+msgstr "Alt+C"
 
 #: rc.cpp:405
+#, fuzzy, no-c-format
+msgid "Alt+D"
+msgstr "Alt+C"
+
+#: rc.cpp:407
 #, no-c-format
 msgid "set value"
 msgstr "imposta il valore"
 
-#: rc.cpp:407
+#: rc.cpp:409
 #, no-c-format
 msgid "scaleForm"
 msgstr "Scala"
 
-#: rc.cpp:412
+#: rc.cpp:414
 #, no-c-format
 msgid "&Include rests"
 msgstr "&Includi pause"
 
-#: rc.cpp:414
+#: rc.cpp:416
 #, no-c-format
 msgid "Cleanup rests - NoteEdit"
 msgstr "Pulisci le pause - NoteEdit"
 
-#: rc.cpp:416
+#: rc.cpp:418
 #, no-c-format
 msgid "Choose smallest rest:"
 msgstr "Pausa più piccola:"
 
-#: rc.cpp:422
+#: rc.cpp:424
 #, no-c-format
 msgid "staffForm"
 msgstr "Chiave"
 
-#: rc.cpp:428
+#: rc.cpp:430
 #, no-c-format
 msgid "Staff properties - NoteEdit"
 msgstr "Proprietà del pentagramma - NoteEdit"
 
-#: rc.cpp:432
+#: rc.cpp:434
 #, no-c-format
 msgid "Alt+C"
 msgstr "Alt+C"
 
-#: rc.cpp:434 rc.cpp:436
+#: rc.cpp:436 rc.cpp:438
 #, no-c-format
 msgid "Staff"
 msgstr "Pentagramma"
 
-#: rc.cpp:438
+#: rc.cpp:440
 #, no-c-format
 msgid "Name:"
 msgstr "Nome:"
 
-#: rc.cpp:440
+#: rc.cpp:442
 #, no-c-format
 msgid "Channel:"
 msgstr "Canale:"
 
-#: rc.cpp:442
+#: rc.cpp:444
 #, no-c-format
 msgid "Instrument:"
 msgstr "Strumento:"
 
-#: rc.cpp:446
+#: rc.cpp:448
 #, no-c-format
 msgid "Overlength:"
 msgstr "Spazio superiore:"
 
-#: rc.cpp:448
+#: rc.cpp:450
 #, no-c-format
 msgid "Play<br>transposed:"
 msgstr "Trasposizione:"
 
-#: rc.cpp:450
+#: rc.cpp:452
 #, no-c-format
 msgid "Chorus:"
 msgstr "Chorus:"
 
-#: rc.cpp:452
+#: rc.cpp:454
 #, no-c-format
 msgid "Reverb:"
 msgstr "Riverbero:"
 
-#: rc.cpp:454
+#: rc.cpp:456
 #, no-c-format
 msgid "Stereo Pos:"
 msgstr "Stereo:"
 
-#: rc.cpp:456
+#: rc.cpp:458
 #, no-c-format
 msgid "Lyrics dist.:"
 msgstr "Distanza del testo:"
 
-#: rc.cpp:458
+#: rc.cpp:460
 #, no-c-format
 msgid "Underlength:"
 msgstr "Spazio inferiore:"
 
-#: rc.cpp:460
+#: rc.cpp:462
 #, no-c-format
 msgid "Volume:"
 msgstr "Volume:"
 
-#: rc.cpp:462 rc.cpp:479 rc.cpp:536
+#: rc.cpp:464 rc.cpp:481 rc.cpp:538
 #, no-c-format
 msgid "Voice"
 msgstr "Voce"
 
-#: rc.cpp:464
+#: rc.cpp:466
 #, no-c-format
 msgid "C&reate Voice"
 msgstr "C&rea voce"
 
-#: rc.cpp:466
+#: rc.cpp:468
 #, no-c-format
 msgid "Alt+R"
 msgstr "Alt+R"
 
-#: rc.cpp:470
+#: rc.cpp:472
 #, no-c-format
 msgid "Alt+O"
 msgstr "Alt+O"
 
-#: rc.cpp:472
+#: rc.cpp:474
 #, no-c-format
 msgid "&Test"
 msgstr "&Prova"
 
-#: rc.cpp:474
+#: rc.cpp:476
 #, no-c-format
 msgid "Alt+T"
 msgstr "Alt+T"
 
-#: rc.cpp:477 rc.cpp:534
+#: rc.cpp:479 rc.cpp:536
 #, no-c-format
 msgid "Staff No."
 msgstr "Pentagramma"
 
-#: rc.cpp:481
+#: rc.cpp:483
 #, no-c-format
 msgid "Staff name"
 msgstr "Nome del pentagramma"
 
-#: rc.cpp:483
+#: rc.cpp:485
 #, no-c-format
 msgid "&Select all"
 msgstr "&Seleziona tutto"
 
-#: rc.cpp:485
+#: rc.cpp:487
 #, no-c-format
 msgid "&Unselect all"
 msgstr "Deseleziona t&utto"
 
-#: rc.cpp:491
+#: rc.cpp:493
 #, no-c-format
 msgid "Text Dialog"
 msgstr "Finestra di testo"
 
-#: rc.cpp:493
+#: rc.cpp:495
 #, no-c-format
 msgid "Text"
 msgstr "Testo"
 
-#: rc.cpp:495
+#: rc.cpp:497
 #, no-c-format
 msgid "Enter text:"
 msgstr "Inserisci testo:"
 
-#: rc.cpp:497 rc.cpp:557
+#: rc.cpp:499 rc.cpp:559
 #, no-c-format
 msgid "Ok"
 msgstr "Ok"
 
-#: rc.cpp:501
+#: rc.cpp:503
 #, no-c-format
 msgid "Uptext"
 msgstr "Superiore"
 
-#: rc.cpp:503
+#: rc.cpp:505
 #, no-c-format
 msgid "DownText"
 msgstr "Inferiore"
 
-#: rc.cpp:505
+#: rc.cpp:507
 #, no-c-format
 msgid "TimeSignature"
 msgstr "Indicazione di tempo"
 
-#: rc.cpp:507
+#: rc.cpp:509
 #, no-c-format
 msgid "Custom time signature"
 msgstr "Indicazione di tempo personalizzata"
 
-#: rc.cpp:513
+#: rc.cpp:515
 #, no-c-format
 msgid "Predefined time signatures"
 msgstr "Indicazioni di tempo predefinite"
 
-#: rc.cpp:520
+#: rc.cpp:522
 #, no-c-format
 msgid "Tip of the day - NoteEdit"
 msgstr "Suggerimento del giorno - NoteEdit"
 
-#: rc.cpp:522
+#: rc.cpp:524
 #, no-c-format
 msgid "&Show tips in future"
 msgstr "&Mostra suggerimenti in futuro"
 
-#: rc.cpp:526
+#: rc.cpp:528
 #, no-c-format
 msgid "Information about the TSE3 song - NoteEdit"
 msgstr "Informazioni su un brano TSE3 - NoteEdit"
 
-#: rc.cpp:528
+#: rc.cpp:530
 #, no-c-format
 msgid "Track No."
 msgstr "Traccia"
 
-#: rc.cpp:532
+#: rc.cpp:534
 #, no-c-format
 msgid "Splitted"
 msgstr "Split"
 
-#: rc.cpp:538
+#: rc.cpp:540
 #, no-c-format
 msgid "Channel"
 msgstr "Canale"
 
-#: rc.cpp:540
+#: rc.cpp:542
 #, no-c-format
 msgid "Volume"
 msgstr "Volume"
 
-#: rc.cpp:542
+#: rc.cpp:544
 #, no-c-format
 msgid "Clef"
 msgstr "Chiave"
 
-#: rc.cpp:544
+#: rc.cpp:546
 #, no-c-format
 msgid "Shift"
 msgstr "Shift"
 
-#: rc.cpp:548
+#: rc.cpp:550
 #, no-c-format
 msgid "Tuplets"
 msgstr "Gruppi irregolari"
 
-#: rc.cpp:551
+#: rc.cpp:553
 #, no-c-format
 msgid "Number of notes:"
 msgstr "Numero di note:"
 
-#: rc.cpp:555
+#: rc.cpp:557
 #, no-c-format
 msgid "Real length (in notes above)"
 msgstr "Lunghezza reale (in note)"
 
-#: rc.cpp:559
+#: rc.cpp:561
 #, no-c-format
 msgid "Voices - NoteEdit"
 msgstr "Voci - NoteEdit"
 
-#: rc.cpp:561
+#: rc.cpp:563
 #, no-c-format
 msgid "Stem direction"
 msgstr "Direzione della stanghetta"
 
-#: rc.cpp:563
+#: rc.cpp:565
 #, no-c-format
 msgid "&Up"
 msgstr "S&u"
 
-#: rc.cpp:565
+#: rc.cpp:567
 #, no-c-format
 msgid "Do&wn"
 msgstr "&Giù"
 
-#: rc.cpp:567
+#: rc.cpp:569
 #, no-c-format
 msgid "&Indiviual"
 msgstr "&Individuale"
 
-#: rc.cpp:569
+#: rc.cpp:571
 #, no-c-format
 msgid "Create &voice"
 msgstr "Crea &voce"
 
-#: rc.cpp:571
+#: rc.cpp:573
 #, no-c-format
 msgid "&Delete voice"
 msgstr "&Elimina voce"
 
-#: rc.cpp:579
+#: rc.cpp:581
 #, no-c-format
 msgid "Voice number:"
 msgstr "Numero voce:"
 
-#: rc.cpp:581
+#: rc.cpp:583
 #, no-c-format
 msgid "<center>Rest position</center>"
 msgstr "<center>Posizione pausa</center>"
 
-#: rc.cpp:583
+#: rc.cpp:585
 #, no-c-format
 msgid "Insert volume - NoteEdit"
 msgstr "Inserisci volume - NoteEdit"
 
-#: rc.cpp:589
+#: rc.cpp:591
 #, no-c-format
 msgid "volume"
 msgstr "Volume"
 
-#: rc.cpp:591
+#: rc.cpp:593
 #, no-c-format
 msgid "Musical express:"
 msgstr "Segni dinamici:"
@@ -4424,6 +4429,9 @@ msgstr "Mostra diagramma"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Costruttore di accordi"
+
+#~ msgid "true"
+#~ msgstr "vero"
 
 #~ msgid "D flat Major; b minor"
 #~ msgstr "Re bemolle maggiore; si bemolle minore"

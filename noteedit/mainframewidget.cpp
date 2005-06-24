@@ -3957,6 +3957,7 @@ void NMainFrameWidget::voiceDialog() {
 }
 
 void NMainFrameWidget::setStaffProperties() {
+	if (playing_) return;	
 	staffPropFrm_->boot( staffList_.find(currentStaff_), &staffList_ );
 	// Show tab "Staff"
 	staffPropFrm_->tabWidget_->setCurrentPage( 0 );

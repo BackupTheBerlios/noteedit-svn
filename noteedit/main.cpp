@@ -74,18 +74,27 @@ class splashThread : public QThread {
 		}
 		// Create splash screen
 		splash_ = new QSplashScreen( *splashPix_ );
+		if( splash_ == 0 )
+		  printf("Unable to load Splash picture\n");
 	}
 	virtual void run() {
-		sleep(1);
-		splash_->close();
+	  if( splash_ )
+	  {
+	    sleep(1);
+	    splash_->close();
+	  }
 	}
 	void showSplash() {
-		splash_->show();
+	  if( splash_ )
+	    splash_->show();
 	}
 	void changeSplashMessage( QString msg )
 	{
-		splash_->message( msg );
-		KApplication::kApplication()->processEvents();
+	  if( splash_ )
+	  {
+	    splash_->message( msg );
+	    KApplication::kApplication()->processEvents();
+	  }
 	}
 	private:
 	QSplashScreen *splash_;

@@ -117,8 +117,8 @@ don't have the source distribution to "make uninstall" remove all in
  <path_to_your_kde_installation>/share/apps/noteedit
 
 Decompress and configure the archive:
- $ tar -xvzf noteedit-2.8.0-rc1.tgz
- $ cd noteedit-2.8.0-rc1
+ $ tar -xvzf noteedit-2.8.0.tgz
+ $ cd noteedit-2.8.0
 
 Now, for (t)csh:
  $ setenv QTDIR <path_to_your_qt_installation>

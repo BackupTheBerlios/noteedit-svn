@@ -1,5 +1,5 @@
-Release 2.8.0 RC1
---------------------
+Release 2.8.0
+-------------
 New features:
 - Updated translations and fixed Makefile to include Slovenian translation.
 - RFE #573 - Soprano clef added.
@@ -55,6 +55,7 @@ Bug fixes:
 - Fixed typo in staff properties dialog ("Voice:" -> "Instrument:").
 - Fixed #2930 - noteedit stops playing still held notes in other voices.
 - Fixed #4119 - Stem directions in voice dialog don't get rememberd.
+- Fixed #4235 - noteedit-2.8.0-rc1 crashes on start
 - Fixed typo in insert Key signature dialog: D flat Major; b minor -> D flat
   Major; b flat minor and updated translations
 - Enlarged Insert line and Line properties dialog to fit all the translations.

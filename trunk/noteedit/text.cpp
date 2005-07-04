@@ -49,6 +49,7 @@ void NText::startTextDialog() {
 	QString text;
 	NTextDialogImpl textDialog;
 	textDialog.setText(text_);
+	textDialog.setTextType(type_);
 	textDialog.exec();
 	text = textDialog.getText();
 	if (text.length() == 0) return;

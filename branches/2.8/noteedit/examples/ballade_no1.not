@@ -1,0 +1,724 @@
+header
+	title bold (20) "Ballade No. 1"
+	title bold (12) "Posvečeno moji Tinki za 18. rojstni dan"
+	title bold (11) "Matevž Jekovec"
+footer
+	title bold (13) "(C) 2003, All rights reserved"
+score
+	pedstyle = pedstar
+	staffs = 3
+	time = 3/4
+	bracket = 2-3
+	barstyle = 1-3
+score
+staff 1
+label = "Flute"
+// overlength = 149
+// underlength = 60
+// lyricsdist = 60
+	clef=treble
+	key = 2#
+staff 2
+	vscheme = 2o
+label = "Piano"
+// overlength = 88
+// underlength = 146
+// lyricsdist = 60
+// yrestoffs 2 = 2
+// stempolicy 2 = stemdown
+	clef=treble
+	key = 2#
+staff 3
+	vscheme = 2o
+// overlength = 60
+// underlength = 60
+// lyricsdist = 60
+// stempolicy 1 = stemup
+// yrestoffs 2 = 6
+// stempolicy 2 = stemdown
+	clef=bass
+	key = 2#
+music
+midi 1 1: 0 "channel=1"; 0 "program=73";
+midi 2 1: 0 "channel=2"; 0 "program=0";
+midi 3 1: 0 "channel=3"; 0 "program=0";
+midi 1 1: 0 "parameter=7,80";
+midi 1 1: 0 "parameter=93,101";
+midi 1 1: 0 "parameter=91,21";
+midi 1 1: 0 "parameter=10,64";
+midi 2 1: 0 "parameter=7,80";
+midi 2 1: 0 "parameter=93,94";
+midi 2 1: 0 "parameter=91,35";
+midi 2 1: 0 "parameter=10,64";
+midi 3 1: 0 "parameter=7,113";
+midi 3 1: 0 "parameter=93,127";
+midi 3 1: 0 "parameter=91,54";
+midi 3 1: 0 "parameter=10,64";
+1 1: 2.r; 
+midi all: 1 "tempo=72";
+rom above all: 1 "( \(sm4n) = 72 )";
+rom (14) above 1: 1 "Andante cantabile";
+2 1: 2.r; 
+2 2: 2.s; 
+3 1: [up]8d bm; [up]8e; [up]8f; [up]8a; [up]8d+; [up]8e+ ebm; 
+pedal 3: 1.000000;
+3 2: [down] 2.d-~d~; 
+bar // 1
+1 1: 2.r; 
+2 1: [down] 8f bm; [down] 8a; 8d+; 8e+; 8f+; 8a+ ebm; 
+pedal 2: 1.000000;
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [down] 2.d-d; 
+bar // 2
+1 1: 2.r; 
+2 1: 4.f+; 4.r; 
+2 2: 2.s; 
+3 1: 8a- bm; 8b-; 8c; [up]8e; [up]8a; [up]8b ebm; 
+3 2: [down] 2.a--~a-~; 
+bar // 3
+1 1: 2.r; 
+2 1: [down] 8c bm; [down] 8e; [down] 8a; 8b; 8c+; 8e+ ebm; 
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [down] 2.a--a-; 
+bar // 4
+1 1: 2.r; 
+2 1: 4.d+; 4.r; 
+2 2: 2.s; 
+3 1: 8b- bm; 8c; [up]8d; [up]8f; [up]8b; [up]8c+ ebm; 
+3 2: [down] 2.b--~b-~; 
+bar // 5
+1 1: 2.r; 
+2 1: [down] 8d bm; [down] 8f; 8b; 8c+; 8d+; 8f+ ebm; 
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [down] 2.b--b-; 
+bar // 6
+1 1: 2.r; 
+2 1: 4a; 4g; 4r; 
+2 2: 2.s; 
+3 1: 8g- bm; 8a-; 8b-; [up]8d; [up]8g; [up]8a ebm; 
+3 2: [down] 2.g--~g-~; 
+bar // 7
+1 1: 2.r; 
+2 1: 8b- bm; 8d; 8g; 8a; [up]8b; [up]8d+ ebm; 
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [down] 2.g--g-; 
+bar // 8
+1 1: 2.r; 
+2 1: 4.c+; 4.r; 
+2 2: 2.s; 
+3 1: 8a- bm; 8b-; 8c; [up]8e; [up]8a; [up]8b ebm; 
+3 2: [down] 2.a--~a-~; 
+bar // 9
+1 1: 2.r; 
+2 1: [down] 8c bm; [down] 8e; [down] 8a; 8b; 8c+; 8e+ ebm; 
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [down] 2.a--a-; 
+bar // 10
+1 1: 2.r; 
+2 1: 2.g; 
+2 2: 2r; [down] 8a- bm; [with -] [down] 8e ebm; 
+3 1: 8a-- bm; 8e-; 8a-; [up]8e ebm; 4s; 
+3 2: [down] 2.b---~a--~; 
+bar // 11
+1 1: 2.r; 
+2 1: [with >][down] 8a bm; 8e+; [down] 8a; 8e+; 8a+; 8d++ ebm; 
+octave above 2: 2 "8va" til 1m + 2.000000;
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [down] 2.b---a--; 
+bar // 12
+1 1: 2.r; 
+2 1: 8b+ bm; 8g+; 8d+; 8b+; 8g+; 8d+ ebm; 
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [down] 2.d-~d~; 
+bar // 13
+1 1: 2.r; 
+2 1: [up]8b bm; 8g; 8d; 8b-; 8g-; 8e- ebm; 
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [down] 2d-~d~; [down] 16d-d; 16d~; [down] 8d-d; 
+bar // 14
+1 1: 2.r; 
+2 1: 8f- bm; 8a-; 8d; 8e; 8f; 8a ebm; 
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [down] 2.d--~d-~; 
+bar // 15
+1 1: 2.r; 
+2 1: 8d+ bm; 8e+; 8f+; 8a+; 8d++; 8e++ ebm; 
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [down] 2.d--~d-~; 
+bar // 16
+1 1: 2.r; 
+2 1: 2.f++; 
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [down] 2.d--d-; 
+dblbar // 17
+1 1: [up]2.b~; 
+2 1: 2.r; 
+2 2: 2.s; 
+3 1: [up]8d bm; [up]8f; [up]8b; [up]8f; [up]8d+; [up]8b ebm; 
+3 2: [down] 2.d-d; 
+bar // 18
+1 1: [up]4b; 4a; 4g; 
+2 1: 2.r; 
+2 2: 2.s; 
+3 1: [up]8d bm; [up]8g; [up]8b; [up]8g; [up]8d+; [up]8b ebm; 
+3 2: [down] 2.b--b-; 
+bar // 19
+1 1: 2g; 8f bm; 8e ebm; 
+2 1: 2.r; 
+2 2: 2.s; 
+3 1: [up]8d bm; [up]8f; [up]8b; [up]8f; [up]8d+; [up]8c+ ebm; 
+3 2: [down] 2.d-d; 
+bar // 20
+1 1: 2f; 4r; 
+2 1: 2.r; 
+2 2: 2.s; 
+3 1: [up]8a# bm; [up]8f+; [up]8e+; [up]8c+; [up]8a; [up]8f ebm; 
+3 2: [down] 2c-c; [ grace] 8f--~f-~; [down] 4f--f-; 
+bar // 21
+1 1: 2.b~; 
+2 1: 2.r; 
+2 2: 2.s; 
+3 1: [up]8d bm; [up]8f; [up]8b; [up]8f; [up]8d+; [up]8b ebm; 
+3 2: [down] 2.b--b-; 
+bar // 22
+1 1: 4b; 4a; 4g; 
+2 1: 2.r; 
+2 2: 2.s; 
+3 1: [up]8b bm; [up]8g; [up]8d; [up]8g; [up]8b; [up]8d ebm; 
+3 2: [down] 2.g--g-; 
+bar // 23
+1 1: 4g; 4.f; 8e#; 
+2 1: 2.r; 
+2 2: 2.s; 
+3 1: [up]8e bm; 8c; [up]8f; [up]8g; [up]8f; [up]8a# ebm; 
+3 2: [down] 2.f--f-; 
+bar // 24
+1 1: 2f; 4r; 
+2 1: 2.r; 
+2 2: 2.s; 
+3 1: [up]8c+ bm; [up]8f; [up]8a#; [up]8f; 8c; [up]8e ebm; 
+3 2: [down] 2.b#---a#--; 
+bar // 25
+1 1: 4b; 4a#; 4b; 
+2 1: 8b- bm; 8d; 8e; 8c; 8d; 8b- ebm; 
+2 2: 2.s; 
+3 1: 2.s; 
+3 2: [up]4b--b-d; [up]4c-c; [up]4b--b-; 
+bar // 26
+1 1: 4.g; [down] 8a bm; 8b; 8c+ ebm; 
+2 1: 4.c; 4.r; 
+2 2: [down] 8c; [down] 8b-; [down] 8a-; 4.s; 
+3 1: 4.e-; 8f- bm; 8g-; 8a- ebm; 
+3 2: [up]2.e-e; 
+bar // 27
+1 1: 4d+; 4c+; 4d+; 
+2 1: 8d bm; 8b-; 8a-; 8c; 8b-; 8d ebm; 
+2 2: 2.s; 
+3 1: 4b--b-; 4c-c; 8b--b- bm; 8d-d ebm; 
+3 2: 2.s; 
+bar // 28
+1 1: 4.b; 8c+ bm; 8d+; 8b ebm; 
+2 1: 4a; 4g; 4r; 
+2 2: 2.s; 
+3 1: 8g- bm; 8b-; [up]8d; [up]8e; [up]8f; [up]8g ebm; 
+3 2: [up]2.g--g-; 
+bar // 29
+1 1: 4a#; 4b; 4an; 
+2 1: 4.a#-dfb; 8d bm; 8f; 8e ebm; 
+roll 2 1: 1.000000;
+2 2: 2.s; 
+3 1: 8b--b-; 2b--b-; 8b--~b-~; 
+3 2: 2.s; 
+bar // 30
+1 1: 4g; 4f; 4e#; 
+2 1: 8e bm; 8g; 8d; 8f; 8c; [up]8b ebm; 
+2 2: 2.s; 
+3 1: 8b--b-; 4c-c; 4d-d; 8g-g; 
+3 2: 2.s; 
+bar // 31
+1 1: 8f bm; 8g#; 8a#; [up]8c+; 8a; [up]8c+ ebm; 
+phrase  1: 1 til 1m + 3.000000;
+2 1: 2s; { 16f bm; 16a#; [up]16c+ ebm;  } above  3 ; { [down] 16a bm; 16c+; 16e+ ebm;  } above  3 ; 
+rom (14) below 2: 1.000000 "crescendo et accelerando...";
+2 2: 2.s; 
+3 1: { 16c bm; [up]16f; [up]16a# ebm;  } above  3 ; { [up]16f bm; [up]16a; [up]16c+ ebm;  } above  3 ; { [up]16a bm; [up]16c+; [up]16f+ ebm;  } above  3 ; { [up]16c+ bm; [up]16f+; [up]16a#+ ebm;  } above  3 ; 4s; 
+3 2: [up]2.f--f-; 
+bar // 32
+1 1: 8f+ bm; [down] 8a#; 8c+; 8f+ ebm; 4a#+; 
+2 1: [up]16f+ bm; 16f; 16a#; 16f; [up]16c+; 16a; [up]16f+; 16a; [up]16c+; 16a; 16f; [up]16f+ ebm; 
+2 2: 2.s; 
+3 1: 16f-- bm; 16f-; 16g-; 16e#-g-; 16f-; 16f--; 16g-; 16g--e-; 16f--; 16f-; 16g-; 16e-g- ebm; 
+3 2: 2.s; 
+bar // 33
+1 1: [with >]2c++; 4r; 
+2 1: 2.cfa#c+; 
+midi 2 1: 1 "parameter=7,100";
+boldital above 2: 1 "ff"; // volumesign
+roll 2 1: 1.000000;
+2 2: 2.s; 
+3 1: 2.f--f-a#-; 
+roll 3 1: 1.000000;
+3 2: 2.s; 
+dblbar // 34
+score
+staff 1
+	key = 1#
+staff 2
+	key = 1#
+staff 3
+	key = 1#
+music
+1 1: 2.r; 
+2 1: 4.db; 8db; 4db; 
+midi all: 1 "tempo=80";
+rom above all: 1 "( \(sm4n) = 80 )";
+roll 2 1: 3.000000;
+2 2: 2.s; 
+3 1: 4.g-g; 8g-g; 4g-g; 
+roll 3 1: 3.000000;
+3 2: 2.s; 
+bar // 35
+1 1: 2.r; 
+2 1: 4.e&c+; 8ec+; 4ec+; 
+2 2: 2.s; 
+3 1: 4.cg; 8cg; [up]4g; 
+3 2: 2s; [down] 4b-~; 
+bar // 36
+1 1: 2.r; 
+2 1: 4g; 4a; 4fc+; 
+roll 2 1: 3.000000;
+2 2: [down] 4en~; [down] 4e; 4r; 
+3 1: [up]4c+~; [up]4c+~; [up]8c+; [up]8a~; 
+3 2: [down] 8b-; [down] 8a-~; [down] 4a-; [down] 4d-; 
+bar // 37
+1 1: 2.r; 
+2 1: [up]4b&~; [up]8b; 8g; 4d; 
+2 2: [down] 4d~; [down] 4d; [down] 4b&-; 
+3 1: [up]8a; [up]8g~; [up]4g; [up]8g bm; [up]8f# ebm; 
+3 2: [down] 4g-; [down] 4b&-; 8d bm; [down] 8c ebm; 
+bar // 38
+1 1: 2.r; 
+2 1: 4g; 4a; [up]4b&; 
+2 2: [down] 4d; [down] 4d; [down] 8d bm; [down] 8a ebm; 
+3 1: [up]4g; [up]4f#; [up]4g; 
+3 2: [down] 4b&-; [down] 4a-; [down] 8g- bm; [down] 8d- ebm; 
+bar // 39
+1 1: 2.r; 
+2 1: [up]2.b&; 
+2 2: [down] 8g bm; [down] 8e&; [down] 8fn; [down] 8d; [down] 8e&; [down] 8d ebm; 
+3 1: [up]8b& bm; [up]8g; [up]8a; [up]8g; [up]8g; [up]8f# ebm; 
+3 2: [down] 2.e&-; 
+bar // 40
+1 1: 2.r; 
+2 1: [up]4b&~; [up]8b bm; 8a ebm; 4g; 
+2 2: [down] 4g; [down] 4f#; [down] 4g; 
+3 1: [up]4d; [up]4e&; [up]8d bm; [up]8g ebm; 
+3 2: [down] 4g-; [down] 4a-; [down] 4b&-; 
+bar // 41
+1 1: 2.r; 
+2 1: 8f bm; [up]8e&+~ ebm; [up]2e+; 
+2 2: [down] 4a; [down] 2e&; 
+3 1: [up]4c+; [with >][up]4c+; [with >][up]4c+; 
+3 2: [down] 4e&-; [with >] 4f#~; 8f bm; [down] 8d- ebm; 
+bar // 42
+1 1: 2.r; 
+2 1: [up]8d+ bm; [up]8b&; [up]8c+; 8a; 8g; [up]8d+ ebm; 
+2 2: [down] 4d; [down] 4e&; [down] 4d; 
+3 1: [up]4b&; [up]4a; [up]4b; 
+3 2: [down] 4g-; [down] 4f-; [down] 4g-; 
+bar // 43
+1 1: 2.r; 
+2 1: [up]8c+ bm; 8a; 8f; [up]8c+; [up]8b&; 8g ebm; 
+2 2: [down] 4d; [down] 4d; [down] 4d; 
+3 1: [up]4f; [up]4a; [up]4g; 
+3 2: [down] 4a-; [down] 4f-; [down] 4g-; 
+bar // 44
+1 1: 2.r; 
+2 1: [up]8e&+ bm; [up]8d+; [up]8c+; [up]8e+; [up]8d+; [up]8c#+ ebm; 
+2 2: [down] 4g; [down] 4f; [down] 4e; 
+3 1: [up]4c+; [up]4a; [up]4b&; 
+3 2: [down] 4c; 4e&; [down] 4c; 
+bar // 45
+1 1: 2.r; 
+2 1: [up]8d+ bm; [up]8a+ ebm; 2f+; 
+2 2: [down] 4d; [down] 4a-; [down] 4a; 
+3 1: [up]4c+; [up]4f; [up]4d+; 
+3 2: 4d; [down] 4d-; [down] 4c; 
+bar // 46
+1 1: 2.r; 
+2 1: [up]8b& bm; 8g; 8a; 8f; 8g; 8d ebm; 
+2 2: [ grace] 16d~; [down] 4d; [down] 4c; [down] 4b&-; 
+3 1: { 8g- bm; [up]8d; [up]8b& ebm;  } above  3 ; { 8a- bm; [up]8e&; [up]8f# ebm;  } above  3 ; { 8b&- bm; [up]8d; [up]8g ebm;  } above  3 ; 
+3 2: 2.s; 
+bar // 47
+1 1: 2.r; 
+2 1: [up]8c+ bm; 8a; [up]8b&; 8g; 8a; 8f ebm; 
+2 2: [down] 4e&; [down] 4d; [down] 4c; 
+3 1: { 8a- bm; [up]8f; [up]8c+ ebm;  } above  3 ; { 8b&- bm; [up]8g; [up]8b& ebm;  } above  3 ; { 8c bm; [up]8e&; [up]8f ebm;  } above  3 ; 
+3 2: 2.s; 
+bar // 48
+1 1: 2.r; 
+2 1: [up]8e&+ bm; [up]8c+; [up]8d+; [up]8e+; [up]8e+; [up]8d+ ebm; 
+2 2: [down] 4f; [down] 4a; [down] 4f; 
+3 1: { 8c bm; [up]8f; [up]8a ebm;  } above  3 ; { [up]8d bm; [up]8f; [up]8a ebm;  } above  3 ; { 8c bm; [up]8f; [up]8a ebm;  } above  3 ; 
+3 2: 2.s; 
+bar // 49
+1 1: 2.r; 
+2 1: [up]16d+ bm; 16a; 16f; 16d ebm; 16a bm; 16f; 16d; 16a- ebm; 16g bm; 16fn; 16d; 16b- ebm; 
+2 2: [down] 4d; 2r; 
+3 1: { 8d- bm; 8a-; [up]8f ebm;  } above  3 ; { 8d- bm; 8a-; [up]8f ebm;  } above  3 ; { 8d- bm; 8g-; [up]8fn ebm;  } above  3 ; 
+3 2: 2.s; 
+bar // 50
+1 1: 2.r; 
+2 1: 16d bm; 16a-; 16f-; 16d- ebm; 16a- bm; 16f-; 16d-; 16a-- ebm; 16g- bm; 16fn-; 16d-; 16b-- ebm; 
+2 2: 2.s; 
+3 1: { 8d-- bm; 8a--; 8f- ebm;  } above  3 ; { 8d-- bm; 8a--; 8f- ebm;  } above  3 ; { 8d-- bm; 8g--; 8fn- ebm;  } above  3 ; 
+3 2: 2.s; 
+bar // 51
+1 1: 2.r; 
+midi all: 1 "tempo=80";
+rom above all: 1 "( \(sm4n) = 80 )";
+rom above 1: 1.000000 "accel.";
+2 1: 16d- bm; 16fn-; 16g#-; 16d- ebm; 16fn- bm; 16g-; 16b-; 16d- ebm; 16fn- bm; 16g-; 16b-; 16d ebm; 
+2 2: 2.s; 
+3 1: { 8b--- bm; 8g#--; 8d- ebm;  } above  3 ; { 8d-- bm; 8b--; 8fn- ebm;  } above  3 ; { 8b--- bm; 8g#--; 8d- ebm;  } above  3 ; 
+3 2: 2.s; 
+bar // 52
+1 1: 2.r; 
+2 1: 16f bm; 16e; 16a; 16g# ebm; 16c#+ bm; 16b; 16e+; [down] 16e ebm; [down] 16a bm; 16c+; 16e+; 16g+ ebm; 
+2 2: 2.s; 
+3 1: { 8a--a-c# bm; 8e-; 8c ebm;  } above  3 ; { 8a--a-e bm; 8g-; 8a- ebm;  } above  3 ; { 8c bm; 8a-; 8e- ebm;  } above  3 ; 
+roll 3 1: 1.000000;2.000000;
+3 2: 2.s; 
+bar // 53
+1 1: 2r; 8r; 8a; 
+2 1: 16a+ bm; 16e+; 16c#+; [down] 16g ebm; 16a bm; 16e; 16c#; 16e ebm; 16a- bm; 16e-; 16a-; 16c ebm; 
+pedal 2: 3.750000*;
+2 2: 2.s; 
+3 1: { 8a- bm; 8e-; 8c#- ebm;  } above  3 ; { 8g- bm; 8e-; 8c- ebm;  } above  3 ; { 8e- bm; 8c-; 8g-- ebm;  } above  3 ; 
+pedal 3: 3.656250*;
+3 2: 2.s; 
+bar // 54
+score
+staff 1
+	key = 2#
+score
+	time = 6/8
+staff 2
+	key = 2#
+staff 3
+	key = 2#
+music
+1 1: 8d+ bm; 8f+; 8d+ ebm; 8c+ bm; 8b; 8c+ ebm; 
+midi all: 1 "tempo=126";
+rom above all: 1 "( \(sm4n) = 126 )";
+rom (14) above 1: 1.000000 "Vivace";
+2 1: 8a-df; 8r; 8r; 8g-ce; 8r; 8r; 
+roll 2 1: 1.000000;4.000000;
+2 2: 2.s; 
+3 1: [with ,]4.d-d; [with ,]4.e-e; 
+3 2: 2.s; 
+bar // 55
+1 1: 8d+; 4a; 4r; 8a; 
+2 1: 8f-a-d; 8r; 8r; 8r; 8egac+; 8r; 
+roll 2 1: 1.000000;5.000000;
+2 2: 2.s; 
+3 1: [with ,]4.f-f; [with ,]4.b--b-; 
+3 2: 2.s; 
+bar // 56
+1 1: 8b bm; 8e+; 8d+ ebm; 8c+ bm; 8b; 8c+ ebm; 
+2 1: 8b-egb; 8r; 8r; 8cea; 8r; 8r; 
+roll 2 1: 1.000000;4.000000;
+2 2: 2.s; 
+3 1: [with ,]4.g--g-; [with ,]4.a--a-; 
+3 2: 2.s; 
+bar // 57
+1 1: 4a; 8r; 4r; 8a; 
+2 1: 8a-ceg; 8r; 8r; [with .]8a++; 8r; 8r; 
+roll 2 1: 1.000000;
+2 2: 2.s; 
+3 1: [with ,]4.c-c; 4.r; 
+3 2: 2.s; 
+bar // 58
+1 1: 8d+ bm; 8f+; 8d+ ebm; 8c+ bm; 8b; 8c+ ebm; 
+2 1: 8a-df; 8r; 8r; 8g-ce; 8r; 8r; 
+roll 2 1: 1.000000;4.000000;
+2 2: 2.s; 
+3 1: [with ,]4.d-d; [with ,]4.e-e; 
+3 2: 2.s; 
+bar // 59
+1 1: 8d+; 4a; 4r; 8a; 
+2 1: 8f-a-d; 8r; 8r; 8r; 8gbd+f+; 8r; 
+roll 2 1: 1.000000;5.000000;
+2 2: 2.s; 
+3 1: [with ,]4.f-f; [with ,]8d-d; [with ,]8b--b-; [with ,]8f--f-; 
+3 2: 2.s; 
+bar // 60
+1 1: 8b bm; 8d+; 8c+ ebm; 8b bm; 8f+; 8e+ ebm; 
+2 1: 8dgb; 8r; 8r; 8egb; 8r; 8r; 
+roll 2 1: 1.000000;4.000000;
+2 2: 2.s; 
+3 1: [with ,]4.g--g-; [with ,]4.b--b-; 
+3 2: 2.s; 
+bar // 61
+1 1: 4f+; 4r; 8r; [ grace; slash 1] 8g+; 16f+ bm; 16d#+ ebm; 
+2 1: 8cfa#; 8fad+; 8ac+e+; 8d#fb; 8fbd#+; 8bd+f+; 
+roll 2 1: 2.000000;3.000000;4.000000;5.000000;6.000000;
+pedal 2: 1.000000;
+2 2: 2.s; 
+3 1: 4.a#--a#-; [with ,]4.b--b-; 
+pedal 3: 1.000000;
+3 2: 2.s; 
+bar // 62
+1 1: 8e+ bm; 8c+; [down] 8a ebm; 8b bm; 8c+; [down] 8a ebm; 
+2 1: [up]8c#+e+a+; 8r; 8r; [up]8c+e+g+; 8r; 8r; 
+roll 2 1: 1.000000;4.000000;
+pedal 2: 4.000000*;
+2 2: 2.s; 
+3 1: 8c-c; [with ,]8b--b-; [with ,]8a--a-; [with ,]8b--b-; [with ,]8a--a-; [with ,]8g--g-; 
+pedal 3: 1.000000*;
+3 2: 2.s; 
+bar // 63
+1 1: 4.d+; 4r; 8a; 
+2 1: 8ad+f+; 8r; 8r; 4.r; 
+roll 2 1: 1.000000;
+2 2: 2.s; 
+3 1: [with ,]4.d--d-; [with ,]4.a--a-; 
+3 2: 2.s; 
+bar // 64
+1 1: 8d+ bm; 8f+; 8d+ ebm; 8c+ bm; 8b; 8c+ ebm; 
+2 1: 8a-df; 8r; 8r; 8a-ceg; 8r; 8r; 
+roll 2 1: 1.000000;4.000000;
+2 2: 2.s; 
+3 1: [with ,]4.d-d; [with ,]4.e-e; 
+3 2: 2.s; 
+bar // 65
+1 1: 8d+; 8f+; 8r; 4r; 8a; 
+2 1: 8a-df; 8r; 8r; 8r; 8egac+; 8r; 
+roll 2 1: 1.000000;5.000000;
+2 2: 2.s; 
+3 1: [with ,]4.f-f; [with ,]4.d-d; 
+3 2: 2.s; 
+bar // 66
+1 1: 8b bm; 8e+; 8d+ ebm; 8c+ bm; 8b; 8c+ ebm; 
+2 1: 8cegb; 8r; 8r; 8cea; 8r; 8r; 
+roll 2 1: 1.000000;4.000000;
+2 2: 2.s; 
+3 1: [with ,]4.g--g-; [with ,]4.a--a-; 
+3 2: 2.s; 
+bar // 67
+1 1: 4a; 8r; 4r; 8a; 
+2 1: 8ceg; 8r; 8r; 8r; 8gc+; 8r; 
+roll 2 1: 1.000000;5.000000;
+2 2: 2.s; 
+3 1: [with ,]4.c-c; [with ,]4.e-e; 
+3 2: 2.s; 
+bar // 68
+1 1: 16d+ bm; 16e+; 16f+; 16e+; 16d+; 16e+ ebm; 16d+ bm; 16c+; 16c+; 16b; [down] 16a; 16c+ ebm; 
+2 1: 8fad+; 8r; 8dfa; 8eac+; 8r; 8ega; 
+2 2: 2.s; 
+3 1: 4.d-d; 4.a--a-; 
+3 2: 8r; [down] 4d--; 8r; [down] 4b---; 
+bar // 69
+1 1: [ grace] 8d+ bm; [ grace] 8e+; [up]16d+; 16a; [up]16f+ ebm; 16r; 8r; 8r; 8r; 8a; 
+2 1: 8a-df; 8r; 8f-a-d; 8a-eg; 8r; 8r; 
+2 2: 2.s; 
+3 1: [with ,]4.d-d; [with ,]4.a--a-; 
+3 2: 2.s; 
+bar // 70
+1 1: 16b bm; [down] 16a; 16c+; [down] 16a; 16d+; [down] 16a ebm; 16c+ bm; 16d+; 16e+; 16c+; [down] 16a; 16e+ ebm; 
+2 1: 8dgb; 8r; 8r; 8cea; 8r; 8r; 
+roll 2 1: 1.000000;4.000000;
+2 2: 2.s; 
+3 1: 4.g--g-; 4.a--a-; 
+3 2: 2.s; 
+bar // 71
+1 1: [ grace] 8f+ bm; [ grace] 8e+; [up]8f+ ebm; 4r; 4r; 8f+; 
+phrase  1: 6 til 2m + 6.000000;
+2 1: 8dfa; 8r; 8r; 8a- bm; 8f; 8a ebm; 
+roll 2 1: 1.000000;
+2 2: 2.s; 
+3 1: [down] 2.d--d-; 
+3 2: [up]8d- bm; [up]8e-; [up]8f-; [up]8e-; [up]8d-; [up]8c- ebm; 
+bar // 72
+1 1: 8g+ bm; 8e+; 8b ebm; 8f+ bm; 8d+; 8b ebm; 
+2 1: [up]16b bm; 16a; 16g; 16e; [up]16b; 16g ebm; 16a bm; 16g; 16f; 16d; 16a; 16f ebm; 
+pedal 2: 1.000000;
+2 2: 2.s; 
+3 1: 8e--e- bm; 8g--g-; 8b--b-; 8b--b-; 8d-d; 8f-f ebm; 
+pedal 3: 1.000000;
+bar // 73
+1 1: 8e+ bm; 8c+; [down] 8g ebm; 8d+ bm; 8b; [down] 8f ebm; 
+2 1: 16g bm; 16f; 16e; 16c; 16e; 16g ebm; 16f bm; 16e; 16d; 16c; 16d; 16f ebm; 
+2 2: 2.s; 
+3 1: 8e--e- bm; 8g--g-; 8c-c; 8b--b-; 8d-d; 8f-f ebm; 
+bar // 74
+1 1: [up]8c+ bm; 8a#; 8f ebm; [up]8c+ bm; 8g; 8e ebm; 
+phrase  1: 1 til 1m + 6.000000;
+2 1: 16e bm; 16d; 16c; 16b-; 16a#-; 16f ebm; 16e bm; 16d; 16c; 16b-; 16c; 16e ebm; 
+2 2: 2.s; 
+3 1: 8f--f- bm; 8a#--a#-; 8c-c; 8e--e-; 8g--g-; 8c-c ebm; 
+bar // 75
+1 1: [up]8b bm; 8g; 8d ebm; [up]8b bm; 8f; 8d ebm; 
+2 1: 16d bm; 16c; 16b-; 16g-; 16b-; 16g- ebm; 16b- bm; 16f-; 16a#-; 16b-; 16d; 16f ebm; 
+2 2: 2.s; 
+3 1: 8g--g- bm; 8b--b-; 8d-d; 8b--b-; 8d-d; 8f-f ebm; 
+bar // 76
+1 1: 8g bm; 8e; 8a ebm; 8c+ bm; 8e+; 8d+ ebm; 
+phrase  1: 1 til 1m + 6.000000;
+2 1: 16e bm; 16g; 16c; 16e; 16f; 16g ebm; [down] 16a bm; [down] 16f; 16c+; 16d+; 16b; [down] 16g ebm; 
+2 2: 2.s; 
+3 1: 8a--a- bm; 8c-c; 8e-e; 8g-g; 8e-e; 8c-c ebm; 
+bar // 77
+1 1: 8c+ bm; 8g+; 8e#+ ebm; 8f+ bm; 8g++; 8e#++ ebm; 
+2 1: [down] 16a bm; 16c+; 16e+; 16d+; 16c+; [down] 16g ebm; [up]16d+ bm; 16g; [up]16e+; 16g; [up]16e#+; 16g ebm; 
+2 2: 2.s; 
+3 1: 8a--a- bm; 8c-c; 8g--g-; 8f--f-; 8g--g-; 8a#--a#- ebm; 
+bar // 78
+1 1: [with >]4.f++; [with >]4.f+; 
+2 1: [up]16f+ bm; [up]16c+; 16a#; 16f; 16c; 16a#- ebm; [up]16c+ bm; 16a; 16f; 16c; 16a-; 16f- ebm; 
+2 2: 2.s; 
+3 1: 8a#-a# bm; 8f-f; 8e-e; 8c-c; 8a#--a-; 8f--f- ebm; 
+bar // 79
+1 1: [with "\(ferm)"]2.f; 
+2 1: 16a# bm; 16f; 16d; 16c; 16a#-; 16f- ebm; [with "\(ferm)"]4.a-; 
+2 2: 2.s; 
+3 1: 4.f--f-; 4.f--f-c; 
+roll 3 1: 4.000000;
+dblbar // 80
+score
+score
+	time = 3/4
+music
+1 1: 2.r; 
+2 1: 2.b-~d~f~b~; 
+rom (14) above 2: 1.000000 "Meno mosso et marcato";
+2 2: 2.s; 
+3 1: [with >]16d- bm; 16c-; 16b--; 16d- ebm; [with >]16f- bm; 16e-; 16d-; 16c- ebm; [with >]16a- bm; 16g-; 16f-; 16c ebm; 
+midi all: 1.25 "tempo=120";
+rom above all: 1.25 "( \(sm4n) = 120 )";
+bar // 81
+1 1: 2.r; 
+2 1: 4b-dfb; 4cega; 4g-b-dg; 
+2 2: 2.s; 
+3 1: [with >]16b- bm; 16c; [up]16d; 16b- ebm; [with >]16c bm; 16b-; 16a#-; 16c ebm; [with >]16b- bm; 16f-; 16g-; 16e#- ebm; 
+bar // 82
+1 1: 2.r; 
+2 1: 2a#-ceg; 4a-cef; 
+2 2: 2.s; 
+3 1: [with >]16g- bm; 16f-; 16e-; 16g- ebm; [with >]16a#- bm; 16g-; 16e-; 16g- ebm; [with >]16f- bm; 16g#-; 16a#-; 16f- ebm; 
+bar // 83
+1 1: 2.r; 
+2 1: 2.f-a#-cf; 
+roll 2 1: 1.000000;
+2 2: 2.s; 
+3 1: 16f-- bm; 16g#--; 16a#--; 16c- ebm; 16a-- bm; 16c-; 16e-; 16f- ebm; 16c- bm; 16f-; 16b-; 16a#- ebm; 
+bar // 84
+1 1: 2.r; 
+2 1: 2.d~f~b~d+~; 
+2 2: 2.s; 
+3 1: 16b- bm; 16c; [up]16d; 16c ebm; 16b- bm; [up]16d; [up]16f; [up]16e ebm; [up]16d bm; [up]16f; [up]16a; [up]16g ebm; 
+bar // 85
+1 1: 2.r; 
+2 1: 4dfbd+; 4egc+e+; 4gbd+f+; 
+2 2: 2.s; 
+3 1: [up]16f bm; [up]16e; [up]16f; [up]16d ebm; 16c bm; 16b-; 16c; 16g- ebm; 16f- bm; 16g-; 16b-; 16g- ebm; 
+bar // 86
+1 1: 2.r; 
+2 1: 2gc+e+g+a+; 4fa#c+f+; 
+2 2: 2.s; 
+3 1: 16e- bm; 16f-; 16g-; 16c ebm; 16f- bm; 16g-; 16e#-; 16f- ebm; 16a#- bm; 16c; 16f-; 16a- ebm; 
+bar // 87
+1 1: 2.r; 
+2 1: 2a#c+f+a#+; [with >]4cfac+; 
+roll 2 1: 1.000000;
+2 2: 2.s; 
+3 1: 16c bm; [up]16f; [up]16e; [up]16d ebm; 16c bm; 16f-; 16c; 16e- ebm; 16a#- bm; 16g-; 16f-; 16e- ebm; 
+bar // 88
+1 1: [ grace; slash 1] 8a+<9>; 8g+ bm; 8f+; 8e+; 8d+; 8c+; 8b ebm; 
+2 1: [with >]4b-b; 4a#-a#; 4b-b; 
+2 2: 2.s; 
+3 1: [with >]16d- bm; 16b--; 16b-; 16f- ebm; 16e- bm; 16c-; 16c; 16a#- ebm; 16b- bm; 16f-; [up]16d; 16c ebm; 
+bar // 89
+1 1: 8a bm; 8g ebm; [up]8g+ bm; [up]8a+; [up]8b+; [up]8c++ ebm; 
+phrase  1: 2 til 2m + 2.500000;
+2 1: 4.g; 8a bm; [up]8b; [up]8c+ ebm; 
+2 2: [with >] [down] 8c; [with >] [down] 8c; [with >] [down] 8c; [with >] [down] 8c bm; [with >] [down] 8d; [with >] [down] 8e ebm; 
+3 1: 16b- bm; 16a-; 16c; 16b- ebm; 16a- bm; 16g-; 16f-; 16a- ebm; 16g- bm; 16b-; 16a-; 16c ebm; 
+bar // 90
+1 1: [up]8d++ bm; [up]8e++; [up]8fn++; [up]8e++; [up]8f++; [up]8d++ ebm; 
+2 1: 4fnd+; 4ec+; 4fd+; 
+2 2: 2.s; 
+3 1: 16b&- bm; [up]16d; 16b-; 16g- ebm; 16a- bm; 16d-; 16b-; 16a- ebm; 16g- bm; 16b-; 16cn; [up]16d ebm; 
+bar // 91
+1 1: [up]8b&+ bm; [up]8b+; [up]8a+; [up]8g+; [up]8b&+; [up]8d++ ebm; 
+phrase  1: 3 til 3m + 1.000000;
+2 1: [up]4.b&; [up]8cn+ bm; [up]8d+; [up]8bn ebm; 
+2 2: [with >] [down] 8e; [with >] [down] 8e; [with >] [down] 8e; [with >] [down] 8e bm; [with >] [down] 8fn; [with >] [down] 8e# ebm; 
+3 1: [up]16e bm; [up]16fn; [up]16g; [up]16f ebm; [up]16e bm; [up]16d; 16cn; [up]16e ebm; [up]16d bm; [up]16fn; [up]16e#; [up]16g ebm; 
+bar // 92
+1 1: [up]8e+ bm; [up]8f+; [up]8g+; [up]8f+; [up]8a+; [up]8f+ ebm; 
+octave above 1: 1 "8va" til 1m + 3.000000;
+2 1: 4a#; [up]4b; 4an; 
+2 2: [with >] [down] 8f bm; [down] 8c; [down] 8g; [down] 8c; [down] 8f; [down] 8c ebm; 
+3 1: [up]16f bm; [up]16g; [up]16f; [up]16e# ebm; [up]16g bm; [up]16f; [up]16en; [up]16d ebm; 16c bm; 16b-; 16a-; 16g- ebm; 
+bar // 93
+1 1: [up]8e+ bm; [up]8c+; [up]8d+; [up]8c+; [up]8c+; [up]8c+ ebm; 
+2 1: 4g; 4f; 4e#; 
+2 2: [down] 8e bm; [down] 8c; [down] 8d; [down] 8c; [down] 8c; [down] 8c ebm; 
+3 1: 16e- bm; 16g-; 16e-; 16g- ebm; 16f- bm; 16a#-; 16f-; 16a- ebm; 16g#- bm; [up]16d; [up]16b; [up]16d ebm; 
+bar // 94
+1 1: [up]2.f+; 
+2 1: 4cfgc+; 4cegbd+; 4cfa#c+e+; 
+roll 2 1: 1.000000;2.000000;3.000000;
+2 2: [with >] [down] 4c; [with >] [down] 4c; [with >] [down] 4c; 
+3 1: [up]16f bm; [up]16e; [up]16d; 16c; 16b-; 16a#-; 16g#-; 16f-; 16e-; 16d-; 16c-; 16b-- ebm; 
+bar // 95
+1 1: 2.r; 
+2 1: [with >]16g-g bm; 16f-f; 16e-e; 16d-d; 16c-c; 16b--b-; 16a--a-; 16g--g-; 16f- ebm; 8.s; 
+3 1: 2f--g-; 16f- bm; 16e-e; 16d-d; 16c-c ebm; 
+bar // 96
+1 1: 2.r; 
+2 1: 4r; [with .][up]4g+; 4r; 
+3 1: [with -]16b--b- bm; [with -]16a--a-; [with -]16g--g-; [with -]16f--f- ebm; [with "\(ferm)"]2f--f-; 
+bar // 97
+1 1: 2r; 4f; 
+midi 1 1: 3 "parameter=7,88";
+boldital above 1: 3 "ppp"; // volumesign
+midi all: 1 "tempo=58";
+rom above all: 1 "( \(sm4n) = 58 )";
+rom (14) above 1: 3.000000 "Calmo et serioso";
+2 1: 2.r; 
+3 1: 2.r; 
+bar // 98
+1 1: [up]4b; [up]4c+; [up]4d+; 
+2 1: 2.r; 
+3 1: 4b--f-b-d; 4b--f-a-c; 4b--d-f-b-; 
+bar // 99
+1 1: [up]4e+; [up]4f+; [up]4g+; 
+2 1: 2.r; 
+3 1: 4b--d-f-a-; 4b--d-f-g-; 4a#--c-e-g-; 
+bar // 100
+1 1: [up]2.f+~; 
+2 1: 2.r; 
+3 1: 2.f--~c-~f-~; 
+bar // 101
+1 1: [up]2.f+; 
+2 1: 2.r; 
+3 1: 2.f--c-f-; 
+bar // 102
+1 1: [with "\(ferm)"][up]2.b; 
+2 1: [with "\(ferm)"]2.r; 
+3 1: [with "\(ferm)"]2.b--b-; 
+endbar // 103

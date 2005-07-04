@@ -1,0 +1,238 @@
+NoteEdit - a music score editor for Linux
+http://noteedit.berlios.de
+=========================================
+
+Summary
+-------
+NoteEdit is a music score editor that supports an unlimited number of staffs,
+an unlimited length of staffs, up to 9 voices per staff, a MIDI playback of
+written notes, a number of import and export filters to many formats like MIDI,
+MusicXML, ABC Music, PMX, MusiXTeX and LilyPond and more! 
+
+
+Main features
+-------------
+* Insertion/deletion/modification of notes, rests (and multirests),
+  ties/slurs, stem/beam control, instrument changes, repeats,
+  clef/time/key/volume/tempo and all other classical music notation
+  signatures.
+* Chords markings (based on KGuitar project).
+* Dynamic expression markings ((de)crescendo, octaviation, arpeggio, fermata,
+  trills, grace notes etc.).
+* Fixed expression markings (staccato, sforzato, portato, strong pizzicato,
+  sforzando etc.).
+* Multiple voices per staff (polyphony).
+* Drum notes (including drum and bass drum clef).
+* Flexible UI based on Qt/KDE. Supports zoom, multiple windows, many keyboard
+  shortcuts, Konqueror embedding and other candies.
+* Playback and other MIDI operations (reading and recording from MIDI keyboard)
+  are done using TSE3 library. Each staff can have its own channel, own
+  intsrument and own MIDI settings (reverbation, chorus). Currently played
+  element is highlighted!
+* Support for lyrics.
+* Basic score layout operations (setting brackets, braces, continuing bars over
+  staffs etc.).
+* Many useful tools like automatic placment of bars, automatic placement of
+  beams, transposition, copying&pasting of elements, optimization and resetting
+  of accidentals, MIDI importing (or recording from MIDI keyboard) filters etc.
+* Exports MIDI (using TSE3 library), MusicXML, ABC Music, PMX, MusiXTeX and
+  LilyPond.
+* Imports MIDI and MusicXML.
+* The NoteEdit fileformat is similar to the format of the music publication
+  program (MUP). It's a plaintext format, with a simple syntax for describing
+  the music, so computer geeks can edit it by hand if they want to:).
+* NoteEdit is translated into the following languages: German, Spanish, French,
+  Hungarian, Italian, Russian, Slovak, Slovene and Swedish. It supports UTF-8
+  encodings for lyrics, score title, composer, copyright and other document
+  strings. 
+
+
+The TSE3 library
+----------------
+From version 1.5.0 on, NoteEdit bases on a library by Pete Goodliffe called TSE3
+(TSE3 Homepage). It is a powerful open source sequencer engine written in C++.
+The libkmid version is further supported but this version doesn't offer all
+features (MIDI import for eg.).
+
+TSE3 has its own file format and NoteEdit can produce it by means of TSE3
+function calls. So the NoteEdit data are interchangable with sequencer
+applications basing on TSE3.
+
+The TSE3 library is not as much tested as the libkmid. So if you have problems
+with MIDI playback, installation or other realated functions please contact Pete
+Goodliffe. The TSE3 library comes with an application called tse3play. So you
+can test whether it works on your system. If so NoteEdit should work too! 
+
+
+Installation
+------------
+See INSTALL!
+
+
+Konqueror embedding (experimental)
+----------------------------------
+You can configure the Konqueror browser such a way that it starts NoteEdit as an
+embedded application. This requires installation of NoteEdit in KDE system.
+
+To configure embedding, first search for a file noteedit.desktop in $HOME/.kde
+(or $HOME/.kde2 or 3) and delete it!
+
+Then start Konqueror and choose:
+
+  Settings --> Configure Konqueror... --> File Associations -->
+  Add... (Group) audio --> (Type name:) x-notes
+
+In field Application Preference Order there should be already noteedit. In File
+patterns: insert: *.not and *.not.sav
+
+Press Apply and Ok! Now if you select a *.not and *.not.sav file the Konqueror
+should show the NoteEdit program embedded in Konqueror surface. It should start
+playing as well. 
+
+
+FAQ
+---
+See FAQ!
+
+The TiMidity server (only with TSE3)
+------------------------------------
+You can use the MIDI to WAVE converter and player TiMidity++
+(http://timidity.sourceforge.net) in server mode. This approach is interesting
+for all those who can't bring the MIDI device to work or don't have one.
+Usually, TiMidity included in most Linux distros already works in server mode
+out of the box. However, if you compile TiMidity yourself, don't forget to
+include --enable-server paramater when running the configure script!
+
+You should also try to change "the orchestra" by installing a different
+soundfont. Please have a look at http://www.hammersound.net and search for
+FluidR3 soundfont! Note that HammerSound includes many high quality soundfonts,
+so you should check the others as well. There are also some nice soundfont
+creator programs (eg. Swami) up there, which might help you with combining and
+editing different soundfonts.
+
+FluidR3 soundfont is in sfArk compression format. Download the decompressor from
+http://www.melodymachine.com and unpack:
+ $ tar -xvzf sfarkxtc_lx86.tar.gz
+
+Then decopmress the archive FluidR3122501.zip (Because of the spaces in file
+name the apostrophs are necessary):
+ $ unzip FluidR3122501.zip
+ $ ./sfarkxtc "FluidR3 GM.sfArk"
+
+It is recommended to rename the resulting file FluidR3  GM.SF2, because some
+Linux shells have problems dealing with spaces in file names:
+ $ mv "FluidR3 GM.SF2" FluidR3.sf2
+
+ Then in /usr/share/timidity/timidity.cfg
+(or /usr/local/share/timidity/timidity.cfg) change:
+ dir<<path_to_the_directory_there_the_FluidR3.sf2_file_is_situated>>
+and add:
+ soundfont FluidR3.sf2
+
+Comment all other lines! If all is ok, you can start TiMidity++ with:
+ $ timidity -iA -B2,8 -Os1l -s 44100     
+
+If you run the sound applications on your system with jack, you can connect
+timidity to it, like this:
+ $ timidity -iA -Oj -B2,8
+Take care that timidity and jackd (qjackctl) are started by the same user.
+You can optimize the B parameters to the capabilites of your system.
+
+Some Linux distros support automatic TiMidity server startup on system startup
+as well. 
+
+In NoteEdit sound configure dialog (Settings --> Configure NoteEdit --> Sound),
+you should see 4 new MIDI devices:
+ * Timidity port 0 128:0
+ * Timidity port 1 128:1
+ * Timidity port 2 128:2
+ * Timidity port 3 128:3
+
+Choose one of them and the playback should work!
+An external midi keyboard has to be connected with NoteEdit with an external
+application like kaconnect or qjackctl.
+
+Tip!
+----
+If the playback interrupts during turn over, then start TiMidity as root. This 
+increases the priority of the TiMidity process. Use the following command in
+this case:
+ # timidity --realtime-priority=100 -iA -B2,8 -Os1l -s 44100
+
+Note!
+-----
+This can lead to operating system problems if your CPU performance is too weak!
+If so, then try to decrease the priority and/or the frequency: 
+ # timidity --realtime-priority=60 -iA -B2,8 -Os1l -s 22050
+
+ 
+Bug reports
+-----------
+Should you encounter any bugs, you have any requests or would like to contact
+the NoteEdit development team for any reason, please send us an email to
+noteedit-devel@lists.berlios.de mailing list.
+
+
+News Groups
+-----------
+NoteEdit has no special news group. You can find information about new
+versions and features at (but do not uses these groups for bug reports, see Bug
+reports):
+
+    * alt.music.midi                    * comp.text.tex
+    * comp.music.midi                   * de.comp.text.tex
+    * comp.music.misc                   * rec.music.compose
+    * comp.os.linux.announce            * rec.music.makers
+    * comp.os.linux.development.apps    * rec.music.misc
+
+    
+Mailing lists
+-------------
+noteedit-user@lists.berlios.de
+noteedit-devel@lists.berlios.de
+
+
+Documentation
+-------------
+The documentation is part of the NoteEdit archive. You find it in the doc
+directory. The german translation can be found under "de", the english original
+is in the NoteEdit directory including all the pictures.
+
+After having installed NoteEdit, you can read the documentation by selecting the
+NoteEdit Handbook option from the Help menu.
+
+In case of an error when trying to open the documentation file it might be that
+KDE can't find it if you compiled the program from the sources. Try to change
+the prefix so it points to the KDE directory on your distribution (usually /usr)
+in that
+case. 
+
+We Need Your Help
+-----------------
+If you're a composer, arranger or other musician who use NoteEdit,trust us
+your  wishes, ideas and features you'd like to see them in future versions of
+NoteEdit, show us your own compositions, arrangements or other work you
+created and share your thoughts and vision of NoteEdit with us. If you're
+a programmer and would like to become a developer, join our mailing list and
+we'll gladly help you to get familiar with the code. If NoteEdit doesn't
+support your language yet or you  would like to update the current translation,
+contact us and become a translator! NoteEdit also lacks the amount and quality
+of documentation in  places. If you feel like updating or adding a paragraph
+or two to our documentation, we'll be grateful for your efforts. And if you
+think you could contribute to our project in any other  way, feel free to 
+join the mailing list and make a contact with us. Our goal is to make NoteEdit
+composer's best friend. We can achieve that only with *your* help!
+
+License
+-------
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 2 of the License, or (at your option)
+any later version. This program is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License (http://www.fsf.org/copyleft/gpl.html) for more details.
+
+
+NoteEdit team, based on original README by
+J. Anders, Professur Rechnernetz u. verteilte Systeme TU-Chemnitz

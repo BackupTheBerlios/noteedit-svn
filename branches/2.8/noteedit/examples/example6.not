@@ -1,0 +1,473 @@
+header
+	title bold (20) "Music"
+footer
+	title bold (13) "classical"
+score
+	pedstyle = pedstar
+	staffs = 6
+	time = 4/4
+score
+staff 1
+label = "melo"
+// overlength = 69
+// underlength = 47
+// lyricsdist = 20
+	clef=treble
+staff 2
+label = "strings"
+// overlength = 72
+// underlength = 49
+// lyricsdist = 20
+	clef=treble
+staff 3
+label = "piano"
+// overlength = 66
+// underlength = 54
+// lyricsdist = 20
+	clef=treble
+staff 4
+label = "sax"
+// overlength = 56
+// underlength = 56
+// lyricsdist = 20
+	clef=treble
+	defoct=3
+staff 5
+label = "Bass"
+// overlength = 54
+// underlength = 54
+// lyricsdist = 20
+	clef=bass
+	defoct=2
+staff 6
+label = "drums"
+// overlength = 49
+// underlength = 49
+// lyricsdist = 20
+	clef=drum_bass
+//	irregular = d& g& b& 
+music
+midi 1 1: 0 "channel=5"; 0 "program=25";
+midi 2 1: 0 "channel=6"; 0 "program=48";
+midi 3 1: 0 "channel=4"; 0 "program=0";
+midi 4 1: 0 "channel=3"; 0 "program=65";
+midi 5 1: 0 "channel=2"; 0 "program=33";
+midi 6 1: 0 "channel=10"; 0 "program=0";
+midi 1 1: 0 "parameter=7,124";
+midi 1 1: 0 "parameter=93,47";
+midi 1 1: 0 "parameter=91,48";
+midi 1 1: 0 "parameter=10,80";
+midi 2 1: 0 "parameter=7,52";
+midi 2 1: 0 "parameter=93,48";
+midi 2 1: 0 "parameter=91,16";
+midi 2 1: 0 "parameter=10,10";
+midi 3 1: 0 "parameter=7,80";
+midi 3 1: 0 "parameter=93,14";
+midi 3 1: 0 "parameter=91,26";
+midi 3 1: 0 "parameter=10,64";
+midi 4 1: 0 "parameter=7,87";
+midi 4 1: 0 "parameter=93,0";
+midi 4 1: 0 "parameter=91,0";
+midi 4 1: 0 "parameter=10,90";
+midi 5 1: 0 "parameter=7,127";
+midi 5 1: 0 "parameter=93,0";
+midi 5 1: 0 "parameter=91,0";
+midi 5 1: 0 "parameter=10,110";
+midi 6 1: 0 "parameter=7,80";
+midi 6 1: 0 "parameter=93,0";
+midi 6 1: 0 "parameter=91,0";
+midi 6 1: 0 "parameter=10,50";
+1 1: 1r; 
+midi all: 1 "tempo=177";
+rom above all: 1 "( \(sm4n) = 177 )";
+2 1: 1r; 
+3 1: 2egc+; 2r; 
+4 1: [with .]8c+ bm; [with .]8c+; [with .]8c+; [with .]8c+ ebm; [with .]8e+ bm; [with .]8e+; [with .]8c+; [with .][down] 8g ebm; 
+5 1: 2c; 2r; 
+6 1: 4c- brec dn- bcr2 e- bcr ; 2.r; 
+bar // 1
+1 1: 1r; 
+2 1: 1r; 
+3 1: 2eac+; 2r; 
+4 1: [with .]8a bm; [with .]8a; [with .]8a; [with .]8a ebm; [with .]8c+ bm; [with .]8c+; [with .][down] 8a; [with .][down] 8g ebm; 
+5 1: 2a-; 2r; 
+6 1: 4c- brec dn- bcr2 e- bcr ; 2.r; 
+bar // 2
+1 1: 1r; 
+2 1: 1r; 
+3 1: 2f#ac+d+; 2r; 
+4 1: [with .]8f# bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c+ bm; [with .]8c+; [with .][down] 8a; [with .][down] 8f ebm; 
+5 1: 2d; 2r; 
+6 1: 4c- brec dn- bcr2 e- bcr ; 2.r; 
+bar // 3
+1 1: 2.r; 4g-; 
+2 1: 1r; 
+3 1: 8fb bm; 8fb; 8fb; 8fb; 8fb; 8fb; 8fb; 8fb ebm; 
+4 1: [with .]8g bm; [with .]8g; [with .]8f; [with .]8f ebm; [with .]8e bm; [with .]8e; [with .]8d; [with .]8d ebm; 
+5 1: 4g; 4f; 4e; 4d; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 4
+1 1: 2.c; 4g-; 
+2 1: 1e~g~c+~; 
+3 1: 8ceg bm; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8a-; [with .]8b- ebm; 
+5 1: 2c; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 5
+1 1: 2c; 4g-e; 4cg; 
+2 1: 1egc+~; 
+3 1: 8ceg bm; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8a-; [with .]8b- ebm; 
+5 1: 2c; 4g-; 4c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 6
+1 1: 2.fc+; 4fb; 
+2 1: 1f~a~c+~; 
+3 1: 8cfa bm; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa ebm; 
+4 1: [with .]8f bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c bm; [with .]8c; [with .]8d; [with .]8e ebm; 
+5 1: 2f; 2c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 7
+1 1: 8fa; 2f~c+~; 8fc+; 4ca; 
+2 1: 1fac+~; 
+3 1: 8cfa bm; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa ebm; 
+4 1: [with .]8f bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c bm; [with .]8c; [with .]8f; [with .]8d ebm; 
+5 1: 2f; 2c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 8
+1 1: 2.cg; 4b-a; 
+2 1: 1e~gc+~; 
+3 1: 8ceg bm; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8c; [with .]8b- ebm; 
+5 1: 2c; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 9
+1 1: 8a-e; 2a-c; 8r; 4a-c; 
+2 1: 1eac+; 
+3 1: 8cea bm; 8cea; 8cea; 8cea; 8cea; 8cea; 8cea; 8cea ebm; 
+4 1: [with .]8a- bm; [with .]8a-; [with .]8a-; [with .]8a- ebm; [with .]8e bm; [with .]8e; [with .]8a-; [with .]8b- ebm; 
+5 1: 2a-; 2e; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 10
+1 1: 8b&-d; 4b-c; 4.f-b-; 4b-d; 
+2 1: 1d~f~b&; 
+3 1: 8dfb& bm; 8dfb; 8dfb; 8dfb; 8dfb; 8dfb; 8dfb; 8dfb ebm; 
+4 1: [with .]8b&- bm; [with .]8b-; [with .]8b-; [with .]8b- ebm; [with .]8f bm; [with .]8f; [with .]8b-; [with .]8a- ebm; 
+5 1: 2b&-; 2f; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 11
+1 1: 2b-d; 4r; 4g-; 
+2 1: 1dfgb; 
+3 1: 8dgb bm; 8dgb; 8dgb; 8dgb; 8dgb; 8dgb; 8dgb; 8dgb ebm; 
+4 1: [with .]8g bm; [with .]8g; [with .]8f; [with .]8f ebm; [with .]8e bm; [with .]8e; [with .]8d; [with .]8d ebm; 
+5 1: 4g; 4f; 4e; 4d; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 12
+1 1: 2.c; 4g-; 
+2 1: 1e~g~c+~; 
+3 1: 8ceg bm; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8a-; [with .]8b- ebm; 
+5 1: 2c; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 13
+1 1: 2c; 4e; 4cg; 
+2 1: 1egc+~; 
+3 1: 8ceg bm; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8a-; [with .]8b- ebm; 
+5 1: 2c; 4g-; 4c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 14
+1 1: 2.fc+; 4fb; 
+2 1: 1f~a~c+~; 
+3 1: 8cfa bm; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa ebm; 
+4 1: [with .]8f bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c bm; [with .]8c; [with .]8d; [with .]8e ebm; 
+5 1: 2f; 2c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 15
+1 1: 8fa; 2f~c+~; 8fc+; 4ca; 
+2 1: 1fac+~; 
+3 1: 8cfa bm; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa ebm; 
+4 1: [with .]8f bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c bm; [with .]8c; [with .]8f; [with .]8d ebm; 
+5 1: 2f; 2c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 16
+1 1: 2.cg; 4b-a; 
+2 1: 1e~gc+~; 
+3 1: 8ceg bm; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8c; [with .]8b- ebm; 
+5 1: 2c; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 17
+1 1: 8a-e; 2a-c; 8r; 4ce; 
+2 1: 1eac+; 
+3 1: 8cea bm; 8cea; 8cea; 8cea; 8cea; 8cea; 8cea; 8cea ebm; 
+4 1: [with .]8a- bm; [with .]8a-; [with .]8a-; [with .]8a- ebm; [with .]8e bm; [with .]8e; [with .]8e; [with .]8e ebm; 
+5 1: 2a-; 2e; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 18
+1 1: 4a-d; 4f-c; 4g-a-; 4g-c; 
+2 1: 2df~ad+; 2dfgb; 
+3 1: 8dfa bm; 8dfa; 8dfa; 8dfa; 8dgb; 8dgb; 8dgb; 8dgb ebm; 
+4 1: [with .]8d bm; [with .]8d; [with .]8e; [with .]8f# ebm; [with .]8fn bm; [with .]8f; [with .]8e; [with .]8d ebm; 
+5 1: 2d-; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 19
+1 1: 2g-c; 4r; 4g; 
+2 1: 1egc+; 
+3 1: 8egc+ bm; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+ ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8a-; [with .]8b- ebm; 
+5 1: 2c; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 20
+1 1: 2eg; 4.ec+; 8eb; 
+2 1: 1e~g~c+~; 
+3 1: 8egc+ bm; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+ ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8a-; [with .]8b- ebm; 
+5 1: 2c; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 21
+1 1: 2ec+; 4eg; 4ec+; 
+2 1: 1egc+~; 
+3 1: 8egc+ bm; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+ ebm; 
+4 1: [with .]8c+ bm; [with .]8c+; [with .]8c+; [with .]8c+ ebm; [with .]8g bm; [with .]8g; [with .]8a; [with .][up]8c+ ebm; 
+5 1: 2c; 4g-; 4e; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 22
+1 1: 2.a~; 4fa; 
+2 1: 1f~a~c+~; 
+3 1: 8fac+ bm; 8fac+; 8fac+; 8fac+; 8fac+; 8fac+; 8fac+; 8fac+ ebm; 
+4 1: [with .]8f bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c bm; [with .]8c; [with .]8d; [with .]8e ebm; 
+5 1: 2f; 2c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 23
+1 1: 2a; 4gb; 4fa; 
+2 1: 1fac+; 
+3 1: 8fac+ bm; 8fac+; 8fac+; 8fac+; 8fac+; 8fac+; 8fac+; 8fac+ ebm; 
+4 1: [with .]8f bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c bm; [with .]8c; [with .]8d; [with .]8e ebm; 
+5 1: 2f; 4c; 4f; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 24
+1 1: 2eg; 2gc+; 
+2 1: 1e~gc+~; 
+3 1: 8ceg bm; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8c; [with .]8b- ebm; 
+5 1: 2c; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 25
+1 1: 2.a-c; 4ce; 
+2 1: 1ea~c+; 
+3 1: 8eac+ bm; 8eac+; 8eac+; 8eac+; 8eac+; 8eac+; 8eac+; 8eac+ ebm; 
+4 1: [with .]8a bm; [with .]8a; [with .]8a; [with .]8a ebm; [with .]8e bm; [with .]8e; [with .]8a; [with .]8g ebm; 
+5 1: 2a-; 2e; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 26
+1 1: 2ce; 4cd; 4a-c; 
+2 1: 1df#a; 
+3 1: 8cf#a bm; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8a- bm; [with .]8a-; [with .]8b-; [with .]8c ebm; 
+5 1: 2d; 2a-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 27
+1 1: 2b-d; 4r; 4g; 
+2 1: 1dfg; 
+3 1: 8dgb bm; 8dgb; 8dgb; 8dgb; 8dgb; 8dgb; 8dgb; 8dgb ebm; 
+4 1: [with .]8g bm; [with .]8g; [with .]8f; [with .]8f ebm; [with .]8e bm; [with .]8e; [with .]8d; [with .]8d ebm; 
+5 1: 4g; 4f; 4e; 4d; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 28
+1 1: 2eg; 4.ec+; 8eb; 
+2 1: 1e~g~c+~; 
+3 1: 8egc+ bm; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+ ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8a-; [with .]8b- ebm; 
+5 1: 2c; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 29
+1 1: 2ec+; 4eg; 4ec+; 
+2 1: 1egc+~; 
+3 1: 8egc+ bm; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+ ebm; 
+4 1: [with .]8c+ bm; [with .]8c+; [with .]8c+; [with .]8c+ ebm; [with .]8g bm; [with .]8g; [with .]8a; [with .][up]8c+ ebm; 
+5 1: 2c; 4g-; 4e; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 30
+1 1: 2.a~; 4fa; 
+2 1: 1f~a~c+~; 
+3 1: 8fac+ bm; 8fac+; 8fac+; 8fac+; 8fac+; 8fac+; 8fac+; 8fac+ ebm; 
+4 1: [with .]8f bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c bm; [with .]8c; [with .]8d; [with .]8e ebm; 
+5 1: 2f; 2c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 31
+1 1: 2a; 4gb; 4fa; 
+2 1: 1fac+; 
+3 1: 8fac+ bm; 8fac+; 8fac+; 8fac+; 8fac+; 8fac+; 8fac+; 8fac+ ebm; 
+4 1: [with .]8f bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c bm; [with .]8c; [with .]8d; [with .]8e ebm; 
+5 1: 2f; 4c; 4f; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 32
+1 1: 2eg; 2gc+; 
+2 1: 1egc+~; 
+3 1: 8egc+ bm; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+; 8egc+ ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8c; [with .]8b- ebm; 
+5 1: 2c; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 33
+1 1: 2f#c+; 2d#a; 
+2 1: 1d#ac+; 
+3 1: 8d#ac+ bm; 8dac+; 8dac+; 8dac+; 8dac+; 8dac+; 8dac+; 8dac+ ebm; 
+4 1: [with .]8d# bm; [with .]8d; [with .]8d; [with .]8d ebm; [with .]8f# bm; [with .]8f; [with .]8a; [with .]8f ebm; 
+5 1: 2c; 2a-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 34
+1 1: 2fd+; 4fa; 4fc+; 
+2 1: 1d~f~ac+; 
+3 1: 8dfa bm; 8dfa; 8dfa; 8dfa; 8dfa; 8dfa; 8dfa; 8dfa ebm; 
+4 1: [with .]8d bm; [with .]8d; [with .]8d; [with .]8d ebm; [with .]8a bm; [with .]8a; [with .]8f; [with .]8a ebm; 
+5 1: 2d; 2a-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 35
+1 1: 2gb; 4r; 4g-; 
+2 1: 1dfgb; 
+3 1: 8dfb bm; 8dfb; 8dfb; 8dfb; 8dfb; 8dfb; 8dfb; 8dfb ebm; 
+4 1: [with .]8g bm; [with .]8g; [with .]8f; [with .]8f ebm; [with .]8e bm; [with .]8e; [with .]8d; [with .]8d ebm; 
+5 1: 4g; 4f; 4e; 4d; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 36
+1 1: 2.c; 4g-; 
+2 1: 1e~g~c+~; 
+3 1: 8ceg bm; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8a-; [with .]8b- ebm; 
+5 1: 2c; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 37
+1 1: 2c; 4g-e; 4cg; 
+2 1: 1egc+~; 
+3 1: 8ceg bm; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8a-; [with .]8b- ebm; 
+5 1: 2c; 4g-; 4c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 38
+1 1: 2.fc+; 4fb; 
+2 1: 1f~a~c+~; 
+3 1: 8cfa bm; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa ebm; 
+4 1: [with .]8f bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c bm; [with .]8c; [with .]8d; [with .]8e ebm; 
+5 1: 2f; 2c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 39
+1 1: 8fa; 2f~c+~; 8fc+; 4ca; 
+2 1: 1fac+~; 
+3 1: 8cfa bm; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa ebm; 
+4 1: [with .]8f bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c bm; [with .]8c; [with .]8f; [with .]8d ebm; 
+5 1: 2f; 2c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 40
+1 1: 2.cg; 4b-a; 
+2 1: 1e~gc+~; 
+3 1: 8ceg bm; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8c; [with .]8b- ebm; 
+5 1: 2c; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 41
+1 1: 8a-e; 2a-c; 8r; 4a-c; 
+2 1: 1eac+; 
+3 1: 8cea bm; 8cea; 8cea; 8cea; 8cea; 8cea; 8cea; 8cea ebm; 
+4 1: [with .]8a- bm; [with .]8a-; [with .]8a-; [with .]8a- ebm; [with .]8e bm; [with .]8e; [with .]8e; [with .]8e ebm; 
+5 1: 2a-; 2e; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 42
+1 1: 8b&-d; 4b-c; 4.f-b-; 4b-d; 
+2 1: 1d~f~b&; 
+3 1: 8dfb& bm; 8dfb; 8dfb; 8dfb; 8dfb; 8dfb; 8dfb; 8dfb ebm; 
+4 1: [with .]8b&- bm; [with .]8b-; [with .]8b-; [with .]8b- ebm; [with .]8f bm; [with .]8f; [with .]8b-; [with .]8a- ebm; 
+5 1: 2b&-; 2f; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 43
+1 1: 2b-d; 4r; 4g-; 
+2 1: 1dfgb; 
+3 1: 8dgb bm; 8dgb; 8dgb; 8dgb; 8dgb; 8dgb; 8dgb; 8dgb ebm; 
+4 1: [with .]8g bm; [with .]8g; [with .]8f; [with .]8f ebm; [with .]8e bm; [with .]8e; [with .]8d; [with .]8d ebm; 
+5 1: 4g; 4f; 4e; 4d; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 44
+1 1: 2.c; 4g-; 
+2 1: 1e~g~c+~; 
+3 1: 8ceg bm; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8a-; [with .]8b- ebm; 
+5 1: 2c; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 45
+1 1: 2c; 4g-e; 4cg; 
+2 1: 1egc+~; 
+3 1: 8ceg bm; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg; 8ceg ebm; 
+4 1: [with .]8c bm; [with .]8c; [with .]8c; [with .]8c ebm; [with .]8g- bm; [with .]8g-; [with .]8a-; [with .]8b- ebm; 
+5 1: 2c; 4g-; 4c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 46
+1 1: 2.fc+; 4fb; 
+2 1: 1fac+; 
+3 1: 8cfa bm; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa; 8cfa ebm; 
+4 1: [with .]8f bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c bm; [with .]8c; [with .]8d; [with .]8e ebm; 
+5 1: 2f; 2c; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 47
+1 1: 8f#a; 4.fc+; 4fd+; 4fc+; 
+2 1: 2f#a~c#+; 2facn+; 
+3 1: 8cd#f#a bm; 8cdfa; 8cdfa; 8cdfa; 8cdfa; 8cdfa; 8cdfa; 8cdfa ebm; 
+4 1: [with .]8f# bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c bm; [with .]8c; [with .]8f; [with .]8d# ebm; 
+5 1: 2f#; 2d#; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 48
+1 1: 2cg; 4c#b; 4ca; 
+2 1: 2e~g~c+; 2ega~c#+; 
+3 1: 8egc+ bm; 8egc+; 8egc+; 8egc+; 8eac#+; 8eac+; 8eac+; 8eac+ ebm; 
+4 1: [with .]8c+ bm; [with .]8c+; [with .]8c+; [with .]8c+ ebm; [with .]8e+ bm; [with .]8e+; [with .][down] 8a; [with .][down] 8g ebm; 
+5 1: 2e; 2a-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 49
+1 1: 2ce; 2b-e; 
+2 1: 2d~f~ac+; 2dfgb; 
+3 1: 8dfa bm; 8dfa; 8dfa; 8dfa; 8dfb; 8dfb; 8dfb; 8dfb ebm; 
+4 1: [with .]8d bm; [with .]8d; [with .]8d; [with .]8d ebm; [with .]8g bm; [with .]8g; [with .]8a; [with .][up]8b ebm; 
+5 1: 2d; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 50
+1 1: 2a-c; 2r; 
+2 1: 1eac+; 
+3 1: 8eac+ bm; 8eac+; 8eac+; 8eac+; 8eac+; 8eac+; 8eac+; 8eac+ ebm; 
+4 1: [with .]8a bm; [with .]8a; [with .]8a; [with .]8a ebm; [with .]8c+ bm; [with .]8c+; [with .][down] 8a; [with .][down] 8g ebm; 
+5 1: 2a-; 2e; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 51
+1 1: 2df#; 4fd+; 4fc+; 
+2 1: 2df#c+; 2fac+; 
+3 1: 8df#c+ bm; 8dfc+; 8dfc+; 8dfc+; 8cd#fa; 8cdfa; 8cdfa; 8cdfa ebm; 
+4 1: [with .]8f# bm; [with .]8f; [with .]8f; [with .]8f ebm; [with .]8c+ bm; [with .]8c+; [with .][down] 8a; [with .][down] 8f ebm; 
+5 1: 2d; 2d#; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 52
+1 1: 2cg; 4c#b; 4ca; 
+2 1: 2e~g~c+; 2ega~c#+; 
+3 1: 8egc+ bm; 8egc+; 8egc+; 8egc+; 8eac#+; 8eac+; 8eac+; 8eac+ ebm; 
+4 1: [with .]8c+ bm; [with .]8c+; [with .]8c+; [with .]8c+ ebm; [with .]8e+ bm; [with .]8e+; [with .][down] 8a; [with .][down] 8g ebm; 
+5 1: 2e; 2a-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 53
+1 1: 2ce; 2b-e; 
+2 1: 2d~f~ac+; 2dfgb; 
+3 1: 8dfa bm; 8dfa; 8dfa; 8dfa; 8dfb; 8dfb; 8dfb; 8dfb ebm; 
+4 1: [with .]8d bm; [with .]8d; [with .]8d; [with .]8d ebm; [with .]8g bm; [with .]8g; [with .]8a; [with .][up]8b ebm; 
+5 1: 2d; 2g-; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 54
+1 1: 2g-c; 2r; 
+2 1: 2egc+~; 2fac+~; 
+3 1: 8egc+ bm; 8egc+; 8egc+; 8egc+; 8fac+; 8fac+; 8fac+; 8fac+ ebm; 
+4 1: [with .]8c+ bm; [with .]8c+; [with .]8c+; [with .]8c+ ebm; [with .]8f+ bm; [with .]8f+; [with .]8e+; [with .]8d+ ebm; 
+5 1: 2c; 2f; 
+6 1: 8c- brec b- btr  bm; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8d- bcr2 e- bcr b- btr ; 8c- brec b- btr ; 8b- btr ; 8d- bcr2 e- bcr b- btr ; 8b- btr  ebm; 
+bar // 55
+1 1: 1r; 
+2 1: 4egc+; 2.r; 
+3 1: 4egc+; 2.r; 
+4 1: [with .]4c+; 2.r; 
+5 1: 4c; 2.r; 
+6 1: 4c- brec d- bcr2 e- bcr b- btr d bcrc ; 2.r; 
+endbar // 56

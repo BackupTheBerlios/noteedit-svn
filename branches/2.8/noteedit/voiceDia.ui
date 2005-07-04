@@ -1,0 +1,339 @@
+<!DOCTYPE UI><UI>
+<class>voiceDia</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>voiceDia</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>551</width>
+            <height>237</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Voices - NoteEdit</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="3"  column="0"  rowspan="1"  colspan="3" >
+            <class>QGroupBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>stemChoice</cstring>
+            </property>
+            <property stdset="1">
+                <name>frameShape</name>
+                <enum>Box</enum>
+            </property>
+            <property stdset="1">
+                <name>frameShadow</name>
+                <enum>Sunken</enum>
+            </property>
+            <property stdset="1">
+                <name>title</name>
+                <string>Stem direction</string>
+            </property>
+            <widget>
+                <class>QRadioButton</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>stemUpBu</cstring>
+                </property>
+                <property stdset="1">
+                    <name>geometry</name>
+                    <rect>
+                        <x>10</x>
+                        <y>30</y>
+                        <width>100</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>&amp;Up</string>
+                </property>
+            </widget>
+            <widget>
+                <class>QRadioButton</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>stemDownBu</cstring>
+                </property>
+                <property stdset="1">
+                    <name>geometry</name>
+                    <rect>
+                        <x>120</x>
+                        <y>30</y>
+                        <width>100</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>Do&amp;wn</string>
+                </property>
+            </widget>
+            <widget>
+                <class>QRadioButton</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>stemIndividualBu</cstring>
+                </property>
+                <property stdset="1">
+                    <name>geometry</name>
+                    <rect>
+                        <x>240</x>
+                        <y>30</y>
+                        <width>100</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property stdset="1">
+                    <name>text</name>
+                    <string>&amp;Indiviual</string>
+                </property>
+            </widget>
+        </widget>
+        <widget row="4"  column="0" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>newvoice</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Create &amp;voice</string>
+            </property>
+        </widget>
+        <widget row="4"  column="1" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>deletevoice</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Delete voice</string>
+            </property>
+        </widget>
+        <widget row="5"  column="0" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>applBu</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Apply</string>
+            </property>
+        </widget>
+        <widget row="5"  column="1" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>OkBu</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;OK</string>
+            </property>
+        </widget>
+        <widget row="1"  column="0"  rowspan="1"  colspan="2" >
+            <class>QSlider</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>voiceNumSlider</cstring>
+            </property>
+            <property stdset="1">
+                <name>minValue</name>
+                <number>1</number>
+            </property>
+            <property stdset="1">
+                <name>maxValue</name>
+                <number>9</number>
+            </property>
+            <property stdset="1">
+                <name>value</name>
+                <number>1</number>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget row="0"  column="2" >
+            <class>QLCDNumber</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>voiceCounter</cstring>
+            </property>
+            <property stdset="1">
+                <name>numDigits</name>
+                <number>1</number>
+            </property>
+            <property stdset="1">
+                <name>segmentStyle</name>
+                <enum>Outline</enum>
+            </property>
+            <property>
+                <name>intValue</name>
+                <number>1</number>
+            </property>
+        </widget>
+        <spacer row="2"  column="0"  rowspan="1"  colspan="3" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer1</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="5"  column="2" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>CancBu</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Cancel</string>
+            </property>
+        </widget>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>TextLabel2</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Voice number:</string>
+            </property>
+        </widget>
+        <widget row="4"  column="3" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>restpos</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&lt;center&gt;Rest position&lt;/center&gt;</string>
+            </property>
+        </widget>
+        <widget row="0"  column="3"  rowspan="4"  colspan="1" >
+            <class>QSlider</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>restPosSlider</cstring>
+            </property>
+            <property stdset="1">
+                <name>minValue</name>
+                <number>-8</number>
+            </property>
+            <property stdset="1">
+                <name>maxValue</name>
+                <number>8</number>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+        </widget>
+        <spacer row="5"  column="3" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer3</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>voiceNumSlider</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>voiceCounter</receiver>
+        <slot>display(int)</slot>
+    </connection>
+    <connection>
+        <sender>OkBu</sender>
+        <signal>clicked()</signal>
+        <receiver>voiceDia</receiver>
+        <slot>slOk()</slot>
+    </connection>
+    <connection>
+        <sender>CancBu</sender>
+        <signal>clicked()</signal>
+        <receiver>voiceDia</receiver>
+        <slot>slCanc()</slot>
+    </connection>
+    <connection>
+        <sender>applBu</sender>
+        <signal>clicked()</signal>
+        <receiver>voiceDia</receiver>
+        <slot>slAppl()</slot>
+    </connection>
+    <connection>
+        <sender>newvoice</sender>
+        <signal>clicked()</signal>
+        <receiver>voiceDia</receiver>
+        <slot>createNewVoice()</slot>
+    </connection>
+    <connection>
+        <sender>deletevoice</sender>
+        <signal>clicked()</signal>
+        <receiver>voiceDia</receiver>
+        <slot>deleteActualVoice()</slot>
+    </connection>
+    <slot access="public">changeActualVoice(int)</slot>
+    <slot access="public">createNewVoice()</slot>
+    <slot access="public">deleteActualVoice()</slot>
+    <slot access="public">slAppl()</slot>
+    <slot access="public">slCanc()</slot>
+    <slot access="public">slOk()</slot>
+    <slot access="public">stemToDown()</slot>
+    <slot access="public">stemToIndividual()</slot>
+    <slot access="public">stemToUp()</slot>
+</connections>
+</UI>

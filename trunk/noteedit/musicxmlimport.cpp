@@ -143,6 +143,7 @@ using namespace std;
 #include "parsertypes.h"
 #include "rest.h"
 #include "staff.h"
+#include "text.h"
 #include "voice.h"
 #include "../kguitar_excerpt/global.h"
 
@@ -561,6 +562,7 @@ bool MusicXMLParser::startElement( const QString&, const QString&,
     		// store the clef number
 		stCln = attributes.value("number");
 	} else if (qName == "direction") {
+		stPlc = attributes.value("placement");
 		initStDirect();
 	} else if (qName == "ending") {
 		stEnr = attributes.value("number");
@@ -1387,6 +1389,30 @@ void MusicXMLParser::appendSign(int type)
 		sign = new NSign(voice->getMainPropsAddr(),
 				current_2ndstaff->getStaffPropsAddr(), type);
 		voice->appendElem(sign);
+	}
+}
+
+
+// append an NText (arbitrary text) to the current stave(s)
+// QString textVal is a text itself
+
+void MusicXMLParser::appendText(QString textVal)
+{
+	NText * text;
+	NVoice * voice;
+	int type = (stPlc == "below") ? TEXT_DOWNTEXT : TEXT_UPTEXT;
+	
+	voice = current_staff->getVoiceNr(0);
+	text = new NText(voice->getMainPropsAddr(),
+			current_staff->getStaffPropsAddr(),
+			textVal, type);
+	voice->appendElem(text);
+	if (current_2ndstaff) {
+		voice = current_2ndstaff->getVoiceNr(0);
+		text = new NText(voice->getMainPropsAddr(),
+				current_2ndstaff->getStaffPropsAddr(),
+				textVal, type);
+		voice->appendElem(text);
 	}
 }
 
@@ -2517,8 +2543,7 @@ void MusicXMLParser::handleWords()
 	} else if (stWrd == "ritard.") {
 		type = RITARDANDO;
 	} else {
-		Str = "not supported: <words> " + stWrd;
-		reportWarning(Str);
+		appendText(stWrd); // if none of the standard words are found, place an arbitrary text then
 		return;
 	}
 	appendSign(type);

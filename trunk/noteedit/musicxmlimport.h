@@ -97,6 +97,7 @@ private:
 	bool addStaff();
 	bool addSecondStaff();
 	void appendSign(int type);
+	void appendText(QString textVal);
 	IntMelPtrMap beamStarts;
 	int cvtDivsToMidiTime(int divs);
 	void fillUntil(int curtime, bool hidden, bool rpterr = true);
@@ -248,6 +249,7 @@ private:
 	QString stLyr[NUM_LYRICS];		// lyrics
 	QString	stNno;				// normal notes
 	QString stOct;				// octave
+	QString	stPlc;				// placement of arbitrary text (above, below)
 	bool    stPlo;				// pull-off
 	bool    stRst;				// rest
 	bool	stSlr;				// slur

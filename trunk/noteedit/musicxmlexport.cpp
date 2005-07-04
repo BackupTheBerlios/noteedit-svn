@@ -48,6 +48,7 @@ Status overview of features implemented
 Accidentals	supported: sharp, flat and natural, including double sharp and flat
 Accents		supported: staccato, sforzato, portato, strong pizzicato, sforzando, fermate,
 			   arpeggio and pedal on/off
+Arbitrary text	supported, including above/below position
 Bar separators	supported: simple, double, end
 Beams		supported
 Clefs		supported: treble, bass, soprano, alto and tenor clef, not supported: drum and drum_bass clef
@@ -111,6 +112,7 @@ Note shapes: body as cross, alternative cross, cross with circle, rectangle, tri
 #include "rest.h"
 #include "chord.h"
 #include "chorddiagram.h"
+#include "text.h"
 #include "layout.h"
 #include "uiconnect.h"
 #include "../kguitar_excerpt/global.h"
@@ -773,6 +775,13 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 				     voiceStatList_->pendingKeySig = (NKeySig *) elem;
 				     voiceStatList_->lastBarSym = 0;
 				     break;
+			case T_TEXT:
+					out_ << "\t\t\t<direction placement=\"" << ((elem->getSubType() == TEXT_DOWNTEXT) ? "below" : "above") << "\">\n";
+					out_ << "\t\t\t\t<direction-type>\n";
+					out_ << "\t\t\t\t\t<words>" << ((NText*)(elem))->getText() << "</words>\n";
+					out_ << "\t\t\t\t</direction-type>\n";
+					out_ << "\t\t\t</direction>\n";
+					break;
 			default:
 //				     out_ << "default" << endl;
 				     voiceStatList_->lastBarSym = 0;

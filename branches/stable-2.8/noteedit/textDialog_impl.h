@@ -35,6 +35,7 @@ class NTextDialogImpl : public textDialog {
 		QString getText();
 		bool isUpText() {return textType->currentItem() == 0;}
 		void setText(QString text) {TextLine->setText(text);}
+		void setTextType(int type) {textType->setCurrentItem(type);}
 	private slots:
 		void slOk();
 		void slCanc();

@@ -1,6 +1,34 @@
-Release 2.8.0
+Release 2.9.0
 -------------
 New features:
+- MusicXML import/export of arbitrary text support.
+
+Note:
+Only major new features and changes will get mentioned in the NEWS now. For a
+complete change log, please take a look at ChangeLog file, where SVN revision
+numbers are supplied as well!
+
+
+
+Release 2.8.0
+-------------
+The NoteEdit team is glad to announce the first major-version since its new
+beginning!
+
+Note:
+From now on, NoteEdit will be versioned according to GNU principals of
+versioning. Many SVN changes were made to accommodate these principals as well.
+Where a version of the program is X.Y.Z, numbers now mean the following:
+- Even major number (Y) marks a stable branch of the application.
+- Odd major number (Y) marks a development branch of the application.
+- Extra-Major number (X) is a generation of the application.
+- Minor number (Z) in a stable branch marks the latest critical maintainence
+  release in that branch.
+- Minor number (Z) in a development branch marks the current version of the
+  latest stable enough SVN version of the application, to be called a useful
+  development release.
+
+New features list since 2.7.4:
 - Updated translations and fixed Makefile to include Slovenian translation.
 - RFE #573 - Soprano clef added.
 - Score info fields and staff names can now include double quotes ("), updated
@@ -31,9 +59,10 @@ export filters.
 - Removed "Report Bug" menu item from help menu.
 - The last selected key or time signature is now remembered and gets selected
   automatically when inserting it the second time.
-- configure now works on FreeBSD (thanks to Raphael Langerhorst)
+- configure now works on FreeBSD (thanks to Raphael Langerhorst).
+- When editing Arbitrary text, its position gets remembered now.
 
-Bug fixes:
+Bug fixes list since 2.7.4:
 - Fixed #3944 - polyphony importing wrong in MusicXML.
 - Fixed #3969 - Score layout: Text on buttons uncomplete.
 - Fixed #3595 - dbl quotes in some score info fields leads to invalid files.
@@ -64,6 +93,7 @@ Remarks:
 - LilyPond export of different drum notes inside a single chord is suppressed to
   prevent choking of Lily. The user should use multiple voices instead.
 
+  
 
 Release 2.7.4
 -------------

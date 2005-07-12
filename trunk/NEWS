@@ -19,12 +19,12 @@ Note:
 From now on, NoteEdit will be versioned according to GNU principals of
 versioning. Many SVN changes were made to accommodate these principals as well.
 Where a version of the program is X.Y.Z, numbers now mean the following:
-- Even major number (Y) marks a stable branch of the application.
-- Odd major number (Y) marks a development branch of the application.
-- Extra-Major number (X) is a generation of the application.
-- Minor number (Z) in a stable branch marks the latest critical maintainence
+- Even subversion (Y) marks a stable branch of the application.
+- Odd subversion (Y) marks a development branch of the application.
+- Version number (X) is the current generation of the application.
+- Minor version (Z) in a stable branch marks the latest critical maintainence
   release in that branch.
-- Minor number (Z) in a development branch marks the current version of the
+- Minor version (Z) in a development branch marks the current version of the
   latest stable enough SVN version of the application, to be called a useful
   development release.
 

@@ -5,3 +5,4 @@ Todo list for version 2.8.0. This file gets deleted in final version!
 - update French translation
 - And the red off knob I expect at exit (Beenden), not at close
   (Schliessen).
+- MusicXML import of hidden rests doesn't work as it should.

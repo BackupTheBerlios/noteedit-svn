@@ -1,94 +1,95 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="keywords" content="">
-		<meta name="description" content="">
-		<link rel="stylesheet" href="style.css">
-		<title>[NoteEdit - Documentation]</title>
-	</head>
-	<body>
-		<div class="header">
-			<font size="24">NoteEdit</font>		
-		</div>
-
-		<div class="sidebar">
-			<p><a href="index.html">About</a></p>
-			<p><a href="features.html">Features</a></p>
-			<p><a href="shots.html">Screenshots</a></p>
-			<p><a href="download.html">Download</a></p>
-			<p><a href="lists.html">Mailing lists</a></p>
-			<p><a href="authors.html">Authors</a></p>
-			<p><a href="help.html">We Need Your Help</a></p>
-			<p><a href="docs.html">Documentation</a></p>
-			<p><a href="faq.html">FAQ</a></p>
-			<p><a href="http://developer.berlios.de/"><img src="img/bslogo.png" border="0" alt="berlios.de logo"></a></p>			
-		</div>
-		
-		<div class="contentWrapper">
-			<h2>Documentation</h2>
-				<h3>User manual</h3>
-					<p>The documentation is part of the NoteEdit archive. You find it in the doc directory. 
-					The german translation can be found under <b>"de"</b>, the english original is in the 
-					NoteEdit directory including all the pictures.</p>
-					<p>After having installed NoteEdit, you can read the documentation by selecting the 
-					NoteEdit Handbook option from the Help menu.</p>
-					<p>In case of an error when trying to open the documentation file it might be that KDE 
-					can't find it if you compiled the program from the sources. Try to change the prefix so it 
-					points to the KDE directory on your distribution (usually <b>/usr</b>) in that case.</p>
-
-					<p>The online documentation is <a href="doc/index.html">here</a>. A PDF file can be
-					downloaded <a href="doc/noteedit.pdf">here</a> (Use your right mouse button on the link
-					and select "download link").</p>
-
-				<h3>The TSE3 library</h3>
-					<p>From version 1.5.0 on, NoteEdit bases on a library by Pete Goodliffe called 
-					<a href="http://tse3.sourceforge.net/">TSE3</a>. It is a powerful open source 
-					sequencer engine written in C++. The libkmid version is further supported but this 
-					version doesn't offer all features (MIDI import for example). </p>
-					<p>TSE3 has its own file format and NoteEdit can produce it by means of TSE3 
-					function calls. So the NoteEdit data are interchangable with sequencer applications 
-					basing on TSE3. </p>
-					<p>The TSE3 library is not as much tested as the libkmid. So if you have problems 
-					with MIDI playback, installation or other realated functions please contact Pete 
-					Goodliffe. The TSE3 library comes with an application called tse3play. So you can 
-					test whether it works on your system. If so NoteEdit should work too! </p>
-				
-				<h3>Konqueror embedding (experimental)</h3>
-					<p>You can configure the Konqueror browser such a way that it starts NoteEdit as 
-					an embedded application. This requires installation of NoteEdit in KDE system.</p>
-					<p>To configure embedding, first search for a file noteedit.desktop in $HOME/.kde 
-					(or $HOME/.kde2 or 3) and delete it!</p>
-					<p>Then start Konqueror and choose:</p>
-					<p> Settings --&gt; Configure Konqueror... --&gt; File Associations --&gt;  Add... 
-					(Group) audio --&gt; (Type name:) x-notes </p>
-					<p>In field Application Preference Order there should be already noteedit. In File 
-					patterns: insert: <b>*.not</b> and <b>*.not.sav</b> </p>
-				
-				<h3>The TiMidity server (only with TSE3)</h3>
-					<p>Version 2.10.2 of the MIDI to WAVE converter and player 
-					<a href="http://timidity.sourceforge.net/">TiMidity++</a> now has a server mode. In 
-					this mode TiMidity++ behaves like a hardware MIDI synthesizer. This approach is 
-					interesting for all those who can't bring the MIDI device to work (mostly all 
-					non-SoundBlaster based cards). TiMidity++ needs to be compiled with (at least) the 
-					configure options (most Linux distributions already include these):</p>
-					<pre> --enable-audio=alsa --enable-server --enable-alsaseq
-</pre>
-					<p>If so, you can start TiMidity++ with:</p>
-					<pre> timidity -iA -B8,2 -Os (if this doesn't work try -Od)
-</pre>
-					<p>Make sure that NoteEdit uses an TSE3 ALSA MIDI scheduler! Select NoteEdit 
-					sound configure dialog (Configure NoteEdit-->Sound). Make sure NoteEdit uses an ALSA 
-					MIDI scheduler! You should see 2 new MIDI devices: </p>
-					<ul>
-						<li>Timidity port 0 128:0</li>
-						<li>Timidity port 1 128:0</li>
-					</ul>
-					<p>Choose one of them and the playback should work! </p>
-					<p>You should also try to change "the orchestra" by installing a different GUS patch 
-					(or so called SoundFonts). Please look at the "Links" section at the TiMidity++ page.</p>
-					<p>Tip: If the replay interrupts during turn over then start TiMidity++ as root. This increases 
-					the priority of the TiMidity++ process. </p>
-		</div>
-	</body>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+  <title>[NoteEdit - Documentation]</title>
+</head>
+<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);"
+ alink="#000099" link="#000099" vlink="#990099">
+<div class="header"> <font size="24">NoteEdit</font> </div>
+<div class="sidebar">
+<p><a href="index.html">About</a></p>
+<p><a href="features.html">Features</a></p>
+<p><a href="shots.html">Screenshots</a></p>
+<p><a href="download.html">Download</a></p>
+<p><a href="lists.html">Mailing lists</a></p>
+<p><a href="authors.html">Authors</a></p>
+<p><a href="help.html">We Need Your Help</a></p>
+<p><a href="docs.html">Documentation</a></p>
+<p><a href="faq.html">FAQ</a></p>
+<p><a href="http://developer.berlios.de/"><img src="img/bslogo.png"
+ alt="berlios.de logo" border="0"></a></p>
+</div>
+<div class="contentWrapper">
+<h2>Documentation</h2>
+<h3>User manual</h3>
+<p>The documentation is part of the NoteEdit archive. You find it in
+the doc directory. The german translation can be found under <b>"de"</b>,
+the english original is in the NoteEdit directory including all the
+pictures.</p>
+<p>After having installed NoteEdit, you can read the documentation by
+selecting the NoteEdit Handbook option from the Help menu.</p>
+<p>In case of an error when trying to open the documentation file it
+might be that KDE can't find it if you compiled the program from the
+sources. Try to change the prefix so it points to the KDE directory on
+your distribution (usually <b>/usr</b>) in that case.</p>
+<p>The online documentation is <a href="doc/index.html">here</a>. A
+PDF file can be downloaded <a href="doc/noteedit.pdf">here</a> (Use
+your right mouse button on the link and select "download link").</p>
+<h3>The TSE3 library</h3>
+<p>From version 1.5.0 on, NoteEdit bases on a library by Pete Goodliffe
+called <a href="http://tse3.sourceforge.net/">TSE3</a>. It is a
+powerful open source sequencer engine written in C++. The libkmid
+version is further supported but this version doesn't offer all
+features (MIDI import for example). </p>
+<p>TSE3 has its own file format and NoteEdit can produce it by means of
+TSE3 function calls. So the NoteEdit data are interchangable with
+sequencer applications basing on TSE3. </p>
+<p>The TSE3 library is not as much tested as the libkmid. So if you
+have problems with MIDI playback, installation or other realated
+functions please contact Pete Goodliffe. The TSE3 library comes with an
+application called tse3play. So you can test whether it works on your
+system. If so NoteEdit should work too! </p>
+<h3>Konqueror embedding (experimental)</h3>
+<p>You can configure the Konqueror browser such a way that it starts
+NoteEdit as an embedded application. This requires installation of
+NoteEdit in KDE system.</p>
+<p>To configure embedding, first search for a file noteedit.desktop in
+$HOME/.kde (or $HOME/.kde2 or 3) and delete it!</p>
+<p>Then start Konqueror and choose:</p>
+<p> Settings --&gt; Configure Konqueror... --&gt; File Associations
+--&gt; Add... (Group) audio --&gt; (Type name:) x-notes </p>
+<p>In field Application Preference Order there should be already
+noteedit. In File patterns: insert: <b>*.not</b> and <b>*.not.sav</b>
+</p>
+<h3>The TiMidity server (only with TSE3)</h3>
+<p>Version 2.10.2 of the MIDI to WAVE converter and player <a
+ href="http://timidity.sourceforge.net/">TiMidity++</a> now has a
+server mode. In this mode TiMidity++ behaves like a hardware MIDI
+synthesizer. This approach is interesting for all those who can't bring
+the MIDI device to work (mostly all non-SoundBlaster based cards).
+TiMidity++ needs to be compiled with (at least) the configure options
+(most Linux distributions already include these):</p>
+<pre> --enable-audio=alsa --enable-server --enable-alsaseq<br></pre>
+<p>If so, you can start TiMidity++ with:</p>
+<pre> timidity -iA -B8,2 -Os (if this doesn't work try -Od)<br></pre>
+<p>Make sure that NoteEdit uses an TSE3 ALSA MIDI scheduler! Select
+NoteEdit sound configure dialog (Configure NoteEdit--&gt;Sound). Make
+sure NoteEdit uses an ALSA MIDI scheduler! You should see 2 new MIDI
+devices: </p>
+<ul>
+  <li>Timidity port 0 128:0</li>
+  <li>Timidity port 1 128:0</li>
+</ul>
+<p>Choose one of them and the playback should work! </p>
+<p>You should also try to change "the orchestra" by installing a
+different GUS patch (or so called SoundFonts). Please look at the
+"Links" section at the TiMidity++ page.</p>
+<p>Tip: If the replay interrupts during turn over then start TiMidity++
+as root. This increases the priority of the TiMidity++ process. </p>
+</div>
+</body>
 </html>

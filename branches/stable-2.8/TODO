@@ -1,8 +1,46 @@
-Todo list for version 2.8.0. This file gets deleted in final version!
-- update Hungarian translation
-- update Swede translation
-- update Spanish translation
-- update French translation
-- And the red off knob I expect at exit (Beenden), not at close
+Todo list for the stable version 2.8.1. This file gets deleted in final version!
+- The red off knob I expect at exit (Beenden), not at close
   (Schliessen).
 - MusicXML import of hidden rests doesn't work as it should.
+- Look at the current Lyrics code and make < > syntax working as described in
+  Documentation. Also, add a few hints&tips into Lyrics dialog. (ThePianoGuy)
+- Test the MusicXML arbitrary text import&export currently in trunk and merge it
+  into stable. (ThePianoGuy)
+- Add some critical checks in MusicXML import procedure, so no crashes occur if
+  wrong values are stored in .xml file and maybe a wrong file format as well.
+  Example: <divisions>0</divisions> crashes NoteEdit. Also, prevent importing
+  some features that NoteEdit currently doesn't support yet, like cross-staff
+  slurs. (ThePianoGuy)
+- Add tool-tips to more buttons/options and add whatsThis to more widgets (when
+  question cursor is selected from Window manager). This means a lot of new
+  phrases for the translation as well. (ThePianoGuy)
+- Improved Insert tempo dialog. (ThePianoGuy)
+- When in Edit mode and walking through the music elements, each element should
+  reflect its state in the toolbar. Currently, note lengths, punctuation,
+  accidentals, slurs, ties and a few other signs work. What it doesn't work yet
+  are the invisible rest button and grace notes. I'd also disable buttons like
+  note length, arpeggio, fermata and others for non-musical signs like barlines,
+  tempo signatures and arbitrary texts. I'd also separate strictly the options
+  in Edit mode and the options in Insert mode. (ThePianoGuy)
+- Escape key exits all the current modes and goes to selection mode (if in Edit
+  mode, go to selection mode, if in Insert mode, select a mouse cursor to go to
+  selection mode). (ThePianoGuy)
+- MIDI instrument list should be a normal list (maybe without numbers) in order
+  to activate automatic selection of instrument when hitting its capital on
+  keyboard. (ThePianoGuy)
+- Vertically lengthen end bar, repeat bar and other special bars, so they
+connect staffs according to the document layout setting. (ThePianoGuy)
+- Fix the ritardando/accellerando sometimes appearing MIDI playback bug (it eats
+  notes or instead of slows down, speeds up). (ThePianoGuy)
+- Fix for trills in non-C-major key signature (pitches sometimes not played
+  right). (ThePianoGuy)
+- Try to make Finale MusicXML <-> NoteEdit MusicXML work out of the box.
+  currently when exporting from NE to Finale, Finale seems to find a
+  non-MusicXML DTD's syntax on a test file I made (a Fugue, at around line 2400
+  of a 30000 lines long .xml file). UPDATE: Finale's MusicXML import lite has a
+  bit of problems chewing *ANY* MusicXML files. (ThePianoGuy)
+- TRANSLATIONS!!!
+- NoteEdit MIDI names not stored when exporting to MIDI. (Suamor)
+- Scripting support. (Suamor, ThePianoGuy)
+- Printing improvements. (Suamor)
+- Improve the staff properties dialog 

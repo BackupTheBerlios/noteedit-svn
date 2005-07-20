@@ -44,3 +44,5 @@ connect staffs according to the document layout setting. (ThePianoGuy)
 - Scripting support. (Suamor, ThePianoGuy)
 - Printing improvements. (Suamor)
 - Improve the staff properties dialog 
+- lilypond 2.6 (itsgeorg)
+- faster scrolling (itsgeorg)

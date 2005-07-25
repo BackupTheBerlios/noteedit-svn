@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg11.dtd" >
+<svg viewBox="0 -200 1000 1000" transform="matrix(1 0 0 -1 0 800)">
+  <g stroke="green" stroke-width="1">
+    <line x1="0" y1="0" x2="352" y2="0" />
+    <line x1="0" y1="10" x2="0" y2="-10" />
+    <line x1="352" y1="10" x2="352" y2="-10" />
+  </g>
+
+  <path fill="currentColor"
+d="M53 81c39 39 110 61 194 61c10 0 19 0 26 -1c51 -5 78 -31 78 -87c0 -55 -27 -110 -52 -135c-39 -39 -109 -61 -194 -61c-67 0 -104 22 -104 88c0 55 27 110 52 135zM308 60c0 22 -18 39 -41 39c-27 0 -93 -45 -139 -76c-49 -32 -84 -55 -84 -83c0 -19 13 -38 39 -38
+c8 0 11 0 19 3c34 13 179 101 200 135c4 6 6 13 6 20z" />
+</svg>

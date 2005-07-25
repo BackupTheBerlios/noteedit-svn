@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docbase="/home/matevz/Cantus/NoteEdit/icon"
+   sodipodi:docname="icon.svg"
+   height="297mm"
+   width="210mm"
+   inkscape:version="0.41"
+   sodipodi:version="0.32"
+   id="svg1342"
+   transform="matrix(1 0 0 -1 0 800)"
+   viewBox="0 -200 1000 1000">
+  <metadata
+     id="metadata1357">
+    <rdf:RDF
+       id="RDF1359">
+      <cc:Work
+         id="Work1361"
+         rdf:about="">
+        <dc:format
+           id="format1363">image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+           id="type1365" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs1355">
+    <linearGradient
+       id="linearGradient5654">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop5656" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1.0000000;"
+         offset="1.0000000"
+         id="stop5658" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5612">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop5614" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop5616" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2368">
+      <stop
+         style="stop-color:#000000;stop-opacity:0.0000000;"
+         offset="0.0000000"
+         id="stop2370" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1.0000000;"
+         offset="0.50000000"
+         id="stop2372" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0.0000000;"
+         offset="1.0000000"
+         id="stop2374" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2346">
+      <stop
+         style="stop-color:#000000;stop-opacity:0.0000000;"
+         offset="0.0000000"
+         id="stop2348" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1.0000000;"
+         offset="0.50000000"
+         id="stop2362" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0.0000000;"
+         offset="1.0000000"
+         id="stop2350" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2256">
+      <stop
+         id="stop2258"
+         offset="0.0000000"
+         style="stop-color:#eeff00;stop-opacity:1.0000000;" />
+      <stop
+         id="stop2260"
+         offset="1.0000000"
+         style="stop-color:#006508;stop-opacity:1.0000000;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2248">
+      <stop
+         style="stop-color:#ffc300;stop-opacity:1.0000000;"
+         offset="0.0000000"
+         id="stop2250" />
+      <stop
+         style="stop-color:#c1c1c1;stop-opacity:0.0000000;"
+         offset="1.0000000"
+         id="stop2252" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5889">
+      <stop
+         id="stop5891"
+         offset="0"
+         style="stop-color:#3a3a3a;stop-opacity:1;" />
+      <stop
+         id="stop5893"
+         offset="1"
+         style="stop-color:#3a3a3a;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4664">
+      <stop
+         id="stop4666"
+         offset="0.0000000"
+         style="stop-color:#f2d725;stop-opacity:1.0000000;" />
+      <stop
+         id="stop2336"
+         offset="0.93333334"
+         style="stop-color:#bbc2c2;stop-opacity:1.0000000;" />
+      <stop
+         id="stop4668"
+         offset="1.0000000"
+         style="stop-color:#a7a7a7;stop-opacity:0.0000000;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4606">
+      <stop
+         id="stop4608"
+         offset="0.0000000"
+         style="stop-color:#c7c7c7;stop-opacity:1.0000000;" />
+      <stop
+         id="stop4610"
+         offset="1.0000000"
+         style="stop-color:#000000;stop-opacity:1.0000000;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4596">
+      <stop
+         id="stop4598"
+         offset="0.0000000"
+         style="stop-color:#e1e1e1;stop-opacity:0.72881359;" />
+      <stop
+         id="stop4600"
+         offset="1.0000000"
+         style="stop-color:#f5c700;stop-opacity:0.88135594;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4590">
+      <stop
+         id="stop4592"
+         offset="0.0000000"
+         style="stop-color:#ffd000;stop-opacity:1.0000000;" />
+      <stop
+         id="stop4594"
+         offset="1.0000000"
+         style="stop-color:#a4a4a4;stop-opacity:0.0000000;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4064">
+      <stop
+         id="stop4066"
+         offset="0.0000000"
+         style="stop-color:#ffec1e;stop-opacity:1.0000000;" />
+      <stop
+         id="stop4068"
+         offset="1.0000000"
+         style="stop-color:#d0d0d0;stop-opacity:1.0000000;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3284">
+      <stop
+         id="stop3286"
+         offset="0.0000000"
+         style="stop-color:#ffff55;stop-opacity:1.0000000;" />
+      <stop
+         id="stop3288"
+         offset="1.0000000"
+         style="stop-color:#ff0000;stop-opacity:1.0000000;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3270">
+      <stop
+         id="stop3272"
+         offset="0"
+         style="stop-color:#ff0000;stop-opacity:1;" />
+      <stop
+         id="stop3274"
+         offset="1"
+         style="stop-color:#ff0000;stop-opacity:0;" />
+    </linearGradient>
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="120.08595"
+       fy="45.885559"
+       fx="95.153374"
+       cy="45.885559"
+       cx="95.153374"
+       gradientTransform="scale(1.078213,0.927460)"
+       id="radialGradient3292"
+       xlink:href="#linearGradient3284"
+       inkscape:collect="always" />
+    <radialGradient
+       r="120.08595"
+       fy="45.885559"
+       fx="95.153374"
+       cy="45.885559"
+       cx="95.153374"
+       gradientTransform="scale(1.078213,0.927460)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient3294"
+       xlink:href="#linearGradient3284"
+       inkscape:collect="always" />
+    <radialGradient
+       r="120.08595"
+       fy="45.885559"
+       fx="95.153374"
+       cy="45.885559"
+       cx="95.153374"
+       gradientTransform="scale(1.078213,0.927460)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient3296"
+       xlink:href="#linearGradient3284"
+       inkscape:collect="always" />
+    <radialGradient
+       r="120.08595"
+       fy="45.885559"
+       fx="95.153374"
+       cy="45.885559"
+       cx="95.153374"
+       gradientTransform="scale(1.078213,0.927460)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient3298"
+       xlink:href="#linearGradient3284"
+       inkscape:collect="always" />
+    <radialGradient
+       r="120.08595"
+       fy="45.885559"
+       fx="95.153374"
+       cy="45.885559"
+       cx="95.153374"
+       gradientTransform="scale(1.078213,0.927460)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient3300"
+       xlink:href="#linearGradient3284"
+       inkscape:collect="always" />
+    <radialGradient
+       r="120.08595"
+       fy="45.885559"
+       fx="95.153374"
+       cy="45.885559"
+       cx="95.153374"
+       gradientTransform="scale(1.078213,0.927460)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient3302"
+       xlink:href="#linearGradient3284"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientTransform="matrix(0.668522,0.000000,0.000000,0.668522,157.9340,-72.33602)"
+       spreadMethod="reflect"
+       gradientUnits="userSpaceOnUse"
+       r="83.008911"
+       fy="-135.05716"
+       fx="53.292381"
+       cy="-135.05716"
+       cx="53.292381"
+       id="radialGradient4084"
+       xlink:href="#linearGradient4064"
+       inkscape:collect="always" />
+    <radialGradient
+       r="120.08595"
+       fy="45.885559"
+       fx="95.153374"
+       cy="45.885559"
+       cx="95.153374"
+       gradientTransform="scale(1.078213,0.927460)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4570"
+       xlink:href="#linearGradient3284"
+       inkscape:collect="always" />
+    <radialGradient
+       r="120.08595"
+       fy="45.885559"
+       fx="95.153374"
+       cy="45.885559"
+       cx="95.153374"
+       gradientTransform="scale(1.078213,0.927460)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4572"
+       xlink:href="#linearGradient3284"
+       inkscape:collect="always" />
+    <radialGradient
+       r="120.08595"
+       fy="45.885559"
+       fx="95.153374"
+       cy="45.885559"
+       cx="95.153374"
+       gradientTransform="scale(1.078213,0.927460)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4580"
+       xlink:href="#linearGradient3284"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="92.982803"
+       fy="33.315052"
+       fx="90.019157"
+       cy="33.315052"
+       cx="90.019157"
+       gradientTransform="scale(1.080123,0.925820)"
+       id="radialGradient4612"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <radialGradient
+       r="92.982803"
+       fy="33.315052"
+       fx="90.019157"
+       cy="33.315052"
+       cx="90.019157"
+       gradientTransform="scale(1.080123,0.925820)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4626"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <radialGradient
+       r="92.982803"
+       fy="33.315052"
+       fx="90.019157"
+       cy="33.315052"
+       cx="90.019157"
+       gradientTransform="scale(1.080123,0.925820)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4628"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <radialGradient
+       r="92.982803"
+       fy="33.315052"
+       fx="90.019157"
+       cy="33.315052"
+       cx="90.019157"
+       gradientTransform="scale(1.080123,0.925820)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4630"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <radialGradient
+       r="92.982803"
+       fy="33.315052"
+       fx="90.019157"
+       cy="33.315052"
+       cx="90.019157"
+       gradientTransform="scale(1.080123,0.925820)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4632"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <radialGradient
+       r="92.982803"
+       fy="33.315052"
+       fx="90.019157"
+       cy="33.315052"
+       cx="90.019157"
+       gradientTransform="scale(1.080123,0.925820)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4634"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <radialGradient
+       r="92.982803"
+       fy="33.315052"
+       fx="90.019157"
+       cy="33.315052"
+       cx="90.019157"
+       gradientTransform="scale(1.080123,0.925820)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4636"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <radialGradient
+       r="92.982803"
+       fy="33.315052"
+       fx="90.019157"
+       cy="33.315052"
+       cx="90.019157"
+       gradientTransform="scale(1.080123,0.925820)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4650"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <radialGradient
+       r="92.982803"
+       fy="33.315052"
+       fx="90.019157"
+       cy="33.315052"
+       cx="90.019157"
+       gradientTransform="scale(1.080123,0.925820)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4652"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <radialGradient
+       r="92.982803"
+       fy="33.315052"
+       fx="90.019157"
+       cy="33.315052"
+       cx="90.019157"
+       gradientTransform="scale(1.080123,0.925820)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient4660"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="-49.762623"
+       x2="212.64612"
+       y1="35.544727"
+       x1="-67.672264"
+       gradientTransform="scale(0.606630,1.648451)"
+       id="linearGradient4698"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <linearGradient
+       y2="-49.762623"
+       x2="212.64612"
+       y1="35.544727"
+       x1="-67.672264"
+       gradientTransform="scale(0.606630,1.648451)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient5933"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <linearGradient
+       y2="-49.762623"
+       x2="212.64612"
+       y1="35.544727"
+       x1="-67.672264"
+       gradientTransform="scale(0.606630,1.648451)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient5939"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <linearGradient
+       y2="-49.762623"
+       x2="212.64612"
+       y1="35.544727"
+       x1="-67.672264"
+       gradientTransform="scale(0.606630,1.648451)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient5941"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <radialGradient
+       r="92.982803"
+       fy="33.315052"
+       fx="90.019157"
+       cy="33.315052"
+       cx="90.019157"
+       gradientTransform="scale(1.080123,0.925820)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient5943"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <radialGradient
+       r="92.982803"
+       fy="33.315052"
+       fx="90.019157"
+       cy="33.315052"
+       cx="90.019157"
+       gradientTransform="scale(1.080123,0.925820)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient5951"
+       xlink:href="#linearGradient4606"
+       inkscape:collect="always" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4664"
+       id="radialGradient2334"
+       gradientTransform="scale(1.086550,0.920344)"
+       cx="284.16855"
+       cy="-164.19150"
+       fx="284.16855"
+       fy="-164.19150"
+       r="140.69058"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4606"
+       id="radialGradient5618"
+       gradientTransform="scale(0.831107,1.203215)"
+       cx="527.93365"
+       cy="-349.59738"
+       fx="527.93365"
+       fy="-349.59738"
+       r="352.78076"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4606"
+       id="radialGradient5620"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.831107,1.203215)"
+       cx="410.42416"
+       cy="-318.27856"
+       fx="410.42416"
+       fy="-318.27856"
+       r="138.88428" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4606"
+       id="radialGradient5624"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.831107,1.203215)"
+       cx="410.42416"
+       cy="-318.27856"
+       fx="410.42416"
+       fy="-318.27856"
+       r="138.88428" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4606"
+       id="radialGradient5628"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.831107,1.203215)"
+       cx="410.42416"
+       cy="-318.27856"
+       fx="410.42416"
+       fy="-318.27856"
+       r="138.88428" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4606"
+       id="radialGradient5642"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.831107,1.203215)"
+       cx="527.93365"
+       cy="-349.59738"
+       fx="527.93365"
+       fy="-349.59738"
+       r="352.78076" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4606"
+       id="radialGradient5644"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.831107,1.203215)"
+       cx="410.42416"
+       cy="-318.27856"
+       fx="410.42416"
+       fy="-318.27856"
+       r="138.88428" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4606"
+       id="radialGradient5648"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.831107,1.203215)"
+       cx="410.42416"
+       cy="-318.27856"
+       fx="410.42416"
+       fy="-318.27856"
+       r="138.88428" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4606"
+       id="radialGradient5652"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.831107,1.203215)"
+       cx="410.42416"
+       cy="-318.27856"
+       fx="410.42416"
+       fy="-318.27856"
+       r="138.88428" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5654"
+       id="linearGradient5660"
+       gradientTransform="scale(4.184310,0.238988)"
+       x1="87.761536"
+       y1="-927.55945"
+       x2="85.634041"
+       y2="-941.13074"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5654"
+       id="linearGradient5668"
+       gradientTransform="scale(3.489877,0.286543)"
+       x1="99.907135"
+       y1="-721.02802"
+       x2="96.104584"
+       y2="-733.31787"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5654"
+       id="linearGradient5676"
+       gradientTransform="scale(3.049980,0.327871)"
+       x1="107.64516"
+       y1="-567.54694"
+       x2="100.10344"
+       y2="-570.21027"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5654"
+       id="linearGradient5684"
+       gradientTransform="scale(2.804327,0.356592)"
+       x1="117.20079"
+       y1="-487.36478"
+       x2="106.73305"
+       y2="-489.82922"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="-35.640617"
+       x2="1608.4034"
+       y1="-36.054031"
+       x1="1615.5233"
+       gradientTransform="matrix(0.239092,0.000000,0.000000,4.182491,-1.385112,-1.385112)"
+       id="linearGradient2277"
+       xlink:href="#linearGradient5654"
+       inkscape:collect="always" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="-29.166540"
+       x2="1686.6774"
+       y1="-28.886526"
+       x1="1694.1168"
+       gradientTransform="scale(0.198033,5.049665)"
+       id="linearGradient2285"
+       xlink:href="#linearGradient5654"
+       inkscape:collect="always" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="-43.166885"
+       x2="1786.1040"
+       y1="-43.054882"
+       x1="1793.5444"
+       gradientTransform="matrix(0.198033,0.000000,0.000000,5.049664,-0.173139,3.680389e-14)"
+       id="linearGradient2293"
+       xlink:href="#linearGradient5654"
+       inkscape:collect="always" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:current-layer="svg1342"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="882.74086"
+     inkscape:cx="273.64888"
+     inkscape:zoom="5.4886047"
+     inkscape:guide-bbox="true"
+     showguides="true"
+     showgrid="false"
+     inkscape:window-height="1029"
+     inkscape:window-width="1400"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <rect
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     y="-228.97021"
+     x="180.39502"
+     height="89.391685"
+     width="89.391685"
+     id="rect4074"
+     style="opacity:0.96774197;fill:url(#radialGradient4084);fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.2500000;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="path2163"
+     d="M 181.22737,-220.59653 L 269.03853,-220.59653"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.75404096px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="path2167"
+     d="M 181.22737,-212.19706 L 269.03853,-212.19706"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.75404096px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="path2169"
+     d="M 181.22737,-203.79759 L 269.03853,-203.79759"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.75404096px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="path2171"
+     d="M 181.22737,-195.39812 L 269.03853,-195.39812"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.75404096px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="path2173"
+     d="M 181.22737,-186.99865 L 269.03853,-186.99865"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.75404096px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <g
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     transform="matrix(3.574249e-2,0.000000,0.000000,-3.574249e-2,191.3331,-203.8534)"
+     id="g2385">
+    <g
+       style="stroke:#008000;stroke-width:1.0000000"
+       id="g2362">
+      <line
+         id="line2364"
+         y2="0.0000000"
+         x2="328.00000"
+         y1="0.0000000"
+         x1="0.0000000" />
+      <line
+         id="line2366"
+         y2="-10.000000"
+         x2="0.0000000"
+         y1="10.000000"
+         x1="0.0000000" />
+      <line
+         id="line2368"
+         y2="-10.000000"
+         x2="328.00000"
+         y1="10.000000"
+         x1="328.00000" />
+    </g>
+    <path
+       style="fill:currentColor"
+       id="path2370"
+       d="M 327.00000,36.000000 C 327.00000,-57.000000 221.00000,-141.00000 124.00000,-141.00000 C 65.000000,-141.00000 29.000000,-121.00000 10.000000,-82.000000 C 3.0000000,-67.000000 1.0000000,-58.000000 1.0000000,-38.000000 C 1.0000000,-27.000000 1.0000000,-20.000000 2.0000000,-14.000000 C 19.000000,61.000000 95.000000,131.00000 190.00000,141.00000 L 201.00000,141.00000 C 272.00000,141.00000 327.00000,112.00000 327.00000,36.000000 z " />
+  </g>
+  <g
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     transform="matrix(3.549056e-2,0.000000,0.000000,-3.549056e-2,237.5270,-220.6274)"
+     id="g2479">
+    <g
+       style="stroke:#008000;stroke-width:1.0000000"
+       id="g2456">
+      <line
+         id="line2458"
+         y2="0.0000000"
+         x2="352.00000"
+         y1="0.0000000"
+         x1="0.0000000" />
+      <line
+         id="line2460"
+         y2="-10.000000"
+         x2="0.0000000"
+         y1="10.000000"
+         x1="0.0000000" />
+      <line
+         id="line2462"
+         y2="-10.000000"
+         x2="352.00000"
+         y1="10.000000"
+         x1="352.00000" />
+    </g>
+    <path
+       style="fill:currentColor"
+       id="path2464"
+       d="M 53.000000,81.000000 C 92.000000,120.00000 163.00000,142.00000 247.00000,142.00000 C 257.00000,142.00000 266.00000,142.00000 273.00000,141.00000 C 324.00000,136.00000 351.00000,110.00000 351.00000,54.000000 C 351.00000,-1.0000000 324.00000,-56.000000 299.00000,-81.000000 C 260.00000,-120.00000 190.00000,-142.00000 105.00000,-142.00000 C 38.000000,-142.00000 1.0000000,-120.00000 1.0000000,-54.000000 C 1.0000000,1.0000000 28.000000,56.000000 53.000000,81.000000 z M 308.00000,60.000000 C 308.00000,82.000000 290.00000,99.000000 267.00000,99.000000 C 240.00000,99.000000 174.00000,54.000000 128.00000,23.000000 C 79.000000,-9.0000000 44.000000,-32.000000 44.000000,-60.000000 C 44.000000,-79.000000 57.000000,-98.000000 83.000000,-98.000000 C 91.000000,-98.000000 94.000000,-98.000000 102.00000,-95.000000 C 136.00000,-82.000000 281.00000,6.0000000 302.00000,40.000000 C 306.00000,46.000000 308.00000,53.000000 308.00000,60.000000 z " />
+  </g>
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="path2486"
+     d="M 202.64066,-204.86403 L 202.64066,-227.77943"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.93535471px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="path2492"
+     d="M 238.00419,-164.00572 L 238.00419,-220.57829"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.4696553px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="path2494"
+     d="M 264.64423,-186.38704 L 264.64423,-220.22246"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.1365757px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <g
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     transform="matrix(-3.574249e-2,0.000000,0.000000,3.574249e-2,202.4808,-187.3388)"
+     id="g4166">
+    <g
+       style="stroke:#008000;stroke-width:1.0000000"
+       id="g4168">
+      <line
+         id="line4170"
+         y2="0.0000000"
+         x2="328.00000"
+         y1="0.0000000"
+         x1="0.0000000" />
+      <line
+         id="line4172"
+         y2="-10.000000"
+         x2="0.0000000"
+         y1="10.000000"
+         x1="0.0000000" />
+      <line
+         id="line4174"
+         y2="-10.000000"
+         x2="328.00000"
+         y1="10.000000"
+         x1="328.00000" />
+    </g>
+    <path
+       style="fill:currentColor"
+       id="path4176"
+       d="M 327.00000,36.000000 C 327.00000,-57.000000 221.00000,-141.00000 124.00000,-141.00000 C 65.000000,-141.00000 29.000000,-121.00000 10.000000,-82.000000 C 3.0000000,-67.000000 1.0000000,-58.000000 1.0000000,-38.000000 C 1.0000000,-27.000000 1.0000000,-20.000000 2.0000000,-14.000000 C 19.000000,61.000000 95.000000,131.00000 190.00000,141.00000 L 201.00000,141.00000 C 272.00000,141.00000 327.00000,112.00000 327.00000,36.000000 z " />
+  </g>
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="path4178"
+     d="M 191.17326,-186.32809 L 191.17326,-163.41269"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.93535471px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <g
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     transform="matrix(-3.574249e-2,0.000000,0.000000,3.574249e-2,221.5795,-190.7667)"
+     id="g4194">
+    <g
+       style="stroke:#008000;stroke-width:1.0000000"
+       id="g4196">
+      <line
+         id="line4198"
+         y2="0.0000000"
+         x2="328.00000"
+         y1="0.0000000"
+         x1="0.0000000" />
+      <line
+         id="line4200"
+         y2="-10.000000"
+         x2="0.0000000"
+         y1="10.000000"
+         x1="0.0000000" />
+      <line
+         id="line4202"
+         y2="-10.000000"
+         x2="328.00000"
+         y1="10.000000"
+         x1="328.00000" />
+    </g>
+    <path
+       style="fill:currentColor"
+       id="path4204"
+       d="M 327.00000,36.000000 C 327.00000,-57.000000 221.00000,-141.00000 124.00000,-141.00000 C 65.000000,-141.00000 29.000000,-121.00000 10.000000,-82.000000 C 3.0000000,-67.000000 1.0000000,-58.000000 1.0000000,-38.000000 C 1.0000000,-27.000000 1.0000000,-20.000000 2.0000000,-14.000000 C 19.000000,61.000000 95.000000,131.00000 190.00000,141.00000 L 201.00000,141.00000 C 272.00000,141.00000 327.00000,112.00000 327.00000,36.000000 z " />
+  </g>
+  <g
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     style="fill:url(#radialGradient3292);fill-opacity:1.0000000;stroke:#ff0000;stroke-opacity:1.0000000"
+     transform="matrix(3.574249e-2,0.000000,0.000000,-3.574249e-2,209.6797,-199.7066)"
+     id="g2392">
+    <g
+       style="fill:url(#radialGradient3294);stroke-width:1.0000000"
+       id="g2394">
+      <line
+         style="fill:url(#radialGradient3296)"
+         id="line2396"
+         y2="0.0000000"
+         x2="328.00000"
+         y1="0.0000000"
+         x1="0.0000000" />
+      <line
+         style="fill:url(#radialGradient3298)"
+         id="line2398"
+         y2="-10.000000"
+         x2="0.0000000"
+         y1="10.000000"
+         x1="0.0000000" />
+      <line
+         style="fill:url(#radialGradient3300)"
+         id="line2400"
+         y2="-10.000000"
+         x2="328.00000"
+         y1="10.000000"
+         x1="328.00000" />
+    </g>
+    <path
+       style="fill:url(#radialGradient3302)"
+       id="path2402"
+       d="M 327.00000,36.000000 C 327.00000,-57.000000 221.00000,-141.00000 124.00000,-141.00000 C 65.000000,-141.00000 29.000000,-121.00000 10.000000,-82.000000 C 3.0000000,-67.000000 1.0000000,-58.000000 1.0000000,-38.000000 C 1.0000000,-27.000000 1.0000000,-20.000000 2.0000000,-14.000000 C 19.000000,61.000000 95.000000,131.00000 190.00000,141.00000 L 201.00000,141.00000 C 272.00000,141.00000 327.00000,112.00000 327.00000,36.000000 z " />
+  </g>
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="path2490"
+     d="M 221.00328,-201.80094 L 221.00328,-222.81073"
+     style="fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#ff0000;stroke-width:0.89561927px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="path4206"
+     d="M 210.27200,-189.75607 L 210.27200,-166.84067"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.93535471px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <g
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     transform="matrix(3.549056e-2,0.000000,0.000000,-3.549056e-2,237.8747,-182.6081)"
+     id="g4208">
+    <g
+       style="stroke:#008000;stroke-width:1.0000000"
+       id="g4210">
+      <line
+         id="line4212"
+         y2="0.0000000"
+         x2="352.00000"
+         y1="0.0000000"
+         x1="0.0000000" />
+      <line
+         id="line4214"
+         y2="-10.000000"
+         x2="0.0000000"
+         y1="10.000000"
+         x1="0.0000000" />
+      <line
+         id="line4216"
+         y2="-10.000000"
+         x2="352.00000"
+         y1="10.000000"
+         x1="352.00000" />
+    </g>
+    <path
+       style="fill:currentColor"
+       id="path4218"
+       d="M 53.000000,81.000000 C 92.000000,120.00000 163.00000,142.00000 247.00000,142.00000 C 257.00000,142.00000 266.00000,142.00000 273.00000,141.00000 C 324.00000,136.00000 351.00000,110.00000 351.00000,54.000000 C 351.00000,-1.0000000 324.00000,-56.000000 299.00000,-81.000000 C 260.00000,-120.00000 190.00000,-142.00000 105.00000,-142.00000 C 38.000000,-142.00000 1.0000000,-120.00000 1.0000000,-54.000000 C 1.0000000,1.0000000 28.000000,56.000000 53.000000,81.000000 z M 308.00000,60.000000 C 308.00000,82.000000 290.00000,99.000000 267.00000,99.000000 C 240.00000,99.000000 174.00000,54.000000 128.00000,23.000000 C 79.000000,-9.0000000 44.000000,-32.000000 44.000000,-60.000000 C 44.000000,-79.000000 57.000000,-98.000000 83.000000,-98.000000 C 91.000000,-98.000000 94.000000,-98.000000 102.00000,-95.000000 C 136.00000,-82.000000 281.00000,6.0000000 302.00000,40.000000 C 306.00000,46.000000 308.00000,53.000000 308.00000,60.000000 z " />
+  </g>
+  <text
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="text4220"
+     y="-144.92421"
+     x="187.30696"
+     style="font-size:25.300045;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+     xml:space="preserve"><tspan
+       y="-144.92421"
+       x="187.30696"
+       id="tspan4222"
+       sodipodi:role="line">T</tspan></text>
+  <g
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     transform="matrix(3.326776e-2,0.000000,0.000000,-3.326776e-2,227.2191,-181.5376)"
+     id="g4315">
+    <g
+       style="stroke:#008000;stroke-width:1.0000000"
+       id="g4292">
+      <line
+         id="line4294"
+         y2="0.0000000"
+         x2="275.00000"
+         y1="0.0000000"
+         x1="0.0000000" />
+      <line
+         id="line4296"
+         y2="-10.000000"
+         x2="0.0000000"
+         y1="10.000000"
+         x1="0.0000000" />
+      <line
+         id="line4298"
+         y2="-10.000000"
+         x2="275.00000"
+         y1="10.000000"
+         x1="275.00000" />
+    </g>
+    <path
+       style="fill:currentColor"
+       id="path4300"
+       d="M 101.00000,171.00000 L 174.00000,207.00000 L 174.00000,282.00000 C 174.00000,354.00000 170.00000,364.00000 188.00000,373.00000 C 191.00000,374.00000 194.00000,375.00000 198.00000,375.00000 C 227.00000,375.00000 221.00000,338.00000 221.00000,293.00000 L 221.00000,231.00000 C 234.00000,238.00000 237.00000,240.00000 247.00000,240.00000 C 254.00000,240.00000 264.00000,241.00000 272.00000,225.00000 C 274.00000,221.00000 275.00000,219.00000 275.00000,189.00000 L 275.00000,181.00000 C 275.00000,134.00000 274.00000,142.00000 221.00000,115.00000 L 221.00000,-31.000000 C 225.00000,-31.000000 233.00000,-22.000000 247.00000,-22.000000 C 258.00000,-22.000000 267.00000,-28.000000 272.00000,-38.000000 C 274.00000,-42.000000 275.00000,-43.000000 275.00000,-76.000000 L 275.00000,-110.00000 C 267.00000,-131.00000 242.00000,-135.00000 221.00000,-147.00000 L 221.00000,-222.00000 C 221.00000,-279.00000 227.00000,-315.00000 198.00000,-315.00000 C 168.00000,-315.00000 174.00000,-278.00000 174.00000,-233.00000 L 174.00000,-171.00000 L 101.00000,-207.00000 L 101.00000,-356.00000 C 98.000000,-363.00000 92.000000,-375.00000 78.000000,-375.00000 C 48.000000,-375.00000 54.000000,-340.00000 54.000000,-293.00000 L 54.000000,-231.00000 C 41.000000,-238.00000 38.000000,-240.00000 28.000000,-240.00000 C 6.0000000,-240.00000 5.0000000,-226.00000 1.0000000,-220.00000 L 0.0000000,-189.00000 L 0.0000000,-181.00000 C 0.0000000,-134.00000 1.0000000,-142.00000 54.000000,-115.00000 L 54.000000,31.000000 C 50.000000,31.000000 42.000000,22.000000 28.000000,22.000000 C 17.000000,22.000000 8.0000000,28.000000 3.0000000,38.000000 C 1.0000000,42.000000 1.0000000,43.000000 1.0000000,77.000000 L 1.0000000,111.00000 C 8.0000000,132.00000 34.000000,135.00000 54.000000,147.00000 L 54.000000,297.00000 C 58.000000,306.00000 65.000000,315.00000 77.000000,315.00000 C 107.00000,315.00000 101.00000,280.00000 101.00000,233.00000 L 101.00000,171.00000 z M 102.00000,-91.000000 L 174.00000,-55.000000 L 174.00000,18.000000 C 174.00000,58.000000 174.00000,91.000000 173.00000,91.000000 L 101.00000,55.000000 L 101.00000,-18.000000 C 101.00000,-58.000000 101.00000,-91.000000 102.00000,-91.000000 z " />
+  </g>
+  <text
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="text4326"
+     y="-144.92421"
+     x="207.29097"
+     style="font-size:21.269522;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+     xml:space="preserve"><tspan
+       y="-144.92421"
+       x="207.29097"
+       id="tspan4328"
+       sodipodi:role="line">N</tspan></text>
+  <text
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="text4330"
+     y="-144.92421"
+     x="234.31923"
+     style="font-size:25.300045;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+     xml:space="preserve"><tspan
+       y="-144.92421"
+       x="234.31923"
+       id="tspan4332"
+       sodipodi:role="line">D</tspan></text>
+  <text
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon.png"
+     id="text4338"
+     y="-158.60498"
+     x="220.85973"
+     style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+     xml:space="preserve"><tspan
+       y="-158.60498"
+       x="220.85973"
+       id="tspan4340"
+       sodipodi:role="line">6</tspan></text>
+  <rect
+     inkscape:export-ydpi="45.020000"
+     inkscape:export-xdpi="45.020000"
+     inkscape:export-filename="/home/matevz/tmp/hi48-app-noteedit.png"
+     y="-254.02403"
+     x="292.37564"
+     height="128.97275"
+     width="128.97275"
+     id="rect4588"
+     style="fill:#333333;fill-opacity:0.0000000;fill-rule:evenodd;stroke:none;stroke-width:0.91022104;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+  <path
+     sodipodi:nodetypes="ccccc"
+     id="path4682"
+     d="M 291.84839,-226.97474 L 425.28886,-219.15705 L 424.80095,-146.05520 L 292.72676,-166.89393 L 291.84839,-226.97474 z "
+     style="fill:url(#radialGradient2334);fill-opacity:1.0;fill-rule:evenodd;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon13.png"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-ydpi="129.89000" />
+  <path
+     sodipodi:nodetypes="cc"
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     id="path4464"
+     d="M 292.15108,-225.94290 L 425.82304,-219.43541"
+     style="stroke-miterlimit:4.0000000;stroke-dasharray:none;fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:url(#linearGradient5660);stroke-width:2.0326720;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <path
+     sodipodi:nodetypes="cc"
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     id="path4466"
+     d="M 292.64079,-211.73039 L 425.47676,-201.92097"
+     style="stroke-miterlimit:4.0000000;stroke-dasharray:none;fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:url(#linearGradient5668);stroke-width:2.0326720;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <path
+     sodipodi:nodetypes="cc"
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     id="path4468"
+     d="M 292.64079,-197.27304 L 425.47676,-184.06024"
+     style="stroke-miterlimit:4.0000000;stroke-dasharray:none;fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:url(#linearGradient5676);stroke-width:2.0326720;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <path
+     sodipodi:nodetypes="cc"
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     id="path4470"
+     d="M 291.90623,-181.10168 L 425.47676,-165.16067"
+     style="stroke-miterlimit:4.0000000;stroke-dasharray:none;fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:url(#linearGradient5684);stroke-width:2.0326720;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <path
+     sodipodi:nodetypes="cc"
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     id="path4472"
+     d="M 292.39594,-166.64433 L 426.16932,-145.91483"
+     style="stroke-miterlimit:4.0000000;stroke-dasharray:none;fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:2.0326720;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     id="path4516"
+     d="M 335.12259,-170.45952 L 335.12259,-128.34495"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:url(#linearGradient2285);stroke-width:1.7190212px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1.0000000" />
+  <g
+     style="fill:url(#linearGradient4698);fill-opacity:1.0000000"
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     transform="matrix(7.538281e-2,1.764987e-2,0.000000,-6.832286e-2,363.5243,-180.7457)"
+     id="g4558">
+    <g
+       style="fill:url(#linearGradient5933);stroke:#008000;stroke-width:1.0000000"
+       id="g4560">
+      <line
+         style="fill:url(#linearGradient5939)"
+         id="line4566"
+         y2="-10.000000"
+         x2="275.00000"
+         y1="10.000000"
+         x1="275.00000" />
+    </g>
+    <path
+       style="fill:url(#linearGradient5941)"
+       id="path4568"
+       d="M 101.00000,171.00000 L 174.00000,207.00000 L 174.00000,282.00000 C 174.00000,354.00000 170.00000,364.00000 188.00000,373.00000 C 191.00000,374.00000 194.00000,375.00000 198.00000,375.00000 C 227.00000,375.00000 221.00000,338.00000 221.00000,293.00000 L 221.00000,231.00000 C 234.00000,238.00000 237.00000,240.00000 247.00000,240.00000 C 254.00000,240.00000 264.00000,241.00000 272.00000,225.00000 C 274.00000,221.00000 275.00000,219.00000 275.00000,189.00000 L 275.00000,181.00000 C 275.00000,134.00000 274.00000,142.00000 221.00000,115.00000 L 221.00000,-31.000000 C 225.00000,-31.000000 233.00000,-22.000000 247.00000,-22.000000 C 258.00000,-22.000000 267.00000,-28.000000 272.00000,-38.000000 C 274.00000,-42.000000 275.00000,-43.000000 275.00000,-76.000000 L 275.00000,-110.00000 C 267.00000,-131.00000 242.00000,-135.00000 221.00000,-147.00000 L 221.00000,-222.00000 C 221.00000,-279.00000 227.00000,-315.00000 198.00000,-315.00000 C 168.00000,-315.00000 174.00000,-278.00000 174.00000,-233.00000 L 174.00000,-171.00000 L 101.00000,-207.00000 L 101.00000,-356.00000 C 98.000000,-363.00000 92.000000,-375.00000 78.000000,-375.00000 C 48.000000,-375.00000 54.000000,-340.00000 54.000000,-293.00000 L 54.000000,-231.00000 C 41.000000,-238.00000 38.000000,-240.00000 28.000000,-240.00000 C 6.0000000,-240.00000 5.0000000,-226.00000 1.0000000,-220.00000 L 0.0000000,-189.00000 L 0.0000000,-181.00000 C 0.0000000,-134.00000 1.0000000,-142.00000 54.000000,-115.00000 L 54.000000,31.000000 C 50.000000,31.000000 42.000000,22.000000 28.000000,22.000000 C 17.000000,22.000000 8.0000000,28.000000 3.0000000,38.000000 C 1.0000000,42.000000 1.0000000,43.000000 1.0000000,77.000000 L 1.0000000,111.00000 C 8.0000000,132.00000 34.000000,135.00000 54.000000,147.00000 L 54.000000,297.00000 C 58.000000,306.00000 65.000000,315.00000 77.000000,315.00000 C 107.00000,315.00000 101.00000,280.00000 101.00000,233.00000 L 101.00000,171.00000 z M 102.00000,-91.000000 L 174.00000,-55.000000 L 174.00000,18.000000 C 174.00000,58.000000 174.00000,91.000000 173.00000,91.000000 L 101.00000,55.000000 L 101.00000,-18.000000 C 101.00000,-58.000000 101.00000,-91.000000 102.00000,-91.000000 z " />
+  </g>
+  <g
+     style="fill:url(#radialGradient4626);fill-opacity:1.0000000"
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     transform="matrix(6.568855e-2,0.000000,0.000000,-6.568855e-2,334.0313,-174.9658)"
+     id="g4614">
+    <g
+       style="fill:url(#radialGradient4628);stroke:#008000;stroke-width:1.0000000"
+       id="g4616">
+      <line
+         style="fill:url(#radialGradient4630)"
+         id="line4618"
+         y2="0.0000000"
+         x2="328.00000"
+         y1="0.0000000"
+         x1="0.0000000" />
+      <line
+         style="fill:url(#radialGradient4632)"
+         id="line4620"
+         y2="-10.000000"
+         x2="0.0000000"
+         y1="10.000000"
+         x1="0.0000000" />
+      <line
+         style="fill:url(#radialGradient4634)"
+         id="line4622"
+         y2="-10.000000"
+         x2="328.00000"
+         y1="10.000000"
+         x1="328.00000" />
+    </g>
+    <path
+       style="fill:url(#radialGradient4636)"
+       id="path4624"
+       d="M 327.00000,36.000000 C 327.00000,-57.000000 221.00000,-141.00000 124.00000,-141.00000 C 65.000000,-141.00000 29.000000,-121.00000 10.000000,-82.000000 C 3.0000000,-67.000000 1.0000000,-58.000000 1.0000000,-38.000000 C 1.0000000,-27.000000 1.0000000,-20.000000 2.0000000,-14.000000 C 19.000000,61.000000 95.000000,131.00000 190.00000,141.00000 L 201.00000,141.00000 C 272.00000,141.00000 327.00000,112.00000 327.00000,36.000000 z " />
+  </g>
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     id="path4544"
+     d="M 384.73168,-173.09394 L 384.73168,-130.97937"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:url(#linearGradient2277);stroke-width:2.5534391;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+  <g
+     style="fill:url(#radialGradient4650);fill-opacity:1.0000000"
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     transform="matrix(8.270919e-2,0.000000,0.000000,-7.898517e-2,383.1834,-177.3353)"
+     id="g4638">
+    <g
+       style="fill:url(#radialGradient4652);stroke:#008000;stroke-width:1.0000000"
+       id="g4640" />
+    <path
+       style="fill:url(#radialGradient4660)"
+       id="path4648"
+       d="M 327.00000,36.000000 C 327.00000,-57.000000 221.00000,-141.00000 124.00000,-141.00000 C 65.000000,-141.00000 29.000000,-121.00000 10.000000,-82.000000 C 3.0000000,-67.000000 1.0000000,-58.000000 1.0000000,-38.000000 C 1.0000000,-27.000000 1.0000000,-20.000000 2.0000000,-14.000000 C 19.000000,61.000000 95.000000,131.00000 190.00000,141.00000 L 201.00000,141.00000 C 272.00000,141.00000 327.00000,112.00000 327.00000,36.000000 z " />
+  </g>
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     id="path4498"
+     d="M 354.63945,-201.58713 L 354.63945,-243.70170"
+     style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:url(#linearGradient2293);stroke-width:1.7190212px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <g
+     style="fill:url(#radialGradient4612);fill-opacity:1.0000000"
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     transform="matrix(6.568855e-2,0.000000,0.000000,-6.568855e-2,334.0313,-199.7298)"
+     id="g4474">
+    <g
+       style="fill:url(#radialGradient5943);stroke:#008000;stroke-width:1.0000000"
+       id="g4476" />
+    <path
+       style="fill:url(#radialGradient5951)"
+       id="path4484"
+       d="M 327.00000,36.000000 C 327.00000,-57.000000 221.00000,-141.00000 124.00000,-141.00000 C 65.000000,-141.00000 29.000000,-121.00000 10.000000,-82.000000 C 3.0000000,-67.000000 1.0000000,-58.000000 1.0000000,-38.000000 C 1.0000000,-27.000000 1.0000000,-20.000000 2.0000000,-14.000000 C 19.000000,61.000000 95.000000,131.00000 190.00000,141.00000 L 201.00000,141.00000 C 272.00000,141.00000 327.00000,112.00000 327.00000,36.000000 z " />
+  </g>
+  <g
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     style="fill:url(#radialGradient4570);fill-opacity:1.0000000;stroke:#ff0000;stroke-opacity:1.0000000"
+     transform="matrix(8.122588e-2,0.000000,0.000000,-7.886967e-2,382.9700,-196.0858)"
+     id="g4530">
+    <g
+       style="fill:url(#radialGradient4572);stroke-width:1.0000000"
+       id="g4532" />
+    <path
+       style="fill:url(#radialGradient4580)"
+       id="path4540"
+       d="M 327.00000,36.000000 C 327.00000,-57.000000 221.00000,-141.00000 124.00000,-141.00000 C 65.000000,-141.00000 29.000000,-121.00000 10.000000,-82.000000 C 3.0000000,-67.000000 1.0000000,-58.000000 1.0000000,-38.000000 C 1.0000000,-27.000000 1.0000000,-20.000000 2.0000000,-14.000000 C 19.000000,61.000000 95.000000,131.00000 190.00000,141.00000 L 201.00000,141.00000 C 272.00000,141.00000 327.00000,112.00000 327.00000,36.000000 z " />
+  </g>
+  <path
+     inkscape:export-ydpi="129.89000"
+     inkscape:export-xdpi="129.89000"
+     inkscape:export-filename="/home/matevz/Cantus/NoteEdit/icon/icon5.png"
+     id="path4542"
+     d="M 407.71385,-202.15496 L 407.71385,-251.85011"
+     style="fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#ff0000;stroke-width:2.8205733;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+  <g
+     id="g4847"
+     transform="matrix(5.313933e-2,1.268130e-2,-2.667093e-4,5.457460e-2,292.8752,-200.8183)"
+     style="fill:url(#radialGradient5618);fill-opacity:1.0000000">
+    <g
+       id="g4824"
+       style="fill:url(#radialGradient5620);stroke:#008000;stroke-width:1.0000000">
+      <line
+         x1="0.0000000"
+         y1="10.000000"
+         x2="0.0000000"
+         y2="-10.000000"
+         id="line4828"
+         style="fill:url(#radialGradient5624)" />
+    </g>
+    <path
+       d="M 362.00000,284.00000 C 319.00000,284.00000 286.00000,318.00000 286.00000,361.00000 C 286.00000,429.00000 340.00000,485.00000 407.00000,498.00000 C 413.00000,499.00000 419.00000,500.00000 421.00000,500.00000 L 434.00000,500.00000 C 449.00000,500.00000 473.00000,500.00000 481.00000,499.00000 C 620.00000,484.00000 690.00000,401.00000 690.00000,250.00000 C 690.00000,126.00000 576.00000,49.000000 470.00000,49.000000 C 424.00000,49.000000 417.00000,71.000000 382.00000,71.000000 C 349.00000,71.000000 338.00000,45.000000 338.00000,0.0000000 C 338.00000,-28.000000 341.00000,-71.000000 382.00000,-71.000000 C 412.00000,-71.000000 428.00000,-49.000000 469.00000,-49.000000 C 588.00000,-49.000000 690.00000,-135.00000 690.00000,-253.00000 C 690.00000,-426.00000 589.00000,-500.00000 443.00000,-500.00000 C 421.00000,-500.00000 404.00000,-497.00000 387.00000,-492.00000 C 342.00000,-477.00000 306.00000,-442.00000 293.00000,-400.00000 C 289.00000,-387.00000 286.00000,-374.00000 286.00000,-361.00000 C 286.00000,-318.00000 319.00000,-284.00000 362.00000,-284.00000 C 403.00000,-284.00000 438.00000,-317.00000 438.00000,-358.00000 C 438.00000,-397.00000 395.00000,-401.00000 395.00000,-434.00000 C 395.00000,-456.00000 417.00000,-467.00000 442.00000,-467.00000 C 552.00000,-467.00000 570.00000,-370.00000 570.00000,-251.00000 C 570.00000,-152.00000 555.00000,-81.000000 468.00000,-81.000000 C 398.00000,-81.000000 358.00000,-141.00000 354.00000,-202.00000 C 354.00000,-218.00000 352.00000,-225.00000 338.00000,-225.00000 C 325.00000,-225.00000 323.00000,-219.00000 323.00000,-217.00000 C 322.00000,-215.00000 321.00000,-207.00000 321.00000,-199.00000 C 317.00000,-121.00000 285.00000,-67.000000 238.00000,-19.000000 L 238.00000,-255.00000 L 238.00000,-390.00000 C 238.00000,-507.00000 237.00000,-495.00000 232.00000,-498.00000 C 229.00000,-500.00000 227.00000,-500.00000 214.00000,-500.00000 C 197.00000,-500.00000 194.00000,-499.00000 191.00000,-493.00000 C 190.00000,-490.00000 190.00000,-423.00000 190.00000,1.0000000 C 190.00000,485.00000 190.00000,491.00000 192.00000,494.00000 C 195.00000,499.00000 198.00000,500.00000 214.00000,500.00000 C 227.00000,500.00000 229.00000,500.00000 232.00000,498.00000 C 238.00000,494.00000 238.00000,513.00000 238.00000,254.00000 L 238.00000,20.000000 C 286.00000,68.000000 317.00000,120.00000 321.00000,199.00000 C 321.00000,207.00000 322.00000,215.00000 323.00000,217.00000 C 323.00000,220.00000 329.00000,226.00000 338.00000,226.00000 C 352.00000,226.00000 354.00000,214.00000 354.00000,202.00000 C 358.00000,141.00000 397.00000,81.000000 466.00000,81.000000 C 527.00000,81.000000 555.00000,119.00000 565.00000,170.00000 C 569.00000,193.00000 570.00000,209.00000 570.00000,253.00000 C 570.00000,371.00000 554.00000,453.00000 460.00000,466.00000 C 453.00000,467.00000 448.00000,467.00000 442.00000,467.00000 C 417.00000,467.00000 395.00000,456.00000 395.00000,434.00000 C 395.00000,401.00000 438.00000,397.00000 438.00000,358.00000 C 438.00000,317.00000 403.00000,284.00000 362.00000,284.00000 z M 2.0000000,493.00000 C 2.0000000,502.00000 27.000000,500.00000 70.000000,500.00000 C 138.00000,500.00000 136.00000,500.00000 139.00000,493.00000 C 141.00000,490.00000 141.00000,464.00000 141.00000,0.0000000 C 141.00000,-441.00000 141.00000,-490.00000 139.00000,-493.00000 C 139.00000,-502.00000 114.00000,-500.00000 71.000000,-500.00000 C 3.0000000,-500.00000 5.0000000,-500.00000 2.0000000,-493.00000 C 0.0000000,-490.00000 0.0000000,-464.00000 0.0000000,0.0000000 C 0.0000000,441.00000 0.0000000,490.00000 2.0000000,493.00000 z "
+       id="path4832"
+       style="fill:url(#radialGradient5628)" />
+  </g>
+  <g
+     id="g5630"
+     transform="matrix(5.313933e-2,1.268130e-2,-2.667093e-4,5.457460e-2,293.4954,-200.4821)"
+     style="fill:url(#radialGradient5642);fill-opacity:1.0000000">
+    <g
+       id="g5632"
+       style="fill:url(#radialGradient5644);stroke:#008000;stroke-width:1.0000000">
+      <line
+         x1="0.0000000"
+         y1="10.000000"
+         x2="0.0000000"
+         y2="-10.000000"
+         id="line5636"
+         style="fill:url(#radialGradient5648)" />
+    </g>
+    <path
+       d="M 362.00000,284.00000 C 319.00000,284.00000 286.00000,318.00000 286.00000,361.00000 C 286.00000,429.00000 340.00000,485.00000 407.00000,498.00000 C 413.00000,499.00000 419.00000,500.00000 421.00000,500.00000 L 434.00000,500.00000 C 449.00000,500.00000 473.00000,500.00000 481.00000,499.00000 C 620.00000,484.00000 690.00000,401.00000 690.00000,250.00000 C 690.00000,126.00000 576.00000,49.000000 470.00000,49.000000 C 424.00000,49.000000 417.00000,71.000000 382.00000,71.000000 C 349.00000,71.000000 338.00000,45.000000 338.00000,0.0000000 C 338.00000,-28.000000 341.00000,-71.000000 382.00000,-71.000000 C 412.00000,-71.000000 428.00000,-49.000000 469.00000,-49.000000 C 588.00000,-49.000000 690.00000,-135.00000 690.00000,-253.00000 C 690.00000,-426.00000 589.00000,-500.00000 443.00000,-500.00000 C 421.00000,-500.00000 404.00000,-497.00000 387.00000,-492.00000 C 342.00000,-477.00000 306.00000,-442.00000 293.00000,-400.00000 C 289.00000,-387.00000 286.00000,-374.00000 286.00000,-361.00000 C 286.00000,-318.00000 319.00000,-284.00000 362.00000,-284.00000 C 403.00000,-284.00000 438.00000,-317.00000 438.00000,-358.00000 C 438.00000,-397.00000 395.00000,-401.00000 395.00000,-434.00000 C 395.00000,-456.00000 417.00000,-467.00000 442.00000,-467.00000 C 552.00000,-467.00000 570.00000,-370.00000 570.00000,-251.00000 C 570.00000,-152.00000 555.00000,-81.000000 468.00000,-81.000000 C 398.00000,-81.000000 358.00000,-141.00000 354.00000,-202.00000 C 354.00000,-218.00000 352.00000,-225.00000 338.00000,-225.00000 C 325.00000,-225.00000 323.00000,-219.00000 323.00000,-217.00000 C 322.00000,-215.00000 321.00000,-207.00000 321.00000,-199.00000 C 317.00000,-121.00000 285.00000,-67.000000 238.00000,-19.000000 L 238.00000,-255.00000 L 238.00000,-390.00000 C 238.00000,-507.00000 237.00000,-495.00000 232.00000,-498.00000 C 229.00000,-500.00000 227.00000,-500.00000 214.00000,-500.00000 C 197.00000,-500.00000 194.00000,-499.00000 191.00000,-493.00000 C 190.00000,-490.00000 190.00000,-423.00000 190.00000,1.0000000 C 190.00000,485.00000 190.00000,491.00000 192.00000,494.00000 C 195.00000,499.00000 198.00000,500.00000 214.00000,500.00000 C 227.00000,500.00000 229.00000,500.00000 232.00000,498.00000 C 238.00000,494.00000 238.00000,513.00000 238.00000,254.00000 L 238.00000,20.000000 C 286.00000,68.000000 317.00000,120.00000 321.00000,199.00000 C 321.00000,207.00000 322.00000,215.00000 323.00000,217.00000 C 323.00000,220.00000 329.00000,226.00000 338.00000,226.00000 C 352.00000,226.00000 354.00000,214.00000 354.00000,202.00000 C 358.00000,141.00000 397.00000,81.000000 466.00000,81.000000 C 527.00000,81.000000 555.00000,119.00000 565.00000,170.00000 C 569.00000,193.00000 570.00000,209.00000 570.00000,253.00000 C 570.00000,371.00000 554.00000,453.00000 460.00000,466.00000 C 453.00000,467.00000 448.00000,467.00000 442.00000,467.00000 C 417.00000,467.00000 395.00000,456.00000 395.00000,434.00000 C 395.00000,401.00000 438.00000,397.00000 438.00000,358.00000 C 438.00000,317.00000 403.00000,284.00000 362.00000,284.00000 z M 2.0000000,493.00000 C 2.0000000,502.00000 27.000000,500.00000 70.000000,500.00000 C 138.00000,500.00000 136.00000,500.00000 139.00000,493.00000 C 141.00000,490.00000 141.00000,464.00000 141.00000,0.0000000 C 141.00000,-441.00000 141.00000,-490.00000 139.00000,-493.00000 C 139.00000,-502.00000 114.00000,-500.00000 71.000000,-500.00000 C 3.0000000,-500.00000 5.0000000,-500.00000 2.0000000,-493.00000 C 0.0000000,-490.00000 0.0000000,-464.00000 0.0000000,0.0000000 C 0.0000000,441.00000 0.0000000,490.00000 2.0000000,493.00000 z "
+       id="path5640"
+       style="fill:url(#radialGradient5652)" />
+  </g>
+</svg>

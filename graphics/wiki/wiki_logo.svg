@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="wiki_logo.svg"
+   sodipodi:docbase="/home/matevz/Cantus/NoteEdit/wiki"
+   inkscape:version="0.41"
+   sodipodi:version="0.32"
+   id="svg2508"
+   height="297mm"
+   width="210mm">
+  <defs
+     id="defs3">
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="-941.13074"
+       x2="85.634041"
+       y1="-927.55945"
+       x1="87.761536"
+       gradientTransform="matrix(5.918862,0.000000,0.000000,0.273671,-233.1013,680.3587)"
+       id="linearGradient5660"
+       xlink:href="#linearGradient5654"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="209.75604"
+       fy="-189.37651"
+       fx="353.81427"
+       cy="-189.37651"
+       cx="353.81427"
+       gradientTransform="matrix(0.753093,0.145490,-5.476106e-3,0.907115,-75.04638,527.0868)"
+       id="radialGradient2356"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="-733.31787"
+       x2="96.104584"
+       y1="-721.02802"
+       x1="99.907135"
+       gradientTransform="matrix(4.936561,0.000000,0.000000,0.328127,-233.1013,680.3587)"
+       id="linearGradient5668"
+       xlink:href="#linearGradient5654"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="209.75604"
+       fy="-189.37651"
+       fx="353.81427"
+       cy="-189.37651"
+       cx="353.81427"
+       gradientTransform="matrix(0.753093,0.145490,-5.476106e-3,0.907115,-75.04638,527.0868)"
+       id="radialGradient2354"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="-570.21027"
+       x2="100.10344"
+       y1="-567.54694"
+       x1="107.64516"
+       gradientTransform="matrix(4.314311,0.000000,0.000000,0.375453,-233.1013,680.3587)"
+       id="linearGradient5676"
+       xlink:href="#linearGradient5654"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="209.75604"
+       fy="-189.37651"
+       fx="353.81427"
+       cy="-189.37651"
+       cx="353.81427"
+       gradientTransform="matrix(0.753093,0.145490,-5.476106e-3,0.907115,-75.04638,527.0868)"
+       id="radialGradient2352"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="-489.82922"
+       x2="106.73305"
+       y1="-487.36478"
+       x1="117.20079"
+       gradientTransform="matrix(3.966824,0.000000,0.000000,0.408342,-233.1013,680.3587)"
+       id="linearGradient5684"
+       xlink:href="#linearGradient5654"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="209.75604"
+       fy="-189.37651"
+       fx="353.81427"
+       cy="-189.37651"
+       cx="353.81427"
+       gradientTransform="matrix(0.753093,0.145490,-5.476106e-3,0.907115,-75.04638,527.0868)"
+       id="radialGradient2350"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="209.75604"
+       fy="-189.37651"
+       fx="353.81427"
+       cy="-189.37651"
+       cx="353.81427"
+       gradientTransform="matrix(0.753093,0.145490,-5.476106e-3,0.907115,-75.04638,527.0868)"
+       id="radialGradient2348"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5654"
+       id="linearGradient2285"
+       gradientTransform="matrix(0.304791,0.000000,0.000000,5.782490,-269.3489,680.3587)"
+       x1="1694.1168"
+       y1="-28.886526"
+       x2="1686.6774"
+       y2="-29.166540"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="209.75604"
+       fy="-189.37651"
+       fx="353.81427"
+       cy="-189.37651"
+       cx="353.81427"
+       gradientTransform="matrix(0.819406,0.145490,-5.958299e-3,0.907115,-97.37673,527.0868)"
+       id="radialGradient2346"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="1899.2076"
+       fy="-493.25812"
+       fx="-1069.6744"
+       cy="-493.25812"
+       cx="-1069.6744"
+       gradientTransform="matrix(0.780020,-3.877113e-3,-5.671901e-3,-1.281990,9.503511e-13,-1.381229e-12)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2400"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="1899.2076"
+       fy="-493.25812"
+       fx="-1069.6744"
+       cy="-493.25812"
+       cx="-1069.6744"
+       gradientTransform="matrix(0.780020,-3.877113e-3,-5.671901e-3,-1.281990,9.503511e-13,-1.381229e-12)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2398"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="1899.2076"
+       fy="-493.25812"
+       fx="-1069.6744"
+       cy="-493.25812"
+       cx="-1069.6744"
+       gradientTransform="matrix(0.780020,-3.877113e-3,-5.671901e-3,-1.281990,9.503511e-13,-1.381229e-12)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2396"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="1899.2076"
+       fy="-493.25812"
+       fx="-1069.6744"
+       cy="-493.25812"
+       cx="-1069.6744"
+       gradientTransform="matrix(0.780020,-3.877113e-3,-5.671901e-3,-1.281990,7.165379e-13,-1.225354e-12)"
+       id="radialGradient2344"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2074.9229"
+       fy="-698.77600"
+       fx="-621.81439"
+       cy="-698.77600"
+       cx="-621.81439"
+       gradientTransform="matrix(0.819331,-0.195527,-5.957746e-3,-1.219086,-2.131850e-12,-1.819378e-12)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2394"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2074.9229"
+       fy="-698.77600"
+       fx="-621.81439"
+       cy="-698.77600"
+       cx="-621.81439"
+       gradientTransform="matrix(0.819331,-0.195527,-5.957746e-3,-1.219086,-2.131850e-12,-1.819378e-12)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2392"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2074.9229"
+       fy="-698.77600"
+       fx="-621.81439"
+       cy="-698.77600"
+       cx="-621.81439"
+       gradientTransform="matrix(0.819331,-0.195527,-5.957746e-3,-1.219086,-2.131850e-12,-1.819378e-12)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2390"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2074.9229"
+       fy="-698.77600"
+       fx="-621.81439"
+       cy="-698.77600"
+       cx="-621.81439"
+       gradientTransform="matrix(0.819331,-0.195527,-5.957746e-3,-1.219086,-2.131850e-12,-1.819378e-12)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2388"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2074.9229"
+       fy="-698.77600"
+       fx="-621.81439"
+       cy="-698.77600"
+       cx="-621.81439"
+       gradientTransform="matrix(0.819331,-0.195527,-5.957746e-3,-1.219086,-2.131850e-12,-1.819378e-12)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2386"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="2074.9229"
+       fy="-698.77600"
+       fx="-621.81439"
+       cy="-698.77600"
+       cx="-621.81439"
+       gradientTransform="matrix(0.819331,-0.195527,-5.957746e-3,-1.219086,-2.167377e-12,-1.862288e-12)"
+       id="radialGradient2342"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5654"
+       id="linearGradient2277"
+       gradientTransform="matrix(0.367985,0.000000,0.000000,4.789469,-271.4807,678.7726)"
+       x1="1615.5233"
+       y1="-36.054031"
+       x2="1608.4034"
+       y2="-35.640617"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="209.75604"
+       fy="-189.37651"
+       fx="353.81427"
+       cy="-189.37651"
+       cx="353.81427"
+       gradientTransform="matrix(0.819406,0.145490,-5.958299e-3,0.907115,-97.37673,527.0868)"
+       id="radialGradient2340"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="1686.3248"
+       fy="-424.98215"
+       fx="-1246.5427"
+       cy="-424.98215"
+       cx="-1246.5427"
+       gradientTransform="matrix(0.800673,-0.200083,-5.822078e-3,-1.247494,7.851497e-13,5.150324e-13)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2384"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="1686.3248"
+       fy="-424.98215"
+       fx="-1246.5427"
+       cy="-424.98215"
+       cx="-1246.5427"
+       gradientTransform="matrix(0.800673,-0.200083,-5.822078e-3,-1.247494,7.851497e-13,5.150324e-13)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2382"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="1686.3248"
+       fy="-424.98215"
+       fx="-1246.5427"
+       cy="-424.98215"
+       cx="-1246.5427"
+       gradientTransform="matrix(0.800673,-0.200083,-5.822078e-3,-1.247494,9.701129e-13,5.125899e-13)"
+       id="radialGradient2338"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient5654">
+      <stop
+         id="stop5656"
+         offset="0.0000000"
+         style="stop-color:#9c9c9c;stop-opacity:1.0000000;" />
+      <stop
+         id="stop5658"
+         offset="1.0000000"
+         style="stop-color:#ffffff;stop-opacity:1.0000000;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5654"
+       id="linearGradient2293"
+       gradientTransform="matrix(0.304791,0.000000,0.000000,5.782488,-269.6154,680.3587)"
+       x1="1793.5444"
+       y1="-43.054882"
+       x2="1786.1040"
+       y2="-43.166885"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="209.75604"
+       fy="-189.37651"
+       fx="353.81427"
+       cy="-189.37651"
+       cx="353.81427"
+       gradientTransform="matrix(0.819406,0.145490,-5.958299e-3,0.907115,-97.37673,527.0868)"
+       id="radialGradient2336"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2074.9229"
+       fy="-389.89404"
+       fx="-619.56836"
+       cy="-389.89404"
+       cx="-619.56836"
+       gradientTransform="matrix(0.819331,-0.195527,-5.957746e-3,-1.219086,-2.824408e-13,-1.037947e-12)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2380"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2074.9229"
+       fy="-389.89404"
+       fx="-619.56836"
+       cy="-389.89404"
+       cx="-619.56836"
+       gradientTransform="matrix(0.819331,-0.195527,-5.957746e-3,-1.219086,-2.824408e-13,-1.037947e-12)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2378"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="2074.9229"
+       fy="-389.89404"
+       fx="-619.56836"
+       cy="-389.89404"
+       cx="-619.56836"
+       gradientTransform="matrix(0.819331,-0.195527,-5.957746e-3,-1.219086,-3.179680e-13,-1.098232e-12)"
+       id="radialGradient2334"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="305.53568"
+       fy="42.836948"
+       fx="208.37009"
+       cy="42.836948"
+       cx="208.37009"
+       gradientTransform="scale(1.074931,0.930292)"
+       id="radialGradient2476"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="21.933592"
+       fy="-38.650566"
+       fx="1890.6052"
+       cy="-38.650566"
+       cx="1890.6052"
+       gradientTransform="matrix(0.189594,0.000000,0.000000,3.017864,-1.151594,527.0868)"
+       id="radialGradient2494"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2529.4924"
+       fy="-608.10229"
+       fx="175.95244"
+       cy="-608.10229"
+       cx="175.95244"
+       gradientTransform="scale(0.830806,1.203650)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2372"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2529.4924"
+       fy="-608.10229"
+       fx="175.95244"
+       cy="-608.10229"
+       cx="175.95244"
+       gradientTransform="scale(0.830806,1.203650)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2370"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2529.4924"
+       fy="-608.10229"
+       fx="175.95244"
+       cy="-608.10229"
+       cx="175.95244"
+       gradientTransform="scale(0.830806,1.203650)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2368"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="2529.4924"
+       fy="-608.10229"
+       fx="175.95244"
+       cy="-608.10229"
+       cx="175.95244"
+       gradientTransform="scale(0.830806,1.203650)"
+       id="radialGradient2328"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2529.4924"
+       fy="-610.96387"
+       fx="161.88295"
+       cy="-610.96387"
+       cx="161.88295"
+       gradientTransform="scale(0.830806,1.203650)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2366"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2529.4924"
+       fy="-610.96387"
+       fx="161.88295"
+       cy="-610.96387"
+       cx="161.88295"
+       gradientTransform="scale(0.830806,1.203650)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2364"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="2529.4924"
+       fy="-610.96387"
+       fx="161.88295"
+       cy="-610.96387"
+       cx="161.88295"
+       gradientTransform="scale(0.830806,1.203650)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2362"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient2286">
+      <stop
+         id="stop2288"
+         offset="0.0000000"
+         style="stop-color:#d0d0d0;stop-opacity:1.0000000;" />
+      <stop
+         id="stop2290"
+         offset="1"
+         style="stop-color:#333333;stop-opacity:0;" />
+    </linearGradient>
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       r="2529.4924"
+       fy="-610.96387"
+       fx="161.88295"
+       cy="-610.96387"
+       cx="161.88295"
+       gradientTransform="scale(0.830806,1.203650)"
+       id="radialGradient2326"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="305.53568"
+       fy="42.836948"
+       fx="208.37009"
+       cy="42.836948"
+       cx="208.37009"
+       gradientTransform="scale(1.074931,0.930292)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2613"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+    <radialGradient
+       r="305.53568"
+       fy="42.836948"
+       fx="208.37009"
+       cy="42.836948"
+       cx="208.37009"
+       gradientTransform="scale(1.074931,0.930292)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2615"
+       xlink:href="#linearGradient2286"
+       inkscape:collect="always" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-height="1029"
+     inkscape:window-width="1400"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="554.96390"
+     inkscape:cx="393.39343"
+     inkscape:zoom="1.9798990"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF
+       id="RDF5">
+      <cc:Work
+         id="Work6"
+         rdf:about="">
+        <dc:format
+           id="format7">image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+           id="type9" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       style="fill:url(#radialGradient2356);fill-opacity:1.0000000;fill-rule:evenodd;stroke:url(#linearGradient5660);stroke-width:2.5870264;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000"
+       d="M 180.15757,421.62615 L 369.24168,429.07802"
+       id="path4464"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:url(#radialGradient2354);fill-opacity:1.0000000;fill-rule:evenodd;stroke:url(#linearGradient5668);stroke-width:2.5870264;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000"
+       d="M 180.85029,437.90123 L 368.75184,449.13423"
+       id="path4466"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:url(#radialGradient2352);fill-opacity:1.0000000;fill-rule:evenodd;stroke:url(#linearGradient5676);stroke-width:2.5870264;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000"
+       d="M 180.85029,454.45668 L 368.75184,469.58698"
+       id="path4468"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:url(#radialGradient2350);fill-opacity:1.0000000;fill-rule:evenodd;stroke:url(#linearGradient5684);stroke-width:2.5870264;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000"
+       d="M 179.81122,472.97490 L 368.75184,491.22933"
+       id="path4470"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="stroke-opacity:1.0000000;stroke-miterlimit:4.0000000;stroke-linejoin:miter;stroke-linecap:round;stroke-width:2.5870264;stroke:#afafaf;fill-rule:evenodd;fill-opacity:1.0000000;fill:url(#radialGradient2348)"
+       d="M 180.50394,489.53035 L 369.73150,513.26820"
+       id="path4472"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:url(#radialGradient2346);fill-opacity:1.0000000;fill-rule:evenodd;stroke:url(#linearGradient2285);stroke-width:2.2821286px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1.0000000"
+       d="M 246.43628,485.16149 L 246.43628,533.38788"
+       id="path4516"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084" />
+    <g
+       id="g4558"
+       transform="matrix(0.125812,2.204037e-2,0.000000,-8.531787e-2,276.0048,476.7742)"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084"
+       style="fill:url(#radialGradient2344);fill-opacity:1.0000000">
+      <g
+         id="g4560"
+         style="fill:url(#radialGradient2396);stroke:#008000;stroke-width:1.0000000">
+        <line
+           x1="275.00000"
+           y1="10.000000"
+           x2="275.00000"
+           y2="-10.000000"
+           id="line4566"
+           style="fill:url(#radialGradient2398)" />
+      </g>
+      <path
+         d="M 101.00000,171.00000 L 174.00000,207.00000 L 174.00000,282.00000 C 174.00000,354.00000 170.00000,364.00000 188.00000,373.00000 C 191.00000,374.00000 194.00000,375.00000 198.00000,375.00000 C 227.00000,375.00000 221.00000,338.00000 221.00000,293.00000 L 221.00000,231.00000 C 234.00000,238.00000 237.00000,240.00000 247.00000,240.00000 C 254.00000,240.00000 264.00000,241.00000 272.00000,225.00000 C 274.00000,221.00000 275.00000,219.00000 275.00000,189.00000 L 275.00000,181.00000 C 275.00000,134.00000 274.00000,142.00000 221.00000,115.00000 L 221.00000,-31.000000 C 225.00000,-31.000000 233.00000,-22.000000 247.00000,-22.000000 C 258.00000,-22.000000 267.00000,-28.000000 272.00000,-38.000000 C 274.00000,-42.000000 275.00000,-43.000000 275.00000,-76.000000 L 275.00000,-110.00000 C 267.00000,-131.00000 242.00000,-135.00000 221.00000,-147.00000 L 221.00000,-222.00000 C 221.00000,-279.00000 227.00000,-315.00000 198.00000,-315.00000 C 168.00000,-315.00000 174.00000,-278.00000 174.00000,-233.00000 L 174.00000,-171.00000 L 101.00000,-207.00000 L 101.00000,-356.00000 C 98.000000,-363.00000 92.000000,-375.00000 78.000000,-375.00000 C 48.000000,-375.00000 54.000000,-340.00000 54.000000,-293.00000 L 54.000000,-231.00000 C 41.000000,-238.00000 38.000000,-240.00000 28.000000,-240.00000 C 6.0000000,-240.00000 5.0000000,-226.00000 1.0000000,-220.00000 L 0.0000000,-189.00000 L 0.0000000,-181.00000 C 0.0000000,-134.00000 1.0000000,-142.00000 54.000000,-115.00000 L 54.000000,31.000000 C 50.000000,31.000000 42.000000,22.000000 28.000000,22.000000 C 17.000000,22.000000 8.0000000,28.000000 3.0000000,38.000000 C 1.0000000,42.000000 1.0000000,43.000000 1.0000000,77.000000 L 1.0000000,111.00000 C 8.0000000,132.00000 34.000000,135.00000 54.000000,147.00000 L 54.000000,297.00000 C 58.000000,306.00000 65.000000,315.00000 77.000000,315.00000 C 107.00000,315.00000 101.00000,280.00000 101.00000,233.00000 L 101.00000,171.00000 z M 102.00000,-91.000000 L 174.00000,-55.000000 L 174.00000,18.000000 C 174.00000,58.000000 174.00000,91.000000 173.00000,91.000000 L 101.00000,55.000000 L 101.00000,-18.000000 C 101.00000,-58.000000 101.00000,-91.000000 102.00000,-91.000000 z "
+         id="path4568"
+         style="fill:url(#radialGradient2400)" />
+    </g>
+    <g
+       id="g4614"
+       transform="matrix(0.109634,0.000000,0.000000,-8.202823e-2,226.7812,483.9919)"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084"
+       style="fill:url(#radialGradient2342);fill-opacity:1.0000000">
+      <g
+         id="g4616"
+         style="fill:url(#radialGradient2386);stroke:#008000;stroke-width:1.0000000">
+        <line
+           x1="0.0000000"
+           y1="0.0000000"
+           x2="328.00000"
+           y2="0.0000000"
+           id="line4618"
+           style="fill:url(#radialGradient2388)" />
+        <line
+           x1="0.0000000"
+           y1="10.000000"
+           x2="0.0000000"
+           y2="-10.000000"
+           id="line4620"
+           style="fill:url(#radialGradient2390)" />
+        <line
+           x1="328.00000"
+           y1="10.000000"
+           x2="328.00000"
+           y2="-10.000000"
+           id="line4622"
+           style="fill:url(#radialGradient2392)" />
+      </g>
+      <path
+         d="M 327.00000,36.000000 C 327.00000,-57.000000 221.00000,-141.00000 124.00000,-141.00000 C 65.000000,-141.00000 29.000000,-121.00000 10.000000,-82.000000 C 3.0000000,-67.000000 1.0000000,-58.000000 1.0000000,-38.000000 C 1.0000000,-27.000000 1.0000000,-20.000000 2.0000000,-14.000000 C 19.000000,61.000000 95.000000,131.00000 190.00000,141.00000 L 201.00000,141.00000 C 272.00000,141.00000 327.00000,112.00000 327.00000,36.000000 z "
+         id="path4624"
+         style="fill:url(#radialGradient2394)" />
+    </g>
+    <path
+       style="fill:url(#radialGradient2340);fill-opacity:1.0000000;fill-rule:evenodd;stroke:url(#linearGradient2277);stroke-width:3.3898804;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000"
+       d="M 322.78936,482.14475 L 322.78936,530.37115"
+       id="path4544"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084" />
+    <g
+       id="g4638"
+       transform="matrix(0.138041,0.000000,0.000000,-9.863270e-2,308.8157,481.0329)"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084"
+       style="fill:url(#radialGradient2338);fill-opacity:1.0000000">
+      <g
+         id="g4640"
+         style="fill:url(#radialGradient2382);stroke:#008000;stroke-width:1.0000000" />
+      <path
+         d="M 327.00000,36.000000 C 327.00000,-57.000000 221.00000,-141.00000 124.00000,-141.00000 C 65.000000,-141.00000 29.000000,-121.00000 10.000000,-82.000000 C 3.0000000,-67.000000 1.0000000,-58.000000 1.0000000,-38.000000 C 1.0000000,-27.000000 1.0000000,-20.000000 2.0000000,-14.000000 C 19.000000,61.000000 95.000000,131.00000 190.00000,141.00000 L 201.00000,141.00000 C 272.00000,141.00000 327.00000,112.00000 327.00000,36.000000 z "
+         id="path4648"
+         style="fill:url(#radialGradient2384)" />
+    </g>
+    <path
+       style="fill:url(#radialGradient2336);fill-opacity:1.0000000;fill-rule:evenodd;stroke:url(#linearGradient2293);stroke-width:2.2821286px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1.0000000"
+       d="M 276.47457,449.51652 L 276.47457,401.29012"
+       id="path4498"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084" />
+    <g
+       id="g4474"
+       transform="matrix(0.101101,0.000000,0.000000,-7.522126e-2,244.7570,451.6434)"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084"
+       style="fill:url(#radialGradient2334);fill-opacity:1.0000000">
+      <g
+         id="g4476"
+         style="fill:url(#radialGradient2378);stroke:#008000;stroke-width:1.0000000" />
+      <path
+         d="M 327.00000,36.000000 C 327.00000,-57.000000 221.00000,-141.00000 124.00000,-141.00000 C 65.000000,-141.00000 29.000000,-121.00000 10.000000,-82.000000 C 3.0000000,-67.000000 1.0000000,-58.000000 1.0000000,-38.000000 C 1.0000000,-27.000000 1.0000000,-20.000000 2.0000000,-14.000000 C 19.000000,61.000000 95.000000,131.00000 190.00000,141.00000 L 201.00000,141.00000 C 272.00000,141.00000 327.00000,112.00000 327.00000,36.000000 z "
+         id="path4484"
+         style="fill:url(#radialGradient2380)" />
+    </g>
+    <g
+       id="g4530"
+       transform="matrix(0.125015,0.000000,0.000000,-9.031596e-2,320.0781,455.8162)"
+       style="fill:url(#radialGradient2613);fill-opacity:1.0000000;stroke:none;stroke-opacity:1.0000000"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084">
+      <g
+         id="g4532"
+         style="fill:url(#radialGradient2615);stroke-width:1.0000000" />
+      <path
+         d="M 327.00000,36.000000 C 327.00000,-57.000000 221.00000,-141.00000 124.00000,-141.00000 C 65.000000,-141.00000 29.000000,-121.00000 10.000000,-82.000000 C 3.0000000,-67.000000 1.0000000,-58.000000 1.0000000,-38.000000 C 1.0000000,-27.000000 1.0000000,-20.000000 2.0000000,-14.000000 C 19.000000,61.000000 95.000000,131.00000 190.00000,141.00000 L 201.00000,141.00000 C 272.00000,141.00000 327.00000,112.00000 327.00000,36.000000 z "
+         id="path4540"
+         style="fill:url(#radialGradient2476)" />
+    </g>
+    <path
+       style="fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:url(#radialGradient2494);stroke-width:3.7445207;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000"
+       d="M 358.16108,448.86628 L 358.16108,391.95918"
+       id="path4542"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-ydpi="67.875084" />
+    <g
+       inkscape:export-ydpi="67.875084"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       style="fill:url(#radialGradient2328);fill-opacity:1.0000000"
+       transform="matrix(8.178685e-2,1.452167e-2,-4.104911e-4,6.249472e-2,181.4137,450.3969)"
+       id="g4847">
+      <g
+         style="fill:url(#radialGradient2368);stroke:#008000;stroke-width:1.0000000"
+         id="g4824">
+        <line
+           style="fill:url(#radialGradient2370)"
+           id="line4828"
+           y2="-10.000000"
+           x2="0.0000000"
+           y1="10.000000"
+           x1="0.0000000" />
+      </g>
+      <path
+         style="fill:url(#radialGradient2372)"
+         id="path4832"
+         d="M 362.00000,284.00000 C 319.00000,284.00000 286.00000,318.00000 286.00000,361.00000 C 286.00000,429.00000 340.00000,485.00000 407.00000,498.00000 C 413.00000,499.00000 419.00000,500.00000 421.00000,500.00000 L 434.00000,500.00000 C 449.00000,500.00000 473.00000,500.00000 481.00000,499.00000 C 620.00000,484.00000 690.00000,401.00000 690.00000,250.00000 C 690.00000,126.00000 576.00000,49.000000 470.00000,49.000000 C 424.00000,49.000000 417.00000,71.000000 382.00000,71.000000 C 349.00000,71.000000 338.00000,45.000000 338.00000,0.0000000 C 338.00000,-28.000000 341.00000,-71.000000 382.00000,-71.000000 C 412.00000,-71.000000 428.00000,-49.000000 469.00000,-49.000000 C 588.00000,-49.000000 690.00000,-135.00000 690.00000,-253.00000 C 690.00000,-426.00000 589.00000,-500.00000 443.00000,-500.00000 C 421.00000,-500.00000 404.00000,-497.00000 387.00000,-492.00000 C 342.00000,-477.00000 306.00000,-442.00000 293.00000,-400.00000 C 289.00000,-387.00000 286.00000,-374.00000 286.00000,-361.00000 C 286.00000,-318.00000 319.00000,-284.00000 362.00000,-284.00000 C 403.00000,-284.00000 438.00000,-317.00000 438.00000,-358.00000 C 438.00000,-397.00000 395.00000,-401.00000 395.00000,-434.00000 C 395.00000,-456.00000 417.00000,-467.00000 442.00000,-467.00000 C 552.00000,-467.00000 570.00000,-370.00000 570.00000,-251.00000 C 570.00000,-152.00000 555.00000,-81.000000 468.00000,-81.000000 C 398.00000,-81.000000 358.00000,-141.00000 354.00000,-202.00000 C 354.00000,-218.00000 352.00000,-225.00000 338.00000,-225.00000 C 325.00000,-225.00000 323.00000,-219.00000 323.00000,-217.00000 C 322.00000,-215.00000 321.00000,-207.00000 321.00000,-199.00000 C 317.00000,-121.00000 285.00000,-67.000000 238.00000,-19.000000 L 238.00000,-255.00000 L 238.00000,-390.00000 C 238.00000,-507.00000 237.00000,-495.00000 232.00000,-498.00000 C 229.00000,-500.00000 227.00000,-500.00000 214.00000,-500.00000 C 197.00000,-500.00000 194.00000,-499.00000 191.00000,-493.00000 C 190.00000,-490.00000 190.00000,-423.00000 190.00000,1.0000000 C 190.00000,485.00000 190.00000,491.00000 192.00000,494.00000 C 195.00000,499.00000 198.00000,500.00000 214.00000,500.00000 C 227.00000,500.00000 229.00000,500.00000 232.00000,498.00000 C 238.00000,494.00000 238.00000,513.00000 238.00000,254.00000 L 238.00000,20.000000 C 286.00000,68.000000 317.00000,120.00000 321.00000,199.00000 C 321.00000,207.00000 322.00000,215.00000 323.00000,217.00000 C 323.00000,220.00000 329.00000,226.00000 338.00000,226.00000 C 352.00000,226.00000 354.00000,214.00000 354.00000,202.00000 C 358.00000,141.00000 397.00000,81.000000 466.00000,81.000000 C 527.00000,81.000000 555.00000,119.00000 565.00000,170.00000 C 569.00000,193.00000 570.00000,209.00000 570.00000,253.00000 C 570.00000,371.00000 554.00000,453.00000 460.00000,466.00000 C 453.00000,467.00000 448.00000,467.00000 442.00000,467.00000 C 417.00000,467.00000 395.00000,456.00000 395.00000,434.00000 C 395.00000,401.00000 438.00000,397.00000 438.00000,358.00000 C 438.00000,317.00000 403.00000,284.00000 362.00000,284.00000 z M 2.0000000,493.00000 C 2.0000000,502.00000 27.000000,500.00000 70.000000,500.00000 C 138.00000,500.00000 136.00000,500.00000 139.00000,493.00000 C 141.00000,490.00000 141.00000,464.00000 141.00000,0.0000000 C 141.00000,-441.00000 141.00000,-490.00000 139.00000,-493.00000 C 139.00000,-502.00000 114.00000,-500.00000 71.000000,-500.00000 C 3.0000000,-500.00000 5.0000000,-500.00000 2.0000000,-493.00000 C 0.0000000,-490.00000 0.0000000,-464.00000 0.0000000,0.0000000 C 0.0000000,441.00000 0.0000000,490.00000 2.0000000,493.00000 z " />
+    </g>
+    <g
+       inkscape:export-ydpi="67.875084"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       style="fill:url(#radialGradient2326);fill-opacity:1.0000000"
+       transform="matrix(8.178685e-2,1.452167e-2,-4.104911e-4,6.249472e-2,182.3684,450.7819)"
+       id="g5630">
+      <g
+         style="fill:url(#radialGradient2362);stroke:#008000;stroke-width:1.0000000"
+         id="g5632">
+        <line
+           style="fill:url(#radialGradient2364)"
+           id="line5636"
+           y2="-10.000000"
+           x2="0.0000000"
+           y1="10.000000"
+           x1="0.0000000" />
+      </g>
+      <path
+         style="fill:url(#radialGradient2366)"
+         id="path5640"
+         d="M 362.00000,284.00000 C 319.00000,284.00000 286.00000,318.00000 286.00000,361.00000 C 286.00000,429.00000 340.00000,485.00000 407.00000,498.00000 C 413.00000,499.00000 419.00000,500.00000 421.00000,500.00000 L 434.00000,500.00000 C 449.00000,500.00000 473.00000,500.00000 481.00000,499.00000 C 620.00000,484.00000 690.00000,401.00000 690.00000,250.00000 C 690.00000,126.00000 576.00000,49.000000 470.00000,49.000000 C 424.00000,49.000000 417.00000,71.000000 382.00000,71.000000 C 349.00000,71.000000 338.00000,45.000000 338.00000,0.0000000 C 338.00000,-28.000000 341.00000,-71.000000 382.00000,-71.000000 C 412.00000,-71.000000 428.00000,-49.000000 469.00000,-49.000000 C 588.00000,-49.000000 690.00000,-135.00000 690.00000,-253.00000 C 690.00000,-426.00000 589.00000,-500.00000 443.00000,-500.00000 C 421.00000,-500.00000 404.00000,-497.00000 387.00000,-492.00000 C 342.00000,-477.00000 306.00000,-442.00000 293.00000,-400.00000 C 289.00000,-387.00000 286.00000,-374.00000 286.00000,-361.00000 C 286.00000,-318.00000 319.00000,-284.00000 362.00000,-284.00000 C 403.00000,-284.00000 438.00000,-317.00000 438.00000,-358.00000 C 438.00000,-397.00000 395.00000,-401.00000 395.00000,-434.00000 C 395.00000,-456.00000 417.00000,-467.00000 442.00000,-467.00000 C 552.00000,-467.00000 570.00000,-370.00000 570.00000,-251.00000 C 570.00000,-152.00000 555.00000,-81.000000 468.00000,-81.000000 C 398.00000,-81.000000 358.00000,-141.00000 354.00000,-202.00000 C 354.00000,-218.00000 352.00000,-225.00000 338.00000,-225.00000 C 325.00000,-225.00000 323.00000,-219.00000 323.00000,-217.00000 C 322.00000,-215.00000 321.00000,-207.00000 321.00000,-199.00000 C 317.00000,-121.00000 285.00000,-67.000000 238.00000,-19.000000 L 238.00000,-255.00000 L 238.00000,-390.00000 C 238.00000,-507.00000 237.00000,-495.00000 232.00000,-498.00000 C 229.00000,-500.00000 227.00000,-500.00000 214.00000,-500.00000 C 197.00000,-500.00000 194.00000,-499.00000 191.00000,-493.00000 C 190.00000,-490.00000 190.00000,-423.00000 190.00000,1.0000000 C 190.00000,485.00000 190.00000,491.00000 192.00000,494.00000 C 195.00000,499.00000 198.00000,500.00000 214.00000,500.00000 C 227.00000,500.00000 229.00000,500.00000 232.00000,498.00000 C 238.00000,494.00000 238.00000,513.00000 238.00000,254.00000 L 238.00000,20.000000 C 286.00000,68.000000 317.00000,120.00000 321.00000,199.00000 C 321.00000,207.00000 322.00000,215.00000 323.00000,217.00000 C 323.00000,220.00000 329.00000,226.00000 338.00000,226.00000 C 352.00000,226.00000 354.00000,214.00000 354.00000,202.00000 C 358.00000,141.00000 397.00000,81.000000 466.00000,81.000000 C 527.00000,81.000000 555.00000,119.00000 565.00000,170.00000 C 569.00000,193.00000 570.00000,209.00000 570.00000,253.00000 C 570.00000,371.00000 554.00000,453.00000 460.00000,466.00000 C 453.00000,467.00000 448.00000,467.00000 442.00000,467.00000 C 417.00000,467.00000 395.00000,456.00000 395.00000,434.00000 C 395.00000,401.00000 438.00000,397.00000 438.00000,358.00000 C 438.00000,317.00000 403.00000,284.00000 362.00000,284.00000 z M 2.0000000,493.00000 C 2.0000000,502.00000 27.000000,500.00000 70.000000,500.00000 C 138.00000,500.00000 136.00000,500.00000 139.00000,493.00000 C 141.00000,490.00000 141.00000,464.00000 141.00000,0.0000000 C 141.00000,-441.00000 141.00000,-490.00000 139.00000,-493.00000 C 139.00000,-502.00000 114.00000,-500.00000 71.000000,-500.00000 C 3.0000000,-500.00000 5.0000000,-500.00000 2.0000000,-493.00000 C 0.0000000,-490.00000 0.0000000,-464.00000 0.0000000,0.0000000 C 0.0000000,441.00000 0.0000000,490.00000 2.0000000,493.00000 z " />
+    </g>
+    <text
+       inkscape:export-ydpi="67.875084"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       xml:space="preserve"
+       style="font-size:23.283510;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#960000;fill-opacity:1.0000000;stroke:#b00000;stroke-width:1.5359194px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.81865287;font-family:FreeSerif;text-anchor:start;writing-mode:lr-tb"
+       x="187.64977"
+       y="514.82233"
+       id="text7791"
+       sodipodi:linespacing="100%"
+       transform="scale(0.974355,1.026320)"><tspan
+         sodipodi:role="line"
+         id="tspan7793"
+         x="187.64977"
+         y="514.82233">a music score editor</tspan></text>
+    <text
+       inkscape:export-ydpi="67.875084"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       xml:space="preserve"
+       style="font-size:81.713470;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#99170f;fill-opacity:0.89175260;stroke:none;stroke-width:1.3835059px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.74611402;font-family:FreeSerif;text-anchor:start;writing-mode:lr-tb"
+       x="140.28932"
+       y="453.69324"
+       id="text6207"
+       sodipodi:linespacing="100%"
+       transform="matrix(1.017185,0.000000,9.099487e-2,0.983105,0.000000,0.000000)"><tspan
+         id="tspan2458"
+         sodipodi:role="line"
+         y="453.69324"
+         x="140.28932">Note</tspan></text>
+    <text
+       inkscape:export-ydpi="67.875084"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       xml:space="preserve"
+       style="font-size:81.713440;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:#ffff2d;stroke-width:1.4102173;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4.0000000;stroke-dashoffset:0.0000000;stroke-opacity:0.91191709;font-family:FreeSerif;text-anchor:start;writing-mode:lr-tb"
+       x="142.18204"
+       y="455.18298"
+       id="text1293"
+       sodipodi:linespacing="100%"
+       transform="matrix(1.017185,0.000000,9.099487e-2,0.983105,0.000000,0.000000)"><tspan
+         style="stroke-dashoffset:0.0000000"
+         id="tspan2456"
+         sodipodi:role="line"
+         y="455.18298"
+         x="142.18204">Note</tspan></text>
+    <text
+       inkscape:export-ydpi="67.875084"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       xml:space="preserve"
+       style="font-size:81.349144;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#99170f;fill-opacity:0.89175260;stroke:none;stroke-width:1.3835059px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.74611402;font-family:FreeSerif;text-anchor:start;writing-mode:lr-tb"
+       x="173.14714"
+       y="522.55023"
+       id="text2424"
+       sodipodi:linespacing="100%"
+       transform="matrix(1.035649,0.000000,9.264692e-2,0.965578,0.000000,0.000000)"><tspan
+         id="tspan2454"
+         sodipodi:role="line"
+         y="522.55023"
+         x="173.14714">Edit</tspan></text>
+    <text
+       inkscape:export-ydpi="67.875084"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       xml:space="preserve"
+       style="font-size:81.349113;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:#ffff2d;stroke-width:1.4039289;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4.0000000;stroke-dashoffset:0.0000000;stroke-opacity:0.91191709;font-family:FreeSerif;text-anchor:start;writing-mode:lr-tb"
+       x="175.03148"
+       y="524.03333"
+       id="text2428"
+       sodipodi:linespacing="100%"
+       transform="matrix(1.035649,0.000000,9.264692e-2,0.965578,0.000000,0.000000)"><tspan
+         style="stroke-dashoffset:0.0000000"
+         id="tspan2452"
+         sodipodi:role="line"
+         y="524.03333"
+         x="175.03148">Edit</tspan></text>
+    <text
+       inkscape:export-ydpi="67.875084"
+       inkscape:export-xdpi="67.875084"
+       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/wiki.png"
+       xml:space="preserve"
+       style="writing-mode:lr-tb;text-anchor:start;font-family:FreeSerif;stroke-opacity:0.81865287;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.9394972px;stroke:none;fill-opacity:1.0000000;fill:#009e30;font-stretch:normal;font-weight:bold;font-variant:normal;font-style:italic;font-size:26.096569"
+       x="169.96692"
+       y="594.05688"
+       id="text2502"
+       sodipodi:linespacing="100%"
+       transform="scale(1.061226,0.942306)"><tspan
+         id="tspan2506"
+         sodipodi:role="line"
+         y="594.05688"
+         x="169.96692">developers' Wiki</tspan></text>
+  </g>
+</svg>

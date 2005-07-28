@@ -5589,6 +5589,7 @@ void NVoice::transpose(int semitones, bool region) {
 	QList<NNote> part_of_tied_notes;
 
 	theStaff_->actualClef_.change(NResource::nullClef_);
+	theStaff_->actualKeysig_.change(NResource::nullKeySig_);        
 	if (region) {
 	   if (startElement_ && endElement_) {
 		if (endElementIdx_ > startElemIdx_) {
@@ -5607,10 +5608,15 @@ void NVoice::transpose(int semitones, bool region) {
 			NResource::abort("NVoice::transpose: internal error", 1);
 		}
 		theStaff_->actualClef_.change(NResource::nullClef_);
-		for (;elem1; elem1 = musElementList_.prev()) {
-			if (elem1->getType() == T_CLEF) {
+		theStaff_->actualKeysig_.change(NResource::nullKeySig_);        
+		bool keySigFound = false, clefFound = false;
+		for (;elem1 && !(keySigFound && clefFound) ; elem1 = musElementList_.prev()) {
+			if (!clefFound && elem1->getType() == T_CLEF) {
 				theStaff_->actualClef_.change((NClef *) elem1);
-				break;
+				clefFound = true;
+			}else if (!keySigFound && elem1->getType() == T_KEYSIG) {
+				theStaff_->actualKeysig_.change((NKeySig *) elem1);
+				keySigFound = true;
 			}
 		}
 		if ((elem = musElementList_.at(idx0)) == 0) {
@@ -5639,7 +5645,7 @@ void NVoice::transpose(int semitones, bool region) {
 				}
 				midi_pitch = theStaff_->actualClef_.line2midiTab_[note->line+LINE_OVERFLOW]+note->offs+theStaff_->actualClef_.getShift();
 				midi_pitch += semitones;
-				theStaff_->actualClef_.midi2Line(midi_pitch, &line, &offs);
+				theStaff_->actualClef_.midi2Line(midi_pitch, &line, &offs, &theStaff_->actualKeysig_ );
 				if (line <= MAXLINE && line >= MINLINE) {
 					note->line = line; note->offs = offs;
 				}
@@ -5657,6 +5663,9 @@ void NVoice::transpose(int semitones, bool region) {
 		case T_CLEF:
 			theStaff_->actualClef_.change((NClef *) elem); 
 			break;
+		case T_KEYSIG:
+			theStaff_->actualKeysig_.change((NKeySig *) elem);
+			break;                        
 		}
 	}
 	if (xpos1 == -1) return;

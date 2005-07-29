@@ -1,0 +1,5 @@
+NoteEdit - a music score editor
+
+version 2.8.1:
+	* MusicXML import/export of arbitrary text is now supported. R288
+	* Transposition now dependent on key signature, thanks to Csaba. R286

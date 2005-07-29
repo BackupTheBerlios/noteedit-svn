@@ -1,105 +1,15 @@
-Release 2.8.0
--------------
-The NoteEdit team is glad to announce the first major-version since its new
-beginning!
+Release 2.8.1
+=============
+New features to 2.8.0:
+----------------------
+- Arbitrary text import/export from/to MusicXML.
+
+Bugs fixed to 2.8.0:
+--------------------
+- Arbitrary text bug fixes.
+- Transposition is now aware of the key signature (thanks to Csaba).
 
 Note:
-From now on, NoteEdit will be versioned according to GNU principals of
-versioning. Many SVN changes were made to accommodate these principals as well.
-Where a version of the program is X.Y.Z, numbers now mean the following:
-- Even major number (Y) marks a stable branch of the application.
-- Odd major number (Y) marks a development branch of the application.
-- Extra-Major number (X) is a generation of the application.
-- Minor number (Z) in a stable branch marks the latest critical maintainence
-  release in that branch.
-- Minor number (Z) in a development branch marks the current version of the
-  latest stable enough SVN version of the application, to be called a useful
-  development release.
-
-New features:
-- Updated translations and fixed Makefile to include Slovenian translation.
-- RFE #573 - Soprano clef added.
-- Score info fields and staff names can now include double quotes ("), updated
-export filters.
-- RFE #730 - Direct MIDI import - one-click MIDI file import implemented.
-- RFE #729 - warning message before TSE3 -> Score added.
-- Automatic bar placement disabled if no time signature defined.
-- Allow bar placement in empty staffs with no clef/key/time signature.
-- Merged staff properties and voice dialog.
-- Staff properties can now change all staffs at once, not only the current one.
-- Menu point staff -> voices invokes the staff properties.
-- More improvements to the menu: Easier access via keys, some better menu names
-  (like Close / Quit, Select Multi Staff).
-- Main window title now includes score title and subtitle by default, if none
-  defined yet, it the current uses file name.
-- Many score layout window improvements (bottom-up selection, resized buttons to
-  fit captions on buttons, added form caption).
-- Removed fuzzyness from german translation and updated all po(t) files
-  (others will have fuzzyness as well until translated).
-- Removed a thrilling MusiXTeX warning when exporting and replaced it with a
-  nice notice dialog.
-- New icon.
-- Implemented splash screen.
-- New playback shortcut. Changed Edit Mode and Insert Rest default shortcuts.
-- Save main window position and size (default: available screen geometry).
-- Toolbar settings of every toolbar are saved and restored.
-- Integrated patch 403 - Better menu structure.
-- Removed "Report Bug" menu item from help menu.
-- The last selected key or time signature is now remembered and gets selected
-  automatically when inserting it the second time.
-- configure now works on FreeBSD (thanks to Raphael Langerhorst).
-- When editing Arbitrary text, its position gets remembered now.
-
-Bug fixes:
-- Fixed #3944 - polyphony importing wrong in MusicXML.
-- Fixed #3969 - Score layout: Text on buttons uncomplete.
-- Fixed #3595 - dbl quotes in some score info fields leads to invalid files.
-- Fixed #3935 - deleting element doesn't make document edited - also some rework
-                in delete element code.
-- Fixed #3934 - discard changes dialog ignored on exit.
-- Fixed #3914 - crash when a pasting to new staff.
-- Fixed #3504 - bad file save without clef.
-- Fixed #3861 - Multirests in non-4/4 measure broken.
-- Fixed #3862 - measures after multirests not numbered correctly.
-- Fixed #3183 - multistaff broken - warning message added.
-- Fixed #3403 - export lilypond 2.4 lyrics problem.
-- Fixed #3418 - Doesn't save icon settings
-- Fixed #3484 - crash on midi import.
-- Fixed #3503 - hard crash on midi export.
-- Fixed #3505 - ABC export when leading repeat open and other voices.
-- Fixed #3786 - midi export crashes noteedit.
-- Fixed #3791 - staff->delete / import recording warnings wrong.
-- Fixed typo in staff properties dialog ("Voice:" -> "Instrument:").
-- Fixed #2930 - noteedit stops playing still held notes in other voices.
-- Fixed #4119 - Stem directions in voice dialog don't get rememberd.
-- Fixed #4235 - noteedit-2.8.0-rc1 crashes on start
-- Fixed typo in insert Key signature dialog: D flat Major; b minor -> D flat
-  Major; b flat minor and updated translations
-- Enlarged Insert line and Line properties dialog to fit all the translations.
-
-Remarks:
-- LilyPond export of different drum notes inside a single chord is suppressed to
-  prevent choking of Lily. The user should use multiple voices instead.
-
-
-Release 2.7.4
--------------
-New features:
-- Improved LilyPond support : added export in lilypond-2.4.2 format.
-- Added Slovenian translation, thanks to Matevz Jekovec.
-
-Patches included (Matevz Jekovec):
-- Patch #255 - added \version "2.0", so convert-ly now works out of the box,
-  moved \voiceOne,\voiceTwo etc. to the separate lines, fixed a small typo
-  (LilyPoint -> LilyPond)
-
-Bugs fixed:
-- Fixed #2487 - noteedit doesn't consider ties on MusicXML import.
-- Fixed #2528 - triplets unfunctional.
-- Fixed #2532 - multirests with one bar.
-- Fixed #2580 - small type in INSTALL.de.
-- Fixed #2581 - rest symbol printed twice.
-- Fixed #2807 - rests should have fermatas as well.
-- Fixed #2809 - measure numbers for other voices not printed in .ly file.
-- Fixed #3249 - 2.7.4 beta crash on RH7.2.
-- Fixed #3296 - crash when ALSA synth not running.
+Only major new features and changes will get mentioned in the NEWS now. For a
+complete change log, please take a look at ChangeLog file, where SVN revision
+numbers are supplied as well!

@@ -48,6 +48,7 @@ Status overview of features implemented
 Accidentals	supported: sharp, flat and natural, including double sharp and flat
 Accents		supported: staccato, sforzato, portato, strong pizzicato, sforzando, fermate,
 			   arpeggio and pedal on/off
+Arbitrary text	supported, including above/below position
 Bar separators	supported: simple, double, end
 Beams		supported
 Clefs		supported: treble, bass, soprano, alto and tenor clef, not supported: drum and drum_bass clef
@@ -111,6 +112,7 @@ Note shapes: body as cross, alternative cross, cross with circle, rectangle, tri
 #include "rest.h"
 #include "chord.h"
 #include "chorddiagram.h"
+#include "text.h"
 #include "layout.h"
 #include "uiconnect.h"
 #include "../kguitar_excerpt/global.h"
@@ -643,16 +645,16 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 				      break;
 			case T_REST:
 //				     out_ << "T_REST" << endl;
-				     rest = (NRest *) elem;
-				     if (rest->getSubType() == MULTIREST) {
+				rest = (NRest *) elem;
+				if (rest->getSubType() == MULTIREST) {
 					voiceStatList_->pendingMultiRest = rest;
-				     }
-				     writePendingSigns(staff_nr);
-				     voiceStatList_->lastBarSym = 0;
-				     if (rest->getSubType() == MULTIREST) {
+				}
+				writePendingSigns(staff_nr);
+				voiceStatList_->lastBarSym = 0;
+				if (rest->getSubType() == MULTIREST) {
 					/* already handled */ ;
-				     }
-				     else if (rest->status_ & STAT_HIDDEN) {
+				}
+				else if (rest->status_ & STAT_HIDDEN) {
 					len = rest->getSubType();
 					calcLength(rest, duration, noteType);
 					out_ << "\t\t\t<forward>\n";
@@ -660,9 +662,9 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 						<< duration
 						<< "</duration>\n";
 					out_ << "\t\t\t</forward>\n";
-				     }
-				     else {
-				        // real, visible rest
+				}
+				else {
+				// real, visible rest
 					out_ << "\t\t\t<note>\n";
 					out_ << "\t\t\t\t<rest/>\n";
 					len = rest->getSubType();
@@ -773,6 +775,13 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 				     voiceStatList_->pendingKeySig = (NKeySig *) elem;
 				     voiceStatList_->lastBarSym = 0;
 				     break;
+			case T_TEXT:
+					out_ << "\t\t\t<direction placement=\"" << ((elem->getSubType() == TEXT_DOWNTEXT) ? "below" : "above") << "\">\n";
+					out_ << "\t\t\t\t<direction-type>\n";
+					out_ << "\t\t\t\t\t<words>" << ((NText*)(elem))->getText() << "</words>\n";
+					out_ << "\t\t\t\t</direction-type>\n";
+					out_ << "\t\t\t</direction>\n";
+					break;
 			default:
 //				     out_ << "default" << endl;
 				     voiceStatList_->lastBarSym = 0;

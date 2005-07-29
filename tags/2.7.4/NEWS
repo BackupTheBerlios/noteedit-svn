@@ -1,0 +1,21 @@
+Release 2.7.4
+
+New features:
+- improved LilyPond support : added export in lilypond-2.4.2 format
+- added Slovenian translation, thanks to Matevz Jekovec
+
+Patches included (Matevz Jekovec):
+- 000255 added \version "2.0", so convert-ly now works out of the box
+         moved \voiceOne,\voiceTwo etc. to the separate lines
+  fixed a small typo (LilyPoint -> LilyPond)
+
+Bugs fixed:
+- 002487 noteedit doesn't consider ties on MusicXML import
+- 002528 triplets unfunctional
+- 002532 multirests with one bar
+- 002580 small type in INSTALL.de
+- 002581 rest symbol printed twice
+- 002807 rests should have fermatas as well
+- 002809 measure numbers for other voices not printed in .ly file
+- 003249 2.7.4 beta crash on RH7.2
+- 003296 crash when ALSA synth not running

@@ -1,0 +1,446 @@
+
+
+Frequently Asked Questions (FAQ)
+--------------------------------
+Q 1.
+I wrote a MUP file but NoteEdit cannot read it.
+
+Q 2.
+Can NoteEdit print the score ?
+
+Q 3.
+I can't hear any sound! I see the running red notes but there is no sound! What's wrong?
+
+Q 4.
+If I close NoteEdit I hear a terrible loud sound. What does it mean and how can I avoid it?
+
+Q 5.
+Why is there such a terrible warning during MuxiXTeX export ?
+
+Q 6.
+How can I avoid the terrible warning during MusiXTeX export ?
+
+Q 7.
+During configure I get an error: Cannot find >= Qt-2.2.2
+
+Q 8.I get an error concerning apps/noteedit/resources.
+Q 9.During file load an error concerning klauncher occurs:
+Q 10.
+I loaded a .not file made with a previous NoteEdit version. It seems the the first tempo signature
+appears in last instead of first staff. What shall I do?
+
+Q 11.
+I wrote a score with leading graces. But I can't hear them!
+
+Q 12.
+Something is wrong with lyrics spacing. The words overlap!
+
+Q 13.
+Something is wrong with lyrics spacing. The spacing between the words is too large!
+
+Q 14.
+I loaded a .not file made with a previous NoteEdit version. But
+the staff and lyrics distances are wrong.
+
+Q 15.
+The replay works but it hangs during page turn over. What can I do ?
+
+Q 16.
+I cannot hear the sound although Kmidi works without any problem! What's wrong?
+
+Q 17.
+NoteEdit crashes after the output TSE3 ALSA MIDI scheduler created
+Q 18.
+My whole Linux hangs if I try to start NoteEdit. I have to restart the system.
+
+
+---------------------------------------------------------
+
+	
+Q 1.
+
+
+I wrote a MUP file but NoteEdit cannot read it.
+
+A 1.
+
+I said NoteEdit uses a similary file format as MUP.
+The files produced by NoteEdit should be readable by MUP. But the
+contrary way failes in most cases.
+
+Q 2.
+
+
+Can NoteEdit print the score ?
+
+A 2.
+
+
+Not directly! But with the help of some music typesetting programs you can print the score. Read:
+
+  * ExportMusixTeX
+  * MusiXTeX export discussion page
+  * Export LilyPond
+  * LilyPond export discussion page
+  * Export ABC music
+  * ABC music export discussion page
+  * Export PMX
+  * PMX export discussion page
+
+Furthermore the NoteEdit storage format is close to the MUP (http://www.arkkra.com/) 
+format. Thus, most NoteEdit files are directly MUP-able
+Q 3.
+
+
+I can't hear any sound! I see the running red notes but there is no sound! What's wrong?
+
+A 3.
+
+First of all: Try to play a MIDI file with kmid (not (!!!)kmidi). As long as kmid does not produce any sound, NoteEdit
+(and any other MIDI device based software) will not produce any sound, too!
+The reason is: Either your soundcard has no hardware MIDI synthesizer or
+it has a hardware MIDI synthesizer but it is not supported by Linux.
+
+Be not confused if you can play MIDI files on Windows. If your soundcard has no hardware MIDI synthesizer
+Windows automatically starts a software which converts the MIDI data into WAV (PCM) data in real time. This
+works if your computer has enough performance.
+
+Such software exists for Linux, too. But it is more complicated because:
+  * It works only if you have an ALSA (http://www.alsa-project.org)  system.
+This is always the case with SuSE (http://www.suse.de/de/index.html)  Linux. (Other
+Linuxes I don't know). In any case: You can always change from OSS System to ALSA by compiling the
+ALSA modules "by hand".
+  * You have to start this software "by hand".
+  * These software MIDI sythesizers need a so-called soundfont, a collection of sample tones of
+every instrument of a virtual orchestra. These soundfonts are copyrighted, i.e. actually nothing for
+a free system like Linux
+
+
+But there is a (relatively bulky) way! See The TiMidity server
+detailed instructions! 
+Q 4.
+
+
+If I close NoteEdit I hear a terrible loud sound. What does it mean and how can I avoid it?
+
+A 4.
+
+
+Actually this sound shall be played during MusiXTeX export and remember the
+users with dramatic effort that latex file.tex
+is incorrect (see next question). Unfortunatly you block the sound device with some other application. Note, this
+application can be timidity in server mode. In this case the aRts sound server
+which is responsible for playing this sound playes the sound as soon as the sound device
+becomes free. And this is the case if you close noteedit.
+
+
+To avoid the sound dectivate the checkbox at: 
+Settings-->Configure NoteEdit 
+-> MusixWarn
+
+Q 5.
+
+
+Why is there such a terrible warning during MuxiXTeX export ?
+
+A 5.
+
+
+I tried to clarify that latex file.tex
+does not suffice. You'll find such a hint on WEB page in this documentation in
+tips of the day. I implored the users: "Please read the
+MusiXTeX export discussion page!". Nothing helps!
+If I search the WEB I get a lot of NoteEdit descriptions claiming latex file.tex
+is correct. And I see examples. Some users proudly present the MusiXTeX ouput and do
+not remark the unaligned right margin.
+
+Even worse: I get some mails: "NoteEdit is ok but it produces MusiXTeX pages with
+non-aligned right margin!"
+
+So I decided for this drastic feature.
+Q 6.
+
+
+How can I avoid the terrible warning during MusiXTeX export ?
+
+A 6.
+
+
+Dectivate the checkbox at: 
+Settings-->Configure NoteEdit 
+-> MusixWarn
+
+Q 7.
+
+
+During configure I get an error: Cannot find >= Qt-2.2.2
+
+A 7.
+
+
+This can be because of many problems. If you are sure you have an appropriate Qt then most often this 
+has to do with your compiler version.
+Many users install g++-3.x and expect that programs can be linked with
+QTs/KDEs which are compiled with g++-2.x. But as experiances show: This is not possible!
+You have to re-compile the whole Qt and the whole KDE (takes 3 days).
+
+Q 8.
+
+I get an error concerning apps/noteedit/resources.
+
+     "Can't find apps/noteedit/resources. Check your installation and $KDEDIR if set"
+A 8.
+
+You didn't install NoteEdit (make install) !
+The local installation is very complicated.
+There is a shell script that should place the files and links  correctly in NoteEdit top directory:
+
+     cd <path>/noteedit-2.7.4
+
+     ./admin/locinst.sh
+
+Then set environment variable KDEDIRS to noteedit top directory:
+
+
+  Shell  command
+  (t)csh  setenv KDEDIRS <path_to_noteedit-2.7.4_direcory>
+  other shell  export KDEDIRS=<path_to_noteedit-2.7.4_direcory>
+
+     cd noteedit
+
+     ./noteedit  [<file>.not]
+Q 9.
+
+During file load an error concerning klauncher occurs:
+
+     "... Could not read network connection list.
+
+     Please check that the 'dcopserver' program is running!"
+
+and:
+
+     "can't talk to klauncher"
+A 9.
+
+You use NoteEdit outside KDE and the KDE binaries are not in your PATH. Add the KDE binaries to your PATH!
+If this doesn't help try:
+
+     rm /tmp/.ICE-unix/*
+
+     rm $HOME/.DCOPserver_*
+Q 10.
+
+
+I loaded a .not file made with a previous NoteEdit version. It seems the the first tempo signature
+appears in last instead of first staff. What shall I do?
+
+A 10.
+
+
+Yes, there is a slight version incompatibility concerning .not files
+before < --- > after 1.18.2. Please correct this and store the file. Now
+the tempo signature should be at correct place.
+
+Q 11.
+
+
+I wrote a score with leading graces. But I can't hear them!
+
+A 11.
+
+
+Please avoid leading graces! Leading graces have a negative start time. You'll never hear them. Insert an empty
+measure instead!
+
+Q 12.
+
+
+Something is wrong with lyrics spacing. The words overlap!
+
+A 12.
+
+
+I don't know what's wrong! It has to do with font management of your X11 system. Try to change in 
+noteedit/chord.cpp near line 97:
+#if QT_VERSION >= 300
+#define LYRICSWIDTH_FAC(x) ((int) (1.5 * x))
+#else
+#define LYRICSWIDTH_FAC(x) (x)
+#endif
+
+
+
+against:
+
+#define LYRICSWIDTH_FAC(x) ((int) (1.5 * x))
+
+
+If this doesn't help increase the value 1.5
+
+Q 13.
+
+
+Something is wrong with lyrics spacing. The spacing between the words is too large!
+
+A 13.
+
+
+I don't know what's wrong! It has to do with font management of your X11 system. Try to change in 
+noteedit/chord.cpp near line 97:
+#if QT_VERSION >= 300
+#define LYRICSWIDTH_FAC(x) ((int) (1.5 * x))
+#else
+#define LYRICSWIDTH_FAC(x) (x)
+#endif
+
+
+
+against:
+
+#define LYRICSWIDTH_FAC(x) (x)
+
+Q 14.
+
+
+I loaded a .not file made with a previous NoteEdit version. But
+the staff and lyrics distances are wrong.
+
+A 14.
+
+
+The meaning of the overlength, underlength and lyricsdist parameters
+has changed in version 1.11.0:-(  Please edit the ".not" files and multiply the
+distance values with 3. Or load every ".not" file and correct the values
+using the staff properties dialog.
+
+Q 15.
+
+
+The replay works but it hangs during page turn over. What can I do ?
+
+A 15.
+
+
+If you use a software midi synthesizer like TiMidity server
+please start them as root and icrease its priority. This way the
+priority ot the TiMidity process increases.
+
+Use the following command in this case:
+
+     timidity --realtime-priority=100 -iA -B2,8 -Os1l -s 44100
+
+Note!
+-----
+ This can lead to operating system problems if your CPU
+performance is too small! If so, then try to decrease the priority
+and/or the frequency:     timidity --realtime-priority=60 -iA -B2,8 -Os1l -s 22050
+
+If this doesn't help then turn off the context view. Unfortunately, the context view
+is a very time consuming issue.
+Q 16.
+
+
+I cannot hear the sound although Kmidi works without any problem! What's wrong?
+
+A 16.
+
+This is no surprise! If Kmid worked and NoteEdit not, this were
+surprising. Kmidi first converts the MIDI data into PCM (WAV) data.
+Then it plays the sound via PCM (not MIDI) device. You can check this by playing the sound with
+Kmidi and handle the PCM ruler and then the MIDI ruler on your sound
+mixer. The MIDI ruler (if any) has no influence.
+
+Important: Try to play a MIDI file with kmid (not (!!!)kmidi). As long as kmid does not produce any sound, NoteEdit
+(and any other MIDI device based software) will not produce any sound, too!
+The reason is: Either your soundcard has no hardware MIDI synthesizer or
+it has a hardware MIDI synthesizer but it is not supported by Linux.
+
+Be not confused if you can play MIDI files on Windows. If your soundcard has no hardware MIDI synthesizer
+Windows automatically starts a software which converts the MIDI data into WAV (PCM) data in real time. This
+works if your computer has enough performance.
+
+Such software exists for Linux, too. But it is more complicated because:
+  * It works only if you have an ALSA (http://www.alsa-project.org)  system.
+This is always the case with SuSE (http://www.suse.de/de/index.html)  Linux. (Other
+Linuxes I don't know). In any case: You can always change from OSS System to ALSA by compiling the
+ALSA modules "by hand".
+  * You have to start this software "by hand".
+  * These software MIDI sythesizers need a so-called soundfont, a collection of sample tones of
+every instrument of a virtual orchestra. These soundfonts are copyrighted, i.e. actually nothing for
+a free system like Linux
+
+
+But there is a (relatively bulky) way! See The TiMidity server
+detailed instructions! 
+Q 17.
+
+
+NoteEdit crashes after the output TSE3 ALSA MIDI scheduler created
+A 17.
+
+In most cases it has not to do with NoteEdit itself. It has to do with your ALSA system or
+more precise with your ALSA module parameters in /etc/modules.conf. To clarify
+this try the TSE3 test program tse3play. First determine the available ports:
+
+     tse3play -list
+
+Or it this doen't work:
+
+     tse3play -list <file>.mid
+
+The on every available MIDI port try to play the MIDI file:
+
+     tse3play -port <port file>.mid
+
+till you hear the music or it crashes. If it crashes it is clear your ALSA system is the reason why.
+
+Actually I can't help here because I'm not an ALSA guru. Please contact the ALSA developers! Time ago I had a similar problem with a
+laptop with Yamaha YMF7xx sound card. Even worse: My whole Linux crashed. At this time I adapted the
+OSS (Open Sound System) hints in Linux source documentation (/usr/src/linux/Documentation/sound/README.ymfsb)
+to the ALSA system and it worked. But I'm afraid this is no general solution. Note: This was
+ALSA-0.5.
+
+As an interim solution you can start NoteEdit without creating an ALSA MIDI scheduler:
+
+        
+noteedit --noalsa
+
+Note!
+-----
+NoteEdit uses the so-called ALSA-OSS emulation in this case. The ALSA-OSS emulation
+doesn't permit the read direction. Thus, read and record from MIDI keyboard isn't possible.
+
+Another option would be: Remove ALSA and use the pre-ALSA sound modules!
+
+Another possibility is: You don't have any sound device and NoteEdit is badly compiled. 
+This can also be detected by:
+
+     tse3play -list
+
+Or it this doen't work:
+
+     tse3play -list <file>.mid
+
+If this doesn't report any device a bad NoteEdit compilation could be the reason why. Try
+to re-compile NoteEdit and make sure the -fexecptions option is set during
+compilation of midimapper.cpp and tse3handler.cpp.
+Q 18.
+
+
+My whole Linux hangs if I try to start NoteEdit. I have to restart the system.
+
+A 18.
+
+Note! It is impossible that a program which runs in user space stops Linux (except swap overflow). Even if the
+program has tons of bugs. It has to to with you ALSA module parameters. Unfortunately, I can't help you in this case. Please contact the ALSA developers!
+As an interim solution you can start NoteEdit without creating an ALSA MIDI scheduler:
+
+        
+noteedit --noalsa
+
+Note!
+-----
+NoteEdit uses the so-called ALSA-OSS emulation in this case. The ALSA-OSS emulation
+doesn't permit the read direction. Thus, read and record from MIDI keyboard isn't possible.
+
+Another option would be: Remove ALSA and use the pre-ALSA sound modules!

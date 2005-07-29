@@ -1,0 +1,4347 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-07-23 20:03+0200\n"
+"PO-Revision-Date: 2002-06-12 15:19+0200\n"
+"Last-Translator: Jörg Anders <ja@informatik.tu-chemnitz.de>\n"
+"Language-Team: deutsch <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.9.6\n"
+
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Amerigo Carugno"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "amcarug@tin.it"
+
+#: abcexport.cpp:89 abcexport.cpp:92 filehandler.cpp:1076 filehandler.cpp:1078
+#: filehandler.cpp:1927 lilyexport.cpp:119 lilyexport.cpp:122
+#: lilyexport.cpp:913 mainframewidget.cpp:1172 mainframewidget.cpp:1176
+#: mainframewidget.cpp:1189 mainframewidget.cpp:1202 mainframewidget.cpp:1207
+#: mainframewidget.cpp:3698 mainframewidget.cpp:4358 midiexport.cpp:147
+#: midiexport.cpp:150 musicxmlexport.cpp:299 musicxmlexport.cpp:302
+#: musixtex.cpp:164 musixtex.cpp:166 musixtex.cpp:184 musixtex.cpp:186
+#: musixtex.cpp:201 musixtex.cpp:203 tse3handler.cpp:437 tse3handler.cpp:446
+#: tse3handler.cpp:455 tse3handler.cpp:956 tse3handler.cpp:1021
+#: tse3handler.cpp:1028 tse3handler.cpp:1036
+msgid "???"
+msgstr "???"
+
+#: abcexport.cpp:273
+#, fuzzy
+msgid ""
+"Noteedit has exported the score to ABC music but there are some\n"
+"problems which will probably prevent successful PostScript output.\n"
+msgstr ""
+"NoteEdit ha esportato lo spartito in PMX ma si sono stati alcuni\n"
+"problemi che potrebbero produrre un risultato errato in PMX.\n"
+
+#: abcexport.cpp:275 filehandler.cpp:582 lilyexport.cpp:524
+#: musicxmlexport.cpp:445 musixtex.cpp:618 pmxexport.cpp:391
+msgid "-----------------------------------------------------\n"
+msgstr "-----------------------------------------------------\n"
+
+#: abcexport.cpp:280
+#, fuzzy
+msgid "Staff %1, measure %2: ABC music cannot deal with such kind of tuplets\n"
+msgstr ""
+"Rigo %1, misura %2: in PMX le terzine non possono finire con una pausa\n"
+
+#: abcexport.cpp:284
+#, fuzzy
+msgid "Staff %1 has irregular keysig. This cannot be expressed in ABC music\n"
+msgstr ""
+"Il pentagramma %1 ha una chiave irregolare che non può essere espressa n "
+"MusiXTeX\n"
+
+#: abcexport.cpp:288
+msgid "ABC music cannot deal with nested brackets/braces\n"
+msgstr ""
+
+#: abcexport.cpp:292
+msgid "ABC music cannot deal with a one-staff bracket\n"
+msgstr ""
+
+#: abcexport.cpp:296
+#, fuzzy
+msgid ""
+"Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
+msgstr ""
+"Rigo %1, misura %2: in PMX le terzine non possono finire con una pausa\n"
+
+#: abcexport.cpp:300
+#, fuzzy
+msgid "ABC music produced. But there are some problems."
+msgstr ""
+"L'esportazione in MusiXTeX è stata completata, ma ci sono stati dei problemi."
+
+#: clef.cpp:439
+msgid "name2Line: internal error"
+msgstr "name2Line: errore interno"
+
+#: clef.cpp:440
+msgid "name2Line"
+msgstr "name2Line"
+
+#: configuredialog.cpp:68
+msgid "General"
+msgstr "Generale"
+
+#: configuredialog.cpp:72
+msgid "Autosave"
+msgstr "Salvataggio automatico"
+
+#: configuredialog.cpp:74
+msgid "&Enable autosave"
+msgstr "&Abilita il salvataggio automatico"
+
+#: configuredialog.cpp:78
+msgid "The current score will be saved regularly if this is enabled."
+msgstr "Se abilitato, lo spartito corrente sarà salvato automaticamente."
+
+#: configuredialog.cpp:83
+msgid ""
+"The current score will be saved regularly if this is enabled. It will be "
+"saved to <filename>.sav, where <filename> is the name of the file to which "
+"the current score was last saved, or if it was not saved, the name of the "
+"file from which it was loaded. If the current score is new, it will be saved "
+"to unnamed<number>.not.sav, where <number> is a positive integer with the "
+"purpouse of making the name unique."
+msgstr ""
+"Se abilitato, lo spartito corrente sarà salvato periodicamente, col nome "
+"<filename>.sav, dove <filename> è il nome con cui è stato eseguito l'ultimo "
+"salvataggio o, se non è mai stato salvato, il nome del file da cui è stato "
+"caricato. Se lo spartito è nuovo, sarà salvato con il nome <number>.not.sav, "
+"dove <number> è un numero intero, per evitare un nome già in uso."
+
+#: configuredialog.cpp:95
+msgid " minutes"
+msgstr " minuti"
+
+#: configuredialog.cpp:96
+msgid "Autosave &interval:"
+msgstr "&Intervallo :"
+
+#: configuredialog.cpp:100
+msgid ""
+"The time interval between the occations when the current score is saved if "
+"there are unsaved changes."
+msgstr ""
+"Intervallo di tempo che intercorre tra un salvataggio automatico e l'altro."
+
+#: configuredialog.cpp:112
+msgid "Startup"
+msgstr "Avvio"
+
+#: configuredialog.cpp:113
+msgid "&MusixWarn"
+msgstr ""
+
+#: configuredialog.cpp:115
+msgid "enable MusiXTeX warning."
+msgstr ""
+
+#: configuredialog.cpp:117
+msgid "useMidi&Pedal"
+msgstr ""
+
+#: configuredialog.cpp:119
+msgid ""
+"enable MIDI pedal instruction (does not work on all sound cards; especially "
+"TiMidity++)"
+msgstr ""
+
+#: configuredialog.cpp:121
+msgid "&Tip of the day"
+msgstr "Suggerimen&to del giorno"
+
+#: configuredialog.cpp:127
+msgid "A tip is shown when the application has started if this is enabled."
+msgstr "Se abilitato, viene mostrato un suggerimento all'avvio del programma."
+
+#: configuredialog.cpp:130
+msgid "Load la&st score"
+msgstr "&Carica l'ultimo spartito usato"
+
+#: configuredialog.cpp:135
+msgid ""
+"The last score that was open the last time the appliaction was used will be "
+"loaded if this is enabled."
+msgstr "Se abilitato, viene aperto l'ultimo spartito usato dal programma."
+
+#: configuredialog.cpp:140
+msgid "Turn Over"
+msgstr "Cambio pagina"
+
+#: configuredialog.cpp:148
+msgid "page turn point:"
+msgstr "Posizione del cambiamento di pagina:"
+
+#: configuredialog.cpp:152
+msgid "Determine the offset at which the turn over takes place."
+msgstr "Determina il punto in cui viene cambiata la pagina."
+
+#: configuredialog.cpp:158
+msgid "Editing"
+msgstr "Modifica"
+
+#: configuredialog.cpp:165
+#, fuzzy
+msgid "auto &beam insertion"
+msgstr "Inserimento automatico delle barre di misura"
+
+#: configuredialog.cpp:168
+msgid "insert &echo"
+msgstr "Inserimento mediante Midi &echo"
+
+#: configuredialog.cpp:171
+msgid "Move according ke&ysig"
+msgstr "Sposta in conformità alla &chiave musicale"
+
+#: configuredialog.cpp:174
+msgid "autom. bar insertion"
+msgstr "Inserimento automatico delle barre di misura"
+
+#: configuredialog.cpp:180
+msgid "Colors"
+msgstr "Colori"
+
+#: configuredialog.cpp:191
+msgid "&Backgrounds:"
+msgstr "&Sfondo:"
+
+#: configuredialog.cpp:199
+msgid "Selection bac&kgrounds:"
+msgstr "S&celta dello sfondo:"
+
+#: configuredialog.cpp:206
+msgid "&Staffs:"
+msgstr "&Pentagrammi:"
+
+#: configuredialog.cpp:213
+msgid "Selected sta&ffs:"
+msgstr "Penta&grammi selezionati:"
+
+#: configuredialog.cpp:219
+msgid "Ba&rs:"
+msgstr "&Barre:"
+
+#: configuredialog.cpp:226
+msgid "Sele&cted bars:"
+msgstr "Ba&rre selezionate:"
+
+#: configuredialog.cpp:233
+msgid "Bar n&umbers:"
+msgstr "&Numeri di battuta:"
+
+#: configuredialog.cpp:240
+msgid "Selected bar nu&mbers:"
+msgstr "Nu&meri di battuta selezionati:"
+
+#: configuredialog.cpp:247
+msgid "&Tempo signatures:"
+msgstr "Indica&zioni di tempo:"
+
+#: configuredialog.cpp:255
+msgid "Selected temp&o signatures:"
+msgstr "In&dicazioni di tempo selezionate:"
+
+#: configuredialog.cpp:262
+msgid "&Volume signatures:"
+msgstr "Indicazioni di &volume:"
+
+#: configuredialog.cpp:271
+msgid "Selected volume si&gnatures:"
+msgstr "Indicazioni di v&olume selezionate:"
+
+#: configuredialog.cpp:280
+msgid "&Program changes:"
+msgstr "Program cha&nge:"
+
+#: configuredialog.cpp:289
+msgid "Selected program c&hanges:"
+msgstr "Program c&hange selezionati:"
+
+#: configuredialog.cpp:298
+msgid "Special &endings:"
+msgstr "F&inali:"
+
+#: configuredialog.cpp:306
+msgid "Selected spec&ial endings:"
+msgstr "Fina&li selezionati:"
+
+#: configuredialog.cpp:313
+msgid "Staff &names:"
+msgstr "Nomi dei p&entagrammi:"
+
+#: configuredialog.cpp:320
+msgid "Se&lected staff names:"
+msgstr "Nomi dei pent&agrammi selezionati:"
+
+#: configuredialog.cpp:327
+msgid "L&yrics:"
+msgstr "&Testi:"
+
+#: configuredialog.cpp:335
+msgid "staff con&text:"
+msgstr ""
+
+#: configuredialog.cpp:341
+msgid "Sound"
+msgstr "Suono"
+
+#: configuredialog.cpp:346
+msgid "Sequencers"
+msgstr "Sequencer"
+
+#: configuredialog.cpp:347
+msgid "A&LSA"
+msgstr "A&LSA"
+
+#: configuredialog.cpp:352
+msgid "Attempt to create an ALSA MIDI scheduler at startup."
+msgstr "All'avvio prova a creare uno scheduler MIDI con ALSA."
+
+#: configuredialog.cpp:357
+msgid ""
+"The TSE3 sequencer library will attempt to create an ALSA (Advanced Linux "
+"Sound Architecture) MIDI scheduler when the application starts if this is "
+"enabled. Enable this if you use ALSA to acces your soundcard."
+msgstr ""
+"Se abilitato, la libreria di sequencer TS3 cercherà di creare uno scheduler "
+"MIDI con ALSA (Advanced Linux Sound Architecture) all'avvio "
+"dell'applicazione. Abilitate quest'opzione per accedere alla scheda audio "
+"mediante ALSA."
+
+#: configuredialog.cpp:363
+msgid "O&SS"
+msgstr "O&SS"
+
+#: configuredialog.cpp:368
+msgid "Attempt to create an OSS MIDI scheduler at startup."
+msgstr "All'avvio prova a creare uno scheduler MIDI con OSS."
+
+#: configuredialog.cpp:373
+msgid ""
+"The TSE3 sequencer library will attempt to create an OSS (Open Sound System) "
+"MIDI scheduler when the application starts if this is enabled. Enable this "
+"if you use OSS to acces your soundcard."
+msgstr ""
+"Se abilitato, la libreria di sequencer TS3 cercherà di creare uno scheduler "
+"MIDI con OSS (Open Sound System) all'avvio dell'applicazione. Abilitate "
+"quest'opzione per accedere alla scheda audio mediante OSS."
+
+#: configuredialog.cpp:382
+msgid "&MIDI devices"
+msgstr "Dispositivi &MIDI"
+
+#: configuredialog.cpp:387
+#, fuzzy
+msgid "Chords"
+msgstr "Chorus:"
+
+#: configuredialog.cpp:390 configuredialog.cpp:391
+#, fuzzy
+msgid "Chordnames"
+msgstr "Choir Aahs"
+
+#: configuredialog.cpp:392
+msgid "American, sharps"
+msgstr ""
+
+#: configuredialog.cpp:393
+msgid "American, flats"
+msgstr ""
+
+#: configuredialog.cpp:394
+msgid "American, mixed"
+msgstr ""
+
+#: configuredialog.cpp:395
+msgid "European, sharps"
+msgstr ""
+
+#: configuredialog.cpp:396
+msgid "European, flats"
+msgstr ""
+
+#: configuredialog.cpp:397
+msgid "European, mixed"
+msgstr ""
+
+#: configuredialog.cpp:398
+#, fuzzy
+msgid "Jazz, sharps"
+msgstr "Jazz Guitar"
+
+#: configuredialog.cpp:399
+msgid "Jazz, flats"
+msgstr ""
+
+#: configuredialog.cpp:400
+msgid "Jazz, mixed"
+msgstr ""
+
+#: configuredialog.cpp:405 configuredialog.cpp:406
+msgid "Dominant 7"
+msgstr ""
+
+#: configuredialog.cpp:413 configuredialog.cpp:414
+msgid "Alterations"
+msgstr ""
+
+#: filehandler.cpp:174
+msgid "nothing to write"
+msgstr "niente da scrivere"
+
+#: filehandler.cpp:175 filehandler.cpp:186 filehandler.cpp:189
+msgid "Write Staffs"
+msgstr "Memorizza i pentagrammi"
+
+#: filehandler.cpp:183
+msgid "error opening file "
+msgstr "errore nell'apertura del file"
+
+#: filehandler.cpp:543
+msgid ""
+"staff %1; measure %2: you mixed different bar types; this cannot be "
+"expressed in MUP and causes data loss\n"
+msgstr ""
+"rigo %1; battuta %2: avete usato diversi tipi di barre di misura; ciò non "
+"potrà essere espresso in MUP e causerà perdita di dati\n"
+
+#: filehandler.cpp:549
+msgid "Staff %1 ; measure %2 :The multirests are not aligned\n"
+msgstr "Rigo %1; battuta %2: le battute vuote non sono allineate\n"
+
+#: filehandler.cpp:554
+#, fuzzy
+msgid "staff %1; measure %2: irregulaer key in the middle omitted\n"
+msgstr "Rigo %1; battuta %2: le battute vuote non sono allineate\n"
+
+#: filehandler.cpp:559
+#, fuzzy
+msgid ""
+"staff %1; measure %2: Mup can only deal with tuplets which sum up to a "
+"single note length\n"
+msgstr ""
+"rigo %1; battuta %2: MUP non può gestire trilli con il simbolo \"tr\"\n"
+
+#: filehandler.cpp:564
+#, fuzzy
+msgid ""
+"staff %1; measure %2: Mup cannot deal with segno staff at end. The segno "
+"staff is deleted.  Please insert a rest!\n"
+msgstr ""
+"rigo %1; battuta %2: MUP non può gestire note con e senza testo nella stessa "
+"battuta\n"
+
+#: filehandler.cpp:569
+#, fuzzy
+msgid ""
+"staff %1; measure %2: Mup cannot deal with pedal marks in non-1st-voice! "
+"This cannot be restored\n"
+msgstr ""
+"rigo %1; battuta %2: MUP non può gestire note con e senza testo nella stessa "
+"battuta\n"
+
+#: filehandler.cpp:574
+msgid "Possible data loss!"
+msgstr "Possibile perdita di dati!"
+
+#: filehandler.cpp:580
+msgid ""
+"Noteedit will save your score, and it can (probably) restore the score.\n"
+"But the file doesn't conform to MUP, so it will not work with the MUP "
+"interpreter.\n"
+msgstr ""
+"NoteEdit salverà lo spartito e questo potrà forse ripristinarlo.\n"
+"Tuttavia, poiché il file non è conforme al MUP, non lavorerà con "
+"l'interprete MUP.\n"
+
+#: filehandler.cpp:587
+msgid "staff %1; measure  %2 : %3 128th, should be: %4\n"
+msgstr "rigo %1; battuta %2: %3 quintupla (1/128), dovrebbe essere: %4\n"
+
+#: filehandler.cpp:592
+msgid ""
+"staff %1; measure %2: Mup cannot deal with mixed lyrics/non-lyrics notes in "
+"the same measure\n"
+msgstr ""
+"rigo %1; battuta %2: MUP non può gestire note con e senza testo nella stessa "
+"battuta\n"
+
+#: filehandler.cpp:597
+#, fuzzy
+msgid ""
+"staff %1; measure %2: Mup up cannot deal with slurs over more than 1 "
+"element, besides in 1st or 2nd voice\n"
+msgstr ""
+"rigo %1; battuta %2: MUP non può gestire legature che abbracciano più di un "
+"elemento\n"
+
+#: filehandler.cpp:602
+msgid "staff %1; measure %2: Mup cannot deal with trills without \"tr\" sign\n"
+msgstr ""
+"rigo %1; battuta %2: MUP non può gestire trilli con il simbolo \"tr\"\n"
+
+#: filehandler.cpp:607
+msgid "Staff %1 has irregular key, this may not work with MUP.\n"
+msgstr ""
+"Il rigo %1 ha una chiave irregolare che non può essere gestita da MUP.\n"
+
+#: filehandler.cpp:612
+msgid "Staff %1 has too many voices! MUP accepts up to 3 voices.\n"
+msgstr "Il rigo %1 ha troppe voci! MUP accetta fino a tre voci.\n"
+
+#: filehandler.cpp:617
+msgid "Staff %1 contains drum staff. This cannot be expressed in MUP.\n"
+msgstr ""
+"Il rigo %1 contiene notazione per batteria, che non può essere espressa in "
+"MUP.\n"
+
+#: filehandler.cpp:622
+#, fuzzy
+msgid "staff %1; measure %2: Mup cannot deal with costum beams in graces\n"
+msgstr ""
+"rigo %1; battuta %2: MUP non può gestire trilli con il simbolo \"tr\"\n"
+
+#: filehandler.cpp:627
+#, fuzzy
+msgid "staff %1; measure %2: Mup cannot deal with graces after\n"
+msgstr ""
+"rigo %1; battuta %2: MUP non può gestire trilli con il simbolo \"tr\"\n"
+
+#: filehandler.cpp:632
+#, fuzzy
+msgid ""
+"staff %1; measure %2: MUP cannot deal with clef changes in the middle of "
+"measure\n"
+msgstr ""
+"rigo %1; battuta %2: MUP non può gestire note con e senza testo nella stessa "
+"battuta\n"
+
+#: filehandler.cpp:637
+#, fuzzy
+msgid ""
+"staff %1; measure %2: MUP cannot deal with key changes in the middle of "
+"measure\n"
+msgstr ""
+"rigo %1; battuta %2: MUP non può gestire note con e senza testo nella stessa "
+"battuta\n"
+
+#: filehandler.cpp:642
+msgid ""
+"MUP cannot deal with some chord annotations with and some without grids\n"
+msgstr ""
+
+#: filehandler.cpp:646
+#, fuzzy
+msgid "MUP cannot deal with more than one bracket per system\n"
+msgstr "PMX non può gestire più di due voci per rigo\n"
+
+#: filehandler.cpp:650
+#, fuzzy
+msgid "MUP cannot deal with nested brackets in braces\n"
+msgstr ""
+"rigo %1; battuta %2: MUP non può gestire trilli con il simbolo \"tr\"\n"
+
+#: filehandler.cpp:654
+#, fuzzy
+msgid "MUP cannot correctly write more than one slurred grace\n"
+msgstr "PMX non può gestire più di due voci per rigo\n"
+
+#: layout.cpp:55
+#, fuzzy
+msgid "set brace"
+msgstr "Barra di misura prima"
+
+#: layout.cpp:55
+#, fuzzy
+msgid "set bracket"
+msgstr "Barra di misura prima"
+
+#: layout.cpp:55
+msgid "continue bar"
+msgstr ""
+
+#: layout.cpp:56
+#, fuzzy
+msgid "remove brace"
+msgstr "Vai alla fine"
+
+#: layout.cpp:56
+#, fuzzy
+msgid "remove bracket"
+msgstr "Vai alla fine"
+
+#: layout.cpp:56
+msgid "discontinue bar"
+msgstr ""
+
+#: lilyexport.cpp:522
+msgid ""
+"Noteedit has exported the score to LilyPond but there are some\n"
+"problems which will probably prevent successful LilyPond output.\n"
+msgstr ""
+"NoteEdit ha esportato lo spartito in LilyPond ma ci sono stati alcuni\n"
+"problemi che potrebbero produrre un risultato errato in LilyPond.\n"
+
+#: lilyexport.cpp:529
+msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
+msgstr ""
+"Rigo %1; battuta %2: nella battuta c'è una quintupla (1/128); il minimo è "
+"una semibiscroma (1/64)\n"
+
+#: lilyexport.cpp:533
+msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
+msgstr ""
+"Il rigo %1 ha una chiave irregolare, che non può essere espressa in "
+"LilyPond\n"
+
+#: lilyexport.cpp:537
+msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
+msgstr "Rigo %1; battuta %2: c'è %3 un 128esimo, dovrebbe essere: %4\n"
+
+#: lilyexport.cpp:542
+msgid ""
+"Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
+"length trills (wavelines)\n"
+msgstr ""
+"Rigo %1; battuta %2: le versioni di Lilypond inferiori alla 1.5.2 non "
+"possono gestire il simbolo ondulato del trillo\n"
+
+#: lilyexport.cpp:547
+msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
+msgstr ""
+"Rigo %1; battuta %2: Solo una parte delle note dell'accordo ha la legatura\n"
+
+#: lilyexport.cpp:551
+msgid ""
+"Staff %1 contains drum staff. Note! The LilyPond export is not quite "
+"correct!\n"
+msgstr ""
+"Il rigo %1 contiene notazione per batteria, la cui esportazione in Lilypond "
+"non è molto corretta.\n"
+
+#: lilyexport.cpp:556
+msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
+msgstr ""
+
+#: lilyexport.cpp:561
+msgid ""
+"A bracket with partial continued partial discountinued bar rules cannot be "
+"expressed in LilyPond\n"
+msgstr ""
+
+#: lilyexport.cpp:565
+#, fuzzy
+msgid ""
+"A piano staff without continued bar rules cannot be expressed in LilyPond\n"
+msgstr ""
+"Il rigo %1 ha una chiave irregolare, che non può essere espressa in "
+"LilyPond\n"
+
+#: lilyexport.cpp:569
+#, fuzzy
+msgid ""
+"Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
+msgstr ""
+"Il rigo %1 ha una chiave irregolare, che non può essere espressa in "
+"LilyPond\n"
+
+#: lilyexport.cpp:573
+msgid "LilyPond produced. But there are some problems."
+msgstr ""
+"L'esportazione in LilyPond è stata completata, ma sono si sono stati dei "
+"problemi."
+
+#: lilyexport.cpp:912
+msgid ""
+"Sorry, strong Pizzicato is not available under LilyPoint. Take musixtex, to "
+"enjoy this feature."
+msgstr ""
+"Il \"molto staccato\" non è disponibile sotto LilyPond. Si può usare "
+"MusixTeX che ha questa caratteristica."
+
+#: main.cpp:49
+msgid "Files to load"
+msgstr "File da caricare"
+
+#: main.cpp:50
+msgid "export file to LilyPond"
+msgstr "esporta file in LilyPond"
+
+#: main.cpp:51
+msgid "export file to MusiXTeX"
+msgstr "esporta file in MusixTeX"
+
+#: main.cpp:52
+#, fuzzy
+msgid "export file to ABC"
+msgstr "esporta file in LilyPond"
+
+#: main.cpp:53
+msgid "Do not create an ALSA midi scheduler"
+msgstr "Non è possibile creare uno scheduler midi con ALSA"
+
+#: main.cpp:54
+msgid "Do not create an OSS midi scheduler"
+msgstr "Non è possibile creare uno scheduler midi con OSS"
+
+#: main.cpp:56
+#, fuzzy
+msgid "Create an aRts midi scheduler"
+msgstr "Non è possibile creare uno scheduler midi con OSS"
+
+#: mainframewidget.cpp:160
+msgid "C Major; a minor"
+msgstr "Do maggiore; la minore"
+
+#: mainframewidget.cpp:160
+msgid "F Major; d minor"
+msgstr "Fa maggiore; re minore"
+
+#: mainframewidget.cpp:161
+msgid "B flat Major; g minor"
+msgstr "Si bemolle maggiore; sol minore"
+
+#: mainframewidget.cpp:161
+msgid "E flat Major; c minor"
+msgstr "Mi bemolle maggiore; do minore"
+
+#: mainframewidget.cpp:162
+msgid "A flat Major; f minor"
+msgstr "La bemolle maggiore; fa minore"
+
+#: mainframewidget.cpp:162
+msgid "D flat Major; b minor"
+msgstr "Re bemolle maggiore; si bemolle minore"
+
+#: mainframewidget.cpp:163
+msgid "G flat Major; e flat minor"
+msgstr "Sol bemolle maggiore; mi bemolle minore"
+
+#: mainframewidget.cpp:163
+#, fuzzy
+msgid "C flat Major; a flat minor"
+msgstr "Sol bemolle maggiore; mi bemolle minore"
+
+#: mainframewidget.cpp:164
+msgid "G Major; e minor"
+msgstr "Sol maggiore; re minore"
+
+#: mainframewidget.cpp:164
+msgid "D Major; b minor"
+msgstr "Re maggiore; si minore"
+
+#: mainframewidget.cpp:165
+msgid "A Major; f sharp minor"
+msgstr "La maggiore; fa diesis minore"
+
+#: mainframewidget.cpp:165
+msgid "E Major; c sharp minor"
+msgstr "Mi maggiore; do diesis minore"
+
+#: mainframewidget.cpp:166
+msgid "B Major; g sharp minor"
+msgstr "Si maggiore; sol diesis minore"
+
+#: mainframewidget.cpp:166
+msgid "F sharp Major; d sharp minor"
+msgstr "Fa bemolle maggiore; re bemolle minore"
+
+#: mainframewidget.cpp:167
+#, fuzzy
+msgid "C sharp Major; a sharp minor"
+msgstr "Fa bemolle maggiore; re bemolle minore"
+
+#: mainframewidget.cpp:251
+#, fuzzy
+msgid "&Import MusicXML..."
+msgstr "Esporta in Musi&XTeX..."
+
+#: mainframewidget.cpp:252
+msgid "Export &MIDI..."
+msgstr "Esporta in &MIDI"
+
+#: mainframewidget.cpp:253
+#, fuzzy
+msgid "Import &MIDI..."
+msgstr "Esporta in &MIDI"
+
+#: mainframewidget.cpp:254
+msgid "Export Musi&XTeX..."
+msgstr "Esporta in Musi&XTeX..."
+
+#: mainframewidget.cpp:255
+msgid "Export &PMX..."
+msgstr "Esporta in &PMX..."
+
+#: mainframewidget.cpp:256
+#, fuzzy
+msgid "Export &ABC..."
+msgstr "Esporta in &PMX..."
+
+#: mainframewidget.cpp:257
+#, fuzzy
+msgid "Export M&usicXML..."
+msgstr "Esporta in Musi&XTeX..."
+
+#: mainframewidget.cpp:258
+msgid "Output Params..."
+msgstr "Parametri di esportazione..."
+
+#: mainframewidget.cpp:259
+msgid "Export &LilyPond..."
+msgstr "Esporta in &LilyPond..."
+
+#: mainframewidget.cpp:260
+msgid "Score in&formation..."
+msgstr "In&formazioni sullo spartito..."
+
+#: mainframewidget.cpp:261
+msgid "&Key configuration"
+msgstr "Configura le associazioni di &tasti"
+
+#: mainframewidget.cpp:263 mainframewidget.cpp:3881
+msgid "&Close all"
+msgstr "Chiudi &tutto"
+
+#: mainframewidget.cpp:265
+msgid "Show &bar numbers"
+msgstr "Mostra i numeri di &battuta"
+
+#: mainframewidget.cpp:268
+msgid "Show &staff names"
+msgstr "Mostra i nomi di pentag&ramma"
+
+#: mainframewidget.cpp:271
+msgid "Show &aux lines"
+msgstr "Mostra le &linee guida"
+
+#: mainframewidget.cpp:274
+#, fuzzy
+msgid "Show staff &context"
+msgstr "Mostra i nomi di pentag&ramma"
+
+#: mainframewidget.cpp:277
+msgid "Show &drum tools"
+msgstr "Mostra gli strumenti della &batteria"
+
+#: mainframewidget.cpp:279
+msgid "Reduce &accidentals..."
+msgstr "Riduci gli &accidenti..."
+
+#: mainframewidget.cpp:280
+msgid "&Collect notes..."
+msgstr "Unis&ci le note..."
+
+#: mainframewidget.cpp:281
+msgid "Set all to sharp"
+msgstr "Imposta tutti gli accidenti come diesis"
+
+#: mainframewidget.cpp:282
+msgid "Set all to flat"
+msgstr "Imposta tutti gli accidenti come bemolli"
+
+#: mainframewidget.cpp:283
+msgid "&Transpose..."
+msgstr "&Trasporta"
+
+#: mainframewidget.cpp:284
+msgid "&Change Clef..."
+msgstr "&Cambia chiave..."
+
+#: mainframewidget.cpp:285
+#, fuzzy
+msgid "T&uplet..."
+msgstr "Batt&ute vuote"
+
+#: mainframewidget.cpp:287
+msgid "&Clef..."
+msgstr "&Chiave..."
+
+#: mainframewidget.cpp:289
+msgid "&Key signature..."
+msgstr "To&nalità di chiave..."
+
+#: mainframewidget.cpp:291
+msgid "&RepeatOpen"
+msgstr "&Inizio ritornello"
+
+#: mainframewidget.cpp:293
+msgid "RepeatOpen&Close"
+msgstr "Fine &e inizio ritornello"
+
+#: mainframewidget.cpp:295
+msgid "R&epeatClose"
+msgstr "&Fine ritornello"
+
+#: mainframewidget.cpp:297
+msgid "SpecialEnding&1"
+msgstr "Finale&1"
+
+#: mainframewidget.cpp:299
+msgid "SpecialEnding&2"
+msgstr "Finale&2"
+
+#: mainframewidget.cpp:301
+#, fuzzy
+msgid "&DoubleBar"
+msgstr "Doppio diesis"
+
+#: mainframewidget.cpp:303
+msgid "&EndBar"
+msgstr ""
+
+#: mainframewidget.cpp:305
+msgid "T&ime signature..."
+msgstr "&Tempo di chiave"
+
+#: mainframewidget.cpp:307
+msgid "Te&mpo signature..."
+msgstr "Tempo del &metronomo..."
+
+#: mainframewidget.cpp:309
+msgid "&Volume change..."
+msgstr "&Volume e segni dinamici..."
+
+#: mainframewidget.cpp:311
+msgid "V&oice change..."
+msgstr "Cambio di &strumento..."
+
+#: mainframewidget.cpp:313
+msgid "Ch&ord..."
+msgstr ""
+
+#: mainframewidget.cpp:315
+msgid "&Line..."
+msgstr "T&rilli e dinamiche"
+
+#: mainframewidget.cpp:317
+#, fuzzy
+msgid "&Text ..."
+msgstr "Batt&ute vuote"
+
+#: mainframewidget.cpp:319 rc.cpp:21
+msgid "Se&gno"
+msgstr ""
+
+#: mainframewidget.cpp:321
+msgid "&dal segno"
+msgstr ""
+
+#: mainframewidget.cpp:323
+msgid "dal segno &al fine"
+msgstr ""
+
+#: mainframewidget.cpp:325
+msgid "dal segno al c&oda"
+msgstr ""
+
+#: mainframewidget.cpp:327
+#, fuzzy
+msgid "&fine"
+msgstr "T&rilli e dinamiche"
+
+#: mainframewidget.cpp:329
+msgid "&coda"
+msgstr ""
+
+#: mainframewidget.cpp:331
+msgid "&Ritardando"
+msgstr ""
+
+#: mainframewidget.cpp:333
+msgid "&Accelerando"
+msgstr ""
+
+#: mainframewidget.cpp:334
+msgid "&Multi rest..."
+msgstr "Batt&ute vuote"
+
+#: mainframewidget.cpp:335
+msgid "&New"
+msgstr "&Nuovo"
+
+#: mainframewidget.cpp:337
+msgid "&Move..."
+msgstr "&Sposta..."
+
+#: mainframewidget.cpp:338
+msgid "M&ute staffs..."
+msgstr "&Muto"
+
+#: mainframewidget.cpp:339
+msgid "&Voices..."
+msgstr "&Voci..."
+
+#: mainframewidget.cpp:340
+msgid "&Staff properties..."
+msgstr "&Proprietà..."
+
+#: mainframewidget.cpp:341
+#, fuzzy
+msgid "Score &layout..."
+msgstr "In&formazioni sullo spartito..."
+
+#: mainframewidget.cpp:343
+msgid "&Lyrics..."
+msgstr "&Testi..."
+
+#: mainframewidget.cpp:345
+msgid "&Import recording"
+msgstr "&Importa registrazione"
+
+#: mainframewidget.cpp:347
+msgid "&MultiStaff"
+msgstr "Righi &multipli"
+
+#: mainframewidget.cpp:348
+msgid "&Goto"
+msgstr "&Vai a"
+
+#: mainframewidget.cpp:350
+msgid "&AutoBar"
+msgstr "&Battute automatiche"
+
+#: mainframewidget.cpp:352
+msgid "Auto&beam..."
+msgstr "Unione automatica delle &crome"
+
+#: mainframewidget.cpp:353
+msgid "&Cleanup rests..."
+msgstr "&Pulisci le pause"
+
+#: mainframewidget.cpp:354
+msgid "Set N time repeat"
+msgstr ""
+
+#: mainframewidget.cpp:357
+msgid "&Create TSE3 song"
+msgstr "&Crea un brano TSE3"
+
+#: mainframewidget.cpp:358
+msgid "&Play TSE3 song"
+msgstr "&Suona un brano TSE3"
+
+#: mainframewidget.cpp:359
+msgid "&Read TSE3 song"
+msgstr "&Leggi un brano TSE3"
+
+#: mainframewidget.cpp:360
+msgid "&Write TSE3 song"
+msgstr "Scri&vi un brano TSE3"
+
+#: mainframewidget.cpp:361
+msgid "MIDI &out"
+msgstr "&Esporta in MIDI"
+
+#: mainframewidget.cpp:362
+msgid "MIDI &in"
+msgstr "&Importa un MIDI"
+
+#: mainframewidget.cpp:363
+msgid "&Filter dialog..."
+msgstr "&Filtri"
+
+#: mainframewidget.cpp:364
+msgid "In&formation..."
+msgstr "Informa&zioni"
+
+#: mainframewidget.cpp:365
+msgid "&Merge..."
+msgstr "I&ncorpora"
+
+#: mainframewidget.cpp:366
+msgid "TSE3 --> &Score"
+msgstr "TSE3 --> S&partito"
+
+#: mainframewidget.cpp:368
+msgid "&New window"
+msgstr "&Nuova finestra"
+
+#: mainframewidget.cpp:369
+msgid "Tip of the &day"
+msgstr "Suggerimento del &giorno"
+
+#: mainframewidget.cpp:373
+#, fuzzy
+msgid "select"
+msgstr "Cancella"
+
+#: mainframewidget.cpp:374
+msgid "breve"
+msgstr "Breve"
+
+#: mainframewidget.cpp:375 mainframewidget.cpp:629
+msgid "Full note"
+msgstr "Semibreve"
+
+#: mainframewidget.cpp:376 mainframewidget.cpp:631
+msgid "Half note"
+msgstr "Minima"
+
+#: mainframewidget.cpp:377 mainframewidget.cpp:635
+msgid "Quarter note"
+msgstr "Semiminima"
+
+#: mainframewidget.cpp:378 mainframewidget.cpp:637
+msgid "Eighth note"
+msgstr "Croma"
+
+#: mainframewidget.cpp:379 mainframewidget.cpp:639
+msgid "Sixteenth note"
+msgstr "Semicroma"
+
+#: mainframewidget.cpp:380 mainframewidget.cpp:641
+msgid "32nd note"
+msgstr "Biscroma"
+
+#: mainframewidget.cpp:381 mainframewidget.cpp:643
+msgid "64th note"
+msgstr "Semibiscroma"
+
+#: mainframewidget.cpp:382 mainframewidget.cpp:645
+msgid "128th note"
+msgstr "Quintupla"
+
+#: mainframewidget.cpp:383
+msgid "Grace Eighth"
+msgstr ""
+
+#: mainframewidget.cpp:384
+msgid "Grace sixteenth"
+msgstr ""
+
+#: mainframewidget.cpp:385
+msgid "Grace Eight Stroken"
+msgstr ""
+
+#: mainframewidget.cpp:394
+msgid "Dotted note"
+msgstr "Punto"
+
+#: mainframewidget.cpp:396
+msgid "DoubleDotted note"
+msgstr "Doppio punto"
+
+#: mainframewidget.cpp:398
+msgid "Tie"
+msgstr "Legatura di valore"
+
+#: mainframewidget.cpp:399
+msgid "Beam"
+msgstr "Barretta"
+
+#: mainframewidget.cpp:400
+msgid "Slur"
+msgstr "Legatura di frase"
+
+#: mainframewidget.cpp:401
+msgid "Triplet"
+msgstr "Terzina"
+
+#: mainframewidget.cpp:402
+msgid "Hidden rests"
+msgstr "Pause nascoste"
+
+#: mainframewidget.cpp:404
+msgid "Staccato"
+msgstr "Staccato"
+
+#: mainframewidget.cpp:406
+msgid "Sforzato"
+msgstr "Sforzato"
+
+#: mainframewidget.cpp:408
+msgid "Portato"
+msgstr "Portato"
+
+#: mainframewidget.cpp:410
+msgid "Fermate"
+msgstr "Corona"
+
+#: mainframewidget.cpp:412
+#, fuzzy
+msgid "Arpeggio"
+msgstr "Agogo"
+
+#: mainframewidget.cpp:414
+msgid "Pedal on"
+msgstr ""
+
+#: mainframewidget.cpp:416
+msgid "Pedal off"
+msgstr ""
+
+#: mainframewidget.cpp:418
+msgid "Strong pizzicato"
+msgstr "Molto staccato"
+
+#: mainframewidget.cpp:420
+msgid "Sforzando"
+msgstr "Sforzato"
+
+#: mainframewidget.cpp:423
+msgid "Sharp"
+msgstr "Diesis"
+
+#: mainframewidget.cpp:425
+msgid "Flat"
+msgstr "Bemolle"
+
+#: mainframewidget.cpp:427
+msgid "Natural"
+msgstr "Bequadro"
+
+#: mainframewidget.cpp:429
+msgid "Double sharp"
+msgstr "Doppio diesis"
+
+#: mainframewidget.cpp:431
+msgid "Double flat"
+msgstr "Doppio bemolle"
+
+#: mainframewidget.cpp:435 mainframewidget.cpp:2542 mainframewidget.cpp:2582
+msgid "Play"
+msgstr "Suona"
+
+#: mainframewidget.cpp:439
+msgid "Keyboard"
+msgstr "Tastiera"
+
+#: mainframewidget.cpp:440
+msgid "Keyboard insert"
+msgstr "Inserimento da tastiera"
+
+#: mainframewidget.cpp:442
+msgid "Record"
+msgstr "Registra"
+
+#: mainframewidget.cpp:444
+msgid "Edit mode"
+msgstr "Modalità di modifica"
+
+#: mainframewidget.cpp:445
+#, fuzzy
+msgid "Insert from keyboard"
+msgstr "Consenti l'inserimento da &tastiera"
+
+#: mainframewidget.cpp:446
+#, fuzzy
+msgid "glue"
+msgstr "Flute"
+
+#: mainframewidget.cpp:447
+msgid "Stem up"
+msgstr "Gambo in su"
+
+#: mainframewidget.cpp:448
+msgid "Stem down"
+msgstr "Gambo in giù"
+
+#: mainframewidget.cpp:452
+msgid "drum1"
+msgstr "Batteria 1"
+
+#: mainframewidget.cpp:454
+msgid "drum2"
+msgstr "Batteria 2"
+
+#: mainframewidget.cpp:456
+msgid "drum3"
+msgstr "Batteria 3"
+
+#: mainframewidget.cpp:458
+msgid "drum4"
+msgstr "Batteria 4"
+
+#: mainframewidget.cpp:460
+msgid "drum5"
+msgstr "Batteria 5"
+
+#: mainframewidget.cpp:548
+msgid "voice sel."
+msgstr "Selezione voce"
+
+#: mainframewidget.cpp:571 mainframewidget.cpp:4162
+msgid "Key"
+msgstr "Tonalita' di chiave"
+
+#: mainframewidget.cpp:605
+msgid "move up"
+msgstr "Vai su"
+
+#: mainframewidget.cpp:607
+msgid "move down"
+msgstr "Vai giù"
+
+#: mainframewidget.cpp:609
+#, fuzzy
+msgid "move semi up"
+msgstr "Vai su"
+
+#: mainframewidget.cpp:611
+#, fuzzy
+msgid "move semi down"
+msgstr "Vai giù"
+
+#: mainframewidget.cpp:613
+msgid "move left"
+msgstr "Vai a sinistra"
+
+#: mainframewidget.cpp:615
+msgid "move start"
+msgstr "Vai all'inizio"
+
+#: mainframewidget.cpp:617
+msgid "move right"
+msgstr "Vai a destra"
+
+#: mainframewidget.cpp:619
+msgid "move end"
+msgstr "Vai alla fine"
+
+#: mainframewidget.cpp:621 mainframewidget.cpp:665 mainframewidget.cpp:667
+msgid "delete"
+msgstr "Cancella"
+
+#: mainframewidget.cpp:623
+msgid "toggle edit"
+msgstr "Modalità di modifica"
+
+#: mainframewidget.cpp:625
+#, fuzzy
+msgid "insert chord note"
+msgstr "Inserisci nota"
+
+#: mainframewidget.cpp:627
+msgid "insert note"
+msgstr "Inserisci nota"
+
+#: mainframewidget.cpp:633
+msgid "set triplet"
+msgstr "Terzina"
+
+#: mainframewidget.cpp:647 mainframewidget.cpp:649
+msgid "set tied"
+msgstr "Legatura di valore"
+
+#: mainframewidget.cpp:651
+msgid "dot"
+msgstr "Punto"
+
+#: mainframewidget.cpp:653
+msgid "flat"
+msgstr "Bemolle"
+
+#: mainframewidget.cpp:655 mainframewidget.cpp:657
+msgid "sharp"
+msgstr "Diesis"
+
+#: mainframewidget.cpp:659 mainframewidget.cpp:661
+msgid "natural"
+msgstr "Bequadro"
+
+#: mainframewidget.cpp:663
+msgid "set bar at"
+msgstr "Barra di misura prima"
+
+#: mainframewidget.cpp:669
+msgid "set bar after"
+msgstr "Barra di misura dopo"
+
+#: mainframewidget.cpp:671
+msgid "insert rest"
+msgstr "Inserisci pausa"
+
+#: mainframewidget.cpp:673
+msgid "toggle beam"
+msgstr "Raggruppa le crome"
+
+#: mainframewidget.cpp:675
+msgid "keyboard insert mode"
+msgstr "Inserimento da tastiera"
+
+#: mainframewidget.cpp:680
+msgid "pitch C"
+msgstr "Nota Do"
+
+#: mainframewidget.cpp:682
+msgid "pitch D"
+msgstr "Nota Re"
+
+#: mainframewidget.cpp:684
+msgid "pitch E"
+msgstr "Nota Mi"
+
+#: mainframewidget.cpp:686
+msgid "pitch F"
+msgstr "Nota Fa"
+
+#: mainframewidget.cpp:688
+msgid "pitch G"
+msgstr "Nota Sol"
+
+#: mainframewidget.cpp:690
+msgid "pitch A"
+msgstr "Nota La"
+
+#: mainframewidget.cpp:692
+msgid "pitch B"
+msgstr "Nota Si"
+
+#: mainframewidget.cpp:717 mainframewidget.cpp:737 mainframewidget.cpp:752
+#, fuzzy
+msgid "enabled"
+msgstr "Abilita"
+
+#: mainframewidget.cpp:729
+#, fuzzy
+msgid "Trill"
+msgstr "trillo"
+
+#: mainframewidget.cpp:740
+msgid "turn"
+msgstr ""
+
+#: mainframewidget.cpp:748
+msgid "Crescendo"
+msgstr ""
+
+#: mainframewidget.cpp:764 rc.cpp:254
+msgid "8va"
+msgstr ""
+
+#: mainframewidget.cpp:1172 mainframewidget.cpp:1189
+#, fuzzy
+msgid "Please choose a note or rest!"
+msgstr "Per favore scegli una nota!"
+
+#: mainframewidget.cpp:1176
+#, fuzzy
+msgid "Please choose a note or rest from first voice"
+msgstr "Per favore, scegli una chiave per il pentagramma!"
+
+#: mainframewidget.cpp:1202
+msgid "Please choose a note!"
+msgstr "Per favore scegli una nota!"
+
+#: mainframewidget.cpp:1207
+#, fuzzy
+msgid "Please choose a note from first voice"
+msgstr "Per favore, scegli una chiave per il pentagramma!"
+
+#: mainframewidget.cpp:2542
+msgid "MIDI mapper is already in use!"
+msgstr "Il MIDI mapper è già in uso!"
+
+#: mainframewidget.cpp:2582
+msgid "nothing to play"
+msgstr "Non c'è nulla da suonare"
+
+#: mainframewidget.cpp:3344 mainframewidget.cpp:3422 mainframewidget.cpp:3482
+#: mainframewidget.cpp:3818
+msgid ""
+"Your document contains unsaved changes.\n"
+"Do you want to save your changes or discard them?"
+msgstr ""
+"Il documento contiene cambiamenti non salvati.\n"
+"Volete salvare i cambiamenti prima di uscire?"
+
+#: mainframewidget.cpp:3346
+msgid "New"
+msgstr "Nuovo"
+
+#: mainframewidget.cpp:3680
+msgid "Couldn't translate into ABC format, aborting"
+msgstr ""
+
+#: mainframewidget.cpp:3697
+msgid ""
+"MIDI import is performed by the TSE3 library!\n"
+"See MIDI import section in documentation or read\n"
+"\thttp://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/doc/midiimport.html"
+msgstr ""
+
+#: mainframewidget.cpp:3879
+msgid "Do you really want to close all windows?"
+msgstr "Vuoi realmente chiudere tutte le finestre?"
+
+#: mainframewidget.cpp:3880
+msgid "Close all"
+msgstr "Chiudi tutto"
+
+#: mainframewidget.cpp:3916
+msgid "<center>Please choose the target point!</center>"
+msgstr "<center>Per favore scegli la destinazione!</center>"
+
+#: mainframewidget.cpp:3919 mainframewidget.cpp:3920
+msgid "Goto"
+msgstr "Vai a"
+
+#: mainframewidget.cpp:4228
+msgid "Can't delete last staff."
+msgstr "Non è possibile cancellare l'ultimo rigo"
+
+#: mainframewidget.cpp:4229 mainframewidget.cpp:4236
+msgid "Delete Staff"
+msgstr "Cancella il pentagramma"
+
+#: mainframewidget.cpp:4235
+msgid "This deletes current voice! Are you sure?"
+msgstr "Quest'operazione eliminerà la voce corrente! Ne sei certo?"
+
+#: mainframewidget.cpp:4269
+msgid "Staff moving"
+msgstr "Sposta il rigo"
+
+#: mainframewidget.cpp:4270
+msgid "Please choose the target position:"
+msgstr "Per favore scegli la destinazione:"
+
+#: mainframewidget.cpp:4311
+msgid "<center>Set tempo:</center>"
+msgstr "<center>Imposta il tempo:</center>"
+
+#: mainframewidget.cpp:4314
+msgid "Set new tempo"
+msgstr "Imposta il nuovo tempo"
+
+#: mainframewidget.cpp:4315
+msgid "Set new temp&o"
+msgstr "Imposta il nuovo temp&o"
+
+#: mainframewidget.cpp:4321
+msgid "<center>Set count of Measures:</center>"
+msgstr "<center>Imposta il numero di battute:</center>"
+
+#: mainframewidget.cpp:4324
+msgid "multi rest"
+msgstr "Battute vuote"
+
+#: mainframewidget.cpp:4325
+msgid "Set count of m&easures"
+msgstr "Imposta il num&ero di battute:"
+
+#: mainframewidget.cpp:4342
+msgid "<center>How many notes:</center>"
+msgstr "<center>Quante note:</center>"
+
+#: mainframewidget.cpp:4346
+msgid "Autobeam"
+msgstr "Unione automatica delle crome"
+
+#: mainframewidget.cpp:4358
+#, fuzzy
+msgid "Please choose a repeat close sign!"
+msgstr "Per favore scegli una nota!"
+
+#: mainframewidget.cpp:4362
+#, fuzzy
+msgid "<center>Please set the repeat count!</center>"
+msgstr "<center>Per favore scegli la destinazione!</center>"
+
+#: mainframewidget.cpp:4366
+#, fuzzy
+msgid "Repeat count"
+msgstr "&Inizio ritornello"
+
+#: mainframewidget.cpp:4367
+#, fuzzy
+msgid "&Set"
+msgstr "&Seleziona tutto"
+
+#: mainframewidget.cpp:4383
+msgid "<center>Semitones:</center>"
+msgstr "<center>Semitoni:</center>"
+
+#: mainframewidget.cpp:4387
+msgid "Transpose"
+msgstr "Trasporta"
+
+#: mainframewidget.cpp:4388
+msgid "&Transpose"
+msgstr "&Trasporta"
+
+#: mainframewidget.cpp:4414
+msgid "Voice selection"
+msgstr "Selezione voce"
+
+#: mainframewidget.cpp:4415
+msgid "<center>Select your voice here:</center>"
+msgstr "<center>Seleziona la voce qui:</center>"
+
+#: mainframewidget.cpp:5153 mainframewidget.cpp:5290
+msgid "Error writing file \"%1\"."
+msgstr "Errore nella scrittura del file \"%1\"."
+
+#: mainframewidget.cpp:5154
+msgid "Write TSE3"
+msgstr "Scrivi TSE3"
+
+#: mainframewidget.cpp:5170
+msgid "This overrides the current voice! Continue?"
+msgstr "Quest'operazione sovrascriverà la voce corrente! Continuare?"
+
+#: mainframewidget.cpp:5171
+msgid "Import Recording"
+msgstr "Importa registrazione"
+
+#: mainframewidget.cpp:5172 rc.cpp:238
+msgid "&Import Recording"
+msgstr "&Importa registrazione"
+
+#: mainframewidget.cpp:5238
+msgid "Error creating Score"
+msgstr "Errore nella creazione dello spartito"
+
+#: mainframewidget.cpp:5239
+msgid "Creating Score"
+msgstr "Creazione dello spartito"
+
+#: mainframewidget.cpp:5291 tse3handler.cpp:365
+msgid "TSE3 MIDI out"
+msgstr "Esporta da TSE3 a MIDI"
+
+#: mainframewidget.cpp:5306 mainframewidget.cpp:5337
+msgid "File read error \"%1\"."
+msgstr "Errore nella lettura del file \"%1\"."
+
+#: mainframewidget.cpp:5307
+msgid "TSE3 MIDI in"
+msgstr "Importa da MIDI a TSE3"
+
+#: mainframewidget.cpp:5338
+msgid "Read TSE3"
+msgstr "Leggi TSE3"
+
+#: mainframewidget.cpp:5451
+msgid "File \"%1\" already exists! Overwrite?"
+msgstr "Il file \"%1\" già esiste! Sovrascriverlo?"
+
+#: mainframewidget.cpp:5452
+msgid "File already exists"
+msgstr "Il file già esiste"
+
+#: mididevicelistbox.cpp:75 mididevicelistbox.cpp:91
+msgid "[no MIDI device created]"
+msgstr "[non è stato creato nessun dispositivo MIDI]"
+
+#: musicxmlexport.cpp:443
+#, fuzzy
+msgid ""
+"Noteedit has exported the score to MusicXML\n"
+"but there are some problems.\n"
+msgstr ""
+"NoteEdit ha esportato lo spartito in PMX ma si sono stati alcuni\n"
+"problemi che potrebbero produrre un risultato errato in PMX.\n"
+
+#: musicxmlexport.cpp:450
+#, fuzzy
+msgid "Staff %1 has irregular keysig. This is currently not supported.\n"
+msgstr ""
+"Il rigo %1 ha una chiave irregolare, che non può essere espressa in "
+"LilyPond\n"
+
+#: musicxmlexport.cpp:455
+#, fuzzy
+msgid "Staff %1 contains drum clef. This is currently not supported.\n"
+msgstr ""
+"Il rigo %1 contiene notazione per batteria,che non può essere espressa in "
+"PMX\n"
+
+#: musicxmlexport.cpp:460
+#, fuzzy
+msgid "Staff %1 contains drum staff. This is currently not supported.\n"
+msgstr ""
+"Il rigo %1 contiene notazione per batteria, che non può essere espressa in "
+"MUP.\n"
+
+#: musicxmlexport.cpp:465
+#, fuzzy
+msgid "Staff %1 contains voice change. This is currently not supported.\n"
+msgstr ""
+"Il rigo %1 contiene notazione per batteria, che non può essere espressa in "
+"MUP.\n"
+
+#: musicxmlexport.cpp:470
+msgid "Staff %1 contains 8va start without 8va stop.\n"
+msgstr ""
+
+#: musicxmlexport.cpp:475
+#, fuzzy
+msgid ""
+"Staff %1 contains 8va over a single note. This is currently not supported.\n"
+msgstr ""
+"Il rigo %1 contiene notazione per batteria, che non può essere espressa in "
+"MUP.\n"
+
+#: musicxmlexport.cpp:480
+msgid "Staff %1 contains dynamic start without dynamic stop.\n"
+msgstr ""
+
+#: musicxmlexport.cpp:485
+#, fuzzy
+msgid "MusicXML produced. But there are some problems."
+msgstr ""
+"L'esportazione in MusiXTeX è stata completata, ma ci sono stati dei problemi."
+
+#: musixtex.cpp:615
+msgid ""
+"Noteedit has exported the score to MusiXTeX but there are some\n"
+"constructs which cannot be expressed in MusiXTeX. The score will\n"
+"work with MusiXTeX but Noteedit omitted these constructs.\n"
+msgstr ""
+"NoteEdit ha esportato lo spartito in MusiXTeX ma ci sono alcuni\n"
+"costrutti che non possono essere espressi in MusiXTeX. Lo spartito\n"
+"lavorerà con MusiXTeX ma NoteEdit ha omesso questi costrutti.\n"
+
+#: musixtex.cpp:623
+msgid "128th in measure: %2; maximum = %3 flags\n"
+msgstr "quintupla (1/128) nella misura: %2; massimo = %3 simboli\n"
+
+#: musixtex.cpp:628
+msgid "Staff %1 has irregular keysig. This cannot be expressed in MusiXTeX\n"
+msgstr ""
+"Il pentagramma %1 ha una chiave irregolare che non può essere espressa n "
+"MusiXTeX\n"
+
+#: musixtex.cpp:632
+msgid "Too many ties in measure: %2; maximum = %3\n"
+msgstr "Troppe legature di valore nella misura: %2; massimo = %3\n"
+
+#: musixtex.cpp:636
+msgid "Too many slurs in measure: %1, ; maximum = %2\n"
+msgstr "Troppe legature di frase nella misura: %1; massimo = %2\n"
+
+#: musixtex.cpp:640
+msgid "Too many trills in measure: %1: maximum = 6\n"
+msgstr "Troppi trilli nella misura: %1: massimo = 6\n"
+
+#: musixtex.cpp:644
+#, fuzzy
+msgid "Nested va lines in measure: %2 ;\n"
+msgstr "Trilli annidati nella misura: %2;\n"
+
+#: musixtex.cpp:648 pmxexport.cpp:460
+#, fuzzy
+msgid "Too many va lines in measure: %1: maximum = 6\n"
+msgstr "Troppi trilli nella misura: %1: massimo = 6\n"
+
+#: musixtex.cpp:652
+#, fuzzy
+msgid "Nested va lines in measure: %1 ;\n"
+msgstr "Trilli annidati nella misura: %2;\n"
+
+#: musixtex.cpp:656
+msgid "too many beams in measure: %1; maximum: %2\n"
+msgstr "troppe barre di crome nella misura: %1; massimo: %2\n"
+
+#: musixtex.cpp:660 pmxexport.cpp:448
+msgid ""
+"The score has individual bar layout (partial continued and partial "
+"discontinued)\n"
+"Please install \"musixdbr.tex\" by  Rainer Dunker\n"
+msgstr ""
+
+#: musixtex.cpp:664
+#, fuzzy
+msgid ""
+"The score has piano staffs with discontinued bar rules. This cannot be "
+"expressed in MusiXTeX.\n"
+msgstr ""
+"Il pentagramma %1 ha una chiave irregolare che non può essere espressa n "
+"MusiXTeX\n"
+
+#: musixtex.cpp:673
+msgid "MusiXTeX produced. But there are some problems."
+msgstr ""
+"L'esportazione in MusiXTeX è stata completata, ma ci sono stati dei problemi."
+
+#: musixtex.cpp:1469
+msgid "Output from MusiXTeX-Cmd"
+msgstr ""
+
+#: noteedit_part.cpp:68
+msgid "NoteEdit"
+msgstr "NoteEdit"
+
+#: noteedit_part.cpp:74
+msgid "Main author and maintainer"
+msgstr "Autore principale e mantenitore"
+
+#: noteedit_part.cpp:76
+msgid "programmer"
+msgstr "programmatore"
+
+#: noteedit_part.cpp:79
+msgid "TSE3 sequencer library"
+msgstr "libreria di sequencer TSE3"
+
+#: noteedit_part.cpp:82
+msgid "developer"
+msgstr "sviluppatore"
+
+#: noteedit_part.cpp:84
+msgid "KDE User Interface"
+msgstr "Interfaccia utente del KDE"
+
+#: noteedit_part.cpp:87
+msgid "MusicXML interface"
+msgstr ""
+
+#: pmxexport.cpp:151 pmxexport.cpp:154
+msgid "PMX export"
+msgstr "Esporta in PMX"
+
+#: pmxexport.cpp:389
+msgid ""
+"Noteedit has exported the score to PMX but there are some\n"
+"problems which will probably prevent successful PMX output.\n"
+msgstr ""
+"NoteEdit ha esportato lo spartito in PMX ma si sono stati alcuni\n"
+"problemi che potrebbero produrre un risultato errato in PMX.\n"
+
+#: pmxexport.cpp:396
+msgid "Staff %1, measure %2: %3 128th, should be: %4\n"
+msgstr "Rigo %1, misura %2: %3 quintupla (1/128), dovrebbe essere: %4\n"
+
+#: pmxexport.cpp:401
+msgid ""
+"Staff %1, measure %2: PMX cannot deal with multi rests if more than 1 staff "
+"is exported"
+msgstr ""
+"Rigo %1, misura %2: PMX non può gestire battute vuote abbreviate in una sola "
+"se è stato esportato più di un rigo"
+
+#: pmxexport.cpp:406
+msgid "measure %1: Too many opened ties\n"
+msgstr "misura %1: troppe legature di valore aperte\n"
+
+#: pmxexport.cpp:410
+msgid "measure %1: Too many opened slurs\n"
+msgstr "misura %1: troppe legature di frase aperte\n"
+
+#: pmxexport.cpp:414
+#, fuzzy
+msgid ""
+"Staff %1, measure %2: PMX can only deal with equal tuplet members or members "
+"in ratio 2:1\n"
+msgstr ""
+"Rigo %1, misura %2: PMX non può gestire tre elementi di terzina uguali o due "
+"elementi che stanno nel rapporto di due a uno\n"
+
+#: pmxexport.cpp:419
+#, fuzzy
+msgid "Staff %1, measure %2: In PMX tuplet cannot end with a rest\n"
+msgstr ""
+"Rigo %1, misura %2: in PMX le terzine non possono finire con una pausa\n"
+
+#: pmxexport.cpp:424
+msgid "PMX cannot deal with more than 2 voices per staff\n"
+msgstr "PMX non può gestire più di due voci per rigo\n"
+
+#: pmxexport.cpp:428
+msgid "Staff %1 contains drum staff. This cannot be expressed in PMX.\n"
+msgstr ""
+"Il rigo %1 contiene notazione per batteria,che non può essere espressa in "
+"PMX\n"
+
+#: pmxexport.cpp:433
+#, fuzzy
+msgid "Staff %1, measure %2: PMX cannot deal with mixed graces\n"
+msgstr ""
+"Rigo %1, misura %2: in PMX le terzine non possono finire con una pausa\n"
+
+#: pmxexport.cpp:438
+#, fuzzy
+msgid "Staff %1, measure %2: grace has no main note. PMX will not work\n"
+msgstr ""
+"Rigo %1, misura %2: in PMX le terzine non possono finire con una pausa\n"
+
+#: pmxexport.cpp:443
+#, fuzzy
+msgid ""
+"Staff %1, measure %2: Tuplet must be expressible by on (ev. dotted) note. "
+"PMX will not work\n"
+msgstr ""
+"Rigo %1, misura %2: in PMX le terzine non possono finire con una pausa\n"
+
+#: pmxexport.cpp:452
+#, fuzzy
+msgid ""
+"The score has piano staffs with discontinued bar rules. This cannot be "
+"expressed in PMX\n"
+msgstr ""
+"Il rigo %1 contiene notazione per batteria,che non può essere espressa in "
+"PMX\n"
+
+#: pmxexport.cpp:456
+#, fuzzy
+msgid "Nested trills in measure: %1 ;\n"
+msgstr "Trilli annidati nella misura: %2;\n"
+
+#: pmxexport.cpp:464
+msgid "PMX produced. But there are some problems."
+msgstr ""
+"L'esportazione in PMX è stata completata, ma sono si sono stati dei problemi."
+
+#: rc.cpp:4 rc.cpp:22
+msgid "St&aff"
+msgstr "&Pentagramma"
+
+#: rc.cpp:6 rc.cpp:24
+msgid "TSE&3"
+msgstr "TS&E3"
+
+#: rc.cpp:8 rc.cpp:26
+msgid "&Window"
+msgstr "Fi&nestre"
+
+#: rc.cpp:10 rc.cpp:28
+msgid "Program control"
+msgstr "Barra degli strumenti controlli del programma"
+
+#: rc.cpp:11 rc.cpp:29
+msgid "Control"
+msgstr "Barra degli strumenti controlli"
+
+#: rc.cpp:12 rc.cpp:30
+msgid "Score control"
+msgstr "Barra degli strumenti controlli spartito"
+
+#: rc.cpp:13 rc.cpp:31 rc.cpp:353
+msgid "Notes"
+msgstr "Note"
+
+#: rc.cpp:14 rc.cpp:33
+msgid "signs"
+msgstr "Barra degli strumenti segni"
+
+#: rc.cpp:15 rc.cpp:34
+msgid "additional"
+msgstr "Barra degli strumenti addizionale"
+
+#: rc.cpp:16 rc.cpp:35 rc.cpp:36
+msgid "Accent Toolbar"
+msgstr "Barra degli strumenti accenti"
+
+#: rc.cpp:32
+msgid "Graces"
+msgstr ""
+
+#: rc.cpp:37
+msgid "export warning"
+msgstr "Avviso esportazione"
+
+#: rc.cpp:39 rc.cpp:284
+msgid "&Details >>"
+msgstr "&Dettagli >>>"
+
+#: rc.cpp:40
+msgid "Export problems"
+msgstr "Problemi nell'esportazione"
+
+#: rc.cpp:41 rc.cpp:146
+msgid "File export - NoteEdit"
+msgstr "Esportazione file - NoteEdit"
+
+#: rc.cpp:43 rc.cpp:147
+msgid "Start &export"
+msgstr "Avvia l'&esportazione"
+
+#: rc.cpp:44 rc.cpp:149
+msgid "&MIDI format"
+msgstr "Formato &Midi"
+
+#: rc.cpp:45 rc.cpp:150
+msgid "MIDI information line:"
+msgstr "Informazioni MIDI:"
+
+#: rc.cpp:46 rc.cpp:151
+msgid "MusiX&TeX format"
+msgstr "Formato Musi&XTeX"
+
+#: rc.cpp:47 rc.cpp:96 rc.cpp:109 rc.cpp:152 rc.cpp:185 rc.cpp:198
+msgid "Page geometry"
+msgstr "Geometria della pagina"
+
+#: rc.cpp:48 rc.cpp:97 rc.cpp:110 rc.cpp:141 rc.cpp:153 rc.cpp:186 rc.cpp:199
+#: rc.cpp:224
+msgid "Width:"
+msgstr "Larghezza:"
+
+#: rc.cpp:49 rc.cpp:98 rc.cpp:111 rc.cpp:142 rc.cpp:154 rc.cpp:187 rc.cpp:200
+#: rc.cpp:225
+msgid "Height:"
+msgstr "Altezza:"
+
+#: rc.cpp:50 rc.cpp:155
+msgid "Left margin:"
+msgstr "Margine sinistro:"
+
+#: rc.cpp:51 rc.cpp:156
+msgid "Top margin:"
+msgstr "Margine superiore:"
+
+#: rc.cpp:52 rc.cpp:99 rc.cpp:112 rc.cpp:157 rc.cpp:188 rc.cpp:201
+msgid "&Landscape"
+msgstr "Pagina orizzonta&le"
+
+#: rc.cpp:53 rc.cpp:158
+msgid "Additional"
+msgstr "Ulteriori informazioni"
+
+#: rc.cpp:54 rc.cpp:159
+msgid "&With tempo signs"
+msgstr "Indicazioni di t&empo"
+
+#: rc.cpp:55 rc.cpp:160
+msgid "With &volume signs"
+msgstr "Indicazioni di &volume"
+
+#: rc.cpp:56 rc.cpp:161
+#, fuzzy
+msgid "parindent:"
+msgstr "Clarinet"
+
+#: rc.cpp:57 rc.cpp:162
+#, fuzzy
+msgid "MusiXTeX-Cmd:"
+msgstr "Formato Musi&XTeX"
+
+#: rc.cpp:58 rc.cpp:106 rc.cpp:108 rc.cpp:163 rc.cpp:195 rc.cpp:197
+msgid "&Staff selection"
+msgstr "&Selezione pentagramma"
+
+#: rc.cpp:59 rc.cpp:164
+msgid "Page generation"
+msgstr "Generazione pagina"
+
+#: rc.cpp:60
+msgid "ucs"
+msgstr ""
+
+#: rc.cpp:61 rc.cpp:165
+msgid "L&imit line measures"
+msgstr "Lim&ita le battute per sistema"
+
+#: rc.cpp:62 rc.cpp:166
+msgid "Spa&re ties"
+msgstr "Riduci le legatu&re di valore"
+
+#: rc.cpp:63 rc.cpp:167
+msgid "With bar &numbers"
+msgstr "Usa i &numeri di battuta"
+
+#: rc.cpp:64 rc.cpp:101 rc.cpp:168 rc.cpp:190
+msgid "With musix&lyr"
+msgstr "Test&i"
+
+#: rc.cpp:65 rc.cpp:169
+#, fuzzy
+msgid "&Omit page numbering"
+msgstr "Numeri di battuta"
+
+#: rc.cpp:66
+msgid "ascii"
+msgstr ""
+
+#: rc.cpp:67
+msgid "UTF-8"
+msgstr ""
+
+#: rc.cpp:69
+msgid "latin1"
+msgstr ""
+
+#: rc.cpp:70
+msgid "cp1251"
+msgstr ""
+
+#: rc.cpp:71
+msgid "koi8-u"
+msgstr ""
+
+#: rc.cpp:72
+msgid "koi8-r"
+msgstr ""
+
+#: rc.cpp:73 rc.cpp:170
+#, fuzzy
+msgid "small size"
+msgstr "Rid&uci il formato"
+
+#: rc.cpp:74 rc.cpp:171
+#, fuzzy
+msgid "normal size"
+msgstr "Rid&uci il formato"
+
+#: rc.cpp:75 rc.cpp:172
+msgid "large size"
+msgstr ""
+
+#: rc.cpp:76 rc.cpp:173
+msgid "very large size"
+msgstr ""
+
+#: rc.cpp:78
+msgid "T2A"
+msgstr ""
+
+#: rc.cpp:79
+msgid "T2B"
+msgstr ""
+
+#: rc.cpp:80
+msgid "T2C"
+msgstr ""
+
+#: rc.cpp:81
+msgid "OT1"
+msgstr ""
+
+#: rc.cpp:82
+msgid "OT2"
+msgstr ""
+
+#: rc.cpp:83
+msgid "X2"
+msgstr ""
+
+#: rc.cpp:84
+msgid "LCY"
+msgstr ""
+
+#: rc.cpp:85 rc.cpp:174
+msgid "ABC music"
+msgstr ""
+
+#: rc.cpp:86 rc.cpp:175
+#, fuzzy
+msgid "page geometry"
+msgstr "Geometria della pagina"
+
+#: rc.cpp:87 rc.cpp:176
+#, fuzzy
+msgid "expressiones above"
+msgstr "sopra"
+
+#: rc.cpp:88 rc.cpp:177
+#, fuzzy
+msgid "staff separation:"
+msgstr "&Selezione pentagramma"
+
+#: rc.cpp:89 rc.cpp:178
+#, fuzzy
+msgid "height:"
+msgstr "Altezza:"
+
+#: rc.cpp:90 rc.cpp:179
+#, fuzzy
+msgid "width:"
+msgstr "Larghezza:"
+
+#: rc.cpp:91 rc.cpp:180
+#, fuzzy
+msgid "scale:"
+msgstr "Dinamica del tocco"
+
+#: rc.cpp:93 rc.cpp:182
+msgid "/100"
+msgstr ""
+
+#: rc.cpp:94 rc.cpp:183
+#, fuzzy
+msgid "measure numbers in a box"
+msgstr "Numeri di battuta"
+
+#: rc.cpp:95 rc.cpp:184
+msgid "&PMX format"
+msgstr "Formato &PMX"
+
+#: rc.cpp:100 rc.cpp:189
+msgid "keep beams"
+msgstr "Mantieni le barre delle crome"
+
+#: rc.cpp:102 rc.cpp:191
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: rc.cpp:103 rc.cpp:192
+msgid "<center>Measures<br>per system:"
+msgstr "<center>Misure<br>per sistema:"
+
+#: rc.cpp:104 rc.cpp:193
+msgid "<center>Systems<br>per page:"
+msgstr "<center>Sistemi<br>per pagina:"
+
+#: rc.cpp:105 rc.cpp:194
+msgid "<center>Number<br>of pages:"
+msgstr "<center>Numero<br>di pagine:"
+
+#: rc.cpp:107 rc.cpp:196
+msgid "Lil&yPond format"
+msgstr "Formato Lil&yPond"
+
+#: rc.cpp:113 rc.cpp:209
+msgid "Additional attributes"
+msgstr "Attributi addizionali"
+
+#: rc.cpp:114 rc.cpp:210
+msgid "Font size:"
+msgstr "Dimensione font:"
+
+#: rc.cpp:115 rc.cpp:211
+msgid "Volumes:"
+msgstr "Indicazioni di volume:"
+
+#: rc.cpp:116 rc.cpp:212
+msgid "11"
+msgstr "11"
+
+#: rc.cpp:117 rc.cpp:213
+msgid "13"
+msgstr "13"
+
+#: rc.cpp:118 rc.cpp:214
+msgid "16"
+msgstr "16"
+
+#: rc.cpp:119 rc.cpp:215
+msgid "20"
+msgstr "20"
+
+#: rc.cpp:120 rc.cpp:216
+msgid "23"
+msgstr "23"
+
+#: rc.cpp:121 rc.cpp:217
+msgid "26"
+msgstr "26"
+
+#: rc.cpp:122 rc.cpp:218
+msgid "no volume signs"
+msgstr "nessuna"
+
+#: rc.cpp:123 rc.cpp:219
+msgid "volume signs above"
+msgstr "sopra"
+
+#: rc.cpp:124 rc.cpp:220
+msgid "volume signs below"
+msgstr "sotto"
+
+#: rc.cpp:125 rc.cpp:202
+msgid "Generating parameters"
+msgstr "Parametri per la generazione"
+
+#: rc.cpp:126 rc.cpp:203
+msgid "Keep &beams"
+msgstr "Mantieni le &barre delle crome"
+
+#: rc.cpp:127 rc.cpp:204
+msgid "&Only voices"
+msgstr "S&olo voci"
+
+#: rc.cpp:128 rc.cpp:205
+msgid "L&imit the measures"
+msgstr "L&imita le misure per sistema"
+
+#: rc.cpp:129 rc.cpp:206
+msgid "Sparse &ties"
+msgstr "Riduci le lega&ture di valore"
+
+#: rc.cpp:130 rc.cpp:207
+msgid "&Keep stem dir."
+msgstr "Mantieni la dire&zione dei gambi delle note"
+
+#: rc.cpp:131 rc.cpp:208
+#, fuzzy
+msgid "export drum notes"
+msgstr "Problemi nell'esportazione"
+
+#: rc.cpp:132
+msgid "ascii coding"
+msgstr ""
+
+#: rc.cpp:133
+#, fuzzy
+msgid "latin1 coding"
+msgstr "Avvia la regi&strazione"
+
+#: rc.cpp:134
+msgid "unicode coding"
+msgstr ""
+
+#: rc.cpp:135
+#, fuzzy
+msgid "utf8 coding"
+msgstr "Sposta il rigo"
+
+#: rc.cpp:136
+msgid "MusicXML"
+msgstr ""
+
+#: rc.cpp:137
+msgid "The MusicXML exporter does not need any parameters"
+msgstr ""
+
+#: rc.cpp:138 rc.cpp:221
+msgid "Save Params"
+msgstr "Imposta parametri"
+
+#: rc.cpp:139 rc.cpp:222
+msgid "paper dimensions"
+msgstr "Dimensioni della carta"
+
+#: rc.cpp:140 rc.cpp:223
+msgid "landscape"
+msgstr "Orizzontale"
+
+#: rc.cpp:143 rc.cpp:226
+msgid "enable"
+msgstr "Abilita"
+
+#: rc.cpp:144 rc.cpp:227
+msgid "with measure numbers"
+msgstr "Numeri di battuta"
+
+#: rc.cpp:145 rc.cpp:228
+msgid "Dismiss"
+msgstr "Annulla"
+
+#: rc.cpp:229
+msgid "Filter - NoteEdit"
+msgstr "Filtro - NoteEdit"
+
+#: rc.cpp:230
+msgid "Xxx:"
+msgstr "Xxx:"
+
+#: rc.cpp:231
+msgid "Max volume:"
+msgstr "Volume massimo:"
+
+#: rc.cpp:232
+msgid "Vel scale:"
+msgstr "Dinamica del tocco"
+
+#: rc.cpp:233
+#, fuzzy
+msgid "Volume step:"
+msgstr "Indicazioni di volume:"
+
+#: rc.cpp:234
+msgid "&Average volume"
+msgstr "&Volume medio"
+
+#: rc.cpp:235
+msgid "Choose snap distance:"
+msgstr "Durata minima"
+
+#: rc.cpp:236
+#, fuzzy
+msgid "Triplet Raster:"
+msgstr "Terzina"
+
+#: rc.cpp:239
+#, fuzzy
+msgid "&TSE3 to Score ..."
+msgstr "Crea spartito da &TSE3"
+
+#: rc.cpp:240
+#, fuzzy
+msgid "&Line to Score .."
+msgstr "Crea spartito da &TSE3"
+
+#: rc.cpp:241
+msgid "Settings - NoteEdit"
+msgstr "Configurazione - NoteEdit"
+
+#: rc.cpp:242
+#, fuzzy
+msgid "auto insert beams"
+msgstr "Inserisci pausa"
+
+#: rc.cpp:243
+msgid "Allow insert from &keyboard"
+msgstr "Consenti l'inserimento da &tastiera"
+
+#: rc.cpp:244
+msgid "Move according key&sig"
+msgstr "Sposta in conformità alla &chiave musicale"
+
+#: rc.cpp:245
+msgid "&Tip of the Day"
+msgstr "Suggerimen&to del giorno"
+
+#: rc.cpp:246
+msgid ""
+"If Tip of the Day is enabled, NoteEdit will show the Tip of the Day every "
+"time it starts."
+msgstr "Se abilitato, viene mostrato un suggerimento all'avvio del programma."
+
+#: rc.cpp:249
+msgid "Line Selection - NoteEdit"
+msgstr "Selezione dinamiche - NoteEdit"
+
+#: rc.cpp:250
+msgid "Element selection"
+msgstr "Selezione elemento"
+
+#: rc.cpp:251
+msgid "trill"
+msgstr "trillo"
+
+#: rc.cpp:252
+msgid "lonely trill"
+msgstr "trillo"
+
+#: rc.cpp:253
+msgid "dynamic"
+msgstr "crescendo / diminuendo"
+
+#: rc.cpp:255
+#, fuzzy
+msgid "8bassa"
+msgstr "bassi"
+
+#: rc.cpp:258
+msgid ""
+"<center><b>Hint:<br></b>After choosing one of the objects, use the middle "
+"mouse button to make a connection with the note.</center>"
+msgstr ""
+"<center><b>Suggerimento:<br></b>Dopo aver scelto uno degli oggetti, usa il "
+"pulsante centrale del mouse per collegarlo a una nota.</center>"
+
+#: rc.cpp:259
+msgid "listForm"
+msgstr "Lista"
+
+#: rc.cpp:262
+msgid "Lyrics settings - NoteEdit"
+msgstr "Impostazione del testo - NoteEdit"
+
+#: rc.cpp:263
+msgid "Lyrics"
+msgstr "Strofe"
+
+#: rc.cpp:264 uiconnect.cpp:838
+msgid "C&lear"
+msgstr "Cance&lla"
+
+#: rc.cpp:265
+msgid "Open &file"
+msgstr "Apri &file"
+
+#: rc.cpp:266
+msgid "&Restore"
+msgstr "&Ripristina"
+
+#: rc.cpp:269
+msgid "Metronome - NoteEdit"
+msgstr "Metronomo - NoteEdit"
+
+#: rc.cpp:271
+msgid "Device:"
+msgstr "Dispositivo:"
+
+#: rc.cpp:272
+msgid "Beat note:"
+msgstr "Beat note:"
+
+#: rc.cpp:273
+msgid "Bar note:"
+msgstr "Bar note:"
+
+#: rc.cpp:274
+msgid "Record tempo:"
+msgstr "Tempo della registrazione"
+
+#: rc.cpp:275
+msgid "&Start recording"
+msgstr "Avvia la regi&strazione"
+
+#: rc.cpp:276
+msgid "MIDI settings - NoteEdit"
+msgstr "Impostazioni MIDI - NoteEdit"
+
+#: rc.cpp:279
+msgid "MUP warning"
+msgstr "Avviso di MUP"
+
+#: rc.cpp:280 uiconnect.cpp:1258
+msgid "Saved, but MUP does not work!"
+msgstr "Salvataggio compiuto, ma MUP non può lavorare!"
+
+#: rc.cpp:281
+msgid "Don't &show this message in future"
+msgstr "Non mostrare questo me&ssaggio in futuro"
+
+#: rc.cpp:282
+msgid "true"
+msgstr "vero"
+
+#: rc.cpp:285
+msgid "scaleForm"
+msgstr "Scala"
+
+#: rc.cpp:288
+msgid "&Include rests"
+msgstr "&Includi pause"
+
+#: rc.cpp:289
+msgid "set value"
+msgstr "imposta il valore"
+
+#: rc.cpp:290
+msgid "Score information - NoteEdit"
+msgstr "Informazioni sullo spartito - Notedit"
+
+#: rc.cpp:291 scoreinfo.cpp:60
+msgid "&General"
+msgstr "&Generale"
+
+#: rc.cpp:292
+msgid "Author:"
+msgstr "Autore:"
+
+#: rc.cpp:293
+msgid "Last Author:"
+msgstr "Revisore:"
+
+#: rc.cpp:294
+msgid "Subject:"
+msgstr "Soggetto:"
+
+#: rc.cpp:295
+msgid "Title:"
+msgstr "Titolo:"
+
+#: rc.cpp:296
+msgid "&Comments"
+msgstr "&Commenti"
+
+#: rc.cpp:297
+msgid "Comments:"
+msgstr "Commenti:"
+
+#: rc.cpp:299
+msgid "Cleanup rests - NoteEdit"
+msgstr "Pulisci le pause - NoteEdit"
+
+#: rc.cpp:300
+msgid "Choose smallest rest:"
+msgstr "Pausa minima"
+
+#: rc.cpp:303
+msgid "staffForm"
+msgstr "Chiave"
+
+#: rc.cpp:306
+msgid "Staff properties - NoteEdit"
+msgstr "Proprieta' del pentagramma - NoteEdit"
+
+#: rc.cpp:310
+msgid "Overlength:"
+msgstr "Spazio superiore:"
+
+#: rc.cpp:311
+msgid "Play<br>transposed:"
+msgstr "Trasposizione:"
+
+#: rc.cpp:312
+msgid "Chorus:"
+msgstr "Chorus:"
+
+#: rc.cpp:313
+msgid "Reverb:"
+msgstr "Riverbero:"
+
+#: rc.cpp:314
+msgid "Stereo Pos:"
+msgstr "Stereo:"
+
+#: rc.cpp:315
+msgid "Lyrics dist.:"
+msgstr "Distanza del testo:"
+
+#: rc.cpp:316
+msgid "Underlength:"
+msgstr "Spazio inferiore:"
+
+#: rc.cpp:317
+msgid "Volume:"
+msgstr "Volume:"
+
+#: rc.cpp:319
+msgid "Staff"
+msgstr "Pentagramma"
+
+#: rc.cpp:320
+msgid "Name:"
+msgstr "Nome:"
+
+#: rc.cpp:321
+msgid "Channel:"
+msgstr "Canale:"
+
+#: rc.cpp:322
+msgid "Voice:"
+msgstr "Voce:"
+
+#: rc.cpp:324 rc.cpp:355
+msgid "Staff No."
+msgstr "Pentagramma"
+
+#: rc.cpp:325 rc.cpp:356
+msgid "Voice"
+msgstr "Voce"
+
+#: rc.cpp:326
+msgid "Staff name"
+msgstr "Nome del pentagramma"
+
+#: rc.cpp:327
+msgid "&Select all"
+msgstr "&Seleziona tutto"
+
+#: rc.cpp:328
+msgid "&Unselect all"
+msgstr "Deseleziona t&utto"
+
+#: rc.cpp:331
+msgid "Text Dialog"
+msgstr ""
+
+#: rc.cpp:332
+msgid "Text"
+msgstr ""
+
+#: rc.cpp:333
+msgid "Enter text:"
+msgstr ""
+
+#: rc.cpp:334 rc.cpp:367
+msgid "Ok"
+msgstr ""
+
+#: rc.cpp:336
+msgid "Uptext"
+msgstr ""
+
+#: rc.cpp:337
+#, fuzzy
+msgid "DownText"
+msgstr "&Giù"
+
+#: rc.cpp:338
+msgid "TimeSignature"
+msgstr "Tempo di chiave"
+
+#: rc.cpp:339
+msgid "Choose time signature"
+msgstr "Scegli il tempo di chiave"
+
+#: rc.cpp:342
+msgid "Predefined time signatures"
+msgstr "Tempi di chiave predefiniti"
+
+#: rc.cpp:348
+msgid "Tip of the day - NoteEdit"
+msgstr "Suggerimento del giorno - NoteEdit"
+
+#: rc.cpp:349
+msgid "&Show tips in future"
+msgstr "&Mostra all'avvio"
+
+#: rc.cpp:351
+msgid "Information about the TSE3 song - NoteEdit"
+msgstr "Informazioni su un brano TSE3 - NoteEdit"
+
+#: rc.cpp:352
+msgid "Track No."
+msgstr "Traccia"
+
+#: rc.cpp:354
+msgid "Splitted"
+msgstr "Split"
+
+#: rc.cpp:357
+msgid "Channel"
+msgstr "Canale"
+
+#: rc.cpp:358
+msgid "Volume"
+msgstr "Volume"
+
+#: rc.cpp:359
+msgid "Clef"
+msgstr "Chiave"
+
+#: rc.cpp:360
+msgid "Shift"
+msgstr "Shift"
+
+#: rc.cpp:362
+#, fuzzy
+msgid "Tuplets"
+msgstr "Terzina"
+
+#: rc.cpp:364
+msgid "Number of notes:"
+msgstr ""
+
+#: rc.cpp:366
+msgid "Real length (in notes above)"
+msgstr ""
+
+#: rc.cpp:368
+msgid "Voices - NoteEdit"
+msgstr "Voci - NoteEdit"
+
+#: rc.cpp:369
+msgid "Stem direction"
+msgstr "Direzione del gambo"
+
+#: rc.cpp:370
+msgid "&Up"
+msgstr "S&u"
+
+#: rc.cpp:371
+msgid "Do&wn"
+msgstr "&Giù"
+
+#: rc.cpp:372
+msgid "&Indiviual"
+msgstr "&Individuale"
+
+#: rc.cpp:373
+msgid "Create &voice"
+msgstr "Crea &voce"
+
+#: rc.cpp:374
+msgid "&Delete voice"
+msgstr "&Elimina voce"
+
+#: rc.cpp:378
+msgid "Voice number:"
+msgstr "Numero voce:"
+
+#: rc.cpp:379
+msgid "<center>Rest position</center>"
+msgstr "<center>Posizione pausa</center>"
+
+#: rc.cpp:380
+msgid "Insert volume - NoteEdit"
+msgstr "Inserisci volume - NoteEdit"
+
+#: rc.cpp:383
+msgid "volume"
+msgstr "Volume"
+
+#: rc.cpp:384
+msgid "Musical express:"
+msgstr "Segni dinamici:"
+
+#: resource.cpp:74
+msgid "ppp"
+msgstr "ppp"
+
+#: resource.cpp:74
+msgid "pp"
+msgstr "pp"
+
+#: resource.cpp:74
+msgid "p"
+msgstr "p"
+
+#: resource.cpp:74
+#, fuzzy
+msgid "mp"
+msgstr "p"
+
+#: resource.cpp:75
+msgid "mf"
+msgstr "mf"
+
+#: resource.cpp:75
+msgid "f"
+msgstr "f"
+
+#: resource.cpp:75
+msgid "ff"
+msgstr "ff"
+
+#: resource.cpp:75
+msgid "fff"
+msgstr "fff"
+
+#: resource.cpp:79
+msgid "full"
+msgstr "semibreve"
+
+#: resource.cpp:79
+msgid "dotted half"
+msgstr "minima col punto"
+
+#: resource.cpp:79 resource.cpp:86
+msgid "half"
+msgstr "minima"
+
+#: resource.cpp:80
+msgid "dotted quarter"
+msgstr "semiminima col punto"
+
+#: resource.cpp:80 resource.cpp:87
+msgid "quarter"
+msgstr "semiminima"
+
+#: resource.cpp:80
+msgid "dotted 8th"
+msgstr "croma col punto"
+
+#: resource.cpp:81 resource.cpp:88
+msgid "8th"
+msgstr "croma"
+
+#: resource.cpp:81
+msgid "dotted 16th"
+msgstr "semicroma col punto"
+
+#: resource.cpp:81 resource.cpp:89
+msgid "16th"
+msgstr "semicroma"
+
+#: resource.cpp:82
+msgid "dotted 32th"
+msgstr "biscroma col punto"
+
+#: resource.cpp:82
+msgid "32th"
+msgstr "biscroma"
+
+#: resource.cpp:82
+msgid "64th"
+msgstr "semibiscroma"
+
+#: resource.cpp:93
+msgid "Piano 1"
+msgstr "Piano 1"
+
+#: resource.cpp:93
+msgid "Piano 2"
+msgstr "Piano 2"
+
+#: resource.cpp:94
+msgid "Piano 3"
+msgstr "Piano 3"
+
+#: resource.cpp:94
+msgid "Honky-tonk"
+msgstr "Honky-tonk"
+
+#: resource.cpp:95
+msgid "E.Piano 1"
+msgstr "E.Piano 1"
+
+#: resource.cpp:95
+msgid "E.Piano 2"
+msgstr "E.Piano 2"
+
+#: resource.cpp:96
+msgid "Harpsichord"
+msgstr "Harpsichord"
+
+#: resource.cpp:96
+msgid "Clavinet"
+msgstr "Clavinet"
+
+#: resource.cpp:97
+msgid "Celesta"
+msgstr "Celesta"
+
+#: resource.cpp:97
+msgid "Glockenspiel"
+msgstr "Glockenspiel"
+
+#: resource.cpp:98
+msgid "Music Box"
+msgstr "Music Box"
+
+#: resource.cpp:98
+msgid "Vibraphone"
+msgstr "Vibraphone"
+
+#: resource.cpp:99
+msgid "Marimba"
+msgstr "Marimba"
+
+#: resource.cpp:99
+msgid "Xylophone"
+msgstr "Xylophone"
+
+#: resource.cpp:100
+msgid "Tubular Bells"
+msgstr "Tubular Bells"
+
+#: resource.cpp:100
+msgid "Dulcimer"
+msgstr "Dulcimer"
+
+#: resource.cpp:101
+msgid "Organ 1"
+msgstr "Organ 1"
+
+#: resource.cpp:101
+msgid "Organ 2"
+msgstr "Organ 2"
+
+#: resource.cpp:102
+msgid "Organ 3"
+msgstr "Organ 3"
+
+#: resource.cpp:102
+msgid "Church Organ"
+msgstr "Church Organ"
+
+#: resource.cpp:103
+msgid "Reed Organ"
+msgstr "Reed Organ"
+
+#: resource.cpp:103
+msgid "Accordion"
+msgstr "Accordion"
+
+#: resource.cpp:104
+msgid "Harmonica"
+msgstr "Harmonica"
+
+#: resource.cpp:104
+msgid "Bandoneon"
+msgstr "Bandoneon"
+
+#: resource.cpp:105
+msgid "Nylon Guitar"
+msgstr "Nylon Guitar"
+
+#: resource.cpp:105
+msgid "Steel Guitar"
+msgstr "Steel Guitar"
+
+#: resource.cpp:106
+msgid "Jazz Guitar"
+msgstr "Jazz Guitar"
+
+#: resource.cpp:106
+msgid "Clean Guitar"
+msgstr "Clean Guitar"
+
+#: resource.cpp:107
+msgid "Guitar Mutes"
+msgstr "Guitar Mutes"
+
+#: resource.cpp:107
+msgid "Overdrive Guitar"
+msgstr "Overdrive Guitar"
+
+#: resource.cpp:108
+msgid "Guitar Harmonics"
+msgstr "Guitar Harmonics"
+
+#: resource.cpp:109
+msgid "Acoustic Bass"
+msgstr "Acoustic Bass"
+
+#: resource.cpp:109
+msgid "Fingered Bass"
+msgstr "Fingered Bass"
+
+#: resource.cpp:110
+msgid "Picked Bass"
+msgstr "Picked Bass"
+
+#: resource.cpp:110
+msgid "Fretless Bass"
+msgstr "Fretless Bass"
+
+#: resource.cpp:111
+msgid "Slap Bass 1"
+msgstr "Slap Bass 1"
+
+#: resource.cpp:111
+msgid "Slap Bass 2"
+msgstr "Slap Bass 2"
+
+#: resource.cpp:112
+msgid "Synth Bass 1"
+msgstr "Synth Bass 1"
+
+#: resource.cpp:112
+msgid "Synth Bass 2"
+msgstr "Synth Bass 2"
+
+#: resource.cpp:113
+msgid "Violin"
+msgstr "Violin"
+
+#: resource.cpp:113
+msgid "Viola"
+msgstr "Viola"
+
+#: resource.cpp:114
+msgid "Cello"
+msgstr "Cello"
+
+#: resource.cpp:114
+msgid "Contrabass"
+msgstr "Contrabass"
+
+#: resource.cpp:115
+msgid "Tremolo Strings"
+msgstr "Tremolo Strings"
+
+#: resource.cpp:115
+msgid "Pizzicato"
+msgstr "Pizzicato"
+
+#: resource.cpp:116
+msgid "Harp"
+msgstr "Harp"
+
+#: resource.cpp:116
+msgid "Timpani"
+msgstr "Timpani"
+
+#: resource.cpp:117
+msgid "Strings"
+msgstr "Strings"
+
+#: resource.cpp:117
+msgid "Slow Strings"
+msgstr "Slow Strings"
+
+#: resource.cpp:118
+msgid "Synth Strings 1"
+msgstr "Synth Strings 1"
+
+#: resource.cpp:118
+msgid "Synth Strings 2"
+msgstr "Synth Strings 2"
+
+#: resource.cpp:119
+msgid "Choir Aahs"
+msgstr "Choir Aahs"
+
+#: resource.cpp:119
+msgid "Voice Oohs"
+msgstr "Voice Oohs"
+
+#: resource.cpp:120
+msgid "Synth Vox"
+msgstr "Synth Vox"
+
+#: resource.cpp:120
+msgid "Orchestra Hit"
+msgstr "Orchestra Hit"
+
+#: resource.cpp:121
+msgid "Trumpet"
+msgstr "Trumpet"
+
+#: resource.cpp:121
+msgid "Trombone"
+msgstr "Trombone"
+
+#: resource.cpp:122
+msgid "Tuba"
+msgstr "Tuba"
+
+#: resource.cpp:122
+msgid "Mute Trumpet"
+msgstr "Mute Trumpet"
+
+#: resource.cpp:123
+msgid "French Horns"
+msgstr "French Horns"
+
+#: resource.cpp:123
+msgid "Brass"
+msgstr "Brass"
+
+#: resource.cpp:124
+msgid "Synth Brass 1"
+msgstr "Synth Brass 1"
+
+#: resource.cpp:124
+msgid "Synth Brass 2"
+msgstr "Synth Brass 2"
+
+#: resource.cpp:125
+msgid "Soprano Sax"
+msgstr "Soprano Sax"
+
+#: resource.cpp:125
+msgid "Alto Sax"
+msgstr "Alto Sax"
+
+#: resource.cpp:126
+msgid "Tenor Sax"
+msgstr "Tenor Sax"
+
+#: resource.cpp:126
+msgid "Baritone Sax"
+msgstr "Baritone Sax"
+
+#: resource.cpp:127
+msgid "Oboe"
+msgstr "Oboe"
+
+#: resource.cpp:127
+msgid "English Horn"
+msgstr "English Horn"
+
+#: resource.cpp:128
+msgid "Bassoon"
+msgstr "Bassoon"
+
+#: resource.cpp:128
+msgid "Clarinet"
+msgstr "Clarinet"
+
+#: resource.cpp:129
+msgid "Piccolo"
+msgstr "Piccolo"
+
+#: resource.cpp:129
+msgid "Flute"
+msgstr "Flute"
+
+#: resource.cpp:130
+msgid "Recorder"
+msgstr "Recorder"
+
+#: resource.cpp:130
+msgid "Pan Flute"
+msgstr "Pan Flute"
+
+#: resource.cpp:131
+msgid "Bottle Chiff"
+msgstr "Bottle Chiff"
+
+#: resource.cpp:131
+msgid "Shakuhachi"
+msgstr "Shakuhachi"
+
+#: resource.cpp:132
+msgid "Whistle"
+msgstr "Whistle"
+
+#: resource.cpp:132
+msgid "Ocarina"
+msgstr "Ocarina"
+
+#: resource.cpp:133
+msgid "Square Wave"
+msgstr "Square Wave"
+
+#: resource.cpp:133
+msgid "Saw Wave"
+msgstr "Saw Wave"
+
+#: resource.cpp:134
+msgid "Synth Calliope"
+msgstr "Synth Calliope"
+
+#: resource.cpp:134
+msgid "Chiffer Lead"
+msgstr "Chiffer Lead"
+
+#: resource.cpp:135
+msgid "Charang"
+msgstr "Charang"
+
+#: resource.cpp:135
+msgid "Solo Vox"
+msgstr "Solo Vox"
+
+#: resource.cpp:136
+msgid "5th Saw Wave"
+msgstr "5th Saw Wave"
+
+#: resource.cpp:136
+msgid "Bass & Lead"
+msgstr "Bass & Lead"
+
+#: resource.cpp:137
+msgid "Fantasia"
+msgstr "Fantasia"
+
+#: resource.cpp:137
+msgid "Warm Pad"
+msgstr "Warm Pad"
+
+#: resource.cpp:138
+msgid "Poly Synth"
+msgstr "Poly Synth"
+
+#: resource.cpp:138
+msgid "Space Voice"
+msgstr "Space Voice"
+
+#: resource.cpp:139
+msgid "Bowed Glass"
+msgstr "Bowed Glass"
+
+#: resource.cpp:139
+msgid "Metal Pad"
+msgstr "Metal Pad"
+
+#: resource.cpp:140
+msgid "Halo Pad"
+msgstr "Halo Pad"
+
+#: resource.cpp:140
+msgid "Sweep Pad"
+msgstr "Sweep Pad"
+
+#: resource.cpp:141
+msgid "Ice Rain"
+msgstr "Ice Rain"
+
+#: resource.cpp:141
+msgid "Soundtrack"
+msgstr "Soundtrack"
+
+#: resource.cpp:142
+msgid "Crystal"
+msgstr "Crystal"
+
+#: resource.cpp:142
+msgid "Atmosphere"
+msgstr "Atmosphere"
+
+#: resource.cpp:143
+msgid "Brightness"
+msgstr "Brightness"
+
+#: resource.cpp:143
+msgid "Goblin"
+msgstr "Goblin"
+
+#: resource.cpp:144
+msgid "Echo Drops"
+msgstr "Echo Drops"
+
+#: resource.cpp:144
+msgid "Star Theme"
+msgstr "Star Theme"
+
+#: resource.cpp:145
+msgid "Sitar"
+msgstr "Sitar"
+
+#: resource.cpp:145
+msgid "Banjo"
+msgstr "Banjo"
+
+#: resource.cpp:146
+msgid "Shamisen"
+msgstr "Shamisen"
+
+#: resource.cpp:146
+msgid "Koto"
+msgstr "Koto"
+
+#: resource.cpp:147
+msgid "Kalimba"
+msgstr "Kalimba"
+
+#: resource.cpp:147
+msgid "Bagpipe"
+msgstr "Bagpipe"
+
+#: resource.cpp:148
+msgid "Fiddle"
+msgstr "Fiddle"
+
+#: resource.cpp:148
+msgid "Shenai"
+msgstr "Shenai"
+
+#: resource.cpp:149
+msgid "Tinker Bell"
+msgstr "Tinker Bell"
+
+#: resource.cpp:149
+msgid "Agogo"
+msgstr "Agogo"
+
+#: resource.cpp:150
+msgid "Steel Drum"
+msgstr "Steel Drum"
+
+#: resource.cpp:150
+msgid "Wood Block"
+msgstr "Wood Block"
+
+#: resource.cpp:151
+msgid "Taiko Drum"
+msgstr "Taiko Drum"
+
+#: resource.cpp:151
+msgid "Melodic Tom"
+msgstr "Melodic Tom"
+
+#: resource.cpp:152
+msgid "Synth Drum"
+msgstr "Synth Drum"
+
+#: resource.cpp:152
+msgid "Reverse Cymbal"
+msgstr "Reverse Cymbal"
+
+#: resource.cpp:153
+msgid "Fret Noise"
+msgstr "Fret Noise"
+
+#: resource.cpp:153
+msgid "Breath Noise"
+msgstr "Breath Noise"
+
+#: resource.cpp:154
+msgid "Seashore"
+msgstr "Seashore"
+
+#: resource.cpp:154
+msgid "Bird"
+msgstr "Bird"
+
+#: resource.cpp:155
+msgid "Telephone"
+msgstr "Telephone"
+
+#: resource.cpp:155
+msgid "Helicopter"
+msgstr "Helicopter"
+
+#: resource.cpp:156
+msgid "Applause"
+msgstr "Applause"
+
+#: resource.cpp:156
+msgid "Gun Shot"
+msgstr "Gun Shot"
+
+#: resource.cpp:557
+msgid "Details:"
+msgstr "Dettagli:"
+
+#: resource.cpp:608
+msgid ""
+"<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%"
+"1\"<br>Error Code is: %2</i><br><br>The program must be interrupted.<br>"
+msgstr ""
+"<b>Errore interno inatteso.<br><br></b>Messaggio:<br><i>\"%1\"<br>Il codice "
+"dell'errore è:%2</i><br><br>Il programma sarà interrotto.<br>"
+
+#: resource.cpp:612
+msgid "Internal error"
+msgstr "Errore interno"
+
+#: scoreinfo.cpp:43
+msgid "Score information"
+msgstr "Informazioni sullo spartito"
+
+#: scoreinfo.cpp:50
+msgid "&Revert"
+msgstr "&Ripristina"
+
+#: scoreinfo.cpp:51
+msgid "Cl&ear all"
+msgstr "&Cancella tutto"
+
+#: scoreinfo.cpp:70
+msgid "&Title:"
+msgstr "&Titolo:"
+
+#: scoreinfo.cpp:79
+msgid "&Subject:"
+msgstr "&Soggetto:"
+
+#: scoreinfo.cpp:88
+msgid "A&uthor:"
+msgstr "A&utore:"
+
+#: scoreinfo.cpp:98
+msgid "&Last author:"
+msgstr "Re&visore:"
+
+#: scoreinfo.cpp:109
+msgid "&Copyright:"
+msgstr ""
+
+#: scoreinfo.cpp:115
+msgid "Co&mments"
+msgstr "Co&mmenti"
+
+#: staff.cpp:85
+msgid "Cannot create more than 9 voices per staff."
+msgstr "Non è possibile creare più di nove voci per rigo."
+
+#: staff.cpp:143 staff.cpp:176
+msgid "Cannot remove first voice"
+msgstr "Non è possibile rimuovere la prima voce"
+
+#: staff.cpp:144 staff.cpp:154 staff.cpp:177 staff.cpp:187
+msgid "Delete voice"
+msgstr "Cancella voce"
+
+#: staff.cpp:153 staff.cpp:186
+msgid "This deletes voice %1! Are you sure?"
+msgstr "Quest'operazione eliminerà la voce%1! Sei sicuro?"
+
+#: staff.cpp:580
+msgid "The destination staff has less voices than source staff"
+msgstr "Il rigo di destinazione ha meno voci di quella d'origine"
+
+#: staff.cpp:605
+msgid ""
+"You paste a first voice to no-first voice! This deletes all non-first-voice "
+"elements!"
+msgstr ""
+"Stai incollando elementi dalla prima voce in un'altra! Tutti gli elementi "
+"della voce di destinazione saranno eliminati!"
+
+#: tips.cpp:3
+msgid ""
+"<b>...how to edit with the mouse?</b><br/><br/>\n"
+"The use of mouse buttons:\n"
+"<dl>\n"
+"<dt>left</dt>\n"
+"<dd>select <i>(if selector or edit button is on)<i><br></dd>\n"
+"otherwise: insert a note <i>(only if a note button is on)</i><br>\n"
+"or: insert an element <i>(like clef)</i> if a new element was choosen\n"
+"<dt>middle</dt>\n"
+"<dd>paste for block instructions</dd>\n"
+"<dt>right</dt>\n"
+"<dd>insert rest <i>(only if a note button is on)</i></dd>\n"
+"<dt>Ctrl+left</dt>\n"
+"<dd>delete</dd>\n"
+"</dl>\n"
+msgstr ""
+
+#: tips.cpp:20
+#, fuzzy
+msgid ""
+"<b>...how to add and remove notes in chords?</b><br/>\n"
+"<ul>\n"
+"<li>to add a note to a chord make sure a note button is on and press left "
+"mouse button near this chord\n"
+"<li>to remove a note press Ctrl + left mouse button near the note to be "
+"deleted\n"
+"</ul>\n"
+msgstr ""
+"<b>...come aggiungere o togliere note negli accordi?</b><br/>\n"
+"<ul>\n"
+"<li>per aggiungere una nota in un accordo usa il pulsante centrale del "
+"mouse, tenendo premuto il tasto Ctrl\n"
+"<li>per cancellarla usa il pulsante destro, tenendo premuto il tasto Ctrl\n"
+"</ul>\n"
+
+#: tips.cpp:28
+msgid ""
+"<b>...that you can move up/down inserted notes by means of the cursor up/"
+"down keys?</b>\n"
+msgstr ""
+"<b>...che puoi muovere su e giù le note inserite mediante le frecce in alto "
+"e in basso?</b>\n"
+
+#: tips.cpp:32
+#, fuzzy
+msgid ""
+"<b>...that you can insert bars with the <code>Tab</code> key?</b>\n"
+"<br/><br/>\n"
+"If configured NoteEdit inserts bars if you insert notes at the end. You\n"
+"can insert your own bars by means of the Tab key. To check the bars produce "
+"a 2nd\n"
+"staff with only rests and bars! If the bars are aligned, the measures are\n"
+"complete.\n"
+msgstr ""
+"<b>...che puoi inserire le barre con il tasto <code>Tabulatore</code>?</b>\n"
+"<br/><br/>\n"
+"Fai attenzione: Noteedit non ha l'inserimento automatico delle barre. Il "
+"controllo automatico produce un secondo rigo con le sole pause e barre: se "
+"le barre sono allineate le misure sono corrette!\n"
+
+#: tips.cpp:41
+msgid ""
+"<b>...how to edit with the keyboard?</b><br/><br/>\n"
+"Some keys:\n"
+"<dl>\n"
+"<dt>Tab</dt>\n"
+"<dd>insert bar</dd>\n"
+"<dt>Backspace</dt>\n"
+"<dd>delete</dd>\n"
+"<dt>insert</dt>\n"
+"<dd>edit mode</dd>\n"
+"<dt>plus</dt>\n"
+"<dd>sharp</dd>\n"
+"<dt>equal</dt>\n"
+"<dd>natural</dd>\n"
+"<dt>minus</dt>\n"
+"<dd>flat</dd>\n"
+"</dl>\n"
+msgstr ""
+"<b>...come lavorare con la tastiera?</b><br/><br/>\n"
+"Ecco alcuni tasti:\n"
+"<dl>\n"
+"<dt>Tasto \"Tabulatore\"</dt>\n"
+"<dd>inserisci barra</dd>\n"
+"<dt>Tasto \"Ritorno\"</dt>\n"
+"<dd>cancella</dd>\n"
+"<dt>Tasto \"Inserimento\"</dt>\n"
+"<dd>modalità di modifica</dd>\n"
+"<dt>Tasto \"più\"</dt>\n"
+"<dd>diesis</dd>\n"
+"<dt>Tasto \"uguale\"</dt>\n"
+"<dd>bequadro</dd>\n"
+"<dt>Tasto \"meno\"</dt>\n"
+"<dd>bemolle</dd>\n"
+"</dl>\n"
+
+#: tips.cpp:60
+msgid ""
+"<b>...how to use accidentals?</b><br/><br/>\n"
+"Notes are inserted according keysig! So use the accidental buttons\n"
+"(sharp, flat, natural) only if you wish a <i>visible</i> accidental.\n"
+msgstr ""
+"<b>...come usare gli accidenti?</b><br/><br/>\n"
+"Le note vengono inserite in accordo con la tonalità di chiave. I pulsanti "
+"per l'inserimento degli accidenti (diesis, bequasro, bemolle) servono solo a "
+"renderli <i>visibili</i>.\n"
+
+#: tips.cpp:66
+#, fuzzy
+msgid ""
+"<b>...that you can enable insert from keyboard mode?</b><br/><br/>\n"
+"Activate the keyboard insertion mode by pressing the keyboard\n"
+"insertion button. Then use the keys:\n"
+"<dl>\n"
+"<dt>enter</dt>\n"
+"<dd>insert note</dd>\n"
+"<dt>Ctrl+enter</dt>\n"
+"<dd>add note to previous chord</dd>\n"
+"<dt>backspace</dt>\n"
+"<dd>delete note</dd>\n"
+"<dt>Ctrl+backspace</dt>\n"
+"<dd>delete note from previous chord</dd>\n"
+"<dt>space</dt>\n"
+"<dd>insert rest</dd>\n"
+"<dt>Cursor up/down</dt>\n"
+"<dd>determine pitch</dd>\n"
+"</dl>\n"
+msgstr ""
+"<b>...come abilitare l'inserimento da tastiera?</b><br/><br/>\n"
+"Scegli <code>Impostazioni --&gt; Configura NoteEdit --&gt; Modifica --&gt; "
+"Consenti l'inserimento da tastiera</code>. \tUsa così i tasti:\n"
+"<dl>\n"
+"<dt>Tasto \"Invio\"</dt>\n"
+"<dd>Inserisci una nota</dd>\n"
+"<dt>Tasto \"Spazio\"</dt>\n"
+"<dd>Inserisci una pausa</dd>\n"
+"<dt>Cursore su e giù</dt>\n"
+"<dd>Determina l'altezza della nota</dd>\n"
+"</dl>\n"
+
+#: tips.cpp:86
+msgid ""
+"<b>\n"
+"...that you can hide/show the bar numbers by selecting\n"
+"<code><u>V</u>iew --&gt; Show bar numbers</code>?\n"
+"</b>\n"
+msgstr ""
+"<b>\n"
+"...che puoi mostrare o nascondere i numeri delle batture selezionando\n"
+"<code>Visualizza --&gt; Mostra i numeri di battuta</code>?\n"
+"</b>\n"
+
+#: tips.cpp:93
+msgid ""
+"<b>...that you can determine the pitch by a MIDI keyboard connected to your\n"
+"soundcard?</b><br/><br/>\n"
+"Use the red keyboard button!\n"
+msgstr ""
+"<b>...che puoi determinare l'altezza delle note con una tastiera MIDI "
+"connessa alla tua scheda audio?</b><br/><br/>\n"
+"Usa il pulsante con la tastiera rossa!\n"
+
+#: tips.cpp:99
+msgid ""
+"<b>...that you can record the notes from a MIDI keyboard connected to your\n"
+"soundcard?</b><br/><br/>\n"
+"Use the red record button.\n"
+msgstr ""
+"<b>...che puoi registrare le note da un tastiera MIDI connessa alla tua "
+"scheda audio?</b><br/><br/>\n"
+"Usa il pulsante rosso di registrazione.\n"
+
+#: tips.cpp:105
+msgid ""
+"<b>...that you can go to first/last measure by\n"
+"<code>Alt + cursor left/right</code>?</b>\n"
+msgstr ""
+"<b>...che puoi andare alla prima/ultima misura con\n"
+"<code>Alt + freccia sinistra/destra</code>?</b>\n"
+
+#: tips.cpp:110
+msgid ""
+"<b>...that you can mark an arbitrary part of a staff to initiate block\n"
+"commands?</b><br/><br/>\n"
+"The block commands are:\n"
+"<dl>\n"
+"<dd>Backspace</dd>\n"
+"<dt>delete block</dt>\n"
+"<dd>middle mouse button</dd>\n"
+"<dt>copy block to mouse pointer position</dt>\n"
+"</dl>\n"
+msgstr ""
+"<b>...che puoi selezionare una parte qualsiasi del rigo per poi usarla con i "
+"comandi di selezione?</b><br/><br/>\n"
+"I comandi di selezione sono:\n"
+"<dl>\n"
+"<dd>Ritorno</dd>\n"
+"<dt>cancella la selezione</dt>\n"
+"<dd>pulsante centrale del mouse</dd>\n"
+"<dt>copia la selezione nella posizione del puntatore</dt>\n"
+"</dl>\n"
+
+#: tips.cpp:122
+msgid ""
+"<b>...that you can give multistaff block commands?</b><br/><br/>\n"
+"If you activate <code>Edit --&gt; Multistaff</code> the block commands\n"
+"apply to all selected staves.\n"
+msgstr ""
+"<b>...che puoi eseguire i comandi di selezione su righi multipli?</b><br/"
+"><br/>\n"
+"Se attivi <code>Modifica --&gt; Righi multipli</code> i comandi di selezione "
+"saranno applicati su tutti i righi selezionati.\n"
+
+#: tips.cpp:128
+msgid "<b>...that you can select the whole staff by double click?</b>\n"
+msgstr "<b>...che puoi selezionare un rigo intero con un doppio click?</b>\n"
+
+#: tips.cpp:132
+#, fuzzy
+msgid ""
+"<b>...that you can create as many views as you want\n"
+"(<code><u>W</u>indow --&gt; <u>N</u>ew Window</code>)?</b><br/><br/>\n"
+"This allows you to copy between different scores.\n"
+msgstr ""
+"<b>...che puoi aprire quante finestre vuoi (<code>Finestre --&gt; Nuova "
+"finestra</code>)?</b><br/><br/>\n"
+"Così potrai copiare tra spartiti diversi.\n"
+
+#: tips.cpp:138
+msgid ""
+"<b>...that the MIDI import is performed by the TSE3 library when you select\n"
+"<code>TSE3 --&gt; MIDI In</code>?</b><br/><br/>\n"
+"To produce the score use\n"
+"<code>TSE3 --&gt; filter dialog --&gt; TSE3 --&gt; Score</code>.\n"
+msgstr ""
+"<b>...che per importare un MIDI si usano le librerie TSE3?\n"
+"Seleziona:\n"
+"<code>TSE3 --&gt; Importa MIDI</code>?</b><br/><br/>\n"
+"Per produrre lo spartito usa\n"
+"<code>TSE3 --&gt; Filtri --&gt; Crea spartito da TSE3</code>.\n"
+
+#: tips.cpp:145
+msgid ""
+"<b>...that\tMIDI filters are necessary to produce a good score from Midi a\n"
+"file?</b><br/><br/>\n"
+" \tPlease read the <a href=\"foo\">MIDI import discussion page</a>!\n"
+msgstr ""
+"<b>...che i filtri MIDI sono necessari per produrre un buon spartito da un "
+"file MIDI?</b><br/><br/>\n"
+" \tConsulta a proposito <a href=\"foo\">MIDI import discussion page</a>!\n"
+
+#: tips.cpp:151
+msgid ""
+"<b>...that\tNotedit produces LaTeX/MusiXTeX output?</b><br/><br/>\n"
+"Please note that<br/>\n"
+"<code>latex &lt;file&gt;</code><br/>\n"
+"does not suffice. Read the <a href=\"foo\">documentation</a>!\n"
+msgstr ""
+"<b>...che NoteEdit esporta in LaTeX/MusiXTeX?</b><br/><br/>\n"
+"Nota che il comando<br/>\n"
+"<code>latex &lt;file&gt;</code><br/>\n"
+"non è suffciente. Consulta la <a href=\"foo\">documentazione</a>!\n"
+
+#: tips.cpp:158
+msgid ""
+"<b>...that you can insert lines?</b><br/><br/>\n"
+"Select <code>Insert --&gt; lines</code>, choose a line and middle click\ton\n"
+"a note.\n"
+msgstr ""
+"<b>...che puoi inserire trilli e dinamiche?</b><br/><br/>\n"
+"Seleziona <code>Inserisci --&gt; trilli e dinamiche</code>, scegli un "
+"oggetto e posizionalo su una nota con il tasto centrale del mouse.\n"
+
+#: tips.cpp:164
+#, fuzzy
+msgid ""
+"<b>...how to produce a audible (de-)crescendo?</b><br/><br/>\n"
+"Place 2 different volume signatures\tleft and right the (de-)crescendo\n"
+"symbol<br/>\n"
+msgstr ""
+"<b>...come produrre un (de-)crescendo udibile?</b><br/><br/>\n"
+"Inserisci due differenti indicazioni di volume a sinistra e a destra del "
+"simbolo del (de-)crescendo<br/>\n"
+"<b><u>Nota</u></b>: Ci sono dei limiti nel posizionamento dell'indicazione "
+"di volume (consulta la <a href=\"foo\">documentazione</a>!)\n"
+
+#: tips.cpp:170
+msgid ""
+"<b>\n"
+"...that Noteedit plays the <i>\"post Mozart trill\"</i>: dcdcdcdcdc...?\n"
+"</b>\n"
+"<br/><br/>\n"
+"This is\talso written to MIDI files.\n"
+msgstr ""
+"<b>\n"
+"...che NoteEdit può suonare il <i>\"trillo post-Mozart\"</i>: re do re do re "
+"do re do...?\n"
+"</b>\n"
+"<br/><br/>\n"
+"Il tutto viene poi scritto anche sui file MIDI.\n"
+
+#: tips.cpp:178
+msgid ""
+"<b>\n"
+"...that you can create multiple voices per staff ?\n"
+"</b>\n"
+"<p>choose: <code>Staff --&gt; Voices ... --&gt; Create voice</code></p>\n"
+"<p>You should select:</p>\n"
+"<ul>\n"
+"<li> a preferred stem direction for the voice;\n"
+"<li> a Y-position for the rests to make it possible to\n"
+"     associate the rests to voices.\n"
+"</ul>\n"
+"<p>There is always a <i>current voice</i>. You can choose it\n"
+"by means of the <i>voice counter</i>. <b>Note!</b> If the\n"
+"voice counter displays an 'A' the <i>current voice</i> is the\n"
+"first voice.</p>\n"
+msgstr ""
+"<b>\n"
+"...che puoi creare più voci per rigo?\n"
+"</b>\n"
+"<p>scegli: <code>Pentagramma --&gt; Voci ... --&gt; Crea voce</code></p>\n"
+"<p>Potrai così selezionare:</p>\n"
+"<ul>\n"
+"<li> la direzione preferita del gambo delle note della voce;\n"
+"<li> una posizione-Y per le pause così da poter\n"
+"     associare le pause alle voci.\n"
+"</ul>\n"
+"<p>C'è sempre una <i>voce corrente</i>. Puoi sceglierla\n"
+"mediante il pulsante <i>seleziona voce</i>. <b>Nota!</b> Se il pulsante\n"
+"seleziona voce mostra una 'A' la <i>voce corrente</i> è quella\n"
+"principale.</p>\n"
+
+#: tips.cpp:195
+msgid ""
+"<b>\n"
+"...that you can transpose the staffs ?\n"
+"</b>\n"
+"<p>choose: <code>Tools --&gt; Transpose ... </code></p>\n"
+"<p>Select the count of semitones! <b>Note!</b> It is\n"
+"your resposibility to change the key signature!</p>\n"
+"<p>If you want to transpose only a part of the staff\n"
+"then mark the appropriate part before!</p>\n"
+"<p>If you want to transpose a group of staffs then\n"
+"select them before:</p\n"
+"<p><code>Edit --&gt; Multistaff...</code></p>\n"
+msgstr ""
+"<b>\n"
+"...che puoi trasportare i pentagrammi?\n"
+"</b>\n"
+"<p>scegli: <code>Strumenti --&gt; Trasporta ... </code></p>\n"
+"<p>Seleziona il numero di semitoni!\n"
+"<b>Nota!</b>\n"
+"Spetta a te cambiare la tonalità di chiave!</p>\n"
+"<p>Se vuoi trasportare solo una parte del rigo\n"
+"devi prima selezionarla!</p>\n"
+"<p>Se vuoi trasportare un insieme di pentagrammi\n"
+"selezionali prima così:</p\n"
+"<p><code>Modifica --&gt; Righi multipli...</code></p>\n"
+
+#: tips.cpp:209
+msgid ""
+"<b>\n"
+"...that you can change the clef ?\n"
+"</b>\n"
+"<p>choose: <code>Tools --&gt; Change clef ... </code></p>\n"
+"<p>Choose the new clef!</p>\n"
+"<p>If you want to change the clef of only a part of the\n"
+"staff then mark the appropriate part before!</p> \n"
+"<p><b>Note!</b> The marked range should begin with a\n"
+"clef! Noteedit stops changing the chords/notes if a\n"
+"new clef appears.</p>\n"
+msgstr ""
+"<b>\n"
+"...che puoi cambiare la chiave?\n"
+"</b>\n"
+"<p>Scegli: <code>Strumenti --&gt; Cambia chiave ... </code></p>\n"
+"<p>Scegli la nuova chiave!</p>\n"
+"<p>Se vuoi cambiare la chiave di una parte del rigo\n"
+"seleziona prima la parte appropriata!</p> \n"
+"<p><b>Nota!</b> La parte selezionata deve partire da \n"
+"una chiave! NoteEdit interrompe i cambiamenti di note e \n"
+"accordi se compare una nuova chiave.</p>\n"
+
+#: tse3handler.cpp:313 tse3handler.cpp:339 tse3handler.cpp:364
+#: tse3handler.cpp:469 tse3handler.cpp:488 tse3handler.cpp:522
+#: tse3handler.cpp:565
+msgid "First create a TSE3 song structure!"
+msgstr "Devi creare prima una struttura per un brano TSE3!"
+
+#: tse3handler.cpp:314
+msgid "Play TSE3 song"
+msgstr "Suona un brano TSE3"
+
+#: tse3handler.cpp:340
+msgid "Write TSE3 song"
+msgstr "Scrivi un brano TSE3"
+
+#: tse3handler.cpp:436 tse3handler.cpp:1020
+msgid "unable to determine a clef"
+msgstr "Impossibile determinare una chiave"
+
+#: tse3handler.cpp:445 tse3handler.cpp:1028
+msgid "No notes recorded"
+msgstr "Nessuna nota registrata"
+
+#: tse3handler.cpp:454 tse3handler.cpp:1035
+msgid "This cannot be imported to ONE staff"
+msgstr "Non è possibile eseguire l'importazione su un solo pentagramma"
+
+#: tse3handler.cpp:470
+msgid "Record AAAAAAAAAAAAAA"
+msgstr "Registra AAAAAAAAAAAAAA"
+
+#: tse3handler.cpp:489
+msgid "Record BBBBBBBBBBB"
+msgstr "Registra BBBBBBBBBBB"
+
+#: tse3handler.cpp:523
+msgid "Song information"
+msgstr "Informazioni sul brano"
+
+#: tse3handler.cpp:534
+#, c-format
+msgid "Track %1%2"
+msgstr "Traccia %1%2"
+
+#: tse3handler.cpp:535
+msgid "%1 Notes"
+msgstr "%1 Note"
+
+#: tse3handler.cpp:538 uiconnect.cpp:962 uiconnect.cpp:970
+#, c-format
+msgid "Staff %1%2"
+msgstr "Rigo %1%2"
+
+#: tse3handler.cpp:540 uiconnect.cpp:369
+msgid "Channel %1"
+msgstr "Canale %1"
+
+#: tse3handler.cpp:541
+msgid "Volume %1"
+msgstr "Volume %1"
+
+#: tse3handler.cpp:542
+msgid "bass"
+msgstr "bassi"
+
+#: tse3handler.cpp:542
+msgid "treble"
+msgstr "alti"
+
+#: tse3handler.cpp:543
+msgid "Shift %1"
+msgstr "Shift %1"
+
+#: tse3handler.cpp:566
+msgid "Merge"
+msgstr "Incorpora"
+
+#: tse3handler.cpp:637
+msgid "No staff selected for import."
+msgstr "Nessun pentagramma selezionato per l'importazione"
+
+#: tse3handler.cpp:638
+msgid "Import TSE3"
+msgstr "Importa TSE3"
+
+#: tse3handler.cpp:956
+msgid "Can't determine clef"
+msgstr "Non è possibile determinare la chiave"
+
+#: tse3handler.cpp:1002
+msgid "Nothing to import"
+msgstr "Nulla da importare"
+
+#: tse3handler.cpp:1003
+msgid "Import recording"
+msgstr "Importa registrazione"
+
+#: uiconnect.cpp:125
+msgid "There is nothing to export."
+msgstr "Nulla da esportare"
+
+#: uiconnect.cpp:177
+msgid "No staff selected for export."
+msgstr "Nessun pentagramma selezionato per l'esportazione"
+
+#: uiconnect.cpp:222
+msgid ""
+"Actually LilyPond is not supported by your system. Do you realy want to make "
+"such an export?"
+msgstr ""
+"Attualmente LilyPond non è supportato dal vostro sistema. Siete certi di "
+"voler avviare l'esportazione?"
+
+#: uiconnect.cpp:223
+msgid "LilyPond export"
+msgstr "Esportazione in LilyPond"
+
+#: uiconnect.cpp:224
+msgid "&Export"
+msgstr "&Esporta"
+
+#: uiconnect.cpp:367 uiconnect.cpp:720
+msgid "%1. %2"
+msgstr "%1. %2"
+
+#: uiconnect.cpp:532 uiconnect.cpp:533
+#, fuzzy
+msgid "Auto"
+msgstr "Autore:"
+
+#: uiconnect.cpp:534
+msgid "None"
+msgstr "nessuna"
+
+#: uiconnect.cpp:566
+msgid "Dynamic:"
+msgstr "Dinamica:"
+
+#: uiconnect.cpp:567
+msgid "Set min volume"
+msgstr "Volume minimo"
+
+#: uiconnect.cpp:725
+msgid "Staff %1, %2, %3"
+msgstr "Rigo %1, %2, %3"
+
+#: uiconnect.cpp:727 uiconnect.cpp:965
+msgid "[unnamed]"
+msgstr "[senza nome]"
+
+#: uiconnect.cpp:825
+msgid "Verse no %1 %2"
+msgstr "Strofa n. %1 %2"
+
+#: uiconnect.cpp:827
+msgid "[empty]"
+msgstr "[vuoto]"
+
+#: uiconnect.cpp:836
+msgid "Are you sure to clear the current verse?"
+msgstr "Siete sicuri di voler cancellare la strofa corrente?"
+
+#: uiconnect.cpp:837
+msgid "Clear verse"
+msgstr "Cancella la strofa"
+
+#: uiconnect.cpp:865
+msgid "File open aborted."
+msgstr "Apertura file interrotta"
+
+#: uiconnect.cpp:866
+msgid "Import lyrics"
+msgstr "Importa testo"
+
+#: uiconnect.cpp:872
+msgid "Unable to open this file."
+msgstr "Impossibile aprire il file"
+
+#: uiconnect.cpp:873
+msgid "Import Lyrics"
+msgstr "Importa testo"
+
+#: uiconnect.cpp:928
+msgid "<b><i><u><center>Tip of day #%1"
+msgstr "<b><i><u><center>Suggerimento del giorno #%1"
+
+#: uiconnect.cpp:929
+msgid "<b><i><u>Did you know ... </u></i></b><br><br>%2"
+msgstr "<b><i><u>Sapevi ... </u></i></b><br><br>%2"
+
+#: uiconnect.cpp:953
+msgid "[not available]"
+msgstr "[non disponibile]"
+
+#: uiconnect.cpp:980
+msgid "Mute staffs"
+msgstr "Pentagramma muto"
+
+#: uiconnect.cpp:981
+msgid "&Mute"
+msgstr "&Muto"
+
+#: uiconnect.cpp:986
+msgid "Select staffs for autobar"
+msgstr "Seleziona i pentagrammi per il posizionamento automatico delle barre"
+
+#: uiconnect.cpp:987
+msgid "Aut&obar"
+msgstr "Barre aut&omatiche"
+
+#: uiconnect.cpp:993
+msgid "Select staffs for autobeam"
+msgstr "Seleziona i pentagrammi per il posizionamento automatico delle barre"
+
+#: uiconnect.cpp:994
+msgid "Aut&obeam"
+msgstr "Barre aut&omatiche"
+
+#: uiconnect.cpp:999
+msgid "Merge staffs"
+msgstr "Incorpora pentagrammi"
+
+#: uiconnect.cpp:1000
+msgid "&Merge"
+msgstr "&Incorpora"
+
+#: uiconnect.cpp:1005
+#, fuzzy
+msgid "Create staff from TSE3"
+msgstr "Crea pentagramma di TSE3"
+
+#: uiconnect.cpp:1006
+#, fuzzy
+msgid "&Create"
+msgstr "C&rea voce"
+
+#: uiconnect.cpp:1011
+msgid "Select staffs for export"
+msgstr "Seleziona i pentagrammi da esportare"
+
+#: uiconnect.cpp:1012 uiconnect.cpp:1018
+#, fuzzy
+msgid "&Select"
+msgstr "&Seleziona tutto"
+
+#: uiconnect.cpp:1017
+msgid "Multi staff select"
+msgstr "Seleziona pentagrammi multipli"
+
+#: voice.cpp:4096
+msgid "posit: chord skipped"
+msgstr "posizione: accordo saltato"
+
+#: voice.cpp:4097
+msgid "Repositioning voice"
+msgstr "Riposizionamento voce"
+
+#: voicedialog.cpp:56
+msgid "Stems up"
+msgstr "Gambi su"
+
+#: voicedialog.cpp:59
+msgid "Stems individual"
+msgstr "Gambi singoli"
+
+#: voicedialog.cpp:62
+msgid "Stems down"
+msgstr "Gambi giù"
+
+#: voicedialog.cpp:72
+msgid "Rest position"
+msgstr "Posizione pausa"
+
+#: voicedialog.cpp:88
+msgid "The number of the voice to which the settings above apply."
+msgstr "Il numero della voce su cui applicare le impostazioni."
+
+#: voicedialog.cpp:106
+msgid ""
+"All notes in voice number %1 will have their stems pointing up when this is "
+"selected."
+msgstr ""
+"Selezionando quest'opzione. Tutte le note nella voce numero %1 avranno il "
+"gambo rivolto in alto."
+
+#: voicedialog.cpp:114
+msgid ""
+"The direction of the stems of the notes in voice number %1 will be chosen "
+"optimally for each note when this is selected."
+msgstr ""
+"Selezionando quest'opzione la direzione dei gambi delle note della voce "
+"numero %1 sarà impostata in modo ottimale per ciascuna nota."
+
+#: voicedialog.cpp:122
+msgid ""
+"All notes in voice number %1 will have their stems pointing down when this "
+"is selected."
+msgstr ""
+"Selezionando quest'opzione tutte le note della voce numero %1 avranno il "
+"gambo rivolto in basso."
+
+#: voicedialog.cpp:129
+msgid "Offset in the Y dimension of rests that belong voice number %1."
+msgstr "Adattamento della dimensione Y delle pause nella voce numero %1."
+
+#: voicedialog.cpp:135
+msgid "Delete voice number %1. You will be asked for confirmation"
+msgstr "Cancellazione della voce numero %1. Sarà richiesta una conferma."
+
+#: voicedialog.cpp:138
+msgid "<center><b>%1</b></center>"
+msgstr "<center><b>%1</b></center>"
+
+#: voicedialog.cpp:165
+msgid "Voices"
+msgstr "Voci"
+
+#: voicedialog.cpp:172
+msgid "C&reate voice"
+msgstr "C&rea voce"
+
+#: voicedialog.cpp:187
+msgid "Staff %1"
+msgstr "Rigo %1"
+
+#: ../kguitar_excerpt/chord.cpp:223 ../kguitar_excerpt/chord.cpp:513
+#, fuzzy
+msgid "Guitar"
+msgstr "Sitar"
+
+#: ../kguitar_excerpt/chord.cpp:305
+msgid "Root"
+msgstr ""
+
+#: ../kguitar_excerpt/chord.cpp:306
+msgid "Inv #1"
+msgstr ""
+
+#: ../kguitar_excerpt/chord.cpp:307
+msgid "Inv #2"
+msgstr ""
+
+#: ../kguitar_excerpt/chord.cpp:308
+msgid "Inv #3"
+msgstr ""
+
+#: ../kguitar_excerpt/chord.cpp:309
+msgid "Inv #4"
+msgstr ""
+
+#: ../kguitar_excerpt/chord.cpp:310
+msgid "Inv #5"
+msgstr ""
+
+#: ../kguitar_excerpt/chord.cpp:311
+msgid "Inv #6"
+msgstr ""
+
+#: ../kguitar_excerpt/chord.cpp:316
+msgid "Usual"
+msgstr ""
+
+#: ../kguitar_excerpt/chord.cpp:318
+msgid "Rare"
+msgstr ""
+
+#: ../kguitar_excerpt/chord.cpp:320
+msgid "All"
+msgstr ""
+
+#: ../kguitar_excerpt/chord.cpp:345
+#, fuzzy
+msgid "remove chord"
+msgstr "Vai alla fine"
+
+#: ../kguitar_excerpt/chord.cpp:357
+msgid "show diagram"
+msgstr ""
+
+#: ../kguitar_excerpt/chord.cpp:432
+#, fuzzy
+msgid "Chord constructor"
+msgstr "Barra degli strumenti controlli spartito"
+
+#~ msgid "&Exact Length"
+#~ msgstr "Lunghezza &esatta"
+
+#~ msgid "internal problem: triplet recognition error(2)"
+#~ msgstr "problema interno: errore nel riconoscimento di una terzina(2)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Staff %1 contains drum staff. ABC music has only limited drum staff "
+#~ "support\n"
+#~ msgstr ""
+#~ "Il rigo %1 contiene notazione per batteria, che non può essere espressa "
+#~ "in MUP.\n"
+
+#~ msgid "Allow &mixed beames"
+#~ msgstr "Consenti di unire le cro&me con barre trasversali"
+
+#~ msgid "Allow &mixed beams"
+#~ msgstr "Consenti di unire le cro&me con barre trasversali"
+
+#, fuzzy
+#~ msgid "Staff %1 contains drum clef. This cannot be expressed in ABC music\n"
+#~ msgstr ""
+#~ "Il rigo %1 contiene notazione per batteria,che non può essere espressa in "
+#~ "PMX\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Staff %1 contains drum staff. This cannot be expressed in ABC music\n"
+#~ msgstr ""
+#~ "Il rigo %1 contiene notazione per batteria,che non può essere espressa in "
+#~ "PMX\n"
+
+#~ msgid "Please choose a clef for staff! "
+#~ msgstr "Per favore, scegli una chiave per il pentagramma!"
+
+#~ msgid " Otherwise this file will be unreadable in future."
+#~ msgstr " Altrimenti questo file sarà illeggibile in futuro."
+
+#~ msgid ""
+#~ "Staff %1 has no clef. This causes data loss and can inhibit correct "
+#~ "restoring!\n"
+#~ msgstr ""
+#~ "Il rigo%1 non ha chiave. Ciò causerà perdita di dati e potrebbe impedire "
+#~ "il corretto ripristino!\n"
+
+#, fuzzy
+#~ msgid "cyrillic"
+#~ msgstr "trillo"
+
+#, fuzzy
+#~ msgid "Canel"
+#~ msgstr "Canale"
+
+#~ msgid "&Logo"
+#~ msgstr "&Logo"
+
+#~ msgid "A logo is shown while the application starts if this is enabled."
+#~ msgstr "Se abilitato, viene mostrato il logo del programma all'avvio."
+
+#~ msgid ""
+#~ "<b>...how to edit with the mouse?</b><br/><br/>\n"
+#~ "The use of mouse buttons:\n"
+#~ "<dl>\n"
+#~ "<dt>left</dt>\n"
+#~ "<dd>select</dd>\n"
+#~ "<dt>middle</dt>\n"
+#~ "<dd>insert notes/elements/lines</dd>\n"
+#~ "<dt>right</dt>\n"
+#~ "<dd>insert rest</dd>\n"
+#~ "</dl>\n"
+#~ msgstr ""
+#~ "<b>...come lavorare con il mouse?</b><br/><br/>\n"
+#~ "Ecco come puoi usare i pulsanti del mouse:\n"
+#~ "<dl>\n"
+#~ "<dt>- sinistro</dt>\n"
+#~ "<dd>seleziona</dd>\n"
+#~ "<dt>- centrale</dt>\n"
+#~ "<dd>inserisci note e altri elementi</dd>\n"
+#~ "<dt>- destro</dt>\n"
+#~ "<dd>inserisci pause</dd>\n"
+#~ "</dl>\n"
+
+#~ msgid ""
+#~ "<b>...that there is a placing restriction time \n"
+#~ "signatures?</b><br/><br/>\n"
+#~ "They can only be placed behind bars (except the first).\n"
+#~ msgstr ""
+#~ "<b>...che c'è una restrizione nel posizionamento di volume, cambio di "
+#~ "strumento e indicazioni di tempo?</b><br/><br/>\n"
+#~ "Lo puoi piazzare solo dietro le stanghette.\n"
+
+#~ msgid "With musix&bm"
+#~ msgstr "Musix&bm"
+
+#~ msgid "With musix&add"
+#~ msgstr "Musix&add"
+
+#~ msgid "Allow &keyboard insert"
+#~ msgstr "Consenti l'inserimento da &tastiera"
+
+#~ msgid ""
+#~ "staff %1; measure %2: you placed a tempo signature not immediately after "
+#~ "a bar sign;\n"
+#~ "\tthis cannot be expressed in MUP and causes data loss\n"
+#~ msgstr ""
+#~ "rigo %1; battuta %2: avete inserito un'indicazione di tempo non "
+#~ "immediatamente dopo la barra di misura;\n"
+#~ "\tciò non potrà essere espresso in MUP e causerà perdita di dati\n"
+
+#~ msgid ""
+#~ "staff %1; measure %2: you placed a volume signature not immediately after "
+#~ "a bar sign;\n"
+#~ "\tthis cannot be expressed in MUP and causes data loss\n"
+#~ msgstr ""
+#~ "rigo %1; battuta %2: avete inserito un'indicazione di volume non "
+#~ "immediatamente dopo la barra di misura;\n"
+#~ "\tciò non potrà essere espresso in MUP e causerà perdita di dati\n"
+
+#~ msgid ""
+#~ "staff %1; measure %2: you placed an instrument change not immediately "
+#~ "after a bar sign;\n"
+#~ "\tthis cannot be expressed in MUP and causes data loss\n"
+#~ msgstr ""
+#~ "rigo %1; battuta %2: avete inserito un cambio di strumento non "
+#~ "immediatamente dopo la barra di misura;\n"
+#~ "\tciò non potrà essere espresso in MUP e causerà perdita di dati\n"
+
+#, fuzzy
+#~ msgid "Staff %1, measure %2: PMX cannot deal with 16th graces\n"
+#~ msgstr ""
+#~ "Rigo %1, misura %2: in PMX le terzine non possono finire con una pausa\n"
+
+#~ msgid "Configure"
+#~ msgstr "Configurazione"
+
+#~ msgid "Zoom"
+#~ msgstr "Zoom"
+
+#~ msgid "&Discard"
+#~ msgstr "&Abbandona"
+
+#~ msgid "&Apply"
+#~ msgstr "&Applica"
+
+#~ msgid "Export"
+#~ msgstr "Esporta"

@@ -1,0 +1,4062 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
+  <!ENTITY noteedit "NoteEdit">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
+]>
+
+<book lang="&language;">
+<bookinfo>
+<title>The &noteedit; Handbook</title>
+
+<authorgroup>
+<author>
+<firstname>Jörg</firstname><surname>Anders</surname>
+<affiliation>
+<orgname>
+<ulink url="http://rnvs.informatik.tu-chemnitz.de/index.html">
+<foreignphrase lang="de">
+Professur Rechnernetz u. verteilte Systeme
+</foreignphrase>
+</ulink>
+<ulink url="http://www.tu-chemnitz.de">
+<foreignphrase lang="de">, TU-Chemnitz</foreignphrase>
+</ulink>
+</orgname>
+<address><email>j.anders@informatik.tu-chemnitz.de</email></address>
+</affiliation>
+</author>
+<author>
+<firstname>Christian</firstname><surname>Fasshauer</surname>
+<affiliation><address><email>mseacf@gmx.net</email></address></affiliation>
+</author>
+<author>
+<firstname>Erik</firstname><surname>Sigra</surname>
+<affiliation><address><email>sigra@home.se</email></address></affiliation>
+</author>
+<author>
+<firstname>David</firstname><surname>Faure</surname>
+<affiliation>
+<address><email>david@mandrakesoft.com</email></address>
+</affiliation>
+</author>
+<author>
+<firstname>Matt</firstname><surname>Gerassimoff</surname>
+<affiliation>
+<address><email>mgeras@telocity.com</email></address>
+</affiliation>
+</author>
+<author>
+<firstname>Leon</firstname><surname>Vinken</surname>
+<affiliation>
+<address><email>leon.vinken@hetnet.nl</email></address>
+</affiliation>
+</author>
+
+<othercredit role="developer">
+<firstname>Pete</firstname><surname>Goodliffe</surname>
+<contrib>TSE3 sequencer library</contrib>
+<affiliation>
+<address><email>pete.goodliffe@pace.co.uk</email></address>
+</affiliation>
+</othercredit>
+</authorgroup>
+
+<copyright>
+<year>2001-2004</year>
+<holder>Jörg Anders</holder>
+</copyright>
+
+<!-- <legalnotice>&FDLNotice;</legalnotice> -->
+
+<legalnotice><para>
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation
+License, Version 1.1 or any later version published by the Free Software Foundation; with no Invariant Sections, with
+no Front-Cover Texts, and with no Back-Cover Texts. A copy of the license is included in the section entitled
+<link linkend="credits">"GNU Free Documentation License"</link>.</para></legalnotice>
+
+<date>2005-02-01</date>
+<releaseinfo>2.7.4</releaseinfo>
+<abstract>
+
+<para>&noteedit; is a score editor for &kde;</para>
+
+</abstract>
+
+<keywordset>
+<keyword>KDE</keyword>
+<keyword>&noteedit;</keyword>
+<keyword>Qt</keyword>
+<keyword>music</keyword>
+<keyword>editor</keyword>
+<keyword>notes</keyword>
+<keyword>MuxiXTeX</keyword>
+<keyword>LilyPond</keyword>
+<keyword>PMX</keyword>
+<keyword>MUP</keyword>
+<keyword>keyboard</keyword>
+<keyword>score</keyword>
+<keyword>MIDI</keyword>
+<keyword>libkmidi</keyword>
+<keyword>TSE3</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="using_noteedit">
+<title>Using &noteedit;</title>
+<sect1 id="starting">
+<title>Starting &noteedit;</title>
+
+<para>This chapter describes the use of &noteedit; for editing notes.</para>
+
+
+<para>
+&noteedit; may be started by one of several ways as described below.
+</para>
+
+<itemizedlist>
+<listitem>
+<para>You may start &noteedit; by selecting it from the
+<guisubmenu>Music</guisubmenu> submenu of the panel.</para>
+</listitem>
+<listitem>
+<para>You may start &noteedit; by entering the following at the command
+prompt:</para>
+<para>
+<prompt>%</prompt> <command>noteedit</command> &amp;
+</para>
+</listitem>
+<listitem><para>The mini command line (invoked with
+<keycombo action="simul"><keycap>Alt</keycap> <keycap>F2</keycap></keycombo>) may
+also be used to start &noteedit;</para></listitem>
+</itemizedlist>
+
+<para>Once &noteedit; starts, you will see a window like the following:
+<mediaobject>
+<imageobject>
+<imagedata fileref="window.png" format="PNG"/>
+</imageobject>
+<textobject><phrase>&noteedit; Mainwindow</phrase>
+</textobject>
+</mediaobject>
+</para>
+
+</sect1>
+
+<sect1 id="insert">
+<title>Insertion</title>
+
+<sect2 id="insert_notes">
+<title>Inserting notes</title>
+
+<para>Choose a note length on tool bar (<inlinemediaobject><imageobject><imagedata fileref="toolbar.png"/></imageobject></inlinemediaobject>)!
+Choose dotted (<inlinemediaobject><imageobject><imagedata fileref="dotted.png"/></imageobject></inlinemediaobject>),
+double dot (<inlinemediaobject><imageobject><imagedata fileref="ddot.png"/></imageobject></inlinemediaobject>),
+tied (<inlinemediaobject><imageobject><imagedata fileref="tied.png"/></imageobject></inlinemediaobject>),
+triplet (<inlinemediaobject><imageobject><imagedata fileref="triplet.png"/></imageobject></inlinemediaobject>),
+staccato (<inlinemediaobject><imageobject><imagedata fileref="staccato.png"/></imageobject></inlinemediaobject>) 
+sforzato (<inlinemediaobject><imageobject><imagedata fileref="sforzato.png"/></imageobject></inlinemediaobject>),
+portato (<inlinemediaobject><imageobject><imagedata fileref="portato.png"/></imageobject></inlinemediaobject>),
+strong pizzicato  (<inlinemediaobject><imageobject><imagedata fileref="spizzicato.png"/></imageobject></inlinemediaobject>),
+sforzando (<inlinemediaobject><imageobject><imagedata fileref="sforzando.png"/></imageobject></inlinemediaobject>)
+fermata (<inlinemediaobject><imageobject><imagedata fileref="fermata.png"/></imageobject></inlinemediaobject>),
+arpeggio (<inlinemediaobject><imageobject><imagedata fileref="arpeggio.png"/></imageobject></inlinemediaobject>),
+pedal on (<inlinemediaobject><imageobject><imagedata fileref="pedalon.png"/></imageobject></inlinemediaobject>),
+or pedal off (<inlinemediaobject><imageobject><imagedata fileref="pedaloff.png"/></imageobject></inlinemediaobject>)
+as needed.</para>
+
+<para id="accidentals"><command>Only if you want to 
+create a visible accidental:</command> Choose  sharp (<inlinemediaobject><imageobject><imagedata fileref="sharp.png"/></imageobject></inlinemediaobject>),
+flat (<inlinemediaobject><imageobject><imagedata fileref="flat.png"/></imageobject></inlinemediaobject>),  double sharp (<inlinemediaobject><imageobject><imagedata fileref="dsharp.png"/></imageobject></inlinemediaobject>),
+double flat (<inlinemediaobject><imageobject><imagedata fileref="dflat.png"/></imageobject></inlinemediaobject>) or natural (<inlinemediaobject><imageobject><imagedata fileref="natural.png"/></imageobject></inlinemediaobject>)!</para>
+
+<para>Press &LMB; at note position!</para> 
+
+<para id="keyboardInsert">
+Alternatively you can activate the keyboard insertion mode by pressing the keyboard insert button (<inlinemediaobject><imageobject><imagedata fileref="singlekey.png"/></imageobject></inlinemediaobject>). In this
+case you can choose the pitch by cursor Up/Down keys and the insertion position by
+cursor Left/Right keys. To insert a note press <keycap>Enter</keycap>!</para>
+
+<para id="midikeyboard"><command>only with TSE3</command><inlinemediaobject><imageobject><imagedata fileref="smlogo.png"/></imageobject></inlinemediaobject> Alternatively
+you can specify the pitch by a <hardware>MIDI keyboard</hardware> connected to your sound card. If you press the black keyboard button
+(<inlinemediaobject><imageobject><imagedata fileref="blackkeyboard.png"/></imageobject></inlinemediaobject>) you can hear the notes played on MIDI keyboard. If you press the red
+keyboard button (<inlinemediaobject><imageobject><imagedata fileref="redkeyboard.png"/></imageobject></inlinemediaobject>) the pitch is determined by the <hardware>MIDI keyboard</hardware>.</para>
+
+<para id="comp_keyboard">Another possibility is to use the computer keyboard instead of a MIDI keyboard:</para>
+<itemizedlist>
+<listitem><para><literal>C</literal> means pitch C</para></listitem>
+<listitem><para><literal>D</literal> means pitch D</para></listitem>
+<listitem><para><literal>E</literal> means pitch E</para></listitem>
+<listitem><para>...</para></listitem>
+</itemizedlist>
+
+<para>You can redefine the case because all <link linkend="keyconf">keys are configurable</link></para>
+
+<para>If you insert notes at the end &noteedit; will re-compute the beams in last measure.(<link linkend="autobeaminsert">configurable</link>)</para>
+
+<para>If you insert notes at the end &noteedit; will insert bars according the
+current time signature. (<link linkend="autobarinsert">configurable</link>)</para>
+
+<para id="stemupdown">Normally &noteedit; chooses the stem direction automatically.
+You can force a certain stem direction by pressing the stem Up/Down buttons (<inlinemediaobject><imageobject><imagedata fileref="stemupdown.png"/></imageobject></inlinemediaobject>).</para>
+
+<para>Normally the dot and accidental buttons turn off after
+insertion. Use the glue button(<inlinemediaobject><imageobject><imagedata fileref="rivet.png"/></imageobject></inlinemediaobject>) to change this behaviour.
+</para>
+
+<para>When the triplet button (<inlinemediaobject><imageobject><imagedata fileref="triplet.png"/></imageobject></inlinemediaobject>)
+is pressed when entering notes or rests, &noteedit; will try to build a triplet from the last two or three notes entered. Make sure all
+triplet elements are deselected before the triplet button is depressed, or it will immediately be destroyed again!
+</para>
+
+</sect2>
+
+<sect2><title>Problems with double whole notes</title>
+<para>Although the double whole note is called <literal><userinput>breve</userinput></literal> in <emphasis>(almost)</emphasis> all
+music typesetters  <emphasis>(except PMX, here it is called '9')</emphasis> the representation differs:</para>
+<itemizedlist>
+<listitem><para>In <application>MUP</application>, <application>LilyPond</application> and
+<application>ABC music</application> it looks like a whole note with 2 additional lines: <inlinemediaobject><imageobject><imagedata fileref="breve_oval.png"/></imageobject></inlinemediaobject></para></listitem>
+<listitem><para>In <application>MusiXTeX</application> and <application>PMX</application> it is a small rectangle: <inlinemediaobject><imageobject><imagedata fileref="breve_rect.png"/></imageobject></inlinemediaobject> and</para></listitem>
+<listitem><para><application>MusiXTeX</application> offers the whole note with 2 additional lines, too.</para></listitem>
+</itemizedlist>
+
+<para>To unify the representation I decided for the whole note with 2 additional lines: <inlinemediaobject><imageobject><imagedata fileref="breve_oval.png"/></imageobject></inlinemediaobject>.
+This can be exported to <application>MusiXTeX</application>, <application>MUP</application>, <application>LilyPond</application>
+and  <application>ABC music</application>. Thus, only <application>PMX</application> shows the small rectangle: <inlinemediaobject><imageobject><imagedata fileref="breve_rect.png"/></imageobject></inlinemediaobject>.</para>
+</sect2>
+
+<sect2 id="graces">
+<title>Grace notes</title>
+
+<para>&noteedit; offers 3 types of graces notes:</para>
+<itemizedlist>
+<listitem><para>8th grace: <inlinemediaobject><imageobject><imagedata fileref="grace8.png"/></imageobject></inlinemediaobject></para></listitem>
+<listitem><para>16th grace <inlinemediaobject><imageobject><imagedata fileref="grace16.png"/></imageobject></inlinemediaobject></para></listitem>
+<listitem><para>stroken grace: <inlinemediaobject><imageobject><imagedata fileref="grace_stroken.png"/></imageobject></inlinemediaobject></para></listitem>
+</itemizedlist>
+
+<para>All graces are stem up.</para>
+
+<para>During playback there is no difference between these 3 types. <userinput>Please note!</userinput> Grace notes are
+conflicting things: They do not contribute to measure length. On the other hand a certain amount of time
+is needed to play them. This time must be taken from other notes. Thus, if you insert - say - 20 grace
+notes between two 8th you cannot expect the playback really works!
+Problems also occur if you place some graces without a main note.</para>
+
+<note><para>Please avoid leading graces! Leading graces have a negative start time. You'll never hear them. Insert an empty
+measure instead!</para></note>
+</sect2>
+
+<sect2><title>Problems exporting graces notes</title>
+
+<para><userinput>MusiXTeX</userinput> <application>MusiXTeX</application> accepts the graces so as written on score: with/without beam, with/without slur, even beamed stroken graces.</para>
+<para><userinput>LilyPond</userinput> <application>LilyPond</application> changes the beam status reasonably. Version 1.4.x cannot deal with slurs
+in grace notes. &noteedit; will warn you.</para>
+<para> <userinput>ABC music</userinput>  changes the beam status reasonably.</para>
+<para><userinput>PMX</userinput> <application>PMX</application> changes the slur and beam status reasonably.</para>
+<para><userinput>MUP</userinput> <application>MUP</application> hates beam statements in grace notes. It sets the beams reasonably. So, if you are
+a <application>MUP</application> user never produce grace notes with beams! Furthermore, <application>MUP</application> cannot deal with graces
+after. &noteedit; will warn you. Furthermore: MUP has no means to describe more than one slurred grace note. &noteedit; "extends" the MUP
+syntax in this case. Of course, the result is not MUP-able. &noteedit; will warn you!</para>
+</sect2>
+
+<sect2 id="drum_notes">
+<title>Drum notes</title>
+
+<para>&noteedit; offers 5 different types of drum notes. Choose one of them on drum toolbar (<inlinemediaobject><imageobject><imagedata fileref="drumtools.png"/></imageobject></inlinemediaobject>).
+If you can't see this toolbar then select it on <literal><userinput>View</userinput></literal> menu. <userinput>Note!</userinput> &noteedit; supports
+2 different kinds of drum clefs. (see <link linkend="insert_clef">Insert Clef</link>)</para>
+
+<para>To produce audible drum notes during playback <link linkend="staffprops">set the staff channel</link> to drum channel
+(channel 10 on most sound cards).</para>
+
+<para>Problems with exportation of drum notes</para>
+
+<para><userinput>MusiXTeX</userinput>: All 5 drum notes are supported in <application>MusiXTeX</application>.</para>
+<para><userinput>LilyPond</userinput>: First of all: I was told my drum exportation doesn't
+use all <application>LilyPond</application> features. Perhaps a <application>LilyPond</application> guru can
+review the &noteedit; <application>LilyPond</application> output and send me a mail
+what to to.</para>
+<para>The drum notes export works but with some side effects. All notes in a chord
+appear with the same drum note type. Only 3 of the 5 types are supported. &noteedit; will warn you.</para>
+<para><userinput>ABC music</userinput> drum notes are exported to ABC music.</para>
+<para><userinput>PMX</userinput>: Drum notes are not supported in <application>PMX</application>. &noteedit; will warn you.</para>
+<para><userinput>MUP</userinput>: The <application>MUP</application> compatibility ends here. <application>MUP</application> doesn't support drum notes. 
+&noteedit; "extends" the <application>MUP</application> syntax to correctly restore the score. &noteedit; will
+warn you, because (of course) the result isn't <application>MUP</application>-able.</para>
+
+
+</sect2>
+
+<sect2 id="insert_rests">
+<title>Inserting rests</title>
+
+<para>Choose a rest length on tool bar (<inlinemediaobject><imageobject><imagedata fileref="toolbar.png"/></imageobject></inlinemediaobject>)!
+Choose dotted (<inlinemediaobject><imageobject><imagedata fileref="dotted.png"/></imageobject></inlinemediaobject>) or 
+hidden (<inlinemediaobject><imageobject><imagedata fileref="hrest.png"/></imageobject></inlinemediaobject> / see <link linkend="mulvoices">multiple voices</link>) if you wish.
+	
+Press &RMB; at rest position!</para>
+
+<para>
+Alternatively you can activate the keyboard insertion mode by pressing the keyboard insert button (<inlinemediaobject><imageobject><imagedata fileref="singlekey.png"/></imageobject></inlinemediaobject>). In this
+case you can determine the insertion position by
+cursor Left/Right keys. To insert a rest press <keycap>Space</keycap>!</para>
+</sect2>
+<sect2 id="multirest">
+<title>Multi rests</title>
+<para><literal><userinput>Insert --&gt; multirest ... </userinput></literal> <emphasis> ... choose the length of multi rest</emphasis></para>
+
+<para><userinput>Note!</userinput> Some restrictions apply to multi rests in <application>MUP</application> and <application>PMX</application>:</para>
+<itemizedlist>
+<listitem><para><application>MUP</application>: a multi rest must appear in every staff and it must be of the same length. If this
+isn't the case &noteedit; divides the multi rest in a sequence of "normal" rests. <userinput>That means:</userinput>
+If &noteedit; restores such a score the multi rest is changed against a series of "normal" rests.
+&noteedit; will warn you in this case.</para></listitem>
+<listitem><para>PMX: <application>PMX</application> doesn't accept  multi rests if the score has more than one line.</para></listitem>
+</itemizedlist>
+</sect2>
+
+<sect2 id="insert_clef">
+<title>Insert Clef</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem><accel>C</accel>lef</guimenuitem>
+</menuchoice>
+<emphasis> ... choose Clef with or without octave shift</emphasis></para>
+
+<para>If you are not sure which octave shift choose a clef without octave shift.</para>
+<para>Press &LMB; at insertion position.</para>
+
+<para>Likewise you can choose one of the 2 drum clefs. 
+I introduced a 2nd drum clef with an arrow downward to determine MIDI mapping.
+The drum clef with arrow downward maps the notes like the bass clef. Of course, this
+2nd drum clef is exported to <application>MusiXTeX</application> and <application>LilyPond</application> as "normal" drum clef.</para>
+
+<para>The drum clef is not exported to <application>PMX</application>,  <application>MUP</application>
+and <application>ABC music</application>.</para>
+
+<para>MUP cannot deal with clefs in the middle of 
+a bar. (i.e. there is a trick but this is too complicated for &noteedit;).</para>
+
+</sect2>
+
+<sect2 id="insert_time">
+<title>Inserting key signatures, time signatures</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem><accel>K</accel>ey signature...</guimenuitem>
+</menuchoice>
+<emphasis>... choose key </emphasis>!</para>
+
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem><accel>T</accel>ime signature...</guimenuitem>
+</menuchoice>
+<emphasis>... choose signature </emphasis>!</para>
+
+<para>Press &LMB; at insertion position.</para>
+
+<para>The time signature (except the first time signature) must occur immediately after a bar. Maybe the playback works if you don't follow this restriction. But (re-)storing such files can give indefinite results.</para>
+
+<para><userinput>MUP users!</userinput> If you place a key signature (except the first key signature) not immediately after a bar
+MUP won't work! &noteedit; will warn you!. MUP cannot deal with key signatures in the middle of 
+a bar. (i.e. there is a trick but this is too complicated for &noteedit;).</para>
+
+</sect2>
+
+<sect2 id="VOLUME">
+<title>Volume Change</title>
+<para>To change the volume during playback place a volume change at the appropriate
+position:
+
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem><accel>V</accel>olume signature...</guimenuitem>
+</menuchoice>
+<emphasis>(Choose a volume and a volume sign)</emphasis>
+</para>
+
+<para>Press &LMB; at insertion position.
+The name of the volume sign has no influence during playback.</para>
+</sect2>
+<sect2 id="TEMPO">
+<title>Tempo Signature</title>
+
+<para>To change the playback tempo place a tempo signature at the appropriate
+position:</para>
+
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem>Te<accel>m</accel>po signature...</guimenuitem>
+</menuchoice>
+<emphasis>(Choose a tempo)</emphasis></para>
+<para>Press &LMB; at insertion position. If you want to give the whole part an unique
+tempo place the tempo signature before the first note.</para>
+<para><userinput>Remark:</userinput> Although the tempo signature can be attached to a certain staff the tempo signature
+influences all other staves.</para>
+</sect2>
+
+<sect2 id="PROGRAM">
+<title>Program (instrument) Change</title>
+
+<para>The change of the staff's voice is called a "MIDI program change". You can achieve this by placing
+a program change marker at the appropriate position:</para>
+
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem>V<accel>o</accel>ice change...</guimenuitem>
+</menuchoice>
+<emphasis>(Choose a program (instrument))</emphasis></para>
+<para>Press &LMB; at insertion position.</para>
+</sect2>
+
+<sect2 id="insert_chord">
+<title>Insert a note to a chord</title>
+<para>Choose tied (<inlinemediaobject><imageobject><imagedata fileref="tied.png"/></imageobject></inlinemediaobject>) if needed.
+Activate one of the note buttons.
+Press  &LMB;
+near the chord. The length
+is the same as the length of the other notes of the chord.</para>
+<para>
+Alternatively you can activate the keyboard insertion mode by pressing the keyboard insert button (<inlinemediaobject><imageobject><imagedata fileref="singlekey.png"/></imageobject></inlinemediaobject>). In this
+case you can add a note to a chord by pressing <keycap>Crtl+Enter</keycap>.</para>
+</sect2>
+
+<sect2 id="insert_bar">
+<title>Insert a bar</title>
+
+<para>Usually &noteedit; inserts bars automatically if you append a note (<link linkend="autobarinsert">configurable</link>).</para>
+<para>If you want to insert bars "by hand" then select a music element with &LMB;! Press <keycap>Tab</keycap>! The bar appears behind
+the element.</para>
+<para>Or  press <keycap>|</keycap> The bar will be inserted at mouse position.</para>
+</sect2>
+
+<sect2 id="insert_double_bar">
+<title>Insert a double bar</title>
+
+<para>To insert a double bar choose:</para>
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem><accel>D</accel>oubleBar</guimenuitem>
+</menuchoice>
+</para>
+<para>Press &LMB; at insertion position</para>
+</sect2>
+
+<sect2 id="insert_repeat">
+<title>Repeat</title>
+
+<para>You can define a part to be repeated by setting a repeat open (<inlinemediaobject><imageobject><imagedata fileref="repopen.png"/></imageobject></inlinemediaobject>) and repeat
+close bar (<inlinemediaobject><imageobject><imagedata fileref="repclose.png"/></imageobject></inlinemediaobject>) or repeat both (<inlinemediaobject><imageobject><imagedata fileref="repboth.png"/></imageobject></inlinemediaobject>):</para>
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem><accel>R</accel>epeatOpen.</guimenuitem>
+</menuchoice>
+</para>
+
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem>R<accel>e</accel>peatClose</guimenuitem>
+</menuchoice>
+</para>
+
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem>RepeatOpen<accel>C</accel>lose</guimenuitem>
+</menuchoice>
+</para>
+
+<para>To define alternative parts during repeat use special ending 1 (<inlinemediaobject><imageobject><imagedata fileref="ending1.png"/></imageobject></inlinemediaobject>) and
+special ending 2 (<inlinemediaobject><imageobject><imagedata fileref="ending2.png"/></imageobject></inlinemediaobject>):</para>
+
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem>SpecialEnding<accel>1</accel></guimenuitem>
+</menuchoice>
+</para>
+
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem>SpecialEnding<accel>2</accel></guimenuitem>
+</menuchoice>
+</para>
+
+<para>Press &LMB; at insertion position.</para>
+<note><para>Set the repeat and special ending signs in every staff! 
+Otherwise the replay behaviour is undefined.</para></note>
+</sect2>
+
+<sect2 id="multi_repeat">
+<title>Multi repeats</title>
+<para>Normally the part is repeated 2 times. If you whish more repeats you can specify the repeat count: Select a repeat close
+symbol and choose:</para>
+
+<para>
+<menuchoice>
+<guimenu><accel>E</accel>dit</guimenu>
+<guimenuitem>Set N time repeat</guimenuitem>
+</menuchoice>
+</para>
+
+<para>A menu pops up. Choose a repeat count and press <userinput>Ok</userinput>!</para>
+
+<note><para>The current version exports the signature only to MUP!</para></note>
+
+<note><para>Set the repeat and special ending signs in every staff! In particular specify the identical
+repeat count in every staff! Otherwise the replay behaviour is undefined.</para></note>
+</sect2>
+
+<sect2 id="lyrics">
+<title>Lyrics</title>
+
+<para>You can attach up to 5 lines of lyrics to each staff.</para>
+<para>
+<menuchoice>
+<guimenu>St<accel>a</accel>ff</guimenu>
+<guimenuitem><accel>L</accel>yrics...</guimenuitem>
+</menuchoice>
+You can either use the lyrics editor or import the lyrics from a file. In either case the lyrics
+should look like:(see: <literal>lyrics/whiskey[1-5].txt</literal> or <literal>lyrics/water[12].txt</literal>):</para>
+<literallayout>
+        The water is wide, I can- not cross o'er 
+        and nei- ther have I wings to fly.
+        Build me a boat that can car- ry two 
+        a- and both shall row my love and I. 
+        O down in the mea- dows the o- ther day 
+        a- gath'- ring flow'rs both fine and gay,  -
+        a- gath'- ring flow'rs bo- oth red and blue, 
+        I lit- tle thought wha- at love could do.
+        2.)I leaned my 
+</literallayout>
+
+<para>&noteedit; interprets all blanks as hyphenation symbol. Select the appropriate staff and choose:</para>
+<para>
+<menuchoice>
+<guimenu>St<accel>a</accel>ff</guimenu>
+<guimenuitem><accel>L</accel>yrics...</guimenuitem>
+<guimenuitem><accel>I</accel>mport</guimenuitem>
+</menuchoice>
+<emphasis> choose a line number and a text file</emphasis></para>
+<para>You can repeat this as many times as you want till the lyrics are correct. 
+Likewise you can <link linkend="staffgeometry">change the staff geometry</link> to get enough place for the lyrics.
+You can remove the lyrics from current staff by clearing the board.</para>
+<para>See <filename>example4.not</filename> for a lyrics example with 5 lines!</para>
+<para>Please note:</para>
+<itemizedlist>
+<listitem><para>The '-' sign behind <quote>gay,</quote>! If you want a note without lyrics choose a non-blank character.</para></listitem>
+<listitem><para>Instead of the '-' sign you can use the asterix ('*').
+In contrast to '-' sign the asterix isn't printed on score. Thus, it only appears in lyrics dialog.</para></listitem>
+<listitem><para>&noteedit; assumes a isolatin-1 coding. So you can use German umlauts (&auml;, &ouml;, &uuml;, ...). They are correctly translated
+into <application>MusiXTeX</application>. But be warned: <application>MUP</application> will fail if you use non-ascii characters!</para></listitem>
+<listitem><para>The lyrics are exported into <application>MusiXTeX</application>, MIDI file, <application>PMX</application> file <emphasis>(and implicitly to <application>MUP</application>)</emphasis>.
+The <application>PMX</application> lyrics export has some drawbacks. Please read the <link linkend="pmx_export_appendix"><application>PMX</application> export discussion page</link>! 
+There are some MIDI players which
+show the lyrics during playback (the AWE MIDI player <application>tkmidi</application> by Takashi Iwai, <application>kmid</application> from KDE <emphasis>&laquo;but unfortunately the
+whole text in one line&raquo;</emphasis>, <application>timidity</application> <emphasis>&laquo;but unfortunately the whole text at the beginning&raquo;</emphasis>)</para></listitem>
+<listitem><para>If there are repeat signs and more than 1 lyrics line &noteedit; attaches the second
+lyrics line to the repeated part in MIDI file.</para></listitem>
+<listitem><para>Avoid empty lyrics lines. Fill them from 1 ... 5!</para></listitem>
+<listitem><para>If you want assign several syllables to one note use <literal>&lt;...&gt;</literal> parenthesis:
+<literal>Byl jsem &lt;v le-&gt; su.</literal><emphasis>(Czech)</emphasis></para></listitem>
+</itemizedlist>
+</sect2>
+
+<sect2 id="arb_text">
+<title><inlinemediaobject><imageobject><imagedata fileref="new.png"/></imageobject></inlinemediaobject>
+Arbitrary  text</title>
+<para>To insert arbitrary  text like <emphasis>"Allegro"</emphasis>, <emphasis>"Adagio"</emphasis> ... select:</para>
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem><accel>T</accel>ext...</guimenuitem>
+</menuchoice>
+</para>
+
+<para>The text dialog window pops up. You can choose whether the text shell appear above
+or below the staff. Enter the text and press <guibutton>Ok</guibutton>. Press
+&LMB; at insertion position.</para>
+
+<note>
+<para>Please prefer the build-in markers, if any! For example: Never use the text tool for
+<emphasis>D. S. al Fine</emphasis>! Use the <link linkend="Segno">Segno signs</link> instead.
+The reason is: &noteedit; ignores every text during replay. In contrast: The <link linkend="Segno">Segno signs</link>
+control the replay.</para></note>
+
+<para>To change the text, press the edit button
+(<inlinemediaobject><imageobject><imagedata fileref="edit.png"/></imageobject></inlinemediaobject>) and select the text.
+The text dialog appears again. Change the text and/or its position and press <guibutton>Ok</guibutton>.</para>
+
+</sect2>
+
+
+<sect2 id="chord_diagrams">
+<title>
+Working with guitar chord diagrams and chords</title>
+<blockquote><para>
+Many thanks to Mikhail Yakshin <email>GreyCat@users.sourceforge.net</email>. I used about 2000 lines from
+his <application>kguitar</application> project (<ulink url="http://kguitar.sourceforge.net"></ulink>). Note! <application>kguitar</application>
+is still under development. So excuse some small problems. For instance: If you can't find your preferred chord
+diagram for a certain chord please set the fingers <quote>by hand</quote>!
+</para></blockquote>
+<para>
+To insert a chord popup the chord dialog:
+</para>
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem>Ch<accel>o</accel>rd...</guimenuitem>
+</menuchoice>
+</para>
+
+<para>
+Choose a base, a mode, and a modification. (The bass field doesn't work, yet!). The chord window shows some guitar
+diagrams to play this chord. If you can't find your preferred guitar chord diagram you can:</para>
+<para>
+<itemizedlist>
+<listitem><para>change from <literal><userinput>Root</userinput></literal> to <literal><userinput>Inv1 #1</userinput></literal>, <literal><userinput>Inv #2</userinput></literal> ...</para></listitem>
+<listitem><para>change from <literal><userinput>Usual</userinput></literal> to <literal><userinput>Rare</userinput></literal> or <literal><userinput>All</userinput></literal>.</para></listitem>
+</itemizedlist>
+</para>
+<para>If nothing helps then select a guitar chord diagram closest to your intentions and set the fingers
+in finger window <quote>by hand</quote>!</para>
+
+<para>The <literal><userinput>show diagram</userinput></literal> checkbox determins  whether only the chord name or
+the whole diagram is printed.</para>
+<para>Select a chord name and press <literal><userinput>Ok</userinput></literal>.</para>
+
+<para>Select a note or rest with &LMB;. The chord name and the guitar chord diagram (if selected) is
+attached.</para>
+
+<para>To change the chord activate the edit mode
+(<inlinemediaobject><imageobject><imagedata fileref="edit.png"/></imageobject></inlinemediaobject>) and select the appropriate note or rest with &LMB;.
+The chord dialog pops up. Change the chord
+and press <literal><userinput>Ok</userinput></literal>!</para>
+
+<para>To remove the chord activate the
+edit mode (<inlinemediaobject><imageobject><imagedata fileref="edit.png"/></imageobject></inlinemediaobject>) and
+select the appropriate note or rest with &LMB;. The chord dialog pops up. 
+Press <literal><userinput>Remove Chord</userinput></literal>!</para>
+
+<para>
+If you expect a different set of chord names and/or modification symbols configure
+the chord section with <link linkend="configuration">configuration dialog</link>.</para>
+
+<sect3 id="chord_dia_problems">
+<title>Problems exporting chord diagrams</title>
+<para>
+<itemizedlist>
+<listitem><para><userinput>MUP</userinput> can deal with chord names and chord diagrams. But it expects
+a chord diagram dictionary at top of file. Actually this is no problem. But if you attach 2 different chord diagrams
+for the same chord name there is no possibility to to distinguish the 2 forms. To give every chord diagram an unique name
+&noteedit; adds some underscores to the chord name. So be not surprised if you named a chord <quote>C7</quote> and 
+<quote>_C7</quote> is printed. MUP cannot deal with a mix of some chords with chord diagram and some
+chords without chord diagram. MUP cannot deal with barre.</para></listitem> 
+<listitem><para><userinput>MusiXTeX</userinput> has an additional package called MusiXGui. This allows
+to annotate guitar chord diagrams and chord names. It works but unfortunately there is no possibility
+to add a fret information. So, if the fret is not equal 1 NoteEdit appends the fret information to the chord name.
+MusiXTeX/MusiXGui can only deal with full barre.</para></listitem>
+<listitem><para><userinput>LilyPond</userinput> cannot deal with guitar chord diagrams. Actually it has a
+special feature for chord name annotation. But this is unusable for &noteedit; export because it tries reverse
+mapping from pitch combination to chord name. Thus, &noteedit; exports the chord names as ordinary uptext.</para></listitem>
+<listitem><para>
+<userinput>ABC music </userinput> Guitar chord diagrams are exported to ABC music.</para></listitem>
+<listitem><para><userinput>PMX</userinput> can neither deal with chord names nor with guitar cord diagrams.
+Thus, &noteedit; omits the information.</para></listitem>
+</itemizedlist>
+</para>
+</sect3>
+</sect2>
+
+<sect2 id="insert_staff">
+<title>Insert a new staff</title>
+<para>
+<menuchoice>
+<guimenu>St<accel>a</accel>ff</guimenu>
+<guimenuitem><accel>N</accel>ew</guimenuitem>
+</menuchoice>
+</para>
+</sect2>
+
+<sect2 id="insert_trills">
+<title>Trills</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem><accel>L</accel>ine...</guimenuitem>
+</menuchoice>
+<emphasis> choose a trill symbol</emphasis></para>
+
+<para>Select a note with &LMB;.
+The trill is attached.</para>
+
+
+<para>To remove a trill activate the edit mode
+(<inlinemediaobject><imageobject><imagedata fileref="edit.png"/></imageobject></inlinemediaobject>) and 
+select the chord. Use the <literal>enable</literal> checkbox!</para>
+
+<para>Use the slider to control the length of the trill. <userinput>Note!</userinput> &noteedit; plays the trill
+and exports the trill to MIDI file. But it uses the post Mozart method <emphasis>(dcdcdcdcdcdc...)</emphasis></para>
+
+</sect2>
+
+<sect2 id="dynamics">
+<title>(De-)Crescendo</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem><accel>L</accel>ine...</guimenuitem>
+</menuchoice>
+<emphasis> choose the dynamic symbol</emphasis></para>
+
+<para>Select a note with &LMB;.
+The dynamic is attached.</para>
+
+<para>Use the slider to control the length of the (de-)crescendo.  To switch between 
+crescendo and decrescendo use the <guilabel>turn</guilabel> checkbox.</para>
+<para>To remove a (de-)crescendo activate the edit mode
+(<inlinemediaobject><imageobject><imagedata fileref="edit.png"/></imageobject></inlinemediaobject>) and select the appropriate note or rest with &LMB;.
+Use the <guilabel>enable</guilabel> checkbox!</para>
+<para>To produce a audible (de-)crescendo place two <link linkend="VOLUME">Volume Changes</link> with different
+volume to the left and to the right of the (de-)crescendo symbol.</para>
+<note>
+<para>Some <hardware>soundcards</hardware> do not support fade-in/fade-out. So if you get unexpected results
+during (de-)crescendo playback use the <parameter>--without-fadein</parameter> configure option! The (de-)crescendo
+is further audible if you use relatively short notes. But the volume of a series of tied and/or relatively long
+notes (halfs/wholes) will remain at start volume value.</para>
+</note>
+
+<para><userinput>Note further!</userinput> The (de-)crescendo will cause some problems in <application>MusiXTeX</application> and <application>PMX</application> if
+the (de-)crescendo crosses the line break :-(</para>
+</sect2>
+
+<sect2 id="va-lines">
+<title>Octaviation (va lines)</title>
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem><accel>L</accel>ine...</guimenuitem>
+</menuchoice>
+<emphasis> choose the octaviation symbol</emphasis></para>
+
+<para>Select a note with &LMB;.
+The octaviation is attached.</para>
+
+<para>Use the slider to control the length of the octaviation line.</para>
+<para>To remove a octaviation activate the edit mode
+(<inlinemediaobject><imageobject><imagedata fileref="edit.png"/></imageobject></inlinemediaobject>) and select the appropriate note or rest with &LMB;.
+Use the <guilabel>enable</guilabel> checkbox!</para>
+<note>
+<para>The octaviation is not supported by ABC music. &noteedit; will warn you!</para>
+</note>
+</sect2>
+
+<sect2 id="Segno">
+<title>Segno, dal Segno ...</title>
+
+<para>
+To insert Segno items choose:
+</para>
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem>Se<accel>g</accel>no...</guimenuitem>
+</menuchoice>
+<emphasis> ... choose Segno, dal Segno, dal Segno al Fine, dal Segno al Coda, Fine or Coda</emphasis></para>
+
+<para>Press &LMB; at insertion position</para>
+<note><para>Set the signs in every staff! Otherwise the replay behaviour is undefined. Furthermore, it is your responsibiltity to 
+place the signs in a reasonable manner.</para></note>
+</sect2>
+
+<sect2 id="ritardando">
+<title>Ritardando, Accelerando</title>
+
+<para>
+To insert ritardando choose:
+</para>
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem><accel>R</accel>itardando</guimenuitem>
+</menuchoice></para>
+<para>To insert accelerando choose:</para>
+<para>
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem><accel>A</accel>ccelerando</guimenuitem>
+</menuchoice></para>
+
+<para>Press &LMB; at insertion position</para>
+<para>To produce a audible ritardando(accelerando) place two <link linkend="TEMPO">tempo signatures</link> with different
+value to the left and to the right of the ritardando(accelerando) symbol. &noteedit; assumes the begin of the ritardando(accelerando)
+at the left tempo signature and the end of the ritardando(accelerando) at the right  tempo signature</para>
+</sect2>
+
+</sect1>
+
+<sect1 id="modify">
+<title>Modification</title>
+
+<sect2 id="selection">
+<title>Selection</title>
+
+<itemizedlist>
+<listitem>
+<para>Activate 
+the selector (<inlinemediaobject><imageobject><imagedata fileref="selector.png"/></imageobject></inlinemediaobject>) or  the edit mode
+(<inlinemediaobject><imageobject><imagedata fileref="edit.png"/></imageobject></inlinemediaobject>) and click element with &LMB;!</para></listitem>
+<listitem><para> If there is a selected element: User back/forward cursor keys.</para></listitem>
+</itemizedlist>
+
+<para>Use scroll bar if needed!</para>
+</sect2>
+
+<sect2 id="goto">
+<title>Goto Measure</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>E</accel>dit</guimenu>
+<guimenuitem><accel>G</accel>oto</guimenuitem>
+</menuchoice>
+<emphasis>(Choose a measure number)</emphasis></para>
+<para>Alternatively, you can use the horizontal scroll bar or the wheel mouse <emphasis>(if correctly configured in X11)</emphasis></para>
+</sect2>
+
+<sect2 id="change_pitch">
+<title>Change pitch</title>
+
+<para>
+Select a note! Press up/down cursor keys! By pressing Ctrl the note is shiftet by 1 semi tone
+</para>
+<note><para>
+This does not work in <link linkend="keyboardInsert">keyboard insertion mode</link>!
+</para></note>
+
+<para>
+You can use the wheel to move the notes:
+<itemizedlist>
+<listitem><para>Press Ctrl + wheel shifts the note by 1 line up/down</para></listitem>
+<listitem><para>Press Shift + wheel shifts the note by 1 octave up/down</para></listitem>
+<listitem><para>Press Shift + Ctrl + wheel shifts the note by 1 semi tone up/down</para></listitem>
+</itemizedlist>
+</para>
+</sect2>
+
+<sect2 id="change_other">
+<title>Change length, dotted, tied, flat, beamed, sharp, natural</title>
+
+<para id="editmode">Change into edit mode by pressing edit button (<inlinemediaobject><imageobject><imagedata fileref="edit.png"/></imageobject></inlinemediaobject>)!
+In edit mode there is a special selection policy. If you select a note or
+rest the buttons reflect the state of the note/rest. If you change the
+button state the note/rest is changed according to the state of the buttons.</para>
+</sect2>
+
+<sect2 id="change_staffpos">
+<title>Change staff position</title>
+
+<para>
+<menuchoice>
+<guimenu>St<accel>a</accel>ff</guimenu>
+<guimenuitem><accel>M</accel>ove</guimenuitem>
+</menuchoice>
+<emphasis> ... choose a position</emphasis></para>
+</sect2>
+
+<sect2 id="deleting">
+<title>Deleting elements</title>
+
+<para>Select an element! Press backspace! The element will be deleted.</para>
+<para>Likewise you can use the <keycap>Del</keycap> key.
+In this case the next note is selected after deletion.</para>
+</sect2>
+
+<sect2 id="delete_chord">
+<title>Deleting a note from a chord</title>
+
+<para>Select the chord! Press <keycap>ctrl</keycap> and the &LMB; near the note to be deleted!</para>
+<para>
+Alternatively you can activate the keyboard insertion mode by pressing the keyboard insert button (<inlinemediaobject><imageobject><imagedata fileref="singlekey.png"/></imageobject></inlinemediaobject>). In this mode you can 
+delete a note from a chord by selecting a chord, placing the cursor at the line of the note to be deleted and
+pressing <keycap>Ctrl+Backspace</keycap>!</para>
+</sect2>
+
+
+<sect2 id="mody_others">
+<title>Modification of clefs, time signatures, key signatures</title>
+
+<para>You can't modify these elements in current version. The only possibility is:
+deleting and re-insertion.</para>
+</sect2>
+
+<sect2 id="BLOCKINST">
+<title>Block instructions</title>
+<para>Make sure the
+selector (<inlinemediaobject><imageobject><imagedata fileref="selector.png"/></imageobject></inlinemediaobject>) is
+activated! You can mark a part of a staff as block by clicking and holding &LMB;
+and moving the mouse. The marked part is highlighted.</para>
+
+<para>You can mark the whole staff by double click on staff</para>
+
+<para>If a block is selected you can:</para>
+<itemizedlist>
+<listitem><para>delete the block with backspace key;</para></listitem>
+<listitem><para>insert the block at some other position by clicking &MMB; at this
+position.</para></listitem>
+</itemizedlist>
+
+<para><userinput>Note!</userinput> There are some complicated situations which &noteedit; cannot solve.
+For instance: If you mark a part from a staff with treble clef and insert this part
+into another staff with bass clef the result is indefinable.</para>
+
+<para>If you work with <link linkend="mulvoices">multiple voices per staff</link> the
+meaning of the block instruction depends on voice counter.
+If it displays <quote>A</quote> a block instruction influences all voices on staff.
+Otherwise only the current voice is processed.</para>
+
+<para> <userinput>Note!</userinput> If the voice counter displays <quote>A</quote>
+and the destination staff has less voices than the
+source staff the block copy fails.</para>
+
+<para> A first voice can only be copied to a first voice.</para>
+</sect2>
+
+<sect2 id="make_beam">
+<title>Beamed Notes</title>
+
+<para>
+Mark a block of notes to be beamed! Press the beam button (<inlinemediaobject><imageobject><imagedata fileref="beam.png"/></imageobject></inlinemediaobject>)!
+</para>
+</sect2>
+
+<sect2 id="make_triplet">
+<title>Triplets</title>
+
+<para>Mark a block of notes and/or rest which shall built the triplet! Press the triplet button (<inlinemediaobject><imageobject><imagedata fileref="triplet.png"/></imageobject></inlinemediaobject>)!</para>
+<para><userinput>Note:</userinput> &noteedit; cannot make a triplet from arbitrary notes! The sum must be divisible by 3.</para>
+</sect2>
+
+<sect2 id="make_tuplet">
+<title>N-tuplets</title>
+
+<para>With &noteedit; you can build N-tuplets, whereby N in {2,3,4,5,6,7,8,9,10}. Mark a block of notes and/or rest which shall built the N-tuplet!
+Select 
+<menuchoice>
+<guimenu><accel>I</accel>nsert</guimenu>
+<guimenuitem>T<accel>u</accel>plet...</guimenuitem>
+</menuchoice>
+and define the number of notes and their playtime! The playtime must be expressed in number of notes of slider above. For instance:
+If you want 7 8th shall be as long as a half note then define:
+<mediaobject>
+<imageobject>
+<imagedata fileref="tupelexam.png" format="PNG"/>
+</imageobject></mediaobject></para>
+<para><userinput>Note:</userinput> &noteedit; cannot make a N-tuplet from arbitrary notes! The sum of 128ths must be divisible by N.</para>
+<sect3 id="tupletproblems">
+<title>Problems with N-tuplet exportation</title>
+<para>
+<itemizedlist>
+<listitem><para>LilyPond is best prepared for all kind of N-tuplets</para></listitem>
+<listitem><para>ABC music is best prepared for all kind of N-tuplets if N &lt; 10</para></listitem>
+<listitem><para>MusiXTeX is prepared for triplets. It uses the <userinput>uptrio</userinput>
+statement which produces a bracket with a small "3" in the middle. For N-tuplets it uses the <userinput>xtuplet</userinput>
+statement which produces the number without a bracket. If the N-tuplet is beamed it looks like an
+N-Tuplet. If not it looks like some notes with a number above. It is your resposibility to
+mark the N-tuplet for instance with a slur (or so ...)</para></listitem>
+<listitem><para>PMX cannot deal with N-tuplets ending with a rest. Actually all N-tuplet members must be
+of the same length, besides some notes are as half as long as the others. PMX cannot deal with an
+N-tuplet who's real playtime cannot be expressed with one (eventually dotted) note.</para></listitem>
+<listitem><para> MUP cannot deal with an N-tuplet who's real playtime cannot be expressed with one (eventually dotted) note.</para></listitem>
+</itemizedlist>
+</para></sect3>
+</sect2>
+
+<sect2 id="make_slures">
+<title>Slurs</title>
+
+<para>To connect some notes with a slur mark a block of notes and press the slur button (<inlinemediaobject><imageobject><imagedata fileref="slur.png"/></imageobject></inlinemediaobject>).
+<userinput>Note!</userinput> The slur has no influence during replay! To break a slur <link linkend="editmode">change into edit mode</link>,
+select the first note of a slur and de-activate the slur button (<inlinemediaobject><imageobject><imagedata fileref="slur.png"/></imageobject></inlinemediaobject>).</para>
+<para><application>MUP</application> - users! The
+length of a slur is no longer restricted. &noteedit; now uses a <application>MUP</application> conform description of 
+slurs over more than 1 note. This holds for 1st and 2nd voice. In other voices slurs over more than 1 note cannot be expressed. So if you plan to <application>MUP</application>
+the file do note create such slurs in 3rd, 4th ... voice!</para>
+</sect2>
+
+<sect2 id="multistaff">
+<title>Multistaff block instruction</title>
+
+<para>Sometimes it is necessary to copy or delete a block of one staff and the parts of some
+other staves which sound at the same time. Therefore &noteedit; offers multistaff block
+instructions. To initiate a multistaff block instruction:</para>
+<procedure>
+<step><para>Mark a block as described in <link linkend="BLOCKINST">Block instructions</link>;</para></step>
+<step><para> Activate the multistaff block mode:
+<menuchoice>
+<guimenu><accel>E</accel>dit</guimenu>
+<guimenuitem><accel>M</accel>ultiStaff</guimenuitem>
+</menuchoice>
+<emphasis>(choose the staves ...)</emphasis>;</para></step>
+<step><para> Do a block instruction like block delete or block copy;</para></step>
+</procedure>
+
+<para>The order is important! Note: The multistaff behavior rests valid as long as
+the block selection is valid. So you can do the multistaff block copy as many times
+as you want.</para>
+
+<note><para>In principle you can copy/paste between different windows/scores. But
+this can cause unexpected results if the count of staves differs.</para></note>
+
+<note><para>The block instructions can be undone. But it is undone staff by staff. So if
+you deleted notes on 6 staves you need 6 undos to undo the multistaff block instruction.</para></note>
+</sect2>
+
+<sect2 id="autobar"><title>Autobar</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>E</accel>dit</guimenu>
+<guimenuitem><accel>A</accel>utoBar</guimenuitem>
+</menuchoice>
+</para>
+
+<para>If the staff has an anacrusis then set the first bar. &noteedit; begins placing 
+the bars at this first bar.</para>
+
+<para>Choose the staves to be influenced!</para>
+
+<para>This should produce the bar lines.</para>
+
+</sect2>
+
+
+<sect2 id="autobeam"><title>Autobeam</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>E</accel>dit</guimenu>
+<guimenuitem>Auto<accel>b</accel>eam</guimenuitem>
+</menuchoice>
+</para>
+
+<para>
+(choose the count of notes to be beamed and if rests be should included and the
+staves which should be influenced!)
+</para>
+
+<note><para>
+&noteedit; doesn't care about rests inside/not inside beams. But
+<application>MUP</application> cannot deal with rests inside beams. So if you
+plan to use the file as <application>MUP</application> input always interdict
+rests inside beams!
+</para></note>
+
+</sect2>
+
+
+<sect2 id="cleanup_rests"><title>Cleanup rests</title>
+
+<para>
+Imagine after MIDI import you got a drum track like this:
+<mediaobject>
+<imageobject><imagedata fileref="drum1.png"/></imageobject>
+</mediaobject>
+This is nonsense! The drummer played quarters. But because he hit the drums
+very short the MIDI exporter seems to <quote>hear</quote> these complicated rests. The
+cleanup rests feature allows you to <quote>delete</quote> a group of rests whose length is
+shorter than a certain amount. Of course, the rests are not really deleted.
+Instead of this their time is added to the note before.
+</para>
+
+<para>
+For instance: If you choose <quote>quarter</quote> in the above situation the result looks
+like:
+<mediaobject>
+<imageobject><imagedata fileref="drum2.png"/></imageobject>
+</mediaobject>
+If there is a selected region the function influences only the selected
+region.
+</para>
+
+</sect2>
+
+
+<sect2 id="merge"><title>Merge MIDI tracks</title>
+
+<para>
+There are some cases where it is advantageous to have the possibilty to merge
+some MIDI tracks before the
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem>TSE3 --&gt; <accel>S</accel>core</guimenuitem>
+</menuchoice>
+operation. For instance: There are some piano MIDI files which have up to 5(!)
+tracks. &noteedit; in turn possibly splits them further into a bass and a
+treble clef staff. The result is not playable. Thus, it is a good idea to merge
+all piano tracks into one track.
+</para>
+
+<para id="print_MIDI_info">
+To assist this &noteedit; offers an Information feature:
+</para>
+
+<para>
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem>In<accel>f</accel>ormation</guimenuitem>
+</menuchoice>
+</para>
+
+<para>To merge some tracks do:</para>
+
+<para>
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem>TSE3 --&gt; <accel>M</accel>erge</guimenuitem>
+</menuchoice>
+select the staves to be merged ...
+</para>
+
+</sect2>
+
+
+<sect2 id="undo">
+<title>Undo</title>
+
+<para>You can undo your last operations by pressing the undo button (<inlinemediaobject><imageobject><imagedata fileref="undo.png"/></imageobject></inlinemediaobject>)</para>
+<para><userinput>Note!</userinput> You cannot undo operations which deal with the staves itself (delete staff,
+insert staff, NEW). These operations invalidate the whole undo history.</para>
+</sect2>
+
+<sect2 id="redo">
+<title>Redo</title>
+
+<para>You can undo your last undo by pressing the redo button (<inlinemediaobject><imageobject><imagedata fileref="redo.png"/></imageobject></inlinemediaobject>)</para>
+</sect2>
+
+
+
+<sect2 id="staff_del">
+<title>Deleting a staff</title>
+
+<para>Select the staff to be deleted! 
+<menuchoice>
+<guimenu>St<accel>a</accel>ff</guimenu>
+<guimenuitem><accel>D</accel>elete</guimenuitem>
+</menuchoice>
+</para>
+</sect2>
+
+<sect2 id="staffprops">
+<title>Set staff properties</title>
+
+<para>To set the staff properties choose:</para>
+<para>
+<menuchoice>
+<guimenu>St<accel>a</accel>ff</guimenu>
+<guimenuitem>St<accel>a</accel>ff properties...</guimenuitem>
+</menuchoice>
+</para>
+</sect2>
+
+<sect2 id="staffnaming">
+<title>Staff name</title>
+
+<para>You can give each staff a name. The name is exported into <application>MusiXTeX</application>, <application>LilyPond</application>, <application>PMX</application>
+and <application>ABC music</application>. Furthermore it is shown at the
+left side of the note page. You can turn off this by
+<menuchoice>
+<guimenu><accel>V</accel>iew</guimenu>
+<guimenuitem>Show <accel>s</accel>taff names</guimenuitem>
+</menuchoice></para>
+</sect2>
+
+<sect2 id="staffgeometry">
+<title>Setting staff geometry</title>
+
+<para>You can change the overlength and underlength of a staff. Furthermore you can determine the position
+of a possible lyrics line.</para>
+</sect2>
+
+<sect2 id="set_channel">
+<title>Set a channel</title>
+
+<para>
+You should give every staff a different channel. <userinput>Attention!</userinput> On most sound cards
+channel 10 is reserved for drum track!
+</para>
+</sect2>
+
+<sect2 id="staff_vol">
+<title>Select staff volume</title>
+ 
+<para>
+You can set the volume in a range of 0...127.  <link linkend="VOLUME">(see also: Volume Change)</link>
+</para>
+</sect2>
+
+<sect2 id="sel_voice">
+<title>Select a voice</title>
+
+<para>
+<userinput>Attention!</userinput> &noteedit; assumes the general MIDI table. This is the case
+for most sound cards.
+<link linkend="PROGRAM">(see also: Program Change)</link>
+</para>
+</sect2>
+
+<sect2 id="set_stereo">
+<title>Set stereo position</title>
+
+<para>You can set the stereo position of the staff in a range of 0...127</para>
+</sect2>
+
+<sect2 id="reverb">
+<title>Set reverberation</title>
+
+<para>You can set the  reverberation of the staff in a range of 0...127 Whether you can hear this effect
+depends on your <hardware>soundcard</hardware>. 
+Hear the beginning of <filename>example2.not</filename>
+on AWE 64/ 24 MB RAM and soundfont <filename>8mbgmsfx.sf2</filename>: <ulink
+url="http://rnvs.informatik.tu-chemnitz.de/cgi-bin/nph-sendbin.cgi/~jan/noteedit/example2.mp3">
+example2.mp3</ulink> (3.6 Mbyte)</para>
+</sect2>
+
+<sect2 id="set_chorus">
+<title>Set chorus</title>
+
+<para>You can set the chorus of the staff in a range of 0...127. The chorus is an effect which
+produces a group of instruments instead of one single instrument.</para>
+<para>Whether you can hear this effect
+depends on your <hardware>soundcard</hardware>. 
+Hear the beginning of <filename>example2.not</filename>
+on AWE 64/ 24 MB RAM and soundfont <filename>8mbgmsfx.sf2</filename>: <ulink url="http://rnvs.informatik.tu-chemnitz.de/cgi-bin/nph-sendbin.cgi/~jan/noteedit/example2.mp3">
+example2.mp3</ulink> (3.6 Mbyte)</para>
+</sect2>
+
+<sect2 id="playtransposed">
+<title>Play transposed</title>
+<para>If you place an instrument on score which isn't in C tuning you have a problem during replay. Therefore &noteedit;
+offers the possibility to specify a staff should be played with an offset. Use the <quote>play transposed</quote> slider to determine
+the offset in semitones</para>
+</sect2>
+</sect1>
+<sect1 id="tools">
+<title>Tools</title>
+<sect2 id="score_layout">
+<title>Score layout</title>
+<para>&noteedit; offers a board to determine the score layout: braces (piano staff), brackets (staff groups) and
+continued/discontinued bar rules.</para>
+<note><para>&noteedit; does its best to export the score layout. But depending on your typesetting
+system the score layout possibly changes <emphasis>(see below)</emphasis>.</para></note>
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem>Scrore <accel>l</accel>ayout...</guimenuitem>
+</menuchoice>
+</para>
+
+<para>This pops up the following menu:</para>
+<para><inlinemediaobject><imageobject><imagedata align="center" fileref="layoutboard.png"/></imageobject></inlinemediaobject></para>
+<para>By dragging and holding the &LMB; you can select a group of staffs. If you click on one of the 6
+function buttons you can create/remove brackets (staff groups) or a braces (piano scores). The <computeroutput>continue bar</computeroutput>
+and <computeroutput>discontinue bar</computeroutput> buttons determine the bar rule policy.</para>
+</sect2>
+
+<sect2><title>Problems exporting staff layout</title>
+<para><userinput>MusiXTeX</userinput> <application>MusiXTeX</application> actually accepts either completely continued or completely discontinued bar rules.
+If you specify a mix of partial continued and partial discontinued bar rules &noteedit; produces some statements of the <filename>musixdbr.tex</filename>
+package by Rainer Dunker. &noteedit; produces a warning and gives advice to install this package. Otherwise MusiXTeX will fail.</para>
+
+<para><userinput>PMX</userinput> <application>PMX</application> is a preprocessor to MusiXTeX and therefore the same problems apply.</para>
+
+<para><userinput>ABC music</userinput> <application>ABC music</application> cannot deal with nested braces in brackets. &noteedit; will warn you.</para>
+<para><userinput>LilyPond</userinput> <application>LilyPond</application> can deal with braces and brackets. It changes the staff rules according to
+some LilyPond inherent rules. I was told it is possible to break these rules. But I assume they are there for good reasons. &noteedit; will warn you
+if a LilyPond rule will change the staff rule policy.</para>
+<para><userinput>MUP</userinput> <application>MUP</application> has no limitations.</para>
+</sect2>
+
+
+<sect2 id="transpose">
+<title>Transpose</title>
+<para>To transpose the selected staff choose:</para>
+<para>
+<menuchoice>
+<guimenu><accel>T</accel>ools</guimenu>
+<guimenuitem><accel>T</accel>ranspose...</guimenuitem>
+</menuchoice>
+<emphasis>select the count of semitones </emphasis></para>
+<note><para>It is your responsibility to set a new key signature! Use the 
+<link linkend="reduceAcc">reduce accidentals</link> tool to change sharps against flats if necessary.</para></note>
+<para>If you want to transpose only a part of the staff then mark the appropriate part before!</para>
+<para>If you want to transpose a group of staffs then select them before:</para>
+<para>
+<menuchoice>
+<guimenu><accel>E</accel>dit</guimenu>
+<guimenuitem><accel>M</accel>ultiStaff</guimenuitem>
+</menuchoice>
+</para>
+<para>
+The chords names are transposed if there is no chord diagram attached.</para>
+</sect2>
+
+<sect2 id="change_clef">
+<title>Change clef</title>
+<para>Especially after MIDI import it is sometimes necessary to change the clef which is chosen by &noteedit;.
+To do this choose:</para>
+<para>
+<menuchoice>
+<guimenu><accel>T</accel>ools</guimenu>
+<guimenuitem><accel>C</accel>hange clef...</guimenuitem>
+</menuchoice>
+<emphasis>Choose the new clef!</emphasis></para>
+<para>If you want to change the clef of only a part of the staff then mark the appropriate part before!</para>
+<para><userinput>Note!</userinput> The marked range should begin with a clef! &noteedit; stops changing the chords/notes if a
+new clef appears.</para>
+</sect2>
+
+<sect2 id="reduceAcc">
+<title>Reduce Accidentals</title>
+<para>Imagine the following situation: <mediaobject><imageobject><imagedata fileref="beforeAcc.png"/></imageobject></mediaobject></para>
+<para>This can happen
+especially after <link linkend="transpose">transpose</link> or <link linkend="recmidi">recording from <hardware>MIDI keyboard</hardware></link>. You wanted to play in A flat Major
+but &noteedit; used sharp notes. To solve this &noteedit; offers an appropriate tool:</para>
+<para>
+<menuchoice>
+<guimenu><accel>T</accel>ools</guimenu>
+<guimenuitem>Reduce <accel>a</accel>ccidentals...</guimenuitem>
+</menuchoice>
+</para>
+<para>This changes the lines and accidentals so that the number of accidentals decreases.
+In case above the this would result in: <mediaobject><imageobject><imagedata fileref="afterAcc.png"/></imageobject></mediaobject></para>
+</sect2>
+
+<sect2 id="chordCombine">
+<title>Combine chords</title>
+<para>Imagine the following situation:
+<mediaobject><imageobject><imagedata align="center" fileref="beforeCombine.png"/></imageobject></mediaobject>
+This can happen
+especially after <link linkend="autobar">autobar function</link>. In this case the <literal>Combine chords</literal>
+tool is useful:
+<mediaobject><imageobject><imagedata fileref="afterCombine.png"/></imageobject></mediaobject>
+</para>
+<para>
+<menuchoice>
+<guimenu><accel>T</accel>ools</guimenu>
+<guimenuitem><accel>C</accel>ollect Notes ...</guimenuitem>
+</menuchoice>
+</para>
+</sect2>
+
+
+<sect2 id="set_acci">
+<title>Change Accidentals</title>
+<para>Independent of the key signature you can change all accidentals of the current staff to sharp:</para>
+<para>
+<menuchoice>
+<guimenu><accel>T</accel>ools</guimenu>
+<guimenuitem><accel></accel>Set all to sharp</guimenuitem>
+</menuchoice>
+</para>
+<para>or to flat:</para>
+<para>
+<menuchoice>
+<guimenu><accel>T</accel>ools</guimenu>
+<guimenuitem><accel></accel>Set all to flat</guimenuitem>
+</menuchoice>
+</para>
+<para>If there is a selected
+region the operation only effects this region.</para>
+</sect2>
+</sect1>
+
+<sect1 id="set_view">
+<title>View</title>
+<sect2 id="multiwindows">
+<title>Creating Windows</title>
+<para>You can open up as many windows you want (
+<menuchoice>
+<guimenu><accel>W</accel>indow</guimenu>
+<guimenuitem><accel>N</accel>ew</guimenuitem>
+</menuchoice>
+). This allows you to copy/paste elements between different scores.</para>
+<para><userinput>Attention!</userinput> In principle you can use the <link linkend="multistaff">multistaff copy</link>.
+But this can cause unexpected results if the count of staves differs.</para>
+</sect2>
+
+<sect2 id="zoom">
+<title>Zoom</title>
+<para>You can choose the zoom factor by the zoom selection (<inlinemediaobject><imageobject><imagedata fileref="zoom.png"/></imageobject></inlinemediaobject>).
+Furthermore you can set your preferred zoom value in <link linkend="configfile">config file</link>.</para>
+
+<para>Alternatively you can zoom using the <literal>Zoom in/out</literal> buttons. (<inlinemediaobject><imageobject><imagedata fileref="zoominout.png"/></imageobject></inlinemediaobject>)</para>
+</sect2>
+
+<sect2 id="showhide">
+<title>Show/Hide bar numbers staff names and auxiliary insert lines </title>
+<para>You can choose whether &noteedit; shall show the bar numbers or not by using the
+checkboxes on:
+<menuchoice>
+<guimenu><accel>V</accel>iew</guimenu>
+</menuchoice>
+menu. The same holds for the auxiliary insert lines and staff names.</para>
+</sect2>
+
+<sect2 id="showcontext">
+<title>Show/Hide staff context</title>
+<para>You can decide whether &noteedit; shall show the context (actual clef and key signature) during replay at the left hand side:
+<menuchoice>
+<guimenu><accel>V</accel>iew</guimenu>
+<guimenuitem>Show staff <accel>c</accel>ontext</guimenuitem>
+</menuchoice>
+</para>
+</sect2>
+</sect1>
+
+<sect1 id="mulvoices">
+<title>Working with multiple voices per staff (polyphony)</title>
+
+<sect2>
+<title>Creating multiple voices</title>
+<para>To work with voices pop up the voices dialog:</para>
+<para>
+<menuchoice>
+<guimenu>St<accel>a</accel>ff</guimenu>
+<guimenuitem><accel>V</accel>oices...</guimenuitem>
+</menuchoice>
+</para>
+<para><inlinemediaobject><imageobject><imagedata align="center" fileref="voicedialog.png"/></imageobject></inlinemediaobject></para>
+<para>To create a voice press <literal>Create voice</literal> button. Then
+you should choose the Y-position of the rests in voice to make it possible to associate the rests to voices:</para>
+<para><inlinemediaobject><imageobject><imagedata align="center" fileref="restpos.png"/></imageobject></inlinemediaobject></para>
+<para> After that you should choose the preferred stem direction of that voice:</para>
+<itemizedlist>
+<listitem><para>stem up: All notes have stems upward if no otherwise stated;</para></listitem>
+<listitem><para>stem auto: &noteedit; determines the stem direction depending on line
+if no otherwise stated;</para></listitem>
+<listitem><para>stem down: All notes have stems downward if no otherwise stated;</para></listitem>
+</itemizedlist>
+
+<para><userinput>Note!</userinput> You can always overwrite the stem direction using the 
+stem Up/Down buttons (<inlinemediaobject><imageobject><imagedata fileref="stemupdown.png"/></imageobject></inlinemediaobject>).</para>
+</sect2>
+
+<sect2 id="workmulvoices">
+<title>How to work with multiple voices per staff</title>
+
+<para>First of all: There is a <emphasis>first voice</emphasis> which has priority over
+all other voices. That means:</para>
+<itemizedlist>
+<listitem><para>You cannot delete the first voice.</para></listitem>
+<listitem><para>The only elements which can occur in other voices are notes (chords) and rests.</para></listitem>
+</itemizedlist>
+
+<para>Before inserting something in other voices you should finish insertion in first voice (at least
+till measure of insertion):</para>
+
+<para><inlinemediaobject><imageobject><imagedata align="center" fileref="voiceex1.png"/></imageobject></inlinemediaobject></para>
+
+<para><userinput>Note!</userinput> There is always a <emphasis>current voice</emphasis>. You can change the <emphasis>current voice</emphasis>
+by left/right clicking the voice counter:</para>
+<itemizedlist>
+<listitem><para><mediaobject><imageobject><imagedata fileref="voiccounta.png"/></imageobject></mediaobject> --&gt; <quote>all</quote> voices (the current voice is the first voice)</para></listitem>
+<listitem><para><mediaobject><imageobject><imagedata fileref="voiccount1.png"/></imageobject></mediaobject> --&gt; the current voice is the first voice</para></listitem>
+<listitem><para><mediaobject><imageobject><imagedata fileref="voiccount2.png"/></imageobject></mediaobject> --&gt; the current voice is the 2nd voice</para></listitem>
+<listitem><para>...</para></listitem>
+</itemizedlist>
+
+<note>
+<para>The current voice is the first voice if the voice counter displays <quote>A</quote>
+and if the voice counter displays <quote>1</quote> What's the difference? If the 
+voice counter displays <quote>1</quote> all elements which do not belong to voice 1 are
+gray. If the voice counter displays <quote>A</quote> all elements in all voices are shown in black or red.
+So you can get a better impression of the score. Other differences follow (see below).</para>
+</note>
+<para>Now if you select voice 2 as current voice all elements of voice 1 are in gray:</para>
+
+<para><mediaobject><imageobject><imagedata align="center" fileref="voiceex2.png"/></imageobject></mediaobject></para>
+
+<para>If you now insert 4 8th somewhere in measure 2 &noteedit; assumes this is the first element
+in measure and fills the measures before  with hidden rests:</para>
+
+
+<para><mediaobject><imageobject><imagedata align="center" fileref="voiceex3.png"/></imageobject></mediaobject></para>
+
+<para>You can insert more hidden rests by pressing the <emphasis>hidden rest</emphasis> button (<inlinemediaobject><imageobject><imagedata fileref="hrest.png"/></imageobject></inlinemediaobject>).
+For instance: If in current example the first 8th shall be one 8th away from bar line, insert a hidden
+rest of one 8th:</para>
+
+
+<para><mediaobject><imageobject><imagedata align="center" fileref="voiceex4.png"/></imageobject></mediaobject></para>
+
+<para>Of course, you could also insert a "normal rest" if you wish. The hidden rests don't appear on
+Postscript file and they are not shown if the voice counter displays <quote>A</quote></para>
+
+<para><mediaobject><imageobject><imagedata align="center" fileref="voiceex5.png"/></imageobject></mediaobject></para>
+
+<note>
+<para>You can manipulate only elements in <emphasis>current voice</emphasis>. This holds also for
+selection.</para>
+</note>
+</sect2>
+
+<sect2 id="block_mul_voices">
+<title>Block instructions  with multiples voices per staff</title>
+
+<para>The meaning of <link linkend="BLOCKINST">block instructions</link> depends on voice counter.
+If it displays <literal><userinput>A</userinput></literal> a block instruction influences all voices on staff.
+Otherwise only the current voice is processed.</para>
+
+<note>
+<itemizedlist>
+<listitem><para>If the voice counter displays <literal><userinput>A</userinput></literal>: You cannot copy a block to a staff with less voices.</para></listitem>
+<listitem><para>A block in <emphasis>first voice</emphasis> can only be copied to a <emphasis>first voice</emphasis>.</para></listitem>
+</itemizedlist>
+</note>
+</sect2>
+
+<sect2 id="mulvoice_export">
+<title>Aspects of exportation of multiple voices per staff</title>
+
+<sect3 id="lily_multivoice">
+<title><application>LilyPond</application></title>
+
+<para><application>LilyPond</application> is best prepared for multiple voices per staff. </para>
+</sect3>
+
+<sect3 id="abc_multivoice">
+<title><application>ABC music</application></title>
+
+<para><application>ABC music</application> is best prepared for multiple voices per staff. Sometimes the stem direction
+isn't optimal.</para>
+</sect3>
+
+<sect3 id="musixtex_multivoice">
+<title><application>MusiXTeX</application></title>
+
+<para>Paradox: Although <application>MusiXTeX</application> has no special syntax constructs for multiple 
+voices per staff you can export as many voices as you want to <application>MusiXTeX</application> because 
+many <application>MusiXTeX</application> commands rather describe a (turtle) graphic than music.</para>
+
+<para>But the multiple voices per staff cause a new export error:
+<literal>Too many beams!</literal> <application>MusiXTeX</application> allows as many beams as
+staffs. So, if you have only one voice per staff there are always
+enough beams. But with multiple voices per staff theoretically all
+available beams can be in first staff. Thus, no beam rests for the
+other staves.</para>
+</sect3>
+
+<sect3 id="pmx_multivoice">
+<title><application>PMX</application></title>
+
+<para><application>PMX</application> allows 2 voices per staff (There are some tricks to achieve more. But no
+systematical syntax constructions which are successful in all cases.). &noteedit;
+warns you and omits the supernumerary voices.</para>
+</sect3>
+
+<sect3 id="mup_multivoice">
+<title><application>MUP</application></title>
+
+<para><application>MUP</application> can process up to 3 voices per staff. But it hates stem statements if a staff has
+multiples voices. But &noteedit; always produces stem statements to correctly restore the
+score. This causes tons of warnings during <application>MUP</application> processing. Ignore them all! <application>MUP</application> in turn
+will ignore all stem statements.</para>
+
+
+<para>If a staff has more than 3 voices &noteedit; "extends" the <application>MUP</application> syntax. Of course, the
+result is not <application>MUP</application>-able. &noteedit; warns you in this case.</para>
+</sect3>
+</sect2>
+</sect1>
+
+<sect1 id="playing">
+<title>Playing</title>
+
+<sect2 id="set_midi_dev">
+<title>Set the MIDI device</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure &noteedit;...</guimenuitem>
+</menuchoice>
+<emphasis>... select a device</emphasis>
+</para>
+</sect2>
+
+<sect2 id="do_play">
+<title>Play/Muting</title>
+
+<para>If some staves need muting:</para>
+<para>
+<menuchoice>
+<guimenu>St<accel>a</accel>ff</guimenu>
+<guimenuitem><accel>M</accel>ute staffs...</guimenuitem>
+</menuchoice>
+<emphasis>choose staves</emphasis></para>
+<para> Press play button (<inlinemediaobject><imageobject><imagedata fileref="play.png"/></imageobject></inlinemediaobject>)!
+If there is a selected note &noteedit; begins playing at this note.
+Otherwise it plays from beginning.  &noteedit; will
+highlight the played notes and scroll if necessary.</para>
+
+<para>It is possible to determine the <link linkend="pageTurnOver">page turn over point</link></para>
+<para><userinput>Attention!</userinput> During play some other functions will not work!
+</para>
+</sect2>
+
+
+<sect2 id="stop_play">
+<title>Stop playing</title>
+
+
+<para> Press play button (<inlinemediaobject><imageobject><imagedata fileref="play.png"/></imageobject></inlinemediaobject>) again.</para>
+</sect2>
+
+<sect2 id="arts">
+<title>Using the aRts MIDI scheduler</title>
+
+<para>From version 0.1.3 on Pete Goodliffe's &lt;pete.goodliffe@pace.co.uk&gt; TSE3 library 
+has an aRts MIDI scheduler. As a result &noteedit; can act as MIDI source for aRts.
+<note><para>If you want to use &noteedit; with aRts MIDI scheduler then make sure
+the aRts headers (<filename>artsmidi.h</filename>) are installed
+<emphasis>before</emphasis> you compile TSE3.</para></note>
+Start &noteedit; with:</para>
+<para><command>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+noteedit -arts</command></para>
+
+<para>Start:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+artscontrol</userinput></para>
+
+<para>
+<menuchoice>
+<guimenu><accel>V</accel>iew</guimenu>
+<guimenuitem>View <accel>M</accel>idi Manager...</guimenuitem>
+</menuchoice>
+On <emphasis>Midi Inputs</emphasis>
+you should already see the source "TSE3". From 
+<menuchoice>
+<guimenu><accel>A</accel>dd</guimenu>
+<guimenuitem><accel>a</accel>Rts Synthesis Midi Output</guimenuitem>
+</menuchoice>
+menu select some instruments.
+Connect "TSE3" with one of these instruments and &noteedit; will
+play this instrument.</para>
+
+<para>The interesting thing here is: With the program <application>artsbuilder</application> you can
+create your own instruments. Start:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+artsbuilder</userinput></para>
+<para>and read the online help. There is a very instructive tutorial which declares
+how to define a MIDI instrument.</para>
+</sect2>
+</sect1>
+
+
+<sect1 id="configuration">
+<title>Configuration</title>
+
+<para>To set general properties choose:</para>
+<para>
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure &noteedit;</guimenuitem>
+</menuchoice>
+-&gt; Editing
+</para>
+
+<itemizedlist>
+<listitem><para><command>move according key</command> The value determines what happens if you move a note
+upward or downward. If checked the semitone is chosen according to the key signature. If not, the semitone is kept.</para></listitem>
+<listitem id="pageTurnOver"><para> With the slider <command>page turn over</command> you can determine how many pixels
+before page end &noteedit; performs page turn over.</para></listitem>
+<listitem id="autobarinsert"><para> 
+If you insert notes or rests at the end &noteedit; will insert bars according the current time signature.
+To toggle this feature use the "autom. bar insertion" checkbox.</para></listitem>
+<listitem id="autobeaminsert"><para>
+If you insert notes or rests at the end &noteedit; will re-compute the beams in last measure.
+To toggle this feature use the "auto insert beams" checkbox.</para></listitem>
+<listitem id="insertEcho"><para> 
+Inserting notes or move them up or causes a MIDI echo.
+To toggle this feature use the "insert echo" checkbox.</para></listitem>
+<listitem><para>
+Using the chords dialog you can determine the set of chord names and/or modification symbols</para></listitem>
+</itemizedlist>
+
+<sect2 id="keyconf">
+<title>Key configuration</title>
+<para>With
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>K</accel>ey configuration</guimenuitem>
+</menuchoice>
+you pop up a key configuration
+dialog. Note! This is made by means of the KDE widget <literal>KKeyDialog</literal>. Unfortunately,
+the <literal>KKeyDialog</literal> has no knowledge about the keyboard layout. For instance: On German
+keyboard the '=' sign is in 2nd keyboard layer. Therefore 
+<literal>Shift+Equal</literal> is configured. If the '=' sign isn't in 2nd keyboard layer on
+your keyboard, please change this to <literal>Equal</literal>.</para>
+</sect2>
+
+<sect2 id="colors">
+<title>Colors</title>
+
+<para>
+The colors can be changed under
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure &noteedit;</guimenuitem>
+</menuchoice>
+-&gt; Colors
+</para>
+
+</sect2>
+
+<sect2 id="PEDAL_SUPPRESS">
+<title>MIDI PEDAL COMMANDS</title>
+<para>
+You can enable/disable the usage of MIDI PEDAL COMMANDS during replay:
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure &noteedit;</guimenuitem>
+</menuchoice>
+-&gt; General -&gt; useMidiPedal
+</para>
+</sect2>
+
+<sect2 id="autosave">
+<title>Autosave</title>
+<para>
+You can enable an autosave policy on:
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure &noteedit;</guimenuitem>
+</menuchoice>
+-&gt; General
+</para>
+
+<para>
+Choose an autosave time interval. &noteedit; makes a backup of the current
+score in a file whose name is built by appending
+<literal role="extension">.sav</literal> to current filename.
+</para>
+
+</sect2>
+
+
+
+<sect2 id="score_information">
+<title>Score information</title>
+
+<para>
+You can attach overall score information (author, title, ...) to the current
+score:
+</para>
+
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem>Score in<accel>f</accel>ormation</guimenuitem>
+</menuchoice>
+</para>
+
+<para>
+The score information is exported as far as the destination format allows this.
+</para>
+
+</sect2>
+
+<sect2 id="save_parameters"><title>Save parameters</title>
+
+<para>Choose:</para>
+
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem><accel></accel>Output params...</guimenuitem>
+</menuchoice>
+</para>
+
+<para>
+The selected values are exported into <application>MUP</application> format if
+ the <guilabel>enable</guilabel> box is checked.
+</para>
+
+</sect2>
+
+
+
+
+<sect2 id="configfile">
+<title>Configuration file</title>
+
+<para>According to <literal>KDE developer guide</literal> your personal configurations 
+are saved in:</para>
+<para><filename><replaceable>&lt;KDEHOME&gt;</replaceable>/share/config/noteeditrc</filename></para>
+
+</sect2>
+</sect1>
+
+<sect1 id="restore">
+<title>(Re-)Storing</title>
+
+<sect2 id="saving">
+<title>Saving</title>
+
+<para>If the file has a name try:</para>
+<para>
+<menuchoice>
+<shortcut>
+<keycombo action="simul"><keycap>Ctrl</keycap><keycap>S</keycap></keycombo>
+</shortcut>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem><accel>S</accel>ave</guimenuitem>
+</menuchoice>
+</para>
+
+<para> otherwise try:</para>
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem>Save <accel>A</accel>s...</guimenuitem>
+</menuchoice>
+<emphasis>( choose a file name) </emphasis></para>
+
+<para>As mentioned above the file format is similarly to that of
+<ulink url="http://www.arkkra.com">music publication program (<application>MUP</application>)</ulink>. So you if you are
+<application>MUP</application> user you have the possibility to convert the files into MIDI and Postscript.
+But <application>MUP</application> is a shareware.  So the direct export into <application>MusiXTeX</application>, <application>PMX</application>,
+<application>LilyPond</application> or <application>ABC</application> music and MIDI is recommended.</para>
+</sect2>
+
+<sect2 id="do_restore">
+<title>Restoring/Autoload</title>
+
+<para>
+<menuchoice>
+<shortcut>
+<keycombo action="simul"><keycap>Ctrl</keycap><keycap>O</keycap></keycombo>
+</shortcut>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem><accel>O</accel>pen...</guimenuitem>
+</menuchoice>
+<emphasis> ... choose a file name </emphasis></para>
+
+<para>If AutoLoad is enabled (
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure &noteedit;</guimenuitem>
+</menuchoice>
+--&gt; General)
+the last processed file is loaded at program start.</para>
+</sect2>
+</sect1>
+
+
+<sect1 id="midiexport">
+<title>Export MIDI</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem>Export <accel>M</accel>IDI...</guimenuitem>
+</menuchoice>
+<emphasis> ... choose MIDI file name</emphasis></para>
+
+<para>See also: <link linkend="usetse3">working with TSE3</link></para>
+</sect1>
+
+<sect1 id="musixtex">
+<title>Export MusiXTeX</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem>Export <accel>M</accel>IDI...</guimenuitem>
+</menuchoice>
+<emphasis> ... choose parameters and TeX file name</emphasis></para>
+
+
+<para>To produce a printable output <command>please read the</command> 
+<link linkend="musixtex_export_appendix"><application>MusiXTeX</application> export discussion page</link>.
+<command>It is <userinput>not</userinput></command>: <command>latex</command> <parameter>file</parameter>.tex</para>
+</sect1>
+
+<sect1 id="lilyexport">
+<title>Export LilyPond</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem>Export <accel>L</accel>ilyPond...</guimenuitem>
+</menuchoice>
+<emphasis> ... choose parameters and TeX file name</emphasis></para>
+
+<para>To produce a printable output please read the
+<link linkend="lilypond_export_appendix"><application>LilyPond</application> export discussion page</link>.</para>
+</sect1>
+
+<sect1 id="abcexport">
+<title>Export ABC music</title>
+
+<note><para>&noteedit; produces code for abcm2ps version 3.x.y</para></note>
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem>Export <accel>A</accel>BC...</guimenuitem>
+</menuchoice>
+<emphasis> ... choose parameters and ABC music file name</emphasis></para>
+
+
+<para>To produce a printable output <command>please read the</command> 
+<link linkend="abc_music_appendix"><application>ABC music</application> export discussion page</link>.
+</para>
+</sect1>
+
+<sect1 id="musicxml_export">
+<title>Export MusicXML</title>
+
+<para>&noteedit; can export MusicXML.</para>
+
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem>Export M<accel>u</accel>sicXML...</guimenuitem>
+</menuchoice>
+<emphasis> ... choose the MusicXML file name</emphasis></para>
+
+<para>For an overview of the current MusicXML exporter's limitations please read the
+<link linkend="musicxml_export_appendix">MusicXML export discussion page</link>.</para>
+</sect1>
+
+<sect1 id="musicxml_import">
+<title>Import MusicXML</title>
+
+<para>&noteedit; can import MusicXML.</para>
+
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem><accel>I</accel>mport MusicXML...</guimenuitem>
+</menuchoice>
+<emphasis> ... choose the MusicXML file name</emphasis></para>
+
+<para>For an overview of the current MusicXML importer's limitations please read the
+<link linkend="musicxml_import_appendix">MusicXML import discussion page</link>.</para>
+</sect1>
+
+<sect1 id="pmxexport">
+<title>Export PMX</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem>Export <accel>P</accel>MX...</guimenuitem>
+</menuchoice>
+<emphasis> ... choose parameters and <application>PMX</application> file name</emphasis></para>
+
+<para>To produce a printable output <command>please read the</command> 
+<link linkend="pmx_export_appendix"><application>PMX</application> export discussion page</link>.</para>
+</sect1>
+
+<sect1 id="midiimport">
+<title>MIDI import</title>
+<sect2>
+<title>Import MIDI</title>
+
+<para><command>only with TSE3</command><inlinemediaobject><imageobject><imagedata fileref="smlogo.png"/></imageobject></inlinemediaobject></para>
+
+<para>The MIDI import is performed by means of the TSE3 library.  During MIDI export a lot of score information
+gets lost. Therefore the MIDI import sometimes needs some human intervention. Please read the
+<link linkend="midi_import_appendix">MIDI import discussion page</link> for more information!</para>
+
+<para><inlinemediaobject><imageobject><imagedata fileref="new.png"/></imageobject></inlinemediaobject>
+The current version of &noteedit; recognizes triplets. But not in all situations.</para>
+
+<para>See also: <link linkend="usetse3">working with TSE3</link></para>
+
+<para>To import do:</para>
+
+<para>
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem>TSE3 MIDI <accel>i</accel>n.</guimenuitem>
+</menuchoice>
+<emphasis>( ... choose a MIDI file)</emphasis></para>
+
+<para>This creates an internal TSE3 structure.</para>
+
+
+<para>To create the score from internal TSE3 structure do:</para>
+<para>
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem>TSE3 --&gt;<accel>S</accel>core</guimenuitem>
+</menuchoice>
+</para>
+
+<para><inlinemediaobject><imageobject><imagedata fileref="new.png"/></imageobject></inlinemediaobject>
+This creates the score. But without bar lines and beams. If the music has an anacrusis set the first
+bar line in all staves! <emphasis>(If you aren't sure do nothing)</emphasis></para>
+
+
+<para>Then choose:</para>
+<para>
+<menuchoice>
+<guimenu><accel>E</accel>dit</guimenu>
+<guimenuitem><accel>A</accel>utoBar</guimenuitem>
+</menuchoice>
+</para>
+
+<para>to insert the bar lines. And likewise:</para>
+<para>
+<menuchoice>
+<guimenu><accel>E</accel>dit</guimenu>
+<guimenuitem>Auto<accel>b</accel>eam</guimenuitem>
+</menuchoice>
+</para>
+
+<para>to construct the beams.</para>
+
+<para>In some cases the following functions may be useful:</para>
+<para>
+<itemizedlist>
+<listitem><para><link linkend="cleanup_rests">Cleanup rests</link></para></listitem>
+<listitem><para><link linkend="merge">Merge MIDI tracks</link></para></listitem>
+</itemizedlist>
+</para>
+
+<para id="filter">If the result is not as expected then try to apply
+a <emphasis>MidiEventFilter</emphasis>:</para>
+<para>
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem><accel>F</accel>ilter dialog...</guimenuitem>
+</menuchoice>
+</para>
+<para>This window rests on screen until the <guibutton><accel>C</accel>ancel</guibutton> button is pressed.
+The filter values apply to next <guibutton><accel>T</accel>SE3 --&gt; Score</guibutton>
+or <inlinemediaobject><imageobject><imagedata fileref="new.png"/></imageobject></inlinemediaobject>
+<guibutton><accel>L</accel>ine to Score ...</guibutton> action.</para>
+
+<para><inlinemediaobject><imageobject><imagedata fileref="new.png"/></imageobject></inlinemediaobject>
+With <guilabel>Choose snap distance</guilabel> you can determine the lock-in position. The value <guibutton>Auto</guibutton>
+means the lock-in position is derived from note length.</para>
+
+<para><inlinemediaobject><imageobject><imagedata fileref="new.png"/></imageobject></inlinemediaobject>
+With <guilabel>Triplet Raster</guilabel> you can determine the lock-in position for triplet recognition.
+The value <guibutton>Auto</guibutton> means the lock-in position is derived from note length. The value
+<guibutton>None</guibutton> means: Do not produce any Triplet.</para>
+
+
+<para>With <guilabel>Volume step</guilabel> slider you determine the volume difference of 2 adjacent notes needed
+to insert a volume signature. This is important, because otherwise &noteedit; sets a volume signature
+between all adjacent notes who's volume differs.</para>
+
+<para>By activating the <guilabel><accel>A</accel>verage Volume</guilabel> button
+you can cause &noteedit; compute an average volume of the track. The <literal><userinput>dynamic</userinput></literal> slider
+determines variance. If the variance is 0 all notes have the average volume. The greater the
+variance the greater is the divergence of the note's volume depending on their real volume.</para>
+
+<para>If you don't want any volume signature on score either:
+<itemizedlist>
+<listitem><para>de-activate the <guilabel><accel>A</accel>verage Volume</guilabel> checkbox and set min and for max volume equally or:</para></listitem>
+<listitem><para>activate <guilabel><accel>A</accel>verage Volume</guilabel> checkbox and set <guilabel>dynamic</guilabel> to 0</para></listitem>
+</itemizedlist></para>
+
+<para>Again create a scrore from internal TSE3 structure:</para>
+<para>
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem>TSE3 --&gt;<accel>S</accel>core</guimenuitem>
+</menuchoice>
+</para>
+<para>Choose the staves which should be imported using the current filter values. If the import is not as expected choose other
+filter values and import again!</para>
+
+<para><inlinemediaobject><imageobject><imagedata fileref="new.png"/></imageobject></inlinemediaobject>
+In many cases different filter values should be applied to different staves. These are the situations there
+the <guibutton><accel>L</accel>ine to Score ...</guibutton> button should be used. It pops up a staff menu. Choose
+the staves which shell be filtered using the current filter values and press <guibutton><accel>C</accel>reate</guibutton>.
+Because the TSE structure remains valid you can repeat the import with different values for different
+staves as many time as you want.</para>
+
+<para>For further information read the <link linkend="midi_import_appendix">MIDI import discussion page</link>!</para>
+</sect2>
+
+<sect2 id="recmidi">
+<title>Record from MIDI-Keyboard</title>
+
+<para><command>only with TSE3</command><inlinemediaobject><imageobject><imagedata fileref="smlogo.png"/></imageobject></inlinemediaobject></para>
+<para>First of all: To avoid excessive expectations I strongly recommend reading of the
+<link linkend="midi_import_appendix">MIDI import discussion page</link></para>
+
+<para>If you have a MIDI keyboard connected to your soundcard you can play and record the music. To to this:</para>
+<procedure>
+<step><para>
+Create a TSE3 Song from score <emphasis>(If you have an empty score then produce an empty Song!)</emphasis></para>
+<para>
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem><accel>C</accel>reate TSE3 song</guimenuitem>
+</menuchoice>
+</para>
+<note><para>
+This song is played during record!
+</para></note>
+</step>
+<step><para>
+Select a staff!
+<note><para>
+&noteedit; ignores all channel information given by your keyboard. The MIDI echo
+will be on the MIDI channel of the currently selected staff!</para></note>
+</para></step>
+<step><para>
+Press the record button (<inlinemediaobject><imageobject><imagedata fileref="record.png"/></imageobject></inlinemediaobject>)!
+A metronome menu and a filter menu appear. They rest
+on screen until you press the <guibutton>Dismiss</guibutton> button. On metronome menu choose:
+<itemizedlist>
+<listitem><para>the recording tempo;</para></listitem>
+<listitem><para>the <hardware>device</hardware> the metronome shall play on;</para></listitem>
+<listitem><para>a bar and a beat note.</para></listitem>
+</itemizedlist>
+</para>
+<para>If you are not sure leave all values unchanged.</para>
+<note><para>
+The record tempo doesn't influence the playback tempo!</para></note>
+</step>
+<step><para>
+On metronome dialog press <guibutton>Start recording</guibutton>!
+You should hear a metronome. If not try a different <hardware>device</hardware>! The metronome plays an upbeat of 4 quarters.
+So begin playing on the <hardware>keyboard</hardware> with the beginning of the 5th quarter! If the score wasn't empty you
+should also hear the notes of the other staves.
+</para></step>
+<step><para>
+At the end of recording press the record button
+(<inlinemediaobject><imageobject><imagedata fileref="record.png"/></imageobject></inlinemediaobject>) again!
+A warning appears that this overrides the current staff.
+If you accept the MIDI --&gt; Score transformation begins. The result is still without bar lines and beams.
+</para></step>
+</procedure>
+
+<para>If the import is not as expected you can select some new filter values, see <link linkend="filter">above</link>. Choose:</para>
+
+<para>
+<menuchoice>
+<guimenu>St<accel>a</accel>ff</guimenu>
+<guimenuitem><accel>I</accel>mport recording</guimenuitem>
+</menuchoice>
+or press the <guibutton>Import recording</guibutton> button on
+filterdialog.</para>
+<para>This imports the recorded track again.</para>
+<para>If you are satisfied set the first bar line at the end of the anacrusis (if any) and choose:</para>
+<para>
+<menuchoice>
+<guimenu><accel>E</accel>dit</guimenu>
+<guimenuitem><accel>A</accel>utoBar</guimenuitem>
+</menuchoice>
+</para>
+
+<para>to insert the bar lines. And likewise:</para>
+<para>
+<menuchoice>
+<guimenu><accel>E</accel>dit</guimenu>
+<guimenuitem>Auto<accel>b</accel>eam</guimenuitem>
+</menuchoice>
+</para>
+
+<para>to construct the beams.</para>
+
+<para>In some cases the following functions may be useful:</para>
+<itemizedlist>
+<listitem><para><link linkend="cleanup_rests">Cleanup rests</link></para></listitem>
+<listitem><para><link linkend="merge">Merge MIDI tracks</link></para></listitem>
+</itemizedlist>
+
+<para><inlinemediaobject><imageobject><imagedata fileref="new.png"/></imageobject></inlinemediaobject>
+If you want to record a 2nd staff create a new staff and <link linkend="sel_voice"> determine the instrument</link>.
+Then create a TSE3 song:</para>
+
+<para>
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem><accel>C</accel>reate TSE3 song</guimenuitem>
+</menuchoice>
+</para>
+
+<para>Again press the record button
+(<inlinemediaobject><imageobject><imagedata fileref="record.png"/></imageobject></inlinemediaobject>) and start
+recording. You'll hear the other staves paying during record for your orientation.</para>
+</sect2>
+
+<sect2 id="midi_import_problems">
+<title>Problems with MIDI import</title>
+<itemizedlist>
+<listitem><para>The current version does not recognize triplets.</para></listitem>
+</itemizedlist>
+</sect2>
+</sect1>
+
+<sect1 id="usetse3">
+<title>Working with TSE3</title>
+<para><command>only with TSE3</command><inlinemediaobject><imageobject><imagedata fileref="smlogo.png"/></imageobject></inlinemediaobject></para>
+
+<para> Versions &gt;= 0.0.22 of the TSE3 library now support the ALSA sound system (<ulink url="http://www.alsa-project.org">Advanced Linux Sound Architecture project</ulink>)
+(Thanks to Pete Goodliffe &lt;pete.goodliffe@pace.co.uk&gt;). &noteedit; uses
+the TSE3 ALSA  MIDI scheduler as favored sound basis.
+If this doesn't work it tries to create an OSS (Open Sound System) scheduler <emphasis>(the traditional system)</emphasis>. In some special
+cases this can cause problems. You can avoid ALSA by :</para>
+<para>
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure &noteedit;</guimenuitem>
+</menuchoice>
+-&gt; Sound</para>
+
+<para>Note:</para>
+<itemizedlist>
+<listitem><para>If you have an ALSA system possibly both MIDI schedulers work. That's because the <acronym>ALSA</acronym> system has an <acronym>OSS</acronym>emulation.
+But the emulation doesn't support the read direction. So if you want to <link linkend="midikeyboard">read</link>/<link linkend="recmidi">record</link>
+from <hardware>MIDI keyboard</hardware> and you have an ALSA system, please use the <acronym>TSE3</acronym> <acronym>ALSA</acronym> scheduler.</para></listitem>
+<listitem><para>The <application>TiMidity++</application> v2.10.2 server works only in <acronym>ALSA</acronym> system.</para></listitem>
+</itemizedlist>
+
+<para>The TSE3 library defines an internal Song structure (see: <ulink url="http://TSE3.sourceforge.net/doc/Song.html">The TSE3 Song class</ulink>) and a file format
+(see: <ulink url="http://TSE3.sourceforge.net/doc/TSE3MDL.html">TSE3 Music Description Language (TSE3MDL)</ulink>).
+In the future some new TSE3 based projects are expected. Because &noteedit; can produce and read
+the TSE3 data the data will be interchangeable with these programs.</para>
+
+<para>
+Use
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem>TSE3 --&gt;<accel>S</accel>core</guimenuitem>
+</menuchoice>
+to produce the the TSE3 Song structure from score.
+If you have a TSE3 Song structure you can:</para>
+<para><itemizedlist><listitem><para>create a TSE3  file: 
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem><accel>W</accel>rite TSE3 Song</guimenuitem>
+</menuchoice>
+<emphasis>(choose a file name)</emphasis>.</para></listitem>
+<listitem><para>create a MIDI file: 
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem>TSE3 MIDI <accel>o</accel>ut</guimenuitem>
+</menuchoice>
+<emphasis>(choose a file name)</emphasis>.
+&noteedit; has its own MIDI exporter. But the files produced by TSE3 are smaller because it
+creates compressed data (for details see: <ulink url="http://TSE3.sourceforge.net/doc/api/TSE3__MidiFileExport.html#ref1">
+The TSE3 Midi export class</ulink>).</para></listitem>
+<listitem><para>play the song for checking the correctness:
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem><accel>P</accel>lay TSE3 Song</guimenuitem>
+</menuchoice>
+. Note: There
+is no note highlighting and you can't stop playback in current version.</para></listitem>
+<listitem><para>reconstruct the score from TSE3 Song:
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem>TSE3 --&gt;<accel>S</accel>core</guimenuitem>
+</menuchoice>
+. Because the TSE3 Song structure
+only stores the MIDI relevant data a lot of score information gets lost during TSE3 Song creation. See
+<link linkend="midiimport">Import MIDI</link> about how to reconstruct the score.</para></listitem>
+</itemizedlist></para>
+
+<para>You have 2 possibilities to create a TSE3 Song structure from file:</para>
+<itemizedlist>
+<listitem><para>From MIDI file:
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem>TSE3 MIDI <accel>i</accel>n</guimenuitem>
+</menuchoice>
+(See also: <link linkend="midiimport">Import MIDI</link>)</para></listitem>
+<listitem><para>From TSE3 file:
+<menuchoice>
+<guimenu>TSE<accel>3</accel></guimenu>
+<guimenuitem><accel>R</accel>ead TSE3 song</guimenuitem>
+</menuchoice></para></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="quit_prog">
+<title>Quit the program</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem><accel></accel>Quit</guimenuitem>
+</menuchoice>
+</para>
+</sect1>
+
+<sect1 id="shortcuts">
+<title>Shortcuts</title>
+
+<para>Note! All <link linkend="keyconf">keys are configurable</link></para>
+
+<informaltable>
+<tgroup cols="2">
+<tbody>
+
+<row><entry>key</entry><entry>operation</entry></row>
+<row><entry>Delete</entry><entry> delete element, new actual is next element</entry></row>
+<row><entry>Backspace</entry><entry> delete element, new actual is previous element</entry></row>
+<row><entry>Insert</entry><entry> toggle edit mode</entry></row>
+<row><entry>1 </entry><entry> whole note</entry></row>
+<row><entry>2 </entry><entry> half note</entry></row>
+<row><entry>3 </entry><entry> toggle triplet</entry></row>
+<row><entry>4 </entry><entry> quarter note</entry></row>
+<row><entry>5 </entry><entry> 8th note</entry></row>
+<row><entry>6 </entry><entry> 16th note</entry></row>
+<row><entry>7 </entry><entry> 32nd note</entry></row>
+<row><entry>8 </entry><entry> 64th note</entry></row>
+<row><entry>9 </entry><entry> 128th note</entry></row>
+<row><entry>. </entry><entry> toggle dotted</entry></row>
+<row><entry>~, ` </entry><entry> toggle tied</entry></row>
+<row><entry>#, + </entry><entry> sharp</entry></row>
+<row><entry>n, = </entry><entry> natural</entry></row>
+<row><entry>b, - </entry><entry> flat</entry></row>
+<row><entry>Alt + cursor left</entry><entry>Goto start</entry></row>
+<row><entry>Alt + cursor right</entry><entry>Goto end</entry></row>
+<row><entry>K</entry><entry>toggle keyboard insert mode</entry></row>
+<row><entry>C</entry><entry>pitch C</entry></row>
+<row><entry>D</entry><entry>pitch D</entry></row>
+<row><entry>E</entry><entry>pitch E</entry></row>
+<row><entry>F</entry><entry>pitch F</entry></row>
+<row><entry>G</entry><entry>pitch G</entry></row>
+<row><entry>A</entry><entry>pitch A</entry></row>
+<row><entry>B</entry><entry>pitch B</entry></row>
+</tbody>
+</tgroup>
+</informaltable>
+</sect1>
+
+</chapter>
+
+
+<chapter id="credits">
+<title>Credits and License</title>
+
+<para>
+&noteedit; Copyright 2001 Jörg Anders
+</para>
+
+
+<para>This documentation is licensed under the terms of the <ulink url="http://www.fsf.org/licenses/fdl.html">GNU Free Documentation License.</ulink></para>
+<para>This program is licensed under the terms of the <ulink url="http://www.fsf.org/copyleft/gpl.html">GNU General Public License.</ulink></para>
+
+</chapter>
+
+<appendix id="faq"><title>Frequently Asked Questions (FAQ)</title>
+
+<qandaset>
+<qandaentry>
+<question>
+<para>
+I wrote a <application>MUP</application> file but &noteedit; cannot read it.
+</para>
+</question>
+<answer>
+<para>I said &noteedit; uses a <userinput>similary</userinput> file format as <application>MUP</application>.
+The files produced by &noteedit; should be readable by <application>MUP</application>. But the
+contrary way failes in most cases.
+</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+Can &noteedit; print the score ?
+</para>
+</question>
+<answer>
+<para>
+Not directly! But with the help of some music typesetting programs you can print the score. Read:
+<itemizedlist>
+<listitem><para><link linkend="musixtex">Export<application>MusixTeX</application></link></para></listitem>
+<listitem><para><link linkend="musixtex_export_appendix"><application>MusiXTe</application>X export discussion page</link></para></listitem>
+<listitem><para><link linkend="lilyexport">Export <application>LilyPond</application></link></para></listitem>
+<listitem><para><link linkend="lilypond_export_appendix"><application>LilyPond</application> export discussion page</link></para></listitem>
+<listitem><para><link linkend="abcexport">Export <application>ABC music</application></link></para></listitem>
+<listitem><para><link linkend="abc_music_appendix"><application>ABC music</application> export discussion page</link></para></listitem>
+<listitem><para><link linkend="pmxexport">Export <application>PMX</application></link></para></listitem>
+<listitem><para><link linkend="pmx_export_appendix"><application>PMX</application> export discussion page</link></para></listitem>
+</itemizedlist>
+</para>
+<para>Furthermore the &noteedit; storage format is close to the <ulink url="http://www.arkkra.com/">MUP</ulink>
+format. Thus, most &noteedit; files are directly MUP-able</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+I can't hear any sound! I see the running red notes but there is no sound! What's wrong?
+</para>
+</question>
+<answer>
+<para>First of all: Try to play a MIDI file with <application>kmid</application> (<emphasis>not (!!!)</emphasis>
+<application>kmidi</application>). As long as <application>kmid</application> does not produce any sound, &noteedit;
+(and any other MIDI device based software) will not produce any sound, too!
+The reason is: Either your soundcard has no hardware MIDI synthesizer or
+it has a hardware MIDI synthesizer but it is not supported by Linux.</para>
+<para>Be not confused if you can play MIDI files on Windows. If your soundcard has no hardware MIDI synthesizer
+Windows automatically starts a software which converts the MIDI data into WAV (PCM) data in real time. This
+works if your computer has enough performance.</para>
+<para>Such software exists for Linux, too. But it is more complicated because:</para>
+<itemizedlist>
+<listitem><para>It works only if you have an <ulink url="http://www.alsa-project.org">ALSA</ulink> system.
+This is always the case with <ulink url="http://www.suse.de/de/index.html">SuSE</ulink> Linux. (Other
+Linuxes I don't know). In any case: You can always change from OSS System to ALSA by compiling the
+ALSA modules "by hand".</para></listitem>
+<listitem><para>You have to start this software "by hand".</para></listitem>
+<listitem><para>These software MIDI sythesizers need a so-called soundfont, a collection of sample tones of
+every instrument of a virtual orchestra. These soundfonts are copyrighted, i.e. actually nothing for
+a free system like Linux</para></listitem>
+</itemizedlist>
+<para>
+But there is a (relatively bulky) way! See <link linkend="timidity_server">The TiMidity server</link>
+detailed instructions! </para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+If I close &noteedit; I hear a terrible loud sound. What does it mean and how can I avoid it?
+</para>
+</question>
+<answer>
+<para>
+Actually this sound shall be played during <application>MusiXTeX</application> export and remember the
+users with dramatic effort that <userinput><literal>latex</literal> file.<literal>tex</literal></userinput>
+is incorrect (see <link linkend="musixwarn">next question</link>). Unfortunatly you block the sound device with some other application. Note, this
+application can be <application>timidity</application> in server mode. In this case the aRts sound server
+which is responsible for playing this sound playes the sound as soon as the sound device
+becomes free. And this is the case if you close noteedit.</para>
+<para>
+To avoid the sound dectivate the checkbox at: 
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure &noteedit;</guimenuitem>
+</menuchoice>
+-&gt; MusixWarn
+</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para id="musixwarn">
+Why is there such a terrible warning during MuxiXTeX export ?
+</para>
+</question>
+<answer>
+<para>
+I tried to clarify that <userinput><literal>latex</literal> file.<literal>tex</literal></userinput>
+does not suffice. You'll find such a hint on WEB page in this documentation in
+tips of the day. I implored the users: "Please read the
+<link linkend="musixtex_export_appendix"><application>MusiXTeX</application> export discussion page</link>!". Nothing helps!
+If I search the WEB I get a lot of &noteedit; descriptions claiming <userinput><literal>latex</literal> file.<literal>tex</literal></userinput>
+is correct. And I see examples. Some users proudly present the <application>MusiXTeX</application> ouput and do
+not remark the unaligned right margin.</para>
+<para>Even worse: I get some mails: "&noteedit; is ok but it produces <application>MusiXTeX</application> pages with
+non-aligned right margin!"</para>
+<para>So I decided for this drastic feature.</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+How can I avoid the terrible warning during <application>MusiXTeX</application> export ?
+</para>
+</question>
+<answer>
+<para>
+Dectivate the checkbox at: 
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure &noteedit;</guimenuitem>
+</menuchoice>
+-&gt; MusixWarn
+</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+During configure I get an error: Cannot find >= Qt-2.2.2
+</para>
+</question>
+<answer>
+<para>
+This can be because of many problems. If you are sure you have an appropriate Qt then most often this 
+has to do with your compiler version.
+Many users install g++-3.x and expect that programs can be linked with
+QTs/KDEs which are compiled with g++-2.x. But as experiances show: This is not possible!
+You have to re-compile the whole Qt and the whole KDE (takes 3 days).
+</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>I get an error concerning apps/noteedit/resources.</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<computeroutput>"Can't find apps/noteedit/resources. Check your installation and $KDEDIR if set"</computeroutput></para>
+</question>
+<answer>
+<para>You didn't install &noteedit; (make install) !
+The local installation is very complicated.
+There is a shell script that should place the files and links  correctly in &noteedit; top directory:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd&nbsp;</userinput><replaceable>path</replaceable><userinput>/noteedit-2.7.4</userinput></para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>./admin/locinst.sh</userinput></para>
+<para>Then set environment variable <option>KDEDIRS</option> to noteedit top directory:</para>
+<informaltable>
+<tgroup cols="2">
+<tbody>
+<row><entry>Shell</entry><entry>command</entry></row>
+<row><entry>(t)csh</entry>
+<entry><userinput>setenv&nbsp;KDEDIRS&nbsp;<replaceable>path_to_noteedit-2.7.4_direcory</replaceable></userinput></entry></row>
+<row><entry>other shell</entry><entry><userinput>export&nbsp;KDEDIRS=<replaceable>path_to_noteedit-2.7.4_direcory</replaceable></userinput></entry></row>
+</tbody>
+</tgroup>
+</informaltable>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd noteedit</userinput></para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;./noteedit&nbsp; [</userinput><replaceable>file</replaceable><userinput>.not</userinput>]</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>During file load an error concerning klauncher occurs:</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<computeroutput>"... Could not read network connection list.</computeroutput></para>
+<para><computeroutput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please check that the 'dcopserver' program is running!"</computeroutput></para>
+<para>and:</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<computeroutput>"can't talk to klauncher"</computeroutput></para>
+</question>
+<answer>
+<para>You use &noteedit; outside KDE and the KDE binaries are not in your PATH. Add the KDE binaries to your PATH!
+If this doesn't help try:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /tmp/.ICE-unix/*</userinput></para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm $HOME/.DCOPserver_*</userinput></para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+I loaded a <emphasis>.not</emphasis> file made with a previous &noteedit; version. It seems the the first tempo signature
+appears in last instead of first staff. What shall I do?
+</para>
+</question>
+<answer>
+<para>
+Yes, there is a slight version incompatibility concerning <emphasis>.not</emphasis> files
+before &lt; --- &gt; after 1.18.2. Please correct this and store the file. Now
+the tempo signature should be at correct place.
+</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+I wrote a score with leading graces. But I can't hear them!
+</para>
+</question>
+<answer>
+<para>
+Please avoid leading graces! Leading graces have a negative start time. You'll never hear them. Insert an empty
+measure instead!
+</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+Something is wrong with lyrics spacing. The words overlap!
+</para>
+</question>
+<answer>
+<para>
+I don't know what's wrong! It has to do with font management of your X11 system. Try to change in 
+noteedit/chord.cpp near line 97:</para>
+
+<literallayout>
+#if QT_VERSION >= 300
+#define LYRICSWIDTH_FAC(x) ((int) (1.5 * x))
+#else
+#define LYRICSWIDTH_FAC(x) (x)
+#endif
+</literallayout>
+
+<para>
+against:
+</para>
+<literallayout>
+#define LYRICSWIDTH_FAC(x) ((int) (1.5 * x))
+</literallayout>
+
+<para>If this doesn't help increase the value 1.5
+</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+Something is wrong with lyrics spacing. The spacing between the words is too large!
+</para>
+</question>
+<answer>
+<para>
+I don't know what's wrong! It has to do with font management of your X11 system. Try to change in 
+noteedit/chord.cpp near line 97:</para>
+
+<literallayout>
+#if QT_VERSION >= 300
+#define LYRICSWIDTH_FAC(x) ((int) (1.5 * x))
+#else
+#define LYRICSWIDTH_FAC(x) (x)
+#endif
+</literallayout>
+
+<para>
+against:
+</para>
+<literallayout>
+#define LYRICSWIDTH_FAC(x) (x)
+</literallayout>
+
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+I loaded a <emphasis>.not</emphasis> file made with a previous &noteedit; version. But
+the staff and lyrics distances are wrong.
+</para>
+</question>
+<answer>
+<para>
+The meaning of the <option>overlength</option>, <option>underlength</option> and <option>lyricsdist</option> parameters
+has changed in version 1.11.0:-(  Please edit the ".not" files and multiply the
+distance values with 3. Or load every ".not" file and correct the values
+using the staff properties dialog.
+</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+The replay works but it hangs during page turn over. What can I do ?
+</para>
+</question>
+<answer>
+<para>
+If you use a software midi synthesizer like <link linkend="timidity_server">TiMidity server</link>
+please start them as root and icrease its priority. This way the
+priority ot the TiMidity process increases.</para>
+<para>Use the following command in this case:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timidity --realtime-priority=100 -iA -B2,8 -Os1l -s 44100</userinput></para>
+<note><para> This can lead to operating system problems if your CPU
+performance is too small! If so, then try to decrease the priority
+and/or the frequency:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timidity --realtime-priority=60 -iA -B2,8 -Os1l -s 22050</userinput></para></note>
+<para>If this doesn't help then turn off the <link linkend="showcontext">context view</link>. Unfortunately, the context view
+is a very time consuming issue.</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+I cannot hear the sound although <application>Kmidi</application> works without any problem! What's wrong?
+</para>
+</question>
+<answer>
+<para>This is no surprise! If <application>Kmid</application> worked and &noteedit; not, this were
+surprising. <application>Kmidi</application> first converts the MIDI data into PCM (WAV) data.
+Then it plays the sound via PCM (not MIDI) device. You can check this by playing the sound with
+<application>Kmidi</application> and handle the PCM ruler and then the MIDI ruler on your sound
+mixer. The MIDI ruler (if any) has no influence.</para>
+<para>Important: Try to play a MIDI file with <application>kmid</application> (<emphasis>not (!!!)</emphasis>
+<application>kmidi</application>). As long as <application>kmid</application> does not produce any sound, &noteedit;
+(and any other MIDI device based software) will not produce any sound, too!
+The reason is: Either your soundcard has no hardware MIDI synthesizer or
+it has a hardware MIDI synthesizer but it is not supported by Linux.</para>
+<para>Be not confused if you can play MIDI files on Windows. If your soundcard has no hardware MIDI synthesizer
+Windows automatically starts a software which converts the MIDI data into WAV (PCM) data in real time. This
+works if your computer has enough performance.</para>
+<para>Such software exists for Linux, too. But it is more complicated because:</para>
+<itemizedlist>
+<listitem><para>It works only if you have an <ulink url="http://www.alsa-project.org">ALSA</ulink> system.
+This is always the case with <ulink url="http://www.suse.de/de/index.html">SuSE</ulink> Linux. (Other
+Linuxes I don't know). In any case: You can always change from OSS System to ALSA by compiling the
+ALSA modules "by hand".</para></listitem>
+<listitem><para>You have to start this software "by hand".</para></listitem>
+<listitem><para>These software MIDI sythesizers need a so-called soundfont, a collection of sample tones of
+every instrument of a virtual orchestra. These soundfonts are copyrighted, i.e. actually nothing for
+a free system like Linux</para></listitem>
+</itemizedlist>
+<para>
+But there is a (relatively bulky) way! See <link linkend="timidity_server">The TiMidity server</link>
+detailed instructions! </para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+&noteedit; crashes after the output <computeroutput>TSE3 ALSA MIDI scheduler created</computeroutput>
+</para>
+</question>
+<answer>
+<para>In most cases it has not to do with &noteedit; itself. It has to do with your ALSA system or
+more precise with your ALSA module parameters in <filename>/etc/modules.conf</filename>. To clarify
+this try the TSE3 test program <userinput>tse3play</userinput>. First determine the available ports:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tse3play -list</userinput></para>
+<para>Or it this doen't work:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tse3play -list </userinput><replaceable>file</replaceable><userinput>.mid</userinput></para>
+<para>The on every available MIDI port try to play the MIDI file:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tse3play -port </userinput> <replaceable>port file</replaceable><userinput>.mid</userinput></para>
+<para>till you hear the music or it crashes. If it crashes it is clear your ALSA system is the reason why.</para>
+<para>Actually I can't help here because I'm not an ALSA guru. Please contact the ALSA developers! Time ago I had a similar problem with a
+laptop with Yamaha YMF7xx sound card. Even worse: My whole Linux crashed. At this time I adapted the
+OSS (Open Sound System) hints in Linux source documentation (<filename>/usr/src/linux/Documentation/sound/README.ymfsb</filename>)
+to the ALSA system and it worked. But I'm afraid this is no general solution. Note: This was
+ALSA-0.5.</para>
+<para>As an interim solution you can start &noteedit; without creating an ALSA MIDI scheduler:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<userinput>noteedit --noalsa</userinput></para>
+
+<note><para>&noteedit; uses the so-called ALSA-OSS emulation in this case. The ALSA-OSS emulation
+doesn't permit the read direction. Thus, read and record from MIDI keyboard isn't possible.</para>
+</note>
+
+<para>Another option would be: Remove ALSA and use the pre-ALSA sound modules!</para>
+
+<para>Another possibility is: You don't have any sound device and &noteedit; is badly compiled. 
+This can also be detected by:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tse3play -list</userinput></para>
+<para>Or it this doen't work:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tse3play -list </userinput><replaceable>file</replaceable><userinput>.mid</userinput></para>
+<para>If this doesn't report any device a bad &noteedit; compilation could be the reason why. Try
+to re-compile &noteedit; and make sure the <computeroutput>-fexecptions</computeroutput> option is set during
+compilation of <filename>midimapper.cpp</filename> and <filename>tse3handler.cpp</filename>.</para>
+</answer>
+</qandaentry>
+<qandaentry>
+<question>
+<para>
+My whole Linux hangs if I try to start &noteedit;. I have to restart the system.
+</para>
+</question>
+<answer>
+<para>Note! It is impossible that a program which runs in user space stops Linux <emphasis>(except swap overflow)</emphasis>. Even if the
+program has tons of bugs. It has to to with you ALSA module parameters. Unfortunately, I can't help you in this case. Please contact the ALSA developers!
+As an interim solution you can start &noteedit; without creating an ALSA MIDI scheduler:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<userinput>noteedit --noalsa</userinput></para>
+
+<note><para>&noteedit; uses the so-called ALSA-OSS emulation in this case. The ALSA-OSS emulation
+doesn't permit the read direction. Thus, read and record from MIDI keyboard isn't possible.</para>
+</note>
+
+<para>Another option would be: Remove ALSA and use the pre-ALSA sound modules!</para>
+</answer>
+</qandaentry>
+</qandaset>
+</appendix>
+
+
+<appendix id="midi_import_appendix"><title>The MIDI import discussion page</title>
+
+<para>The following text is a overview of the essence of MIDI data. It shall give
+non-information engineers the possibility to use the MIDI event filter and tell them
+about the problems of importing MIDI data. A detailed MIDI description can be found 
+at <emphasis>(for instance)</emphasis> <ulink url="http://TSE3.sourceforge.net/docs.html">http://TSE3.sourceforge.net/docs.html</ulink>.</para>
+
+
+<mediaobject>
+<imageobject><imagedata align="center" fileref="midi.png"/></imageobject>
+</mediaobject>
+
+<para>Imagine a <emphasis>pump</emphasis> which presses air through 8 parallel tubes. The tubes have a small
+slot with an endless paper in it. At the end of each of these tubes is
+an organ-pipe. Each of the 8 organ-pipes plays a different note. As long as there is paper
+in the slot you can't hear anything. But the paper has elongated holes and it is moved upward with a certain
+<emphasis>tempo</emphasis>. So if one of these elongated holes is in the slot the appropriate note sounds.
+The volume can be determined by the width of the elongated holes.</para>
+
+<para>Nothing more is necessary to determine music! And MIDI data are of this kind! A MIDI file can be
+regarded as a long paper with holes:</para>
+
+<mediaobject>
+<imageobject><imagedata align="center" fileref="roll1.png"/></imageobject>
+</mediaobject>
+
+
+<para>At the border is a scale of <emphasis>ticks</emphasis> and the tempo is given in ticks per second.</para>
+
+<para>Now regard the following situation:</para>
+
+<mediaobject>
+<imageobject><imagedata align="center" fileref="roll2.png"/></imageobject>
+</mediaobject>
+
+<para>In <userinput>C</userinput>-line is a hole of 12 ticks and in <userinput>D</userinput>-line a hole of 6 ticks. &noteedit; shall
+build a score from this information. But it is impossible because <emphasis>ticks</emphasis> is a MIDI term.
+But &noteedit; needs  <emphasis>half note</emphasis>, <emphasis>quarter note</emphasis> and so on.</para>
+
+<para>Fortunately the MIDI file contains a hint. The <emphasis>MIDI header chunk</emphasis> has a field called
+<emphasis>delta-time ticks per quarter</emphasis>. And if this field determines 24 ticks per quarter the score
+is <emphasis>(almost)</emphasis> clear: 
+<inlinemediaobject>
+<imageobject><imagedata align="center" fileref="score1.png"/></imageobject>
+</inlinemediaobject></para>
+
+<para>Is it really clear? Here are some other possibilities:
+<mediaobject>
+<imageobject><imagedata fileref="score2.png"/></imageobject>
+</mediaobject>
+
+<mediaobject>
+<imageobject><imagedata fileref="score3.png"/></imageobject>
+</mediaobject>
+
+<mediaobject>
+<imageobject><imagedata fileref="score4.png"/></imageobject>
+</mediaobject>
+</para>
+
+<para>That's the first reason for the necessity of human intervention. The MIDI file doesn't contain any hint
+about beams or ties or so. Furthermore in some cases the clef in unclear. &noteedit; tries to choose the
+most suitable clef. But sometimes the clef is not as expected. In this case you can <link linkend="change_clef">
+change the clef</link>.</para>
+
+<para>Fortunately MIDI files <emphasis>(can)</emphasis> contain a hint about the time signature and the key signature. If present &noteedit; uses this information.</para>
+
+<para>But really difficult problems occur in MIDI files generated by a human playing. Regard the following example:</para>
+<mediaobject>
+<imageobject><imagedata fileref="roll3.png"/></imageobject>
+</mediaobject>
+
+<para>Assume a quarter note has 16 ticks! There is a <userinput>C</userinput> of 11 ticks and a <userinput>E</userinput> of
+8 ticks. The exact computation is:</para>
+<para>11 ticks = 8 ticks + 2 ticks + 1 tick --&gt; 8th + 32nd + 64th followed by a 64th rest followed by a 8th:
+<inlinemediaobject>
+<imageobject><imagedata fileref="score5.png"/></imageobject>
+</inlinemediaobject>
+</para>
+<para>But presumably the musician wanted to play: 
+<inlinemediaobject>
+<imageobject><imagedata fileref="score6.png"/></imageobject>
+</inlinemediaobject>. But he released the
+<userinput>C</userinput>-key a bit early. And &noteedit; can "hear" with a precision of a 128th note! Therefore it 
+recognizes a 64th rest.</para>
+<para>These are the situations where MIDI event filters should be applied. &noteedit; has an internal algorithm to estimate the note length.</para>
+</appendix>
+
+<appendix id="lilypond_export_appendix">
+<title>The LilyPond export discussion page</title>
+
+<sect1 id="oldlily"><title>"old" LilyPond</title>
+<para><userinput>Attention!</userinput> If you use <application>LilyPond</application>-1.2 (or less) use the <application>configure</application> option:</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<option>--with-oldlily</option></para>
+<para>Otherwise the output is incorrect.</para>
+
+<para><application>LilyPond</application> is a new music typesetter. It produces beautiful sheet music  from a high level description file.
+The home page is at <ulink url="http://lilypond.org">http://lilypond.org</ulink>.
+Furthermore <application>LilyPond</application> is part of most Linux distributions.</para>
+
+
+<para>The <application>LilyPond</application> input is easy to understand. Thus, you have the possibility to post-edit
+the &noteedit; output.</para>
+</sect1>
+
+<sect1 id="lily_quickstart"><title>Quick Start</title>
+
+<para>I assume you produced a file named <filename>mus1.ly</filename>. 
+Accept all parameters on the "File export" form. Or choose <option>landscape</option> format if you wish.
+If you want to limit the count of
+measures per line press the appropriate button
+(<inlinemediaobject>
+<imageobject><imagedata fileref="limitbutton.png"/></imageobject>
+</inlinemediaobject>)
+and choose a number.</para>
+</sect1>
+<sect1 id="lily_generate_dvi"><title>Generating DVI file</title>
+<para>If you compiled <application>LilyPond</application> by your own, you ordinarily have to set some environment
+variables. There are some scripts for your <application>LilyPond</application> installation in <application>buildscripts/out</application>
+subdirectory of the <application>LilyPond</application> source tree. Apply the script (especially if the
+<application>LilyPond</application> output isn't as expected):</para>
+<informaltable>
+<tgroup cols="2">
+<tbody>
+<row>
+<entry>(t)csh</entry>
+<entry>
+source <filename><replaceable>path</replaceable>/buildscripts/out/lilypond-login</filename>
+</entry>
+</row>
+<row>
+<entry>other shell</entry>
+<entry>
+<filename>.&nbsp; <replaceable>path</replaceable>/buildscripts/out/lilypond-profile</filename>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+
+<para>Type:</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>ly2dvi mus1.ly</userinput></para>
+<para>This produces <filename>mus1.dvi</filename></para>
+<para>You can preview the result with:</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>xdvi mus1.dvi</userinput></para>
+<para>Or if you exported in landscape mode:</para>
+<para><userinput>xdvi -paper 30x21 mus1.dvi</userinput>
+</para>
+</sect1>
+
+<sect1 id="lily_generate_postscript">
+<title>Generating Postscript file</title>
+<para>To get a printable Postscript output do:</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>dvips mus1.dvi -o mus1.ps</userinput></para>
+<para>Or if you decided for <option>landscape</option> format:</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>dvips mus1.dvi -t landscape -o mus1.ps</userinput></para>
+<para>Or (better):</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>ly2dvi -P mus1.ly</userinput></para>
+<para>This produces a printable output <filename>mus1.ps</filename></para>
+
+<para>If you have a PostScript printer the printing is produced by:</para>
+<para><userinput>lpr mus1.ps</userinput></para>
+</sect1>
+
+<sect1 id="lily_install">
+<title>LilyPond installation tips</title>
+<para>Besides the TeX base package you need for installation and usage:</para>
+<itemizedlist>
+<listitem><para>The MetaPost package;</para></listitem>
+<listitem><para>The kpathsea headers;</para></listitem>
+</itemizedlist>
+<para>These packages are not necessarily installed together with the TeX base package.</para>
+<para>For the <application>LilyPond</application>, <application>ly2dvi</application>, <application>xdvi</application>and <application>dvips</application>
+programs possibly some environment variables must be set. Please read the
+LilyPond install instruction and have a look at the <application>buildscripts/out</application>
+subdirectory!</para>
+<para>If you get some strange symbols on PostScript/DVI file apply the <application>clean-fonts</application>
+script in <application>buildscripts/out</application> subdirectory.</para>
+</sect1>
+
+<sect1 id="lily_fonts">
+<title>Font sizes</title>
+
+<para><application>LilyPond</application> supports different font sizes. You can choose one with 
+font size button (
+<inlinemediaobject>
+<imageobject><imagedata fileref="fontsize.png"/></imageobject>
+</inlinemediaobject>
+)</para>
+</sect1>
+
+<sect1 id="lily_beams">
+<title>Beams</title>
+
+<para>Do not expect the
+same beams as on &noteedit; score, because <application>LilyPond</application> has its own very intelligent beam algorithm.
+It is recommended to use it. But if you want the same beams as in &noteedit; select the
+<emphasis>keep beams</emphasis> checkbox.</para>
+</sect1>
+
+<sect1 id="lily_stems">
+<title>Stem direction</title>
+<para>Do not expect the
+same stem direction as on &noteedit; score, because <application>LilyPond</application> has its own stem algorithm.
+But if you want the same stem direction as in &noteedit; select the
+<emphasis>keep stem dir.</emphasis> checkbox.</para>
+<para>
+Another possibility is the <emphasis>keep stem dir. if multiple voices</emphasis> checkbox. In this case
+only those staffs keep the stem direction which have more than 1 voice.</para>
+</sect1>
+
+<sect1 id="lily_ties">
+<title>Ties</title>
+
+<para>To reduce the number of ties select the <emphasis>sparse ties</emphasis> checkbox.</para>
+<para>The following cannot be expressed in <application>LilyPond</application>:
+<inlinemediaobject>
+<imageobject><imagedata fileref="parttie1.png"/></imageobject>
+</inlinemediaobject>.
+&noteedit; warns you in this case and the result will be:
+<inlinemediaobject>
+<imageobject><imagedata fileref="parttie2.png"/></imageobject>
+</inlinemediaobject>.</para>
+</sect1>
+
+<sect1 id="lily_volumes">
+<title>Volume signs</title>
+<para> You can choose 3 different policies of exporting the volume signs:</para>
+<itemizedlist>
+<listitem><para>Omit all volume signs;</para></listitem>
+<listitem><para>Volume signs above the staff;</para></listitem>
+<listitem><para>Volume signs below the staff;</para></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="lilypond_score_problem">
+<title>Problems exporting the score Layout</title>
+<para><application>LilyPond</application> can deal with braces and brackets. It changes the staff rules according to
+some LilyPond inherent rules. I was told it is possible to break these rules. But I assume they are there for good reasons. &noteedit; will warn you
+if a LilyPond rule will change the staff rule policy.</para>
+</sect1>
+
+<sect1 id="lily_omit_score">
+<title>Omit the score generation</title>
+
+<para>Advanced <application>LilyPond</application> users who want to produce their own score layout possibly find
+the <emphasis>only voices</emphasis> checkbox useful. In this case &noteedit; produces a file with
+only the voice (staff) definitions. The <application>LilyPond</application> user should supply a file with
+the score definition and an appropriate include:</para>
+
+<literallayout>
+\include "paper16.ly"
+
+\include "theFromNoteeditProducedFile.ly"
+
+\score {
+        ...
+
+        \paper {
+                ...
+        }
+}
+
+</literallayout>
+</sect1>
+
+<sect1 id="lily_measures">
+<title>Measures</title>
+
+<para>&noteedit; produces bar lines in <application>LilyPond</application> input file. This causes <application>LilyPond</application> to
+check the correct adjustment of the measures and warns you if it isn't correct.
+The output is produced in any case. But because of this warnings you get a also
+a warning from &noteedit;.</para>
+</sect1>
+
+
+<sect1 id="lily_drums">
+<title>Drum notes</title>
+<para> First of all: I was told my drum exportation doesn't
+use all <application>LilyPond</application> featurs. Perhaps a <application>LilyPond</application> guru can
+review the &noteedit; <application>LilyPond</application> output and send me a mail
+what to to.</para>
+<para>You can try to export drum notes by checking  the appropriate checkbox. But be warned! <application>LilyPond</application>
+will fail in most cases!</para>
+</sect1>
+
+<sect1 id="lily_grace_problems">
+<title>Problems with grace notes</title>
+<para><application>LilyPond</application> changes the the beam status reasonably. Version 1.4.x cannot deal with slurs
+in grace notes. &noteedit; will warn you.</para>
+</sect1>
+
+<sect1 id="lily_international">
+<title>international lyrics</title>
+<para>There is a choise to select output charachter coding. You can choose between ascii, utf8, iso-latin1, and unicode.
+Perhaps this helps to create more interantional LilyPond output.</para>
+</sect1>
+
+<sect1 id="lily_chord_problems">
+<title>
+Problems with guitar chord diagrams</title>
+<para>
+LilyPond cannot deal with guitar chord diagrams. Actually it has a
+special feature for chord name annotation. But this is unusable for &noteedit; export because it tries reverse
+mapping from pitch combination to chord name. Thus, &noteedit; exports the chord names as ordinary uptext.
+</para>
+</sect1>
+
+</appendix>
+
+<appendix id="musicxml_export_appendix">
+<title>MusicXML export discussion page</title>
+
+<sect1><title>About MusicXML</title>
+<para> MusicXML is a new music interchange format for music software programs.
+MusicXML is currently supported by many companies and music software developers
+in their products, such as
+<application>Finale</application>,
+<application>KGuitar</application>,
+<application>Rosegarden</application>,
+<application>SharpEye</application>,
+<application>Tabazar</application>
+and
+<application>XEMO</application>.
+Furthermore, converters to and from various other formats exist.
+</para>
+<para>
+See <ulink url="http://www.musicxml.org/xml">http://www.musicxml.org/xml</ulink>
+for more information about MusicXML.
+</para>
+</sect1>
+
+<sect1 id="musicxml_limits">
+<title>Limitations</title>
+
+<para>The current MusicXML exporter does not support:</para>
+
+<itemizedlist>
+<listitem><para>Drum clefs and notes</para></listitem>
+<listitem><para>More than two voices in one staff</para></listitem>
+<listitem><para>Multistaff parts (e.g. for piano music one part with two staves
+should be generated)</para></listitem>
+<listitem><para>Note shapes (cross, alternative cross, cross with circle,
+rectangle and triangle)</para></listitem>
+<listitem><para>Score info (subject, last author and comment)</para></listitem>
+<listitem><para>Score layout (braces, brackets etc.)</para></listitem>
+<listitem><para>Staff properties (the options)</para></listitem>
+<listitem><para>Voice changes</para></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="musicxml_export_kguitar">
+<title>Export to KGuitar</title>
+
+<para>
+Due to <application>KGuitar</application>'s design as a guitarist tabulature
+environment, many classical score related features are not supported.
+As of KGuitar version 0.4.9, no specific bugs are found when importing
+MusicXML files generated by &noteedit;.
+</para>
+</sect1>
+
+</appendix>
+
+<appendix id="musicxml_import_appendix">
+<title>MusicXML import discussion page</title>
+
+<sect1 id="musicxml_import_limits">
+<title>Limitations</title>
+
+<para>Just like the MusicXML exporter, the current importer does not support:
+</para>
+
+<itemizedlist>
+<listitem><para>Drum clefs and notes</para></listitem>
+<listitem><para>Note shapes (cross, alternative cross, cross with circle,
+rectangle and triangle)</para></listitem>
+<listitem><para>Score info (subject, last author and comment)</para></listitem>
+<listitem><para>Score layout (braces, brackets etc.)</para></listitem>
+<listitem><para>Staff properties (the options)</para></listitem>
+<listitem><para>Voice changes</para></listitem>
+</itemizedlist>
+
+<para>Multistaff parts (e.g. piano music) are imported as several separate
+staves.</para>
+
+<para>The importer generates a fatal error for any event that prevents
+importing in a useful way. Warnings are generated for everything recognized
+and supported, but containing (recoverable) errors.
+</para>
+
+<para><userinput>Note: </userinput>to prevent too many warnings, MusicXML
+features that are recognized by the importer, but not handled, do not
+generate a warning. Unrecognized MusicXML features do generate warnings.
+</para>
+
+<para>Due to bugs in Qt version 2.x, importing UTF-16 encoded MusicXML files
+is not possible when &noteedit; uses that Qt version. This is typically
+the case when running on &kde; version 2.x.
+</para>
+</sect1>
+
+<sect1 id="musicxml_import_kguitar">
+<title>Import from KGuitar</title>
+
+<para>
+As of <application>KGuitar</application> version 0.4.9, the following problems
+are found:
+</para>
+
+<itemizedlist>
+<listitem><para>For each track, KGuitar exports two staves (classical
+notation and tabulature). In &noteedit; this results in one staff with notes
+and one empty staff.</para></listitem>
+<listitem><para>Many "Repositioning voice" errors may be reported</para></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="musicxml_import_rosegarden">
+<title>Import from Rosegarden</title>
+
+<para>
+<application>Rosegarden</application>'s MusicXML exporter is still in a very
+early development phase.
+Version 0.9.1, generated a syntactically incorrect XML file,
+resulting in fatal errors on import, because:</para>
+
+<itemizedlist>
+<listitem><para>Not every &lt;part&gt; has a corresponding &lt;/part&gt;</para></listitem>
+<listitem><para>Note types crotchet and minim should be quarter, half etc.</para></listitem>
+<listitem><para>MIDI channel numbers in MusicXML range from 1 to 16, Rosegarden starts at 0</para></listitem>
+<listitem><para>MIDI program numbers range from 1 to 128, Rosegarden starts at 0</para></listitem>
+<listitem><para>The part-name is empty</para></listitem>
+<listitem><para>The score-part is empty</para></listitem>
+</itemizedlist>
+
+<para>
+The previous <application>Rosegarden</application> version 0.9.5 does
+generate syntactically correct XML.
+The set of supported MusicXML features, however, is still very
+limited. Besides general staff information only
+clef, key signature, time signature, note and rest are written.
+Especially the lack of beam and stem direction information is very noticable.
+Time signatures are sometimes missing, sometimes too many are found.
+</para>
+
+<para>
+<application>Rosegarden</application> 0.9.5 does not write any accidental information.
+&noteedit; tries to add the missing information, but does not always succeed.
+This may lead to missing accidentals.
+</para>
+
+<para>
+The current <application>Rosegarden</application> version 0.9.6 adds support
+for accidentals and ties. The time signature problem is fixed,
+but beam and stem direction information are still missing. Nevertheless,
+the overall result is quite workable.
+</para>
+
+<note><para>You can use &noteedit;'s <link linkend="autobeam">Autobeam</link>
+feature to create the missing beams.
+</para></note>
+</sect1>
+
+</appendix>
+
+<appendix id="pmx_export_appendix">
+<title>PMX export discussion page</title>
+
+<sect1><title>PMX</title>
+<para>Before reading this you should be familar with <application>MusiXTeX</application>. Read - for instance -
+the <link linkend="musixtex_export_appendix"><application>MusiXTeX</application> export discussion page</link></para>
+<para><application>PMX</application> is a preprocessor for <application>MusiXTeX</application>. &noteedit; produces this output because
+some users find it a better readable than <application>MusiXTeX</application>.</para>
+
+<para>Generally, <application>PMX</application> isn't a part of the usual Linux distributions. A good WEB page on how
+to get <application>PMX</application> and its relation to <application>MusiXTeX</application> can be found at: 
+<ulink url="http://icking-music-archive.sunsite.dk">http://icking-music-archive.sunsite.dk</ulink>.</para>
+
+<para><application>PMX</application> produces TeX <userinput>not</userinput> <application>LaTeX</application>! Because it is a preprocessor it causes a 4th 
+pass.</para>
+</sect1>
+
+<sect1 id="pmx_quick">
+<title>Quick Guide</title>
+<para>Make sure the <application>PMX</application>, TeX <emphasis>(te_tex)</emphasis> and the <application>MusiXTeX</application> packages are installed!</para>
+
+<para><application>PMX</application> introduces a new term: <phrase>system</phrase>: A system is a vertical group of staffs including all the
+instruments. &noteedit; asks you for the number of systems per page.</para>
+<para>Furthermore you are asked for the count of pages.
+Note: If you specify some bad values here <application>PMX</application> and/or <application>MusiXTeX</application> fail. Make your own
+experiences what is possible and what not! You need not repeat the export. You can find these
+parameters at the beginning of the <application>PMX</application> file. Because &noteedit; comments these lines it should be
+easy to find the appropriate numbers.</para>
+
+<para>The field <computeroutput>Measures per system</computeroutput> does not influence the PMX output
+but the PMX source. For better readability you can choose how many measures are collected to a system.</para>
+
+<para>Choose <option>landscape</option> format if needed.</para>
+<para>I assume you produced a file named <filename>mus1.pmx</filename>.</para> 
+<orderedlist>
+<listitem><para>type </para><para><userinput>pmxab mus1.pmx</userinput></para><para>This produces <filename>mus1.tex</filename></para></listitem>
+<listitem><para>remove all files named <filename>mus1.mx1</filename> or <filename>mus.mx2</filename> from a possible former TeX generation
+<emphasis>(that is the first thing you yould check if you get a funny result)</emphasis>:</para>
+<para><userinput>rm mus1.mx[12]</userinput></para></listitem>
+<listitem><para>type:</para><para><userinput>tex mus1.tex</userinput></para><para>his produces <filename>mus1.mx1</filename>.</para></listitem>
+<listitem><para>type:</para><para><userinput>musixflx mus1.mx1</userinput></para><para>This produces <filename>mus1.mx2</filename>.</para></listitem>
+<listitem><para>type:</para><para><userinput>tex mus1.tex</userinput></para><para>again. This produces <filename>mus1.dvi</filename>.</para></listitem>
+</orderedlist>
+
+<para>You can preview the result with:</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>xdvi mus1.dvi</userinput></para>
+<para>If you exported in landscape mode:</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>xdvi -paper 30x21 mus1.dvi</userinput></para>
+
+<para>You can convert the <filename>dvi</filename> file into a printable PostScript file by typing:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>dvips mus1.dvi -o mus1.ps</userinput></para>
+
+<para>If you decided for <option>landscape</option> format:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>dvips mus1.dvi -t landscape -o mus1.ps</userinput></para>
+
+<para>To preview the PostScript file use <application>gv</application>:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>gv mus1.ps</userinput></para>
+
+<para>If you have a PostScript printer the printing is produced by:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>lpr mus1.ps</userinput></para>
+</sect1>
+
+<sect1 id="pmx_limits">
+<title>Limitations</title>
+
+<para>Because <application>PMX</application> is a <application>MusiXTeX</application> preprocessor it has simlilary limitations as <application>MusiXTeX</application>:</para>
+
+<itemizedlist>
+<listitem><para><application>PMX</application> doesn't support more than 12 staffs.</para></listitem>
+<listitem><para><application>PMX</application> doesn't support more than 10 parallel <emphasis>(over all staffs)</emphasis> ties.</para></listitem>
+<listitem><para><application>PMX</application> doesn't support 128ths notes.</para></listitem>
+<listitem><para>Because <application>MusiXTeX</application> has problems with (de-)crescendo symbols
+crossing the line break, <application>PMX</application> has the same problems, too.</para></listitem>
+</itemizedlist>
+
+<para><application>PMX</application> has its own beam and stem up/down decision algorithm. So do not expect the same beams and
+stems as shown on score. Sometimes these algorithms fail :-(</para>
+
+<para><application>PMX</application> can only deal with this sort of triplets: 
+<inlinemediaobject>
+<imageobject><imagedata fileref="tri1.png"/></imageobject>
+</inlinemediaobject>
+. It fails in case
+of these 
+<inlinemediaobject>
+<imageobject><imagedata fileref="tri2.png"/></imageobject>
+</inlinemediaobject> triplets.</para><para>
+<application>PMX</application>-Version 2.30 can deal with these 
+<inlinemediaobject>
+<imageobject><imagedata align="center" fileref="tri3.png"/></imageobject>
+</inlinemediaobject>
+triplets.</para>
+<para>So &noteedit; exports triplets with 2 members with length ratio 1:2.</para>
+<para>
+<application>PMX</application> cannot deal with triplets ending with a rest:
+<inlinemediaobject>
+<imageobject><imagedata fileref="tri4.png"/></imageobject>
+</inlinemediaobject>
+</para>
+
+<para>Similary problems occur with N-tuplets:</para>
+<para>PMX cannot deal with N-tuplets ending with a rest. Actually all N-tuplet members must be
+of the same length, besides some notes are as half as long as the others. PMX cannot deal with an
+N-tuplet who's real playtime cannot be expressed with one (eventually dotted) note.</para>
+
+
+<para><userinput>Note!</userinput> <application>PMX</application> expects the sum of note/rest length matches the time signature!
+&noteedit; warns you if this isn't the case.</para>
+
+<para><application>PMX</application> has its own algorithm to compute the space for the notes.
+This can cause lyrics spacing problems. The reason is: Actually <application>PMX</application> cannot deal with lyrics. &noteedit;
+produces raw TeX statements which are not taken into account during space computation.
+Perhaps the <link linkend="musixlyr">usage of the <filename>musixlry</filename> package</link>
+gives better results.</para>
+
+<para><application>PMX</application> allows 2 voices per staff (There are some tricks to achieve more. But no
+systematical syntax constructions which are successfull in all cases.). &noteedit;
+warns you and omits the supernumerary voices. But sometimes the result isn't <application>PMX</application>-able.</para>
+
+<para>Drum notes are not supported in <application>PMX</application>. &noteedit; will
+warn you and exports the drum notes as "normal" notes.</para>
+</sect1>
+
+<sect1 id="staffselect">
+<title>Staff selection</title>
+<para>If you want to export only a subset of staffs press "Staff selection" button and
+choose the appropriate staffs</para>
+</sect1>
+
+<sect1 id="keepbeams">
+<title>Keep beams</title>
+<para>The <application>PMX</application> generation causes the following contradiction in case of beamed chords:</para>
+<para>To ensure correct placement of beams the note with lowest distance from beam
+must appear first in text.</para>
+<para>On the other hand: <application>PMX</application> determins the direction of the beam: up or down.</para>
+
+<para>So, &noteedit; has no idea what is the note in chord with lowest distance from beam.
+If this causes beam problems <emphasis>(beams crossing stems)</emphasis> the <option>keep beams</option>
+button could be helpful. In this case &noteedit; places beam direction statements 
+into <application>PMX</application> source and thus, it has enough information to determine the
+suitable order of notes.</para>
+</sect1>
+
+<sect1 id="pmx_grace_problems">
+<title>Problems with grace notes</title>
+
+<para><application>PMX</application> changes the slur and beam status of grace notes reasonably.</para>
+</sect1>
+
+<sect1 id="pmx_chord_problems">
+<title>Problems with guitar chord diagrams</title>
+<para>PMX can neither deal with chord names nor with guitar cord diagrams.
+Thus, &noteedit; omits the information.</para>
+</sect1>
+
+<sect1 id="musixlyr">
+<title>Using musixlyr</title>
+<para>If you prefer a compact text block in <application>MusiXTeX</application> file you can select the <option>with musixlyr</option> checkbox.
+Note! In this case you need the <filename>musixlyr.tex</filename> package by Rainer Dunker either installed or in
+current working directory. You can get this package from
+<ulink url="http://icking-music-archive.sunsite.dk">http://icking-music-archive.sunsite.dk</ulink>.</para>
+</sect1>
+
+<sect1 id="pmx_score_problem">
+<title>Problems exporting the score Layout</title>
+<para><application>PMX</application> is a preprocessor to MusiXTeX and therefore the same problems apply.</para>
+<para><application>PMX</application> actually accepts either completely continued or completely discontinued bar rules.
+If you specify a mix of partial continued and partial discontinued bar rules &noteedit; produces some statements of the <filename>musixdbr.tex</filename>
+package by Rainer Dunker. &noteedit; produces a warning and gives advice to install this package. Otherwise PMX will fail.</para>
+</sect1>
+
+
+</appendix>
+
+<appendix id="musixtex_export_appendix">
+<title>The MusiXTeX export discussion page</title>
+
+<sect1><title>MusiXTeX</title>
+<blockquote>
+<para>
+I were never able to implement the <application>MusiXTeX</application> export
+without the help of Werner Icking the moderator of the mutex mailing list and
+excellent <application>MusiXTeX</application> expert. Werner Icking died on the
+night of February the 8th 2001 in a bicycle accident as he drove home from his
+workplace.
+</para>
+</blockquote>
+
+
+<para><application>MusiXTeX</application> is a very powerfull tool which produces unrivaled beautiful music pages.
+An important advantage of <application>MusiXTeX</application> is: It is (La-)TeX. So it is no problem to enhance
+the notes with music theoretical or music historical or other related texts. 
+One problems is: The "&amp;" symbol is redefined by <application>MusiXTeX</application>. Please read the <application>MusiXTeX</application>
+documention about this topic.</para>
+
+<para>I implemented only a small subset of the many features offerd by <application>MusiXTeX</application>. But because it is 
+(La-)TeX it is readable (and writeable) by ordinary editors. If you wish some other features you
+can post-edit the TeX file. To support this &noteedit; attaches the bar numbers
+to the <literal>\bar</literal> statement as a comment. If you export with bar numering you can
+compare the <application>MusiXTeX</application> file with the DVI file to find the position of the appropriate measure.</para>
+
+<para>According to documentation the original ftp server of <application>MusiXTeX</application> shall be
+<filename>hprib.lps.u-psud.fr</filename>. But the server is empty. (???)
+A good WEB site with a lot of information can be found at 
+<ulink url="http://icking-music-archive.sunsite.dk">http://icking-music-archive.sunsite.dk</ulink>.</para>
+
+<para>Furthermore you have a <application>MusiXTeX</application> documentation on your Linux system
+(<filename>/usr/doc/packages/musixtex</filename> <emphasis> or so.. </emphasis>).</para>
+</sect1>
+
+<sect1 id="musixtex_quick">
+<title>Quick Guide</title>
+<para>Make sure the <application>LaTeX</application> <emphasis>(te_latex)</emphasis> and the <application>MusiXTeX</application> packages are installed!</para>
+
+<para>Accept all parameters on export formular. Or choose <option>landscape</option> format if you wish.</para>
+<para>If you want to limit the count of
+measures per line press the appropriate button (
+<inlinemediaobject>
+<imageobject><imagedata fileref="limitbutton.png"/></imageobject>
+</inlinemediaobject>)
+and choose a number.</para>
+<para>I assume you produced a file named <filename>mus1.tex</filename>. Ignore all possible warnings and error messages which occur
+during export.  <emphasis>(You get always a <application>MusiXTeX</application> file besides you have
+more than 9 staffs)</emphasis> and do the following 4 steps:</para>
+<orderedlist>
+<listitem><para>remove all files named <filename>mus1.mx1</filename> or <filename>mus.mx2</filename> from a possible former TeX generation
+<emphasis>(that is the first thing you yould check if you get a funny result)</emphasis>:</para><para>
+<userinput>rm mus1.mx[12]</userinput></para></listitem>
+<listitem><para>type:</para><para><userinput>latex mus1.tex</userinput></para><para> This produces <filename>mus1.mx1</filename>.</para></listitem>
+<listitem><para>type:</para><para><userinput>musixflx mus1.mx1</userinput></para><para> This produces <filename>mus1.mx2</filename>.</para></listitem>
+<listitem><para>type:</para><para><userinput>latex mus1.tex</userinput></para><para> again. This <filename>produces mus1.dvi</filename>.</para></listitem>
+</orderedlist>
+
+<para>You can preview the result with:</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>xdvi mus1.dvi</userinput></para>
+<para>If you exported in landscape mode:</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>xdvi -paper 30x21 mus1.dvi</userinput></para>
+
+<para>You can convert the <filename>dvi</filename> file into a printable PostScript file by typing:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>dvips mus1.dvi -o mus1.ps</userinput></para>
+
+<para>If you decided for <option>landscape</option> format:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>dvips mus1.dvi -t landscape -o mus1.ps</userinput></para>
+
+<para>To preview the PostScript file use <filename>gv</filename>:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>gv mus1.ps</userinput></para>
+
+<para>If you have a PostScript printer the printing is produced by:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>lpr mus1.ps</userinput></para>
+</sect1>
+ 
+<sect1 id="musixtex_script"><title>Script based export</title>
+
+<para>To simplify the process of making a correct dvi-file, you can
+copy this little shellscript musix2dvi:
+</para>
+<para>
+<screen>
+#!/bin/bash
+
+# musix2dvi xxx.tex
+
+# musix2dvi removes the xxx.mx[12]-files, then:
+#   latex xxx
+#   musixflx xxx
+#   latex xxx
+
+# remove .tex from filename
+TEXFILE=${1%.tex}
+
+rm -f $TEXFILE.mx[12]
+latex $TEXFILE
+musixflx $TEXFILE
+latex $TEXFILE
+</screen></para>
+<para>
+When you start your MusiXTeX-export, type
+<userinput>/path/to/musix2dvi %f</userinput>
+in the MusiXTeX-Cmd-field and &noteedit; will start musix2dvi after the
+export.
+
+<parameter>%f</parameter> will be substituted with the filename of your exportfile.
+</para>
+
+
+</sect1>
+<sect1 id="musixtex_problems">
+<title>Problems with MusiXTeX</title>
+
+<para>Although <application>MusiXTeX</application> is a very powerful tool it has some limitations:</para>
+
+<itemizedlist>
+<listitem><para><application>MusiXTeX</application> doesn't support more than 6 staffs.</para></listitem>
+<listitem><para><application>MusiXTeX</application> doesn't support more than 6 parallel <emphasis>(over all staffs)</emphasis> ties.</para></listitem>
+<listitem><para><application>MusiXTeX</application> doesn't support more than 6 parallel <emphasis>(over all staffs)</emphasis> beams.</para></listitem>
+<listitem><para><application>MusiXTeX</application> doesn't support 128ths notes.</para></listitem>
+<listitem><para><application>MusiXTeX</application> has problems with (de-)crescendo symbols crossing the line break.</para></listitem>
+</itemizedlist>
+</sect1>
+
+
+<sect1 id="musixtex_solutions">
+<title>Solutions</title>
+
+<para>The greatest problem is the tie restriction. Indeed, if you have not more than 6 staffs 
+&noteedit; doesn't need more than 6 beams.</para>
+<para>BTW: This is <userinput>one</userinput> beam:
+<inlinemediaobject>
+<imageobject><imagedata fileref="onebeam.png"/></imageobject>
+</inlinemediaobject>
+</para>
+<para> Unfortunatly this is not true if you use multiple voices
+per staff. In this case the beams can run out of stock, because theoretically all
+available beams can be in first staff.</para>
+<para> Too many ties may occur in chords:
+<inlinemediaobject>
+<imageobject><imagedata fileref="tieprob.png"/></imageobject>
+</inlinemediaobject>
+</para>
+
+<para>In this case &noteedit; omits some ties an warns you.
+It is a good idea to use
+the bar numbering option
+<inlinemediaobject>
+<imageobject><imagedata fileref="withnumbers.png"/></imageobject>
+</inlinemediaobject>
+) to find the position of the problem.</para>
+
+<para>The solution offered by &noteedit; is to build spare ties (
+<inlinemediaobject>
+<imageobject><imagedata fileref="spare.png"/></imageobject>
+</inlinemediaobject>
+over chords: 
+<inlinemediaobject>
+<imageobject><imagedata fileref="spareties.png"/></imageobject>
+</inlinemediaobject>
+:
+</para>
+
+<para>Another solution (if possible) would be to export only a subset of staffs (
+<inlinemediaobject>
+<imageobject><imagedata fileref="staffselect.png"/></imageobject>
+</inlinemediaobject>
+).
+</para>
+
+<para>If you install the package <filename>musixadd</filename> you can increase the staff, ties, beam count up to
+9. <emphasis>(More is not possible)</emphasis>. Select the <emphasis>musixadd</emphasis> checkbox 
+<inlinemediaobject>
+<imageobject><imagedata fileref="musixadd.png"/></imageobject>
+</inlinemediaobject>
+) in this case.
+</para>
+
+<para>In a similary way you can solve the 128th problem by installing the <filename>musixbm</filename> package.
+Select the <filename>musixbm</filename> checkbox (
+<inlinemediaobject>
+<imageobject><imagedata fileref="musixbm.png"/></imageobject>
+</inlinemediaobject>
+) in this case.
+</para>
+
+<para>MusiXTeX has also some
+Problems with N-tuplets:</para>
+<para>MusiXTeX is prepared for triplets. It uses the <userinput>uptrio</userinput>
+statement which produces a bracket with a small "3" in the middle. For N-tuplets it uses the <userinput>xtuplet</userinput>
+statement which produces the number without a bracket. If the N-tuplet is beamed it looks like an
+N-Tuplet. If not it looks like some notes with a number above. It is your resposibility to
+mark the N-tuplet for instance with a slur (or so ...)</para>
+
+<para>&noteedit; offers export with 2 different sizes:</para>
+<itemizedlist>
+<listitem><para>normalmusicsize <emphasis>(default)</emphasis></para></listitem>
+<listitem><para>smallmusicsize</para></listitem>
+</itemizedlist>
+
+<para>With size box you can select one of 4 different sizes.</para>
+
+<para>The <link linkend="staffgeometry">staff geometry parameters</link>
+influence the staff positions. <userinput>Please note!</userinput> Because the &noteedit; music signs differ from
+<application>MusiXTeX</application> music signs in form and dimension there is no direct coherence between the &noteedit; presentation
+and the <application>MusiXTeX</application> presentation. In difficult cases you have to play with the staff geometry parameters
+to get a reasonable <application>MusiXTeX</application> output.</para>
+</sect1>
+
+<sect1 id="musixtex_musixlry">
+<title>Using musixlyr</title>
+<para>If you prefer a compact text block in <application>MusiXTeX</application> file you can select the <option>with musixlyr</option> checkbox.
+Note! In this case you need the <filename>musixlyt.tex</filename> package by Rainer Dunker either installed or in
+current working directory. You can get this package from
+<ulink url="http://icking-music-archive.sunsite.dk">http://icking-music-archive.sunsite.dk</ulink>.</para>
+</sect1>
+
+<sect1 id="musixtex_chord_problems">
+<title>
+Exporting guitar chord diagrams</title>
+<para>MusiXTeX has an additional package called MusiXGui. This allows
+to annotate guitar chord diagrams and chord names. It works but unfortunately there is no possibility
+to add a fret information. So, if the fret is not equal 1 NoteEdit appends the fret information to the chord name.
+MusiXTeX/MusiXGui can only deal with full barre.
+</para>
+</sect1>
+
+<sect1 id="musixtex_international">
+<title>international lyrics</title>
+<para>There are 3 choices to control input and output conding and to add some TeX moduls. This is important for international 
+character set handling. Don't ask me too much about this topic! All I know is : <filename>T2A</filename> + <filename>cp1251</filename> + <filename>UTF-8</filename>
+produces Russian (Cyrillic) texts. And <filename>T2A</filename> + <filename>ucs</filename> + <filename>UTF-8</filename>
+produces correct Urkrainian texts.</para>
+<para>If you have problems with your character set and you know what to do: Let me know!</para>
+</sect1>
+
+<sect1 id="musixtex_score_problem">
+<title>Problems exporting the score Layout</title>
+<para><application>MusiXTeX</application> actually accepts either completely continued or completely discontinued bar rules.
+If you specify a mix of partial continued and partial discontinued bar rules &noteedit; produces some statements of the <filename>musixdbr.tex</filename>
+package by Rainer Dunker. &noteedit; produces a warning and gives advice to install this package. Otherwise MusiXTeX will fail.</para>
+</sect1>
+
+</appendix>
+
+<appendix id="abc_music_appendix">
+<title>The ABC music export discussion page</title>
+
+<sect1>
+<title>What is ABC music</title>
+<para>ABC music is an ASCII based music description language. More information is available
+at <ulink url="http://www.gre.ac.uk/~c.walshaw/abc/">http://www.gre.ac.uk/~c.walshaw/abc/</ulink>
+and <ulink url="http://abcplus.sourceforge.net">http://abcplus.sourceforge.net</ulink>.</para>
+
+<para>The free software <ulink url="http://moinejf.free.fr">abcm2ps (http://moinejf.free.fr)</ulink>
+produces a PostScript output from ABC input.</para>
+
+<para><application>abcm2ps</application> is a very surprising tool, because:
+<itemizedlist>
+<listitem><para>it is GPL</para></listitem>
+<listitem><para>it consists of only 10 C files</para></listitem>
+<listitem><para>it compiles in less than 30 seconds</para></listitem>
+<listitem><para>it converts Beethoven's 5th symphony (1st mov.) in 10 seconds to PostScript</para></listitem>
+<listitem><para>it doesn't require any (La)TeX installation</para></listitem>
+</itemizedlist></para>
+</sect1>
+
+<sect1 id="abc_compile">
+<title>How to get and compile abcm2ps</title>
+<para>Download the latest version from <ulink url="http://moinejf.free.fr">abcm2ps (http://moinejf.free.fr)</ulink></para>
+<para><option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+tar -xvzf abcm2ps-x.y.z</option></para>
+<para><option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+cd abcm2ps-x.y.z</option></para>
+<para><option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+make</option></para>
+<para><option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+su</option></para>
+<para><option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+make install</option></para>
+</sect1>
+
+<sect1 id="printoutput">
+<title>How to get a printable output</title>
+<note><para>&noteedit; produces code for abcm2ps version 3.x.y</para></note>
+<para>Accept all parameters on export formular. Or choose <option>expressions above</option> or <option>measure numbers in a box</option> format if you wish.
+If the staffs are too narrow you can change the vertical staff separation.</para>
+
+<para>The <option>width</option> and <option>height</option> parameters should be changed if you don't use A4 paper size.
+<emphasis>Do not use these values to get landscape mode!</emphasis> (see <link linkend="abcland">below</link>)! </para>
+
+<para>I assume you produced a file named <filename>mus1.abc</filename>.</para>
+<para>Type: <userinput>abcm2ps -c -O= mus1.abc</userinput></para>
+
+<para>This produces the PostScript file <filename>mus1.ps</filename>. 
+To preview the PostScript file use <application>gv</application>:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>gv mus1.ps</userinput></para>
+
+<para>If you have a PostScript printer the printing is produced by:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>lpr mus1.ps</userinput></para>
+
+<para id="abcland">If you want a landscape format type:</para>
+
+<para><userinput>abcm2ps -c -O= -l mus1.abc</userinput></para>
+
+<para>This produces the PostScript file <filename>mus1.ps</filename>. 
+To preview the PostScript file use <application>gv</application>:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>gv mus1.ps</userinput></para>
+
+<para>If you have a PostScript printer the printing is produced by:</para>
+
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<userinput>lpr mus1.ps</userinput></para>
+
+<para>For more information (page/measure numbering) read the <application>abcm2ps</application>
+manual or simply type: <userinput>abcm2ps --help</userinput></para>
+</sect1>
+
+<sect1 id="abc_restrict">
+<title>Restrictions</title>
+<para>ABC music has some minimal restrictions:</para>
+<itemizedlist>
+<listitem><para>there are apparently some problems with context change (key, clef, time signature, tempo change)</para></listitem>
+<listitem><para>ABC music cannot deal with differet long measures in a system</para></listitem>
+</itemizedlist>
+
+<para>Therefore: If you plan to export the score to ABC make sure all measures are filled and are of the same length.
+This holds especially for 2nd, 3rd, ... voice!
+</para>
+</sect1>
+
+<sect1 id="abc_score_problem">
+<title>Problems exporting the score Layout</title>
+<para><application>ABC music</application> cannot deal with nested braces in brackets. &noteedit; will warn you.</para>
+</sect1>
+
+</appendix>
+
+<appendix id="installation"><title>Installation</title>
+
+<sect1 id="getting_kapp">
+<title>How to obtain &noteedit;</title>
+
+<para>
+&noteedit; can be found at
+<ulink url="http://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/noteedit.html">
+http://rnvs.informatik.tu-chemnitz.de/~jan/noteedit/noteedit.html</ulink>.
+</para>
+
+</sect1>
+
+<sect1 id="from_rpm">
+<title>Installing &noteedit; from RPMs</title>
+<para>If you find an RPM for your Linux distribution, you can install &noteedit;
+from RPM.</para>
+<note>
+<para>You need a TSE3 package. So if you find a TSE3 RPM for your Linux distribution install
+TSE3 first. Otherwise compile TSE3 from <ulink url="http://TSE3.sourceforge.net">source</ulink></para>
+</note>
+
+<note><para>If you want to use &noteedit; with aRts MIDI scheduler then make sure
+the aRts headers (<filename>artsmidi.h</filename>) are installed
+<emphasis>before</emphasis> you compile TSE3.</para></note>
+<para>To install the &noteedit; package from a binary RPM you must be logged in as root.
+Assuming that the name of the RPM is <filename>filename.rpm</filename>, do the
+following at the command prompt:</para>
+
+<para><userinput><prompt>%</prompt> rpm</userinput><option>&nbsp;-ivh&nbsp;</option><replaceable>filename.rpm</replaceable></para>
+</sect1>
+
+
+<sect1 id="from_source">
+<title>Installing from source</title>
+
+<sect2 id="requirements">
+<title>Requirements for source compilation</title>
+<para>You need the following packages:</para>
+<itemizedlist>
+<listitem><para>g++ compiler <emphasis>(You can use g++-3.x, but make sure QT/KDE (others ???) is also g++-3.x-compiled/You need TSE3-0.2.5 for gcc-3.2!)</emphasis></para></listitem>
+<listitem><para>X11 (include and libraries)</para></listitem>
+<listitem><para>Qt (include and libraries) Qtdevel2 (>=Qt-2.2.2)</para></listitem>
+<listitem><para>YACC or Bison</para></listitem>
+<listitem><para>LEX or flex</para></listitem>
+<listitem><para>KDE-2.x.y or KDE3</para></listitem>
+<listitem><para>gettext <emphasis>(only for text translation)</emphasis></para></listitem>
+<listitem><para>extractrc(from kde developement) <emphasis>(only for text translation)</emphasis></para></listitem>
+</itemizedlist>
+
+<para>recommended:</para>
+
+<itemizedlist>
+<listitem><para>TSE3 Library Version (0.1.2, 0.1.3, 0.2.3, 0.2.5) see: <ulink url="http://TSE3.sourceforge.net">http://TSE3.sourceforge.net</ulink></para></listitem>
+<listitem><para>A good idea is also: LaTeX (te_latex package), MusiXTeX, xdvi, dvips, gv.</para></listitem>
+<listitem><para><application>abcm2ps</application> (version 3.x.y!!!)
+<ulink url="http://moinejf.free.fr">http://moinejf.free.fr</ulink></para></listitem>
+<listitem><para>and: LilyPond (for LilyPond installation MetaPost and the kpathsea headers)</para></listitem>
+<listitem><para>likewise: LibKMid; see <ulink url="http://perso.wanadoo.es/antlarr/libkmid.html">http://www.arrakis.es/~rlarrosa/libkmid.html</ulink>
+(Note: Not all features are available in this case! (MIDI import))</para></listitem>
+<listitem><para>If you want to use &noteedit; with aRts MIDI scheduler: aRts (include and libraries; especially <filename>artsmidi.h</filename>)</para></listitem>
+</itemizedlist>
+
+<note><para>If you want to use &noteedit; with aRts MIDI scheduler then make sure
+the aRts headers (<filename>artsmidi.h</filename>) are installed
+<emphasis>before</emphasis> you compile TSE3.</para></note>
+
+<para>You can compile the program without any MIDI-library. But in this case an</para>
+
+<para><computeroutput>#include /usr/src/linux/include/linux/soundcard.h</computeroutput></para>
+
+<para>occurs which can cause a lot of machine/sound card depencies. Therefore if
+your sound doesn't work and you are sure MIDI works on your machine (you use
+KMid successfully) then try compilation with one of the libraries! Use the
+TSE3 library if you want to use all features including MIDI import!</para>
+</sect2>
+
+<sect2 id="ned_build">
+<title>Building</title>
+<note>
+<para>If you have different KDE/Qt versions make sure the PATH variable
+only references the KDE/Qt version you wish to use for NoteEdit!</para>
+</note>
+
+<para>Please uninstall an older version especially all old <filename>noteeditui.rc</filename> files.
+If you don't have the source distribution to "make uninstall" remove all in</para>
+<para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<replaceable>path_to_your_kde_installation</replaceable><filename>/share/apps/noteedit</filename></para>
+<para>Decompress and configure the archive:</para>
+<para>&nbsp;&nbsp;<userinput>tar -xvzf noteedit-2.7.4.tgz</userinput></para>
+<para>&nbsp;&nbsp;<userinput>cd noteedit-2.7.4</userinput></para>
+<para>&nbsp;&nbsp;<informaltable>
+<tgroup cols="2">
+<tbody>
+<row><entry>(t)csh</entry><entry>                                      other shell</entry></row>
+<row><entry><userinput>setenv&nbsp;QTDIR&nbsp;<replaceable>path_to_your_qt_installation</replaceable></userinput></entry>
+<entry><userinput>export&nbsp;QTDIR=<replaceable>path_to_your_qt_installation</replaceable></userinput></entry></row>
+<row><entry><userinput>setenv&nbsp;KDEDIR&nbsp;<replaceable>path_to_your_kde_installation</replaceable></userinput></entry>
+<entry><userinput>export&nbsp;KDEDIR=<replaceable>path_to_your_kde_installation</replaceable></userinput></entry></row>
+</tbody>
+</tgroup>
+</informaltable></para>
+
+<para>&nbsp;&nbsp;<userinput>./configure --prefix=</userinput><replaceable>path_to_your_kde_installation</replaceable></para>
+<para>whereby  <replaceable>path_to_your_kde_installation</replaceable> is the path there KDE usually
+resides on you system. You can always find out this path my means of the following command:</para>
+<para><userinput>&nbsp;&nbsp;kde-config&nbsp;--prefix</userinput></para>
+
+<para>If you installed TSE3 library in an unusual directory:</para>
+<para><userinput>&nbsp;&nbsp;./configure&nbsp;--with-libtse3-include=</userinput><replaceable>dir_to_tse3_includes</replaceable>&nbsp;<userinput>&nbsp;--with-libtse3-libs=</userinput><replaceable>dir_to_tse3_libs</replaceable></para>
+<para>If you want to use libKMid instead of TSE3 library:</para>
+<para><userinput>&nbsp;&nbsp;./configure --with-libkmid</userinput></para>
+<para><emphasis>(<userinput>Note:</userinput> Not all features are available in this case! (MIDI Import))</emphasis></para>
+<para>If you installed libKMid in an unusual directory:</para>
+<para><userinput>&nbsp;&nbsp;./configure&nbsp;--with-libkmid-include=</userinput><replaceable>dir_to_libkmid/libkmid.h</replaceable>&nbsp;<userinput>&nbsp;--with-libkmid-libs=</userinput><replaceable>dir_to_libkmid.so</replaceable></para>
+<para>If you won't use any library <emphasis>(not recommended; see above!)</emphasis></para>
+<para><userinput>&nbsp;&nbsp;./configure --without-libs</userinput></para>
+<para>If you use LilyPond 1.2.x</para>
+<para><userinput>&nbsp;&nbsp;./configure&nbsp;--with-oldlily</userinput></para>
+<para>In priciple you can use the parameter <userinput>--enable-final</userinput>
+But this is not recommended, because the resulting code is 30% greater. This is because of the <emphasis>-fexecption</emphasis> compiler option which
+is applied to tho whole source. Without  <userinput>--enable-final</userinput> the <emphasis>-fexecption</emphasis> compiler option is only
+applied to the necessary C modules.</para>
+<para>Type:</para>
+<para><userinput>&nbsp;&nbsp;make</userinput></para>
+<para>This should create &noteedit;</para>
+<para>Type (as root):</para>
+<para><userinput>&nbsp;&nbsp;make install</userinput></para>
+<para>This should install &noteedit;</para>
+<para>If you don't like &noteedit; type (as root):</para>
+<para><userinput>&nbsp;&nbsp;make uninstall</userinput></para>
+<para>This should remove &noteedit;</para>
+
+<para>Then start the program: It is recommended to start &noteedit; in KDE environment. If not then make sure
+the kde binaries are in your PATH.</para>
+
+
+<para>Type:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;noteedit</userinput></para>
+<para>or:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;noteedit&nbsp;</userinput><replaceable> file</replaceable><userinput>.not</userinput></para>
+
+<para>This should start the note editor. If there is an error <computeroutput>"error opening sequencer"</computeroutput>
+a soundcard depency <emphasis>(as mentioned above)</emphasis> avoids the access to the MIDI device. The editor
+works but you can't play the music :-((.</para>
+
+<para>If you have an AWE-64 (or - 32 <emphasis>(???)</emphasis>) don't forget to load your orchestra 
+(<application>sfxload</application>) before starting <application>noteedit</application>!</para>
+</sect2>
+</sect1>
+
+<sect1 id="first">
+<title>First test</title>
+
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem><accel>O</accel>pen</guimenuitem>
+</menuchoice>
+<filename>examples/example1.not</filename></para>
+<para>or:</para>
+<para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem><accel>O</accel>pen</guimenuitem>
+</menuchoice>
+<filename>examples/example2.not</filename></para>
+<para>or: ...</para>
+<para>or:</para><para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem><accel>O</accel>pen</guimenuitem>
+</menuchoice>
+<filename>examples/example12.not</filename></para>
+
+<para>Press the play button(
+<inlinemediaobject><imageobject><imagedata fileref="play.png"/></imageobject></inlinemediaobject>
+). If you hear the music the
+program works :-))</para>
+
+<para>If not then try to change the MIDI device (
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure &noteedit;</guimenuitem>
+</menuchoice>
+-&gt; Sound --&gt; MIDI Devices).</para>
+<para>Or (<command>only with TSE3</command><inlinemediaobject><imageobject><imagedata fileref="smlogo.png"/></imageobject></inlinemediaobject>)
+ change the TSE3 MIDI scheduler
+by unchecking the ALSA option:</para>
+<para>
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure &noteedit;</guimenuitem>
+</menuchoice>
+ --&gt; Sound --&gt; Sequencers</para>
+<para>and restart &noteedit;.</para>
+
+<para>(see also: <link linkend="usetse3">Working with TSE3</link>)</para>
+
+<para>BTW: The quality depends on soundcard. Hear the beginning of <filename>example2.not</filename>
+on AWE 64/ 24 MB RAM and soundfont <filename>8mbgmsfx.sf2</filename>: <ulink url="http://rnvs.informatik.tu-chemnitz.de/cgi-bin/nph-sendbin.cgi/~jan/noteedit/example2.mp3">
+example2.mp3</ulink> (3.6 Mbyte)</para>
+
+</sect1>
+<sect1 id="timidity_server">
+<title>The TiMidity server</title>
+<para>(<command>only with TSE3</command><inlinemediaobject><imageobject><imagedata fileref="smlogo.png"/></imageobject></inlinemediaobject>)
+You can use the MIDI to WAVE converter and player <application>TiMidity++</application> (<ulink url="http://timidity.sourceforge.net">
+http://timidity.sourceforge.net</ulink>) in <emphasis>server mode</emphasis>. 
+This approach is interesting for all those who can't bring
+the MIDI device to work.</para>
+<note><para>Please load the newest version via CVS (as explained on that page)</para></note>
+<note><para>This requires an <ulink url="http://www.alsa-project.org">ALSA</ulink> sound system!</para></note>
+<para>A presupposition is that <application>TiMidity++</application> is compiled with (at least) the <option>configure</option> options:</para>
+<para><option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+--enable-audio=alsa --enable-server --enable-alsaseq</option></para>
+
+<para>You should also try to change "the orchestra" by installing a different
+soundfont. Please have a look at <ulink url="http://www.hammersound.net">http://www.hammersound.net</ulink> and search for
+<filename>FluidR3</filename> soundfont!</para>
+
+<para>This soundfont is in <filename>sfArk</filename> compression format.
+Download the decompressor from
+<ulink url="http://www.melodymachine.com">http://www.melodymachine.com</ulink> and unpack:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tar -xvzf sfarkxtc_lx86.tar.gz</userinput></para>
+<para>Then decopmress the archive <filename>FluidR3122501.zip</filename> (Because of the spaces in file name the apostrophs are
+necessary):</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unzip FluidR3122501.zip</userinput></para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;./sfarkxtc "FluidR3 GM.sfArk"</userinput></para>
+<para>It is recommended to rename the resulting file<filename>FluidR3  GM.SF2</filename>
+because the Linux shell has problems dealing with spaces in file names:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mv "FluidR3 GM.SF2" FluidR3.sf2</userinput></para>
+<para> Then in <filename>/usr/share/timidity/timidity.cfg</filename>
+(or <filename>/usr/local/share/timidity/timidity.cfg</filename>) change:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dir</userinput> <replaceable>&lt;path_to_the_directory_there_the_FluidR3.sf2_file_is_situated&gt;</replaceable></para>
+<para>and:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;soundfont FluidR3.sf2</userinput></para>
+
+<para>Comment all other lines! If all is ok, you can start <application>TiMidity++</application>  with:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	timidity -iA -B2,8 -Os1l -s 44100 </userinput> &nbsp;&nbsp;&nbsp;</para>
+
+<para>Select on &noteedit; sound configure dialog
+(
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure &noteedit;</guimenuitem>
+</menuchoice>--&gt; Sound).
+You should see 4 new MIDI devices:</para>
+<itemizedlist>
+<listitem><para>Timidity port 0 128:0</para></listitem>
+<listitem><para>Timidity port 1 128:1</para></listitem>
+<listitem><para>Timidity port 2 128:2</para></listitem>
+<listitem><para>Timidity port 3 128:3</para></listitem>
+</itemizedlist>
+
+<para>Choose one of them and the replay should work!</para>
+
+<para>Tip: If the replay interrupts during turn over then start <application>TiMidity++</application> as <filename>root</filename>. This 
+increases the priority of the <application>TiMidity++</application> process. Use the following command in this case:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timidity --realtime-priority=100 -iA -B2,8 -Os1l -s 44100</userinput></para>
+
+<note><para> This can lead to operating system problems if your CPU
+performance is too small! If so, then try to decrease the priority
+and/or the frequency:</para>
+<para><userinput>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timidity --realtime-priority=60 -iA -B2,8 -Os1l -s 22050</userinput></para></note>
+
+</sect1>
+
+
+<sect1 id="kde_requirements">
+<title>How to obtain KDE</title>
+
+<para>KDE can be found on
+<ulink url="ftp://ftp.kde.org">The KDE FTP site</ulink> or one of it's
+<ulink url="http://www.kde.org/ftpmirrors.html">mirrors</ulink>.</para>
+
+</sect1>
+
+<sect1 id="compilation_installation">
+<title>Compilation and Installation of KDE</title>
+
+<para>&ksnapshot; may be installed from the kdegraphics package either by
+installing a binary RPM or by compiling the source package.</para>
+</sect1>
+</appendix>
+
+</book>

@@ -1,0 +1,108 @@
+<!DOCTYPE UI><UI>
+<class>mupWarning</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>mupForm</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>339</width>
+            <height>118</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>MUP warning</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="0"  column="0"  rowspan="1"  colspan="2" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Warning</cstring>
+            </property>
+            <property stdset="1">
+                <name>font</name>
+                <font>
+                    <pointsize>14</pointsize>
+                    <bold>1</bold>
+                </font>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Saved, but MUP does not work!</string>
+            </property>
+        </widget>
+        <widget row="1"  column="0"  rowspan="1"  colspan="2" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>showAgain</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Don't &amp;show this message in future</string>
+            </property>
+            <property stdset="1">
+                <name>checked</name>
+                <bool>false</bool>
+            </property>
+            <property>
+                <name>Checked</name>
+                <string>true</string>
+            </property>
+        </widget>
+        <widget row="2"  column="0" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>OkBu</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;OK</string>
+            </property>
+        </widget>
+        <widget row="2"  column="1" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>DetBu</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Details &gt;&gt;</string>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>OkBu</sender>
+        <signal>clicked()</signal>
+        <receiver>mupForm</receiver>
+        <slot>slOk()</slot>
+    </connection>
+    <connection>
+        <sender>DetBu</sender>
+        <signal>clicked()</signal>
+        <receiver>mupForm</receiver>
+        <slot>slShowDet()</slot>
+    </connection>
+    <slot access="public">slShowDet()</slot>
+    <slot access="public">slOk()</slot>
+</connections>
+</UI>

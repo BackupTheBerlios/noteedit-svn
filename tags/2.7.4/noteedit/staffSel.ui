@@ -1,0 +1,167 @@
+<!DOCTYPE UI><UI>
+<class>staffForm</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>staffForm</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>432</width>
+            <height>247</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string></string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="0"  column="0"  rowspan="1"  colspan="4" >
+            <class>QListView</class>
+            <column>
+                <property>
+                    <name>text</name>
+                    <string>Staff No.</string>
+                </property>
+                <property>
+                    <name>clickable</name>
+                    <bool>true</bool>
+                </property>
+                <property>
+                    <name>resizeable</name>
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property>
+                    <name>text</name>
+                    <string>Voice</string>
+                </property>
+                <property>
+                    <name>clickable</name>
+                    <bool>true</bool>
+                </property>
+                <property>
+                    <name>resizeable</name>
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property>
+                    <name>text</name>
+                    <string>Staff name</string>
+                </property>
+                <property>
+                    <name>clickable</name>
+                    <bool>true</bool>
+                </property>
+                <property>
+                    <name>resizeable</name>
+                    <bool>true</bool>
+                </property>
+            </column>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>elem</cstring>
+            </property>
+        </widget>
+        <widget row="1"  column="0"  rowspan="1"  colspan="4" >
+            <class>Line</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>l</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget row="2"  column="0" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>btSel</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Select all</string>
+            </property>
+        </widget>
+        <widget row="2"  column="1" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>btUn</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Unselect all</string>
+            </property>
+        </widget>
+        <widget row="2"  column="2" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>btCh</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Cancel</string>
+            </property>
+        </widget>
+        <widget row="2"  column="3" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>btOk</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;OK</string>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>btSel</sender>
+        <signal>clicked()</signal>
+        <receiver>staffForm</receiver>
+        <slot>slSel()</slot>
+    </connection>
+    <connection>
+        <sender>btUn</sender>
+        <signal>clicked()</signal>
+        <receiver>staffForm</receiver>
+        <slot>slUn()</slot>
+    </connection>
+    <connection>
+        <sender>btCh</sender>
+        <signal>clicked()</signal>
+        <receiver>staffForm</receiver>
+        <slot>slCh()</slot>
+    </connection>
+    <connection>
+        <sender>btOk</sender>
+        <signal>clicked()</signal>
+        <receiver>staffForm</receiver>
+        <slot>slOk()</slot>
+    </connection>
+    <slot access="public">slOk()</slot>
+    <slot access="public">slCh()</slot>
+    <slot access="public">slSel()</slot>
+    <slot access="public">slUn()</slot>
+</connections>
+</UI>

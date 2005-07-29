@@ -1,0 +1,218 @@
+NoteEdit - ein Partitureditor für Linux
+http://noteedit.berlios.de
+=======================================
+
+Zusammenfassung
+---------------
+NoteEdit ist ein Partitureditor, der eine unbegrenzte Anzahl Notenzeilen
+unterstützt, bis zu neun Stimmen je Notenzeile, das Abspielen von
+geschriebenen Noten per MIDI, eine Vielzahl von Import- und Export-
+filtern in viele Formate wie MIDI, MusicXML, ABC Music, PMX, MusiXTeX,
+LilyPond und Weiteres!
+
+Wichtigste Eigenschaften
+------------------------
+* Einfügen, Löschen und Modifizieren von Noten, Pausen (und Mehrtaktpausen),
+  Binde-/Haltebögen, Kontrolle von Notenhälsen und -balken, Änderungen
+  von Instrumenten, Wiederholungen, Schlüssel-/Taktart-/Tonart-,Tempo-
+  und alle anderen klassischen Vorzeichen.
+* Gitarrenakkorddiagramme (basierend auf dem KGuitar Projekt)
+* Dynamiksymbole ((De)Crescendo, Oktavierungszeichen, Arpeggio, Fermate, Triller,
+  Vorschlag/Nachschlag-Noten etc.).
+* Feste Symbole (Staccato, Sforzato, Protato, starkes Pizzicato, Sforzando etc.)
+* Mehrere Stimmen je Notenzeile (Polyphonie)
+* Schlagzeugnoten (inclusive Schlagzeug- und Bassschlagzeugschlüssel).
+* Flexibles UI basierend auf Qt/KDE. Unterstützt Zoomen, mehrere
+  Fenster, viele Tastaturkürzel, Einbettung in Konqueror und andere Bonbons
+* Abspielen und andere MIDI-Operationen (Lesen und Aufzeichnen vom MIDI-
+  Keyboard) werden mit der TSE3 Bibliothek durchgeführt. Jede Notenzeile
+  hat einen eigenen Kanal, Instrument und eigene MIDI Einstellungen (Hall, Chorus)
+  Das momentan abgespielte Element wird hervorgehoben!
+* Unterstützung von Strophen
+* Grundlegende Partiturlayout Operationen (Setzen von Klammern, geschweifte
+  Klammern, Taktstriche durchziehen oder unterbrechen über Notenzeilen etc.).
+* Basic score layout operations (setting brackets, braces, continuing bars over
+  staffs etc.).
+* Viele nützliche Werkzeuge wie die automatische Plazierung von Balken,
+  Transponieren, Kopieren&Einfügen von Elementen, Optimierung und Zurücksetzen
+  von Vorzeichen, MIDI Import (oder Aufnahme über ein MIDI Keyboard) Filter etc.
+* Exportieren von MIDI (unter Benutzung der TSE3 Bibliothek), MusicXML, ABC
+  Music, PMX, MusiXTeX und LilyPond.
+* Importieren von MIDI und MusicXML.
+* Das NoteEdit Dateiformat ist ähnlich dem Format des Music Publication Program
+  (MUP). Es ist ein Textformat mit einer einfachen Syntax zum Beschreiben
+  der Musik, so daß es Computerfreaks möglich ist, diese von Hand zu bearbeiten
+  sollten Sie das je tun wollen :).
+* NoteEdit ist in die folgenden Sprachen übersetzt worden: Deutsch, Spanisch,
+  Französisch, Ungarisch, Italienisch, Russisch, Slovakisch, Slowenisch und
+  Schwedisch. Es unterstützt UTF-8 Kodierung für Strophen, Partiturüberschrift,
+  Komponist, Copyright und andere Dokumentzeichenketten.
+
+
+
+Die TSE3 Bibliothek
+-------------------
+Seit Version 1.5.0, basiert NoteEdit auf einer Bibliothek von Pete Goodliffe, 
+die TSE3 genannt wird (TSE3 Homepage: http://tse3.sourceforge.net). Sie ist
+eine mächtige Opensource Sequencer Engine, die in C++ geschrieben wurde.
+Die libkmid wird weiterhin unterstützt, aber sie unterstützt nicht alle
+Eigenschaften (z.B. kein MIDI Import).
+
+TSE3 hat ein eigenes Dateiformat und NoteEdit kann es über die TSE3
+Funktionsaufrufe erzeugen. Auf diese Weise sind die NoteEdit Daten
+mit denen einer Sequencerapplikation kompatibel, die auf TSE3 basieren.
+
+Die TSE3 Bibliothek ist nicht so ausführlich getestet wie die libkmid.
+Sollten Sie also Probleme beim Abspielen von MIDI haben, der Installation
+oder andere damit zusammenhängenden Funktionen kontaktieren Sie bitte
+Pete Goodliffe. Die TSE3 Bibliothek enthält eine Applikation namens tse3play.
+Damit können Sie testen, ob sie auf ihrem System funktioniert. Ist dies der 
+Fall sollte NoteEdit ebenfalls funktionieren.
+
+Installation
+------------
+Siehe INSTALL!
+
+Einbettung von Konqueror (experimentell)
+----------------------------------------
+Sie können den Konqueror Browser so konfiguieren daß er NoteEdit als eine
+eingebettete Applikation startet. This erfordert die Installation von
+NoteEdit im KDE System.
+
+Um Einbettung zu konfigurieren sollten Sie zunächst nach einer Datei namens
+noteedit.desktop suchen in $HOME/.kde (oder $HOME/.kde3 oder 3) und diese
+löschen!
+
+Anschließend ist Konqueror zu starten und folgendes zu wählen:
+
+  Einstellungen --> Konqueror einrichten -> Dateizuordnungen -->
+  Hinzufügen... (Gruppe) audio --> (Name:) x-notes
+
+Im Feld Rangfolge ausführender Programme sollte bereits NoteEdit sein.
+Unter Dateimuster: Hinzufügen: *.not and *.not.sav.
+
+Drücken Sie Anwenden und Ok! Wenn Sie nun eine *.not und eine *.not.sav Datei
+auswählen, sollte Konqueror das NoteEdit Programm in Konqueror eingebettet
+anzeigen. Es sollte auch anfangen abzuspielen.
+
+
+FAQ
+---
+Siehe FAQ!
+
+Der TiMidity Server
+-------------------
+(nur mit TSE3) Version 2.10.2 des MIDI zu WAVE Konverters und Abspielers
+TiMidity++ hat nun einen Server Modus. In diesem Modus verhält sich TiMidity++
+wie ein Hardware MIDI Synthesizer. Dieses Vorgehen ist interessant für all
+diejenigen, die das MIDI-Gerät nicht zum Laufen bringen können (praktisch alle
+nicht-SoundBlaster basierten Karten). TiMidity++ muß (mindestens) mit den
+folgenden configure Optionen kompiliert werden (die meisten Linuxdistributionen
+enthalten diese bereits):
+
+ --enable-audio=alsa --enable-server --enable-alsaseq
+
+Wenn dies der Fall ist, können Sie TiMidity++ starten mit:
+
+ timidity -iA -B8,2 -Os (if this doesn't work try -Od)
+
+Wenn Sie den jackd auf ihrem System verwenden können sie timidity
+auch so starten:
+
+ timidity -iA -Oj -B8,2
+
+Beachten Sie, dass timidity und jackd (qjackctl) vom gleichen user
+gestartet werden. Mit den B-Parametern kann timidity an die
+Leistungsgegebenheiten ihres Systems angepasst werden.
+
+Stellen Sie sicher, daß NoteEdit einen TSE3 ALSA MIDI Scheduler verwendet!
+Wählen Sie den NoteEdit Sound-Konfigurationsdialog (Einstellungen-->Noteneditor
+einrichten-->Sound). Sie sollten 2 neue MIDI-Geräte sehen:
+
+* Timidity port 0 128:0
+* Timidity port 1 128:0
+
+Wählen Sie eines aus und die Wiedergabe sollte funktionieren!
+Ein externes Midi-Keyboard muss über eine externe Applikation wie
+kaconnect oder qjackctl an NoteEdit angeschlossen werden.
+
+Sie sollten ebenfalls versuchen "das Orchester" auszutauschen, indem Sie
+einen anderen Soundfont verwenden. Schauen Sie dazu auf den "Links"
+Abschnitt der experimentellen TiMidity++ Seite, Unterabschnitt SoundFont
+(http://timidity.s11.xrea.com/index.en.html)
+
+Tip: Falls die Wiedergabe während des Umblätterns "hakt", dann starten Sie
+TiMidity++ als root. Dadurch wird die Priorität des TiMidity++ Prozesses
+heraufgesetzt. Weitere Einzelheiten entnehmen Sie bitte dem NoteEdit Handbuch.
+
+
+Fehlerberichte
+--------------
+Sollten Sie Fehler antreffen, irgendwelche Anfragen haben oder das NoteEdit
+Entwicklerteam aus irgendeinem Grund kontaktieren wollen, senden Sie uns
+bitte eine E-Mail an die noteedit-devel@lists.berlios.de Mailingliste.
+
+Newsgruppen
+-----------
+NoteEdit hat keine besonderen Newsgruppen. Sie können Informationen über
+neue Versionen und Eigenschaften finden bei (aber verwenden Sie diese
+Gruppen nicht für Fehlerberichte, s.o.):
+
+    * alt.music.midi                    * comp.text.tex
+    * comp.music.midi                   * de.comp.text.tex
+    * comp.music.misc                   * rec.music.compose
+    * comp.os.linux.announce            * rec.music.makers
+    * comp.os.linux.development.apps    * rec.music.misc
+
+Mailinglisten
+-------------
+noteedit-user@lists.berlios.de
+noteedit-devel@lists.berlios.de
+
+Dokumentation
+-------------
+The Dokumentation ist Teil des NoteEdit Archivs. Sie finden Sie im doc
+Verzeichnis. The deutsche Übersetzung kann unter "de" gefunden werden,
+das englische Original ist im noteedit Verzeichnis und enthält alle Bilder.
+
+Nachdem Sie NoteEdit installiert haben, können Sie die Dokumentation lesen,
+indem Sie den NoteEdit Handbuch Menüpunkt aus dem Hilfe Menü auswählen.
+
+Im Falle eines Fehlers beim Öffnen der Dokumentationsdatei ist es denkbar
+das KDE es nicht finden kann wenn Sie das Programm aus den Quellen heraus
+selber kompiliert haben. Versuchen Sie dann den prefix so zu ändern, daß er
+auf das KDE Verzeichnis ihrer Distribution zeigt (normalerweise /usr).
+
+Wir benötigen Ihre Hilfe
+------------------------
+Wenn Sie ein Komponist, Arrangeur oder anderer Musiker sind, der NoteEdit 
+benutzt, vertrauen Sie uns Ihre Wünsche, Ideen und Features an, die Sie in 
+zukünftigen NoteEdit Versionen gerne sehen würden. Zeigen Sie uns Ihre 
+eigenen Kompositionen, Bearbeitungen oder andere Arbeiten, die Sie erschaffen
+haben und teilen Sie Ihre Gedanken und Vorstellungen von NoteEdit mit uns. 
+Wenn Sie ein Programmierer sind und gerne Entwickler werden würden, schließen
+Sie sich unserer Mailing Liste an und wir werden Ihnen gerne helfen mit dem
+Quelltext vertraut zu werden. Wenn NoteEdit Ihre Sprache noch nicht unter-
+stützt oder Sie die aktuelle Übersetzung aktuallisieren möchten, treten Sie
+mit uns in Kontakt und werden ein Übersetzer! An einigen Stellen fehlt es 
+NoteEdit auch an der Menge und Qualität der Dokumentation. Wenn Sie Lust 
+haben die Dokumentation zu aktualisieren oder ihr ein oder zwei Absätze 
+hinzuzufügen, wären wir Ihnen für Ihre Mühe dankbar. Wenn Sie denken daß 
+Sie zu unserem Projekt auf andere Weise etwas beitragen können, treten Sie 
+der Mailing Liste bei und kontaktieren Sie uns. Unser Ziel ist es, aus 
+NoteEdit den Besten Freund des Komponisten zu machen. Das können wir nur
+mit *Ihrer* Hilfe erreichen!
+
+Lizenz
+------
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 2 of the License, or (at your option)
+any later version. This program is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License (http://www.fsf.org/copyleft/gpl.html) for more details.
+
+
+NoteEdit Team, basierend auf dem originalen README (englisch) von
+J. Anders, Professur Rechnernetz u. verteilte Systeme TU-Chemnitz

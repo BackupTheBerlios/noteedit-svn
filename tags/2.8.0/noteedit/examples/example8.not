@@ -1,0 +1,532 @@
+header
+	title bold (20) "Music"
+footer
+	title bold (13) "classical"
+score
+	pedstyle = pedstar
+	staffs = 8
+	time = 4/4
+	brace = 7-8
+	barstyle = 7-8
+score
+staff 1
+label = "melo"
+// overlength = 42
+// underlength = 28
+// lyricsdist = 60
+	clef=treble
+staff 2
+label = "organ"
+// overlength = 110
+// underlength = 24
+// lyricsdist = 60
+	clef=treble
+staff 3
+label = "sax"
+// overlength = 82
+// underlength = 24
+// lyricsdist = 60
+	clef=bass
+staff 4
+label = "strings"
+// overlength = 60
+// underlength = 33
+// lyricsdist = 60
+	clef=treble
+staff 5
+label = "guitar"
+// overlength = 87
+// underlength = 26
+// lyricsdist = 60
+	clef=treble
+	defoct=3
+staff 6
+label = "bass"
+// overlength = 84
+// underlength = 44
+// lyricsdist = 60
+	clef=bass
+	defoct=2
+staff 7
+label = "drum1"
+// overlength = 66
+// underlength = 66
+// lyricsdist = 60
+	clef=drum_bass
+staff 8
+label = "drum2"
+// overlength = 41
+// underlength = 60
+// lyricsdist = 60
+	clef=drum_bass
+//	irregular = f# g# 
+music
+midi 1 1: 0 "channel=7"; 0 "program=88";
+midi 2 1: 0 "channel=6"; 0 "program=16";
+midi 3 1: 0 "channel=5"; 0 "program=67";
+midi 4 1: 0 "channel=8"; 0 "program=48";
+midi 5 1: 0 "channel=4"; 0 "program=25";
+midi 6 1: 0 "channel=3"; 0 "program=32";
+midi 7 1: 0 "channel=10"; 0 "program=0";
+midi 8 1: 0 "channel=10"; 0 "program=0";
+midi 1 1: 0 "parameter=7,127";
+midi 1 1: 0 "parameter=93,64";
+midi 1 1: 0 "parameter=91,44";
+midi 1 1: 0 "parameter=10,79";
+midi 2 1: 0 "parameter=7,51";
+midi 2 1: 0 "parameter=93,80";
+midi 2 1: 0 "parameter=91,22";
+midi 2 1: 0 "parameter=10,33";
+midi 3 1: 0 "parameter=7,71";
+midi 3 1: 0 "parameter=93,0";
+midi 3 1: 0 "parameter=91,0";
+midi 3 1: 0 "parameter=10,105";
+midi 4 1: 0 "parameter=7,42";
+midi 4 1: 0 "parameter=93,0";
+midi 4 1: 0 "parameter=91,0";
+midi 4 1: 0 "parameter=10,10";
+midi 5 1: 0 "parameter=7,45";
+midi 5 1: 0 "parameter=93,0";
+midi 5 1: 0 "parameter=91,0";
+midi 5 1: 0 "parameter=10,67";
+midi 6 1: 0 "parameter=7,78";
+midi 6 1: 0 "parameter=93,0";
+midi 6 1: 0 "parameter=91,0";
+midi 6 1: 0 "parameter=10,127";
+midi 7 1: 0 "parameter=7,71";
+midi 7 1: 0 "parameter=93,0";
+midi 7 1: 0 "parameter=91,0";
+midi 7 1: 0 "parameter=10,64";
+midi 8 1: 0 "parameter=7,71";
+midi 8 1: 0 "parameter=93,0";
+midi 8 1: 0 "parameter=91,0";
+midi 8 1: 0 "parameter=10,64";
+1 1: 1e; 
+midi all: 1 "tempo=117";
+rom above all: 1 "( \(sm4n) = 117 )";
+2 1: 1r; 
+3 1: 1r; 
+4 1: 1e~g~c+~; 
+midi 4 1: 1 "program=52";
+5 1: 1r; 
+6 1: 1r; 
+7 1: 1r; 
+8 1: 1r; 
+bar // 1
+1 1: 4d; 4c; 4e; 4d; 
+2 1: 1r; 
+3 1: 1r; 
+4 1: 1egb&c+~; 
+5 1: 1r; 
+6 1: 1r; 
+7 1: 1r; 
+8 1: 1r; 
+bar // 2
+1 1: 2c; 2c+; 
+2 1: 1r; 
+3 1: 1r; 
+4 1: 1fa~c+~; 
+5 1: 1r; 
+6 1: 1r; 
+7 1: 1r; 
+8 1: 1r; 
+bar // 3
+1 1: 8a; 4.c+; [up]4b; 4a; 
+2 1: 1r; 
+3 1: 1r; 
+4 1: 1d#f#ac+; 
+5 1: 1r; 
+6 1: 1r; 
+7 1: 1r; 
+8 1: 1r; 
+bar // 4
+1 1: 2g; 4e; 4c; 
+2 1: 1r; 
+3 1: 1r; 
+4 1: 2e~gbd+; 2ea~c+; 
+5 1: 1r; 
+6 1: 1r; 
+7 1: 1r; 
+8 1: 1r; 
+bar // 5
+1 1: 2d; 4d; 4c; 
+2 1: 1r; 
+3 1: 1r; 
+4 1: 4d~f~a~d+; 4d~f~ac+; 4d~f~g~b; 4dfgc+; 
+5 1: 1r; 
+6 1: 1r; 
+7 1: 1r; 
+8 1: 1r; 
+bar // 6
+1 1: 2c; 2r; 
+midi all: 1 "tempo=146";
+rom above all: 1 "( \(sm4n) = 146 )";
+2 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 2egc+; 
+3 1: [with .]4c; { 4r; 8d;  } above  3 ; { 4e; 8g;  } above  3 ; 4a; 
+4 1: 4egc+; 2.r; 
+5 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 2c; 2g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 7
+1 1: 1r; 
+2 1: 1r; 
+3 1: [with .]4c+; { 4r; 8c+~;  } above  3 ; { 4c+; 8a;  } above  3 ; 4g; 
+4 1: 1r; 
+5 1: [with .]4egc+; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 4c~; { 4c; 8g~;  } above  3 ; { 4g; 8g;  } above  3 ; 4g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 8
+1 1: 1r; 
+2 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 2egc+; 
+3 1: [with .]4c; { 4r; 8d;  } above  3 ; { 4e; 8a;  } above  3 ; 4g; 
+4 1: 1r; 
+5 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 2c; 2g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 9
+1 1: 1r; 
+2 1: 1r; 
+3 1: [with .]4c; 4r; { 4r; 8g-;  } above  3 ; 4b-; 
+4 1: 1r; 
+5 1: [with .]4egc+; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 4c~; { 4c; 8g-~;  } above  3 ; 4g-; 4g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; { 4bn-- brec b- btr ; 8d- bcr e- bcr2 ;  } above  3 ; 4b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 10
+1 1: 1r; 
+2 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 2egc+; 
+3 1: [with .]4c; { 4r; 8d;  } above  3 ; { 4e; 8g;  } above  3 ; 4a; 
+4 1: 1r; 
+5 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 2c; 2g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 11
+1 1: 1r; 
+2 1: 1r; 
+3 1: [with .]4c+; { 4r; 8c+~;  } above  3 ; { 4c+; 8a;  } above  3 ; 4g; 
+4 1: 1r; 
+5 1: [with .]4egc+; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 4c~; { 4c; 8g~;  } above  3 ; { 4g; 8g;  } above  3 ; 4g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 12
+1 1: 1r; 
+2 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 2egc+; 
+3 1: [with .]4c; { 4r; 8d;  } above  3 ; { 4e; 8a;  } above  3 ; 4g; 
+4 1: 1r; 
+5 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 2c; 2g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 13
+1 1: 1r; 
+2 1: 1r; 
+3 1: [with .]4c; 4r; { 4r; 8g-;  } above  3 ; 4b-; 
+4 1: 1r; 
+5 1: [with .]4egc+; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 4c~; { 4c; 8g-~;  } above  3 ; 4g-; 4g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; { 4bn-- brec b- btr ; 8d- bcr e- bcr2 ;  } above  3 ; 4b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 14
+1 1: 1e; 
+2 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 2egc+; 
+3 1: [with .]4c; { 4r; 8d;  } above  3 ; { 4e; 8g;  } above  3 ; 4a; 
+4 1: 1e~g~c+~; 
+midi 4 1: 1 "program=48";
+5 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 2c; 2g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 15
+1 1: 4d; 4c; 4e; 4d; 
+2 1: 1r; 
+3 1: [with .]4b&; { 4r; 8b&~;  } above  3 ; { 4b; 8a;  } above  3 ; 4g; 
+4 1: 1egb&c+~; 
+5 1: [with .]4egb&c+; { 4r; 8e~g~b&~c+~;  } above  3 ; 4egbc+; [with .]4cegb&; 
+6 1: 4c~; { 4c; 8g~;  } above  3 ; { 4g; 8g;  } above  3 ; 4g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 16
+1 1: 2c; 2c+; 
+2 1: 4r; { 4r; 8f~a~c+~;  } above  3 ; 2fac+; 
+3 1: [with .]4f; { 4r; 8c;  } above  3 ; { 4f; 8c+;  } above  3 ; 4a; 
+4 1: 1f~a~c+~; 
+5 1: 4r; { 4r; 8f~a~c+~;  } above  3 ; 4fac+; [with .]4cfa; 
+6 1: 2f-; 2c; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 17
+1 1: 8a; 4.c+~; 2c+; 
+2 1: 1r; 
+3 1: [with .]4f; 4r; { 4r; 8e;  } above  3 ; 4d; 
+4 1: 1fac+~; 
+5 1: [with .]4cfa; { 4r; 8f~a~c+~;  } above  3 ; 4fac+; [with .]4cfa; 
+6 1: 4f-~; { 4f-; 8c~;  } above  3 ; 4c; 4c; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; { 4bn-- brec b- btr ; 8d- bcr e- bcr2 ;  } above  3 ; 4b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 18
+1 1: 1g; 
+2 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 2egc+; 
+3 1: [with .]4c; { 4r; 8d;  } above  3 ; { 4e; 8g;  } above  3 ; 4e; 
+4 1: 1e~gc+~; 
+5 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 2c; 2g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 19
+1 1: 2e; 2c; 
+2 1: 1r; 
+3 1: [with .]4a; { 4r; 8c~;  } above  3 ; { 4c; 8e;  } above  3 ; 4c; 
+4 1: 1eac+; 
+5 1: [with .]4cea; { 4r; 8e~a~c+~;  } above  3 ; 4eac+; [with .]4cea; 
+6 1: 4a-; { 4a-; 8c~;  } above  3 ; 4c; 4c; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 20
+1 1: 1d; 
+2 1: 4r; { 4r; 8d~f~b&~;  } above  3 ; 2dfb; 
+3 1: [with .]4d; 4r; { 4r; 8a;  } above  3 ; 4f; 
+4 1: 1df~b&; 
+5 1: 4dfb&; { 4r; 8f~b&~d+~;  } above  3 ; 4fbd+; 4dfb&; 
+6 1: 2b&-; 2f; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 21
+1 1: 1r; 
+2 1: 1r; 
+3 1: [with .]4g; { 4g; 8g;  } above  3 ; { 4f; 8f;  } above  3 ; { 4d; 8d;  } above  3 ; 
+4 1: 1dfg~b; 
+5 1: 4r; { 4r; 8g~b~d+~;  } above  3 ; 4gbd+; 4dgb; 
+6 1: 4g-; { 4g-; 8d~;  } above  3 ; 4d; 4d; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; { 4bn-- brec b- btr ; 8d- bcr e- bcr2 ;  } above  3 ; 4b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 22
+1 1: 1e; 
+2 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 2egc+; 
+3 1: [with .]4c; { 4r; 8d;  } above  3 ; { 4e; 8g;  } above  3 ; 4a; 
+4 1: 1e~g~c+~; 
+5 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 2c; 2g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 23
+1 1: 4d; 4c; 4e; 4d; 
+2 1: 1r; 
+3 1: [with .]4b&; { 4r; 8b&~;  } above  3 ; { 4b; 8a;  } above  3 ; 4g; 
+4 1: 1egb&c+~; 
+5 1: [with .]4egb&c+; { 4r; 8e~g~b&~c+~;  } above  3 ; 4egbc+; [with .]4cegb&; 
+6 1: 4c~; { 4c; 8g~;  } above  3 ; { 4g; 8g;  } above  3 ; 4g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 24
+1 1: 2c; 2c+; 
+2 1: 4r; { 4r; 8f~a~c+~;  } above  3 ; 2fac+; 
+3 1: [with .]4f; { 4r; 8c;  } above  3 ; { 4f; 8c+;  } above  3 ; 4a; 
+4 1: 1f~a~c+~; 
+5 1: 4r; { 4r; 8f~a~c+~;  } above  3 ; 4fac+; [with .]4cfa; 
+6 1: 2f-; 2c; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 25
+1 1: 8a; 4.c+~; 2c+; 
+2 1: 1r; 
+3 1: [with .]4f; 4r; { 4r; 8e;  } above  3 ; 4d; 
+4 1: 1fac+~; 
+5 1: [with .]4cfa; { 4r; 8f~a~c+~;  } above  3 ; 4fac+; [with .]4cfa; 
+6 1: 4f-~; { 4f-; 8c~;  } above  3 ; 4c; 4c; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; { 4bn-- brec b- btr ; 8d- bcr e- bcr2 ;  } above  3 ; 4b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 26
+1 1: 2g; 4e; 4c; 
+2 1: 4r; { 4r; 8e~a~c+~;  } above  3 ; 2eac+; 
+3 1: [with .]4c; { 4r; 8c;  } above  3 ; { 4e; 8g;  } above  3 ; { 4e; 8c;  } above  3 ; 
+4 1: 2e~gc+~; 2ea~c+~; 
+5 1: 4r; { 4r; 8e~a~c+~;  } above  3 ; 4eac+; [with .]4cea; 
+6 1: 2c; 2a-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 27
+1 1: 2d; 4d; 4c; 
+2 1: 1r; 
+3 1: 4d; 4c; 4a-; 4c; 
+4 1: 2d~f~ac+; 2dfg~b; 
+5 1: [with .]4cdfa; { 4r; 8f~g~b~d+~;  } above  3 ; 4fgbd+; [with .]4dfgb; 
+6 1: 4f-~; { 4f-; 8g-~;  } above  3 ; 4g-; 4g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 28
+1 1: 2c; 2r; 
+2 1: 4r; { 4r; 8f~a~c+~;  } above  3 ; 2fac+; 
+3 1: [with .]4c; { 4r; 8d;  } above  3 ; { 4f; 8f;  } above  3 ; { 4e; 8d;  } above  3 ; 
+4 1: 2egc+~; 2fac+~; 
+5 1: 4r; { 4r; 8f~a~c+~;  } above  3 ; 4fac+; [with .]4cfa; 
+6 1: 2c; 2f-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 29
+1 1: 1r; 
+2 1: 1r; 
+3 1: [with .]4c; { 4g; 8g;  } above  3 ; { 4e; 8e;  } above  3 ; { 4c; 8c;  } above  3 ; 
+4 1: 1egc+; 
+5 1: [with .]4ceg; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 4c~; { 4c; 8g~;  } above  3 ; { 4g; 8g;  } above  3 ; 4g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; { 4bn-- brec b- btr ; 8d- bcr e- bcr2 ;  } above  3 ; 4b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+repeatstart // 30
+1 1: 2.b; 4c+; 
+2 1: 4r; { 4r; 8f~g~b~d+~;  } above  3 ; 2fgbd+; 
+3 1: [with .]4d; { 4g-; 8g-;  } above  3 ; { 4b-; 8b-;  } above  3 ; 4c; 
+4 1: 1d~f~g~b~; 
+5 1: 4r; { 4r; 8f~g~b~d+~;  } above  3 ; 4fgbd+; [with .]4b-dfg; 
+6 1: 2g-; 2b-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 31
+1 1: 2d+; 2g; 
+2 1: 1r; 
+3 1: [with .]4d; { 4g-; 8g-;  } above  3 ; { 4a-; 8a-;  } above  3 ; { 4b-; 8b-;  } above  3 ; 
+4 1: 1dfg~b; 
+5 1: [with .]4b-dfg; { 4r; 8f~g~b~d+~;  } above  3 ; 4fgbd+; [with .]4b-dfg; 
+6 1: 4g-~; { 4g-; 8f-~;  } above  3 ; 4f-; 4b-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 32
+1 1: 2.g; 4a; 
+2 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 2egc+; 
+3 1: [with .]4c; { 4c; 8c;  } above  3 ; { 4e; 8e;  } above  3 ; { 4f; 8f;  } above  3 ; 
+4 1: 1e~g~c+~; 
+5 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 2c; 2g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 33
+1 1: 2g; 2c+; 
+2 1: 1r; 
+3 1: [with .]4g; { 4c; 8c;  } above  3 ; { 4d; 8d;  } above  3 ; { 4e; 8e;  } above  3 ; 
+4 1: 1egb&c+~; 
+5 1: [with .]4cegb&; { 4r; 8e~g~b~c+~;  } above  3 ; 4egbc+; [with .]4cegb&; 
+6 1: 4c~; { 4c; 8g~;  } above  3 ; { 4g; 8g;  } above  3 ; 4g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; { 4bn-- brec b- btr ; 8d- bcr e- bcr2 ;  } above  3 ; 4b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 34
+1 1: 2c+; 2a; 
+2 1: 4r; { 4r; 8f~a~c+~;  } above  3 ; 2fac+; 
+3 1: [with .]4f; { 4r; 8f;  } above  3 ; { 4c; 8c;  } above  3 ; { 4d; 8c;  } above  3 ; 
+4 1: 1f~a~c+~; 
+5 1: 4r; { 4r; 8f~a~c+~;  } above  3 ; 4fac+; [with .]4cfa; 
+6 1: 2f; 2c; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 35
+1 1: 2f; 2a; 
+2 1: 1r; 
+3 1: [with .]4f; { 4r; 8c;  } above  3 ; 4f; 4a; 
+4 1: 1fac+~; 
+5 1: [with .]4cfa; { 4r; 8f~a~c+~;  } above  3 ; 4fac+; [with .]4cfa; 
+6 1: 4f~; { 4f; 8c~;  } above  3 ; 4c; 4f; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 36
+1 1: 1g; 
+2 1: 4r; { 4r; 8e~g~a#~;  } above  3 ; 2ega; 
+3 1: [with .]4c; { 4c; 8c;  } above  3 ; { 4c#; 8e;  } above  3 ; { 4c; 8a#-;  } above  3 ; 
+4 1: 2e~g~c+; 2ega#c#+; 
+5 1: 4r; { 4r; 8e~g~a#~c#+~;  } above  3 ; 4egac+; 4cega; 
+6 1: 4c~; { 4c; 8c;  } above  3 ; 4c#~; { 4c; 8c;  } above  3 ; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 37
+1 1: 1r; 
+2 1: 1r; 
+3 1: [with .]4d; { 4g-; 8g-;  } above  3 ; { 4a-; 8a-;  } above  3 ; { 4b-; 8b-;  } above  3 ; 
+4 1: 2d~f~ac+; 2dfg~b; 
+5 1: [with .]4cdfa; { 4r; 8f~g~b~d+~;  } above  3 ; 4fgbd+; 4b-fgb; 
+6 1: 4d; 4g-; 4a-; 4b-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; { 4bn-- brec b- btr ; 8d- bcr e- bcr2 ;  } above  3 ; 4b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 38
+1 1: 1e; 
+2 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 2egc+; 
+3 1: [with .]4c; { 4r; 8d;  } above  3 ; { 4e; 8g;  } above  3 ; 4a; 
+4 1: 1e~g~c+~; 
+5 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 4egc+; [with .]4ceg; 
+6 1: 2c; 2g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 39
+1 1: 4d; 4c; 4e; 4d; 
+2 1: 1r; 
+3 1: [with .]4b&; { 4r; 8b&~;  } above  3 ; { 4b; 8a;  } above  3 ; 4g; 
+4 1: 1egb&c+~; 
+5 1: [with .]4egb&c+; { 4r; 8e~g~b&~c+~;  } above  3 ; 4egbc+; [with .]4cegb&; 
+6 1: 4c~; { 4c; 8g~;  } above  3 ; { 4g; 8g;  } above  3 ; 4g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 40
+1 1: 2c; 2c+; 
+2 1: 4r; { 4r; 8f~a~c+~;  } above  3 ; 2fac+; 
+3 1: [with .]4f; { 4r; 8c;  } above  3 ; { 4f; 8c+;  } above  3 ; 4a; 
+4 1: 1fa~c+~; 
+5 1: 4r; { 4r; 8f~a~c+~;  } above  3 ; 4fac+; [with .]4cfa; 
+6 1: 2f-; 2c; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 41
+1 1: 8a; 4.c+; [up]4b; 4a; 
+2 1: 1r; 
+3 1: [with .]4f#; { 4f; 8f;  } above  3 ; { 4d#; 8d;  } above  3 ; { 4c; 8c;  } above  3 ; 
+4 1: 1d#f#ac+; 
+5 1: 4cd#f#a; { 4r; 8d~f~a~c+~;  } above  3 ; 4dfac+; 4cd#f#a; 
+6 1: 4f#-~; { 4f-; 8c~;  } above  3 ; 4c; 4c; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; { 4bn-- brec b- btr ; 8d- bcr e- bcr2 ;  } above  3 ; 4b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 42
+1 1: 2g; 4e; 4c; 
+2 1: 4r; { 4r; 8e~a~c+~;  } above  3 ; 2eac+; 
+3 1: [with .]4b-; { 4b-; 8b-;  } above  3 ; { 4e; 8g;  } above  3 ; { 4e; 8c;  } above  3 ; 
+4 1: 2e~gb; 2ea~c+~; 
+5 1: 4r; { 4r; 8e~a~c+~;  } above  3 ; 4eac+; [with .]4cea; 
+6 1: 2e-; 2a-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 43
+1 1: 2d; 4d; 4c; 
+2 1: 1r; 
+3 1: 4d; 4c; 4a-; 4c; 
+4 1: 2d~f~ac+; 2dfg~b; 
+5 1: [with .]4cdfa; { 4r; 8f~g~b~d+~;  } above  3 ; 4fgbd+; [with .]4dfgb; 
+6 1: 4f-~; { 4f-; 8g-~;  } above  3 ; 4g-; 4g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar // 44
+1 1: 2c; 2r; 
+2 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 2egc+; 
+3 1: [with .]4c; { 4r; 8d;  } above  3 ; { 4e; 8g;  } above  3 ; { 4a; 8g;  } above  3 ; 
+4 1: 1egc+; 
+5 1: 4r; { 4r; 8e~a~c+~;  } above  3 ; 4eac+; [with .]4cea; 
+6 1: 2c; 2g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; 4bn-- brec b- btr ; 4e- bcr2 b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+bar ending "1." // 45
+1 1: 1r; 
+2 1: 1r; 
+3 1: [with .]4c+; { 4c+; 8c+;  } above  3 ; { 4g; 8g;  } above  3 ; { 4e; 8e;  } above  3 ; 
+4 1: 1egc+; 
+5 1: 1r; 
+6 1: 4c~; { 4c; 8g~;  } above  3 ; { 4g; 8g;  } above  3 ; 4g-; 
+7 1: 4b-- brec b&- btr ; 4e- bcr2 b- btr ; { 4bn-- brec b- btr ; 8d- bcr e- bcr2 ;  } above  3 ; 4b&- btr ; 
+8 1: { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; { 4f- bcrc ; 8g- bcr ;  } above  3 ; 
+repeatend ending "2." // 46
+1 1: 1r; 
+2 1: 4r; { 4r; 8e~g~c+~;  } above  3 ; 2egc+; 
+3 1: [with .]4c+; 2.r; 
+4 1: 4egc+; 2.r; 
+5 1: [with .]4ceg; 2.r; 
+6 1: [with .]4c; { 4r; 8c~;  } above  3 ; 2c; 
+7 1: 4b-- brec b&- btr d& bcrc ; 2r; 8r; 32r; 32a- bcr2  bm; 32f- btr ; 32e- brec  ebm; 
+8 1: 4d-; 2.r; 
+endbar endending // 47

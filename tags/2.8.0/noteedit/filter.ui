@@ -1,0 +1,336 @@
+<!DOCTYPE UI><UI>
+<class>filterForm</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>filterForm</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>501</width>
+            <height>352</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Filter - NoteEdit</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="3"  column="1"  rowspan="1"  colspan="5" >
+            <class>NScaleEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filVal1</cstring>
+            </property>
+            <property stdset="1">
+                <name>minimumSize</name>
+                <size>
+                    <width>298</width>
+                    <height>32</height>
+                </size>
+            </property>
+            <property stdset="1">
+                <name>maximumSize</name>
+                <size>
+                    <width>32767</width>
+                    <height>33</height>
+                </size>
+            </property>
+        </widget>
+        <widget row="3"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filL1</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Xxx:</string>
+            </property>
+        </widget>
+        <widget row="4"  column="1"  rowspan="1"  colspan="5" >
+            <class>NScaleEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filVal2</cstring>
+            </property>
+            <property stdset="1">
+                <name>minimumSize</name>
+                <size>
+                    <width>298</width>
+                    <height>32</height>
+                </size>
+            </property>
+            <property stdset="1">
+                <name>maximumSize</name>
+                <size>
+                    <width>32767</width>
+                    <height>33</height>
+                </size>
+            </property>
+        </widget>
+        <widget row="5"  column="1"  rowspan="1"  colspan="5" >
+            <class>NScaleEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filVelSca</cstring>
+            </property>
+            <property stdset="1">
+                <name>minimumSize</name>
+                <size>
+                    <width>298</width>
+                    <height>32</height>
+                </size>
+            </property>
+            <property stdset="1">
+                <name>maximumSize</name>
+                <size>
+                    <width>32767</width>
+                    <height>33</height>
+                </size>
+            </property>
+        </widget>
+        <widget row="6"  column="1"  rowspan="1"  colspan="5" >
+            <class>NScaleEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filVolDist</cstring>
+            </property>
+            <property stdset="1">
+                <name>minimumSize</name>
+                <size>
+                    <width>298</width>
+                    <height>32</height>
+                </size>
+            </property>
+            <property stdset="1">
+                <name>maximumSize</name>
+                <size>
+                    <width>32767</width>
+                    <height>33</height>
+                </size>
+            </property>
+        </widget>
+        <widget row="4"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>t4</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Max volume:</string>
+            </property>
+        </widget>
+        <widget row="5"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>t5</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Vel scale:</string>
+            </property>
+        </widget>
+        <widget row="6"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>t5_2</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Volume step:</string>
+            </property>
+        </widget>
+        <widget row="7"  column="0"  rowspan="1"  colspan="6" >
+            <class>Line</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Line4</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget row="8"  column="0"  rowspan="1"  colspan="4" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filAvVol</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Average volume</string>
+            </property>
+        </widget>
+        <widget row="0"  column="0"  rowspan="1"  colspan="3" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>t1_2</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Choose snap distance:</string>
+            </property>
+        </widget>
+        <widget row="1"  column="0"  rowspan="1"  colspan="3" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>t2</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Triplet Raster:</string>
+            </property>
+        </widget>
+        <widget row="0"  column="3"  rowspan="1"  colspan="3" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filSnapDist</cstring>
+            </property>
+        </widget>
+        <widget row="1"  column="3"  rowspan="1"  colspan="3" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filSmTripletNote</cstring>
+            </property>
+        </widget>
+        <widget row="2"  column="0"  rowspan="1"  colspan="6" >
+            <class>Line</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Line3</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget row="9"  column="0"  rowspan="1"  colspan="6" >
+            <class>Line</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Line5</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget row="10"  column="5" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filChan</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Cancel</string>
+            </property>
+        </widget>
+        <widget row="10"  column="0"  rowspan="1"  colspan="2" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filImpRe</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Import Recording</string>
+            </property>
+        </widget>
+        <widget row="10"  column="2"  rowspan="1"  colspan="2" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filTSE</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;TSE3 to Score ...</string>
+            </property>
+        </widget>
+        <widget row="10"  column="4" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>filTSEPart</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Line to Score ..</string>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<customwidgets>
+    <customwidget>
+        <class>NScaleEdit</class>
+        <header location="local">scaleedit_impl.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+    </customwidget>
+</customwidgets>
+<images>
+    <image>
+        <name>image0</name>
+        <data format="XPM.GZ" length="646">789c6dd2c10ac2300c00d07bbf2234b7229d1be245fc04c5a3201e4615f430059d0711ff5ddb2e6bb236ec90eed134cb5a19d8ef36602af5ecdbfeeac05dda0798d3abebde87e3faa374d3807fa0d633a52d38d8de6f679fe33fc776e196f53cd010188256a3600a292882096246517815ca99884606e18044a3a40d91824820924265a7923a2e8bcd05f33db1173e002913175f2a6be6d3294871a2d95fa00e8a94ee017b69d339d90df1e77c57ea072ede6758</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>filAvVol</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>t4</receiver>
+        <slot>setDisabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>filAvVol</sender>
+        <signal>clicked()</signal>
+        <receiver>filterForm</receiver>
+        <slot>averageSlot()</slot>
+    </connection>
+    <connection>
+        <sender>filChan</sender>
+        <signal>clicked()</signal>
+        <receiver>filterForm</receiver>
+        <slot>cancelSlot()</slot>
+    </connection>
+    <connection>
+        <sender>filImpRe</sender>
+        <signal>clicked()</signal>
+        <receiver>filterForm</receiver>
+        <slot>recSlot()</slot>
+    </connection>
+    <slot access="public">averageSlot()</slot>
+    <slot access="public">cancelSlot()</slot>
+    <slot access="public">recSlot()</slot>
+</connections>
+</UI>

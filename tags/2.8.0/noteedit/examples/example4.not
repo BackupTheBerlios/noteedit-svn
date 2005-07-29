@@ -1,0 +1,435 @@
+header
+	title bold (20) "Music"
+score
+	pedstyle = pedstar
+	staffs = 7
+	time = 4/4
+	bracket = 6-7
+	barstyle = 6-7
+score
+staff 1
+label = "mel. guitar"
+// overlength = 97
+// underlength = 135
+// lyricsdist = 56
+	clef=treble
+	defoct=3
+	key = 1#
+staff 2
+label = "guitar2"
+// overlength = 72
+// underlength = 58
+// lyricsdist = 20
+	clef=treble
+	key = 1#
+staff 3
+label = "strings"
+// overlength = 48
+// underlength = 61
+// lyricsdist = 20
+	clef=treble
+	key = 1#
+staff 4
+label = "guitar"
+// overlength = 76
+// underlength = 73
+// lyricsdist = 20
+	clef=treble
+	defoct=3
+	key = 1#
+staff 5
+label = "bass"
+// overlength = 54
+// underlength = 54
+// lyricsdist = 20
+	clef=bass
+	key = 1#
+staff 6
+label = "perc"
+// overlength = 64
+// underlength = 62
+// lyricsdist = 20
+	clef=drum_bass
+staff 7
+label = "drums"
+// overlength = 57
+// underlength = 20
+// lyricsdist = 20
+	clef=drum_bass
+music
+midi 1 1: 0 "channel=7"; 0 "program=25";
+midi 2 1: 0 "channel=5"; 0 "program=26";
+midi 3 1: 0 "channel=6"; 0 "program=48";
+midi 4 1: 0 "channel=3"; 0 "program=24";
+midi 5 1: 0 "channel=4"; 0 "program=32";
+midi 6 1: 0 "channel=10"; 0 "program=0";
+midi 7 1: 0 "channel=10"; 0 "program=0";
+midi 1 1: 0 "parameter=7,95";
+midi 1 1: 0 "parameter=93,43";
+midi 1 1: 0 "parameter=91,32";
+midi 1 1: 0 "parameter=10,77";
+midi 2 1: 0 "parameter=7,69";
+midi 2 1: 0 "parameter=93,51";
+midi 2 1: 0 "parameter=91,43";
+midi 2 1: 0 "parameter=10,95";
+midi 3 1: 0 "parameter=7,42";
+midi 3 1: 0 "parameter=93,0";
+midi 3 1: 0 "parameter=91,0";
+midi 3 1: 0 "parameter=10,64";
+midi 4 1: 0 "parameter=7,43";
+midi 4 1: 0 "parameter=93,16";
+midi 4 1: 0 "parameter=91,43";
+midi 4 1: 0 "parameter=10,36";
+midi 5 1: 0 "parameter=7,80";
+midi 5 1: 0 "parameter=93,0";
+midi 5 1: 0 "parameter=91,22";
+midi 5 1: 0 "parameter=10,123";
+midi 6 1: 0 "parameter=7,63";
+midi 6 1: 0 "parameter=93,0";
+midi 6 1: 0 "parameter=91,0";
+midi 6 1: 0 "parameter=10,36";
+midi 7 1: 0 "parameter=7,106";
+midi 7 1: 0 "parameter=93,0";
+midi 7 1: 0 "parameter=91,0";
+midi 7 1: 0 "parameter=10,31";
+1 1: 1r; 
+midi all: 1 "tempo=124";
+rom above all: 1 "( \(sm4n) = 124 )";
+2 1: 2r; 8r; 16e+ bm; 16d+; 16b ebm; 16r; 8g; 
+3 1: 1r; 
+4 1: 1r; 
+5 1: 1r; 
+6 1: 1r; 
+7 1: 1r; 
+bar // 1
+1 1: 1r; 
+2 1: 1cega; 
+3 1: 1r; 
+4 1: 8r; 8ac+g+ bm; 8ac+g+; 8ac+g+ ebm; 8r; 8ac+g+ bm; 8ac+g+; 8ac+g+ ebm; 
+5 1: 4.a-; 8a-; 4e-; 8r; 8e-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 2
+1 1: 1r; 
+2 1: 4.r; 16b bm; [down] 16a ebm; [down] 4g; [down] 4e; 
+3 1: 1r; 
+4 1: 4ac+d+f+; 2.r; 
+5 1: 4d-; 2.r; 
+6 1: 4d- brec e#- bcr c# bcr2 ; 4.r; 8d- brec g- bcrc b- btr  bm; 8d- brec g- bcrc b- btr ; 8d- brec g- bcrc b- btr  ebm; 
+7 1: 4c- bcrc ; 2.r; 
+bar // 3
+1 1: 1r; 
+2 1: 2b-dg; 2gb&d&+; 
+3 1: 2dgb; 2e&~g~b&d&+; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8gb&e&+ bm; 8gbe+; 8gbe+ ebm; 
+5 1: 4.g-; 8g-; 4.e&-; 8e-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 4
+1 1: 1r; 
+2 1: 4e&gc+; 8egb bm; 8egb& ebm; 4dfb; 4dfa; 
+3 1: 2ega~c+~; 2dfac+; 
+4 1: 8r; 8gc+e&+ bm; 8gc+e+; 8gc+e+ ebm; 8r; 8ad+f+ bm; 8ad+f+; 8ad+f+ ebm; 
+5 1: 4.c-; 8c-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 5
+1 1: 1r; 
+2 1: 2b-dg; 2gb&d&+; 
+3 1: 2dgb; 2e&~g~b&d&+; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8gb&e&+ bm; 8gbe+; 8gbe+ ebm; 
+5 1: 4.g-; 8g-; 4.e&-; 8e-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 6
+1 1: 2.r; 8r; 8b; 
+lyrics 1:  [1]"1.)As ";
+lyrics 1:  [2]"2.)The ";
+lyrics 1:  [3]"3.)When ";
+lyrics 1:  [4]"4.)They ";
+lyrics 1:  [5]"5.)Now ";
+2 1: 4e&gc+; 8egb bm; 8egb& ebm; 4dfb; 4dfa; 
+3 1: 2ega~c+~; 2dfac+; 
+4 1: 8r; 8gc+e&+ bm; 8gc+e+; 8gc+e+ ebm; 8r; 8ad+f+ bm; 8ad+f+; 8ad+f+ ebm; 
+5 1: 4.c-; 8c-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8d- brec e- bcr b- btr ; 8d- brec e- bcr b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+repeatstart // 7
+1 1: 8.gd+ bm; 16gd+ ebm; 8gd+ bm; 8ge+ ebm; 8gd+; 4db; 8gd+; 
+lyrics 1:  [1]"I wa- as a- wal- kin' 'rou- ";
+lyrics 1:  [2]"shi- nin' gol- den coins did lo- ";
+lyrics 1:  [3]"I wa- as a- wak- ened bet- ";
+lyrics 1:  [4]"put me in- to ja- il with- ";
+lyrics 1:  [5]"so- ome take de- li- ight in ";
+2 1: 1r; 
+3 1: 1dg~b~; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 
+5 1: 4.g-; 8g-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 8
+1 1: 8.ge+ bm; 16ge+ ebm; 8ge+ bm; [up]8bf+ ebm; 8ge+ bm; 8gb ebm; 8r; 8ge+; 
+lyrics 1:  [1]"ound Kilg- a- ry Moun- tain I ";
+lyrics 1:  [2]"ok so bright and jol- ly I ";
+lyrics 1:  [3]"we- en six and se- ven The ";
+lyrics 1:  [4]"out ju- udge or wri- tin' For ";
+lyrics 1:  [5]"fi- shin' and in bow- lin' And ";
+2 1: 1r; 
+3 1: 1e~g~b; 
+4 1: 8r; 8be+g+ bm; 8be+g+; 8be+g+ ebm; 8r; 8be+g+ bm; 8be+g+; 8be+g+ ebm; 
+5 1: 4.e-; 8e-; 4b--; 8r; 8b--; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 9
+1 1: 8.ge+ bm; 16ge+ ebm; [up]8c+e+ bm; [up]8c+f+ ebm; [up]8c+g+ bm; [up]8c+g+; [up]8c+f+; [up]8c+e+ ebm; 
+lyrics 1:  [1]"met with Cap- tain Pep- per as his ";
+lyrics 1:  [2]"took 'em with me home and I gave ";
+lyrics 1:  [3]"guards were all a- round me i- in ";
+lyrics 1:  [4]"rob- bing Col- onel Pep- per o- on ";
+lyrics 1:  [5]"o- thers take de- li- ight i- in ";
+2 1: 1r; 
+3 1: 1eg~c+; 
+4 1: 8r; 8c+e+g+ bm; 8c+e+g+; 8c+e+g+ ebm; 8r; 8c+e+g+ bm; 8c+e+g+; 8c+e+g+ ebm; 
+5 1: 4.c-; 8c-; 4g-; 8r; 8g-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 10
+1 1: 8.gd+ bm; 16gd+; [up]8bg+; [up]8bf+; 8ge+; 8gd+ ebm; 8r; [up]8b; 
+lyrics 1:  [1]"mo- ney he was coun- tin' I ";
+lyrics 1:  [2]"'em to my- y Mol- ly She ";
+lyrics 1:  [3]"num- bers odd and e- ven I ";
+lyrics 1:  [4]"Kil- ga- ry- y Moun- tain. But ";
+lyrics 1:  [5]"car- ria- ges a- rol- lin' But ";
+2 1: 1r; 
+3 1: 1dgb; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 
+5 1: 4.g-; 8g-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 11
+1 1: 8.gd+ bm; 16gd+ ebm; 8gd+ bm; 8ge+ ebm; 8gd+; 4db; 8gd+; 
+lyrics 1:  [1]"rat- tled my pis- tols and I ";
+lyrics 1:  [2]"pro- mised and she vo wed that ";
+lyrics 1:  [3]"flew to my pis- to- ols, but ";
+lyrics 1:  [4]"they didn't take my fists so I ";
+lyrics 1:  [5]"I ta- ake de- li- ight in ";
+2 1: 1r; 
+3 1: 1dg~b~; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 
+5 1: 4.g-; 8g-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 12
+1 1: 8.ge+ bm; 16ge+ ebm; 8ge+ bm; [up]8bf+ ebm; 8ge+ bm; 8gb ebm; 8r; 8ge+; 
+lyrics 1:  [1]"dre- ew forth my sa- ber Say- ";
+lyrics 1:  [2]"she never would de- ceive me But ";
+lyrics 1:  [3]"alas I was mis- ta- ken For ";
+lyrics 1:  [4]"knocked the sen- try do- own And ";
+lyrics 1:  [5]"the ju- ice of the bar- ley ";
+2 1: 1r; 
+3 1: 1e~g~b; 
+4 1: 8r; 8be+g+ bm; 8be+g+; 8be+g+ ebm; 8r; 8be+g+ bm; 8be+g+; 8be+g+ ebm; 
+5 1: 4.e-; 8e-; 4b--; 8r; 8b--; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 13
+1 1: 8.ge+ bm; 16ge+ ebm; [up]8c+e+ bm; [up]8c+f+ ebm; [up]8c+g+ bm; [up]8c+g+; [up]8c+f+; [up]8c+e+ ebm; 
+lyrics 1:  [1]"in', \"Stand and del- i- ver, for I ";
+lyrics 1:  [2]"the de- vil's in wo- men and they ";
+lyrics 1:  [3]"Mo- lly's drawn my pis- tols and a ";
+lyrics 1:  [4]"bid a fond fare- well to the jail ";
+lyrics 1:  [5]"And cou- rtin' pret- ty gi- irls in ";
+2 1: 1r; 
+3 1: 1eg~c+; 
+4 1: 8r; 8c+e+g+ bm; 8c+e+g+; 8c+e+g+ ebm; 8r; 8c+e+g+ bm; 8c+e+g+; 8c+e+g+ ebm; 
+5 1: 4.c-; 8c-; 4g-; 8r; 8g-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 14
+1 1: 8.gd+ bm; 16gd+; [up]8bg+; [up]8bf+; 8ge+; 8gd+ ebm; 8r; 8gb; 
+lyrics 1:  [1]"am the bold dec- ei- ver\" Mu- ";
+lyrics 1:  [2]"ne- ver can be ea- sy  <> ";
+lyrics 1:  [3]"pri- soner I was ta- ken  <> ";
+lyrics 1:  [4]"i- in Sli- igo to- own  <> ";
+lyrics 1:  [5]"the mor- ni- ing so early  <> ";
+2 1: 1r; 
+3 1: 1dgb; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 
+5 1: 4.g-; 8g-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 15
+1 1: 8.fa bm; 16fa; 8.fa; 16fa; 8fa; 8gb ebm; 4fa; 
+lyrics 1: "sha rig um du ru- um da ";
+2 1: 1r; 
+3 1: 2d~f~a~; 2d~fac+; 
+4 1: 8r; 8ad+f+ bm; 8ad+f+; 8ad+f+ ebm; 8r; 8ac+d+f+ bm; 8ac+d+f+; 8ac+d+f+ ebm; 
+5 1: 4.d; 8d; 4a-; 8r; 8a-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc d#- btr ; 
+bar // 16
+1 1: 8r; [with .]8gb; 8.gb bm; 16fa#; 8gb ebm; 4.gd+; 
+lyrics 1: "Whack fol the dad- dy~o ";
+2 1: 1r; 
+3 1: 1dg~b; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 
+5 1: 4.g-; 8g-; 4d; 8r; 8d; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc d#- btr ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc d#- btr ; 
+bar // 17
+1 1: 8r; [with .]8c+e+; 8.c+e+ bm; 16c+e+ ebm; 8c+e+ bm; 8c+f+; 8c+g+; [down] 8ge+ ebm; 
+lyrics 1: "Whack fol the dad- dy o There's ";
+2 1: 1r; 
+3 1: 1egc+; 
+4 1: 8r; 8gc+e+ bm; 8gc+e+; 8gc+e+ ebm; 8r; 8gc+e+ bm; 8gc+e+; 8gc+e+ ebm; 
+5 1: 4.c; 8c; 4g-; 8r; 8g-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc d#- btr ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 18
+1 1: 8gd+ bm; 8db; 8c#a; 8cg ebm; 8cnega bm; 8gac+e+; 8fac+d+; [up]8b ebm; 
+lyrics 1: "whis- key in the jar. As  <>  <> ";
+2 1: 1r; 
+3 1: 4dgb; 4egac#+; 4egacn+; 4fac+d+; 
+4 1: 8r; 8bd+g+ bm; 8c#+e+a+; 8c+e+a+ ebm; 8r; [up]8cn+e+a+ bm; [up]8c+d+f+; [up]8c+d+f+ ebm; 
+5 1: 2b-; 2a-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 19
+1 1: 8.gd+ bm; 16gd+ ebm; 8gd+ bm; 8ge+ ebm; 8gd+; 4db; 8gd+; 
+lyrics 1: "I wa- as a- wal- kin' 'rou- ";
+2 1: 1r; 
+3 1: 2.dg~b~; 4d#g~b~; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8bd+g+ bm; 8bd#+g+; 8bd+g+ ebm; 
+5 1: 4.g-; 8g-; 4d-; 4d#-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 20
+1 1: 8.ge+ bm; 16ge+ ebm; 8ge+ bm; [up]8bf+ ebm; 4.g#be+; 8gbe+; 
+lyrics 1: "ound Kilg- ary Moun- tain... Mus- ";
+2 1: 1r; 
+3 1: 2e~gb~; 2de~g#b; 
+4 1: 8r; 8be+g+ bm; 8be+g+; 8be+g+ ebm; 8r; 8bd+g#+ bm; 8bd+g+; 8bd+g+ ebm; 
+5 1: 4.e-; 8e-; 4g#-; 8r; 8g-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 21
+1 1: 8.ge+ bm; 16ge+; 8ge+; 8gf+ ebm; [up]8c+g+ bm; [up]8c+g+; 8ad+f+; 8ad+a+ ebm; 
+lyrics 1: "ha rig Ther- e's whis- key in the ";
+2 1: 2.r; 4fd+; 
+3 1: 2c#ega~; 2cnd~fa; 
+4 1: 8r; 8ac#+e+g+ bm; 8ac+e+g+; 8ac+e+g+ ebm; 8r; 8acn+d+f+ bm; 8ac+d+f+; 8ac+d+f+ ebm; 
+5 1: 4.a-; 8a-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 22
+1 1: 2gd+g+; 2r; 
+lyrics 1: "jar. ";
+2 1: 2gd+g+; 2gb&d&+; 
+3 1: 2dgb; 2e&~g~b&d&+; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8gb&e&+ bm; 8gbe+; 8gbe+ ebm; 
+5 1: 4.g-; 8g-; 4.e&-; 8e-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 23
+1 1: 1r; 
+2 1: 4e&gc+; 8egb bm; 8egb& ebm; 4dfb; 4dfa; 
+3 1: 2ega~c+~; 2dfac+; 
+4 1: 8r; 8gc+e&+ bm; 8gc+e+; 8gc+e+ ebm; 8r; 8ad+f+ bm; 8ad+f+; 8ad+f+ ebm; 
+5 1: 4.c-; 8c-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar ending "1." // 24
+1 1: 1r; 
+2 1: 2gd+g+; 2gb&d&+; 
+3 1: 2dgb; 2e&~g~b&d&+; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8gb&e&+ bm; 8gbe+; 8gbe+ ebm; 
+5 1: 4.g-; 8g-; 4.e&-; 8e-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 25
+1 1: 2.r; 8r; 8b; 
+lyrics 1: "~2.)The ";
+2 1: 4e&gc+; 8egb bm; 8egb& ebm; 4dfb; 4dfa; 
+3 1: 2ega~c+~; 2dfac+; 
+4 1: 8r; 8gc+e&+ bm; 8gc+e+; 8gc+e+ ebm; 8r; 8ad+f+ bm; 8ad+f+; 8ad+f+ ebm; 
+5 1: 4.c-; 8c-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8d- brec e- bcr b- btr ; 8d- brec e- bcr b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+repeatend ending "2." // 26
+1 1: 1r; 
+2 1: 2gd+g+; 2gb&d&+; 
+3 1: 2dgb; 2e&~g~b&d&+; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8gb&e&+ bm; 8gbe+; 8gbe+ ebm; 
+5 1: 4.g-; 8g-; 4.e&-; 8e-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar endending // 27
+1 1: 2.r; 8r; 8b; 
+lyrics 1: "As ";
+2 1: 4e&gc+; 8gc+e&+; 8c+e&+g+; 4.ac+d+f+; 8r; 
+3 1: 2ega~c+~; 2dfac+; 
+4 1: 8r; 8gc+e&+ bm; 8gc+e+; 8gc+e+ ebm; 8r; 8ad+f+ bm; 8ad+f+; 8ad+f+ ebm; 
+5 1: 4.c-; 8c-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8d- brec e- bcr b- btr ; 8d- brec e- bcr b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 28
+1 1: 8.gd+ bm; 16gd+ ebm; 8gd+ bm; 8ge+ ebm; 8gd+; 4db; 8gd+; 
+lyrics 1: "I wa- as a- wal- kin' 'rou- ";
+2 1: 1r; 
+3 1: 2.dg~b~; 4d#g~b~; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8bd+g+ bm; 8bd#+g+; 8bd+g+ ebm; 
+5 1: 4.g-; 8g-; 4d-; 4d#-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 29
+1 1: 8.ge+ bm; 16ge+ ebm; 8ge+ bm; [up]8bf+ ebm; 4.g#be+; 8gbe+; 
+lyrics 1: "ound Kilg- ary Moun- tain... Mus- ";
+2 1: 1r; 
+3 1: 2e~gb~; 2de~g#b; 
+4 1: 8r; 8be+g+ bm; 8be+g+; 8be+g+ ebm; 8r; 8bd+g#+ bm; 8bd+g+; 8bd+g+ ebm; 
+5 1: 4.e-; 8e-; 4g#-; 8r; 8g-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 30
+1 1: 8.ge+ bm; 16ge+; 8ge+; 8gf+ ebm; [up]8c+g+ bm; [up]8c+g+; 8ad+f+; 8ad+a+ ebm; 
+lyrics 1: "ha rig Ther- e's whis- key in the ";
+2 1: 2.r; 4fd+; 
+3 1: 2c#ega~; 2cnd~fa; 
+4 1: 8r; 8ac#+e+g+ bm; 8ac+e+g+; 8ac+e+g+ ebm; 8r; 8acn+d+f+ bm; 8ac+d+f+; 8ac+d+f+ ebm; 
+5 1: 4.a-; 8a-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 31
+1 1: 2gd+g+; 2r; 
+lyrics 1: "jar. ";
+2 1: 2gd+g+; 2gb&d&+; 
+3 1: 2dgb; 2e&~g~b&d&+; 
+4 1: 8r; 8bd+g+ bm; 8bd+g+; 8bd+g+ ebm; 8r; 8gb&e&+ bm; 8gbe+; 8gbe+ ebm; 
+5 1: 4.g-; 8g-; 4.e&-; 8e-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 32
+1 1: 1r; 
+2 1: 4e&gc+; 8egb bm; 8egb& ebm; 4dfb; 4dfa; 
+3 1: 2ega~c+~; 2dfac+; 
+4 1: 8r; 8gc+e&+ bm; 8gc+e+; 8gc+e+ ebm; 8r; 8ad+f+ bm; 8ad+f+; 8ad+f+ ebm; 
+5 1: 4.c-; 8c-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 33
+1 1: 1r; 
+2 1: 4e&gc+; 8ega bm; 8egc+ ebm; 4g&b&d+; 4gbd+; 
+3 1: 2e&gac+; 2dg&b&; 
+4 1: 8r; 8gc+e&+ bm; 8gc+e+; 8gc+e+ ebm; 8r; 8g&b&d+ bm; 8gbd+; 8gbd+ ebm; 
+5 1: 4.c-; 8c-; 4d-; 8r; 8d-; 
+6 1: 8b&- btr  bm; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr ; 8b- btr ; 8b- btr ; 8d- brec e- bcr b- btr ; 8b- btr  ebm; 
+7 1: 4c- bcrc ; 8r; 8c- bcrc ; 4c- bcrc ; 8r; 8c- bcrc ; 
+bar // 34
+1 1: 1r; 
+2 1: 2bd+g+; 2r; 
+3 1: 2dgb; 2r; 
+4 1: 4gbd+; 2.r; 
+5 1: 4g-; 2.r; 
+6 1: 4d- brec e#- bcrc c# bcr2 ; 8r; 32r; 32a- bcr2  bm; 32g- brec ; 32f- btr  ebm; 2r; 
+7 1: 4c- bcrc ; 2.r; 
+endbar // 35

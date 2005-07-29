@@ -1,0 +1,207 @@
+<!DOCTYPE UI><UI>
+<class>tupletDialog</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>tupletDialog</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>509</width>
+            <height>179</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Tuplets</string>
+    </property>
+    <property stdset="1">
+        <name>iconText</name>
+        <string></string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="0"  column="3" >
+            <class>QLCDNumber</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>numNotesDisplay</cstring>
+            </property>
+        </widget>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>TextLabel1</cstring>
+            </property>
+            <property stdset="1">
+                <name>font</name>
+                <font>
+                </font>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Number of notes:</string>
+            </property>
+        </widget>
+        <widget row="0"  column="1"  rowspan="1"  colspan="2" >
+            <class>QSlider</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>numNotes</cstring>
+            </property>
+            <property stdset="1">
+                <name>minValue</name>
+                <number>2</number>
+            </property>
+            <property stdset="1">
+                <name>maxValue</name>
+                <number>10</number>
+            </property>
+            <property stdset="1">
+                <name>value</name>
+                <number>3</number>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget row="2"  column="2" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>cancelBu</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Cancel</string>
+            </property>
+        </widget>
+        <widget row="1"  column="1"  rowspan="1"  colspan="2" >
+            <class>QSlider</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>playTime</cstring>
+            </property>
+            <property stdset="1">
+                <name>minValue</name>
+                <number>1</number>
+            </property>
+            <property stdset="1">
+                <name>maxValue</name>
+                <number>9</number>
+            </property>
+            <property stdset="1">
+                <name>value</name>
+                <number>2</number>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget row="1"  column="3" >
+            <class>QLCDNumber</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>playLengthDisplay</cstring>
+            </property>
+        </widget>
+        <widget row="1"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>TextLabel2</cstring>
+            </property>
+            <property stdset="1">
+                <name>font</name>
+                <font>
+                </font>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Real length (in notes above)</string>
+            </property>
+        </widget>
+        <widget row="2"  column="3" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>okBu</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Ok</string>
+            </property>
+        </widget>
+        <spacer row="2"  column="1" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer18</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>numNotes</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>numNotesDisplay</receiver>
+        <slot>display(int)</slot>
+    </connection>
+    <connection>
+        <sender>cancelBu</sender>
+        <signal>clicked()</signal>
+        <receiver>tupletDialog</receiver>
+        <slot>slot_canc()</slot>
+    </connection>
+    <connection>
+        <sender>okBu</sender>
+        <signal>clicked()</signal>
+        <receiver>tupletDialog</receiver>
+        <slot>slot_ok()</slot>
+    </connection>
+    <connection>
+        <sender>playTime</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>playLengthDisplay</receiver>
+        <slot>display(int)</slot>
+    </connection>
+    <connection>
+        <sender>numNotes</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>tupletDialog</receiver>
+        <slot>noteNumberChanged(int)</slot>
+    </connection>
+    <slot access="public">noteNumberChanged(int)</slot>
+    <slot access="public">slot_canc()</slot>
+    <slot access="public">slot_ok()</slot>
+</connections>
+</UI>

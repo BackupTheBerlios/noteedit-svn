@@ -1,0 +1,106 @@
+<!DOCTYPE UI><UI>
+<class>expWarnDialog</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>expWarnDialog</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>407</width>
+            <height>93</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>export warning</string>
+    </property>
+    <widget>
+        <class>QPushButton</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>OkBu</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>10</x>
+                <y>50</y>
+                <width>154</width>
+                <height>26</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>text</name>
+            <string>&amp;OK</string>
+        </property>
+    </widget>
+    <widget>
+        <class>QPushButton</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>DetBu</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>230</x>
+                <y>50</y>
+                <width>153</width>
+                <height>26</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>text</name>
+            <string>&amp;Details &gt;&gt;</string>
+        </property>
+    </widget>
+    <widget>
+        <class>QLabel</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>Headline</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>390</width>
+                <height>39</height>
+            </rect>
+        </property>
+        <property stdset="1">
+            <name>font</name>
+            <font>
+                <pointsize>14</pointsize>
+                <bold>1</bold>
+            </font>
+        </property>
+        <property stdset="1">
+            <name>text</name>
+            <string>Export problems</string>
+        </property>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>OkBu</sender>
+        <signal>clicked()</signal>
+        <receiver>expWarnDialog</receiver>
+        <slot>slOk()</slot>
+    </connection>
+    <connection>
+        <sender>DetBu</sender>
+        <signal>clicked()</signal>
+        <receiver>expWarnDialog</receiver>
+        <slot>slShowDet()</slot>
+    </connection>
+    <slot access="public">slShowDet()</slot>
+    <slot access="public">slOk()</slot>
+</connections>
+</UI>

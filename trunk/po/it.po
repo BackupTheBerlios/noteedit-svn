@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-22 15:51+0200\n"
+"POT-Creation-Date: 2005-07-30 12:39+0200\n"
 "PO-Revision-Date: 2005-06-13 22:13+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -22,8 +22,8 @@ msgstr ""
 #: lilyexport.cpp:1055 mainframewidget.cpp:1174 mainframewidget.cpp:1178
 #: mainframewidget.cpp:1191 mainframewidget.cpp:1204 mainframewidget.cpp:1209
 #: mainframewidget.cpp:3686 mainframewidget.cpp:3708 mainframewidget.cpp:3710
-#: mainframewidget.cpp:4381 midiexport.cpp:147 midiexport.cpp:150
-#: musicxmlexport.cpp:317 musicxmlexport.cpp:320 musixtex.cpp:163
+#: mainframewidget.cpp:4385 midiexport.cpp:147 midiexport.cpp:150
+#: musicxmlexport.cpp:319 musicxmlexport.cpp:322 musixtex.cpp:163
 #: musixtex.cpp:165 musixtex.cpp:183 musixtex.cpp:185 musixtex.cpp:200
 #: musixtex.cpp:202 tse3handler.cpp:437 tse3handler.cpp:446
 #: tse3handler.cpp:455 tse3handler.cpp:956 tse3handler.cpp:1021
@@ -40,7 +40,7 @@ msgstr ""
 "problemi che potrebbero produrre un risultato errato in PostScript.\n"
 
 #: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:619
-#: musicxmlexport.cpp:463 musixtex.cpp:617 pmxexport.cpp:392
+#: musicxmlexport.cpp:465 musixtex.cpp:617 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
 
@@ -679,15 +679,15 @@ msgstr "Non è possibile creare uno scheduler midi con OSS"
 msgid "Create an aRts midi scheduler"
 msgstr "Crea un aRts midi scheduler"
 
-#: main.cpp:116
+#: main.cpp:125
 msgid "Loading resources..."
 msgstr "Caricamento in corso..."
 
-#: main.cpp:120
+#: main.cpp:129
 msgid "Parsing command line..."
 msgstr "Analisi della riga di comando..."
 
-#: main.cpp:222
+#: main.cpp:231
 msgid "Ready."
 msgstr "Pronto"
 
@@ -1247,7 +1247,7 @@ msgstr "Percussioni 5"
 msgid "voice sel."
 msgstr "Selezione voce"
 
-#: mainframewidget.cpp:571 mainframewidget.cpp:4180
+#: mainframewidget.cpp:571 mainframewidget.cpp:4184
 msgid "Key"
 msgstr "Tonalità"
 
@@ -1460,180 +1460,180 @@ msgstr ""
 "Per favore guarda la documentazione nella sezione Importazione MIDI per "
 "avere maggiori informazioni!"
 
-#: mainframewidget.cpp:3893
+#: mainframewidget.cpp:3896
 msgid "Do you really want to close all windows?"
 msgstr "Vuoi veramente chiudere tutte le finestre?"
 
-#: mainframewidget.cpp:3894
+#: mainframewidget.cpp:3897
 msgid "Close all"
 msgstr "Chiudi tutto"
 
-#: mainframewidget.cpp:3895
+#: mainframewidget.cpp:3898
 msgid "&Close all"
 msgstr "Chiudi &tutto"
 
-#: mainframewidget.cpp:3930
+#: mainframewidget.cpp:3933
 msgid "<center>Please choose the target point!</center>"
 msgstr "<center>Per favore scegli la destinazione!</center>"
 
-#: mainframewidget.cpp:3933 mainframewidget.cpp:3934
+#: mainframewidget.cpp:3936 mainframewidget.cpp:3937
 msgid "Goto"
 msgstr "Vai a"
 
-#: mainframewidget.cpp:4246
+#: mainframewidget.cpp:4250
 msgid "Can't delete last staff."
 msgstr "Impossibile cancellare l'ultimo pentagramma."
 
-#: mainframewidget.cpp:4247 mainframewidget.cpp:4254
+#: mainframewidget.cpp:4251 mainframewidget.cpp:4258
 msgid "Delete Staff"
 msgstr "Cancella il pentagramma"
 
-#: mainframewidget.cpp:4253
+#: mainframewidget.cpp:4257
 msgid "This deletes current staff! Are you sure?"
 msgstr "Quest'operazione eliminerà il pentagramma corrente! Sei sicuro?"
 
-#: mainframewidget.cpp:4287
+#: mainframewidget.cpp:4291
 msgid "Staff moving"
 msgstr "Sposta il rigo"
 
-#: mainframewidget.cpp:4288
+#: mainframewidget.cpp:4292
 msgid "Please choose the target position:"
 msgstr "Per favore scegli la destinazione:"
 
-#: mainframewidget.cpp:4323
+#: mainframewidget.cpp:4327
 msgid "Please select a region first!"
 msgstr "Per favore, prima scegli una regione!"
 
-#: mainframewidget.cpp:4323
+#: mainframewidget.cpp:4327
 msgid "MultiStaff"
 msgstr "Pentagramma multiplo"
 
-#: mainframewidget.cpp:4334
+#: mainframewidget.cpp:4338
 msgid "<center>Set tempo:</center>"
 msgstr "<center>Imposta il tempo:</center>"
 
-#: mainframewidget.cpp:4337
+#: mainframewidget.cpp:4341
 msgid "Set new tempo"
 msgstr "Imposta il nuovo tempo"
 
-#: mainframewidget.cpp:4338
+#: mainframewidget.cpp:4342
 msgid "Set new temp&o"
 msgstr "Imposta il nuovo temp&o"
 
-#: mainframewidget.cpp:4344
+#: mainframewidget.cpp:4348
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Imposta il numero di battute:</center>"
 
-#: mainframewidget.cpp:4347
+#: mainframewidget.cpp:4351
 msgid "multi rest"
 msgstr "Battute vuote"
 
-#: mainframewidget.cpp:4348
+#: mainframewidget.cpp:4352
 msgid "Set count of m&easures"
 msgstr "Imposta il num&ero di battute"
 
-#: mainframewidget.cpp:4365
+#: mainframewidget.cpp:4369
 msgid "<center>How many notes:</center>"
 msgstr "<center>Quante note:</center>"
 
-#: mainframewidget.cpp:4369
+#: mainframewidget.cpp:4373
 msgid "Autobeam"
 msgstr "Barrette automatiche"
 
-#: mainframewidget.cpp:4381
+#: mainframewidget.cpp:4385
 msgid "Please choose a repeat close sign!"
 msgstr "Per favore scegli un segno di fine ritornello!"
 
-#: mainframewidget.cpp:4385
+#: mainframewidget.cpp:4389
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Scegli il numero di ripetizioni!</center>"
 
-#: mainframewidget.cpp:4389
+#: mainframewidget.cpp:4393
 msgid "Repeat count"
 msgstr "Numero ripetizioni"
 
-#: mainframewidget.cpp:4390
+#: mainframewidget.cpp:4394
 msgid "&Set"
 msgstr "Impo&sta"
 
-#: mainframewidget.cpp:4406
+#: mainframewidget.cpp:4410
 msgid "<center>Semitones:</center>"
 msgstr "<center>Semitoni:</center>"
 
-#: mainframewidget.cpp:4410
+#: mainframewidget.cpp:4414
 msgid "Transpose"
 msgstr "Trasporta"
 
-#: mainframewidget.cpp:4411
+#: mainframewidget.cpp:4415
 msgid "&Transpose"
 msgstr "&Trasporta"
 
-#: mainframewidget.cpp:4437
+#: mainframewidget.cpp:4441
 msgid "Voice selection"
 msgstr "Selezione voce"
 
-#: mainframewidget.cpp:4438
+#: mainframewidget.cpp:4442
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Seleziona la voce qui:</center>"
 
-#: mainframewidget.cpp:5177 mainframewidget.cpp:5319
+#: mainframewidget.cpp:5181 mainframewidget.cpp:5323
 msgid "Error writing file \"%1\"."
 msgstr "Errore nella scrittura del file \"%1\"."
 
-#: mainframewidget.cpp:5178
+#: mainframewidget.cpp:5182
 msgid "Write TSE3"
 msgstr "Scrivi TSE3"
 
-#: mainframewidget.cpp:5194
+#: mainframewidget.cpp:5198
 msgid "This overrides the current staff! Continue?"
 msgstr "Questa operazione sovrascriverà il pentagramma corrente! Continuare?"
 
-#: mainframewidget.cpp:5195
+#: mainframewidget.cpp:5199
 msgid "Import Recording"
 msgstr "Importa registrazione"
 
-#: mainframewidget.cpp:5196 rc.cpp:311
+#: mainframewidget.cpp:5200 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "&Importa registrazione"
 
-#: mainframewidget.cpp:5238
+#: mainframewidget.cpp:5242
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Questa operazione eliminerà il documento corrente! Sei sicuro?"
 
-#: mainframewidget.cpp:5239
+#: mainframewidget.cpp:5243
 msgid "Confirmation"
 msgstr "Conferma"
 
-#: mainframewidget.cpp:5267
+#: mainframewidget.cpp:5271
 msgid "Error creating Score"
 msgstr "Errore nella creazione della partitura"
 
-#: mainframewidget.cpp:5268
+#: mainframewidget.cpp:5272
 msgid "Creating Score"
 msgstr "Creazione della partitura"
 
-#: mainframewidget.cpp:5320 tse3handler.cpp:365
+#: mainframewidget.cpp:5324 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "Esporta da TSE3 a MIDI"
 
-#: mainframewidget.cpp:5335 mainframewidget.cpp:5370
+#: mainframewidget.cpp:5339 mainframewidget.cpp:5374
 msgid "File read error \"%1\"."
 msgstr "Errore nella lettura del file \"%1\"."
 
-#: mainframewidget.cpp:5336
+#: mainframewidget.cpp:5340
 msgid "TSE3 MIDI in"
 msgstr "Importa da MIDI a TSE3"
 
-#: mainframewidget.cpp:5371
+#: mainframewidget.cpp:5375
 msgid "Read TSE3"
 msgstr "Leggi TSE3"
 
-#: mainframewidget.cpp:5493
+#: mainframewidget.cpp:5497
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Il file \"%1\" esiste già! Sovrascrivo?"
 
-#: mainframewidget.cpp:5494
+#: mainframewidget.cpp:5498
 msgid "File already exists"
 msgstr "Il file esiste già"
 
@@ -1641,7 +1641,7 @@ msgstr "Il file esiste già"
 msgid "[no MIDI device created]"
 msgstr "[non è stato creato alcun dispositivo MIDI]"
 
-#: musicxmlexport.cpp:461
+#: musicxmlexport.cpp:463
 msgid ""
 "Noteedit has exported the score to MusicXML\n"
 "but there are some problems.\n"
@@ -1649,44 +1649,44 @@ msgstr ""
 "NoteEdit ha esportato la partitura in MusicXML\n"
 "ma si sono verificati alcuni problemi.\n"
 
-#: musicxmlexport.cpp:468
+#: musicxmlexport.cpp:470
 msgid "Staff %1 has irregular keysig. This is currently not supported.\n"
 msgstr ""
 "Il rigo %1 ha una tonalità irregolare, che non per ora non è supportata\n"
 
-#: musicxmlexport.cpp:473
+#: musicxmlexport.cpp:475
 msgid "Staff %1 contains drum clef. This is currently not supported.\n"
 msgstr ""
 "Il rigo %1 contiene una chiave per le percussioni, che non per ora non è "
 "supportata\n"
 
-#: musicxmlexport.cpp:478
+#: musicxmlexport.cpp:480
 msgid "Staff %1 contains drum staff. This is currently not supported.\n"
 msgstr ""
 "Il rigo %1 contiene un pentagramma per le percussioni, che attualmente non è "
 "supportato.\n"
 
-#: musicxmlexport.cpp:483
+#: musicxmlexport.cpp:485
 msgid "Staff %1 contains voice change. This is currently not supported.\n"
 msgstr ""
 "Il rigo %1 contiene un cambio di voce, che attualmente non è supportato.\n"
 
-#: musicxmlexport.cpp:488
+#: musicxmlexport.cpp:490
 msgid "Staff %1 contains 8va start without 8va stop.\n"
 msgstr "Rigo %1 contiene il simbolo dell'inizio di 8va ma non la fine.\n"
 
-#: musicxmlexport.cpp:493
+#: musicxmlexport.cpp:495
 msgid ""
 "Staff %1 contains 8va over a single note. This is currently not supported.\n"
 msgstr ""
 "Il rigo %1 contiene il simbolo di 8va sopra una singola nota, che non può "
 "essere espresso in MUP.\n"
 
-#: musicxmlexport.cpp:498
+#: musicxmlexport.cpp:500
 msgid "Staff %1 contains dynamic start without dynamic stop.\n"
 msgstr "Il rigo %1 contiene il simbolo di inizio di dinamica ma non la fine.\n"
 
-#: musicxmlexport.cpp:503
+#: musicxmlexport.cpp:505
 msgid "MusicXML produced. But there are some problems."
 msgstr ""
 "L'esportazione in MusiXTeX è stata completata, ma ci sono stati dei problemi."
@@ -4202,20 +4202,23 @@ msgid "[unnamed]"
 msgstr "[senza nome]"
 
 #: uiconnect.cpp:747
-msgid "Verse no %1 %2"
-msgstr "Strofa n. %1 %2"
+#, fuzzy
+msgid "Stanza no %1 %2"
+msgstr "Rigo %1%2"
 
 #: uiconnect.cpp:749
 msgid "[empty]"
 msgstr "[vuoto]"
 
 #: uiconnect.cpp:758
-msgid "Are you sure to clear the current verse?"
+#, fuzzy
+msgid "Are you sure to clear the current stanza?"
 msgstr "Sei sicuro di voler cancellare la strofa corrente?"
 
 #: uiconnect.cpp:759
-msgid "Clear verse"
-msgstr "Cancella la strofa"
+#, fuzzy
+msgid "Clear stanza"
+msgstr "&Cancella tutto"
 
 #: uiconnect.cpp:787
 msgid "File open aborted."
@@ -4429,6 +4432,12 @@ msgstr "Mostra diagramma"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Costruttore di accordi"
+
+#~ msgid "Verse no %1 %2"
+#~ msgstr "Strofa n. %1 %2"
+
+#~ msgid "Clear verse"
+#~ msgstr "Cancella la strofa"
 
 #~ msgid "true"
 #~ msgstr "vero"

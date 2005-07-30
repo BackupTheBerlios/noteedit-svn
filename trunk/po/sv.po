@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-22 15:51+0200\n"
+"POT-Creation-Date: 2005-07-30 12:39+0200\n"
 "PO-Revision-Date: 2005-06-12 22:31+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -20,8 +20,8 @@ msgstr ""
 #: lilyexport.cpp:1055 mainframewidget.cpp:1174 mainframewidget.cpp:1178
 #: mainframewidget.cpp:1191 mainframewidget.cpp:1204 mainframewidget.cpp:1209
 #: mainframewidget.cpp:3686 mainframewidget.cpp:3708 mainframewidget.cpp:3710
-#: mainframewidget.cpp:4381 midiexport.cpp:147 midiexport.cpp:150
-#: musicxmlexport.cpp:317 musicxmlexport.cpp:320 musixtex.cpp:163
+#: mainframewidget.cpp:4385 midiexport.cpp:147 midiexport.cpp:150
+#: musicxmlexport.cpp:319 musicxmlexport.cpp:322 musixtex.cpp:163
 #: musixtex.cpp:165 musixtex.cpp:183 musixtex.cpp:185 musixtex.cpp:200
 #: musixtex.cpp:202 tse3handler.cpp:437 tse3handler.cpp:446
 #: tse3handler.cpp:455 tse3handler.cpp:956 tse3handler.cpp:1021
@@ -39,7 +39,7 @@ msgstr ""
 "problem som antagligen kommer att förhindra riktiga utdata från PMX.\n"
 
 #: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:619
-#: musicxmlexport.cpp:463 musixtex.cpp:617 pmxexport.cpp:392
+#: musicxmlexport.cpp:465 musixtex.cpp:617 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
 
@@ -683,15 +683,15 @@ msgstr "Skapa inte en OSS-MIDI-scheduler"
 msgid "Create an aRts midi scheduler"
 msgstr "Skapa inte en OSS-MIDI-scheduler"
 
-#: main.cpp:116
+#: main.cpp:125
 msgid "Loading resources..."
 msgstr ""
 
-#: main.cpp:120
+#: main.cpp:129
 msgid "Parsing command line..."
 msgstr ""
 
-#: main.cpp:222
+#: main.cpp:231
 msgid "Ready."
 msgstr ""
 
@@ -1287,7 +1287,7 @@ msgstr "trumma5"
 msgid "voice sel."
 msgstr "stämmoval"
 
-#: mainframewidget.cpp:571 mainframewidget.cpp:4180
+#: mainframewidget.cpp:571 mainframewidget.cpp:4184
 msgid "Key"
 msgstr "Tangent"
 
@@ -1501,190 +1501,190 @@ msgid ""
 "Please look in the MIDI import section in documentation for more information!"
 msgstr ""
 
-#: mainframewidget.cpp:3893
+#: mainframewidget.cpp:3896
 msgid "Do you really want to close all windows?"
 msgstr "Vill du verkligen stänga alla fönster?"
 
-#: mainframewidget.cpp:3894
+#: mainframewidget.cpp:3897
 msgid "Close all"
 msgstr "Stäng alla"
 
-#: mainframewidget.cpp:3895
+#: mainframewidget.cpp:3898
 msgid "&Close all"
 msgstr "Stäng &alla"
 
-#: mainframewidget.cpp:3930
+#: mainframewidget.cpp:3933
 msgid "<center>Please choose the target point!</center>"
 msgstr "<center>Välj mål!</center>"
 
-#: mainframewidget.cpp:3933 mainframewidget.cpp:3934
+#: mainframewidget.cpp:3936 mainframewidget.cpp:3937
 msgid "Goto"
 msgstr "Gå till"
 
-#: mainframewidget.cpp:4246
+#: mainframewidget.cpp:4250
 msgid "Can't delete last staff."
 msgstr "Kan inte ta bort sista notraden."
 
-#: mainframewidget.cpp:4247 mainframewidget.cpp:4254
+#: mainframewidget.cpp:4251 mainframewidget.cpp:4258
 msgid "Delete Staff"
 msgstr "Ta bort notrad"
 
-#: mainframewidget.cpp:4253
+#: mainframewidget.cpp:4257
 #, fuzzy
 msgid "This deletes current staff! Are you sure?"
 msgstr "Detta tar bort den valda stämman! Är du säker?"
 
-#: mainframewidget.cpp:4287
+#: mainframewidget.cpp:4291
 msgid "Staff moving"
 msgstr "Flytta notrad"
 
-#: mainframewidget.cpp:4288
+#: mainframewidget.cpp:4292
 msgid "Please choose the target position:"
 msgstr "Välj mål:"
 
-#: mainframewidget.cpp:4323
+#: mainframewidget.cpp:4327
 #, fuzzy
 msgid "Please select a region first!"
 msgstr "Välj en not!"
 
-#: mainframewidget.cpp:4323
+#: mainframewidget.cpp:4327
 #, fuzzy
 msgid "MultiStaff"
 msgstr "&Flera notrader"
 
-#: mainframewidget.cpp:4334
+#: mainframewidget.cpp:4338
 msgid "<center>Set tempo:</center>"
 msgstr "<center>Sätt tempo:</center>"
 
-#: mainframewidget.cpp:4337
+#: mainframewidget.cpp:4341
 msgid "Set new tempo"
 msgstr "Sätt nytt tempo"
 
-#: mainframewidget.cpp:4338
+#: mainframewidget.cpp:4342
 msgid "Set new temp&o"
 msgstr "Sätt nytt temp&o"
 
-#: mainframewidget.cpp:4344
+#: mainframewidget.cpp:4348
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Välj antal takter:</center>"
 
-#: mainframewidget.cpp:4347
+#: mainframewidget.cpp:4351
 msgid "multi rest"
 msgstr "mångpauser"
 
-#: mainframewidget.cpp:4348
+#: mainframewidget.cpp:4352
 msgid "Set count of m&easures"
 msgstr "Välj antal takt&er"
 
-#: mainframewidget.cpp:4365
+#: mainframewidget.cpp:4369
 msgid "<center>How many notes:</center>"
 msgstr "<center>Hur många noter:</center>"
 
-#: mainframewidget.cpp:4369
+#: mainframewidget.cpp:4373
 msgid "Autobeam"
 msgstr "Balkar"
 
-#: mainframewidget.cpp:4381
+#: mainframewidget.cpp:4385
 #, fuzzy
 msgid "Please choose a repeat close sign!"
 msgstr "Välj en not!"
 
-#: mainframewidget.cpp:4385
+#: mainframewidget.cpp:4389
 #, fuzzy
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Välj mål!</center>"
 
-#: mainframewidget.cpp:4389
+#: mainframewidget.cpp:4393
 #, fuzzy
 msgid "Repeat count"
 msgstr "Upprepning &börjar"
 
-#: mainframewidget.cpp:4390
+#: mainframewidget.cpp:4394
 #, fuzzy
 msgid "&Set"
 msgstr "&Markera allt"
 
-#: mainframewidget.cpp:4406
+#: mainframewidget.cpp:4410
 msgid "<center>Semitones:</center>"
 msgstr "<center>Halvtoner:</center>"
 
-#: mainframewidget.cpp:4410
+#: mainframewidget.cpp:4414
 msgid "Transpose"
 msgstr "Transponera"
 
-#: mainframewidget.cpp:4411
+#: mainframewidget.cpp:4415
 msgid "&Transpose"
 msgstr "&Transponera"
 
-#: mainframewidget.cpp:4437
+#: mainframewidget.cpp:4441
 msgid "Voice selection"
 msgstr "Välj stämma"
 
-#: mainframewidget.cpp:4438
+#: mainframewidget.cpp:4442
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Välj stämma:</center>"
 
-#: mainframewidget.cpp:5177 mainframewidget.cpp:5319
+#: mainframewidget.cpp:5181 mainframewidget.cpp:5323
 msgid "Error writing file \"%1\"."
 msgstr "Fel vid skrivning till fil \"%1\"."
 
-#: mainframewidget.cpp:5178
+#: mainframewidget.cpp:5182
 msgid "Write TSE3"
 msgstr "Skriv TSE3"
 
-#: mainframewidget.cpp:5194
+#: mainframewidget.cpp:5198
 #, fuzzy
 msgid "This overrides the current staff! Continue?"
 msgstr "Detta ersätter den valda stämman! Fortsätt?"
 
-#: mainframewidget.cpp:5195
+#: mainframewidget.cpp:5199
 msgid "Import Recording"
 msgstr "Importera inspelning"
 
-#: mainframewidget.cpp:5196 rc.cpp:311
+#: mainframewidget.cpp:5200 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "&Importera inspelning"
 
-#: mainframewidget.cpp:5238
+#: mainframewidget.cpp:5242
 #, fuzzy
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Detta tar bort den valda stämman! Är du säker?"
 
-#: mainframewidget.cpp:5239
+#: mainframewidget.cpp:5243
 #, fuzzy
 msgid "Confirmation"
 msgstr "Sånginformation"
 
-#: mainframewidget.cpp:5267
+#: mainframewidget.cpp:5271
 msgid "Error creating Score"
 msgstr "Fel vid skapande av partitur."
 
-#: mainframewidget.cpp:5268
+#: mainframewidget.cpp:5272
 msgid "Creating Score"
 msgstr "Skapar partitur"
 
-#: mainframewidget.cpp:5320 tse3handler.cpp:365
+#: mainframewidget.cpp:5324 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "TSE3 MIDI ut"
 
-#: mainframewidget.cpp:5335 mainframewidget.cpp:5370
+#: mainframewidget.cpp:5339 mainframewidget.cpp:5374
 msgid "File read error \"%1\"."
 msgstr "Fel vid läsning av filen \"%1\". "
 
-#: mainframewidget.cpp:5336
+#: mainframewidget.cpp:5340
 msgid "TSE3 MIDI in"
 msgstr "TSE3 MIDI in"
 
-#: mainframewidget.cpp:5371
+#: mainframewidget.cpp:5375
 msgid "Read TSE3"
 msgstr "Läs TSE3"
 
-#: mainframewidget.cpp:5493
+#: mainframewidget.cpp:5497
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Filen \"%1\" finns redan! Skriv över?"
 
-#: mainframewidget.cpp:5494
+#: mainframewidget.cpp:5498
 msgid "File already exists"
 msgstr "Filen finns redan"
 
@@ -1692,7 +1692,7 @@ msgstr "Filen finns redan"
 msgid "[no MIDI device created]"
 msgstr "[inga MIDI-enheter skapade]"
 
-#: musicxmlexport.cpp:461
+#: musicxmlexport.cpp:463
 #, fuzzy
 msgid ""
 "Noteedit has exported the score to MusicXML\n"
@@ -1701,43 +1701,43 @@ msgstr ""
 "Notredigeraren har exporterat partituret till PMX men det uppstod några\n"
 "problem som antagligen kommer att förhindra riktiga utdata från PMX.\n"
 
-#: musicxmlexport.cpp:468
+#: musicxmlexport.cpp:470
 #, fuzzy
 msgid "Staff %1 has irregular keysig. This is currently not supported.\n"
 msgstr ""
 "Notrad %1 har oregelbunden nyckelsignatur. Detta kan inte uttryckas i "
 "LilyPond\n"
 
-#: musicxmlexport.cpp:473
+#: musicxmlexport.cpp:475
 #, fuzzy
 msgid "Staff %1 contains drum clef. This is currently not supported.\n"
 msgstr "Notrad %1 innehåller trumnoter. Detta kan inte uttryckas i PMX.\n"
 
-#: musicxmlexport.cpp:478
+#: musicxmlexport.cpp:480
 #, fuzzy
 msgid "Staff %1 contains drum staff. This is currently not supported.\n"
 msgstr "Notrad %1 innehåller trumnoter. Detta kan inte uttryckas i MUP.\n"
 
-#: musicxmlexport.cpp:483
+#: musicxmlexport.cpp:485
 #, fuzzy
 msgid "Staff %1 contains voice change. This is currently not supported.\n"
 msgstr "Notrad %1 innehåller trumnoter. Detta kan inte uttryckas i MUP.\n"
 
-#: musicxmlexport.cpp:488
+#: musicxmlexport.cpp:490
 msgid "Staff %1 contains 8va start without 8va stop.\n"
 msgstr ""
 
-#: musicxmlexport.cpp:493
+#: musicxmlexport.cpp:495
 #, fuzzy
 msgid ""
 "Staff %1 contains 8va over a single note. This is currently not supported.\n"
 msgstr "Notrad %1 innehåller trumnoter. Detta kan inte uttryckas i MUP.\n"
 
-#: musicxmlexport.cpp:498
+#: musicxmlexport.cpp:500
 msgid "Staff %1 contains dynamic start without dynamic stop.\n"
 msgstr ""
 
-#: musicxmlexport.cpp:503
+#: musicxmlexport.cpp:505
 #, fuzzy
 msgid "MusicXML produced. But there are some problems."
 msgstr "MusiXTeX skapat, men det uppstod några problem."
@@ -4218,20 +4218,23 @@ msgid "[unnamed]"
 msgstr "[ej namngiven]"
 
 #: uiconnect.cpp:747
-msgid "Verse no %1 %2"
-msgstr "vers nummer %1 %2"
+#, fuzzy
+msgid "Stanza no %1 %2"
+msgstr "Notrad %1%2"
 
 #: uiconnect.cpp:749
 msgid "[empty]"
 msgstr "[tom]"
 
 #: uiconnect.cpp:758
-msgid "Are you sure to clear the current verse?"
+#, fuzzy
+msgid "Are you sure to clear the current stanza?"
 msgstr "Vill du verkligen ta bort den valda versen?"
 
 #: uiconnect.cpp:759
-msgid "Clear verse"
-msgstr "Rensa vers"
+#, fuzzy
+msgid "Clear stanza"
+msgstr "&Töm alla"
 
 #: uiconnect.cpp:787
 msgid "File open aborted."
@@ -4448,6 +4451,12 @@ msgstr ""
 #, fuzzy
 msgid "Chord constructor"
 msgstr "Partiturstyrning"
+
+#~ msgid "Verse no %1 %2"
+#~ msgstr "vers nummer %1 %2"
+
+#~ msgid "Clear verse"
+#~ msgstr "Rensa vers"
 
 #~ msgid "true"
 #~ msgstr "sant"

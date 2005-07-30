@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-22 15:51+0200\n"
+"POT-Creation-Date: 2005-07-30 12:39+0200\n"
 "PO-Revision-Date: 2005-06-12 22:30+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -20,8 +20,8 @@ msgstr ""
 #: lilyexport.cpp:1055 mainframewidget.cpp:1174 mainframewidget.cpp:1178
 #: mainframewidget.cpp:1191 mainframewidget.cpp:1204 mainframewidget.cpp:1209
 #: mainframewidget.cpp:3686 mainframewidget.cpp:3708 mainframewidget.cpp:3710
-#: mainframewidget.cpp:4381 midiexport.cpp:147 midiexport.cpp:150
-#: musicxmlexport.cpp:317 musicxmlexport.cpp:320 musixtex.cpp:163
+#: mainframewidget.cpp:4385 midiexport.cpp:147 midiexport.cpp:150
+#: musicxmlexport.cpp:319 musicxmlexport.cpp:322 musixtex.cpp:163
 #: musixtex.cpp:165 musixtex.cpp:183 musixtex.cpp:185 musixtex.cpp:200
 #: musixtex.cpp:202 tse3handler.cpp:437 tse3handler.cpp:446
 #: tse3handler.cpp:455 tse3handler.cpp:956 tse3handler.cpp:1021
@@ -39,7 +39,7 @@ msgstr ""
 "problémy, ktoré pravdepodobne zabránia úspešnému výstupu z PMX.\n"
 
 #: abcexport.cpp:277 filehandler.cpp:594 lilyexport.cpp:619
-#: musicxmlexport.cpp:463 musixtex.cpp:617 pmxexport.cpp:392
+#: musicxmlexport.cpp:465 musixtex.cpp:617 pmxexport.cpp:392
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
 
@@ -703,15 +703,15 @@ msgstr "Nevytvárať OSS midi scheduler"
 msgid "Create an aRts midi scheduler"
 msgstr "MIDI výstup &aRts syntézy"
 
-#: main.cpp:116
+#: main.cpp:125
 msgid "Loading resources..."
 msgstr ""
 
-#: main.cpp:120
+#: main.cpp:129
 msgid "Parsing command line..."
 msgstr ""
 
-#: main.cpp:222
+#: main.cpp:231
 msgid "Ready."
 msgstr ""
 
@@ -1286,7 +1286,7 @@ msgstr "bubon5"
 msgid "voice sel."
 msgstr "voľba hlasu"
 
-#: mainframewidget.cpp:571 mainframewidget.cpp:4180
+#: mainframewidget.cpp:571 mainframewidget.cpp:4184
 msgid "Key"
 msgstr "Kľúč"
 
@@ -1505,184 +1505,184 @@ msgid ""
 "Please look in the MIDI import section in documentation for more information!"
 msgstr ""
 
-#: mainframewidget.cpp:3893
+#: mainframewidget.cpp:3896
 msgid "Do you really want to close all windows?"
 msgstr "Skutočne chcete zavrieť všetky okná?"
 
-#: mainframewidget.cpp:3894
+#: mainframewidget.cpp:3897
 msgid "Close all"
 msgstr "Zavrieť všetko"
 
-#: mainframewidget.cpp:3895
+#: mainframewidget.cpp:3898
 msgid "&Close all"
 msgstr "&Zavrieť všetko"
 
-#: mainframewidget.cpp:3930
+#: mainframewidget.cpp:3933
 msgid "<center>Please choose the target point!</center>"
 msgstr "<center>Zvoľte prosím cieľový bod!</center>"
 
-#: mainframewidget.cpp:3933 mainframewidget.cpp:3934
+#: mainframewidget.cpp:3936 mainframewidget.cpp:3937
 msgid "Goto"
 msgstr "Ísť na"
 
-#: mainframewidget.cpp:4246
+#: mainframewidget.cpp:4250
 msgid "Can't delete last staff."
 msgstr "Poslednú osnovu nie je možné odstrániť."
 
-#: mainframewidget.cpp:4247 mainframewidget.cpp:4254
+#: mainframewidget.cpp:4251 mainframewidget.cpp:4258
 msgid "Delete Staff"
 msgstr "Zmazať osnovu"
 
-#: mainframewidget.cpp:4253
+#: mainframewidget.cpp:4257
 msgid "This deletes current staff! Are you sure?"
 msgstr "Toto odstráni aktuálnu osnovu! Ste si istý?"
 
-#: mainframewidget.cpp:4287
+#: mainframewidget.cpp:4291
 msgid "Staff moving"
 msgstr "Presun osnovy"
 
-#: mainframewidget.cpp:4288
+#: mainframewidget.cpp:4292
 msgid "Please choose the target position:"
 msgstr "Zvoľte prosím cieľovú pozíciu:"
 
-#: mainframewidget.cpp:4323
+#: mainframewidget.cpp:4327
 #, fuzzy
 msgid "Please select a region first!"
 msgstr "Najskôr, prosím, opravte chybu\n"
 
-#: mainframewidget.cpp:4323
+#: mainframewidget.cpp:4327
 msgid "MultiStaff"
 msgstr "MultiOsnova"
 
-#: mainframewidget.cpp:4334
+#: mainframewidget.cpp:4338
 msgid "<center>Set tempo:</center>"
 msgstr "<center>Nastaviť tempo:</center>"
 
-#: mainframewidget.cpp:4337
+#: mainframewidget.cpp:4341
 msgid "Set new tempo"
 msgstr "Nastaviť nové tempo"
 
-#: mainframewidget.cpp:4338
+#: mainframewidget.cpp:4342
 msgid "Set new temp&o"
 msgstr "Nastaviť nové temp&o"
 
-#: mainframewidget.cpp:4344
+#: mainframewidget.cpp:4348
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Nastaviť počet taktov:</center>"
 
-#: mainframewidget.cpp:4347
+#: mainframewidget.cpp:4351
 msgid "multi rest"
 msgstr "Viactaktová pomlčka"
 
-#: mainframewidget.cpp:4348
+#: mainframewidget.cpp:4352
 msgid "Set count of m&easures"
 msgstr "Nastaviť počítani&e taktov"
 
-#: mainframewidget.cpp:4365
+#: mainframewidget.cpp:4369
 msgid "<center>How many notes:</center>"
 msgstr "<center>Koľko nôt:</center>"
 
-#: mainframewidget.cpp:4369
+#: mainframewidget.cpp:4373
 msgid "Autobeam"
 msgstr "Automatické viazanie"
 
-#: mainframewidget.cpp:4381
+#: mainframewidget.cpp:4385
 #, fuzzy
 msgid "Please choose a repeat close sign!"
 msgstr "Zvoľte si prosím notu"
 
-#: mainframewidget.cpp:4385
+#: mainframewidget.cpp:4389
 #, fuzzy
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Zvoľte prosím cieľový bod!</center>"
 
-#: mainframewidget.cpp:4389
+#: mainframewidget.cpp:4393
 #, fuzzy
 msgid "Repeat count"
 msgstr "Spočítaj položky"
 
-#: mainframewidget.cpp:4390
+#: mainframewidget.cpp:4394
 msgid "&Set"
 msgstr "&Nastaviť"
 
-#: mainframewidget.cpp:4406
+#: mainframewidget.cpp:4410
 msgid "<center>Semitones:</center>"
 msgstr "<center>Poltóny:</center>"
 
-#: mainframewidget.cpp:4410
+#: mainframewidget.cpp:4414
 msgid "Transpose"
 msgstr "Transponovanie"
 
-#: mainframewidget.cpp:4411
+#: mainframewidget.cpp:4415
 msgid "&Transpose"
 msgstr "&Transponovať"
 
-#: mainframewidget.cpp:4437
+#: mainframewidget.cpp:4441
 msgid "Voice selection"
 msgstr "Voľba hlasu"
 
-#: mainframewidget.cpp:4438
+#: mainframewidget.cpp:4442
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Zvoľte si tu svoj hlas:</center>"
 
-#: mainframewidget.cpp:5177 mainframewidget.cpp:5319
+#: mainframewidget.cpp:5181 mainframewidget.cpp:5323
 msgid "Error writing file \"%1\"."
 msgstr "Chyba pri zápise súboru \"%1\"."
 
-#: mainframewidget.cpp:5178
+#: mainframewidget.cpp:5182
 msgid "Write TSE3"
 msgstr "Zapísať TSE3"
 
-#: mainframewidget.cpp:5194
+#: mainframewidget.cpp:5198
 msgid "This overrides the current staff! Continue?"
 msgstr "Toto prepíše aktuálnu osnovu! Pokračovať?"
 
-#: mainframewidget.cpp:5195
+#: mainframewidget.cpp:5199
 msgid "Import Recording"
 msgstr "Import nahrávky"
 
-#: mainframewidget.cpp:5196 rc.cpp:311
+#: mainframewidget.cpp:5200 rc.cpp:311
 #, no-c-format
 msgid "&Import Recording"
 msgstr "&Import nahrávky"
 
-#: mainframewidget.cpp:5238
+#: mainframewidget.cpp:5242
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Toto vymaže aktuálny dokument! Ste si istý?"
 
-#: mainframewidget.cpp:5239
+#: mainframewidget.cpp:5243
 msgid "Confirmation"
 msgstr "Potvrdenie"
 
-#: mainframewidget.cpp:5267
+#: mainframewidget.cpp:5271
 msgid "Error creating Score"
 msgstr "Chyba pri vytváraní partitúry"
 
-#: mainframewidget.cpp:5268
+#: mainframewidget.cpp:5272
 msgid "Creating Score"
 msgstr "Vytvoriť partitúru"
 
-#: mainframewidget.cpp:5320 tse3handler.cpp:365
+#: mainframewidget.cpp:5324 tse3handler.cpp:365
 msgid "TSE3 MIDI out"
 msgstr "TSE3 MIDI výstup"
 
-#: mainframewidget.cpp:5335 mainframewidget.cpp:5370
+#: mainframewidget.cpp:5339 mainframewidget.cpp:5374
 msgid "File read error \"%1\"."
 msgstr "Chyba pri čítaní súboru \"%1\"."
 
-#: mainframewidget.cpp:5336
+#: mainframewidget.cpp:5340
 msgid "TSE3 MIDI in"
 msgstr "TSE3 MIDI vstup"
 
-#: mainframewidget.cpp:5371
+#: mainframewidget.cpp:5375
 msgid "Read TSE3"
 msgstr "Čítať TSE3"
 
-#: mainframewidget.cpp:5493
+#: mainframewidget.cpp:5497
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Súbor \"%1\" už existuje! Prepísať ho?"
 
-#: mainframewidget.cpp:5494
+#: mainframewidget.cpp:5498
 msgid "File already exists"
 msgstr "Súbor už existuje"
 
@@ -1690,7 +1690,7 @@ msgstr "Súbor už existuje"
 msgid "[no MIDI device created]"
 msgstr "[žiadne MIDI zariadenie]"
 
-#: musicxmlexport.cpp:461
+#: musicxmlexport.cpp:463
 #, fuzzy
 msgid ""
 "Noteedit has exported the score to MusicXML\n"
@@ -1699,43 +1699,43 @@ msgstr ""
 "Noteedit exportoval partitúru do PMX, ale vyskytli sa niektoré\n"
 "problémy, ktoré pravdepodobne zabránia úspešnému výstupu z PMX.\n"
 
-#: musicxmlexport.cpp:468
+#: musicxmlexport.cpp:470
 #, fuzzy
 msgid "Staff %1 has irregular keysig. This is currently not supported.\n"
 msgstr ""
 "Osnova %1 má neregulárne označenie kľúča. Toto nie je možné vyjadriť v "
 "LilyPonde\n"
 
-#: musicxmlexport.cpp:473
+#: musicxmlexport.cpp:475
 #, fuzzy
 msgid "Staff %1 contains drum clef. This is currently not supported.\n"
 msgstr "Osnova %1 je osnova s bubnami. Toto nie je možné vyjadriť v PMX.\n"
 
-#: musicxmlexport.cpp:478
+#: musicxmlexport.cpp:480
 #, fuzzy
 msgid "Staff %1 contains drum staff. This is currently not supported.\n"
 msgstr "Osnova %1 je osnova s bubnami. Toto nie je možné vyjadriť v MUP.\n"
 
-#: musicxmlexport.cpp:483
+#: musicxmlexport.cpp:485
 #, fuzzy
 msgid "Staff %1 contains voice change. This is currently not supported.\n"
 msgstr "Osnova %1 je osnova s bubnami. Toto nie je možné vyjadriť v MUP.\n"
 
-#: musicxmlexport.cpp:488
+#: musicxmlexport.cpp:490
 msgid "Staff %1 contains 8va start without 8va stop.\n"
 msgstr ""
 
-#: musicxmlexport.cpp:493
+#: musicxmlexport.cpp:495
 #, fuzzy
 msgid ""
 "Staff %1 contains 8va over a single note. This is currently not supported.\n"
 msgstr "Osnova %1 je osnova s bubnami. Toto nie je možné vyjadriť v MUP.\n"
 
-#: musicxmlexport.cpp:498
+#: musicxmlexport.cpp:500
 msgid "Staff %1 contains dynamic start without dynamic stop.\n"
 msgstr ""
 
-#: musicxmlexport.cpp:503
+#: musicxmlexport.cpp:505
 #, fuzzy
 msgid "MusicXML produced. But there are some problems."
 msgstr "MusiXTeX bol vyprodukovaný. Ale očakávajte problémy."
@@ -4258,20 +4258,23 @@ msgid "[unnamed]"
 msgstr "[nepomenovaný]"
 
 #: uiconnect.cpp:747
-msgid "Verse no %1 %2"
-msgstr "Verš číslo %1 %2"
+#, fuzzy
+msgid "Stanza no %1 %2"
+msgstr "Osnova %1%2"
 
 #: uiconnect.cpp:749
 msgid "[empty]"
 msgstr "[prázdny]"
 
 #: uiconnect.cpp:758
-msgid "Are you sure to clear the current verse?"
+#, fuzzy
+msgid "Are you sure to clear the current stanza?"
 msgstr "Ste si istý, že chcete zmazať aktuálny verš?"
 
 #: uiconnect.cpp:759
-msgid "Clear verse"
-msgstr "Čistý verš"
+#, fuzzy
+msgid "Clear stanza"
+msgstr "Všetko zmazať"
 
 #: uiconnect.cpp:787
 msgid "File open aborted."
@@ -4484,6 +4487,12 @@ msgstr "zobraziť diagram"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Tvorba akordov"
+
+#~ msgid "Verse no %1 %2"
+#~ msgstr "Verš číslo %1 %2"
+
+#~ msgid "Clear verse"
+#~ msgstr "Čistý verš"
 
 #~ msgid "true"
 #~ msgstr "pravda"

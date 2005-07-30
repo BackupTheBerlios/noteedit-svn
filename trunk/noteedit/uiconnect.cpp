@@ -744,7 +744,7 @@ void lyricsFrm::initNo() {
     int ci = this->no->currentItem();
     this->no->clear();
     for( int i = 1; i < 6; ++i )
-	this->no->insertItem(i18n("Verse no %1 %2").arg(i).arg( 
+	this->no->insertItem(i18n("Stanza no %1 %2").arg(i).arg( 
 		    ( NResource::lyrics_[i - 1] == QString::null || 
 		      NResource::lyrics_[i - 1] == "") ? i18n("[empty]") : QString::null));
     this->no->setCurrentItem( ci );
@@ -755,8 +755,8 @@ void lyricsFrm::slCl() {
 
 	if (KMessageBox::warningYesNo
 		(0,
-		 i18n("Are you sure to clear the current verse?"),
-		 kapp->makeStdCaption(i18n("Clear verse")),
+		 i18n("Are you sure to clear the current stanza?"),
+		 kapp->makeStdCaption(i18n("Clear stanza")),
 		 i18n("C&lear"),
 		 i18n("&Cancel")
 	  )
@@ -768,13 +768,13 @@ void lyricsFrm::slCl() {
 
     }
 
+/* confirm and close changes */	
 void lyricsFrm::slOk() {
-
     this->chngLyr();
     this->close();
+}
 
-    }
-
+/* import lyrics from file */
 void lyricsFrm::slOp() {
 
 	QString fn = KFileDialog::getOpenFileName( QString::null, "*.txt|Text files (*.txt)\n*.*|All files (*.*)", this );
@@ -808,34 +808,31 @@ void lyricsFrm::slOp() {
 	}
 }
 
+/* new stanza is selected from drop-down menu */
 void lyricsFrm::chngLyr() {
+	if( prevLyr_ > -1 ) 
+		NResource::lyrics_[prevLyr_] = this->txt->text();
 
-    if( prevLyr_ > -1 ) 
-	NResource::lyrics_[prevLyr_] = this->txt->text();
+	this->txt->clear();
+	if( NResource::lyrics_[this->no->currentItem()] )
+		this->txt->setText( NResource::lyrics_[this->no->currentItem()] );
+	prevLyr_ = this->no->currentItem();
 
-    this->txt->clear();
-    if( NResource::lyrics_[this->no->currentItem()] )
-	this->txt->setText( NResource::lyrics_[this->no->currentItem()] );
-    prevLyr_ = this->no->currentItem();
+	this->initNo();
+	oldTxt_ = this->txt->text();
+}
 
-    this->initNo();
-    oldTxt_ = this->txt->text();
-
-    }
-
+/* revert the changes made in current stanza to the primary state */
 void lyricsFrm::slRestor() {
+	this->txt->setText( oldTxt_ );
+}
 
-    this->txt->setText( oldTxt_ );
-
-    }
-
+/* cancel button - ignore changes and close the dialog */
 void lyricsFrm::slCh() {
-
-    for( int i = 0; i < 5; ++i )
+	for( int i = 0; i < 5; ++i )
 	NResource::lyrics_[i] = oldField_[i];
-    this->close();
-
-    }
+	this->close();
+}
 
 #if KDE_VERSION < 220
 /*------------------------------- tipForm ------------------------------------*/

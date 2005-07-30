@@ -1207,7 +1207,14 @@ void NChord::calculateDimensionsAndPixmaps() {
 		for (i = 0; i < NUM_LYRICS; ++i) {
 		   if (lyrics_[i]) {
 			(*lyricsPoints_[i]) = QPoint (xpos_, staff_props_->base + 4 * LINE_DIST + i * LYRICS_Y_SPACE + staff_props_->lyricsdist);
-			lyricswidth = LYRICSWIDTH_FAC(main_props_->directPainter->fontMetrics().width(*(lyrics_[i])));
+			
+			/* do not render syntax characters like <, > and *. */
+			QString* printedLyrics = new QString(*(lyrics_[i]));
+			printedLyrics->remove('<'); printedLyrics->remove('>');
+			lyricswidth = LYRICSWIDTH_FAC(main_props_->directPainter->fontMetrics().width(*printedLyrics));
+			delete printedLyrics;
+			
+			/* enlarge chord's pixmapwidth if needed to accommodate lyrics width */
 			if (lyricswidth > pixmapWidth_)  pixmapWidth_ = lyricswidth;
 		   }
 		}
@@ -1730,9 +1737,17 @@ void NChord::draw(int flags) {
 		the_painter->setPen(NResource::lyricPen_);
 		for (i = 0; i < NUM_LYRICS; ++i) {
 			if (lyrics_[i]) {
-				if ((*lyrics_[i]) != "*") {
-					the_painter->drawScaledText(*(lyricsPoints_[i]), *(lyrics_[i]));
+				/* removes the syntax characters like <, > and * */
+				QString* printedLyrics = new QString(*lyrics_[i]);
+				printedLyrics->remove('<');
+				printedLyrics->remove('>');
+				printedLyrics->remove('*');
+				
+				/* render lyrics if not empty */
+				if (!printedLyrics->isEmpty()) {
+					the_painter->drawScaledText(*(lyricsPoints_[i]), *printedLyrics);
 				}
+				delete printedLyrics;
 			}
 		}
 	}

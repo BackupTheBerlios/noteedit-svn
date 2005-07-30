@@ -645,7 +645,7 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 				      break;
 			case T_REST:
 //				     out_ << "T_REST" << endl;
-				     rest = (NRest *) elem;
+					 rest = (NRest *) elem;
 				     if (rest->getSubType() == MULTIREST) {
 					voiceStatList_->pendingMultiRest = rest;
 				     }
@@ -662,6 +662,7 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 						<< duration
 						<< "</duration>\n";
 					out_ << "\t\t\t</forward>\n";
+					curTime_ += duration;
 				     }
 				     else {
 				        // real, visible rest

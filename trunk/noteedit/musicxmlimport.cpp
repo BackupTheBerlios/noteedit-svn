@@ -19,6 +19,7 @@
 /*											*/
 /****************************************************************************************/
 
+/*		leon.vinken@hetnet.nl							*/
 
 // Import MusicXML
 
@@ -1111,6 +1112,7 @@ bool MusicXMLParser::addNote()
 		// default to voice 1
 		stVoi = "1";
 	}
+
 	handleVoice(stStf.toInt(), stVoi.toInt());
 	// if necessary, fill the voice with hidden rests until the given time
 	// is reached (which effectively also converts all <forward>'s into
@@ -1767,6 +1769,11 @@ void MusicXMLParser::handleBarline()
 			reportWarning(Str);
 		}
 	} else if (stBll == "right") {
+		// fill the first voice with rests until the needed MIDI time
+		// to place the bar is achieved
+		int neededMidiTime = current_voice->getMidiEndTime();
+		current_voice = current_staff->getVoiceNr(0);
+		fillUntil(neededMidiTime, true, false);
 		// note: changing the list of supported subtypes means
 		// also changing handleEndOfMeasure()
 		if ((stBst == "") && (stRdi == "")) {
@@ -2499,20 +2506,21 @@ void MusicXMLParser::handleVoiceDoStaff(int staff_nr, int voice_nr,
 		return;
 	}
 	// voice mapper is empty
-	if (!mapped) {
+	if ((!mapped) && (voice_nr==1)) {
 		// first note for this staff:
 		// voice already exists but not yet mapped
 		vm.set(staff_nr, voice_nr, 0);
 		mapped = true;
 		current_voice = staff->getVoiceNr(0);
 	} else {
-		// new voice for this staff
+		// add number of voices needed to accommodate the file's voice number
 		// create and map a new voice
-		staff->addVoices(1);
+		staff->addVoices(voice_nr - staff->voiceCount());
 		int nv = staff->voiceCount() - 1;
 		current_voice = staff->getVoiceNr(nv);
 		vm.set(staff_nr, voice_nr, nv);
 		parser_params.newVoices->append(current_voice);
+		
 	}
 	int k = sv2k(staff_nr, voice_nr);
 	beamStarts[k] = 0;

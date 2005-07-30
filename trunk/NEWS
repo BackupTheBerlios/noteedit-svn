@@ -8,6 +8,7 @@ Bugs fixed to 2.8.0:
 --------------------
 - Arbitrary text bug fixes.
 - Transposition is now aware of the key signature (thanks to Csaba).
+- Many MusicXML import/export bug fixes and enhancements.
 
 Note:
 Only major new features and changes will get mentioned in the NEWS now. For a

@@ -3343,6 +3343,7 @@ void NMainFrameWidget::updateChordnames() {
 /*--------------------------- reaction on menu events -----------------------------------*/
 
 bool NMainFrameWidget::newPaper() {
+	if (playing_) return false;
 	if (editiones_) {
 		switch (KMessageBox::warningYesNoCancel
 		         (this,

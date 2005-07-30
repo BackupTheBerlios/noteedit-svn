@@ -8,3 +8,4 @@ version 2.9.0:
     * The last zoom factor gets set the next time you run NoteEdit. When a new file format arrives, each document should contain its own last zoom and position state. However, the default one (if no files loaded) should always be the last one used. R293
     * Verse expression is replaced by Stanza in Lyrics dialog. Translations updated as well. R294
     * Syntax characters < and > for multiple-sillables per single note aren't rendered on the screen anymore. R295
+    * Prevent NoteEdit from crashing when calling New document when playing. R297

@@ -156,7 +156,7 @@ class main_props_str {
 		QFont scaledBold_;
 		QFont scaledBold2_;
 		QFontMetrics scaledBoldItalicMetrics_;
-		float zoom;
+		float zoom; /* zoom value in scaler */
 		int left_page_border;
 		int context_clef_xpos;
 		int context_keysig_xpos;

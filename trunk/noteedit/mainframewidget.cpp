@@ -3872,7 +3872,10 @@ void NMainFrameWidget::quitDialog2() {
 	NMainWindow *mainWindow = static_cast<NMainWindow *>(parentWidget());
 	if (playing_) return;
 	if (!testEditiones()) return;
-        NResource::writeToolbarSettings(mainWindow->toolBarIterator());
+	
+	NResource::writeToolbarSettings(mainWindow->toolBarIterator());
+	NResource::defZoomval_ = zoomselect_->chooseZoomVal(main_props_.zoom * 200);
+	
 	if (NResource::windowList_.count() > 1) {
 		NResource::windowList_.removeRef(mainWindow);
 		mainWindow->setCloseFromApplication();

@@ -5,3 +5,4 @@ version 2.9.0:
 	* Transposition now dependent on key signature, thanks to Csaba. R286
     * MusicXML import filter now places special barlines where it should. R292
     * MusicXML export filter now exports hidden rests like it should. R292
+    * The last zoom factor gets set the next time you run NoteEdit. When a new file format arrives, each document should contain its own last zoom and position state. However, the default one (if no files loaded) should always be the last one used. R293

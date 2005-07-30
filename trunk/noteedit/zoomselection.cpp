@@ -27,7 +27,7 @@ void NZoomSelection::zoomOut() {
 	mainWidget_->changeZoomValue(zidx);
 }
 	
-	
+/* convert the zoom factor (%) to its index */	
 int NZoomSelection::chooseZoomVal(int zoomfac) {
 	int i;
 	for (i = 0; zoomtab[i] >= 0; i++) {
@@ -36,6 +36,7 @@ int NZoomSelection::chooseZoomVal(int zoomfac) {
 	return PREFERRED_ZOOM_VAL;
 }
 
+/* convert the index to zoom scaler */
 float NZoomSelection::computeZoomVal(int zidx) {
 	if (zidx < 0 || zidx >= (sizeof(zoomtab) / sizeof(int) - 1)) {
 		NResource::abort("computeZoomVal: internal error");
@@ -43,6 +44,7 @@ float NZoomSelection::computeZoomVal(int zidx) {
 	return (float) ((double) zoomtab[zidx] / 200.0);
 }
 
+/* convert the index to zoom factor (%) */
 int NZoomSelection::index2ZoomVal(int zidx) {
 	if (zidx < 0 || zidx >= (sizeof(zoomtab) / sizeof(int) - 1)) {
 		NResource::abort("index2ZoomVal: internal error");

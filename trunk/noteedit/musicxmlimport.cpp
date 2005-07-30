@@ -47,8 +47,6 @@
 
 // LVIFIX: tuplets generate "currentMidiTime < cvMidiEndTime" errors
 
-// LVIFIX: UTF-16 is not supported on Qt2
-
 // LVIFIX: check accel/ritard handling in multi-staff parts
 // (Dichterliebe01 measures 12 and 24)
 // append to both staves does not seem to give the desired effect
@@ -1021,7 +1019,10 @@ bool MusicXMLParser::addNote()
 			if (stGsl) {
 				length = INTERNAL_MARKER_OF_STROKEN_GRACE;
 			}
-		} else if (stTyp == "16th") {
+		} else if ( (stTyp == "16th") || (stTyp == "32nd") ) {
+			/* FIXME: Only 8th and 16th grace notes are supported by NoteEdit. If shorter found, set it to 16th */
+			stTyp = "16th";
+			length = mxmlNoteType2Ne(stTyp);
 			status |= STAT_GRACE;
 		} else {
 			Str = "illegal grace note <type>: " + stTyp;
@@ -2500,6 +2501,7 @@ void MusicXMLParser::handleVoiceDoStaff(int staff_nr, int voice_nr,
 				NStaff * & staff, bool & mapped)
 {
 	int ntdtVnr = vm.get(staff_nr, voice_nr);
+	cout << voice_nr << "," << ntdtVnr << endl;
 	if (ntdtVnr >= 0) {
 		// voice already exists
 		current_voice = staff->getVoiceNr(ntdtVnr);
@@ -2515,12 +2517,13 @@ void MusicXMLParser::handleVoiceDoStaff(int staff_nr, int voice_nr,
 	} else {
 		// add number of voices needed to accommodate the file's voice number
 		// create and map a new voice
-		staff->addVoices(voice_nr - staff->voiceCount());
-		int nv = staff->voiceCount() - 1;
-		current_voice = staff->getVoiceNr(nv);
-		vm.set(staff_nr, voice_nr, nv);
-		parser_params.newVoices->append(current_voice);
-		
+		int i;
+		for (i = staff->voiceCount(); i < voice_nr; i++) {
+			staff->addVoices(1);
+			current_voice = staff->getVoiceNr(i);
+			vm.set(staff_nr, i+1 , i);
+			parser_params.newVoices->append(current_voice);
+		}
 	}
 	int k = sv2k(staff_nr, voice_nr);
 	beamStarts[k] = 0;

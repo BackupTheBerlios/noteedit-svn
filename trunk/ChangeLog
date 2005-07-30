@@ -9,3 +9,4 @@ version 2.9.0:
     * Verse expression is replaced by Stanza in Lyrics dialog. Translations updated as well. R294
     * Syntax characters < and > for multiple-sillables per single note aren't rendered on the screen anymore. R295
     * Prevent NoteEdit from crashing when calling New document when playing. R297
+	* MusicXML import - fill with hidden rests in second staff as well. R299

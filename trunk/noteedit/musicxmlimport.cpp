@@ -1115,6 +1115,7 @@ bool MusicXMLParser::addNote()
 	}
 
 	handleVoice(stStf.toInt(), stVoi.toInt());
+	
 	// if necessary, fill the voice with hidden rests until the given time
 	// is reached (which effectively also converts all <forward>'s into
 	// hidden rests).
@@ -1770,11 +1771,20 @@ void MusicXMLParser::handleBarline()
 			reportWarning(Str);
 		}
 	} else if (stBll == "right") {
-		// fill the first voice with rests until the needed MIDI time
-		// to place the bar is achieved
+		/* fill the first voice with rests until the needed MIDI time
+		   to place the bar is achieved */
+		current_voice->computeMidiTime(false, false);
 		int neededMidiTime = current_voice->getMidiEndTime();
 		current_voice = current_staff->getVoiceNr(0);
 		fillUntil(neededMidiTime, true, false);
+		
+		/* and do the same for 2nd staff if present */
+		if (current_2ndstaff) {
+			current_voice = current_2ndstaff->getVoiceNr(0);
+			fillUntil(neededMidiTime, true, false);
+			current_voice = current_staff->getVoiceNr(0);
+		}
+				
 		// note: changing the list of supported subtypes means
 		// also changing handleEndOfMeasure()
 		if ((stBst == "") && (stRdi == "")) {
@@ -2501,7 +2511,6 @@ void MusicXMLParser::handleVoiceDoStaff(int staff_nr, int voice_nr,
 				NStaff * & staff, bool & mapped)
 {
 	int ntdtVnr = vm.get(staff_nr, voice_nr);
-	cout << voice_nr << "," << ntdtVnr << endl;
 	if (ntdtVnr >= 0) {
 		// voice already exists
 		current_voice = staff->getVoiceNr(ntdtVnr);

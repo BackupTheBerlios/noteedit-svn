@@ -64,6 +64,8 @@ class NLilyExport {
 		ofstream out_;
 		void writeVoice(int staff_nr, int voice_nr,  NVoice *voi);
 		void writeLyrics(int voice_nr, NVoice *voi, const QString& label);
+		void writeEncoded(const QString text);
+		void writeEncodedAndReplaced(const QString s);
 		void pitchOut( const NNote *note, NClef *ac_clef);
 		bool hasContraryStems(QList<NNote> *note);
 		bool chordHasMixedTies(QList<NNote> *note);

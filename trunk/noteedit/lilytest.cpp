@@ -103,6 +103,9 @@ void lilytest::check() {
 
     int whish5[] = { 2, 4, 0};
 	NResource::lilyProperties_.lilyVersion24 = this->chkit( &ver[0], &whish5[0] );
+
+    int whish6[] = { 2, 6, 0};
+	NResource::lilyProperties_.lilyVersion26 = this->chkit( &ver[0], &whish6[0] );
 }
 
 bool lilytest::chkit( int ver[], int matrix[] ) {

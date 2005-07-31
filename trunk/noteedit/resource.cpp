@@ -701,7 +701,7 @@ NResource::NResource() {
 		);
 	lyricPen_ = QPen
 		(kapp->config()->readColorEntry(QString("Lyric"), &COLORS_LYRIC));
-
+	
 	//  Others:
 	blackBrush_ = QBrush(Qt::black);
 	redBrush_   = QBrush(Qt::red);
@@ -953,6 +953,7 @@ NResource::NResource() {
 	// check current LilyPond version to decide about the export format.
 	lilytest lt;
 	lt.check();
+
 }
 
 void NResource::setAutosave(bool enable, int intervall) {
@@ -1257,15 +1258,15 @@ void NResource::loadTips(QString fname) {
 int NResource::noteLength2Button_(int length) {
 	int res = -1;
 	switch (length) {
-		case NOTE128_LENGTH      : res = 9; break;
-		case NOTE64_LENGTH       : res = 8; break;
-		case NOTE32_LENGTH       : res = 7; break;
-		case NOTE16_LENGTH       : res = 6; break;
-		case NOTE8_LENGTH        : res = 5; break;
-		case QUARTER_LENGTH      : res = 4; break;
-		case HALF_LENGTH         : res = 3; break;
-		case WHOLE_LENGTH        : res = 2; break;
-		case DOUBLE_WHOLE_LENGTH : res = 1; break;
+		case NOTE128_LENGTH      : res = 8; break;
+		case NOTE64_LENGTH       : res = 7; break;
+		case NOTE32_LENGTH       : res = 6; break;
+		case NOTE16_LENGTH       : res = 5; break;
+		case NOTE8_LENGTH        : res = 4; break;
+		case QUARTER_LENGTH      : res = 3; break;
+		case HALF_LENGTH         : res = 2; break;
+		case WHOLE_LENGTH        : res = 1; break;
+		case DOUBLE_WHOLE_LENGTH : res = 0; break;
 	}
 	return res;
 }

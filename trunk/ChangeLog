@@ -10,3 +10,4 @@ version 2.9.0:
     * Syntax characters < and > for multiple-sillables per single note aren't rendered on the screen anymore. R295
     * Prevent NoteEdit from crashing when calling New document when playing. R297
 	* MusicXML import - fill with hidden rests in second staff as well. R299
+	* Selection button and note buttons splitted. First step towards separate Insert/Edit/Selection modes. R300

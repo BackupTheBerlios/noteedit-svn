@@ -39,7 +39,7 @@
 #include "tempotrack.h"
 
 #define COUNT_OFFSBUTTONS 5
-#define COUNT_CHORDBUTTONS 13
+#define COUNT_CHORDBUTTONS 12
 
 class NMidiMapper;
 class NVoice;
@@ -190,7 +190,7 @@ class NMainFrameWidget : public QWidget
 		virtual void paintEvent( QPaintEvent * );
 	private slots:
 /*-------------------------- reaction on pushbutton events ----------------------------- */
-		void setToSelect(bool on);
+		void setToSelect();
 		void setToDFull(bool on);
 		void setToFull(bool on);
 		void setToHalf(bool on);
@@ -426,6 +426,7 @@ class NMainFrameWidget : public QWidget
 #ifdef WITH_TSE3
 		KToggleAction *recordButton_;
 #endif
+		KToggleAction *selectButton_;
 		KToggleAction *note_buttons_[COUNT_CHORDBUTTONS];
 		KToggleAction *note_dymmy_;
 		KToggleAction *crossDrumBu_;

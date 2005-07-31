@@ -332,6 +332,7 @@ class NMainFrameWidget : public QWidget
 		void KE_moveRight();
 		void KE_delete();
 		void KE_play();
+		void KE_leaveCurrentMode();
 		void KE_edit();
 		void KE_insertnote();
 		void KE_insertchordnote();
@@ -353,7 +354,7 @@ class NMainFrameWidget : public QWidget
 		void KE_remove();
 		void KE_removechordnote();
 		void KE_tab();
-		void KE_space();
+		void KE_rest();
 		void KE_underscore();
 		void KE_keybordInsert();
 

@@ -609,17 +609,23 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->connectItem( "KEmoveSemiDown", this, SLOT( KE_moveSemiDown() ) );
 	keys_->insertItem( i18n( "move left" ), "KEmoveleft",  Key_Left);
 	keys_->connectItem( "KEmoveleft", this, SLOT( KE_moveLeft() ) );
-	keys_->insertItem( i18n( "move start" ), "KEmovestart",  "Alt+Left");
+	keys_->insertItem( i18n( "move start" ), "KEmovestart",  Key_Home);
 	keys_->connectItem( "KEmovestart", this, SLOT( KE_moveStart() ) );
 	keys_->insertItem( i18n( "move right" ), "KEmoveright",  Key_Right);
 	keys_->connectItem( "KEmoveright", this, SLOT( KE_moveRight() ) );
-	keys_->insertItem( i18n( "move end" ), "KEmoveend",  "Alt+Right");
+	keys_->insertItem( i18n( "move end" ), "KEmoveend",  Key_End);
 	keys_->connectItem( "KEmoveend", this, SLOT( KE_moveEnd() ) );
-	keys_->insertItem( i18n( "delete" ), "KEdelete",  Key_Delete);
+	keys_->insertItem( i18n( "delete forward" ), "KEdelete",  Key_Delete);
 	keys_->connectItem( "KEdelete", this, SLOT( KE_delete() ) );
+	keys_->insertItem( i18n( "delete chord note" ), "KEremovechordnote", CTRL+Key_Delete);
+	keys_->connectItem( "KEremovechordnote", this, SLOT( KE_removechordnote() ) );
+	keys_->insertItem( i18n( "delete before" ), "KEremove", Key_Backspace);
+	keys_->connectItem( "KEremove", this, SLOT( KE_remove() ) );
 	keys_->insertItem( i18n( "toggle play" ), "KEplay", Key_Space);
 	keys_->connectItem( "KEplay", this, SLOT( KE_play() ) );
-	keys_->insertItem( i18n( "toggle edit" ), "KEedit",  Key_End);
+	keys_->insertItem( i18n( "leave current mode" ), "KEleave", Key_Escape);
+	keys_->connectItem( "KEleave", this, SLOT( KE_leaveCurrentMode() ) );	
+	keys_->insertItem( i18n( "toggle edit" ), "KEedit",  Key_E);
 	keys_->connectItem( "KEedit", this, SLOT( KE_edit() ) );
 	keys_->insertItem( i18n( "insert chord note" ), "KEinsertchordnote",  CTRL+Key_Return);
 	keys_->connectItem( "KEinsertchordnote", this, SLOT( KE_insertchordnote() ) );
@@ -661,14 +667,10 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->connectItem( "KEnatural1", this, SLOT( KE_natural() ) );
 	keys_->insertItem( i18n( "set bar at" ), "KEbar", Key_Bar);
 	keys_->connectItem( "KEbar", this, SLOT( KE_bar() ) );
-	keys_->insertItem( i18n( "delete" ), "KEremove", Key_Backspace);
-	keys_->connectItem( "KEremove", this, SLOT( KE_remove() ) );
-	keys_->insertItem( i18n( "delete" ), "KEremovechordnote", CTRL+Key_Backspace);
-	keys_->connectItem( "KEremovechordnote", this, SLOT( KE_removechordnote() ) );
 	keys_->insertItem( i18n( "set bar after" ), "KEtab", Key_Tab);
 	keys_->connectItem( "KEtab", this, SLOT( KE_tab() ) );
-	keys_->insertItem( i18n( "insert rest" ), "KEspace", Key_Insert);
-	keys_->connectItem( "KEspace", this, SLOT( KE_space() ) );
+	keys_->insertItem( i18n( "insert rest" ), "KErest", SHIFT+Key_Return);
+	keys_->connectItem( "KErest", this, SLOT( KE_rest() ) );
 	keys_->insertItem( i18n( "toggle beam" ), "KEunderscore", "Shift+Underscore");
 	keys_->connectItem( "KEunderscore", this, SLOT( KE_underscore() ) );
 	keys_->insertItem( i18n( "keyboard insert mode" ), "KEkeybordInsert", Key_K);
@@ -680,7 +682,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->connectItem( "KEpitchC", this, SLOT( KE_pitch_C() ) );
 	keys_->insertItem( i18n( "pitch D" ), "KEpitchD", "D");
 	keys_->connectItem( "KEpitchD", this, SLOT( KE_pitch_D() ) );
-	keys_->insertItem( i18n( "pitch E" ), "KEpitchE", "E");
+	keys_->insertItem( i18n( "pitch E" ), "KEpitchE", SHIFT+Key_E);
 	keys_->connectItem( "KEpitchE", this, SLOT( KE_pitch_E() ) );
 	keys_->insertItem( i18n( "pitch F" ), "KEpitchF", "F");
 	keys_->connectItem( "KEpitchF", this, SLOT( KE_pitch_F() ) );
@@ -1642,6 +1644,7 @@ void NMainFrameWidget::KE_moveRight() {
 	}
 	curpos.setX((int) ((newXpos-leftx_) * main_props_.zoom)), cursor().setPos(notePart_->mapToGlobal(curpos));
 }
+
 void NMainFrameWidget::KE_delete() {
 	if (playing_) return;
 	NMusElement *elem;
@@ -1654,6 +1657,10 @@ void NMainFrameWidget::KE_delete() {
 	curpos = notePart_->mapFromGlobal(cursor().pos());
 	curpos.setX((int) ((elem->getXpos()+ elem->getBbox()->width()+CUR_DIST) * main_props_.zoom));
 	cursor().setPos(notePart_->mapToGlobal(curpos));
+}
+
+void NMainFrameWidget::KE_leaveCurrentMode() {
+	selectButton_->setChecked(true);
 }
 
 void NMainFrameWidget::KE_play() {
@@ -1859,7 +1866,7 @@ void NMainFrameWidget::KE_tab() {
 	curpos.setX((int) ((newXpos-leftx_) * main_props_.zoom)), cursor().setPos(notePart_->mapToGlobal(curpos));
 }
 
-void NMainFrameWidget::KE_space() {
+void NMainFrameWidget::KE_rest() {
 	if (playing_) return;
 	int newXpos;
 	if (!NResource::allowKeyboardInsert_ || main_props_.actualLength <= 0) return;

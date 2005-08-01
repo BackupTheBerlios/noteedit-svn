@@ -18,3 +18,4 @@ version 2.9.0:
 		- Insert -> SHIFT+Return: Insert rest
 		- CTRL+Backspace -> CTRL+Delete: Delete a note in chord
 		- E -> SHIFT+E: Pitch E
+	* Page layout editor no longer removes brace if placing a bracket around it. R303

@@ -330,7 +330,8 @@ void NStaffLayout::slSetBracket() {
 	if (!selRectValid_) return;
 	if (minh_ == LAYOUT_MANY) return;
 	if (maxh_ == -LAYOUT_MANY) return;
-
+	if (maxh_ - minh_ < 1) return;	
+	
 	for (i = 0; i < staffCount_; i++) {
 		if (!localBracketMatrix_[i].valid) continue;
 		if (localBracketMatrix_[i].end >= minh_ && localBracketMatrix_[i].end <= maxh_ || localBracketMatrix_[i].beg >= minh_ && localBracketMatrix_[i].beg <= maxh_ ||
@@ -341,15 +342,12 @@ void NStaffLayout::slSetBracket() {
 			}
 		}
 	}
+	/* if brace is found crossing the bracket, remove it. If inside it, or not related at all, leave it. */
 	for (i = 0; i < staffCount_; i++) {
 		if (!localBraceMatrix_[i].valid) continue;
-		if (minh_ >= localBraceMatrix_[i].beg && minh_ <= localBraceMatrix_[i].end && maxh_ > localBraceMatrix_[i].end ||
-		    maxh_ >= localBraceMatrix_[i].beg && maxh_ <= localBraceMatrix_[i].end && minh_ < localBraceMatrix_[i].beg) {
-			localBraceMatrix_[i].end = minh_ - 1;
-			if (localBraceMatrix_[i].end <= localBraceMatrix_[i].beg) {
+		if (!( minh_ <= localBraceMatrix_[i].beg && maxh_ >= localBraceMatrix_[i].end ||
+		       maxh_ < localBraceMatrix_[i].beg || minh_ > localBraceMatrix_[i].end ))
 				localBraceMatrix_[i].valid = false;
-			}
-		}
 	}
 	for (i = 0; i < staffCount_; i++) {
 		if (!localBracketMatrix_[i].valid) {

@@ -631,6 +631,8 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->connectItem( "KEinsertchordnote", this, SLOT( KE_insertchordnote() ) );
 	keys_->insertItem( i18n( "insert note" ), "KEinsertnote",  Key_Return);
 	keys_->connectItem( "KEinsertnote", this, SLOT( KE_insertnote() ) );
+	
+	/* note length selection keys */
 	keys_->insertItem( i18n( "Full note" ), "KE1", Key_1);
 	keys_->connectItem( "KE1", this, SLOT( KE_1() ) );
 	keys_->insertItem( i18n( "Half note" ), "KE2", Key_2);
@@ -649,7 +651,28 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->connectItem( "KE8", this, SLOT( KE_8() ) );
 	keys_->insertItem( i18n( "128th note" ), "KE9", Key_9);
 	keys_->connectItem( "KE9", this, SLOT( KE_9() ) );
-	keys_->insertItem( i18n( "set tied" ), "KEtie", Key_QuoteLeft);
+	
+	/* voice selection keys */
+	keys_->insertItem( i18n( "Select 1st voice" ), "KEVoice1", CTRL+Key_1);
+	keys_->connectItem( "KEVoice1", this, SLOT( KE_voice1() ) );
+	keys_->insertItem( i18n( "Select 2nd voice" ), "KEVoice2", CTRL+Key_2);
+	keys_->connectItem( "KEVoice2", this, SLOT( KE_voice2() ) );
+	keys_->insertItem( i18n( "Select 3rd voice" ), "KEVoice3", CTRL+Key_3);
+	keys_->connectItem( "KEVoice3", this, SLOT( KE_voice3() ) );
+	keys_->insertItem( i18n( "Select 4th voice" ), "KEVoice4", CTRL+Key_4);
+	keys_->connectItem( "KEVoice4", this, SLOT( KE_voice4() ) );
+	keys_->insertItem( i18n( "Select 5th voice" ), "KEVoice5", CTRL+Key_5);
+	keys_->connectItem( "KEVoice5", this, SLOT( KE_voice5() ) );
+	keys_->insertItem( i18n( "Select 6th voice" ), "KEVoice6", CTRL+Key_6);
+	keys_->connectItem( "KEVoice6", this, SLOT( KE_voice6() ) );
+	keys_->insertItem( i18n( "Select 7th voice" ), "KEVoice7", CTRL+Key_7);
+	keys_->connectItem( "KEVoice7", this, SLOT( KE_voice7() ) );
+	keys_->insertItem( i18n( "Select 8th voice" ), "KEVoice8", CTRL+Key_8);
+	keys_->connectItem( "KEVoice8", this, SLOT( KE_voice8() ) );
+	keys_->insertItem( i18n( "Select 9th voice" ), "KEVoice9", CTRL+Key_9);
+	keys_->connectItem( "KEVoice9", this, SLOT( KE_voice9() ) );
+	
+	keys_->insertItem( i18n( "set tied" ), "KEtie", Key_Apostrophe);
 	keys_->connectItem( "KEtie", this, SLOT( KE_tie() ) );
 	keys_->insertItem( i18n( "set tied" ), "KEtie1", "Alt+AsciiTilde");
 	keys_->connectItem( "KEtie1", this, SLOT( KE_tie() ) );
@@ -1769,6 +1792,87 @@ void NMainFrameWidget::KE_9() {
 	note_buttons_[8]->setOn(true);
 	setToN128(true);
 }
+void NMainFrameWidget::KE_voice1() {
+	if (voiceDisplay_->getVal() == 1) {
+		voiceDisplay_->setVal(0);
+		changeActualVoice(0);
+	} else {
+		voiceDisplay_->setVal(1);
+		changeActualVoice(1);
+	}
+}
+void NMainFrameWidget::KE_voice2() {
+	if (voiceDisplay_->getVal() == 2) {
+		voiceDisplay_->setVal(0);
+		changeActualVoice(0);
+	} else {
+		voiceDisplay_->setVal(2);
+		changeActualVoice(2);
+	}
+}
+void NMainFrameWidget::KE_voice3() {
+	if (voiceDisplay_->getVal() == 3) {
+		voiceDisplay_->setVal(0);
+		changeActualVoice(0);
+	} else {
+		voiceDisplay_->setVal(3);
+		changeActualVoice(3);
+	}
+}
+void NMainFrameWidget::KE_voice4() {
+	if (voiceDisplay_->getVal() == 4) {
+		voiceDisplay_->setVal(0);
+		changeActualVoice(0);
+	} else {
+		voiceDisplay_->setVal(4);
+		changeActualVoice(4);
+	}
+}
+void NMainFrameWidget::KE_voice5() {
+	if (voiceDisplay_->getVal() == 5) {
+		voiceDisplay_->setVal(0);
+		changeActualVoice(0);
+	} else {
+		voiceDisplay_->setVal(5);
+		changeActualVoice(5);
+	}
+}
+void NMainFrameWidget::KE_voice6() {
+	if (voiceDisplay_->getVal() == 6) {
+		voiceDisplay_->setVal(0);
+		changeActualVoice(0);
+	} else {
+		voiceDisplay_->setVal(6);
+		changeActualVoice(6);
+	}
+}
+void NMainFrameWidget::KE_voice7() {
+	if (voiceDisplay_->getVal() == 7) {
+		voiceDisplay_->setVal(0);
+		changeActualVoice(0);
+	} else {
+		voiceDisplay_->setVal(7);
+		changeActualVoice(7);
+	}
+}
+void NMainFrameWidget::KE_voice8() {
+	if (voiceDisplay_->getVal() == 8) {
+		voiceDisplay_->setVal(0);
+		changeActualVoice(0);
+	} else {
+		voiceDisplay_->setVal(8);
+		changeActualVoice(8);
+	}
+}
+void NMainFrameWidget::KE_voice9() {
+	if (voiceDisplay_->getVal() == 9) {
+		voiceDisplay_->setVal(0);
+		changeActualVoice(0);
+	} else {
+		voiceDisplay_->setVal(9);
+		changeActualVoice(9);
+	}
+}
 void NMainFrameWidget::KE_tie() {
 	if (playing_) return;
 	tiebutton_->toggle();
@@ -2870,9 +2974,8 @@ void NMainFrameWidget::setTriplet(bool triplet) {
 }
 
 void NMainFrameWidget::changeActualVoice(int voiceNr) {
-	if (voiceNr < 0 || voiceNr > currentStaff_->voiceCount()) {
-		NResource::abort("changeActualVoice: internal error");
-	}
+	if (voiceNr < 0 || voiceNr > currentStaff_->voiceCount())
+		return;
 	currentVoice_ = currentStaff_->changeActualVoice(voiceNr-1);
 	NResource::windowWithSelectedRegion_ = 0;
 	repaint();

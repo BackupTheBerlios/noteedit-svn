@@ -92,7 +92,7 @@ void NLCDNumber::mousePressEvent(QMouseEvent *evt) {
 }
 
 void NLCDNumber::setRealValue(int val) {
-	realValue_ = val;
+	if ( (val <= max_) && (val >= 0) ) realValue_ = val;
 	display(realValue_ == 0 ? 10 : realValue_);
 }
 

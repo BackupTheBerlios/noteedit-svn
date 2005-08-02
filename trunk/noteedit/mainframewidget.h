@@ -345,6 +345,15 @@ class NMainFrameWidget : public QWidget
 		void KE_7();
 		void KE_8();
 		void KE_9();
+		void KE_voice1();
+		void KE_voice2();
+		void KE_voice3();
+		void KE_voice4();
+		void KE_voice5();
+		void KE_voice6();
+		void KE_voice7();
+		void KE_voice8();
+		void KE_voice9();
 		void KE_tie();
 		void KE_dot();
 		void KE_flat();
@@ -357,7 +366,7 @@ class NMainFrameWidget : public QWidget
 		void KE_rest();
 		void KE_underscore();
 		void KE_keybordInsert();
-
+		
 /*------------------------- "note" keys -----------------------------------------------*/
 
 		void KE_pitch_C();

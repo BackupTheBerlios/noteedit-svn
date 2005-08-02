@@ -10,7 +10,7 @@ version 2.9.0:
 	* Syntax characters < and > for multiple-sillables per single note aren't rendered on the screen anymore. R295
 	* Prevent NoteEdit from crashing when calling New document when playing. R297
 	* MusicXML import - fill with hidden rests in second staff as well. R299
-	* Selection button and note buttons splitted. First step towards separate Insert/Edit/Selection modes. R300
+	* Selection button and note buttons splitted. First step towards separate Insert/Edit/Selection modes. R300, R306
 	* Don't select the next element when using Backspace to delete and the beginning of the score is reached. R301
 	* New keyboard binding ESC - leaves current mode. Changed many keyboard bindings:
 		- End -> E: Edit mode

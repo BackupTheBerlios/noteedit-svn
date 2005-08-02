@@ -2239,7 +2239,7 @@ void NMainFrameWidget::setToSelect() {
 
 void NMainFrameWidget::setToDFull(bool on) {
 	if (playing_) return;
-	if (!on) {
+	if (!on && !editMode_) {
 		setToSelect();
 		return;
 	}
@@ -2262,7 +2262,7 @@ void NMainFrameWidget::setToDFull(bool on) {
 }
 void NMainFrameWidget::setToFull(bool on) {
 	if (playing_) return;
-	if (!on) {
+	if (!on && !editMode_) {
 		setToSelect();
 		return;
 	}
@@ -2286,7 +2286,7 @@ void NMainFrameWidget::setToFull(bool on) {
 }
 void NMainFrameWidget::setToHalf(bool on) {
 	if (playing_) return;
-	if (!on) {
+	if (!on && !editMode_) {
 		setToSelect();
 		return;
 	}
@@ -2309,7 +2309,7 @@ void NMainFrameWidget::setToHalf(bool on) {
 }
 void NMainFrameWidget::setToQuarter(bool on) {
 	if (playing_) return;
-	if (!on) {
+	if (!on && !editMode_) {
 		setToSelect();
 		return;
 	}
@@ -2332,7 +2332,7 @@ void NMainFrameWidget::setToQuarter(bool on) {
 }
 void NMainFrameWidget::setToN8(bool on) {
 	if (playing_) return;
-	if (!on) {
+	if (!on && !editMode_) {
 		setToSelect();
 		return;
 	}
@@ -2355,7 +2355,7 @@ void NMainFrameWidget::setToN8(bool on) {
 }
 void NMainFrameWidget::setToN16(bool on) {
 	if (playing_) return;
-	if (!on) {
+	if (!on && !editMode_) {
 		setToSelect();
 		return;
 	}
@@ -2378,7 +2378,7 @@ void NMainFrameWidget::setToN16(bool on) {
 }
 void NMainFrameWidget::setToN32(bool on) {
 	if (playing_) return;
-	if (!on) {
+	if (!on && !editMode_) {
 		setToSelect();
 		return;
 	}
@@ -2401,7 +2401,7 @@ void NMainFrameWidget::setToN32(bool on) {
 }
 void NMainFrameWidget::setToN64(bool on) {
 	if (playing_) return;
-	if (!on) {
+	if (!on && !editMode_) {
 		setToSelect();
 		return;
 	}
@@ -2424,7 +2424,7 @@ void NMainFrameWidget::setToN64(bool on) {
 }
 void NMainFrameWidget::setToN128(bool on) {
 	if (playing_) return;
-	if (!on) {
+	if (!on && !editMode_) {
 		setToSelect();
 		return;
 	}
@@ -2448,7 +2448,7 @@ void NMainFrameWidget::setToN128(bool on) {
 
 void NMainFrameWidget::setToTN8(bool on) {
 	if (playing_) return;
-	if (!on) {
+	if (!on && !editMode_) {
 		setToSelect();
 		return;
 	}
@@ -2465,7 +2465,7 @@ void NMainFrameWidget::setToTN8(bool on) {
 
 void NMainFrameWidget::setToTN16(bool on) {
 	if (playing_) return;
-	if (!on) {
+	if (!on && !editMode_) {
 		setToSelect();
 		return;
 	}
@@ -2482,7 +2482,7 @@ void NMainFrameWidget::setToTN16(bool on) {
 	
 void NMainFrameWidget::setToTNS8(bool on) {
 	if (playing_) return;
-	if (!on) {
+	if (!on && !editMode_) {
 		setToSelect();
 		return;
 	}
@@ -4906,7 +4906,7 @@ void NMainFrameWidget::preparePixmaps() {
 
 	newLeft_ = leftx_ + paperScrollWidth_ - turnOverOffset_;
 	newRight_ = newLeft_ + paperScrollWidth_ - contextWidth_;
-	main_props_.tp->setXPosition(newLeft_  - main_props_.left_page_border - contextWidth_);
+	main_props_.tp->setXPosition(newLeft_ - main_props_.left_page_border - contextWidth_);
 	main_props_.tp->setPaintDevice(notePart_->acWritePixmap());
 	main_props_.p->setPaintDevice(notePart_->acWritePixmap());
 	main_props_.p->begin( notePart_->acWritePixmap() );

@@ -43,12 +43,12 @@ actualClef_(&(mainWidget->main_props_) , &staff_props_) {
 	voicelist_.setAutoDelete(true);
 	voicelist_.append(theFirstVoice_ = actualVoice_ = new NVoice(this, mainWidget, true));
 	actualVoiceNr_ = -1;
-	labelDrawPoint_ = QPoint(XLABEL_DIST, base - YLABEL_DIST);
 	yTop_ = base - ((LINE_OVERFLOW + 1) / 2) * LINE_DIST;
 	yBottom_ = base + (4 + (LINE_OVERFLOW + 1) / 2) * LINE_DIST;
 	yMid_ = yBottom_ + (yTop_ - yBottom_) / 2;
 	main_props_ = &(mainWidget->main_props_);
 	mainWidget_ = mainWidget;
+	labelDrawPoint_ = QPoint(main_props_->left_page_border + XLABEL_DIST, base - YLABEL_DIST);
 	staff_props_.base = base;
 	staff_props_.lyricsdist = DEFAULT_LYRICSDIST;
 	staff_props_.is_actual = false;
@@ -653,6 +653,7 @@ void NStaff::draw(int left, int right) {
 	for (i = 0; i < 5; ++i) {
 		 main_props_->p->drawLine(main_props_->left_page_border, staff_props_.base + i * LINE_DIST, main_props_->left_page_border + nettoWidth_, staff_props_.base + i * LINE_DIST);
 	}
+
 	main_props_->p->end();
 	if (NResource::showStaffNames_ && !staffName_.isEmpty()) {
 		main_props_->p->beginUnclippedYtranslated();

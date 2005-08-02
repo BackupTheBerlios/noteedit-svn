@@ -696,7 +696,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->readSettings();
 	connect(&timer_, SIGNAL(timeout()), this, SLOT(playNext()));
 	x0_ = x1_ = y0_  = 0;
-	selectButton_->setChecked(true);
+	selectButton_->setChecked(true); /* go to selection mode */
 	main_props_.directPainter->setPaintDevice(notePart_);
 	help_x0_ = -1;
 	keyLine_ = NULL_LINE;
@@ -773,7 +773,6 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	setSaveWidth(170);
 	setSaveHeight(250);
 	setParamsEnabled(false);
-	notePart_->setCursor( *NResource::cursor_quarternote_ );
 	braceMatrix_ = new layoutDef[1];
 	bracketMatrix_ = new layoutDef[1];
 	barCont_ = new layoutDef[1];
@@ -973,23 +972,23 @@ void NMainFrameWidget::createLayoutPixmap() {
 			}
 		}
 	}
-	if (overlapping) {
-		pixmap_width = LAYOUT_BRACEX_TOTAL + LAYOUT_BRACKET_X_TOTAL + BRACE_BRACKET_DIST;
+	if (overlapping) { /* document includes braces and brackets and they overlap*/
+		pixmap_width = LAYOUT_BRACEX_TOTAL + LAYOUT_BRACKET_X_TOTAL + BRACE_BRACKET_DIST - DEFAULT_LAYOUT_BRACKET_X_POS;
 		bracket_x_pos = LAYOUT_BRACEX_TOTAL + BRACE_BRACKET_DIST;
-		main_props_.left_page_border = pixmap_width;
-	}
-	else if (has_brackets && has_braces) {
-		pixmap_width = LAYOUT_BRACEX_TOTAL;
-		bracket_x_pos = DEFAULT_LAYOUT_BRACKET_X_POS;
 		main_props_.left_page_border = pixmap_width - LAYOUT_BRACKET_X_OVERLAP;
 	}
-	else if (has_brackets) {
+	else if (has_brackets && has_braces) { /* document includes both braces and brackets, but they never overlap */
+		pixmap_width = LAYOUT_BRACEX_TOTAL;
+		bracket_x_pos = DEFAULT_LAYOUT_BRACKET_X_POS;
+		main_props_.left_page_border = pixmap_width;
+	}
+	else if (has_brackets) { /* documents include brackets only */
 		pixmap_width = LAYOUT_BRACKET_X_TOTAL;
 		main_props_.left_page_border = pixmap_width - LAYOUT_BRACKET_X_OVERLAP;
 	}
-	else {
+	else { /* document includes braces only */
 		pixmap_width = LAYOUT_BRACEX_TOTAL;
-		main_props_.left_page_border = pixmap_width - LAYOUT_BRACKET_X_OVERLAP;
+		main_props_.left_page_border = pixmap_width;
 	}
 	main_props_.context_clef_xpos = pixmap_width + CONTEXT_CLEF_X_DIST;
 	main_props_.context_keysig_xpos = pixmap_width + CONTEXT_KEYSIG_X_DIST;
@@ -1014,7 +1013,7 @@ void NMainFrameWidget::createLayoutPixmap() {
 			pen.setWidth(LAYOUT_BRACKET_WIDTH1);
 			p.setPen(pen);
 			y1 = staff_elem->getBase()+4*LINE_DIST;
-			p.drawLine(bracket_x_pos, y0, bracket_x_pos, y1);
+			p.drawLine(bracket_x_pos, y0 - LAYOUT_BRACKET_WIDTH2, bracket_x_pos, y1 + LAYOUT_BRACKET_WIDTH2);
 			pen.setWidth(LAYOUT_BRACKET_WIDTH2);
 			p.setPen(pen);
 			p.drawArc(bracket_x_pos - LAYOUT_BRACKET_XRAD, y0-2*LAYOUT_BRACKET_YRAD,
@@ -1057,6 +1056,7 @@ void NMainFrameWidget::createLayoutPixmap() {
 				2*LAYOUT_BR_ARROW_XRAD, 2*LAYOUT_BR_ARROW_YRAD, 180*16, LAYOUT_BRACE_ARC_LENGTH*16);
 		}
 	}
+	
 	if (layoutPixmap_) p.end();
 }
 			
@@ -2090,6 +2090,16 @@ void NMainFrameWidget::paintEvent( QPaintEvent * ) {
 		}
 		staff_elem->draw(leftx_, leftx_ + (int) ((float) nettoWidth_ / main_props_.zoom));
 	}
+	
+	/* draw the initial always-present barline connecting all the staves */
+	if (staffCount_ > 1) {
+		main_props_.tp->beginYtranslated();
+		main_props_.tp->setPen(NResource::staffPen_);
+		main_props_.tp->drawLine( main_props_.left_page_border, staffList_.getFirst()->getBase(),
+			                      main_props_.left_page_border, staffList_.getLast()->getBase() + 4*LINE_DIST );
+		main_props_.tp->end();
+	}
+
 	notePart_->setMouseTracking(false);
 	restoreAllBehindDummyNoteAndAuxLines();
 	notePart_->flip();
@@ -4468,11 +4478,12 @@ void NMainFrameWidget::changeVoice(int voice) {
 void NMainFrameWidget::arrangeStaffs(bool create_layout_pixmap) {
 	NStaff *staff_elem;
 	lastYHeight_ = Y_STAFF_BASE;
+	if (create_layout_pixmap) createLayoutPixmap(); /* calculate layout pixmaps */
 	for (staff_elem = staffList_.first(); staff_elem; staff_elem = staffList_.next()) {
 		staff_elem->setBase(lastYHeight_+staff_elem->overlength_);
 		lastYHeight_ += staff_elem->underlength_ + staff_elem->overlength_ + STAFF_HIGHT;
 	}
-	if (create_layout_pixmap) createLayoutPixmap();
+	if (create_layout_pixmap) createLayoutPixmap(); /* redraw pixmaps */
 	reposit();
 	repaint();
 	setEdited();
@@ -4811,9 +4822,8 @@ void NMainFrameWidget::preparePixmaps() {
 
 /*----------------------------- update of buttons due to selection ------------------*/
 
-/* Set Checked the note button according to the note length nr.
-   nr == 0 -> go to selection mode
-   nr > 0 -> check button_mode[nr-1]
+/* Set Checked, the note button according to the note length nr.
+   nr >= 0 -> check button_mode[nr]
    nr < 0 -> check note_dymmy_
 */
 void NMainFrameWidget::setButton(int nr) {

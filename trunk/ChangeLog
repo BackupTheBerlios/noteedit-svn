@@ -3,12 +3,12 @@ NoteEdit - a music score editor
 version 2.9.0:
 	* MusicXML import/export of arbitrary text is now supported. R272
 	* Transposition now dependent on key signature, thanks to Csaba. R286
-    * MusicXML import filter now places special barlines where it should. R292, R298
-    * MusicXML export filter now exports hidden rests like it should. R292
-    * The last zoom factor gets set the next time you run NoteEdit. When a new file format arrives, each document should contain its own last zoom and position state. However, the default one (if no files loaded) should always be the last one used. R293
-    * Verse expression is replaced by Stanza in Lyrics dialog. Translations updated as well. R294
-    * Syntax characters < and > for multiple-sillables per single note aren't rendered on the screen anymore. R295
-    * Prevent NoteEdit from crashing when calling New document when playing. R297
+	* MusicXML import filter now places special barlines where it should. R292, R298
+	* MusicXML export filter now exports hidden rests like it should. R292
+	* The last zoom factor gets set the next time you run NoteEdit. When a new file format arrives, each document should contain its own last zoom and position state. However, the default one (if no files loaded) should always be the last one used. R293
+	* Verse expression is replaced by Stanza in Lyrics dialog. Translations updated as well. R294
+	* Syntax characters < and > for multiple-sillables per single note aren't rendered on the screen anymore. R295
+	* Prevent NoteEdit from crashing when calling New document when playing. R297
 	* MusicXML import - fill with hidden rests in second staff as well. R299
 	* Selection button and note buttons splitted. First step towards separate Insert/Edit/Selection modes. R300
 	* Don't select the next element when using Backspace to delete and the beginning of the score is reached. R301
@@ -18,4 +18,5 @@ version 2.9.0:
 		- Insert -> SHIFT+Return: Insert rest
 		- CTRL+Backspace -> CTRL+Delete: Delete a note in chord
 		- E -> SHIFT+E: Pitch E
-	* Page layout editor no longer removes brace if placing a bracket around it. R303
+	* Page layout editor no longer removes brace if placing a bracket around it. You're also no longer able to place a bracket on a single staff. R303
+	* Updated bracket/brace layout and fixed some spacings. A new measureline connecting all the staffs at the beginning is now present. R304

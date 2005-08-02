@@ -154,6 +154,7 @@ class NResource : public QObject  {
 		static QBrush contextBrush_;
 		static QPen noPen_;
 		static QPen staffPen_;
+		static QPen editModeBorderPen_;
 		static QPen selectedStaffPen_;
 		static QPen barPen_;
 		static QPen selectedBarPen_;

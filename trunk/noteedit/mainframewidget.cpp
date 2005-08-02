@@ -2152,7 +2152,7 @@ void NMainFrameWidget::paintEvent( QPaintEvent * ) {
 	main_props_.p->begin( notePart_->acShowPixmap());
 	main_props_.p->setBrush(NResource::backgroundBrush_);
 	main_props_.p->setPen(NResource::noPen_);
-	main_props_.p->setPen(NResource::blackPen_); //  color of border around drawing area
+	main_props_.p->setPen(editMode_ ? NResource::editModeBorderPen_ : NResource::blackPen_); //  color of border around drawing area
 	main_props_.p->drawRect(0, 0, paperWidth_, paperHeight_);
 	main_props_.p->end();
 	if (NResource::windowWithSelectedRegion_ == this) {
@@ -3256,6 +3256,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 		ddotbutton_->setOn(false);
 		main_props_.dotcount = 0;
 	}
+	repaint(); /* redraw border */
 }
 
 void NMainFrameWidget::allowKbInsert(bool on) {
@@ -4672,7 +4673,7 @@ void NMainFrameWidget::xscrollDuringReplay(int val) {
 		main_props_.p->begin( notePart_->acWritePixmap() );
 		main_props_.p->setBrush(NResource::backgroundBrush_);
 		main_props_.p->setPen(NResource::noPen_);
-		main_props_.p->setPen(NResource::blackPen_);
+		main_props_.p->setPen(editMode_ ? NResource::editModeBorderPen_ : NResource::blackPen_); //  color of border around drawing area
 		main_props_.p->drawRect(0, 0, paperWidth_, paperHeight_);
 		if (NResource::showContext_) {
 			main_props_.p->fillRect(contextRec_, NResource::contextBrush_);
@@ -4725,7 +4726,7 @@ void NMainFrameWidget::xscrollDuringReplay(int val) {
 	main_props_.p->begin( notePart_->acWritePixmap() );
 	main_props_.p->setBrush(NResource::backgroundBrush_);
 	main_props_.p->setPen(NResource::noPen_);
-	main_props_.p->setPen(NResource::blackPen_);
+	main_props_.p->setPen(editMode_ ? NResource::editModeBorderPen_ : NResource::blackPen_); //  color of border around drawing area
 	main_props_.p->drawRect(0, 0, paperWidth_, paperHeight_);
 	if (NResource::showContext_) {
 		main_props_.p->fillRect(contextRec_, NResource::contextBrush_);
@@ -4912,7 +4913,7 @@ void NMainFrameWidget::preparePixmaps() {
 	main_props_.p->begin( notePart_->acWritePixmap() );
 	main_props_.p->setBrush(NResource::backgroundBrush_);
 	main_props_.p->setPen(NResource::noPen_);
-	main_props_.p->setPen(NResource::blackPen_);
+	main_props_.p->setPen(editMode_ ? NResource::editModeBorderPen_ : NResource::blackPen_); //  color of border around drawing area
 	main_props_.p->drawRect(0, 0, paperWidth_, paperHeight_);
 	if (NResource::showContext_) {
 		main_props_.p->fillRect(contextRec_, NResource::contextBrush_);

@@ -165,6 +165,7 @@ QBrush NResource::redBrush_;
 QBrush NResource::contextBrush_;
 QPen NResource::noPen_;
 QPen NResource::staffPen_;
+QPen NResource::editModeBorderPen_;
 QPen NResource::selectedStaffPen_;
 QPen NResource::barPen_;
 QPen NResource::selectedBarPen_;
@@ -653,6 +654,7 @@ NResource::NResource() {
 		);
 	staffPen_ = QPen
 		(kapp->config()->readColorEntry("Staff", &COLORS_STAFF));
+	editModeBorderPen_ = QPen(Qt::red, 2);
 	selectedStaffPen_ = QPen
 		(kapp->config()->readColorEntry("SelectedStaff", &COLORS_SELECTED_STAFF));
 	barPen_ = QPen

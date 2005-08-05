@@ -2231,7 +2231,7 @@ void NMainFrameWidget::setSelectMode() {
 	main_props_.tied = false;
 	main_props_.grace = false;
 	notePart_->setCursor(arrowCursor);
-		
+	
 	if (editMode_) {
 		editbutton_->setOn(false);
 		editMode_ = false;
@@ -2247,7 +2247,7 @@ void NMainFrameWidget::setToDFull(bool on) {
 	}
 	main_props_.grace = false;
 	main_props_.actualLength = DOUBLE_WHOLE_LENGTH;
-	if (editMode_) {
+	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
 		setEdited();
@@ -2270,7 +2270,7 @@ void NMainFrameWidget::setToFull(bool on) {
 	}
 	main_props_.grace = false;
 	main_props_.actualLength = WHOLE_LENGTH;
-	if (editMode_) {
+	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
 		setEdited();
@@ -2294,7 +2294,7 @@ void NMainFrameWidget::setToHalf(bool on) {
 	}
 	main_props_.grace = false;
 	main_props_.actualLength = HALF_LENGTH;
-	if (editMode_) {
+	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
 		setEdited();
@@ -2317,7 +2317,7 @@ void NMainFrameWidget::setToQuarter(bool on) {
 	}
 	main_props_.grace = false;
 	main_props_.actualLength = QUARTER_LENGTH;
-	if (editMode_) {
+	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
 		setEdited();
@@ -2340,7 +2340,7 @@ void NMainFrameWidget::setToN8(bool on) {
 	}
 	main_props_.actualLength = NOTE8_LENGTH;
 	main_props_.grace = false;
-	if (editMode_) {
+	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
 		setEdited();
@@ -2363,7 +2363,7 @@ void NMainFrameWidget::setToN16(bool on) {
 	}
 	main_props_.actualLength = NOTE16_LENGTH;
 	main_props_.grace = false;
-	if (editMode_) {
+	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
 		setEdited();
@@ -2386,7 +2386,7 @@ void NMainFrameWidget::setToN32(bool on) {
 	}
 	main_props_.actualLength = NOTE32_LENGTH;
 	main_props_.grace = false;
-	if (editMode_) {
+	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
 		setEdited();
@@ -2409,7 +2409,7 @@ void NMainFrameWidget::setToN64(bool on) {
 	}
 	main_props_.actualLength = NOTE64_LENGTH;
 	main_props_.grace = false;
-	if (editMode_) {
+	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
 		setEdited();
@@ -2432,7 +2432,7 @@ void NMainFrameWidget::setToN128(bool on) {
 	}
 	main_props_.actualLength = NOTE128_LENGTH;
 	main_props_.grace = false;
-	if (editMode_) {
+	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
 		setEdited();

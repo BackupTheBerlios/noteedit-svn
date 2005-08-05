@@ -190,7 +190,6 @@ class NMainFrameWidget : public QWidget
 		virtual void paintEvent( QPaintEvent * );
 	private slots:
 /*-------------------------- reaction on pushbutton events ----------------------------- */
-		void setToSelect();
 		void setToDFull(bool on);
 		void setToFull(bool on);
 		void setToHalf(bool on);
@@ -234,6 +233,7 @@ class NMainFrameWidget : public QWidget
 		void setNatur(bool);
 		void setStemUp(bool);
 		void setStemDown(bool);
+		void setSelectMode();
 		void setEditMode(bool);
 		void allowKbInsert(bool);
 		void setKbMode(bool);
@@ -426,6 +426,7 @@ class NMainFrameWidget : public QWidget
 		KToggleAction *pedoffbutton_;
 		NNumberDisplay *voiceDisplay_;
 		KToggleAction *offs_buttons_[COUNT_OFFSBUTTONS];
+		KToggleAction *selectbutton_;		
 		KToggleAction *editbutton_;
 		KToggleAction *allowKbInsertButton_;
 		KToggleAction *gluebutton_;
@@ -436,7 +437,6 @@ class NMainFrameWidget : public QWidget
 #ifdef WITH_TSE3
 		KToggleAction *recordButton_;
 #endif
-		KToggleAction *selectButton_;
 		KToggleAction *note_buttons_[COUNT_CHORDBUTTONS];
 		KToggleAction *note_dymmy_;
 		KToggleAction *crossDrumBu_;

@@ -369,7 +369,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	new KAction( i18n("Tip of the &day"), "idea", 0, this, SLOT(showTipOfTheDay()), actionCollection(), "help_tipoftheday" );
 
 	// ------------ Actions for toolbar buttons, KDE interface --------
-	selectButton_ = new KToggleAction(i18n("select"), "selector", 0, actionCollection(), "select");
+	selectbutton_ = new KToggleAction(i18n("select"), "selector", 0, actionCollection(), "select");
 	note_buttons_[0] = new KToggleAction(i18n("breve"), "breve", 0, actionCollection(), "breve");
 	note_buttons_[1] = new KToggleAction(i18n("Full note"), "fullnote", 0, actionCollection(), "full");
 	note_buttons_[2] = new KToggleAction(i18n("Half note"), "halfnote", 0, actionCollection(), "half");
@@ -382,7 +382,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	note_buttons_[9] = new KToggleAction(i18n("Grace Eighth"), "tinyeight", 0, actionCollection(), "tn8");
 	note_buttons_[10] = new KToggleAction(i18n("Grace sixteenth"), "tinysixteenth", 0, actionCollection(), "tn16");
 	note_buttons_[11] = new KToggleAction(i18n("Grace Eight Stroken"), "tinystroke", 0, actionCollection(), "tns32");
-	selectButton_->setExclusiveGroup( "notegrp" );
+	selectbutton_->setExclusiveGroup( "notegrp" );
 	for ( i = 0; i < COUNT_CHORDBUTTONS; ++i)
 	    note_buttons_[i]->setExclusiveGroup( "notegrp" );
 		
@@ -456,7 +456,6 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	rectDrumBu_->setExclusiveGroup( "note_body_group" );
 	triaDrumBu_ = new KToggleAction(i18n("drum5"), "perctrian", 0, actionCollection(), "tria_drum");
 	triaDrumBu_->setExclusiveGroup( "note_body_group" );
-	connect(selectButton_,  SIGNAL(toggled(bool)), this, SLOT(setToSelect()));
 	
 	connect(note_buttons_[0],  SIGNAL(toggled(bool)), this, SLOT(setToDFull(bool)));
 	connect(note_buttons_[1],  SIGNAL(toggled(bool)), this, SLOT(setToFull(bool)));
@@ -484,6 +483,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 
 	connect(dotbutton_, SIGNAL(toggled(bool)), this, SLOT(setDotted(bool)));
 	connect(ddotbutton_, SIGNAL(toggled(bool)), this, SLOT(setDDotted(bool)));
+	connect(selectbutton_, SIGNAL(toggled(bool)), this, SLOT(setSelectMode()));
 	connect(editbutton_, SIGNAL(toggled(bool)), this, SLOT(setEditMode(bool)));
 	connect(allowKbInsertButton_, SIGNAL(toggled(bool)), this, SLOT(allowKbInsert(bool)));
 	connect(kbbutton_, SIGNAL(toggled(bool)), this, SLOT(setKbMode(bool)));
@@ -719,7 +719,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->readSettings();
 	connect(&timer_, SIGNAL(timeout()), this, SLOT(playNext()));
 	x0_ = x1_ = y0_  = 0;
-	selectButton_->setChecked(true); /* go to selection mode */
+	selectbutton_->setOn(true); /* go to selection mode */
 	main_props_.directPainter->setPaintDevice(notePart_);
 	help_x0_ = -1;
 	keyLine_ = NULL_LINE;
@@ -889,7 +889,7 @@ void NMainFrameWidget::configure() {
 
 void NMainFrameWidget::plugButtons(KToolBar *toolbar) {
 	int i;
-	selectButton_->plug(toolbar);
+	selectbutton_->plug(toolbar);
 	for ( i = 0; i < COUNT_CHORDBUTTONS; ++i) {
 		note_buttons_[i]->plug(toolbar);
 	}
@@ -909,7 +909,7 @@ void NMainFrameWidget::plugButtons(KToolBar *toolbar) {
 
 void NMainFrameWidget::unPlugButtons(KToolBar *toolbar) {
 	int i;
-	selectButton_->unplug(toolbar);
+	selectbutton_->unplug(toolbar);
 	for ( i = 0; i < COUNT_CHORDBUTTONS; ++i) {
 		note_buttons_[i]->unplug(toolbar);
 	}
@@ -1683,7 +1683,8 @@ void NMainFrameWidget::KE_delete() {
 }
 
 void NMainFrameWidget::KE_leaveCurrentMode() {
-	selectButton_->setChecked(true);
+	selectbutton_->setOn(true);
+	setSelectMode();
 }
 
 void NMainFrameWidget::KE_play() {
@@ -2222,7 +2223,7 @@ void NMainFrameWidget::paintEvent( QPaintEvent * ) {
 
 /*-------------------------- reaction on pushbutton events ----------------------------- */
 
-void NMainFrameWidget::setToSelect() {
+void NMainFrameWidget::setSelectMode() {
 	stemUpbutton_->setOn(false);
 	stemDownbutton_->setOn(false);
 	tiebutton_->setOn(false);
@@ -2234,13 +2235,14 @@ void NMainFrameWidget::setToSelect() {
 	if (editMode_) {
 		editbutton_->setOn(false);
 		editMode_ = false;
+		repaint();
 	} 
 }
 
 void NMainFrameWidget::setToDFull(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
-		setToSelect();
+		setSelectMode();
 		return;
 	}
 	main_props_.grace = false;
@@ -2263,7 +2265,7 @@ void NMainFrameWidget::setToDFull(bool on) {
 void NMainFrameWidget::setToFull(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
-		setToSelect();
+		setSelectMode();
 		return;
 	}
 	main_props_.grace = false;
@@ -2287,7 +2289,7 @@ void NMainFrameWidget::setToFull(bool on) {
 void NMainFrameWidget::setToHalf(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
-		setToSelect();
+		setSelectMode();
 		return;
 	}
 	main_props_.grace = false;
@@ -2310,7 +2312,7 @@ void NMainFrameWidget::setToHalf(bool on) {
 void NMainFrameWidget::setToQuarter(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
-		setToSelect();
+		setSelectMode();
 		return;
 	}
 	main_props_.grace = false;
@@ -2333,7 +2335,7 @@ void NMainFrameWidget::setToQuarter(bool on) {
 void NMainFrameWidget::setToN8(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
-		setToSelect();
+		setSelectMode();
 		return;
 	}
 	main_props_.actualLength = NOTE8_LENGTH;
@@ -2356,7 +2358,7 @@ void NMainFrameWidget::setToN8(bool on) {
 void NMainFrameWidget::setToN16(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
-		setToSelect();
+		setSelectMode();
 		return;
 	}
 	main_props_.actualLength = NOTE16_LENGTH;
@@ -2379,7 +2381,7 @@ void NMainFrameWidget::setToN16(bool on) {
 void NMainFrameWidget::setToN32(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
-		setToSelect();
+		setSelectMode();
 		return;
 	}
 	main_props_.actualLength = NOTE32_LENGTH;
@@ -2402,7 +2404,7 @@ void NMainFrameWidget::setToN32(bool on) {
 void NMainFrameWidget::setToN64(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
-		setToSelect();
+		setSelectMode();
 		return;
 	}
 	main_props_.actualLength = NOTE64_LENGTH;
@@ -2425,7 +2427,7 @@ void NMainFrameWidget::setToN64(bool on) {
 void NMainFrameWidget::setToN128(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
-		setToSelect();
+		setSelectMode();
 		return;
 	}
 	main_props_.actualLength = NOTE128_LENGTH;
@@ -2449,7 +2451,7 @@ void NMainFrameWidget::setToN128(bool on) {
 void NMainFrameWidget::setToTN8(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
-		setToSelect();
+		setSelectMode();
 		return;
 	}
 	if (!editMode_) {
@@ -2466,7 +2468,7 @@ void NMainFrameWidget::setToTN8(bool on) {
 void NMainFrameWidget::setToTN16(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
-		setToSelect();
+		setSelectMode();
 		return;
 	}
 	if (!editMode_) {
@@ -2483,7 +2485,7 @@ void NMainFrameWidget::setToTN16(bool on) {
 void NMainFrameWidget::setToTNS8(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
-		setToSelect();
+		setSelectMode();
 		return;
 	}
 	if (!editMode_) {
@@ -3083,7 +3085,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 	bool playable;
 	QCursor *cursor;
 	if (on) {
-		selectButton_->setOn(false);
+		selectbutton_->setOn(false);
 		notePart_->setCursor( *NResource::cursor_edit_);
 		state_before_edit_mode_ = (0xffffffff  & NOTE_VAL_MASK);
 		for (i = 0; i < COUNT_CHORDBUTTONS; i++) {
@@ -3143,6 +3145,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 		}
 	}
 	else {
+		selectbutton_->setOn(true);
 		stemUpbutton_->setOn(false);
 		stemDownbutton_->setOn(false);
 		main_props_.actualStemDir = STEM_DIR_AUTO;
@@ -3636,7 +3639,7 @@ void NMainFrameWidget::readStaffsFromXMLFile(const char *fname) {
 	computeMidiTimes(false);
 	selectedSign_ = 0;
 	NVoice::resetUndo();
-	setToSelect();
+	setSelectMode();
 	main_props_.tp->setYPosition(-TOP_BOTTOM_BORDER);
 	main_props_.directPainter->setYPosition(-TOP_BOTTOM_BORDER);
 	main_props_.p->setYPosition(-TOP_BOTTOM_BORDER);
@@ -4932,7 +4935,7 @@ void NMainFrameWidget::preparePixmaps() {
 */
 void NMainFrameWidget::setButton(int nr) {
 	if (nr >= 0) {
-            	note_buttons_[nr]->setChecked( true );
+            	note_buttons_[nr]->setOn( true );
 	}
 	else {
 		note_dymmy_->setChecked(true);
@@ -5079,7 +5082,7 @@ bool NMainFrameWidget::readStaffs(const char *fname) {
 	computeMidiTimes(false);
 	selectedSign_ = 0;
 	NVoice::resetUndo();
-	setToSelect();
+	setSelectMode();
 	main_props_.tp->setYPosition(-TOP_BOTTOM_BORDER);
 	main_props_.directPainter->setYPosition(-TOP_BOTTOM_BORDER);
 	main_props_.p->setYPosition(-TOP_BOTTOM_BORDER);

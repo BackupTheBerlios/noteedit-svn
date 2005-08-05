@@ -466,9 +466,9 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	connect(note_buttons_[6],  SIGNAL(toggled(bool)), this, SLOT(setToN32(bool)));
 	connect(note_buttons_[7],  SIGNAL(toggled(bool)), this, SLOT(setToN64(bool)));
 	connect(note_buttons_[8],  SIGNAL(toggled(bool)), this, SLOT(setToN128(bool)));
-	connect(note_buttons_[9],  SIGNAL(toggled(bool)), this, SLOT(setToTN8(bool)));
-	connect(note_buttons_[10], SIGNAL(toggled(bool)), this, SLOT(setToTN16(bool)));
-	connect(note_buttons_[11], SIGNAL(toggled(bool)), this, SLOT(setToTNS8(bool)));
+	connect(note_buttons_[9],  SIGNAL(toggled(bool)), this, SLOT(setToGN8(bool)));
+	connect(note_buttons_[10], SIGNAL(toggled(bool)), this, SLOT(setToGN16(bool)));
+	connect(note_buttons_[11], SIGNAL(toggled(bool)), this, SLOT(setToGNS8(bool)));
 
 	connect(offs_buttons_[0], SIGNAL(toggled(bool)), this, SLOT(setCross(bool)));
 	connect(offs_buttons_[1], SIGNAL(toggled(bool)), this, SLOT(setFlat(bool)));
@@ -693,7 +693,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->insertItem( i18n( "set bar after" ), "KEtab", Key_Tab);
 	keys_->connectItem( "KEtab", this, SLOT( KE_tab() ) );
 	keys_->insertItem( i18n( "insert rest" ), "KErest", SHIFT+Key_Return);
-	keys_->connectItem( "KErest", this, SLOT( KE_rest() ) );
+	keys_->connectItem( "KErest", this, SLOT( KE_insertRest() ) );
 	keys_->insertItem( i18n( "toggle beam" ), "KEunderscore", "Shift+Underscore");
 	keys_->connectItem( "KEunderscore", this, SLOT( KE_underscore() ) );
 	keys_->insertItem( i18n( "keyboard insert mode" ), "KEkeybordInsert", Key_K);
@@ -1300,22 +1300,15 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 				if ((val = checkAllStaffsForNoteInsertion(line, p, &state, &state2, &playable, &delete_elem, &insert_new_note)) > 0) {
 					if (editMode_) {
 						if (playable) {
-							main_props_.actualLength = val;
-							setButton(NResource::noteLength2Button_(val));
-							stateButtonChange(state, state2);
+							updateInterface(state, state2, val);
 						}
-						else {
-							setButton(-1);
-							stateButtonChange(0, 0);
-							main_props_.actualLength = -1;
-						}
+						else
+							updateInterface(0, 0, -1);
 					}
 				}
-				else if (editMode_) {
-					setButton(-1);
-					stateButtonChange(0, 0);
-					main_props_.actualLength = -1;
-				}
+				else if (editMode_)
+					updateInterface(0, 0, -1);
+
 				if (delete_elem) {
 					deleteElem(true);
 					elem = currentVoice_->getCurrentElement();
@@ -1971,7 +1964,7 @@ void NMainFrameWidget::KE_tab() {
 	curpos.setX((int) ((newXpos-leftx_) * main_props_.zoom)), cursor().setPos(notePart_->mapToGlobal(curpos));
 }
 
-void NMainFrameWidget::KE_rest() {
+void NMainFrameWidget::KE_insertRest() {
 	if (playing_) return;
 	int newXpos;
 	if (!NResource::allowKeyboardInsert_ || main_props_.actualLength <= 0) return;
@@ -2254,7 +2247,7 @@ void NMainFrameWidget::setToDFull(bool on) {
 		reposit();
 		repaint();
 	}
-	else {
+	else if (!editMode_) {
 		notePart_->setCursor( *NResource::cursor_breve_);
 	}
 	if (NResource::windowWithSelectedRegion_) {
@@ -2277,7 +2270,7 @@ void NMainFrameWidget::setToFull(bool on) {
 		reposit();
 		repaint();
 	}
-	else {
+	else if (!editMode_) {
 		notePart_->setCursor( *NResource::cursor_fullnote_);
 	}
 	if (NResource::windowWithSelectedRegion_) {
@@ -2301,7 +2294,7 @@ void NMainFrameWidget::setToHalf(bool on) {
 		reposit();
 		repaint();
 	}
-	else {
+	else if (!editMode_) {
 		notePart_->setCursor( *NResource::cursor_halfnote_);
 	}
 	if (NResource::windowWithSelectedRegion_) {
@@ -2324,7 +2317,7 @@ void NMainFrameWidget::setToQuarter(bool on) {
 		reposit();
 		repaint();
 	}
-	else {
+	else if (!editMode_) {
 		notePart_->setCursor( *NResource::cursor_quarternote_);
 	}
 	if (NResource::windowWithSelectedRegion_) {
@@ -2347,7 +2340,7 @@ void NMainFrameWidget::setToN8(bool on) {
 		reposit();
 		repaint();
 	}
-	else {
+	else if (!editMode_) {
 		notePart_->setCursor( *NResource::cursor_eightnote_);
 	}
 	if (NResource::windowWithSelectedRegion_) {
@@ -2370,7 +2363,7 @@ void NMainFrameWidget::setToN16(bool on) {
 		reposit();
 		repaint();
 	}
-	else {
+	else if (!editMode_) {
 		notePart_->setCursor( *NResource::cursor_tinysixteenth_);
 	}
 	if (NResource::windowWithSelectedRegion_) {
@@ -2393,7 +2386,7 @@ void NMainFrameWidget::setToN32(bool on) {
 		reposit();
 		repaint();
 	}
-	else {
+	else if (!editMode_) {
 		notePart_->setCursor( *NResource::cursor_32ndnote_);
 	}
 	if (NResource::windowWithSelectedRegion_) {
@@ -2416,7 +2409,7 @@ void NMainFrameWidget::setToN64(bool on) {
 		reposit();
 		repaint();
 	}
-	else {
+	else if (!editMode_) {
 		notePart_->setCursor( *NResource::cursor_64thnote_);
 	}
 	if (NResource::windowWithSelectedRegion_) {
@@ -2439,7 +2432,7 @@ void NMainFrameWidget::setToN128(bool on) {
 		reposit();
 		repaint();
 	}
-	else {
+	else if (!editMode_) {
 		notePart_->setCursor( *NResource::cursor_128thnote_);
 	}
 	if (NResource::windowWithSelectedRegion_) {
@@ -2448,7 +2441,7 @@ void NMainFrameWidget::setToN128(bool on) {
 	}
 }
 
-void NMainFrameWidget::setToTN8(bool on) {
+void NMainFrameWidget::setToGN8(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
 		setSelectMode();
@@ -2465,7 +2458,7 @@ void NMainFrameWidget::setToTN8(bool on) {
 	}
 }
 
-void NMainFrameWidget::setToTN16(bool on) {
+void NMainFrameWidget::setToGN16(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
 		setSelectMode();
@@ -2482,7 +2475,7 @@ void NMainFrameWidget::setToTN16(bool on) {
 	}
 }
 	
-void NMainFrameWidget::setToTNS8(bool on) {
+void NMainFrameWidget::setToGNS8(bool on) {
 	if (playing_) return;
 	if (!on && !editMode_) {
 		setSelectMode();
@@ -3140,8 +3133,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 		}
 		val = currentVoice_->getElemState(&state, &state2, &playable);
 		if (playable) {
-			setButton(NResource::noteLength2Button_(val));
-			stateButtonChange(state, state2);
+			updateInterface(state, state2, val);
 		}
 	}
 	else {
@@ -4942,7 +4934,11 @@ void NMainFrameWidget::setButton(int nr) {
 	}
 }
 
-void NMainFrameWidget::stateButtonChange(int state, int state2) {
+/* Updates buttons, labels and internals (main_props_) according to the musElement's properties:
+   state - general properties (accidentals, stems, beams, articulation, gracenotes)
+   state2 - pedal sustain
+   length - element length type. If -1 given, element doesn't have MIDI length (eg. barlines). */
+void NMainFrameWidget::updateInterface(int state, int state2, int length) {
 	if (state == -1) return;
 
 	// avoid feedback
@@ -4999,6 +4995,8 @@ void NMainFrameWidget::stateButtonChange(int state, int state2) {
 	main_props_.strong_pizzicato = (state & STAT_STPIZ);
 	main_props_.sforzato  = (state & STAT_SFZND);
 	main_props_.fermate   = (state & STAT_FERMT);
+	main_props_.grace     = (state & STAT_GRACE);
+	main_props_.actualLength = length;
 	main_props_.pedal_on = (state2 & STAT2_PEDAL_ON); 
 	main_props_.pedal_off = (state2 & STAT2_PEDAL_OFF); 
 	if (state & STAT_STEM_UP) {
@@ -5023,6 +5021,13 @@ void NMainFrameWidget::stateButtonChange(int state, int state2) {
 			 rectDrumBu_->setOn(false);
 			 triaDrumBu_->setOn(false);
 	}
+
+	/* turns on appropriate note length button */
+	if (!main_props_.grace)
+		setButton(NResource::noteLength2Button_(length));
+	else
+		/* grace note buttons are just shifted right for 5 buttons */
+		setButton(NResource::noteLength2Button_(length)+5);
 }
 
 void NMainFrameWidget::playButtonReset() {
@@ -5218,11 +5223,8 @@ void NMainFrameWidget::nextElement() {
 	if (playing_) return;
 	int val, state, state2;
 	val = currentVoice_->makeNextElementActual(&state, &state2);
-	if (editMode_) {
-		setButton(NResource::noteLength2Button_(val));
-		stateButtonChange(state, state2);
-		main_props_.actualLength = val;
-	}
+	if (editMode_)
+		updateInterface(state, state2, val);
 	manageToolElement(false);
 	repaint();
 }
@@ -5232,11 +5234,8 @@ void NMainFrameWidget::prevElement() {
 	if (playing_) return;
 	int val, state, state2;
 	val = currentVoice_->makePreviousElementActual(&state, &state2);
-	if (editMode_) {
-		setButton(NResource::noteLength2Button_(val));
-		stateButtonChange(state, state2);
-		main_props_.actualLength = val;
-	}
+	if (editMode_)
+		updateInterface(state, state2, val);
 	manageToolElement(false);
 	repaint();
 }
@@ -5540,11 +5539,9 @@ void NMainFrameWidget::deleteElem(bool backspace) {
 	int val, state, state2;
 	if (playing_) return;
 	val = currentVoice_->deleteActualElem(&state, &state2, backspace);
-	if (editMode_) {
-		setButton(NResource::noteLength2Button_(val));
-		stateButtonChange(state, state2);
-		main_props_.actualLength = val;
-	}
+	if (editMode_)
+		updateInterface(state, state2, val);
+
 	computeMidiTimes(false);
 	if (!editiones_) setEdited(val != -1);
 	reposit();

@@ -199,9 +199,9 @@ class NMainFrameWidget : public QWidget
 		void setToN32(bool on);
 		void setToN64(bool on);
 		void setToN128(bool on);
-		void setToTN8(bool on);
-		void setToTN16(bool on);
-		void setToTNS8(bool on);
+		void setToGN8(bool on);
+		void setToGN16(bool on);
+		void setToGNS8(bool on);
 		void setDotted(bool);
 		void setDDotted(bool);
 		void setActualTied(bool);
@@ -363,7 +363,7 @@ class NMainFrameWidget : public QWidget
 		void KE_remove();
 		void KE_removechordnote();
 		void KE_tab();
-		void KE_rest();
+		void KE_insertRest();
 		void KE_underscore();
 		void KE_keybordInsert();
 		
@@ -508,7 +508,7 @@ class NMainFrameWidget : public QWidget
                 int leftx_, topy_, boty_;
 /*----------------------------- update of buttons due to selection ------------------*/
 		void setButton(int nr);
-		void stateButtonChange(int state, int state2);
+		void updateInterface(int state, int state2, int length);
 		void playButtonReset();
 /*-----------------------------(re-)storing ----------------------------------------*/
 		void writeStaffs(const char *fname);

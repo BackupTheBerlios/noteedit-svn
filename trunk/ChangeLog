@@ -23,6 +23,12 @@ version 2.9.0:
 	* Added CTRL+number_key bindings for selecting a voice number. If a key is hitted the second time, voice A is selected. Changed Key_QuoteLeft with Key_Apostrophe for placing a tie. R305
 	* Fixed a refresh bug in Edit mode. Experimental - Edit mode needs testing. R306, R309, R310
 	* Added red border around the notePart when in Edit mode. R307
-	* selectButton_ -> selectbutton_,
-	  setToSelect() -> setSelectMode(),
-	  some refresh stuff when switching between edit mode and select mode in various ways. R308
+	* R308:
+	  - selectButton_ -> selectbutton_,
+	  - setToSelect() -> setSelectMode(),
+	  - some refresh stuff when switching between edit mode and select mode in various ways.
+	* R311:
+	  - Grace notes are now correctly chosen in Edit mode.
+	  - Some code moved and optimized when updating elements in Edit mode.
+	  - stateButtonChange(int state, int state2) -> updateInterface(int state, int state2, int length).
+	  - slots for grace note buttons changed from setToTN8() -> setToGN8() and similar. Probably T was from "tiny", but musicians use an expression grace note for these kind of notes, so G.

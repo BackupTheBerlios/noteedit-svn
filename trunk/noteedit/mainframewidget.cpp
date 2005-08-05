@@ -5237,7 +5237,7 @@ void NMainFrameWidget::prevElement() {
 		stateButtonChange(state, state2);
 		main_props_.actualLength = val;
 	}
-        manageToolElement(false);
+	manageToolElement(false);
 	repaint();
 }
 

@@ -1452,9 +1452,13 @@ int NVoice::makePreviousElementActual(int *state, int *state2) {
 	if (musElementList_.find(currentElement_) == -1) {
 		NResource::abort("makePreviousElementActual: internal error");
 	}
-	if (musElementList_.prev() == 0) {
-		return -1;
-	}
+
+	/* Check, if the current element is already the first one. */
+	if (musElementList_.getFirst() != currentElement_)
+		/* And if not,, move to the next one. */
+		if (musElementList_.prev() == 0) {
+			return -1;
+		}
 	currentElement_->setActual(false);
 	currentElement_->draw();
 	
@@ -1466,7 +1470,6 @@ int NVoice::makePreviousElementActual(int *state, int *state2) {
 		*state |= currentElement_->getNoteList()->first()->status;
 	}
 	*state2 = currentElement_->status2_;
-	if (!was_playable) return -1;
 	return currentElement_->getSubType();
 }
 
@@ -1479,9 +1482,14 @@ int NVoice::makeNextElementActual(int *state, int *state2) {
 	if (musElementList_.find(currentElement_) == -1) {
 		NResource::abort("makeNextElementActual: internal error");
 	}
-	if (musElementList_.next() == 0) {
-		return -1;
-	}
+	
+	/* Check, if the current element is already the last one. */
+	if (musElementList_.getLast() != currentElement_)
+		/* And if not, move to the next one. */
+		if (musElementList_.next() == 0) {
+			return -1;
+		}
+	
 	currentElement_->setActual(false);
 	currentElement_->draw();
 	
@@ -1493,7 +1501,6 @@ int NVoice::makeNextElementActual(int *state, int *state2) {
 		*state |= currentElement_->getNoteList()->first()->status;
 	}
 	*state2 = currentElement_->status2_;
-	if (!was_playable) return -1;
 	return currentElement_->getSubType();
 }
 

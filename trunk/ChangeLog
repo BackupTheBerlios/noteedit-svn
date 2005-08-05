@@ -21,7 +21,7 @@ version 2.9.0:
 	* Page layout editor no longer removes brace if placing a bracket around it. You're also no longer able to place a bracket on a single staff. R303
 	* Updated bracket/brace layout and fixed some spacings. A new measureline connecting all the staffs at the beginning is now present. R304
 	* Added CTRL+number_key bindings for selecting a voice number. If a key is hitted the second time, voice A is selected. Changed Key_QuoteLeft with Key_Apostrophe for placing a tie. R305
-	* Fixed a refresh bug in Edit mode. Experimental - Edit mode needs testing. R306, R309
+	* Fixed a refresh bug in Edit mode. Experimental - Edit mode needs testing. R306, R309, R310
 	* Added red border around the notePart when in Edit mode. R307
 	* selectButton_ -> selectbutton_,
 	  setToSelect() -> setSelectMode(),

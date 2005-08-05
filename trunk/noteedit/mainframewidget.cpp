@@ -2848,8 +2848,15 @@ void NMainFrameWidget::setStrong_pizzicato(bool val) { this->forceAccent(STAT_ST
 void NMainFrameWidget::setSforzando(bool val)        { this->forceAccent(STAT_SFZND, val); }
 void NMainFrameWidget::setFermate(bool val)          { this->forceAccent(STAT_FERMT, val); }
 
-void NMainFrameWidget::setHidden(bool val) {
-	main_props_.hidden = val;
+void NMainFrameWidget::setHidden(bool on) {
+	if (playing_) return;
+	main_props_.hidden = on;
+	if (editMode_) {
+		currentVoice_->setHidden();
+		setEdited();
+		reposit();
+		repaint();
+	}
 }
 
 void NMainFrameWidget::forceAccent(unsigned int acc, bool val) {
@@ -3131,6 +3138,9 @@ void NMainFrameWidget::setEditMode(bool on) {
 		if (triaDrumBu_->isChecked()) {
 			state_before_edit_mode_ |= STAT_BODY_TRIA;
 		}
+		if (hiddenrestbutton_->isChecked()) {
+			state_before_edit_mode_ |= STAT_HIDDEN;
+		}
 		val = currentVoice_->getElemState(&state, &state2, &playable);
 		if (playable) {
 			updateInterface(state, state2, val);
@@ -3230,6 +3240,14 @@ void NMainFrameWidget::setEditMode(bool on) {
 		else {
 			arpeggbutton_->setOn(false);
 			main_props_.arpeggio = false;
+		}
+		if (state_before_edit_mode_ & STAT_HIDDEN) {
+/*			hiddenrestbutton_->setOn(true);
+			main_props_.hidden = true;
+		}
+		else { */ /* currently disabled because of the same CROSS & HIDDEN value */
+			hiddenrestbutton_->setOn(false);
+			main_props_.hidden = false;
 		}
 		switch (main_props_.noteBody = (state_before_edit_mode_ & BODY_MASK)) {
 			case STAT_BODY_CROSS: crossDrumBu_->setOn(true); break;
@@ -4952,6 +4970,8 @@ void NMainFrameWidget::updateInterface(int state, int state2, int length) {
 	tiebutton_->setOn (state & STAT_TIED);
 	slurbutton_->setOn (state & STAT_SLURED);
 	tripletbutton_->setOn (state & STAT_TUPLET);
+	hiddenrestbutton_->setOn (state & STAT_HIDDEN);
+	main_props_.hidden = (state & STAT_HIDDEN);
 	staccatobutton_->setOn (state & STAT_STACC);
 	sforzatobutton_->setOn (state & STAT_SFORZ);
 	portatobutton_->setOn (state & STAT_PORTA);

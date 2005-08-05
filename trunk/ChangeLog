@@ -32,3 +32,4 @@ version 2.9.0:
 	  - Some code moved and optimized when updating elements in Edit mode.
 	  - stateButtonChange(int state, int state2) -> updateInterface(int state, int state2, int length).
 	  - slots for grace note buttons changed from setToTN8() -> setToGN8() and similar. Probably T was from "tiny", but musicians use an expression grace note for these kind of notes, so G.
+	* Hidden rest button now acts like others when in Edit mode and similar. But there's a major conflict between STAT_HIDDEN and STAT_CROSS. Problem is that 32 bits for status were already taken and there's no spare one for STAT_HIDDEN. I'll try to declare status_ to be 64 bit (long), so we'll have enough space for the future. An issue for the next commit. R312 

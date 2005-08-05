@@ -202,7 +202,7 @@ class NNote {
 #define STAT_DOUBLE_DOT   (1 << 1)
 #define DOT_MASK     (STAT_SINGLE_DOT | STAT_DOUBLE_DOT)
 
-#define STAT_HIDDEN   (1 << 2) /* conflics "STAT_CROSS", but can only occur in rests */
+#define STAT_HIDDEN   (1 << 2) /* conflicts with "STAT_CROSS", but can only occur in rests anyway. Cannot add more than 32 bits for status */
 
 #define STAT_CROSS   (1 << 2)
 #define STAT_FLAT    (1 << 3)

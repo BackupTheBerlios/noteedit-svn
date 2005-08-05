@@ -183,6 +183,7 @@ class NVoice {
 		bool lastElemContained(QList<NMusElement> *clonelist, QList<NMusElement> *tupletlist);
 		bool allElemsContained(QList<NMusElement> *clonelist, QList<NMusElement> *tupletlist);
 		void setActualTied();
+		void setHidden(); /* toggle hidden rest */
 		void setArpeggio();
 		void setPedalOn();
 		void setPedalOff();

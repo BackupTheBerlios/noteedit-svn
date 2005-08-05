@@ -1718,6 +1718,14 @@ void NVoice::setActualTied() {
 	}
 }
 
+/* toggle hidden rest */
+void NVoice::setHidden() {
+	if (!currentElement_) return;
+	if (currentElement_->getType() != T_REST) return;
+	createUndoElement(currentElement_, 1, 0);
+	currentElement_->status_ ^= STAT_HIDDEN;
+}
+
 void NVoice::setArpeggio() {
 	NChord *chord;
 	if (!currentElement_) return;

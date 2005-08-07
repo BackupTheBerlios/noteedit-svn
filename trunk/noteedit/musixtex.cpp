@@ -115,7 +115,8 @@ void NMusiXTeX::doExport() {
 	QString lyricslist[NUM_LYRICS];
 	QString *staffname;
 	int count_of_lyrics;
-	int kind, z;
+	status_type kind;
+	int z;
 	bool lyrcsLineCounts[NUM_LYRICS];
 	bool somethingProduced;
 	bool tex_special = false;
@@ -759,7 +760,8 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 	bool shift_needed;
 	bool toomany, nested, problem128;
 	int num;
-	int kind, z, i;
+	status_type kind;
+	int z, i;
 	int hline;
 	QList<NNote> *acc_list;
 

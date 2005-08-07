@@ -502,7 +502,7 @@ int NClef::name2Line(char name) const {
 	return line;
 }
 
-int NClef::getAccPos(int kind, int nr) {
+int NClef::getAccPos(status_type kind, int nr) {
 	switch (kind) {
 		case STAT_CROSS: return sharpPosTab_[nr];
 		case STAT_FLAT: return flatPosTab_[nr];
@@ -534,7 +534,8 @@ int NClef::noteNumber2Line(int note_number) const {
 }
 
 void NClef::midi2Line(unsigned int midival, int *line, int *offs, NKeySig *ksig) {
-	int i, kind, count;
+	int i, count;
+	status_type kind;
 	*line = 0;
 	*offs = 0;
 

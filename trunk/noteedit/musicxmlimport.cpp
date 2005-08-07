@@ -1618,7 +1618,7 @@ void MusicXMLParser::handleAttributes()
 		if (res) {
 			if ((-7 <= iFif) && (iFif <= 7)) {
 				int count;
-				int kind;
+				status_type kind;
 				if (iFif < 0) {
 					count = -iFif; kind = STAT_FLAT;
 				} else {

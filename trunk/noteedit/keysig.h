@@ -37,22 +37,22 @@ class NKeySig : public NMusElement {
 		void reset();
 		void changeHalfTone(NNote *note);
 		void resetAtBar();
-		void setKey(int note, int kind);
-		int getState_of(int note);
+		void setKey(int note, status_type kind);
+//		int getStatus_of(int note); /* not used at all?! */
 		void setPreviousKeySig(NKeySig *prevKeySig);
 		void setClef(NClef *ac_clef);
-		void setRegular(int count, int kind);
-		bool isRegular(int *kind, int *count);
-		int accNeeded(int line, int offs);
+		void setRegular(int count, status_type kind);
+		bool isRegular(status_type *kind, int *count);
+		status_type accNeeded(int line, int offs);
 		int computeOffs(int line);
 		int determineDistanceUp(NNote *note);
-		int getState(int note);
+		status_type getStatus(int note);
 		int chooseOffs(int line, int offs);
-		void setTempAcc(int line, int kind);
+		void setTempAcc(int line, status_type kind);
 		virtual int getType () const {return T_KEYSIG;}
 		void draw(int flags = 0);
 		char *printKeys();
-		void addSign(int kind, char pitch);
+		void addSign(status_type kind, char pitch);
 		bool isDrawable() {return !noSignes_;}
 		bool isEqual(NKeySig *otherKeysig);
 		virtual void calculateDimensionsAndPixmaps();
@@ -68,16 +68,16 @@ class NKeySig : public NMusElement {
 	private:
 		int accCount();
 		int line2Range(int line);
-		bool isRegular(int *kind);
-		char *noteState_;
-		char *tempNoteState_;
+		bool isRegular(status_type *kind);
+		status_type *noteStatus_;
+		status_type *tempNoteStatus_;
 		static int nameTab_[7];
 		static int crossTab_[7];
 		static int flatTab_[7];
 		static char str[128];
 		NClef *acClef_;
 		int pixmapWidth_, resPixmapWidth_;
-		bool stateChanged_;
+		bool statusChanged_;
 		bool noSignes_;
 		int resolvOffs_;
 		QPixmap *keyPixmap_;

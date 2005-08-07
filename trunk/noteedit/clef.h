@@ -49,7 +49,7 @@ class NClef : public NMusElement {
 		virtual int getType() const {return T_CLEF;}
 		const unsigned int *line2midiTab_;
 		const char *line2TexTab_;
-		int getAccPos(int kind, int nr);
+		int getAccPos(status_type kind, int nr);
 		int noteNumber2Line(int note_number) const ;
 		int lineOfC4();
 		char line2PMXName(int line, int *octave) const;

@@ -22,6 +22,7 @@
 
 #include <qbuttongroup.h>
 #include <qradiobutton.h>
+#include <iostream.h>
 #include "keyoffs.h"
 #include "resource.h"
 #include "keysig.h"
@@ -51,12 +52,12 @@ void NKeyOffs::setKeysigObj(NKeySig *keysig_obj) {
 	keysigObj_ = keysig_obj;
 }
 
-void NKeyOffs::set(int kind) {
+void NKeyOffs::set(status_type kind) {
 	switch (kind) {
 		case STAT_CROSS: crossButton_->setChecked(true); break;
 		case STAT_FLAT: flatButton_->setChecked(true); break;
 		case STAT_NATUR: naturButton_->setChecked(true); break;
-		default: NResource::abort("NKeyOffs::set: internal error"); 
+		default: NResource::abort("NKeyOffs::set(): internal error"); 
 	}
 }
 

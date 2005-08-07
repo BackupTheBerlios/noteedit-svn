@@ -106,7 +106,7 @@ QPoint NChord::StrokeDist2_(STROKE_X_2, STROKE_Y_2);
 int NChord::numTexRows_ = 0;
 QList<NNote> NChord::acc_tex_row;
 
-NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, int line, int offs, int length, int voices_stem_policy, unsigned int status, unsigned int status2) :
+NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, int line, int offs, int length, int voices_stem_policy, status_type status, unsigned int status2) :
 		 NMusElement(main_props, staff_props), m_(0.0), n_(0.0) {
 	NNote *note;
 	if (line > MAXLINE) line = MAXLINE;
@@ -404,7 +404,7 @@ bool NChord::setOctaviationStop(int size) {
 }
 
 
-void NChord::changeBody(unsigned int bodyType) {
+void NChord::changeBody(status_type bodyType) {
 	NNote *note;
 	if (status_ & STAT_GRACE) return;
 	note = noteList_.at(actualNote_);
@@ -751,7 +751,7 @@ bool NChord::removeNote(NNote *note, int voices_stem_policy) {
 }
 
 
-NNote *NChord::insertNewNote(int line, int offs, int voices_stem_policy, unsigned int status) {
+NNote *NChord::insertNewNote(int line, int offs, int voices_stem_policy, status_type status) {
 	NNote *note, *new_part;
 	int idx;
 	bool found = false;

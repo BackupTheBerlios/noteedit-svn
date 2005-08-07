@@ -30,7 +30,7 @@
 #define REST_POINT_DIST 6
 #define REST_POINT_RAD 5
 
-NRest::NRest(main_props_str *main_props, staff_props_str *staff_props, int *y_voice_offs, int length, unsigned int status) :
+NRest::NRest(main_props_str *main_props, staff_props_str *staff_props, int *y_voice_offs, int length, status_type status) :
 		 NMusElement(main_props, staff_props) {
 	length_ = length;
 	switch (length) {

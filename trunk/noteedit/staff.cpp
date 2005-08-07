@@ -378,7 +378,7 @@ void NStaff::transpose(int semitones) {
 	}
 }
 
-void NStaff::setHalfsTo(int type) {
+void NStaff::setHalfsTo(status_type type) {
 	NVoice *voice_elem;
 
 	if (actualVoiceNr_ == -1) {

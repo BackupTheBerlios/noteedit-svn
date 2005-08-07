@@ -133,7 +133,7 @@ void NMusicXMLExport::debugDumpElem(NMusElement *elem) {
 	NClef *clef;
 	int count;
 	NKeySig *key;
-	int kind;
+	status_type kind;
 	NNote *note;
 	NSign *sign;
 	NTimeSig *timesig;
@@ -1448,7 +1448,7 @@ void NMusicXMLExport::outputVoiceNr(int voice_nr) {
 	out_ << "\t\t\t\t<voice>" << voice_nr << "</voice>\n";
 }
 
-int NMusicXMLExport::calcDuration(int len, unsigned int status) {
+int NMusicXMLExport::calcDuration(int len, status_type status) {
 	int dur = len * divisions_ / QUARTER_LENGTH;
 	switch (status & DOT_MASK) {
 		case STAT_DOUBLE_DOT:
@@ -1466,7 +1466,7 @@ int NMusicXMLExport::calcDuration(int len, unsigned int status) {
 
 void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 	int len = elem->getSubType();
-	unsigned int status = elem->status_;
+	status_type status = elem->status_;
 	dur = len * divisions_;
 	switch (status & DOT_MASK) {
 		case STAT_DOUBLE_DOT:
@@ -1498,7 +1498,7 @@ void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 
 static int calcLengthForCalcDivisions(NMusElement *elem) {
 	int len = elem->getSubType();
-	unsigned int status = elem->status_;
+	status_type status = elem->status_;
 	switch (status & DOT_MASK) {
 		case STAT_DOUBLE_DOT:
 			len = len * 7 / 4;
@@ -1998,7 +1998,7 @@ void NMusicXMLExport::outputMeter(NTimeSig *timesig) {
 void NMusicXMLExport::outputKeySig(NKeySig *key) {
 	badinfo *bad;
 	int count;
-	int kind;
+	status_type kind;
 
 	out_ << "\t\t\t\t<key>\n";
 	out_ << "\t\t\t\t\t<fifths>";

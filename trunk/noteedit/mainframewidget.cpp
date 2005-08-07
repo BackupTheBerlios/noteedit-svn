@@ -1132,7 +1132,8 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 				l = (dl >= 0.0) ? (int) (dl + 0.5)  : (int) (dl - 0.5)
 			   	
 
-	int val, state, state2, newXpos;
+	status_type status;
+	unsigned int val, status2, newXpos;
 	bool playable;
 	QPoint p;
 	NVoice *voice_elem;
@@ -1297,10 +1298,10 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 				delete_elem = /*main_props_.actualLength > 0 && !editMode_ &&*/ (evt->state() & ControlButton) != 0;
 				insert_new_note = main_props_.actualLength > 0 && !editMode_ && (evt->state() & ControlButton) == 0;
 				TRANSY2LINE(evt->y(), dline, line);
-				if ((val = checkAllStaffsForNoteInsertion(line, p, &state, &state2, &playable, &delete_elem, &insert_new_note)) > 0) {
+				if ((val = checkAllStaffsForNoteInsertion(line, p, &status, &status2, &playable, &delete_elem, &insert_new_note)) > 0) {
 					if (editMode_) {
 						if (playable) {
-							updateInterface(state, state2, val);
+							updateInterface(status, status2, val);
 						}
 						else
 							updateInterface(0, 0, -1);
@@ -2027,7 +2028,8 @@ void NMainFrameWidget::pitchToLine(int pitchNumber) {
 	if (playing_) return;
 	int halfLines, offs;
 	int newXpos;
-	int status, status2;
+	status_type status;
+	int status2;
 	NChord *newchord;
 	QPoint curpos;
 	int ydist;
@@ -2859,7 +2861,7 @@ void NMainFrameWidget::setHidden(bool on) {
 	}
 }
 
-void NMainFrameWidget::forceAccent(unsigned int acc, bool val) {
+void NMainFrameWidget::forceAccent(status_type acc, bool val) {
 	if (playing_) return;
 	main_props_.staccato = main_props_.sforzato = main_props_.portato = 
 	main_props_.strong_pizzicato = main_props_.sforzando = main_props_.fermate = false;
@@ -3081,69 +3083,70 @@ void NMainFrameWidget::setStemDown(bool on) {
 
 void NMainFrameWidget::setEditMode(bool on) {
 	editMode_ = on;
-	int state, state2, val, i;
+	status_type status;
+	unsigned int status2, val, i;
 	bool playable;
 	QCursor *cursor;
 	if (on) {
 		selectbutton_->setOn(false);
 		notePart_->setCursor( *NResource::cursor_edit_);
-		state_before_edit_mode_ = (0xffffffff  & NOTE_VAL_MASK);
+		status_before_edit_mode_ = (0xffffffff  & NOTE_VAL_MASK);
 		for (i = 0; i < COUNT_CHORDBUTTONS; i++) {
 			if (note_buttons_[i]->isChecked()) {
-				state_before_edit_mode_ &= ~(NOTE_VAL_MASK);
-				state_before_edit_mode_ |= i;
+				status_before_edit_mode_ &= ~(NOTE_VAL_MASK);
+				status_before_edit_mode_ |= i;
 				break;
 			}
 		}
-		state_before_edit_mode_ |= (BODY_MASK & main_props_.noteBody);
+		status_before_edit_mode_ |= (BODY_MASK & main_props_.noteBody);
 		if (sforzatobutton_->isChecked()) {
-			state_before_edit_mode_ |= STAT_SFORZ;
+			status_before_edit_mode_ |= STAT_SFORZ;
 		}
 		if (portatobutton_->isChecked()) {
-			state_before_edit_mode_ |= STAT_PORTA;
+			status_before_edit_mode_ |= STAT_PORTA;
 		}
 		if (strong_pizzicatobutton_->isChecked()) {
-			state_before_edit_mode_ |= STAT_STPIZ;
+			status_before_edit_mode_ |= STAT_STPIZ;
 		}
 		if (sforzandobutton_->isChecked()) {
-			state_before_edit_mode_ |= STAT_SFZND;
+			status_before_edit_mode_ |= STAT_SFZND;
 		}
 		if (fermatebutton_->isChecked()) {
-			state_before_edit_mode_ |= STAT_FERMT;
+			status_before_edit_mode_ |= STAT_FERMT;
 		}
 		if (arpeggbutton_->isChecked()) {
-			state_before_edit_mode_ |= STAT_ARPEGG;
+			status_before_edit_mode_ |= STAT_ARPEGG;
 		}
 		if (staccatobutton_->isChecked()) {
-			state_before_edit_mode_ |= STAT_STACC;
+			status_before_edit_mode_ |= STAT_STACC;
 		}
 		if (tiebutton_->isChecked()) {
-			state_before_edit_mode_ |= STAT_TIED;
+			status_before_edit_mode_ |= STAT_TIED;
 		}
 		if (hiddenrestbutton_->isChecked()) {
-			state_before_edit_mode_ |= BEFORE_EDIT_HIDDEN;
+			status_before_edit_mode_ |= BEFORE_EDIT_HIDDEN;
 		}
 		if (crossDrumBu_->isChecked()) {
-			state_before_edit_mode_ |= STAT_BODY_CROSS;
+			status_before_edit_mode_ |= STAT_BODY_CROSS;
 		}
 		if (cross2DrumBu->isChecked()) {
-			state_before_edit_mode_ |= STAT_BODY_CROSS2;
+			status_before_edit_mode_ |= STAT_BODY_CROSS2;
 		}
 		if (crossCricDrumBu_->isChecked()) {
-			state_before_edit_mode_ |= STAT_BODY_CIRCLE_CROSS;
+			status_before_edit_mode_ |= STAT_BODY_CIRCLE_CROSS;
 		}
 		if (rectDrumBu_->isChecked()) {
-			state_before_edit_mode_ |= STAT_BODY_RECT;
+			status_before_edit_mode_ |= STAT_BODY_RECT;
 		}
 		if (triaDrumBu_->isChecked()) {
-			state_before_edit_mode_ |= STAT_BODY_TRIA;
+			status_before_edit_mode_ |= STAT_BODY_TRIA;
 		}
 		if (hiddenrestbutton_->isChecked()) {
-			state_before_edit_mode_ |= STAT_HIDDEN;
+			status_before_edit_mode_ |= STAT_HIDDEN;
 		}
-		val = currentVoice_->getElemState(&state, &state2, &playable);
+		val = currentVoice_->getElemState(&status, &status2, &playable);
 		if (playable) {
-			updateInterface(state, state2, val);
+			updateInterface(status, status2, val);
 		}
 	}
 	else {
@@ -3154,7 +3157,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 		main_props_.actualLength = -1;
 		notePart_->setCursor(arrowCursor);
 		for (i = 0; i < COUNT_CHORDBUTTONS; ++i) {
-			if (i == (state_before_edit_mode_ & NOTE_VAL_MASK)) {
+			if (i == (status_before_edit_mode_ & NOTE_VAL_MASK)) {
 				note_buttons_[i]->setOn(true);
 				main_props_.actualLength = NResource::button2Notelength_(i);
 			}
@@ -3174,7 +3177,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			offs_buttons_[i]->setOn(false);
 		}
 		/*
-		if (state_before_edit_mode_ & STAT_TIED) {
+		if (status_before_edit_mode_ & STAT_TIED) {
 			tiebutton_->setOn(true);
 			main_props_.tied = true;
 		}
@@ -3185,7 +3188,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 		*/
 		tiebutton_->setOn(false);
 		main_props_.tied = false;
-		if (state_before_edit_mode_ & STAT_STACC) {
+		if (status_before_edit_mode_ & STAT_STACC) {
 			staccatobutton_->setOn(true);
 			main_props_.staccato = true;
 		}
@@ -3193,7 +3196,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			staccatobutton_->setOn(false);
 			main_props_.staccato = false;
 		}
-		if (state_before_edit_mode_ & STAT_SFZND) {
+		if (status_before_edit_mode_ & STAT_SFZND) {
 			sforzatobutton_->setOn(true);
 			main_props_.sforzando = true;
 		}
@@ -3201,7 +3204,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			sforzatobutton_->setOn(false);
 			main_props_.sforzando = false;
 		}
-		if (state_before_edit_mode_ & STAT_PORTA) {
+		if (status_before_edit_mode_ & STAT_PORTA) {
 			portatobutton_->setOn(true);
 			main_props_.portato = true;
 		}
@@ -3209,7 +3212,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			portatobutton_->setOn(false);
 			main_props_.portato = false;
 		}
-		if (state_before_edit_mode_ & STAT_STPIZ) {
+		if (status_before_edit_mode_ & STAT_STPIZ) {
 			strong_pizzicatobutton_->setOn(true);
 			main_props_.strong_pizzicato = true;
 		}
@@ -3217,7 +3220,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			strong_pizzicatobutton_->setOn(false);
 			main_props_.strong_pizzicato = false;
 		}
-		if (state_before_edit_mode_ & STAT_SFZND) {
+		if (status_before_edit_mode_ & STAT_SFZND) {
 			sforzandobutton_->setOn(true);
 			main_props_.sforzando = true;
 		}
@@ -3225,7 +3228,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			sforzandobutton_->setOn(false);
 			main_props_.sforzando = false;
 		}
-		if (state_before_edit_mode_ & STAT_FERMT) {
+		if (status_before_edit_mode_ & STAT_FERMT) {
 			fermatebutton_->setOn(true);
 			main_props_.fermate = true;
 		}
@@ -3233,7 +3236,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			fermatebutton_->setOn(false);
 			main_props_.fermate = false;
 		}
-		if (state_before_edit_mode_ & STAT_ARPEGG) {
+		if (status_before_edit_mode_ & STAT_ARPEGG) {
 			arpeggbutton_->setOn(true);
 			main_props_.arpeggio = true;
 		}
@@ -3241,15 +3244,15 @@ void NMainFrameWidget::setEditMode(bool on) {
 			arpeggbutton_->setOn(false);
 			main_props_.arpeggio = false;
 		}
-		if (state_before_edit_mode_ & STAT_HIDDEN) {
-/*			hiddenrestbutton_->setOn(true);
+		if (status_before_edit_mode_ & STAT_HIDDEN) {
+			hiddenrestbutton_->setOn(true);
 			main_props_.hidden = true;
 		}
-		else { */ /* currently disabled because of the same CROSS & HIDDEN value */
+		else {
 			hiddenrestbutton_->setOn(false);
 			main_props_.hidden = false;
 		}
-		switch (main_props_.noteBody = (state_before_edit_mode_ & BODY_MASK)) {
+		switch (main_props_.noteBody = (status_before_edit_mode_ & BODY_MASK)) {
 			case STAT_BODY_CROSS: crossDrumBu_->setOn(true); break;
 			case STAT_BODY_CROSS2: cross2DrumBu->setOn(true); break;
 			case STAT_BODY_CIRCLE_CROSS: crossCricDrumBu_->setOn(true); break;
@@ -3312,7 +3315,8 @@ void NMainFrameWidget::setKbInsertMode(bool on) {
 void NMainFrameWidget::readNotesFromMidiMapper() {
 #ifdef WITH_TSE3
 	NChord *newchord;
-	unsigned int status, status2;
+	status_type status;
+	unsigned int status2;
 	NMusElement *curElem;
 	int line, offs, *pitch;
 	int newXpos;
@@ -4638,7 +4642,8 @@ void NMainFrameWidget::setInsertionKey() {
 
 void NMainFrameWidget::changeKey(int idx) {
 	int i;
-	int count, kind;
+	int count;
+	status_type kind;
 
 	if (idx > 7) {
 		count = idx - 7;
@@ -4654,7 +4659,7 @@ void NMainFrameWidget::changeKey(int idx) {
 		offs_list_[i]->set(STAT_NATUR);
 	}
 	for (i = 0; i < 7; ++i) {
-		offs_list_[i]->set(tmpKeysig_->getState(i));
+		offs_list_[i]->set(tmpKeysig_->getStatus(i));
 	}
 	for (i = 0; i < 7; ++i) {
 		offs_list_[i]->setKeysigObj(tmpKeysig_); // avoid feedback
@@ -4953,82 +4958,82 @@ void NMainFrameWidget::setButton(int nr) {
 }
 
 /* Updates buttons, labels and internals (main_props_) according to the musElement's properties:
-   state - general properties (accidentals, stems, beams, articulation, gracenotes)
-   state2 - pedal sustain
+   status - general properties (accidentals, stems, beams, articulation, gracenotes)
+   status2 - pedal sustain
    length - element length type. If -1 given, element doesn't have MIDI length (eg. barlines). */
-void NMainFrameWidget::updateInterface(int state, int state2, int length) {
-	if (state == -1) return;
+void NMainFrameWidget::updateInterface(status_type status, unsigned int status2, int length) {
+	if (status == -1) return;
 
 	// avoid feedback
 	// Note from David: you can use blockSignals instead (avoids duplicating code for connect/disconnect)
         // (For the KDE interface, this is not even necessary)
 	// Ok! Thank you (J.Anders)
 
-	beambutton_->setOn (state & STAT_BEAMED);
-	dotbutton_->setOn (state & STAT_SINGLE_DOT);
-	ddotbutton_->setOn (state & STAT_DOUBLE_DOT);
-	tiebutton_->setOn (state & STAT_TIED);
-	slurbutton_->setOn (state & STAT_SLURED);
-	tripletbutton_->setOn (state & STAT_TUPLET);
-	hiddenrestbutton_->setOn (state & STAT_HIDDEN);
-	main_props_.hidden = (state & STAT_HIDDEN);
-	staccatobutton_->setOn (state & STAT_STACC);
-	sforzatobutton_->setOn (state & STAT_SFORZ);
-	portatobutton_->setOn (state & STAT_PORTA);
-	strong_pizzicatobutton_->setOn (state & STAT_STPIZ);
-	sforzandobutton_->setOn (state & STAT_SFZND);
-	fermatebutton_->setOn (state & STAT_FERMT);
-	arpeggbutton_->setOn (state & STAT_ARPEGG);
-	pedonbutton_->setOn (state2 & STAT2_PEDAL_ON);
-	pedoffbutton_->setOn (state2 & STAT2_PEDAL_OFF);
+	beambutton_->setOn (status & STAT_BEAMED);
+	dotbutton_->setOn (status & STAT_SINGLE_DOT);
+	ddotbutton_->setOn (status & STAT_DOUBLE_DOT);
+	tiebutton_->setOn (status & STAT_TIED);
+	slurbutton_->setOn (status & STAT_SLURED);
+	tripletbutton_->setOn (status & STAT_TUPLET);
+	hiddenrestbutton_->setOn (status & STAT_HIDDEN);
+	main_props_.hidden = (status & STAT_HIDDEN);
+	staccatobutton_->setOn (status & STAT_STACC);
+	sforzatobutton_->setOn (status & STAT_SFORZ);
+	portatobutton_->setOn (status & STAT_PORTA);
+	strong_pizzicatobutton_->setOn (status & STAT_STPIZ);
+	sforzandobutton_->setOn (status & STAT_SFZND);
+	fermatebutton_->setOn (status & STAT_FERMT);
+	arpeggbutton_->setOn (status & STAT_ARPEGG);
+	pedonbutton_->setOn (status2 & STAT2_PEDAL_ON);
+	pedoffbutton_->setOn (status2 & STAT2_PEDAL_OFF);
 
-	stemUpbutton_->setOn(state & STAT_STEM_UP);
-	stemDownbutton_->setOn(!(state & STAT_STEM_UP));
-        offs_buttons_[0]->setOn(state & STAT_CROSS);
-	if (state & STAT_CROSS) {
+	stemUpbutton_->setOn(status & STAT_STEM_UP);
+	stemDownbutton_->setOn(!(status & STAT_STEM_UP));
+        offs_buttons_[0]->setOn(status & STAT_CROSS);
+	if (status & STAT_CROSS) {
             actualOffs_ = 1;
         }
-        offs_buttons_[1]->setOn(state & STAT_FLAT);
-	if (state & STAT_FLAT) {
+        offs_buttons_[1]->setOn(status & STAT_FLAT);
+	if (status & STAT_FLAT) {
             actualOffs_ = -1;
         }
-        offs_buttons_[3]->setOn(state & STAT_DCROSS); 
-	if (state & STAT_DCROSS) {
+        offs_buttons_[3]->setOn(status & STAT_DCROSS); 
+	if (status & STAT_DCROSS) {
             actualOffs_ = 2;
         }
-        offs_buttons_[4]->setOn(state & STAT_DFLAT); 
-	if (state & STAT_DFLAT) {
+        offs_buttons_[4]->setOn(status & STAT_DFLAT); 
+	if (status & STAT_DFLAT) {
             actualOffs_ = -2;
         }
-        offs_buttons_[2]->setOn(state & STAT_NATUR);
-	if (state & STAT_NATUR) {
+        offs_buttons_[2]->setOn(status & STAT_NATUR);
+	if (status & STAT_NATUR) {
             actualOffs_ = 0;
         }
-	if (!(state & ACC_MASK)) {
+	if (!(status & ACC_MASK)) {
 	    actualOffs_ = UNDEFINED_OFFS;
 	}
-	main_props_.dotcount = (state & DOT_MASK);
-	main_props_.tied = (state & STAT_TIED);
-	main_props_.staccato = (state & STAT_STACC);
-	main_props_.sforzato = (state & STAT_SFORZ);
-	main_props_.portato  = (state & STAT_PORTA);
-	main_props_.strong_pizzicato = (state & STAT_STPIZ);
-	main_props_.sforzato  = (state & STAT_SFZND);
-	main_props_.fermate   = (state & STAT_FERMT);
-	main_props_.grace     = (state & STAT_GRACE);
+	main_props_.dotcount = (status & DOT_MASK);
+	main_props_.tied = (status & STAT_TIED);
+	main_props_.staccato = (status & STAT_STACC);
+	main_props_.sforzato = (status & STAT_SFORZ);
+	main_props_.portato  = (status & STAT_PORTA);
+	main_props_.strong_pizzicato = (status & STAT_STPIZ);
+	main_props_.sforzato  = (status & STAT_SFZND);
+	main_props_.fermate   = (status & STAT_FERMT);
+	main_props_.grace     = (status & STAT_GRACE);
 	main_props_.actualLength = length;
-	main_props_.pedal_on = (state2 & STAT2_PEDAL_ON); 
-	main_props_.pedal_off = (state2 & STAT2_PEDAL_OFF); 
-	if (state & STAT_STEM_UP) {
+	main_props_.pedal_on = (status2 & STAT2_PEDAL_ON); 
+	main_props_.pedal_off = (status2 & STAT2_PEDAL_OFF); 
+	if (status & STAT_STEM_UP) {
 		main_props_.actualStemDir = STEM_DIR_UP;
 	}
-	else if (state & STEM_DIR_DOWN) {
+	else if (status & STEM_DIR_DOWN) {
 		main_props_.actualStemDir = STEM_DIR_DOWN;
 	}
 	else {
 		main_props_.actualStemDir = STEM_DIR_AUTO;
 	}
-	main_props_.noteBody = (state & BODY_MASK);
+	main_props_.noteBody = (status & BODY_MASK);
 	switch (main_props_.noteBody) {
 		case STAT_BODY_CROSS: crossDrumBu_->setOn(true); break;
 		case STAT_BODY_CROSS2: cross2DrumBu->setOn(true); break;
@@ -5186,13 +5191,13 @@ void NMainFrameWidget::computeMidiTimes(bool insertBars, bool doAutoBeam) {
 
 /*------------------------------- selection ---------------------------------------*/
 
-int NMainFrameWidget::checkAllStaffsForNoteInsertion(const int line, const QPoint p, int *state, int *state2, bool *playable, bool *delete_elem, bool *insertNewNote) {
+int NMainFrameWidget::checkAllStaffsForNoteInsertion(const int line, const QPoint p, status_type *status, unsigned int *status2, bool *playable, bool *delete_elem, bool *insertNewNote) {
 	int val;
 	NMusElement *elem;
 
 	if (playing_) return -1;
 	if (!checkStaffIntersection(p)) return -1;
-	if ((val = currentStaff_->checkElementForNoteInsertion(line, p, state, state2, playable, delete_elem, insertNewNote, actualOffs_)) > 0) {
+	if ((val = currentStaff_->checkElementForNoteInsertion(line, p, status, status2, playable, delete_elem, insertNewNote, actualOffs_)) > 0) {
 		manageToolElement(false);
 		return val;
 	}
@@ -5241,10 +5246,11 @@ bool NMainFrameWidget::checkStaffIntersection(const QPoint p) {
 
 void NMainFrameWidget::nextElement() {
 	if (playing_) return;
-	int val, state, state2;
-	val = currentVoice_->makeNextElementActual(&state, &state2);
+	status_type status;
+	unsigned int val, status2;
+	val = currentVoice_->makeNextElementActual(&status, &status2);
 	if (editMode_)
-		updateInterface(state, state2, val);
+		updateInterface(status, status2, val);
 	manageToolElement(false);
 	repaint();
 }
@@ -5252,10 +5258,11 @@ void NMainFrameWidget::nextElement() {
 
 void NMainFrameWidget::prevElement() {
 	if (playing_) return;
-	int val, state, state2;
-	val = currentVoice_->makePreviousElementActual(&state, &state2);
+	status_type status;
+	unsigned int val, status2;
+	val = currentVoice_->makePreviousElementActual(&status, &status2);
 	if (editMode_)
-		updateInterface(state, state2, val);
+		updateInterface(status, status2, val);
 	manageToolElement(false);
 	repaint();
 }
@@ -5556,11 +5563,12 @@ void NMainFrameWidget::moveOctaveDown() {
 }
 
 void NMainFrameWidget::deleteElem(bool backspace) {
-	int val, state, state2;
+	status_type status;
+	unsigned int val, status2;
 	if (playing_) return;
-	val = currentVoice_->deleteActualElem(&state, &state2, backspace);
+	val = currentVoice_->deleteActualElem(&status, &status2, backspace);
 	if (editMode_)
-		updateInterface(state, state2, val);
+		updateInterface(status, status2, val);
 
 	computeMidiTimes(false);
 	if (!editiones_) setEdited(val != -1);

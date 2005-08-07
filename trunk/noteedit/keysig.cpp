@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <qpainter.h>
 #include <qbitmap.h>
+#include <iostream.h>
 #include "keysig.h"
 #include "resource.h"
 #include "transpainter.h"
@@ -53,13 +54,15 @@ NClef NKeySig::defaultClef_(0, &NResource::nullprops_);
 
 NKeySig::NKeySig(main_props_str *main_props, staff_props_str *staff_props) :
 	NMusElement(main_props, staff_props) {
+	int i;
+	noteStatus_ = new status_type[7];
+	tempNoteStatus_ = new status_type[MAXLINE-MINLINE+1];
 
-	noteState_ = new char[7];
-	tempNoteState_ = new char[MAXLINE-MINLINE+1];
-
-	memset(noteState_, STAT_NATUR, 7);
-	memset(tempNoteState_, STAT_NO_ACC, MAXLINE-MINLINE+1);
-	stateChanged_ = true;
+	/* clear the noteStatus_ and tempNoteStatus_ arrays to STAT_NATUR and STAT_NO_ACC */
+	for (i=0; i<7; noteStatus_[i++] = STAT_NATUR);
+	for (i=0; i<(MAXLINE-MINLINE+1); tempNoteStatus_[i++]=STAT_NO_ACC);
+	
+	statusChanged_ = true;
 	acClef_ = &defaultClef_;
 	actual_ = false;
 	pixmapWidth_ = 5;
@@ -71,10 +74,10 @@ NKeySig::NKeySig(main_props_str *main_props, staff_props_str *staff_props) :
 }
 
 void NKeySig::change(NKeySig *ksig) {
-	stateChanged_ = true;
+	statusChanged_ = true;
 	NMusElement::change(ksig);
-	memcpy(noteState_, ksig->noteState_, 7);
-	memcpy(tempNoteState_, ksig->noteState_, 7);
+	memcpy(noteStatus_, ksig->noteStatus_, sizeof(status_type)*7);
+	memcpy(tempNoteStatus_, ksig->noteStatus_, sizeof(status_type)*7);
 	acClef_ = ksig->acClef_;
 	actual_ = false;
 	pixmapWidth_ = 5;
@@ -96,7 +99,7 @@ bool NKeySig::isEqual(NKeySig *otherKeysig) {
 	int i;
 	if (!otherKeysig) return false;
 	for (i = 0; i < 7; ++i) {
-		if (noteState_[i] != otherKeysig->noteState_[i]) return false;
+		if (noteStatus_[i] != otherKeysig->noteStatus_[i]) return false;
 	}
 	return true;
 }
@@ -104,7 +107,7 @@ bool NKeySig::isEqual(NKeySig *otherKeysig) {
 void NKeySig::setClef(NClef * ac_clef) {
 	acClef_ = ac_clef;
 
-	stateChanged_ = true;
+	statusChanged_ = true;
 	if (keyPixmap_) delete keyPixmap_;
 	if (key_redPixmap_) delete key_redPixmap_;
 	keyPixmap_ = 0;
@@ -114,14 +117,15 @@ void NKeySig::setClef(NClef * ac_clef) {
 
 void NKeySig::changeHalfTone(NNote *note) {
 	int notenr = acClef_->line2note(note->line);
-	int kind, count;
-	stateChanged_ = true;
+	status_type kind;
+	int count;
+	statusChanged_ = true;
 	switch (note->offs) {
 		case  1: if (isRegular(&kind, &count))  {
 				if (kind == STAT_FLAT) {
 					(note->line)++; note->offs = -1;
 				}
-			 } else if (noteState_[(notenr+1) % 7] == STAT_FLAT) {
+			 } else if (noteStatus_[(notenr+1) % 7] == STAT_FLAT) {
 				(note->line)++; note->offs = -1; 
 			 }
 			 break;
@@ -130,7 +134,7 @@ void NKeySig::changeHalfTone(NNote *note) {
 					(note->line)--; note->offs = 1;
 				}
 			 }
-			 else if (noteState_[(notenr+6) % 7] == STAT_CROSS) {
+			 else if (noteStatus_[(notenr+6) % 7] == STAT_CROSS) {
 				(note->line)--; note->offs = 1;
 			 }
 			 break;
@@ -138,31 +142,35 @@ void NKeySig::changeHalfTone(NNote *note) {
 }
 
 NKeySig *NKeySig::clone() {
-	char *tmp1, *tmp2;
+	status_type *tmp1;
+	status_type *tmp2;
 	NKeySig *ckeysig;
 	ckeysig = new NKeySig(main_props_, staff_props_);
 
-	tmp1 = ckeysig->noteState_;
-	tmp2 = ckeysig->tempNoteState_;
+	tmp1 = ckeysig->noteStatus_;
+	tmp2 = ckeysig->tempNoteStatus_;
 
 	*ckeysig = *this;
 
-	ckeysig->noteState_ = tmp1;
-	ckeysig->tempNoteState_ = tmp2;
-	memset(ckeysig->tempNoteState_, STAT_NO_ACC, MAXLINE-MINLINE+1);
-	memcpy(ckeysig->noteState_, noteState_, 7);
+	ckeysig->noteStatus_ = tmp1;
+	ckeysig->tempNoteStatus_ = tmp2;
+
+	/* clear tempNoteStatus_ array with STAT_NO_ACC */
+	for (int i=0; i<(MAXLINE-MINLINE+1); tempNoteStatus_[i++]=STAT_NO_ACC);
+	memcpy(ckeysig->noteStatus_, noteStatus_, sizeof(status_type)*7);
+
 	ckeysig->resolv_redPixmap_ = ckeysig->resolvPixmap_ = ckeysig->keyPixmap_ = ckeysig->key_redPixmap_ = 0;
 	ckeysig->previousKeySig_ = ckeysig->computedPreviousKeySig_ = 0;
 	ckeysig->resolvOffs_ = 0;
-	ckeysig->stateChanged_ = true;
+	ckeysig->statusChanged_ = true;
 
 	return ckeysig;
 }
 
 
 NKeySig::~NKeySig() {
-	delete noteState_;
-	delete tempNoteState_;
+	delete noteStatus_;
+	delete tempNoteStatus_;
 	if (keyPixmap_ != 0) delete keyPixmap_;
 	if (key_redPixmap_ != 0) delete key_redPixmap_;
 	if (resolv_redPixmap_ != 0) delete resolv_redPixmap_; 
@@ -181,7 +189,7 @@ int NKeySig::line2Range(int line) {
 		if (acClef_->noteNumber2Line(i) == line) return i;
 		
 	}
-	NResource::abort("line2Range: internal error");
+	NResource::abort("line2Range(): internal error");
 	return 0;
 }
 
@@ -190,7 +198,7 @@ void NKeySig::print() {
 	int i;
 	printf("stat: ");
 	for (i = 0; i < 7; ++i) {
-		switch (noteState_[i]) {
+		switch (noteStatus_[i]) {
 			case STAT_CROSS: printf("#");break;
 			case STAT_FLAT: printf("&");break;
 			case STAT_NATUR: printf("n");break;
@@ -200,7 +208,7 @@ void NKeySig::print() {
 	}
 	printf("; tmp: ");
 	for (i = 0; i < 7; ++i) {
-		switch (tempNoteState_[i]) {
+		switch (tempNoteStatus_[i]) {
 			case STAT_CROSS: printf("#");break;
 			case STAT_FLAT: printf("&");break;
 			case STAT_NATUR: printf("n");break;
@@ -221,14 +229,15 @@ void NKeySig::print() {
 #endif
 
 int NKeySig::computeOffs(int line) {
-	int pp, idx, state;
+	int pp, idx;
+	status_type status;
 
 	idx = LINE2TABIDX(line);
-	if ((state = tempNoteState_[idx]) == STAT_NO_ACC) {
+	if ((status = tempNoteStatus_[idx]) == STAT_NO_ACC) {
 		pp = line2Range(line);
-		state = noteState_[pp];
+		status = noteStatus_[pp];
 	}
-	switch (state) {
+	switch (status) {
 		case STAT_CROSS: return 1; break;
 		case STAT_FLAT: return -1; break;
 		case STAT_DCROSS: return 2; break;
@@ -248,19 +257,20 @@ int NKeySig::determineDistanceUp(NNote *note) {
 
 	
 
-int NKeySig::accNeeded(int line, int offs) {
-	int note, state, idx;
+status_type NKeySig::accNeeded(int line, int offs) {
+	int note, idx;
+	status_type status;
 
 	idx = LINE2TABIDX(line);
-	if ((state = tempNoteState_[idx]) == STAT_NO_ACC) {
+	if ((status = tempNoteStatus_[idx]) == STAT_NO_ACC) {
 		note = line2Range(line);
-		state = noteState_[note]; 
+		status = noteStatus_[note]; 
 	}
-	if (offs == -1 && state == STAT_FLAT) return STAT_NO_ACC;
-	if (offs ==  1 && state == STAT_CROSS) return STAT_NO_ACC;
-	if (offs == -2 && state == STAT_DFLAT) return STAT_NO_ACC;
-	if (offs ==  2 && state == STAT_DCROSS) return STAT_NO_ACC;
-	if (offs ==  0 && (state == STAT_FLAT || state == STAT_CROSS || state == STAT_DCROSS || state == STAT_DFLAT)) return STAT_NATUR;
+	if (offs == -1 && status == STAT_FLAT) return STAT_NO_ACC;
+	if (offs ==  1 && status == STAT_CROSS) return STAT_NO_ACC;
+	if (offs == -2 && status == STAT_DFLAT) return STAT_NO_ACC;
+	if (offs ==  2 && status == STAT_DCROSS) return STAT_NO_ACC;
+	if (offs ==  0 && (status == STAT_FLAT || status == STAT_CROSS || status == STAT_DCROSS || status == STAT_DFLAT)) return STAT_NATUR;
 	if (offs ==  1) return STAT_CROSS;
 	if (offs == -1) return STAT_FLAT;
 	if (offs ==  2) return STAT_DCROSS;
@@ -269,13 +279,18 @@ int NKeySig::accNeeded(int line, int offs) {
 }
 
 void NKeySig::resetAtBar() {
-	memset(tempNoteState_, STAT_NO_ACC, MAXLINE-MINLINE+1);
+	/* clear tempNoteStatus_ array to STAT_NO_ACC */
+	for (int i=0; i<(MAXLINE-MINLINE+1); tempNoteStatus_[i++]=STAT_NO_ACC);
 }
 	
 void NKeySig::reset() {
-	stateChanged_ = true;
-	memset(noteState_, STAT_NATUR, 7); 
-	memset(tempNoteState_, STAT_NO_ACC, MAXLINE-MINLINE+1); 
+	statusChanged_ = true;
+	int i;
+
+	/* clear the noteStatus_ and tempNoteStatus_ arrays to STAT_NATUR and STAT_NO_ACC */
+	for (i=0; i<7; noteStatus_[i++] = STAT_NATUR);
+	for (i=0; i<(MAXLINE-MINLINE+1); tempNoteStatus_[i++]=STAT_NO_ACC);
+
 	if (keyPixmap_) delete keyPixmap_;
 	if (key_redPixmap_) delete key_redPixmap_;
 	keyPixmap_ = 0;
@@ -283,45 +298,44 @@ void NKeySig::reset() {
 	acClef_ = &defaultClef_;
 }
 
-int NKeySig::getState(int note) {
+status_type NKeySig::getStatus(int note) {
 	if (note < 0 || note > 6) {
-		NResource::abort("getState: internal error");
+		NResource::abort("getStatus(): internal error");
 	}
-	return noteState_[note];
+	return noteStatus_[note];
 }
 
 	
-void NKeySig::setTempAcc(int line, int kind) {
-	tempNoteState_[LINE2TABIDX(line)] = kind;
+void NKeySig::setTempAcc(int line, status_type kind) {
+	tempNoteStatus_[LINE2TABIDX(line)] = kind;
 	
 }
 
-void NKeySig::setKey(int note, int kind) {
+void NKeySig::setKey(int note, status_type kind) {
 	if (note < 0 || note > 7) {
-		NResource::abort("setKey: internal error");
+		NResource::abort("setKey(): internal error");
 	}
-	noteState_[note] = kind;
+	noteStatus_[note] = kind;
 	if (keyPixmap_) delete keyPixmap_;
 	if (key_redPixmap_) delete key_redPixmap_;
 	keyPixmap_ = 0;
         key_redPixmap_ = 0;
 }
 
-void NKeySig::setRegular(int count, int kind) {
+void NKeySig::setRegular(int count, status_type kind) {
 	int i, *tab;
 	if (count > 7) return;
-	stateChanged_ = true;
+	statusChanged_ = true;
 	reset();
 	switch (kind) {
 		case STAT_CROSS: tab = crossTab_;
 				  break;
 		case STAT_FLAT:  tab = flatTab_;
 				  break;
-		default: NResource::abort("setRegular: unknown kind");
+		default: NResource::abort("setRegular(): unknown kind");
 	}
-	for (i = 0; i < count; ++i) {
-		noteState_[tab[i]] = kind;
-	}
+	for (i = 0; i < count; ++i)
+		noteStatus_[tab[i]] = kind;
 	if (staff_props_->base) calculateDimensionsAndPixmaps();
 }
 
@@ -329,12 +343,12 @@ int NKeySig::accCount() {
 	int i, count = 0;
 
 	for (i = 0; i < 7; ++i) {
-		if (noteState_[i] != STAT_NATUR) count++;
+		if (noteStatus_[i] != STAT_NATUR) count++;
 	}
 	return count;
 }
 
-bool NKeySig::isRegular(int *kind, int *count) {
+bool NKeySig::isRegular(status_type *kind, int *count) {
 	bool ok[7];
 	int i;
 	*kind = STAT_NO_ACC;
@@ -345,13 +359,13 @@ bool NKeySig::isRegular(int *kind, int *count) {
 	for (i = 0; i < 7; ok[i++] = false);
 
 	for (i = 0; i < 7; ++i) {
-		if (noteState_[i] != STAT_NATUR) {
+		if (noteStatus_[i] != STAT_NATUR) {
 			(*count)++;
 			ok[i] = true;
 			if (*kind == STAT_NO_ACC) {
-				*kind = noteState_[i];
+				*kind = noteStatus_[i];
 			}
-			else if (*kind != noteState_[i]) return false;
+			else if (*kind != noteStatus_[i]) return false;
 		}
 	}
 	switch (*kind) {
@@ -367,7 +381,7 @@ bool NKeySig::isRegular(int *kind, int *count) {
 			return true;
 		case STAT_NO_ACC:
 		case STAT_NATUR: return false;
-		default: NResource::abort("isRegular: internal error");
+		default: NResource::abort("isRegular(): internal error");
 	}
 	return false;
 }
@@ -377,7 +391,7 @@ char *NKeySig::printKeys() {
 	int i;
 	cptr = NKeySig::str;
 	for (i = 0; i < 7; ++i) {
-		switch (noteState_[i]) {
+		switch (noteStatus_[i]) {
 			case STAT_CROSS: *cptr++ = nameTab_[i];
 				      *cptr++ = '#';
 				      *cptr++ = ' ';
@@ -392,20 +406,21 @@ char *NKeySig::printKeys() {
 	return NKeySig::str;
 }
 
-void NKeySig::addSign(int kind, char pitch) {
+void NKeySig::addSign(status_type kind, char pitch) {
 	int i;
 	bool found = false;
-	stateChanged_ = true;
+	statusChanged_ = true;
 	i = 0;
 	while (!found && i < 7) {
 		if (!(found = pitch == nameTab_[i])) ++i;
 	}
 	if (!found) return;
-	noteState_[i] = kind;
+	noteStatus_[i] = kind;
 }
 
 void NKeySig::calculateDimensionsAndPixmaps() {
-	int kind, count;
+	status_type kind;
+	int count;
 	int i, j, *tab;
 	int draw_offs;
 	bool noSignesInPrevKey = true;
@@ -424,7 +439,7 @@ void NKeySig::calculateDimensionsAndPixmaps() {
 	if (previousKeySig_ != computedPreviousKeySig_) {
 		computedPreviousKeySig_ = previousKeySig_;
 		if (previousKeySig_ && !isEqual(previousKeySig_) && previousKeySig_->accCount() != 0) {
-			stateChanged_ = true;
+			statusChanged_ = true;
 			resPixmapWidth_ = NResource::naturPixmap_->width();
 			resPixmapWidth_ += SIGN_DIST * previousKeySig_->accCount();
 			resolvOffs_ = resPixmapWidth_;
@@ -469,8 +484,8 @@ void NKeySig::calculateDimensionsAndPixmaps() {
 				painter.fillRect(0, 0, resPixmapWidth_, PIXMAP_HEIGHT, NResource::backgroundBrush_);
 				for (j = 0, i = 0; i < 7; ++i) {
 					draw_offs = NATUR_DRAW_OFFS;
-					if (noteState_[i] == STAT_NATUR) continue;
-					if (noteState_[i] == STAT_CROSS) {
+					if (noteStatus_[i] == STAT_NATUR) continue;
+					if (noteStatus_[i] == STAT_CROSS) {
 						tab = crossTab_;
 						noSignesInPrevKey = false;
 					}
@@ -487,7 +502,7 @@ void NKeySig::calculateDimensionsAndPixmaps() {
 				painter.setBrush(NResource::backgroundBrush_);
 				painter.fillRect(0, 0, resPixmapWidth_, PIXMAP_HEIGHT, NResource::backgroundBrush_);
 				for (j = 0, i = 0; i < 7; ++i) {
-					if (noteState_[i] == STAT_NATUR) continue;
+					if (noteStatus_[i] == STAT_NATUR) continue;
 					painter.drawPixmap(j++*SIGN_DIST,4*LINE_DIST+draw_offs-acClef_->noteNumber2Line(i)*LINE_DIST/2, *NResource::naturPixmap_);
 				}
 				painter.setPen(NResource::blackWidePen_);
@@ -507,8 +522,8 @@ void NKeySig::calculateDimensionsAndPixmaps() {
 		}
 	}
 
-	if (stateChanged_) {
-		stateChanged_ = false;
+	if (statusChanged_) {
+		statusChanged_ = false;
 		if (accCount() != 0) {
 			pixmapWidth_ = NResource::crossPixmap_->width();
 			pixmapWidth_ += SIGN_DIST * accCount();
@@ -557,8 +572,8 @@ void NKeySig::calculateDimensionsAndPixmaps() {
 				painter.fillRect(0, 0, pixmapWidth_, PIXMAP_HEIGHT, NResource::backgroundBrush_);
 				noSignes_ = true;
 				for (j=0, i = 0; i < 7; ++i) {
-					if (noteState_[i] == STAT_NATUR) continue;
-					if (noteState_[i] == STAT_CROSS) {
+					if (noteStatus_[i] == STAT_NATUR) continue;
+					if (noteStatus_[i] == STAT_CROSS) {
 						pix = NResource::crossPixmap_;
 						tab = crossTab_;
 						draw_offs = CROSS_DRAW_OFFS;
@@ -579,8 +594,8 @@ void NKeySig::calculateDimensionsAndPixmaps() {
 				painter.setBrush(NResource::backgroundBrush_);
 				painter.fillRect(0, 0, pixmapWidth_, PIXMAP_HEIGHT, NResource::backgroundBrush_);
 				for (j = 0, i = 0; i < 7; ++i) {
-					if (noteState_[i] == STAT_NATUR) continue;
-					pix = (noteState_[i] == STAT_CROSS) ? NResource::crossRedPixmap_ : NResource::flatRedPixmap_;
+					if (noteStatus_[i] == STAT_NATUR) continue;
+					pix = (noteStatus_[i] == STAT_CROSS) ? NResource::crossRedPixmap_ : NResource::flatRedPixmap_;
 					painter.drawPixmap(j++*SIGN_DIST,4*LINE_DIST+draw_offs-acClef_->noteNumber2Line(i)*LINE_DIST/2, *pix);
 				}
 				painter.setPen(NResource::blackWidePen_);
@@ -633,13 +648,14 @@ void NKeySig::setClefInContextKeysig(NClef * ac_clef) {
 void NKeySig::changeInContextKeySig(NKeySig *ksig) {
 	NMusElement::change(ksig);
 	acClef_ = ksig->acClef_;
-	memcpy(noteState_, ksig->noteState_, 7);
+	memcpy(noteStatus_, ksig->noteStatus_, sizeof(status_type)*7);
 	pixmapWidth_ = 5;
 	if (staff_props_->base) calculateContextPixmap();
 }
 
 void NKeySig::calculateContextPixmap() { /* for faster computation of context key */
-	int kind, count;
+	status_type kind;
+	int count;
 	int i, j, *tab;
 	int draw_offs;
 	QPainter painter;
@@ -684,8 +700,8 @@ void NKeySig::calculateContextPixmap() { /* for faster computation of context ke
 		painter.fillRect(0, 0, pixmapWidth_, PIXMAP_HEIGHT, NResource::backgroundBrush_);
 		noSignes_ = true;
 		for (j=0, i = 0; i < 7; ++i) {
-			if (noteState_[i] == STAT_NATUR) continue;
-			if (noteState_[i] == STAT_CROSS) {
+			if (noteStatus_[i] == STAT_NATUR) continue;
+			if (noteStatus_[i] == STAT_CROSS) {
 				pix = NResource::crossPixmap_;
 				tab = crossTab_;
 				draw_offs = CROSS_DRAW_OFFS;

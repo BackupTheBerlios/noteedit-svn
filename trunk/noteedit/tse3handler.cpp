@@ -147,7 +147,8 @@ TSE3::Track *NTSE3Handler::createTSE3Track(NVoice *voice, int nr, TSE3::Song *so
 	stopList.setAutoDelete(false);
 
 	thePhraseEditor.reset();
-	int sign = 0, kind;
+	int sign = 0;
+	status_type kind;
 
 	voice->getStaff()->startPlaying();  /* necessary to reset some member variables in all staffs (EndIdx_) */
 	actual_staff = voice->getStaff();

@@ -28,7 +28,7 @@ struct parser_param_str {
 struct status_descr_str {
 	int octavmodi;
 	int offs, slurdist;
-	unsigned int status;
+	status_type status;
 	unsigned int beamstatus;
 };
 

@@ -1645,7 +1645,8 @@ bool NFileHandler::writeClef(NClef * clef, int voice_nr) {
 }
 
 void NFileHandler::writeKeySig(NKeySig * ksig, int voice_nr, bool only_regulaer) {
-	int kind, count;
+	status_type kind;
+	int count;
 	if (ksig == 0) return; /* no clef found => no key signature available */
 	if (ksig->isRegular(&kind, &count)) {
 		out_ << "\tkey = " << count << ((kind == STAT_CROSS) ? "#" : "&") << endl;

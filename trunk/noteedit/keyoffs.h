@@ -25,6 +25,7 @@
 #define KEYOFFS_H
 
 #include <qobject.h>
+#include "muselement.h" /* needed for status_type */
 
 #define KEY_OFFS_UP_DIST 20
 #define KEY_OFFS_BOTTOM_DIST 0
@@ -39,7 +40,7 @@ class NKeyOffs : public QObject{
 		NKeyOffs(const char *note_name, int bu_nr, QWidget *parent, const char *name);
 		void setKeysigObj(NKeySig *keysig_obj);
 		void setGeometry(int xpos, int ypos, int width, int height);
-		void set(int kind);
+		void set(status_type kind);
 	protected slots:
 		void updateCross(bool on);
 		void updateFlat(bool on);

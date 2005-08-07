@@ -1815,7 +1815,8 @@ static int select_voice_and_staff(int staff_nr, int voice_nr) {
 static void insert_new_clefs_timesigs_and_keys() {
 	NClef *c;
 	NKeySig *ksig;
-	int kind, count;
+	status_type kind;
+	int count;
 	for (i = 0, current_voice = parser_params.newVoices->first(); current_voice; current_voice = parser_params.newVoices->next(), i++) {
 		if (!current_voice->isFirstVoice()) continue;
 		current_staff = current_voice->getStaff();

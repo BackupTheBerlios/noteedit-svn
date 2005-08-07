@@ -163,30 +163,30 @@ void NVoice::paperDimensiones(int width) {
 
 /*--------------------------------- search for something in voice ----------------------------- */
 
-int NVoice::getElemState(int *state, int *state2, bool *playable) {
+int NVoice::getElemState(status_type *status, unsigned int *status2, bool *playable) {
 	NChord *chord;
-	*state = 0;
+	*status = 0;
 	*playable = false;
 	if (!currentElement_) return -1;
-	*state = currentElement_->status_;
+	*status = currentElement_->status_;
 	if (currentElement_->getType() == T_CHORD) {
 		chord = (NChord *) currentElement_;
-		*state |= chord->getActualNote()->status;
+		*status |= chord->getActualNote()->status;
 	}
-	*state2 = currentElement_->status2_;
+	*status2 = currentElement_->status2_;
 	if (*playable = (currentElement_->getType() & PLAYABLE)) {
 		return currentElement_->getSubType();
 	}
 	return -1;
 }
 
-int NVoice::checkElementForNoteInsertion(const int line, const QPoint p, int *state, int *state2, bool *playable, bool *delete_elem, bool *insertNewNote, int offs) {
+int NVoice::checkElementForNoteInsertion(const int line, const QPoint p, status_type *status, unsigned int *status2, bool *playable, bool *delete_elem, bool *insertNewNote, int offs) {
 	bool found;
 	NMusElement *ac_elem;
 	NChord *chord;
 	int val;
 
-	*state2 = *state = 0;
+	*status2 = *status = 0;
 	*playable = false;
 
 	found = false;
@@ -216,8 +216,8 @@ int NVoice::checkElementForNoteInsertion(const int line, const QPoint p, int *st
 	}
 	currentElement_ = ac_elem;
 	currentElement_->setActual(true);
-	*state = currentElement_->status_;
-	*state2 = currentElement_->status2_;
+	*status = currentElement_->status_;
+	*status2 = currentElement_->status2_;
 	if (currentElement_->getType() == T_CHORD) {
 		chord = (NChord *) currentElement_;
 		if (chord->setActualNote(line))  {
@@ -247,7 +247,7 @@ int NVoice::checkElementForNoteInsertion(const int line, const QPoint p, int *st
 			*delete_elem = 0;
 			return -1;
 		}
-		*state |= chord->getActualNote()->status;
+		*status |= chord->getActualNote()->status;
 	}
 	if (*playable = (currentElement_->getType() & PLAYABLE)) {
 		return currentElement_->getSubType();
@@ -1148,7 +1148,7 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 	QList<NChord> *beamlist;
 	NMusElement *ac_elem, *elem_before = 0, *clone_elem;
 	QList<NMusElement> *clonelist;
-	int status;
+	status_type status;
 	int dotcount;
 	int diff_total, len, len2, lastElemTime;
 	NRest *rest;
@@ -1443,8 +1443,8 @@ void NVoice::moveSemiToneDown() {
 		theStaff_->getVoice(), theStaff_->getChannel(), theStaff_->getVolume(), theStaff_->transpose_);
 }
 
-int NVoice::makePreviousElementActual(int *state, int *state2) {
-	*state = 0;
+int NVoice::makePreviousElementActual(status_type *status, unsigned int *status2) {
+	*status = 0;
 	if (!currentElement_) return -1;
 	bool was_playable;
 
@@ -1465,16 +1465,16 @@ int NVoice::makePreviousElementActual(int *state, int *state2) {
 	currentElement_ = musElementList_.current();
 	currentElement_->setActual(true);
 	currentElement_->draw();
-	*state = currentElement_->status_;
+	*status = currentElement_->status_;
 	if (currentElement_->getType() == T_CHORD) {
-		*state |= currentElement_->getNoteList()->first()->status;
+		*status |= currentElement_->getNoteList()->first()->status;
 	}
-	*state2 = currentElement_->status2_;
+	*status2 = currentElement_->status2_;
 	return currentElement_->getSubType();
 }
 
-int NVoice::makeNextElementActual(int *state, int *state2) {
-	*state = 0;
+int NVoice::makeNextElementActual(status_type *status, unsigned int *status2) {
+	*status = 0;
 	if (!currentElement_) return -1;
 	bool was_playable;
 
@@ -1496,11 +1496,11 @@ int NVoice::makeNextElementActual(int *state, int *state2) {
 	currentElement_ = musElementList_.current();
 	currentElement_->setActual(true);
 	currentElement_->draw();
-	*state = currentElement_->status_;
+	*status = currentElement_->status_;
 	if (currentElement_->getType() == T_CHORD) {
-		*state |= currentElement_->getNoteList()->first()->status;
+		*status |= currentElement_->getNoteList()->first()->status;
 	}
-	*state2 = currentElement_->status2_;
+	*status2 = currentElement_->status2_;
 	return currentElement_->getSubType();
 }
 
@@ -1938,13 +1938,13 @@ void NVoice::setTuplet(char numNotes, char playtime) {
 	// note: don't delete elemlist here, all tuplet notes refer to it
 }
 
-int NVoice::deleteActualElem(int *state, int *state2, bool backspace) {
+int NVoice::deleteActualElem(status_type *status, unsigned int *status2, bool backspace) {
 	NNote *note;
 	QList<NNote> *partlist;
 	NChord *chord;
 	bool removedLast = false; /* are we deleting the last element? */
 	bool removedFirst = false; /* are we deleting the first element? */
-	*state2 = *state = 0;
+	*status2 = *status = 0;
 	if (!currentElement_) return -1;
 	if (musElementList_.isEmpty()) {
 		return -1;
@@ -1996,12 +1996,12 @@ int NVoice::deleteActualElem(int *state, int *state2, bool backspace) {
 	}
 	if (!musElementList_.current()) musElementList_.first(); 
 	if (currentElement_ = musElementList_.current()) {
-		*state = currentElement_->status_;
+		*status = currentElement_->status_;
 		if (currentElement_->getType() == T_CHORD) {
 			partlist = currentElement_->getNoteList();
-			*state |= partlist->first()->status;
+			*status |= partlist->first()->status;
 		}
-		*state2 = currentElement_->status2_;
+		*status2 = currentElement_->status2_;
 		
 		 /* if the last element was deleted by Key_Delete or the first element was deleted by Key_Backspace, none get selected */
 		if ( (backspace && (!removedFirst)) || (!backspace && (!removedLast)) ) {
@@ -2533,7 +2533,7 @@ bool NVoice::beameEndRequired(QList<NChord> *beamlist_so_far, NTimeSig *timesig,
 void NVoice::autoBeam() {
 	NMusElement *elem;
 	QList<NChord> *beamlist;
-	int status = 0;
+	status_type status = 0;
 	int beats = 0;
 	NMusElement *specElem;
 	NTimeSig current_timesig(0, 0);
@@ -2628,7 +2628,7 @@ void NVoice::autoBeam() {
 void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 	NMusElement *elem, *specElem;
 	QList<NChord> *beamlist;
-	int status = 0;
+	status_type status = 0;
 	int beats = 0;
 	int x0, x1;
 	int oldidx;
@@ -3051,7 +3051,7 @@ void NVoice::tryToBuildAutoTriplet() {
 void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int offs, NMusElement *tmpElem) {
 	NMusElement *new_elem, *elem_before, *elem;
 	bool found, is_chord = false, is_rest = false;
-	unsigned int status = 0;
+	status_type status = 0;
 	unsigned int status2 = 0;
 	int idx, idx2;
 	int lastbaridx = 0;
@@ -3213,7 +3213,7 @@ bool NVoice::insertNewNoteAt(int line, QPoint p, int offs) {
 	int lastbaridx = 0;
 	int lastbarpos = 0;
 	bool found = false;
-	unsigned int status = STAT_FORCE;
+	status_type status = STAT_FORCE;
 	NMusElement *elem;
 	NNote *note;
 
@@ -3280,7 +3280,7 @@ bool NVoice::insertNewNoteAt(int line, QPoint p, int offs) {
 bool NVoice::insertNewNoteAtCurrent(int line, int offs) {
 	int lastbaridx = 0;
 	bool found = false;
-	unsigned int status = STAT_FORCE;
+	status_type status = STAT_FORCE;
 	NMusElement *elem;
 	NNote *note;
 
@@ -4937,7 +4937,7 @@ int NVoice::findElemRef(const NMusElement *elem) {
 	return musElementList_.findRef(elem);
 }
 
-QString NVoice::determineGraceKind(int *status) {
+QString NVoice::determineGraceKind(status_type *status) {
 	QString graceString;
 	int oldidx;
 	NMusElement *elem;
@@ -5193,7 +5193,7 @@ void NVoice::reconnectCopiedTies(NChord *chord) {
 /*--------------------------- appending due to reading ---------------------------*/
 
 
-void NVoice::appendNoteAt(int line, int offs, unsigned int status) {
+void NVoice::appendNoteAt(int line, int offs, status_type status) {
 	NNote *note;
 	note = musElementList_.current()->insertNewNote(line, offs, STEM_POL_INDIVIDUAL, status);
 	if (note) {
@@ -5684,7 +5684,7 @@ void NVoice::transpose(int semitones, bool region) {
 			break;
 		case T_KEYSIG:
 			theStaff_->actualKeysig_.change((NKeySig *) elem);
-			break;                        
+			break;
 		}
 	}
 	if (xpos1 == -1) return;
@@ -6070,7 +6070,7 @@ bool NVoice::buildBeam(NMusElement *elem0, NMusElement *elem1) {
 	return true;
 }
 
-void NVoice::appendElem(int el_type, int line, int sub_type, int offs, unsigned int status) {
+void NVoice::appendElem(int el_type, int line, int sub_type, int offs, status_type status) {
 	NMusElement *new_elem;
 	NNote *note;
 	NTimeSig *timesig;

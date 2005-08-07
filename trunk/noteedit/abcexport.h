@@ -53,7 +53,7 @@ class NABCExport  {
 		bool writeFirstVoice(NVoice *voice_elem, QString staffName, int staff_nr, int voice_count, int measure_count, bool lastStaff);
 		bool writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffName, NVoice *voice_elem, NStaff *staff_elem, int stopTime);
 		void outputNote(NNote *note, NClef *actualClef, bool inInChord);
-		void outputLength(int len, unsigned int status, bool inChord, bool drumNote);
+		void outputLength(int len, status_type status, bool inChord, bool drumNote);
 		void outputKeySig(NKeySig *key, bool inHeader);
 		void outputMidi(QList<NStaff> *stafflist);
 		void outputStaffAndVoiceDescription(QList<NStaff> *stafflist, NMainFrameWidget *mainWidget);

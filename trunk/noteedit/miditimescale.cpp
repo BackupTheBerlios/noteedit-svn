@@ -1234,7 +1234,7 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 	unsigned int newVolume;
 	unsigned int voiceTime = 0;
 	unsigned int nextstart = 0, start = 0, stop = 0;
-	unsigned int status, body;
+	status_type status, body;
 	bool inTriplet = false;
 	int dotcount;
 	int voldist;

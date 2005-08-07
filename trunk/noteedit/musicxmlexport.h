@@ -27,6 +27,7 @@
 
 #include <qlist.h>
 #include <qstring.h>
+#include "muselement.h" /* needed for status_type */
 #if GCC_MAJ_VERS > 2
 #include <sstream>
 #include <fstream>
@@ -65,7 +66,7 @@ class NMusicXMLExport  {
 		bool writeOtherVoicesTill(int staff_nr, int voice_nr, NVoice *voice_elem, int stopTime);
 		void outputNote(NNote *note, NVoice *voice_elem, NClef *actualClef, int va, int staff_nr, int voice_nr, int note_nr);
 		void outputVoiceNr(int voice_nr);
-		int calcDuration(int len, unsigned int status);
+		int calcDuration(int len, status_type status);
 		void calcLength(NMusElement *elem, int& dur, QString& type);
 		void calcDivisions(QList<NStaff> *stafflist);
 		NChord * findDynEndChord(NStaff * staff_elem, NChord * start_chord);

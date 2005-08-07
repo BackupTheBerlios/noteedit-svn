@@ -711,7 +711,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	NSign *sign;
 	int counter = 0;
 	int measure_counter = 0;
-	int kind, count;
+	status_type kind; int count;
 	NStaff *actual_staff;
 	int dynEndPos = 0;
 	const char *lastDynSym = 0;
@@ -2187,7 +2187,7 @@ void NLilyExport::removeExceptsFromString(QString *str, bool onlyDigits) {
 		
 }
 		
-const char *NLilyExport::LilyPondKeyName(int kind, int count) {
+const char *NLilyExport::LilyPondKeyName(status_type kind, int count) {
 	const char *err = "LilyPondKeyName: internal error";
 	if (kind == STAT_CROSS) {
 		switch (count) {

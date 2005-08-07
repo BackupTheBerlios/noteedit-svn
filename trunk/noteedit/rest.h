@@ -30,7 +30,7 @@ class QPixmap;
 
 class NRest : public NMusElement {
 	public:
-		NRest(main_props_str *main_props_, staff_props_str *staff_props, int *y_voice_offs, int length=32, unsigned int status = 0);
+		NRest(main_props_str *main_props_, staff_props_str *staff_props, int *y_voice_offs, int length=32, status_type status = 0);
 		~NRest();
 		virtual NRest *clone();
 		int getMultiRestLength() {return multiRestLength_;}

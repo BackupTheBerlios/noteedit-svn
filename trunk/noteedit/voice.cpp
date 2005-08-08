@@ -5667,6 +5667,7 @@ void NVoice::transpose(int semitones, bool region) {
 				theStaff_->actualClef_.midi2Line(midi_pitch, &line, &offs, &theStaff_->actualKeysig_ );
 				if (line <= MAXLINE && line >= MINLINE) {
 					note->line = line; note->offs = offs;
+					note->status &= ~(STAT_FORCE);
 				}
 			}
 			chord->determineStemDir(stemPolicy_);

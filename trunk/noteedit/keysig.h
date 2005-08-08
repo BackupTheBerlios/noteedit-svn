@@ -34,11 +34,10 @@ class NKeySig : public NMusElement {
 		virtual ~NKeySig();
 		void change(NKeySig *ksig);
 		virtual NKeySig *clone();
-		void reset();
+ 		void reset();
 		void changeHalfTone(NNote *note);
 		void resetAtBar();
 		void setKey(int note, status_type kind);
-//		int getStatus_of(int note); /* not used at all?! */
 		void setPreviousKeySig(NKeySig *prevKeySig);
 		void setClef(NClef *ac_clef);
 		void setRegular(int count, status_type kind);
@@ -62,7 +61,6 @@ class NKeySig : public NMusElement {
 #endif
 /* ------------------------------- methods for context keysig ------------------------------------------*/
 		void drawContextKeySig();
-		void setClefInContextKeysig(NClef * ac_clef);
 		void changeInContextKeySig(NKeySig *ksig);
 		void calculateContextPixmap();
 	private:

@@ -5638,6 +5638,7 @@ void NVoice::transpose(int semitones, bool region) {
 				keySigFound = true;
 			}
 		}
+		theStaff_->actualKeysig_.setClef( &theStaff_->actualClef_ );
 		if ((elem = musElementList_.at(idx0)) == 0) {
 			NResource::abort("NVoice::transpose: internal error", 2);
 		}
@@ -5682,9 +5683,11 @@ void NVoice::transpose(int semitones, bool region) {
 			break;
 		case T_CLEF:
 			theStaff_->actualClef_.change((NClef *) elem); 
+			theStaff_->actualKeysig_.setClef( &theStaff_->actualClef_ );
 			break;
 		case T_KEYSIG:
 			theStaff_->actualKeysig_.change((NKeySig *) elem);
+			theStaff_->actualKeysig_.setClef( &theStaff_->actualClef_ );
 			break;
 		}
 	}

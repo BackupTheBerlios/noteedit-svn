@@ -23,7 +23,7 @@
 #include <stdio.h>
 #include <qpainter.h>
 #include <qbitmap.h>
-#include <iostream.h>
+#include <iostream>
 #include "keysig.h"
 #include "resource.h"
 #include "transpainter.h"
@@ -67,10 +67,10 @@ NKeySig::NKeySig(main_props_str *main_props, staff_props_str *staff_props) :
 	actual_ = false;
 	pixmapWidth_ = 5;
 	resolv_redPixmap_ = resolvPixmap_ = keyPixmap_ = key_redPixmap_ = 0;
-	noSignes_ = true;
+	drawable_ = false;
 	resPixmapWidth_ = resolvOffs_ = 0;
 	computedPreviousKeySig_ = previousKeySig_ = 0;
-	if (staff_props_->base) calculateDimensionsAndPixmaps();
+	calculateDimensionsAndPixmaps();
 }
 
 void NKeySig::change(NKeySig *ksig) {
@@ -88,7 +88,7 @@ void NKeySig::change(NKeySig *ksig) {
 	resolv_redPixmap_ = resolvPixmap_ = keyPixmap_ = key_redPixmap_ = 0;
 	resPixmapWidth_ = resolvOffs_ = 0;
 	computedPreviousKeySig_ = 0;
-	if (staff_props_->base) calculateDimensionsAndPixmaps();
+	calculateDimensionsAndPixmaps();
 }
 
 void NKeySig::setPreviousKeySig(NKeySig *prevKeySig) {
@@ -96,9 +96,8 @@ void NKeySig::setPreviousKeySig(NKeySig *prevKeySig) {
 } 
 
 bool NKeySig::isEqual(NKeySig *otherKeysig) {
-	int i;
 	if (!otherKeysig) return false;
-	for (i = 0; i < 7; ++i) {
+	for (int i = 0; i < 7; ++i) {
 		if (noteStatus_[i] != otherKeysig->noteStatus_[i]) return false;
 	}
 	return true;
@@ -112,7 +111,7 @@ void NKeySig::setClef(NClef * ac_clef) {
 	if (key_redPixmap_) delete key_redPixmap_;
 	keyPixmap_ = 0;
         key_redPixmap_ = 0;
-	if (staff_props_->base) calculateDimensionsAndPixmaps();
+	calculateDimensionsAndPixmaps();
 }
 
 void NKeySig::changeHalfTone(NNote *note) {
@@ -317,10 +316,11 @@ void NKeySig::setRegular(int count, status_type kind) {
 		case STAT_FLAT:  tab = flatTab_;
 				  break;
 		default: NResource::abort("setRegular(): unknown kind");
+				  return; // eliminate warnings
 	}
 	for (i = 0; i < count; ++i)
 		noteStatus_[tab[i]] = kind;
-	if (staff_props_->base) calculateDimensionsAndPixmaps();
+	calculateDimensionsAndPixmaps();
 }
 
 int NKeySig::accCount() {
@@ -468,8 +468,8 @@ void NKeySig::calculateDimensionsAndPixmaps() {
 				painter.setPen(NResource::noPen_);
 				painter.setBrush(NResource::backgroundBrush_);
 				painter.fillRect(0, 0, resPixmapWidth_, PIXMAP_HEIGHT, NResource::backgroundBrush_);
+				draw_offs = NATUR_DRAW_OFFS;
 				for (j = 0, i = 0; i < 7; ++i) {
-					draw_offs = NATUR_DRAW_OFFS;
 					if (previousKeySig_->noteStatus_[i] == STAT_NATUR) continue;
 					noSignesInPrevKey = false;
 					if (previousKeySig_->noteStatus_[i] == noteStatus_[ i ] ) continue;
@@ -515,7 +515,7 @@ void NKeySig::calculateDimensionsAndPixmaps() {
 			key_redPixmap_ = new QPixmap(pixmapWidth_, PIXMAP_HEIGHT);
 		
 			if (isRegular(&kind, &count)) {
-				noSignes_ = count == 0;
+				drawable_ = count != 0;
 				if (kind == STAT_CROSS) {
 					pix = NResource::crossPixmap_;
 					draw_offs = CROSS_DRAW_OFFS;
@@ -549,18 +549,18 @@ void NKeySig::calculateDimensionsAndPixmaps() {
 				painter.setPen(NResource::noPen_);
 				painter.setBrush(NResource::backgroundBrush_);
 				painter.fillRect(0, 0, pixmapWidth_, PIXMAP_HEIGHT, NResource::backgroundBrush_);
-				noSignes_ = true;
+				drawable_ = false;
 				for (j=0, i = 0; i < 7; ++i) {
 					if (noteStatus_[i] == STAT_NATUR) continue;
 					if (noteStatus_[i] == STAT_CROSS) {
 						pix = NResource::crossPixmap_;
 						draw_offs = CROSS_DRAW_OFFS;
-						noSignes_ = false;
+						drawable_ = true;
 					}
 					else {
 						pix = NResource::flatPixmap_;
 						draw_offs = FLAT_DRAW_OFFS;
-						noSignes_ = false;
+						drawable_ = true;
 					}
 					painter.drawPixmap(j++*SIGN_DIST,4*LINE_DIST+draw_offs-acClef_->noteNumber2Line(i)*LINE_DIST/2, *pix);
 				}
@@ -573,6 +573,7 @@ void NKeySig::calculateDimensionsAndPixmaps() {
 				for (j = 0, i = 0; i < 7; ++i) {
 					if (noteStatus_[i] == STAT_NATUR) continue;
 					pix = (noteStatus_[i] == STAT_CROSS) ? NResource::crossRedPixmap_ : NResource::flatRedPixmap_;
+					draw_offs = (noteStatus_[i] == STAT_CROSS) ? CROSS_DRAW_OFFS : FLAT_DRAW_OFFS;
 					painter.drawPixmap(j++*SIGN_DIST,4*LINE_DIST+draw_offs-acClef_->noteNumber2Line(i)*LINE_DIST/2, *pix);
 				}
 				painter.setPen(NResource::blackWidePen_);
@@ -592,11 +593,11 @@ void NKeySig::calculateDimensionsAndPixmaps() {
 			pixmapWidth_ = 0;
 		}
 	}
-	noSignes_ = noSignes_ && noSignesInPrevKey;
+	drawable_ = drawable_ || !noSignesInPrevKey;
 }
 
 void NKeySig::draw(int /* dummy */) {
-	if (noSignes_) return;
+	if (!drawable_) return;
 	main_props_->tp->beginTranslated();
 	if (resolvPixmap_) {
 		main_props_->tp->drawPixmap(resolvDrawPoint_, actual_ ?  *resolv_redPixmap_ : *resolvPixmap_);
@@ -610,7 +611,7 @@ void NKeySig::draw(int /* dummy */) {
 /* ------------------------------- methods for context keysig ------------------------------------------*/
 
 void NKeySig::drawContextKeySig() {
-	if (noSignes_) return;
+	if (!drawable_) return;
 	main_props_->tp->beginUnclippedYtranslated();
 	main_props_->tp->drawPixmap(main_props_->context_keysig_xpos, nbaseDrawPoint_.y(), *keyPixmap_);
 	main_props_->tp->end();
@@ -637,14 +638,14 @@ void NKeySig::calculateContextPixmap() { /* for faster computation of context ke
 	nbaseDrawPoint_ = QPoint (xpos_+resolvOffs_, staff_props_->base-Y_BORDER_UP);
 	bbox_ = QRect(xpos_, staff_props_->base , pixmapWidth_, PIXMAP_HEIGHT);
 
-	if (accCount() == 0) {noSignes_ = true; return;}
+	if (accCount() == 0) {drawable_ = false; return;}
 	pixmapWidth_ = NResource::crossPixmap_->width();
 	pixmapWidth_ += SIGN_DIST * accCount();
 	
 	keyPixmap_ = new QPixmap(pixmapWidth_, PIXMAP_HEIGHT);
 	
 	if (isRegular(&kind, &count)) {
-		noSignes_ = count == 0;
+		drawable_ = count != 0;
 		if (kind == STAT_CROSS) {
 			pix = NResource::crossPixmap_;
 			draw_offs = CROSS_DRAW_OFFS;
@@ -667,18 +668,18 @@ void NKeySig::calculateContextPixmap() { /* for faster computation of context ke
 		painter.setPen(NResource::noPen_);
 		painter.setBrush(NResource::backgroundBrush_);
 		painter.fillRect(0, 0, pixmapWidth_, PIXMAP_HEIGHT, NResource::backgroundBrush_);
-		noSignes_ = true;
+		drawable_ = false;
 		for (j=0, i = 0; i < 7; ++i) {
 			if (noteStatus_[i] == STAT_NATUR) continue;
 			if (noteStatus_[i] == STAT_CROSS) {
 				pix = NResource::crossPixmap_;
 				draw_offs = CROSS_DRAW_OFFS;
-				noSignes_ = false;
+				drawable_ = true;
 			}
 			else {
 				pix = NResource::flatPixmap_;
 				draw_offs = FLAT_DRAW_OFFS;
-				noSignes_ = false;
+				drawable_ = true;
 			}
 			painter.drawPixmap(j++*SIGN_DIST,4*LINE_DIST+draw_offs-acClef_->noteNumber2Line(i)*LINE_DIST/2, *pix);
 		}

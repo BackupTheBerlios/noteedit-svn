@@ -67,7 +67,6 @@ class NKeySig : public NMusElement {
 		void calculateContextPixmap();
 	private:
 		int accCount();
-		int line2Range(int line);
 		bool isRegular(status_type *kind);
 		status_type *noteStatus_;
 		status_type *tempNoteStatus_;

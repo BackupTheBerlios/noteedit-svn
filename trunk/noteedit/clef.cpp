@@ -445,35 +445,6 @@ char NClef::line2PMXName(int line, int *octave) const {
 	return c;
 }
 
-int NClef::line2note(int line) const {
-	int c = 0;
-	switch (clefKind_) {
-		case DRUM_BASS_CLEF:
-		case BASS_CLEF:  line -= 5; break;
-		case SOPRANO_CLEF: line -= 2; break;
-		case ALTO_CLEF: line -= 6; break;
-		case TENOR_CLEF: line -= 8; break;
-		default: break;
-	}
-
-	while (line > 4) {
-		line -= 7; 
-	}
-	while (line < -2) {
-		line += 7;
-	}
-	switch (line) {
-		case -2: c = 0; break;
-		case -1: c = 1; break;
-		case  0: c = 2; break;
-		case  1: c = 3; break;
-		case  2: c = 4; break;
-		case  3: c = 5; break;
-		case  4: c = 6; break;
-	}
-	return c;
-}
-
 int NClef::name2Line(char name) const {
 	int line;
 	switch (name) {
@@ -531,6 +502,32 @@ int NClef::noteNumber2Line(int note_number) const {
 			return note_number;
 	}
 	return note_number;
+}
+
+int NClef::line2NoteNumber( int line ) const {
+	switch (clefKind_) {
+		case DRUM_BASS_CLEF:
+		case BASS_CLEF:
+			line -= 3;
+			break;
+		case DRUM_CLEF:
+		case TREBLE_CLEF:
+			line -= 5;
+			break;
+		case SOPRANO_CLEF:
+			break;
+		case ALTO_CLEF:
+			line -= 4;
+			break;
+		case TENOR_CLEF:
+			line -= 6;
+			break;
+	}
+
+	while( line < 0 )
+		line += 7;
+
+	return line % 7;
 }
 
 void NClef::midi2Line(unsigned int midival, int *line, int *offs, NKeySig *ksig) {

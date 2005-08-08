@@ -51,11 +51,11 @@ class NClef : public NMusElement {
 		const char *line2TexTab_;
 		int getAccPos(status_type kind, int nr);
 		int noteNumber2Line(int note_number) const ;
+		int line2NoteNumber(int line ) const;
 		int lineOfC4();
 		char line2PMXName(int line, int *octave) const;
 		char line2Name(int line, int *octave, bool lilyexport, bool abcexport) const;
 		int name2Line(char name) const;
-		int line2note(int line) const;
 		virtual void calculateDimensionsAndPixmaps();
 		int getOctave();
 		int getShift() {return shift_;}

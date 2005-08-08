@@ -116,7 +116,7 @@ void NKeySig::setClef(NClef * ac_clef) {
 }
 
 void NKeySig::changeHalfTone(NNote *note) {
-	int notenr = acClef_->line2note(note->line);
+	int notenr = acClef_->line2NoteNumber(note->line);
 	status_type kind;
 	int count;
 	statusChanged_ = true;
@@ -177,22 +177,6 @@ NKeySig::~NKeySig() {
 	if (resolvPixmap_ != 0) delete resolvPixmap_;
 }
 
-int NKeySig::line2Range(int line) {
-	int i;
-	if (line < 3) {
-		while (line < 3) line += 7;
-	}
-	else if (line > 9) {
-		while (line > 9) line -= 7;
-	}
-	for (i = 0; i < 7; ++i) {
-		if (acClef_->noteNumber2Line(i) == line) return i;
-		
-	}
-	NResource::abort("line2Range(): internal error");
-	return 0;
-}
-
 #ifdef KEYSIG_DEBUG
 void NKeySig::print() {
 	int i;
@@ -234,7 +218,7 @@ int NKeySig::computeOffs(int line) {
 
 	idx = LINE2TABIDX(line);
 	if ((status = tempNoteStatus_[idx]) == STAT_NO_ACC) {
-		pp = line2Range(line);
+		pp = acClef_->line2NoteNumber(line);
 		status = noteStatus_[pp];
 	}
 	switch (status) {
@@ -263,7 +247,7 @@ status_type NKeySig::accNeeded(int line, int offs) {
 
 	idx = LINE2TABIDX(line);
 	if ((status = tempNoteStatus_[idx]) == STAT_NO_ACC) {
-		note = line2Range(line);
+		note = acClef_->line2NoteNumber(line);
 		status = noteStatus_[note]; 
 	}
 	if (offs == -1 && status == STAT_FLAT) return STAT_NO_ACC;

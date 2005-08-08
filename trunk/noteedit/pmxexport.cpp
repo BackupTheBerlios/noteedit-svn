@@ -973,7 +973,7 @@ void NPmxExport::pitchOut(NKeySig *ksig, const NNote *note, int length, NClef *a
 	bool firstTuplet = false;
 
 	*pmxout_ << ac_clef->line2PMXName(note->line, &octave);
-	tone = ac_clef->line2midiTab_[note->line+LINE_OVERFLOW];
+	tone = ac_clef->line2Midi( note->line, 0 );
 	octaveneeded = abs(lastTone_ - tone) > 5;
 	if (chord->status_ & STAT_TUPLET) {
 		if (chord->isFirstInTuplet() &&  length >= 0) {

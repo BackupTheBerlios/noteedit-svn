@@ -4007,7 +4007,7 @@ NMidiEventStr* NVoice::getNextMidiEvent(int mtime, bool reachInfo) {
 			vaOffset_ = 0;
 		}
 		for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
-			note->midiPitch = theStaff_->playClef_->line2midiTab_[note->line+LINE_OVERFLOW]+note->offs+theStaff_->playClef_->getShift()+theStaff_->transpose_+vaOffset_;
+			note->midiPitch = theStaff_->playClef_->line2Midi( note->line, note->offs ) + theStaff_->transpose_+vaOffset_;
 		}
 		actualMidiEvent_->midi_cmd = MNOTE_ON;
 		note_halt->midi_cmd = MNOTE_OFF;
@@ -5662,7 +5662,7 @@ void NVoice::transpose(int semitones, bool region) {
 					if (note->status & STAT_TIED) tied_notes.append(note);
 					if (note->status & STAT_PART_OF_TIE) part_of_tied_notes.append(note);
 				}
-				midi_pitch = theStaff_->actualClef_.line2midiTab_[note->line+LINE_OVERFLOW]+note->offs+theStaff_->actualClef_.getShift();
+				midi_pitch = theStaff_->actualClef_.line2Midi( note->line, note->offs );
 				midi_pitch += semitones;
 				theStaff_->actualClef_.midi2Line(midi_pitch, &line, &offs, &theStaff_->actualKeysig_ );
 				if (line <= MAXLINE && line >= MINLINE) {

@@ -232,10 +232,10 @@ int NKeySig::computeOffs(int line) {
 
 int NKeySig::determineDistanceUp(NNote *note) {
 	int midival1, midival2, offs2, line2;
-	midival1 = acClef_->line2midiTab_[note->line+LINE_OVERFLOW]+note->offs;
+	midival1 = acClef_->line2Midi( note->line, note->offs );
 	line2 = note->line+1;
 	offs2 = computeOffs(line2);
-	midival2 = acClef_->line2midiTab_[note->line+1+LINE_OVERFLOW]+offs2;
+	midival2 = acClef_->line2Midi( line2, offs2 );
 	return midival2 - midival1;
 }
 

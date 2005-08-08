@@ -252,7 +252,7 @@ void NMidiMapper::playImmediately(NClef *clef, NChord *chord, int pgm, int chn, 
 	devMan_->chnPatchChange(chn, pgm);
 	for (note = notelist->first(); note; note = notelist->next()) {
 		immListElem = new dir_notes_str;
-		immListElem->pitch = clef->line2midiTab_[note->line+LINE_OVERFLOW]+note->offs+clef->getShift()+transpose;
+		immListElem->pitch = clef->line2Midi( note->line, note->offs )+transpose;
 		immListElem->chan = chn;
 		immList_.append(immListElem);
 		devMan_->noteOn(chn, immListElem->pitch, vol);
@@ -270,7 +270,7 @@ void NMidiMapper::playImmediately(NClef *clef, int keyline, int offs, int pgm, i
 	}
 	devMan_->chnPatchChange(chn, pgm);
 	immListElem = new dir_notes_str;
-	immListElem->pitch = clef->line2midiTab_[keyline+LINE_OVERFLOW]+offs+clef->getShift()+transpose;
+	immListElem->pitch = clef->line2Midi( keyline, offs )+transpose;
 	immListElem->chan = chn;
 	immList_.append(immListElem);
 	devMan_->noteOn(chn, immListElem->pitch, vol);
@@ -585,7 +585,7 @@ void NMidiMapper::playImmediately(NClef *clef, NChord *chord, int pgm, int chn, 
 	theScheduler_->tx(TSE3::MidiCommand(TSE3::MidiCommand_ProgramChange, chn, actualDevice_nr_, pgm));
 	for (note = notelist->first(); note; note = notelist->next()) {
 		immListElem = new dir_notes_str;
-		immListElem->pitch = clef->line2midiTab_[note->line+LINE_OVERFLOW]+note->offs+clef->getShift()+transpose;
+		immListElem->pitch = clef->line2Midi( note->line, note->offs ) + transpose;
 		immListElem->chan = chn;
 		immList_.append(immListElem);
 		theScheduler_->tx(TSE3::MidiCommand(TSE3::MidiCommand_NoteOn, chn, actualDevice_nr_,
@@ -603,7 +603,7 @@ void NMidiMapper::playImmediately(NClef *clef, int keyline, int offs, int pgm, i
 	}
 	theScheduler_->tx(TSE3::MidiCommand(TSE3::MidiCommand_ProgramChange, chn, actualDevice_nr_, pgm));
 	immListElem = new dir_notes_str;
-	immListElem->pitch = clef->line2midiTab_[keyline+LINE_OVERFLOW]+offs+clef->getShift()+transpose;
+	immListElem->pitch = clef->line2Midi( keyline, offs ) + transpose;
 	immListElem->chan = chn;
 	immList_.append(immListElem);
 	theScheduler_->tx(TSE3::MidiCommand(TSE3::MidiCommand_NoteOn, chn, actualDevice_nr_,
@@ -969,7 +969,7 @@ void NMidiMapper::playImmediately(NClef *clef, NChord *chord, int pgm, int chn, 
 	}
 	for (note = notelist->first(); note; note = notelist->next()) {
 		immListElem = new dir_notes_str;
-		immListElem->pitch = clef->line2midiTab_[note->line+LINE_OVERFLOW]+note->offs+clef->getShift()+transpose;
+		immListElem->pitch = clef->line2Midi( note->line, note->offs ) + transpose;
 		immListElem->chan = chn;
 		immList_.append(immListElem);
 		switch (devices_[actualDevice_nr_].dev_type) {
@@ -998,7 +998,7 @@ void NMidiMapper::playImmediately(NClef *clef, int keyline, int offs, int pgm, i
 				break;
 	}
 	immListElem = new dir_notes_str;
-	immListElem->pitch = clef->line2midiTab_[keyline+LINE_OVERFLOW]+offs+clef->getShift()+transpose;
+	immListElem->pitch = clef->line2Midi( keyline, offs ) + transpose;
 	immListElem->chan = chn;
 	immList_.append(immListElem);
 	switch (devices_[actualDevice_nr_].dev_type) {

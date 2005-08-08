@@ -47,7 +47,6 @@ class NClef : public NMusElement {
 		void drawContextClef();
 		virtual int getSubType() const {return clefKind_;}
 		virtual int getType() const {return T_CLEF;}
-		const unsigned int *line2midiTab_;
 		const char *line2TexTab_;
 		int getAccPos(status_type kind, int nr);
 		int noteNumber2Line(int note_number) const ;
@@ -61,6 +60,7 @@ class NClef : public NMusElement {
 		int getShift() {return shift_;}
 		void setShift(int octave);
 		void midi2Line(unsigned int midival,int *line, int *offs, NKeySig *ksig = 0);
+		int line2Midi(int line, int offs);
 		static int chooseClefType(staffInfoClass *staffInfos, unsigned int minMidi, unsigned int MaxMidi, bool drumchannel);
 	private:
 		QPixmap *redPixmap_;
@@ -69,6 +69,7 @@ class NClef : public NMusElement {
 		int clefKind_;
 		int shift_;
 		const char *sharpPosTab_, *flatPosTab_;
+		const unsigned int *line2midiTab_;
 		static const unsigned int line2midiTreble_[MAXLINE-MINLINE+1];
 		static const unsigned int line2midiBass_[MAXLINE-MINLINE+1];
 		static const unsigned int line2midiSoprano_[MAXLINE-MINLINE+1];

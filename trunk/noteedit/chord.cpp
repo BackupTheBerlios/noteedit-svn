@@ -1953,7 +1953,7 @@ void NChord::moveSemiToneUp(int voices_stem_policy, NClef *clef, NKeySig *ksig) 
 	if (note == NULL) {
 		NResource::abort("moveSemiToneUp: internal error");
 	}
-	pitch = clef->line2midiTab_[note->line+LINE_OVERFLOW]+note->offs;
+	pitch = clef->line2Midi( note->line, note->offs );
 	pitch++;
 	clef->midi2Line(pitch, &new_line, &new_offs, ksig);
 
@@ -1976,7 +1976,7 @@ void NChord::moveSemiToneDown(int voices_stem_policy, NClef *clef, NKeySig *ksig
 	if (note == NULL) {
 		NResource::abort("moveSemiToneDown: internal error");
 	}
-	pitch = clef->line2midiTab_[note->line+LINE_OVERFLOW]+note->offs;
+	pitch = clef->line2Midi( note->line, note->offs );
 	pitch--;
 	clef->midi2Line(pitch, &new_line, &new_offs, ksig);
 	if (new_line < MINLINE) return;

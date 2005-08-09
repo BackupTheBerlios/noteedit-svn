@@ -438,7 +438,6 @@ class NMainFrameWidget : public QWidget
 		KToggleAction *recordButton_;
 #endif
 		KToggleAction *note_buttons_[COUNT_CHORDBUTTONS];
-		KToggleAction *note_dymmy_;
 		KToggleAction *crossDrumBu_;
 		KToggleAction *cross2DrumBu;
 		KToggleAction *crossCricDrumBu_;
@@ -533,7 +532,8 @@ class NMainFrameWidget : public QWidget
 		int lastBarNr_;
 /*------------------------------- selection ---------------------------------------*/
 		bool editMode_;
-		status_type status_before_edit_mode_;
+		status_type status_before_edit_mode_; /* selected buttons before going to edit mode */
+		int length_before_edit_mode_; /* selected note/rest length button before going to edit mode */
 		int x0_, y0_, x1_;
 		int xori_;
 		QRect   selRect_;

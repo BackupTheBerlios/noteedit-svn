@@ -148,14 +148,6 @@
 #define TOOL_ELEMENT_HEIGHT	70
 #define ELEM_SPACE 16
 
-// remeber stat befire edit:
-
-#define NOTE_VAL_MASK 0xf
-#define OFFS_SHIFTS 4
-#define OFF_MASK      (0x7 << OFFS_SHIFTS)
-#define BEFORE_EDIT_HIDDEN (1 <<  8)
-
-
 
 const char *NMainFrameWidget::keySigTab_[15] =
 {I18N_NOOP("C Major; a minor"),           I18N_NOOP("F Major; d minor"),
@@ -386,10 +378,6 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	for ( i = 0; i < COUNT_CHORDBUTTONS; ++i)
 	    note_buttons_[i]->setExclusiveGroup( "notegrp" );
 		
-	note_dymmy_ = new KToggleAction(QString::null, 0, actionCollection(), "notedummy");
-	note_dymmy_->setExclusiveGroup( "notegrp" );
-
-
 	dotbutton_ = new KToggleAction(i18n("Dotted note"), "dottednote", 0, actionCollection(), "dot");
 	dotbutton_->setExclusiveGroup("dotgrp");
 	ddotbutton_ = new KToggleAction(i18n("DoubleDotted note"), "doubledottednote", 0, actionCollection(), "ddot");
@@ -2240,8 +2228,10 @@ void NMainFrameWidget::setToDFull(bool on) {
 		setSelectMode();
 		return;
 	}
-	main_props_.grace = false;
-	main_props_.actualLength = DOUBLE_WHOLE_LENGTH;
+	if (on) {
+		main_props_.grace = false;
+		main_props_.actualLength = DOUBLE_WHOLE_LENGTH;
+	}
 	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
@@ -2263,8 +2253,10 @@ void NMainFrameWidget::setToFull(bool on) {
 		setSelectMode();
 		return;
 	}
-	main_props_.grace = false;
-	main_props_.actualLength = WHOLE_LENGTH;
+	if (on) {
+		main_props_.grace = false;
+		main_props_.actualLength = WHOLE_LENGTH;
+	}
 	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
@@ -2287,8 +2279,10 @@ void NMainFrameWidget::setToHalf(bool on) {
 		setSelectMode();
 		return;
 	}
-	main_props_.grace = false;
-	main_props_.actualLength = HALF_LENGTH;
+	if (on) {
+		main_props_.grace = false;
+		main_props_.actualLength = HALF_LENGTH;
+	}
 	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
@@ -2310,8 +2304,10 @@ void NMainFrameWidget::setToQuarter(bool on) {
 		setSelectMode();
 		return;
 	}
-	main_props_.grace = false;
-	main_props_.actualLength = QUARTER_LENGTH;
+	if (on) {
+		main_props_.grace = false;
+		main_props_.actualLength = QUARTER_LENGTH;
+	}
 	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
@@ -2333,8 +2329,10 @@ void NMainFrameWidget::setToN8(bool on) {
 		setSelectMode();
 		return;
 	}
-	main_props_.actualLength = NOTE8_LENGTH;
-	main_props_.grace = false;
+	if (on) {
+		main_props_.actualLength = NOTE8_LENGTH;
+		main_props_.grace = false;
+	}
 	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
@@ -2356,8 +2354,10 @@ void NMainFrameWidget::setToN16(bool on) {
 		setSelectMode();
 		return;
 	}
-	main_props_.actualLength = NOTE16_LENGTH;
-	main_props_.grace = false;
+	if (on) {
+		main_props_.actualLength = NOTE16_LENGTH;
+		main_props_.grace = false;
+	}
 	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
@@ -2379,8 +2379,10 @@ void NMainFrameWidget::setToN32(bool on) {
 		setSelectMode();
 		return;
 	}
-	main_props_.actualLength = NOTE32_LENGTH;
-	main_props_.grace = false;
+	if (on) {
+		main_props_.actualLength = NOTE32_LENGTH;
+		main_props_.grace = false;
+	}
 	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
@@ -2402,8 +2404,10 @@ void NMainFrameWidget::setToN64(bool on) {
 		setSelectMode();
 		return;
 	}
-	main_props_.actualLength = NOTE64_LENGTH;
-	main_props_.grace = false;
+	if (on) {
+		main_props_.actualLength = NOTE64_LENGTH;
+		main_props_.grace = false;
+	}
 	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
@@ -2425,8 +2429,10 @@ void NMainFrameWidget::setToN128(bool on) {
 		setSelectMode();
 		return;
 	}
-	main_props_.actualLength = NOTE128_LENGTH;
-	main_props_.grace = false;
+	if (on) {
+		main_props_.actualLength = NOTE128_LENGTH;
+		main_props_.grace = false;
+	}
 	if (on && editMode_) {
 		currentVoice_->changeActualChord();
 		computeMidiTimes(false);
@@ -2452,8 +2458,10 @@ void NMainFrameWidget::setToGN8(bool on) {
 	if (!editMode_) {
 		notePart_->setCursor( *NResource::cursor_tinyeight_);
 	}
-	main_props_.actualLength = NOTE8_LENGTH;
-	main_props_.grace = true;
+	if (on) {
+		main_props_.grace = true;
+		main_props_.actualLength = NOTE8_LENGTH;
+	}
 	if (NResource::windowWithSelectedRegion_) {
 		NResource::windowWithSelectedRegion_ = 0;
 		repaint();
@@ -2469,8 +2477,10 @@ void NMainFrameWidget::setToGN16(bool on) {
 	if (!editMode_) {
 		notePart_->setCursor( *NResource::cursor_tinysixteenth_);
 	}
-	main_props_.actualLength = NOTE16_LENGTH;
-	main_props_.grace = true;
+	if (on) {
+		main_props_.grace = true;
+		main_props_.actualLength = NOTE16_LENGTH;
+	}
 	if (NResource::windowWithSelectedRegion_) {
 		NResource::windowWithSelectedRegion_ = 0;
 		repaint();
@@ -2486,8 +2496,10 @@ void NMainFrameWidget::setToGNS8(bool on) {
 	if (!editMode_) {
 		notePart_->setCursor( *NResource::cursor_tinystroke_);
 	}
-	main_props_.actualLength = INTERNAL_MARKER_OF_STROKEN_GRACE;
-	main_props_.grace = true;
+	if (on) {
+		main_props_.grace = true;
+		main_props_.actualLength = INTERNAL_MARKER_OF_STROKEN_GRACE;
+	}
 	if (NResource::windowWithSelectedRegion_) {
 		NResource::windowWithSelectedRegion_ = 0;
 		repaint();
@@ -2760,7 +2772,7 @@ void NMainFrameWidget::playAll(bool on) {
 
 void NMainFrameWidget::setDotted(bool dotted) {
 	if (playing_) return;
-	main_props_.dotcount = dotted ? 1 : 0;
+	main_props_.dotcount = dotted ? STAT_SINGLE_DOT : 0;
 	if (editMode_) {
 		currentVoice_->setDotted();
 		computeMidiTimes(false);
@@ -2772,7 +2784,7 @@ void NMainFrameWidget::setDotted(bool dotted) {
 
 void NMainFrameWidget::setDDotted(bool ddotted) {
 	if (playing_) return;
-	main_props_.dotcount = ddotted ? 2 : 0;
+	main_props_.dotcount = ddotted ? STAT_DOUBLE_DOT : 0;
 	if (editMode_) {
 		currentVoice_->setDotted();
 		computeMidiTimes(false);
@@ -3089,15 +3101,17 @@ void NMainFrameWidget::setEditMode(bool on) {
 	QCursor *cursor;
 	if (on) {
 		selectbutton_->setOn(false);
+		status_before_edit_mode_ = 0;
 		notePart_->setCursor( *NResource::cursor_edit_);
-		status_before_edit_mode_ = (0xffffffff  & NOTE_VAL_MASK);
-		for (i = 0; i < COUNT_CHORDBUTTONS; i++) {
+		
+		/* save the selected note/rest length button */
+		for (i = 0, length_before_edit_mode_ = -1; i < COUNT_CHORDBUTTONS; i++)
 			if (note_buttons_[i]->isChecked()) {
-				status_before_edit_mode_ &= ~(NOTE_VAL_MASK);
-				status_before_edit_mode_ |= i;
+				length_before_edit_mode_ = i;
 				break;
 			}
-		}
+
+		/* save other properties */
 		status_before_edit_mode_ |= (BODY_MASK & main_props_.noteBody);
 		if (sforzatobutton_->isChecked()) {
 			status_before_edit_mode_ |= STAT_SFORZ;
@@ -3123,9 +3137,6 @@ void NMainFrameWidget::setEditMode(bool on) {
 		if (tiebutton_->isChecked()) {
 			status_before_edit_mode_ |= STAT_TIED;
 		}
-		if (hiddenrestbutton_->isChecked()) {
-			status_before_edit_mode_ |= BEFORE_EDIT_HIDDEN;
-		}
 		if (crossDrumBu_->isChecked()) {
 			status_before_edit_mode_ |= STAT_BODY_CROSS;
 		}
@@ -3150,28 +3161,18 @@ void NMainFrameWidget::setEditMode(bool on) {
 		}
 	}
 	else {
-		selectbutton_->setOn(true);
 		stemUpbutton_->setOn(false);
 		stemDownbutton_->setOn(false);
 		main_props_.actualStemDir = STEM_DIR_AUTO;
-		main_props_.actualLength = -1;
-		notePart_->setCursor(arrowCursor);
-		for (i = 0; i < COUNT_CHORDBUTTONS; ++i) {
-			if (i == (status_before_edit_mode_ & NOTE_VAL_MASK)) {
-				note_buttons_[i]->setOn(true);
-				main_props_.actualLength = NResource::button2Notelength_(i);
-			}
-			else {
-				notePart_->setCursor(arrowCursor);
-				note_buttons_[i]->setOn(false);
-			}
-		}
-		if ((cursor = NResource::determineCursor(main_props_.actualLength)) == 0) {
-			notePart_->setCursor(arrowCursor);
-		}
-		else {
-			notePart_->setCursor(*cursor);
-		}
+		
+		/* turn on appropriate button, set actualLength and grace */
+		setButton(length_before_edit_mode_);
+		
+		/* set appropriate cursor */
+		if (length_before_edit_mode_ != -1)
+			notePart_->setCursor(*NResource::determineCursor(main_props_.actualLength));
+		else notePart_->setCursor(arrowCursor);
+
 		actualOffs_ = UNDEFINED_OFFS;
 		for (i = 0; i < COUNT_OFFSBUTTONS; ++i) {
 			offs_buttons_[i]->setOn(false);
@@ -4944,17 +4945,21 @@ void NMainFrameWidget::preparePixmaps() {
 
 /*----------------------------- update of buttons due to selection ------------------*/
 
-/* Set Checked, the note button according to the note length nr.
-   nr >= 0 -> check button_mode[nr]
-   nr < 0 -> check note_dymmy_
+/* Set Checked the note button according to the note length nr.
+   Also, set main_props_.actualLength and main_props_.grace.
+   nr >= 0 -> check note_buttons_[nr]
+   nr < 0 -> check selectbutton_
 */
 void NMainFrameWidget::setButton(int nr) {
 	if (nr >= 0) {
-            	note_buttons_[nr]->setOn( true );
+		note_buttons_[nr]->setOn(true);
 	}
 	else {
-		note_dymmy_->setChecked(true);
+		selectbutton_->setOn(true);
 	}
+
+	main_props_.actualLength = NResource::button2Notelength_(length_before_edit_mode_);
+	main_props_.grace = (length_before_edit_mode_ >= 9);
 }
 
 /* Updates buttons, labels and internals (main_props_) according to the musElement's properties:

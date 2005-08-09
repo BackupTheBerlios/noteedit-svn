@@ -1291,16 +1291,20 @@ QCursor * NResource::determineCursor(int length) {
 int NResource::button2Notelength_(int buNr) {
 	int res = -1;
 	switch (buNr) {
-		case 9: res = NOTE128_LENGTH     ; break;
-		case 8: res = NOTE64_LENGTH      ; break;
-		case 7: res = NOTE32_LENGTH      ; break;
-		case 6: res = NOTE16_LENGTH      ; break;
-		case 5: res = NOTE8_LENGTH       ; break;
-		case 4: res = QUARTER_LENGTH     ; break;
-		case 3: res = HALF_LENGTH        ; break;
-		case 2: res = WHOLE_LENGTH       ; break;
-		case 1: res = DOUBLE_WHOLE_LENGTH; break;
+		case 0: res = DOUBLE_WHOLE_LENGTH; break;
+		case 1: res = WHOLE_LENGTH       ; break;
+		case 2: res = HALF_LENGTH        ; break;
+		case 3: res = QUARTER_LENGTH     ; break;
+		case 4: res = NOTE8_LENGTH       ; break;
+		case 5: res = NOTE16_LENGTH      ; break;
+		case 6: res = NOTE32_LENGTH      ; break;
+		case 7: res = NOTE64_LENGTH      ; break;
+		case 8: res = NOTE128_LENGTH     ; break;
+		case 9: res = NOTE8_LENGTH       ; break;
+		case 10: res = NOTE16_LENGTH     ; break;
+		case 11: res = INTERNAL_MARKER_OF_STROKEN_GRACE; break;
 	}
+
 	return res;
 }
 

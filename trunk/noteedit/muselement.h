@@ -203,8 +203,10 @@ class NNote {
 // TBD and also in NNote::status ?
 
 /* is single-dotted */
+/* NOTE! STAT_SINGLE_DOT *must* have value 1 to correctly work with dotcount and must be within 32bits not to crash as dotcount is still int and not status_type */
 #define STAT_SINGLE_DOT   ((status_type)1 << 0)
 /* is double-dotted */
+/* NOTE! STAT_DOUBLE_DOT *must* have value 2 to correctly work with dotcount and must be within 32bits not to crash as dotcount is still int and not status_type */
 #define STAT_DOUBLE_DOT   ((status_type)1 << 1)
 /* has dot */
 #define DOT_MASK     (STAT_SINGLE_DOT | STAT_DOUBLE_DOT)

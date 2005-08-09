@@ -32,40 +32,45 @@ class NKeySig : public NMusElement {
 	public:
 		NKeySig(main_props_str *main_props, staff_props_str *staff_props);
 		virtual ~NKeySig();
-		void change(NKeySig *ksig);                     // copy another key signature into this one
-		virtual NKeySig *clone();                       // cloning
- 		void reset();                                   // clears the key signature (sets to default)
-		void changeHalfTone(NNote *note);               // changes the half notes (b,#), according to the key signature
-		void setKey(int note, status_type kind);        // changes the signature of a note
-		void setClef(NClef *ac_clef);                   // sets the clef belonging to this key signature
-		void setRegular(int count, status_type kind);   // changes the signature to a regular one
-		bool isRegular(status_type *kind, int *count);  // tells whether the key signature is regular
-		status_type accNeeded(int line, int offs);      // tells what kind of accent is needed to a note(line,offs)
-		int computeOffs(int line);                      // determines the offset used for a line (-1, 0, 1, with temporary sigs)
-		int determineDistanceUp(NNote *note);           // determines the distance from the 1-line upper note, 1 or 2
-		status_type getStatus(int note);                // gives the modifier of a note (without temporary signatures)
-		void setTempAcc(int line, status_type kind);    // sets temporary accent for a line (barlines clear these kind of accents)
-		void resetAtBar();                              // resets the temporary accents (bar line)
-		virtual int getType () const {return T_KEYSIG;} // the type of the NMusElement
-		virtual void draw(int flags = 0);               // drawing function
-		char *printKeys();                              // converts the keys into an ASCII representation
-		void addSign(status_type kind, char pitch);     // adds a new signature to the key signature
-		bool isDrawable() {return drawable_;}           // tells whether the key signature is visible (has size)
-		bool isEqual(NKeySig *otherKeysig);             // compares two key signatures
-		virtual void calculateDimensionsAndPixmaps();   // calculates the drawing pixmaps
-		void setPreviousKeySig(NKeySig *prevKeySig);    // Draw, tells the previous key signature (for resolving it)
+		void change(NKeySig *ksig);                             // copy another key signature into this one
+		virtual NKeySig *clone();                               // cloning
+		bool isEqual(NKeySig *otherKeysig);                     // compares two key signatures
+		char *toString();                                       // converts the keys into an ASCII representation
+
+		void setAccent(int note, status_type kind);             // changes the signature of a note
+		void setAccentByNoteName(char pitch, status_type kind); // adds a new signature to the key signature
+		status_type getAccent(int note);                        // gives the modifier of a note (without temporary signatures)
+		void setTempAccent(int line, status_type kind);         // sets temporary accent for a line (barlines clear these kind of accents)
+		void deleteTempAccents();                               // deletes the temporary accents (at the bar line)
+		status_type accentNeeded(int line, int offs);           // tells what kind of accent is needed for printing the note
+
+		void setRegular(int count, status_type kind);           // changes the signature to a regular one
+		bool isRegular(status_type *kind, int *count);          // tells whether the key signature is regular
+
+		void setClef(NClef *ac_clef);                           // sets the clef belonging to this key signature
+		int getOffset(int line);                                // determines the offset used for a line (-1, 0, 1, with temporary sigs)
+
+		bool isDrawable() {return drawable_;}                   // tells whether the key signature is visible (has size)
+		void setPreviousKeySig(NKeySig *prevKeySig);            // Draw, tells the previous key signature (for resolving it)
+		virtual int getType () const {return T_KEYSIG;}         // the type of the NMusElement
+		virtual void draw(int flags = 0);                       // drawing function
+		virtual void calculateDimensionsAndPixmaps();           // calculates the drawing pixmaps
+
+		void reset();                                           // clears the key signature (sets to default)
+		void changeHalfTone(NNote *note);                       // changes the half notes (b,#), according to the key signature
+		int determineDistanceUp(NNote *note);                   // determines the distance from the 1-line upper note, 1 or 2
 /* #define KEYSIG_DEBUG */
 #ifdef KEYSIG_DEBUG
-		void print();                                   // prints out the key signature
+		void print();                                           // prints out the key signature
 #endif
 /* ------------------------------- methods for context keysig ------------------------------------------*/
 		void drawContextKeySig();
 		void changeInContextKeySig(NKeySig *ksig);
 		void calculateContextPixmap();
 	private:
-		int accCount();                          // the number of accents in the key signature
-		status_type *noteStatus_;                // the key signature for a note ( C[0] - B[6] )
-		status_type *tempNoteStatus_;            // the accent is placed only once in a bar, status whether the note is already accented
+		int accentCount();                       // the number of accents in the key signature
+		status_type *accents_;                   // the accents for the notes ( C[0] - B[6] )
+		status_type *tempAccents_;               // the accent is placed only once in a bar, status whether the note is already accented
 		static int nameTab_[7];                  // the names of the notes
 		static int crossTab_[7];                 // the regular locations of the crosses
 		static int flatTab_[7];                  // the regular locations of the flats

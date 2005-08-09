@@ -1379,7 +1379,7 @@ void NVoice::makeKeysigAndClefActual() {
 		}
 	}
 	if (!elem) NResource::abort(err, 1);
-	theStaff_->actualKeysig_.resetAtBar();
+	theStaff_->actualKeysig_.deleteTempAccents();
 	for (elem = musElementList_.at(oldidx - 1); elem; elem = musElementList_.prev()) {
 		if (elem->getType() == T_SIGN && (elem->getSubType() & BAR_SYMS)) break;
 		if (elem->getType() != T_CHORD) continue;
@@ -2945,7 +2945,7 @@ int NVoice::validateKeysig(int lastbaridx, int insertpos) {
 		elem = musElementList_.at(lastbaridx);
 		lastbarpos = elem->getXpos();
 	}
-	theStaff_->actualKeysig_.resetAtBar();
+	theStaff_->actualKeysig_.deleteTempAccents();
 	for (;elem && elem->getBbox()->x() < insertpos; elem = musElementList_.next()) {
 		if (elem->getType() != T_CHORD) continue;
 		((NChord *) elem)->accumulateAccidentals(&(theStaff_->actualKeysig_));
@@ -3124,7 +3124,7 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 				}
 				if (idx2 >= 0) {
 					theStaff_->validateKeysig(firstVoice_ ? lastbaridx : -1, xpos);
-					offs = theStaff_->actualKeysig_.computeOffs(line);
+					offs = theStaff_->actualKeysig_.getOffset(line);
 				}
 				else {
 					offs = 0;
@@ -3250,7 +3250,7 @@ bool NVoice::insertNewNoteAt(int line, QPoint p, int offs) {
 	}
 	if (offs == UNDEFINED_OFFS) {
 		theStaff_->validateKeysig(firstVoice_ ? lastbaridx : -1, elem->getBbox()->x());
-		offs = theStaff_->actualKeysig_.computeOffs(line);
+		offs = theStaff_->actualKeysig_.getOffset(line);
 		status &= (~STAT_FORCE);
 	}
 	currentElement_ = elem;
@@ -3312,7 +3312,7 @@ bool NVoice::insertNewNoteAtCurrent(int line, int offs) {
 	if (offs == UNDEFINED_OFFS) {
 		validateKeysig(lastbaridx, musElementList_.at());
 		theStaff_->validateKeysig(lastbaridx, elem->getBbox()->x());
-		offs = theStaff_->actualKeysig_.computeOffs(line);
+		offs = theStaff_->actualKeysig_.getOffset(line);
 		status &= (~STAT_FORCE);
 	}
 	currentElement_ = elem;
@@ -4314,7 +4314,7 @@ NPositStr* NVoice::getElementAfter(int mtime) {
 				((NKeySig *) playPosition_)->setPreviousKeySig(lastKeySig_);
 				lastKeySig_ =  ((NKeySig *) playPosition_);
 				theStaff_->actualKeysig_.change((NKeySig*) playPosition_);
-				theStaff_->actualKeysig_.resetAtBar();
+				theStaff_->actualKeysig_.deleteTempAccents();
 				if (theStaff_->actualKeysig_.isDrawable()) {
 					found = true;
 				}
@@ -4361,7 +4361,7 @@ NPositStr* NVoice::getElementAfter(int mtime) {
 						/* increase the next bar number by 1 */
 						((NSign *) playPosition_)->setBarNr(++barNr_);
 						
-						theStaff_->actualKeysig_.resetAtBar();
+						theStaff_->actualKeysig_.deleteTempAccents();
 					}
 					oldidx = musElementList_.at();
 					playPosition_ = musElementList_.next();

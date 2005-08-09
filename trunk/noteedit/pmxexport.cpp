@@ -990,20 +990,20 @@ void NPmxExport::pitchOut(NKeySig *ksig, const NNote *note, int length, NClef *a
 	if (!(note->status & STAT_PART_OF_TIE)) {
 		if (!(note->status & STAT_FORCE)) {
 			switch (note->needed_acc) {
-				case STAT_CROSS: *pmxout_ << "s"; ksig->setTempAcc(note->line, STAT_CROSS); break;
-				case STAT_FLAT: *pmxout_ << "f"; ksig->setTempAcc(note->line, STAT_FLAT); break;
-				case STAT_NATUR: *pmxout_ << "n"; ksig->setTempAcc(note->line, STAT_NATUR); break;
-				case STAT_DCROSS: *pmxout_ << "ss"; ksig->setTempAcc(note->line, STAT_DCROSS); break;
-				case STAT_DFLAT: *pmxout_ << "ff"; ksig->setTempAcc(note->line, STAT_DFLAT); break;
+				case STAT_CROSS: *pmxout_ << "s"; ksig->setTempAccent(note->line, STAT_CROSS); break;
+				case STAT_FLAT: *pmxout_ << "f"; ksig->setTempAccent(note->line, STAT_FLAT); break;
+				case STAT_NATUR: *pmxout_ << "n"; ksig->setTempAccent(note->line, STAT_NATUR); break;
+				case STAT_DCROSS: *pmxout_ << "ss"; ksig->setTempAccent(note->line, STAT_DCROSS); break;
+				case STAT_DFLAT: *pmxout_ << "ff"; ksig->setTempAccent(note->line, STAT_DFLAT); break;
 			}
 		}
 		else {
 			switch (note->offs) {
-				case  1: *pmxout_ << "s"; ksig->setTempAcc(note->line, STAT_CROSS); break;
-				case -1: *pmxout_ << "f"; ksig->setTempAcc(note->line, STAT_FLAT); break;
-				case  0: *pmxout_ << "n"; ksig->setTempAcc(note->line, STAT_NATUR); break;
-				case  2: *pmxout_ << "ss"; ksig->setTempAcc(note->line, STAT_DCROSS); break;
-				case -2: *pmxout_ << "ff"; ksig->setTempAcc(note->line, STAT_DFLAT); break;
+				case  1: *pmxout_ << "s"; ksig->setTempAccent(note->line, STAT_CROSS); break;
+				case -1: *pmxout_ << "f"; ksig->setTempAccent(note->line, STAT_FLAT); break;
+				case  0: *pmxout_ << "n"; ksig->setTempAccent(note->line, STAT_NATUR); break;
+				case  2: *pmxout_ << "ss"; ksig->setTempAccent(note->line, STAT_DCROSS); break;
+				case -2: *pmxout_ << "ff"; ksig->setTempAccent(note->line, STAT_DFLAT); break;
 			}
 		}
 	}

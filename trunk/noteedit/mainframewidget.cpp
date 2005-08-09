@@ -2043,7 +2043,7 @@ void NMainFrameWidget::pitchToLine(int pitchNumber) {
 	keyLine_ = 8 - halfLines;
 	ydist = keyLine_ * LINE_DIST / 2;
 	if (kbbutton_->isOn()) {
-		offs = currentStaff_->actualKeysig_.computeOffs(halfLines);
+		offs = currentStaff_->actualKeysig_.getOffset(halfLines);
 		if (NResource::allowInsertEcho_) {
 			NResource::mapper_->playImmediately(&(currentStaff_->actualClef_), 
 				halfLines, offs, currentStaff_->getVoice(), currentStaff_->getChannel(), currentStaff_->getVolume(), currentStaff_->transpose_);
@@ -4659,7 +4659,7 @@ void NMainFrameWidget::changeKey(int idx) {
 		offs_list_[i]->set(STAT_NATUR);
 	}
 	for (i = 0; i < 7; ++i) {
-		offs_list_[i]->set(tmpKeysig_->getStatus(i));
+		offs_list_[i]->set(tmpKeysig_->getAccent(i));
 	}
 	for (i = 0; i < 7; ++i) {
 		offs_list_[i]->setKeysigObj(tmpKeysig_); // avoid feedback

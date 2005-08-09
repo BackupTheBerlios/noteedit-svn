@@ -224,7 +224,7 @@ void NStaff::startRepositioning() {
 	for (voice_elem = voicelist_.first(); voice_elem; voice_elem = voicelist_.next()) {
 		voice_elem->startRepositioning();
 	}
-	actualKeysig_.resetAtBar();
+	actualKeysig_.deleteTempAccents();
 }
 
 void NStaff::validateKeysig(int startidx, int insertpos) {

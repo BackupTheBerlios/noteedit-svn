@@ -65,19 +65,19 @@ void NKeyOffs::set(status_type kind) {
 void NKeyOffs::updateCross(bool on) {
 	if (!on) return;
 	if (!keysigObj_) return;
-	keysigObj_->setKey(buNr_, STAT_CROSS);
+	keysigObj_->setAccent(buNr_, STAT_CROSS);
 }
 
 void NKeyOffs::updateFlat(bool on) {
 	if (!on) return;
 	if (!keysigObj_) return;
-	keysigObj_->setKey(buNr_, STAT_FLAT);
+	keysigObj_->setAccent(buNr_, STAT_FLAT);
 }
 
 void NKeyOffs::updateNatural(bool on) {
 	if (!on) return;
 	if (!keysigObj_) return;
-	keysigObj_->setKey(buNr_, STAT_NATUR);
+	keysigObj_->setAccent(buNr_, STAT_NATUR);
 }
 
 void NKeyOffs::setGeometry(int xpos, int ypos, int width, int height) {

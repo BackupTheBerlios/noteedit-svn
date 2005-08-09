@@ -422,7 +422,7 @@ void NChord::changeOffs(int offs, NKeySig *actual_keysig) {
 		NResource::abort("changeOffs internal error");
 	}
 	if (offs == UNDEFINED_OFFS) {
-		note->offs = actual_keysig->computeOffs(note->line);
+		note->offs = actual_keysig->getOffset(note->line);
 		note->status &= (~STAT_FORCE);
 		return;
 	}
@@ -865,17 +865,17 @@ void NChord::checkAcc() {
 					note->offs = note->tie_backward->offs;
 				}
 				else {
-					note->offs = staff_props_->actual_keysig->computeOffs(note->line);
+					note->offs = staff_props_->actual_keysig->getOffset(note->line);
 				}
 		}
-		switch (note->needed_acc = staff_props_->actual_keysig->accNeeded(note->line, note->offs)) {
+		switch (note->needed_acc = staff_props_->actual_keysig->accentNeeded(note->line, note->offs)) {
 			case STAT_NO_ACC: break;
 			case STAT_CROSS:
 			case STAT_NATUR:
 			case STAT_FLAT:
 			case STAT_DCROSS:
 			case STAT_DFLAT:
-			 staff_props_->actual_keysig->setTempAcc(note->line, note->needed_acc);
+			 staff_props_->actual_keysig->setTempAccent(note->line, note->needed_acc);
 			break;
 		}
 		note->status &= (~ACC_MASK);
@@ -899,20 +899,20 @@ void NChord::accumulateAccidentals(NKeySig *key) {
 	for (note = noteList_.first(); note; note = noteList_.next()) {
 		if (note->status & STAT_FORCE) {
 			switch (note->offs) {
-				case  1: key->setTempAcc(note->line, STAT_CROSS); break;
-				case -1: key->setTempAcc(note->line, STAT_FLAT); break;
-				case  0: key->setTempAcc(note->line, STAT_NATUR); break;
-				case  2: key->setTempAcc(note->line, STAT_DCROSS); break;
-				case -2: key->setTempAcc(note->line, STAT_DFLAT); break;
+				case  1: key->setTempAccent(note->line, STAT_CROSS); break;
+				case -1: key->setTempAccent(note->line, STAT_FLAT); break;
+				case  0: key->setTempAccent(note->line, STAT_NATUR); break;
+				case  2: key->setTempAccent(note->line, STAT_DCROSS); break;
+				case -2: key->setTempAccent(note->line, STAT_DFLAT); break;
 			}
 		}
 		else {
 			switch (note->status & ACC_MASK) {
-				case STAT_CROSS: key->setTempAcc(note->line, STAT_CROSS); break;
-				case STAT_FLAT:  key->setTempAcc(note->line, STAT_FLAT); break;
-				case STAT_NATUR: key->setTempAcc(note->line, STAT_NATUR); break;
-				case STAT_DCROSS: key->setTempAcc(note->line, STAT_DCROSS); break;
-				case STAT_DFLAT:  key->setTempAcc(note->line, STAT_DFLAT); break;
+				case STAT_CROSS: key->setTempAccent(note->line, STAT_CROSS); break;
+				case STAT_FLAT:  key->setTempAccent(note->line, STAT_FLAT); break;
+				case STAT_NATUR: key->setTempAccent(note->line, STAT_NATUR); break;
+				case STAT_DCROSS: key->setTempAccent(note->line, STAT_DCROSS); break;
+				case STAT_DFLAT:  key->setTempAccent(note->line, STAT_DFLAT); break;
 			}
 		}
 	}
@@ -1920,7 +1920,7 @@ void NChord::moveUp(int up, int voices_stem_policy, NKeySig *key) {
 	}
 	note->line += up;
 	if (NResource::moveAccKeysig_) {
-		note->offs = key->computeOffs(note->line);
+		note->offs = key->getOffset(note->line);
 	}
 	SET_STATUS((main_props_->actualStemDir == STEM_DIR_AUTO && noteList_.first()->line < 4) || main_props_->actualStemDir == STEM_DIR_UP, status_, STAT_STEM_UP);
 	STEM_LOGIC(noteList_.first()->line);
@@ -1939,7 +1939,7 @@ void NChord::moveDown(int down, int voices_stem_policy, NKeySig *key) {
 	}
 	note->line -= down;
 	if (NResource::moveAccKeysig_) {
-		note->offs = key->computeOffs(note->line);
+		note->offs = key->getOffset(note->line);
 	}
 	SET_STATUS((main_props_->actualStemDir == STEM_DIR_AUTO && noteList_.first()->line < 4) || main_props_->actualStemDir == STEM_DIR_UP, status_, STAT_STEM_UP);
 	STEM_LOGIC(noteList_.first()->line);

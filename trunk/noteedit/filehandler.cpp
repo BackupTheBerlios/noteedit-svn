@@ -1659,7 +1659,7 @@ void NFileHandler::writeKeySig(NKeySig * ksig, int voice_nr, bool only_regulaer)
 		else {
 			badmeasure *bad = new badmeasure(ERR_IRREGULAER, voice_nr, bar_nr_, 3 /* dummy */, countof128th_);
 			badlist_.append(bad);
-			out_ << "//\tirregular = " << ksig->printKeys() << endl;
+			out_ << "//\tirregular = " << ksig->toString() << endl;
 		}
 	}
 }

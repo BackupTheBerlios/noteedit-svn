@@ -739,7 +739,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	lastDotted_ = 0;
 	actualStemPolicy_ = STEM_UNSET;
 	actual_staff = voi->getStaff();
-	actual_staff->actualKeysig_.resetAtBar();
+	actual_staff->actualKeysig_.deleteTempAccents();
 	elem = voi->getCurrentPosition();
 	if (elem == 0) return;
 	if (!voi->isFirstVoice()) {

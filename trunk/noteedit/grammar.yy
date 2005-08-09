@@ -664,10 +664,10 @@ keydescriptions : keydescriptions keydescription
 		;
 
 keydescription : Y_PITCH '#'
-			{ current_staff->actualKeysig_.addSign(STAT_CROSS, $1);}
+			{ current_staff->actualKeysig_.setAccentByNoteName($1, STAT_CROSS);}
 
 	       | Y_PITCH '&'
-			{current_staff->actualKeysig_.addSign(STAT_FLAT, $1);}
+			{current_staff->actualKeysig_.setAccentByNoteName($1, STAT_FLAT);}
 	       ;
 
 
@@ -1757,7 +1757,7 @@ static void append_barsym_in_all_voices_and_reset_keysig(int bartype, int repcou
 		if (!voice_elem->isFirstVoice()) continue;
 		update_voice_stack(i, -1);
 		staff_elem = voice_elem->getStaff();
-		staff_elem->actualKeysig_.resetAtBar();
+		staff_elem->actualKeysig_.deleteTempAccents();
 		sign = new NSign(&(parser_params.mainWidget->main_props_), &(staff_elem->staff_props_), bartype);
 		voice_elem->appendElem(pending_elements[i].lastBarSym = sign);
 		if (repcount > 2) {

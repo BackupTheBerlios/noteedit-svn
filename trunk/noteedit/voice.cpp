@@ -5668,7 +5668,7 @@ void NVoice::transpose(int semitones, bool region) {
 				}
 				midi_pitch = theStaff_->actualClef_.line2Midi( note->line, note->offs );
 				midi_pitch += semitones;
-				theStaff_->actualClef_.midi2Line(midi_pitch, &line, &offs, &theStaff_->actualKeysig_ );
+				theStaff_->actualClef_.midi2Line(midi_pitch, &line, &offs, theStaff_->actualKeysig_.getSubType() );
 				if (line <= MAXLINE && line >= MINLINE) {
 					note->line = line; note->offs = offs;
 					note->status &= ~(STAT_FORCE);

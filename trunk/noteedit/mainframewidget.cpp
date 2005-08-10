@@ -3341,7 +3341,7 @@ void NMainFrameWidget::readNotesFromMidiMapper() {
 	else {
 		currentStaff_->getVoiceNr(0)->validateKeysig(-1, 200);
 	}
-	currentStaff_->actualClef_.midi2Line(*pitch, &line, &offs, &(currentStaff_->actualKeysig_));
+	currentStaff_->actualClef_.midi2Line(*pitch, &line, &offs, currentStaff_->actualKeysig_.getSubType());
 	status = 0;
 	if (main_props_.tied) status |= STAT_TIED;
 	if (main_props_.staccato) status |= STAT_STACC;
@@ -3360,7 +3360,7 @@ void NMainFrameWidget::readNotesFromMidiMapper() {
 	newchord = new  NChord(&main_props_, currentStaff_->getStaffPropsAddr() ,line, offs, main_props_.actualLength, 
 				currentVoice_->stemPolicy_, status, status2);
 	for (pitch = pitches->next(); pitch; pitch = pitches->next()) {
-		currentStaff_->actualClef_.midi2Line(*pitch, &line, &offs, &(currentStaff_->actualKeysig_));
+		currentStaff_->actualClef_.midi2Line(*pitch, &line, &offs, currentStaff_->actualKeysig_.getSubType());
 		newchord->insertNewNote(line, offs, currentVoice_->stemPolicy_, status);
 	}
 	delete pitches;

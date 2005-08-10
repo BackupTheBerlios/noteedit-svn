@@ -36,6 +36,7 @@ class NKeySig : public NMusElement {
 		virtual NKeySig *clone();                               // cloning
 		bool isEqual(NKeySig *otherKeysig);                     // compares two key signatures
 		char *toString();                                       // converts the keys into an ASCII representation
+		virtual int getSubType() const;                         // returns the type of the Key Signature (SHARP, FLAT, 0)
 
 		void setAccent(int note, status_type kind);             // changes the signature of a note
 		void setAccentByNoteName(char pitch, status_type kind); // adds a new signature to the key signature

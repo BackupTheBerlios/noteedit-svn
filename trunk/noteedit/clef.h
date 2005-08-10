@@ -59,7 +59,7 @@ class NClef : public NMusElement {
 		int getOctave();
 		int getShift() {return shift_;}
 		void setShift(int octave);
-		void midi2Line(unsigned int midival,int *line, int *offs, NKeySig *ksig = 0);
+		void midi2Line(unsigned int midival,int *line, int *offs, int ksigType = STAT_NO_ACC);
 		int line2Midi(int line, int offs);
 		static int chooseClefType(staffInfoClass *staffInfos, unsigned int minMidi, unsigned int MaxMidi, bool drumchannel);
 	private:

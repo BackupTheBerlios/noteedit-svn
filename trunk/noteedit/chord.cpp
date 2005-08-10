@@ -1955,7 +1955,7 @@ void NChord::moveSemiToneUp(int voices_stem_policy, NClef *clef, NKeySig *ksig) 
 	}
 	pitch = clef->line2Midi( note->line, note->offs );
 	pitch++;
-	clef->midi2Line(pitch, &new_line, &new_offs, ksig);
+	clef->midi2Line(pitch, &new_line, &new_offs, ksig->getSubType());
 
 	if (new_line >= MAXLINE) return;
 	note2 = noteList_.next();
@@ -1978,7 +1978,7 @@ void NChord::moveSemiToneDown(int voices_stem_policy, NClef *clef, NKeySig *ksig
 	}
 	pitch = clef->line2Midi( note->line, note->offs );
 	pitch--;
-	clef->midi2Line(pitch, &new_line, &new_offs, ksig);
+	clef->midi2Line(pitch, &new_line, &new_offs, ksig->getSubType());
 	if (new_line < MINLINE) return;
 	note2 = noteList_.prev();
 	if (note2) {

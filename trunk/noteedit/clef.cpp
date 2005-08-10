@@ -24,7 +24,6 @@
 #include <qpixmap.h>
 #include <kmessagebox.h>
 #include <klocale.h>
-#include "keysig.h"
 #include "clef.h"
 #include "resource.h"
 #include "transpainter.h"
@@ -530,14 +529,12 @@ int NClef::line2NoteNumber( int line ) const {
 	return line % 7;
 }
 
-void NClef::midi2Line(unsigned int midival, int *line, int *offs, NKeySig *ksig) {
-	int i, count;
-	status_type kind;
+void NClef::midi2Line(unsigned int midival, int *line, int *offs, int ksigType) {
 	*line = 0;
 	*offs = 0;
 
 	midival -= shift_;
-	for (i = 0; i < MAXLINE-MINLINE+1; i++) {
+	for (int i = 0; i < MAXLINE-MINLINE+1; i++) {
 		if (line2midiTab_[i] >= midival) {
 			if (line2midiTab_[i] == midival) {
 				*line = i + MINLINE;
@@ -545,9 +542,7 @@ void NClef::midi2Line(unsigned int midival, int *line, int *offs, NKeySig *ksig)
 			else {
 				*line = i + MINLINE - 1;
 				*offs = 1;
-				if (!ksig) return;
-				if (!ksig->isRegular(&kind, &count)) return;
-				if (kind != STAT_FLAT) return;
+				if (ksigType != STAT_FLAT) return;
 				(*line)++;
 				*offs = -1;
 			}

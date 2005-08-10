@@ -103,6 +103,18 @@ bool NKeySig::isEqual(NKeySig *otherKeysig) {
 	return true;
 }
 
+int NKeySig::getSubType() const {
+	status_type type = STAT_NO_ACC;
+	for( int i = 0; i < 7; i++ ) {
+		if( accents_[ i ] != STAT_NATUR ) {
+			if( type != STAT_NO_ACC && type != accents_[ i ] )
+				return STAT_NO_ACC;
+			type = accents_[ i ];
+		}
+	}
+	return type;
+}
+
 void NKeySig::setClef(NClef * ac_clef) {
 	acClef_ = ac_clef;
 

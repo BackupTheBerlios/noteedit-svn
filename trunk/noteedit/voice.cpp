@@ -2081,8 +2081,11 @@ void NVoice::insertTmpElemAtPosition(int xpos, NMusElement *tmpElem) {
 	}
 	found = false;
 	elem = musElementList_.first();
+	NClef *belongingClef = &(theStaff_->actualClef_);
 	while (!found  && elem != 0) {
 		if (xpos > elem->getBbox()->x()) {
+			if( elem->getType() == T_CLEF )
+				belongingClef = (NClef *) elem;
 			elem = musElementList_.next();
 		}
 		else {
@@ -2091,7 +2094,7 @@ void NVoice::insertTmpElemAtPosition(int xpos, NMusElement *tmpElem) {
 		}
 	}
 	switch (tmpElem->getType()) {
-		case T_KEYSIG: ((NKeySig *) tmpElem)->setClef(&(theStaff_->actualClef_));
+		case T_KEYSIG: ((NKeySig *) tmpElem)->setClef( belongingClef );
 				break;
 	}
 	if (!found) {

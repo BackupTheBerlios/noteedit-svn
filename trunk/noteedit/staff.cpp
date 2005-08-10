@@ -101,6 +101,13 @@ void NStaff::addVoices(int nvoices) {
 	}
 }
 
+/* Move the voice numbered srcNr before the voice numbered tgtNr and becomes the actual voice */
+void NStaff::moveVoice(uint srcNr, uint tgtNr) {
+	voicelist_.insert(tgtNr, voicelist_.at(srcNr));
+	voicelist_.remove(srcNr+1);
+	actualVoice_ = voicelist_.at(tgtNr);
+}
+
 void NStaff::updateVoiceList(QList<NVoice> *voicelist) {
 	NVoice *voice_elem;
 

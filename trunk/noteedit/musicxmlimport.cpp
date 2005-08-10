@@ -177,7 +177,7 @@ void VoiceMapper::cleanup()
 	map.clear();
 }
 
-// get the noteedit voice number for musicxml voice staff/mxmlVoice
+// get the noteedit's voice number for musicxml voice staff/mxmlVoice
 // return -1 if not found
 
 int VoiceMapper::get(int staff, int mxmlVoice)
@@ -203,9 +203,10 @@ void VoiceMapper::set(int staff, int mxmlVoice, int ntdtVoice)
 	int k = sv2k(staff, mxmlVoice);
 	IntIntMap::Iterator it;
 	it = map.find(k);
-	if (it == map.end()) {
+	if (it == map.end())
 		map.insert(k, ntdtVoice);
-	}
+	else
+		map.replace(k, ntdtVoice);
 }
 
 
@@ -426,6 +427,7 @@ MusicXMLParser::MusicXMLParser()
 {
 	current_staff = 0;
 	current_voice = 0;
+	current_max_voice_nr = 0;
 }
 
 
@@ -2510,6 +2512,9 @@ void MusicXMLParser::handleVoice(int staff_nr, int voice_nr)
 void MusicXMLParser::handleVoiceDoStaff(int staff_nr, int voice_nr,
 				NStaff * & staff, bool & mapped)
 {
+	if (voice_nr > current_max_voice_nr)
+		current_max_voice_nr = voice_nr;
+		
 	int ntdtVnr = vm.get(staff_nr, voice_nr);
 	if (ntdtVnr >= 0) {
 		// voice already exists
@@ -2517,23 +2522,38 @@ void MusicXMLParser::handleVoiceDoStaff(int staff_nr, int voice_nr,
 		return;
 	}
 	// voice mapper is empty
-	if ((!mapped) && (voice_nr==1)) {
+	if (!mapped) {
 		// first note for this staff:
 		// voice already exists but not yet mapped
 		vm.set(staff_nr, voice_nr, 0);
 		mapped = true;
 		current_voice = staff->getVoiceNr(0);
 	} else {
-		// add number of voices needed to accommodate the file's voice number
+		// add a new voice in this staff
 		// create and map a new voice
-		int i;
-		for (i = staff->voiceCount(); i < voice_nr; i++) {
-			staff->addVoices(1);
-			current_voice = staff->getVoiceNr(i);
-			vm.set(staff_nr, i+1 , i);
-			parser_params.newVoices->append(current_voice);
-		}
+		staff->addVoices(1);
+		int nv = staff->voiceCount() - 1;
+
+		/* sort NoteEdit voices like they're sorted in MusicXML file for that staff */
+		/* int tmpVnr;
+		for (int i = 1; voice_nr+i <= current_max_voice_nr; i++) {
+			if (tmpVnr = vm.get(staff_nr, voice_nr+i) == -1) continue;
+			if (tmpVnr < nv) {
+				vm.set(staff_nr, voice_nr+i, nv);
+				vm.set(staff_nr, voice_nr, tmpVnr);
+				staff->moveVoice(nv, tmpVnr);
+				staff->moveVoice(tmpVnr+1, nv+1);
+				nv = tmpVnr;
+				break;
+			}
+		} */ /* disabled, because we cannot move between non-first voices and first voices */
+		
+		current_voice = staff->getVoiceNr(nv);
+		vm.set(staff_nr, voice_nr, nv);
+		parser_params.newVoices->append(current_voice);
+
 	}
+
 	int k = sv2k(staff_nr, voice_nr);
 	beamStarts[k] = 0;
 }

@@ -124,6 +124,7 @@ private:
 	void handleTuplet(NMusElement * elem);
 	void handleVoice(int staff, int voice);
 	void handleVoiceDoStaff(int staff, int voice, NStaff * & staff, bool & mapped);
+	int current_max_voice_nr; /* the maximum voice number reached until now */
 	void handleWords();
 	void initStAttributes();
 	void initStBarline();

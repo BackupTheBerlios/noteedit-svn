@@ -109,6 +109,7 @@ class NStaff {
 		void collChords();
 		void setHalfsAccordingKeySig();
 		void addVoices(int nvoices);
+		void moveVoice(uint srcNr, uint tgtNr); /* move the voice from number src to tgt */
 		void updateVoiceList(QList<NVoice> *voicelist);
 		void setMuted(bool muted);
 		bool getMuted() {return actualVoice_->muted_;}

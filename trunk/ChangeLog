@@ -49,3 +49,4 @@ version 2.9.0:
 	  - whenever doing anything with STAT_* from now on (any comparison, bitmask operations and similar), always use status_type for operating type! int and other smaller types are not usable anymore!
 	  - int length_before_edit_ was introduced, because status_before_edit_ isn't appropriate anymore, to contain the length of the last selected note as well.
 	  - removed note_dymmy_ as it's not needed anymore IMO
+	* MusicXML import - reverted voice numbering behaviour. R323

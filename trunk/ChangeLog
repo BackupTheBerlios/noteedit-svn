@@ -56,7 +56,7 @@ version 2.9.0:
 	  - Arbitrary text is not printed in bold anymore, because it's too aggressive. It's only \large and it's for the whole text (not just the first word).
 	  - noteedit -> NoteEdit
 	  - if Lily26 is found, utf8 encoding is set by default
-	* R326:
+	* R330:
 	  - score property "last author" is exported as arranger
 	  - instead of a layout block we do a paper block: composer is properly aligned with music
 

@@ -228,6 +228,18 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 		if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
 		out_ << endl;
 	}
+	if (!mainWidget->scLastAuthor_.isEmpty() && !mainWidget->scLastAuthor_.isNull()) {
+		if (!header_written) {
+			header_written = true;
+			out_ << endl << "\\header {" << endl;
+		}
+		outString = mainWidget->scLastAuthor_;
+		out_ << "\tarranger = \"";
+		writeEncodedAndReplaced(outString);
+		out_ << "\"";
+		if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
+		out_ << endl;
+	}
 	if (!mainWidget->scCopyright_.isEmpty() && !mainWidget->scCopyright_.isNull()) {
 		if (!header_written) {
 			header_written = true;
@@ -2080,19 +2092,19 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 		scoreBlock.append( new QString("2\\set Score.skipBars = ##t\n"));	// closing first hy
 		scoreBlock.append( new QString("2\\set Score.melismaBusyProperties = #'()\n"));
 		scoreBlock.append( new QString("1>>\n"));
+		scoreBlock.append( new QString("0}\n"));
 
-		tmps.sprintf("1\\layout {%s\n",
+		tmps.sprintf("0\\paper {%s\n",
 			exportDialog_->lilyLand->isChecked() ? " orientation = \"landscape\"" : "");
 		scoreBlock.append( new QString(tmps));
 		if (sscanf(exportDialog_->lilyWidth->text(), "%lf", &wh) != 1) wh = 250.0;
-		tmps.sprintf("2linewidth = %.3lf \\mm\n", wh );
+		tmps.sprintf("1linewidth = %.3lf \\mm\n", wh );
 		scoreBlock.append( new QString(tmps));
 		if (sscanf(exportDialog_->lilyHeight->text(), "%lf", &wh) != 1) wh = 160.0;
-		tmps.sprintf("2textheight = %.3lf \\mm\n", wh );
+		tmps.sprintf("1textheight = %.3lf \\mm\n", wh );
 		scoreBlock.append( new QString(tmps));
-		scoreBlock.append( new QString("1}\n"));
-
 		scoreBlock.append( new QString("0}\n"));
+
 		hy = 1;
 		endDist = 8;
 		lyricsInGrandStaff = false;

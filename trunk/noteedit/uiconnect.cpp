@@ -113,6 +113,10 @@ exportFrm::exportFrm(NMainFrameWidget *mainWidget,  QWidget *parent ) :
 	else {
 		this->musixtexcmd->setText(NResource::musixScript_);
 	}
+	
+	/* LilyPond 2.6.x supports utf8 encoding. It should be set as default. */
+	if (NResource::lilyProperties_.lilyVersion26)
+		this->lilyOutputCoding->setCurrentItem(3);
 
     staffDialog_ = new staffFrm( parent );
     

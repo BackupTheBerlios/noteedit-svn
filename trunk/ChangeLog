@@ -50,3 +50,9 @@ version 2.9.0:
 	  - int length_before_edit_ was introduced, because status_before_edit_ isn't appropriate anymore, to contain the length of the last selected note as well.
 	  - removed note_dymmy_ as it's not needed anymore IMO
 	* MusicXML import - reverted voice numbering behaviour. R323
+	* R325:
+	  - LilyPond export filter successfully tested with version 2.6.3 and 2.4.5
+	  - Ritardando and Accellerando now printed in italic and below the staff by default
+	  - Arbitrary text is not printed in bold anymore, because it's too aggressive. It's only \large and it's for the whole text (not just the first word).
+	  - noteedit -> NoteEdit
+	  - if Lily26 is found, utf8 encoding is set by default

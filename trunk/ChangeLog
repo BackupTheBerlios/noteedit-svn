@@ -59,4 +59,4 @@ version 2.9.0:
 	  - score property "last author" is exported as arranger
 	  - instead of a layout block we do a paper block: composer is properly aligned with music
 	* Slur direction is now dependent on voice stem direction + voice stem
-	policy. For eg. slurs for voices in poliphony music (2 voices, 1st has stems up, 2nd has stems down) are at the same side as stems, whereas for single voice staff without poliphony, slurs are at the opposite side. Also, every note (class NChord) has a new private NVoice *voice_ variable which defines which voice does this note/chord belong to. R333 
+	policy. For eg. slurs for voices in poliphony music (2 voices, 1st has stems up, 2nd has stems down) are at the same side as stems, whereas for single voice staff without poliphony, slurs are at the opposite side. Also, every note (class NChord) has a new private NVoice *voice_ variable which defines which voice does this note/chord belong to. R333, R334

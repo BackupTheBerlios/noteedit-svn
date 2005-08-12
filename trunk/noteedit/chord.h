@@ -156,7 +156,7 @@ class NChord: public NMusElement {
 		void drawGraceChord(int flags);
 		void calculateGraceChord();
 		int length_;
-		NVoice* voice_;
+		NVoice* voice_; /* voice, which this chord belongs to */
 		QPoint nbaseLinePoint1_;
 		QPoint nbaseLinePoint2_;
 		QPoint nbaseLinePoint3_;

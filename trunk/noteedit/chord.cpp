@@ -1496,6 +1496,8 @@ void NChord::draw(int flags) {
 			}
 		}
 		if ((note->status & STAT_TIED) && note->tie_forward) {
+			/* if there's no poliphony, ties are at the opposite side of stems,
+			   if there is polyphony, ties are at the same side as stems */
 			if ( ((status_ & STAT_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
 			    || (!(status_ & STAT_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
 		    	pa.setPoint(0, note->tie_start_point_up);
@@ -1659,7 +1661,8 @@ void NChord::draw(int flags) {
 	}
 
 	if ((status_ & STAT_SLURED) && slur_forward_) {
-		/* slur direction is counter-stem in STEM_POL_INDIVIDUAL and at the same side as stem dir in STEM_POL_DOWN/UP */
+		/* if there's no poliphony, slurs are at the opposite side of stems,
+		   if there is polyphony, slurs are at the same side as stems */
 		if ( ((status_ & STAT_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
 		    || (!(status_ & STAT_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
 			pa.setPoint(0, slur_start_point_up_);
@@ -1790,6 +1793,8 @@ void NChord::drawGraceChord(int flags) {
 			}
 		}
 		if ((note->status & STAT_TIED) && note->tie_forward) {
+			/* if there's no poliphony, ties are at the opposite side of stems,
+			   if there is polyphony, ties are at the same side as stems */
 			if ( ((status_ & STAT_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
 		        || (!(status_ & STAT_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
 		    	pa.setPoint(0, note->tie_start_point_up);

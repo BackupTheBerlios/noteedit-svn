@@ -106,13 +106,14 @@ QPoint NChord::StrokeDist2_(STROKE_X_2, STROKE_Y_2);
 int NChord::numTexRows_ = 0;
 QList<NNote> NChord::acc_tex_row;
 
-NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, int line, int offs, int length, int voices_stem_policy, status_type status, unsigned int status2) :
+NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, status_type status, unsigned int status2) :
 		 NMusElement(main_props, staff_props), m_(0.0), n_(0.0) {
 	NNote *note;
 	if (line > MAXLINE) line = MAXLINE;
 	else if (line < MINLINE) line = MINLINE;
 	xposDecor_ = xpos_ = 0;
 	length_ = length;
+	voice_ = voice;
 	note = new NNote;
 	note->status = (status & NOTE_STAT_PART);
 	if (length > WHOLE_LENGTH || (status & STAT_GRACE)) {
@@ -150,7 +151,7 @@ NChord* NChord::clone() {
 	NChord *cchord;
 	NNote *note, *cnote;
 	int i;
-	cchord = new NChord(main_props_, staff_props_, 0, 0, length_, STEM_POL_INDIVIDUAL, (unsigned int) 0);
+	cchord = new NChord(main_props_, staff_props_, voice_, 0, 0, length_, STEM_POL_INDIVIDUAL, 0);
 	
 	cchord->noteList_.first();
 	cchord->noteList_.remove();
@@ -1495,13 +1496,13 @@ void NChord::draw(int flags) {
 			}
 		}
 		if ((note->status & STAT_TIED) && note->tie_forward) {
-			if (status_ & STAT_STEM_UP) {
-				pa.setPoint(0, note->tie_start_point_up);
+			if ( ((status_ & STAT_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
+			    || (!(status_ & STAT_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
+		    	pa.setPoint(0, note->tie_start_point_up);
 				pa.setPoint(1, note->tie_forward_point_up);
 				pa.setPoint(2, note->tie_forward->tie_back_point_up);
 				pa.setPoint(3, note->tie_forward->tie_start_point_up);
-			}
-			else {
+			} else {
 				pa.setPoint(0, note->tie_start_point_down);
 				pa.setPoint(1, note->tie_forward_point_down);
 				pa.setPoint(2, note->tie_forward->tie_back_point_down);
@@ -1658,13 +1659,14 @@ void NChord::draw(int flags) {
 	}
 
 	if ((status_ & STAT_SLURED) && slur_forward_) {
-		if (status_ & STAT_STEM_UP) {
+		/* slur direction is counter-stem in STEM_POL_INDIVIDUAL and at the same side as stem dir in STEM_POL_DOWN/UP */
+		if ( ((status_ & STAT_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
+		    || (!(status_ & STAT_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
 			pa.setPoint(0, slur_start_point_up_);
 			pa.setPoint(1, slur_forward_point_up_);
 			pa.setPoint(2, slur_forward_->slur_back_point_up_);
 			pa.setPoint(3, slur_forward_->slur_start_point_up_);
-		}
-		else {
+		} else {
 			pa.setPoint(0, slur_start_point_down_);
 			pa.setPoint(1, slur_forward_point_down_);
 			pa.setPoint(2, slur_forward_->slur_back_point_down_);
@@ -1788,8 +1790,9 @@ void NChord::drawGraceChord(int flags) {
 			}
 		}
 		if ((note->status & STAT_TIED) && note->tie_forward) {
-			if (status_ & STAT_STEM_UP) {
-				pa.setPoint(0, note->tie_start_point_up);
+			if ( ((status_ & STAT_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
+		        || (!(status_ & STAT_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
+		    	pa.setPoint(0, note->tie_start_point_up);
 				pa.setPoint(1, note->tie_forward_point_up);
 				pa.setPoint(2, note->tie_forward->tie_back_point_up);
 				pa.setPoint(3, note->tie_forward->tie_start_point_up);

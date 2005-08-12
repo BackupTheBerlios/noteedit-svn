@@ -3149,7 +3149,7 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 			if (main_props_->pedal_off) status2 |= STAT2_PEDAL_OFF;
 			if (main_props_->triplet) status2 |= STAT2_AUTO_TRIPLET;
 			new_elem = 
-			new NChord(main_props_, &(theStaff_->staff_props_), line,  offs, main_props_->actualLength, stemPolicy_, status, status2);
+			new NChord(main_props_, &(theStaff_->staff_props_), this, line,  offs, main_props_->actualLength, stemPolicy_, status, status2);
 				part = new_elem->getNoteList()->first();
 		break;
 		case T_REST:
@@ -6088,7 +6088,7 @@ void NVoice::appendElem(int el_type, int line, int sub_type, int offs, status_ty
 	switch (el_type) {
 		case T_CHORD:
 			is_chord = true;
-			new_elem = new NChord(main_props_, &(theStaff_->staff_props_), line, offs, sub_type, stemPolicy_, status);
+			new_elem = new NChord(main_props_, &(theStaff_->staff_props_), this, line, offs, sub_type, stemPolicy_, status);
 			note = new_elem->getNoteList()->first();
 			break;
 		case T_REST:

@@ -2052,7 +2052,7 @@ void NMainFrameWidget::pitchToLine(int pitchNumber) {
 			status2 = 0;
 			if (main_props_.pedal_on) status2 |= STAT2_PEDAL_ON;
 			if (main_props_.pedal_off) status2 |= STAT2_PEDAL_OFF;
-			newchord = new  NChord(&main_props_, currentStaff_->getStaffPropsAddr(), halfLines, offs, main_props_.actualLength, currentVoice_->stemPolicy_, status, status2);
+			newchord = new NChord(&main_props_, currentStaff_->getStaffPropsAddr(), currentVoice_, halfLines, offs, main_props_.actualLength, currentVoice_->stemPolicy_, status, status2);
 			if (!currentVoice_->insertAfterCurrent(newchord)) return;
 			setEdited();
 			computeMidiTimes(true);
@@ -3357,7 +3357,7 @@ void NMainFrameWidget::readNotesFromMidiMapper() {
 	status2 = 0;
 	if (main_props_.pedal_on) status2 |= STAT2_PEDAL_ON;
 	if (main_props_.pedal_off) status2 |= STAT2_PEDAL_OFF;
-	newchord = new  NChord(&main_props_, currentStaff_->getStaffPropsAddr() ,line, offs, main_props_.actualLength, 
+	newchord = new NChord(&main_props_, currentStaff_->getStaffPropsAddr(), currentVoice_, line, offs, main_props_.actualLength, 
 				currentVoice_->stemPolicy_, status, status2);
 	for (pitch = pitches->next(); pitch; pitch = pitches->next()) {
 		currentStaff_->actualClef_.midi2Line(*pitch, &line, &offs, currentStaff_->actualKeysig_.getSubType());

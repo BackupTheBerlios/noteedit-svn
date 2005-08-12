@@ -1432,7 +1432,7 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 						if (stacatto) {
 							status |= STAT_STACC;
 						}
-						chord = new NChord(main_props, staff_props, line, offs, len2, ptr->stem_policy, status | body);
+						chord = new NChord(main_props, staff_props, voice, line, offs, len2, ptr->stem_policy, status | body);
 						for (j = 1; j < ptr->U.norm_evt.num_pitches; j++) {
 							clef->midi2Line(ptr->U.norm_evt.pitches[j], &line, &offs);
 							body = 0;

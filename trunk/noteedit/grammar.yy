@@ -1493,7 +1493,7 @@ note : length pitch
 		current_modificators &= (~INTERIM_STOKE);
 	 }
 	 $$.element.chord = new NChord(&(parser_params.mainWidget->main_props_), &(current_staff->staff_props_),
-		 $2.line, $2.offs, $1.length, current_voice->stemPolicy_, $1.status | $2.status | current_modificators);
+		 current_voice, $2.line, $2.offs, $1.length, current_voice->stemPolicy_, $1.status | $2.status | current_modificators);
 	 $$.beamstatus = $2.beamstatus;
 	 $$.slurdist = 0;
 	 if ($2.status &  STAT_SLURED) {

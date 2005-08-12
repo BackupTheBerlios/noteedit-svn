@@ -238,7 +238,7 @@ class NNote {
 #define STAT_TUPLET   ((status_type)1 << 12)
 /* is the end of tuplet */
 #define STAT_LAST_TUPLET ((status_type)1 << 13)
-/* has stem up or down */
+/* stem direction: 1-up, 0-down */
 #define STAT_STEM_UP ((status_type)1 << 14)
 /* an exception with stem direction before beam */
 #define STAT_STEM_UP_BEFORE_BEAM ((status_type)1 << 15)

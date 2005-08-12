@@ -1199,7 +1199,8 @@ bool MusicXMLParser::addNote()
 				// -> append new chord
 				NChord * chrd = new NChord(&(parser_params.mainWidget->main_props_),
 							   &(staff->staff_props_),
-						           line,
+							   current_voice,
+						       line,
 							   offs,
 							   length,
 							   stemPol,
@@ -1210,7 +1211,8 @@ bool MusicXMLParser::addNote()
 		} else {
 			NChord * chrd = new NChord(&(parser_params.mainWidget->main_props_),
 						   &(staff->staff_props_),
-					           line,
+						   current_voice,
+					       line,
 						   offs,
 						   length,
 						   stemPol,

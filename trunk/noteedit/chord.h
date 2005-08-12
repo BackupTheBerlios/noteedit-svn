@@ -26,6 +26,7 @@
 
 #include <qpixmap.h>
 #include "muselement.h"
+#include "voice.h"
 
 #define NORMAL_TRILL 1
 #define LONELY_TRILL 2
@@ -44,7 +45,7 @@ struct trill_descr_str {
 
 class NChord: public NMusElement {
 	public:
-		NChord(main_props_str *main_props, staff_props_str *staff_props, int line, int offs, int length, int voices_stem_policy, status_type status = 0, unsigned int status2 = 0);
+		NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, status_type status = 0, unsigned int status2 = 0);
 		virtual ~NChord();
 		virtual NChord *clone();
 		virtual void changeLength(int length);
@@ -155,6 +156,7 @@ class NChord: public NMusElement {
 		void drawGraceChord(int flags);
 		void calculateGraceChord();
 		int length_;
+		NVoice* voice_;
 		QPoint nbaseLinePoint1_;
 		QPoint nbaseLinePoint2_;
 		QPoint nbaseLinePoint3_;

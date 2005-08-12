@@ -3,7 +3,7 @@ NoteEdit - a music score editor
 version 2.9.0:
 	* MusicXML import/export of arbitrary text is now supported. R272
 	* Transposition now dependent on key signature, thanks to Csaba. R286
-	* MusicXML import filter now places special barlines where it should. R292, R298
+	* MusicXML import filter now places special barlines where it should. R292, R298, R323
 	* MusicXML export filter now exports hidden rests like it should. R292
 	* The last zoom factor gets set the next time you run NoteEdit. When a new file format arrives, each document should contain its own last zoom and position state. However, the default one (if no files loaded) should always be the last one used. R293
 	* Verse expression is replaced by Stanza in Lyrics dialog. Translations updated as well. R294
@@ -33,7 +33,7 @@ version 2.9.0:
 	  - stateButtonChange(int state, int state2) -> updateInterface(int state, int state2, int length).
 	  - slots for grace note buttons changed from setToTN8() -> setToGN8() and similar. Probably T was from "tiny", but musicians use an expression grace note for these kind of notes, so G.
 	* Hidden rest button now acts like others when in Edit mode and similar. But there's a major conflict between STAT_HIDDEN and STAT_CROSS. Problem is that 32 bits for status were already taken and there's no spare one for STAT_HIDDEN. I'll try to declare status_ to be 64 bit (long), so we'll have enough space for the future. An issue for the next commit. R312
-	* R313, R320:
+	* R313, R320, R333:
 	  - NMusElement::status_ is now unsigned 64bit integer. This way, hidden rests can have their unique flag and we have plenty of space for other flags in the future. NMusElement::status2_ is still unsigned int.
 	  - status and status2 variables changed to status_type and unsigned throughout the code
 	  - some internal renaming like state -> status, where state was the supposed 64bit integer
@@ -49,7 +49,6 @@ version 2.9.0:
 	  - whenever doing anything with STAT_* from now on (any comparison, bitmask operations and similar), always use status_type for operating type! int and other smaller types are not usable anymore!
 	  - int length_before_edit_ was introduced, because status_before_edit_ isn't appropriate anymore, to contain the length of the last selected note as well.
 	  - removed note_dymmy_ as it's not needed anymore IMO
-	* MusicXML import - reverted voice numbering behaviour. R323
 	* R325:
 	  - LilyPond export filter successfully tested with version 2.6.3 and 2.4.5
 	  - Ritardando and Accellerando now printed in italic and below the staff by default

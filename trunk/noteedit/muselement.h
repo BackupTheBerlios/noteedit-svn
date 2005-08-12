@@ -331,7 +331,7 @@ class NMusElement {
 		virtual bool deleteNoteAtLine(int, int) {return false;}
 		virtual void deletePart(NNote *) {};
 		virtual NNote *searchLine(int , int) { return 0;}
-		virtual NNote *insertNewNote(int , int , int , unsigned int ) {return 0;}
+		virtual NNote *insertNewNote(int , int , int , status_type) {return 0;}
 		virtual void insertNewNote(NNote *) {};
 		virtual NChordDiagram *getChordChordDiagram() {return 0;}
 		void reposit(int xpos, int sequNr_);

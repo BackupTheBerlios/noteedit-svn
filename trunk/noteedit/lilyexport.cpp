@@ -40,6 +40,7 @@
 #include <qcombobox.h>
 #include <qspinbox.h>
 #include <qslider.h>
+#include <qradiobutton.h>
 #include "lilyexport.h"
 #include "mainframewidget.h"
 #include "resource.h"
@@ -593,28 +594,52 @@ void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFr
 	
 	
 		out_ << "\t}" << endl;
-		if (NResource::lilyProperties_.lilyVersion24) {
-	        out_ << "\t\\layout {" << endl;
-		} else {
-	        out_ << "\t\\paper {" << endl;
-		}
-		if (exportDialog_->lilyLand->isChecked()) {
-			out_ << "\t\torientation = \"landscape\"" << endl;
-			if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
-		}
-		if (sscanf(exportDialog_->lilyWidth->text(), "%lf", &wh) != 1) {
-			wh = 250.0;
-		}
+		
+		/* export page size and orientation: */
+		out_ << "\t\\paper {" << endl;
+		/* custom page size */
+		if (exportDialog_->lilyCPage->isChecked()) {
+			if (sscanf(exportDialog_->lilyCWidth->text(), "%lf", &wh) != 1) {
+				wh = 250.0;
+			}
 	        out_ << "\t\tlinewidth = " << wh << " \\mm";
-		if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
-		out_ << endl;
-		if (sscanf(exportDialog_->lilyHeight->text(), "%lf", &wh) != 1) {
-			wh = 160.0;
-		}
+			if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
+			out_ << endl;
+			if (sscanf(exportDialog_->lilyCHeight->text(), "%lf", &wh) != 1) {
+				wh = 170.0;
+			}
 	        out_ << "\t\ttextheight = " << wh << " \\mm";
-		if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
-		out_ << endl;
-	        out_ << "\t}" << endl;
+			if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
+			out_ << endl;
+		} else /* standard page size */
+		if (exportDialog_->lilySPage->isChecked()) {
+			out_ << "\t\t#(set-paper-size \"";
+			switch (exportDialog_->lilySPageSize->currentItem()) {
+				case 0: out_ << "a6"; break;
+				case 1: out_ << "a5"; break;
+				case 2: out_ << "a4"; break;
+				case 3: out_ << "a3"; break;
+				case 4: out_ << "legal"; break;
+				case 5: out_ << "letter"; break;
+				case 6: out_ << "tabloid"; break;
+			}
+			out_ << "\")";
+			if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
+			out_ << endl;
+		}
+		
+		/* orientation */
+		if ( (exportDialog_->lilyCPage->isChecked() && exportDialog_->lilyCLand->isChecked()) 
+		    || (exportDialog_->lilySPage->isChecked() && exportDialog_->lilySLand->isChecked()) ) {
+			out_ << "\t\torientation = \"landscape\"";
+			if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
+			out_ << endl;
+		} 
+		
+		/* close \paper */
+	    out_ << "\t}" << endl;
+			
+		/* close \score */
 		out_ << "}" << endl;
 	}
 	out_.close();
@@ -2094,16 +2119,60 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 		scoreBlock.append( new QString("1>>\n"));
 		scoreBlock.append( new QString("0}\n"));
 
-		tmps.sprintf("0\\paper {%s\n",
-			exportDialog_->lilyLand->isChecked() ? " orientation = \"landscape\"" : "");
-		scoreBlock.append( new QString(tmps));
-		if (sscanf(exportDialog_->lilyWidth->text(), "%lf", &wh) != 1) wh = 250.0;
-		tmps.sprintf("1linewidth = %.3lf \\mm\n", wh );
-		scoreBlock.append( new QString(tmps));
-		if (sscanf(exportDialog_->lilyHeight->text(), "%lf", &wh) != 1) wh = 160.0;
-		tmps.sprintf("1textheight = %.3lf \\mm\n", wh );
-		scoreBlock.append( new QString(tmps));
-		scoreBlock.append( new QString("0}\n"));
+		/* Export page size, if not yet: */
+		/* There are two ways of exporting the page size:
+		   - If using a standard page size, use set-paper-size method in \paper block.
+		     eg. \paper {
+			         #(set-paper-size "a4")
+			     }
+			 or
+			     \paper {
+			         #(set-paper-size "a5" 'landscape)
+				 }
+		   - If using non-standard page size, set linewidth, textheight and orientation variables in \paper block.
+		     eg. \paper {
+		             linewidth = 200 \mm
+		             textheight = 150 \mm
+		             orientation = "landscape"
+			     }
+			 FIXME: linewidth, textheight don't change the actual paper size, but only drawing area. The size is paper still the default one. Is there another Lily variable to change the actual size?
+		*/	
+		scoreBlock.append(new QString("0\\paper {\n"));
+		/* standard page size */
+		if (exportDialog_->lilySPage->isChecked()) {
+			/* export standard paper size */
+			scoreBlock.append( new QString("1#(set-paper-size \""));
+			switch (exportDialog_->lilySPageSize->currentItem()) {
+				case 0: tmps.sprintf("0a6"); break;
+				case 1: tmps.sprintf("0a5"); break;
+				case 2: tmps.sprintf("0a4"); break;
+				case 3: tmps.sprintf("0a3"); break;
+				case 4: tmps.sprintf("0legal"); break;
+				case 5: tmps.sprintf("0letter"); break;
+				case 6: tmps.sprintf("0tabloid"); break;
+			}
+			scoreBlock.append(new QString(tmps));
+			scoreBlock.append(new QString(exportDialog_->lilySLand->isChecked() ? "0\" 'landscape" : "0\""));
+			/* export orientation */
+//			if (exportDialog_->lilySLand->isChecked())
+//				scoreBlock.append(new QString("0 'landscape"));
+			/* close the statement */
+			scoreBlock.append(new QString("0)\n"));
+		} else /* custom page size */
+		if (exportDialog_->lilyCPage->isChecked()) {
+			/* export width */
+			if (sscanf(exportDialog_->lilyCWidth->text(), "%lf", &wh) != 1) wh = 250.0;
+			tmps.sprintf("1linewidth = %.3lf \\mm\n", wh);
+			scoreBlock.append( new QString(tmps));
+			/* export height */
+			if (sscanf(exportDialog_->lilyCHeight->text(), "%lf", &wh) != 1) wh = 170.0;
+			tmps.sprintf("1textheight = %.3lf \\mm\n", wh );
+			scoreBlock.append( new QString(tmps));
+			/* export orientation*/
+			scoreBlock.append( new QString(exportDialog_->lilyCLand->isChecked() ? "1orientation = \"landscape\"\n" : "") );
+		}
+		/* close \paper */
+		scoreBlock.append(new QString("0}\n"));
 
 		hy = 1;
 		endDist = 8;

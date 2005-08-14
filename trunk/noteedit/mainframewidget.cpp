@@ -3859,8 +3859,8 @@ void NMainFrameWidget::exportMusixTeXImm() {
 
 void NMainFrameWidget::exportLilyPondImm() {
 	NResource::staffSelExport_ = 0;
-	exportDialog_->lilyWidth->setValue( 170 );
-	exportDialog_->lilyHeight->setValue( 250 );
+	exportDialog_->lilyCWidth->setValue( 170 );
+	exportDialog_->lilyCHeight->setValue( 250 );
 	exportDialog_->lilyVoice->setChecked(false);
 	exportDialog_->lilyBeam->setChecked(false);
 	exportDialog_->lilyTies->setChecked(false);

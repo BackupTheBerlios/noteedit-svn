@@ -117,7 +117,15 @@ exportFrm::exportFrm(NMainFrameWidget *mainWidget,  QWidget *parent ) :
 	/* LilyPond 2.6.x supports utf8 encoding. It should be set as default. */
 	if (NResource::lilyProperties_.lilyVersion26)
 		this->lilyOutputCoding->setCurrentItem(3);
-
+		
+	/* LilyPond <2.2 doesn't support standard page sizes yet */
+	if (NResource::lilyProperties_.lilyProperties) {
+		this->lilyCPage->setChecked(true);
+		this->lilySPage->setEnabled(false);
+		this->lilySPageSize->setEnabled(false);
+		this->lilySLand->setEnabled(false);
+	}
+	
     staffDialog_ = new staffFrm( parent );
     
     }
@@ -295,13 +303,13 @@ void exportFrm::musixLandSlot() {
 
 void exportFrm::lilyLandSlot() {
 
-    if( this->lilyLand->isChecked() ) {
-	this->lilyWidth->setValue( 250 );
-	this->lilyHeight->setValue( 170 );
+    if( this->lilyCLand->isChecked() ) {
+	this->lilyCWidth->setValue( 250 );
+	this->lilyCHeight->setValue( 170 );
 	}
     else {
-	this->lilyWidth->setValue( 170 );
-	this->lilyHeight->setValue( 250 );
+	this->lilyCWidth->setValue( 170 );
+	this->lilyCHeight->setValue( 250 );
 	}
 
     }

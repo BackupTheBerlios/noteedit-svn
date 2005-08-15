@@ -24,37 +24,8 @@
 #include <stdio.h>
 #include "muselement.h"
 #include "resource.h"
-#include "transpainter.h"
 #include "clef.h"
 #include "chord.h"
-
-
-main_props_str::main_props_str() : scaledBoldItalicMetrics_(QFont()) /* dummy */ {
-			dotcount = 0;
-			pedal_on = pedal_off = triplet =
-			tied = staccato = sforzato = portato = strong_pizzicato = 
-			arpeggio = grace = sforzando = fermate = hidden = false;
-			noteBody = 0;
-			actualLength = QUARTER_LENGTH;
-			actualStemDir = STEM_DIR_AUTO;
-			tp              = new NTransPainter();
-			tp->setXPosition(-DEFAULT_LEFT_PAGE_BORDER);
-			tp->setYPosition(-TOP_BOTTOM_BORDER);
-			directPainter              = new NTransPainter();
-			directPainter->setXPosition(-(int) ((float) DEFAULT_LEFT_PAGE_BORDER/zoom));
-			directPainter->setYPosition(-TOP_BOTTOM_BORDER);
-			p                = new NTransPainter();
-			p->setYPosition(-TOP_BOTTOM_BORDER);
-			left_page_border = DEFAULT_LEFT_PAGE_BORDER;
-			context_clef_xpos = DEFAULT_CONTEXT_CLEF_X_POS;
-			context_keysig_xpos = DEFAULT_CONTEXT_KEYSIG_X_POS;
-		}
-
-main_props_str::~main_props_str() {
-			delete tp;
-			delete p;
-			delete directPainter;
-		}
 
 
 NMusElement::NMusElement(main_props_str *main_props, staff_props_str *staff_props) {

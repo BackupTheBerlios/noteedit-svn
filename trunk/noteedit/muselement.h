@@ -28,84 +28,10 @@
 #include "resource.h"
 #include "constants.h"
 
-class muselement;
+#include "internals.h"
+
 class NClef;
-class NKeySig;
-class NChord;
-class NTransPainter;
-class NNumberDisplay;
 class NChordDiagram;
-
-class staff_props_str {
-	public:
-		int base;
-		int lyricsdist;
-		bool is_actual;
-		int measureLength;
-		NKeySig *actual_keysig;
-};
-
-class main_props_str {
-	public:
-		main_props_str();
-		~main_props_str();
-		int dotcount;
-		bool hidden;
-		bool tied;
-		bool triplet;
-		bool staccato;
-		bool sforzato;
-		bool portato;
-		bool strong_pizzicato;
-		bool sforzando;
-		bool fermate;
-		bool arpeggio;
-		bool grace;
-		bool pedal_on;
-		bool pedal_off;
-		status_type noteBody;
-		int actualLength;
-		int actualStemDir;
-		NTransPainter *p;
-		NTransPainter *tp;
-		NTransPainter *directPainter;
-		NNumberDisplay *voiceDisplay;
-		QFont scaledText_;
-		QFont scaledItalic_;
-		QFont scaledMiniItalic_;
-		QFont scaledBoldItalic_;
-		QFont scaledBold_;
-		QFont scaledBold2_;
-		QFontMetrics scaledBoldItalicMetrics_;
-		float zoom; /* zoom value in scaler */
-		int left_page_border;
-		int context_clef_xpos;
-		int context_keysig_xpos;
-};
-
-class NNote {
-	public:
-		QPixmap *bodyPixmap;
-		QPixmap *redBodyPixmap;
-		QPixmap *greyBodyPixmap;
-		Q_INT8 line;
-		Q_INT8 offs;
-		short midiPitch; /* during replay */
-		QPoint nbase_draw_point;
-		QPoint acc_draw_point;
-		QRect point_pos1;
-		QRect point_pos2;
-		NNote *tie_forward, *tie_backward;
-		char acc_offs;
-		status_type needed_acc;
-		char acc_TeX_pos;
-		status_type status;
-		QPoint tie_start_point_up, tie_start_point_down;
-		QPoint tie_forward_point_up, tie_forward_point_down;
-		QPoint tie_back_point_up, tie_back_point_down;
-		NChord *chordref;
-		short TeXTieNr;
-};
 
 class NMusElement {
 	public :

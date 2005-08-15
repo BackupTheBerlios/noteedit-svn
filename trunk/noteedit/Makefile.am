@@ -19,7 +19,7 @@ libnoteedit_la_SOURCES = abcexport.cpp mididevicelistbox.cpp \
 	keyoffs.cpp keysig.cpp layout.cpp \
 	lexik.ll lilyexport.cpp lilytest.cpp lines.ui listSel.ui lyrics.ui \
 	mainframewidget2.cpp mainframewidget.cpp metronom.ui \
-	midiexport.cpp midimapper.cpp midi.ui mupWarning.ui muselement.cpp \
+	midiexport.cpp midimapper.cpp midi.ui mupWarning.ui muselement.cpp internals.cpp \
 	multistaffinfo.cpp \
 	musicxmlcommon.cpp musicxmlimport.cpp musicxmlexport.cpp \
 	musixtex.cpp miditimescale.cpp \
@@ -73,7 +73,7 @@ noinst_HEADERS = mididevicelistbox.h \
 	keyoffs.h keysig.h \
 	lilyexport.h lilytest.h lines.h listSel.h lyrics.h \
 	mainframewidget.h metronom.h midiexport.h midi.h midimapper.h \
-	mupWarning.h muselement.h musixtex.h miditimescale.h \
+	mupWarning.h muselement.h internals.h musixtex.h miditimescale.h \
 	noteedit_part.h notesel.h numberdisplay.h \
 	outputbox.h \
 	parsertypes.h pmxexport.h \

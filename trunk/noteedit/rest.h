@@ -28,7 +28,7 @@
 
 class QPixmap;
 
-class NRest : public NMusElement {
+class NRest : public NPlayable {
 	public:
 		NRest(main_props_str *main_props_, staff_props_str *staff_props, int *y_voice_offs, int length=32, status_type status = 0);
 		~NRest();
@@ -51,7 +51,7 @@ class NRest : public NMusElement {
 		virtual char getPlaytime() {return tupRealTime_;}
 		virtual void addChordDiagram(NChordDiagram *cdiag);
 		virtual void removeChordDiagram();
-		virtual void setTupletParams(QList<NMusElement> *tupelList, bool last, double m,
+		virtual void setTupletParams(QList<NPlayable> *tupelList, bool last, double m,
 						 double n , double tuptexn, int xstart, int xend, char numnotes, char playtime);
 		void setVoiceOffs(int *voice_offs) {yRestOffs_ = voice_offs;}
 		virtual int computeMidiLength() const;

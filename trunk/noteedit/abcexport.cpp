@@ -354,7 +354,7 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 				      if (chord->status_ & STAT_TUPLET) {
 				      	if (!inTuplet) {
 						inTuplet = true;
-						outputTupletStart(staff_nr, elem);
+						outputTupletStart(staff_nr, elem->playable() );
 					}
 				      }
 				      if (inGrace && !(chord->status_ & STAT_GRACE)) {
@@ -485,7 +485,7 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 				     if (rest->status_ & STAT_TUPLET) {
 				     	if (!inTuplet) {
 						inTuplet = true;
-						outputTupletStart(staff_nr, elem);
+						outputTupletStart(staff_nr, elem->playable());
 					}
 				     }
 				     inBeam =false;
@@ -655,7 +655,7 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 				      if (chord->status_ & STAT_TUPLET) {
 				      	if (!inTuplet) {
 						inTuplet = true;
-						outputTupletStart(staff_nr, elem);
+						outputTupletStart(staff_nr, elem->playable());
 					}
 				      }
 				      if (inGrace && !(chord->status_ & STAT_GRACE)) {
@@ -742,7 +742,7 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 				     if (rest->status_ & STAT_TUPLET) {
 				     	if (!inTuplet) {
 						inTuplet = true;
-						outputTupletStart(staff_nr, elem);
+						outputTupletStart(staff_nr, elem->playable());
 					}
 				     }
 				     inBeam =false;
@@ -992,7 +992,7 @@ void NABCExport::outputLength(int len, status_type status, bool inChord, bool dr
 	if (!inChord && drumNote) out_ << ']';
 }
 
-void NABCExport::outputTupletStart (int staff_nr, NMusElement *elem) {
+void NABCExport::outputTupletStart (int staff_nr, NPlayable *elem) {
 	badinfo *bad;
 	int real_note_count;
 	bool play_time_written = false;
@@ -1292,19 +1292,19 @@ QString NABCExport::lyrics2ABC(QString *lyrics) {
 		ret = '*';
 		return ret;
 	}
-	reg = QRegExp("ä");
+	reg = QRegExp("Ã¤");
 	ret.replace (reg, "\\\"a");
-	reg = QRegExp("ö");
+	reg = QRegExp("Ã¶");
 	ret.replace (reg, "\\\"o");
-	reg = QRegExp("ü");
+	reg = QRegExp("Ã¼");
 	ret.replace (reg, "\\\"u");
-	reg = QRegExp("Ä");
+	reg = QRegExp("Ã„");
 	ret.replace (reg, "\\\"A");
-	reg = QRegExp("Ö");
+	reg = QRegExp("Ã–");
 	ret.replace (reg, "\\\"O");
-	reg = QRegExp("Ü");
+	reg = QRegExp("Ãœ");
 	ret.replace (reg, "\\\"U");
-	reg = QRegExp("ß");
+	reg = QRegExp("ÃŸ");
 	ret.replace (reg, "\\ss");
 	reg = QRegExp("_");
 	ret.replace (reg, "\\_");

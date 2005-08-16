@@ -47,13 +47,49 @@ void NMusElement::change(NMusElement *elem) {
 }
 
 
-void NMusElement::computeTuplet() {
+void NMusElement::reposit(int xpos, int sequNr) {
+	xpos_ = xpos;
+	sequNr_ = sequNr;
+	calculateDimensionsAndPixmaps();
+}
+
+
+NMusElement::~NMusElement() {
+}
+
+int NMusElement::intersects (const QPoint p) const {
+	if (p.x() < bbox_.left()) return -1;
+	if (p.x() >= bbox_.left() && p.x() <= bbox_.right() && p.y() >= bbox_.top() && p.y() <= bbox_.bottom()) return 0;
+	return 1;
+}
+
+NPlayable * NMusElement::playable() {
+	if( !( getType() & PLAYABLE ) )
+		return 0;
+	return (NPlayable *)this;
+}
+
+	
+NPlayable::NPlayable(main_props_str *main_props, staff_props_str *staff_props) :
+	NMusElement( main_props, staff_props )
+{
+}
+
+void NPlayable::breakTuplet() {
+	NPlayable *elem;
+	for (elem = tupletList_->first(); elem; elem = tupletList_->next()) {
+		elem->status_ &= (~(STAT_TUPLET | STAT_LAST_TUPLET));
+		elem->changeLength(elem->getSubType());
+	}
+}
+
+void NPlayable::computeTuplet() {
 	computeTuplet(tupletList_, getNumNotes(), getPlaytime());
 }
 
-void NMusElement::computeTuplet(QList<NMusElement> *tupletList, char numNotes, char playtime) {
+void NPlayable::computeTuplet(QList<NPlayable> *tupletList, char numNotes, char playtime) {
 #define TUPLET_DIST 24
-	NMusElement *elem, *elem0, *first_tuplet_member = 0;
+	NPlayable *elem, *elem0, *first_tuplet_member = 0;
 	double sumxi2, sumxi, sumxiyi, sumyi;
 	int count;
 	double m, n, nn, don, x0, xdist;
@@ -112,44 +148,20 @@ void NMusElement::computeTuplet(QList<NMusElement> *tupletList, char numNotes, c
 	elem0->calculateDimensionsAndPixmaps();
 }
 
-void NMusElement::breakTuplet() {
-	NMusElement *elem;
-	for (elem = tupletList_->first(); elem; elem = tupletList_->next()) {
-		elem->status_ &= (~(STAT_TUPLET | STAT_LAST_TUPLET));
-		elem->changeLength(elem->getSubType());
-	}
-}
-
-void NMusElement::unsetTuplet() {
+void NPlayable::unsetTuplet() {
 	status_ &= (~(STAT_TUPLET | STAT_LAST_TUPLET));
 }
 
-void NMusElement::reposit(int xpos, int sequNr) {
-	xpos_ = xpos;
-	sequNr_ = sequNr;
-	calculateDimensionsAndPixmaps();
-}
 
-
-NMusElement::~NMusElement() {
-}
-
-int NMusElement::intersects (const QPoint p) const {
-	if (p.x() < bbox_.left()) return -1;
-	if (p.x() >= bbox_.left() && p.x() <= bbox_.right() && p.y() >= bbox_.top() && p.y() <= bbox_.bottom()) return 0;
-	return 1;
-}
-
-
-QString *NMusElement::computeTeXTuplet(NClef *clef) {
-	NMusElement *elem;
+QString *NPlayable::computeTeXTuplet(NClef *clef) {
+	NPlayable *elem;
 	QString *s;
 	int line, delta = 0;
 	int maxheight = 20000;
 	int numNotes, playtime;
 	if (!(status_ & STAT_TUPLET)) return 0;
 	if (tupletList_ == 0) {
-		NResource::abort("internal error: NMusElement::computeTeX: tupletList_ == 0");
+		NResource::abort("internal error: NPlayable::computeTeX: tupletList_ == 0");
 	}
 	if (this == tupletList_->first()) {
 		numNotes = getNumNotes();
@@ -181,5 +193,3 @@ QString *NMusElement::computeTeXTuplet(NClef *clef) {
 	}
 	return 0;
 }
-
-	

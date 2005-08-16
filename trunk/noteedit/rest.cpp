@@ -31,7 +31,7 @@
 #define REST_POINT_RAD 5
 
 NRest::NRest(main_props_str *main_props, staff_props_str *staff_props, int *y_voice_offs, int length, status_type status) :
-		 NMusElement(main_props, staff_props) {
+		 NPlayable(main_props, staff_props) {
 	length_ = length;
 	switch (length) {
 		case MULTIREST: status_ = 0;
@@ -89,7 +89,7 @@ void NRest::changeLength(int length) {
 	midiLength_ = computeMidiLength();
 }
 
-void NRest::setTupletParams(QList<NMusElement> *tupletList, 
+void NRest::setTupletParams(QList<NPlayable> *tupletList, 
 			bool last, double m, double n, double tuptexn, int xstart, int xend, char numnotes, char playtime) {
 	tupletList_ = tupletList;
 	SET_STATUS(last, status_, STAT_LAST_TUPLET);

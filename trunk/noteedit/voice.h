@@ -137,7 +137,7 @@ class NVoice {
 		bool trimmRegionToWholeStaff(int *x0, int *x1);
 		void deleteBlock();
 		void findStartElemAt(int x0, int x1);
-		bool wholeTupletDeleted(NMusElement *ac_elem, int posOfFirst, int posOfLast);
+		bool wholeTupletDeleted(NPlayable *ac_elem, int posOfFirst, int posOfLast);
 		bool wholeBeamDeleted(NChord *ac_elem, int posOfFirst, int posOfLast);
 		void pasteAtMidiTime(int dest_time, int part_in_measure, int countof128th, QList<NMusElement> *clipboard);
 		void pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool complete, int *part_in_current_measure, int *dest_midi_time, int *countof128th);
@@ -178,10 +178,10 @@ class NVoice {
 		void breakBeames();
 		void breakTuplet();
 		void breakCopiedTuplets();
-		bool checkTuplets(QList<NMusElement> *copielist, QList<NMusElement> *tupletlist);
+		bool checkTuplets(QList<NMusElement> *copielist, QList<NPlayable> *tupletlist);
 		bool lastChordContained(QList<NMusElement> *clonelist, QList<NChord> *beamlist);
-		bool lastElemContained(QList<NMusElement> *clonelist, QList<NMusElement> *tupletlist);
-		bool allElemsContained(QList<NMusElement> *clonelist, QList<NMusElement> *tupletlist);
+		bool lastElemContained(QList<NMusElement> *clonelist, QList<NPlayable> *tupletlist);
+		bool allElemsContained(QList<NMusElement> *clonelist, QList<NPlayable> *tupletlist);
 		void setActualTied();
 		void setHidden(); /* toggle hidden rest */
 		void setArpeggio();
@@ -359,7 +359,7 @@ class NVoice {
 		bool beameEndRequired(QList<NChord> *beamlist_so_far, NTimeSig *timesig, int beats);
 /*----------------------- dealing with tuplets -------------------------------------*/
 		void reconnectTuplets();
-		bool buildTupletList(int x0, int x1, char numNotes, QList<NMusElement> *elemlist);
+		bool buildTupletList(int x0, int x1, char numNotes, QList<NPlayable> *elemlist);
 		void tryToBuildAutoTriplet();
 /*----------------------- search -------------------------------------*/
 		int searchPositionAndUpdateSigns(int dest_xpos, NMusElement **elem, bool *found, NMusElement **elem_before = 0, 

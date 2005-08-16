@@ -822,7 +822,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 						}
 			     	}
 			     }
-			     s = elem->computeTeXTuplet(&(staff_elem->actualClef_));
+			     s = elem->playable()->computeTeXTuplet(&(staff_elem->actualClef_));
 			     if (s) {
 				out_ << *s;
 				delete s;
@@ -1119,7 +1119,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 			     if ((diag = elem->getChordChordDiagram()) != 0) {
 				writeChordDiagram(diag);
 			     }
-			     s = elem->computeTeXTuplet(&(staff_elem->actualClef_));
+			     s = elem->playable()->computeTeXTuplet(&(staff_elem->actualClef_));
 			     if (s) {
 				out_ << *s;
 				delete s;

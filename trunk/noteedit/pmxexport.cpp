@@ -760,8 +760,8 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     *pmxout_ << 'r';
 				     if (elem->status_ & STAT_HIDDEN) *pmxout_ << 'b';
 				     if (elem->status_ & STAT_TUPLET) {
-					if (elem->isFirstInTuplet()) {
-						inspectTuplet(elem, staff_nr, barNr_+numMeasures);
+					if (elem->playable()->isFirstInTuplet()) {
+						inspectTuplet(elem->playable(), staff_nr, barNr_+numMeasures);
 						*pmxout_  << computePMXTupletLength(elem->getPlaytime()*tupletBase_, staff_nr, barNr_+numMeasures);
 						lastLength_ = elem->getPlaytime()*tupletBase_;
 					}
@@ -783,7 +783,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 					case 2: *pmxout_ << "dd"; break;
 				     }
 				     if (elem->status_ & STAT_TUPLET) {
-						if (elem->isFirstInTuplet()) *pmxout_ << "x" << (int) (elem->getNumNotes());
+						if (elem->playable()->isFirstInTuplet()) *pmxout_ << "x" << (int) (elem->getNumNotes());
 						if (elem->getSubType() != tupletBase_) *pmxout_ << 'D';
 				     }
 				     *pmxout_ << ' ';
@@ -1262,11 +1262,11 @@ bool NPmxExport::testContextChange(int voice_nr, NVoice *voice, bool first) {
 	return false;
 }
 		
-void NPmxExport::inspectTuplet(NMusElement *elem, int staff_nr, int barnr_) {
-	QList<NMusElement> *tupletlist;
+void NPmxExport::inspectTuplet(NPlayable *elem, int staff_nr, int barnr_) {
+	QList<NPlayable> *tupletlist;
 	badmeasure *bad;
 	int len1, len2;
-	NMusElement *elem2;
+	NPlayable *elem2;
 	bool len2set = false;
 
 	tupletlist = elem->getTupletList();

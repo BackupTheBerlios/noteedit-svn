@@ -465,8 +465,8 @@ bool NVoice::trimmRegionToWholeStaff(int *x0, int *x1) {
 }
 
 
-bool NVoice::wholeTupletDeleted(NMusElement *ac_elem, int posOfFirst, int posOfLast) {
-	NMusElement *firstTupletElem, *lastTupletElem;
+bool NVoice::wholeTupletDeleted(NPlayable *ac_elem, int posOfFirst, int posOfLast) {
+	NPlayable *firstTupletElem, *lastTupletElem;
 
 	lastTupletElem = ac_elem->getTupletList()->last();
 	firstTupletElem =  ac_elem->getTupletList()->first();
@@ -508,8 +508,8 @@ void NVoice::deleteBlock() {
 		found = ac_elem == stop_elem;
 		if (ac_elem->getType() == T_CHORD) {
 			chord = (NChord *) ac_elem;
-			if ((ac_elem->status_ & STAT_TUPLET) && !wholeTupletDeleted(ac_elem, start_elem->getXpos(), stop_elem->getXpos())) {
-				ac_elem->breakTuplet();
+			if ((ac_elem->status_ & STAT_TUPLET) && !wholeTupletDeleted(chord, start_elem->getXpos(), stop_elem->getXpos())) {
+				chord->breakTuplet();
 			}
 			if (chord->status_ & STAT_BEAMED) {
 				bool wh;
@@ -528,8 +528,8 @@ void NVoice::deleteBlock() {
 			}
 		}
 		else {
-			if ((ac_elem->status_ & STAT_TUPLET) && !wholeTupletDeleted(ac_elem, start_elem->getXpos(), stop_elem->getXpos())) {
-				ac_elem->breakTuplet();
+			if ((ac_elem->status_ & STAT_TUPLET) && ac_elem->playable() && !wholeTupletDeleted( ac_elem->playable(), start_elem->getXpos(), stop_elem->getXpos())) {
+				ac_elem->playable()->breakTuplet();
 			}
 			musElementList_.remove();
 		}
@@ -625,7 +625,7 @@ void NVoice::reconnectTuplets() {
 	int oldidx;
 	int numNotes, playtime;
 	NMusElement *ac_elem;
-	QList<NMusElement> *tupletlist = new QList<NMusElement>();
+	QList<NPlayable> *tupletlist = new QList<NPlayable>();
 
 	oldidx = musElementList_.at();
 	ac_elem = currentElement_;
@@ -635,13 +635,15 @@ void NVoice::reconnectTuplets() {
 	numNotes = ac_elem->getNumNotes();
 	playtime = ac_elem->getPlaytime();
 	ac_elem->calculateDimensionsAndPixmaps();
-	tupletlist->append(ac_elem);
+	if( ac_elem->playable() )
+		tupletlist->append( ac_elem->playable() );
 	ac_elem = musElementList_.prev();
-	while (ac_elem && (ac_elem->status_ & STAT_TUPLET) && !(ac_elem->status_ & STAT_LAST_TUPLET)) {
-		tupletlist->insert(0, ac_elem);
+	while (ac_elem && ac_elem->playable() && (ac_elem->status_ & STAT_TUPLET) && !(ac_elem->status_ & STAT_LAST_TUPLET)) {
+		tupletlist->insert(0, ac_elem->playable() );
 		ac_elem = musElementList_.prev();
 	}
-	ac_elem->computeTuplet(tupletlist, numNotes, playtime);
+	if( ac_elem->playable() )
+		ac_elem->playable()->computeTuplet(tupletlist, numNotes, playtime);
 	if (oldidx >= 0) musElementList_.at(oldidx);
 }
 
@@ -652,10 +654,12 @@ void NVoice::breakCopiedTuplets() {
 
 	oldidx = musElementList_.at();
 	ac_elem = currentElement_;
-	ac_elem->unsetTuplet();
+	if( !ac_elem->playable() )
+		return;
+	ac_elem->playable()->unsetTuplet();
 	ac_elem = musElementList_.prev();
-	while (ac_elem && (ac_elem->status_ & STAT_TUPLET) && !(ac_elem->status_ & STAT_LAST_TUPLET)) {
-		ac_elem->unsetTuplet();
+	while (ac_elem && ac_elem->playable() && (ac_elem->status_ & STAT_TUPLET) && !(ac_elem->status_ & STAT_LAST_TUPLET)) {
+		ac_elem->playable()->unsetTuplet();
 		ac_elem = musElementList_.prev();
 	}
 	if (oldidx >= 0) musElementList_.at(oldidx);
@@ -1025,8 +1029,9 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 				currentElement_ = 0;
 			}
 		}
-		if ((elem_before->status_ & STAT_TUPLET) && (ac_elem->status_ & STAT_TUPLET)) {
-			if (elem_before->getTupletList() == ac_elem->getTupletList()) {
+		if ((elem_before->status_ & STAT_TUPLET) && (ac_elem->status_ & STAT_TUPLET) && 
+				elem_before->playable() && ac_elem->playable() ) {
+			if ( elem_before->playable()->getTupletList() == ac_elem->playable()->getTupletList()) {
 				currentElement_ = musElementList_.prev();
 				breakTuplet();
 				musElementList_.at(idx);
@@ -1100,7 +1105,7 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 				     }
 			case T_REST:
 				     if (clone_elem->status_ & STAT_LAST_TUPLET) {
-						if (checkTuplets(clipboard, ac_elem->getTupletList())) {
+						if (checkTuplets(clipboard, ac_elem->playable()->getTupletList())) {
 							reconnectTuplets();
 						}
 #ifdef AAA /* see below! */
@@ -1124,8 +1129,8 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
  				     clone_elem->trill_ = clone_elem->dynamic_ = 0;
 			case T_REST:
 				    if (clone_elem->status_ & STAT_TUPLET) {
-					if (!allElemsContained(clonelist, clone_elem->getTupletList())) {
-						clone_elem->resetTupletFlag();
+					if (!allElemsContained(clonelist, clone_elem->playable()->getTupletList())) {
+						clone_elem->playable()->resetTupletFlag();
 					}
 				    }
 				    break;
@@ -1179,8 +1184,9 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 				currentElement_ = 0;
 			}
 		}
-		if ((elem_before->status_ & STAT_TUPLET) && (ac_elem->status_ & STAT_TUPLET)) {
-			if (elem_before->getTupletList() == ac_elem->getTupletList()) {
+		if ((elem_before->status_ & STAT_TUPLET) && (ac_elem->status_ & STAT_TUPLET) &&
+				elem_before->playable() && ac_elem->playable() ) {
+			if ( elem_before->playable()->getTupletList() == ac_elem->playable()->getTupletList()) {
 				idx = musElementList_.at();
 				currentElement_ = musElementList_.prev();
 				breakTuplet();
@@ -1291,7 +1297,7 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 				     }
 			case T_REST:
 				     if (clone_elem->status_ & STAT_LAST_TUPLET) {
-						if (checkTuplets(clipboard, ac_elem->getTupletList())) {
+						if (checkTuplets(clipboard, ac_elem->playable()->getTupletList())) {
 							reconnectTuplets();
 						}
 #ifdef AAA /* see below! */
@@ -1314,8 +1320,8 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 				     }
 			case T_REST:
 				    if (clone_elem->status_ & STAT_TUPLET) {
-					if (!lastElemContained(clonelist, clone_elem->getTupletList())) {
-						clone_elem->resetTupletFlag();
+					if (!lastElemContained(clonelist, clone_elem->playable()->getTupletList())) {
+						clone_elem->playable()->resetTupletFlag();
 					}
 				    }
 				    break;
@@ -1512,11 +1518,11 @@ void NVoice::changeBodyOfActualElement() {
 
 
 void NVoice::changeActualChord() {
-	if (!currentElement_) return;
+	if (!currentElement_ || !currentElement_->playable() ) return;
 	createUndoElement(currentElement_, 1, 0);
-	currentElement_->changeLength(main_props_->actualLength);
+	currentElement_->playable()->changeLength(main_props_->actualLength);
 	if (currentElement_->status_ & STAT_TUPLET) {
-		currentElement_->breakTuplet();
+		currentElement_->playable()->breakTuplet();
 	}
 }
 
@@ -1569,7 +1575,7 @@ bool NVoice::lastChordContained(QList<NMusElement> *clonelist, QList<NChord> *be
 	return false;
 }
 
-bool NVoice::allElemsContained(QList<NMusElement> *clonelist, QList<NMusElement> *tupletlist) {
+bool NVoice::allElemsContained(QList<NMusElement> *clonelist, QList<NPlayable> *tupletlist) {
 	NMusElement *elem;
 
 	for (elem = tupletlist->first(); elem; elem = tupletlist->next()) {
@@ -1578,7 +1584,7 @@ bool NVoice::allElemsContained(QList<NMusElement> *clonelist, QList<NMusElement>
 	return true;
 }
 
-bool NVoice::lastElemContained(QList<NMusElement> *clonelist, QList<NMusElement> *tupletlist) {
+bool NVoice::lastElemContained(QList<NMusElement> *clonelist, QList<NPlayable> *tupletlist) {
 	int oldidx = clonelist->at();
 	NMusElement *lastelem = tupletlist->last();
 	NMusElement *elem;
@@ -1599,7 +1605,7 @@ bool NVoice::lastElemContained(QList<NMusElement> *clonelist, QList<NMusElement>
 }
 
 
-bool NVoice::checkTuplets(QList<NMusElement> *copielist, QList<NMusElement> *tupletlist) {
+bool NVoice::checkTuplets(QList<NMusElement> *copielist, QList<NPlayable> *tupletlist) {
 	int oldidx = copielist->at();
 	bool found;
 	NMusElement *elem0, *elem1;
@@ -1624,20 +1630,20 @@ bool NVoice::checkTuplets(QList<NMusElement> *copielist, QList<NMusElement> *tup
 	
 void NVoice::breakTuplet() {
 	int oldidx;
-	QList<NMusElement> *tupletlist;
+	QList<NPlayable> *tupletlist;
 	int first_trip_idx, last_trip_idx;
 
-	if (!currentElement_) return;
+	if (!currentElement_ || !currentElement_->playable() ) return;
 	if (!(currentElement_->status_ & STAT_TUPLET)) return;
 	oldidx = musElementList_.at();
-	tupletlist = currentElement_->getTupletList();
+	tupletlist = currentElement_->playable()->getTupletList();
 	first_trip_idx = musElementList_.find(tupletlist->first());
 	last_trip_idx = musElementList_.find(tupletlist->last());
 	if (first_trip_idx < 0 || last_trip_idx < 0) {
 		NResource::abort("breakTuplet: internal error");
 	}
 	createUndoElement(first_trip_idx, last_trip_idx - first_trip_idx + 1, 0);
-	currentElement_->breakTuplet();
+	currentElement_->playable()->breakTuplet();
 	if (oldidx >= 0) musElementList_.at(oldidx);
 }
 
@@ -1851,7 +1857,7 @@ void NVoice::setBeamed() {
 // note:	always clears elemlist at start
 // note:	LVIFIX tbd: positions musElementList_ at ???
 
-bool NVoice::buildTupletList(int x0, int x1, char numNotes, QList<NMusElement> *elemlist) {
+bool NVoice::buildTupletList(int x0, int x1, char numNotes, QList<NPlayable> *elemlist) {
 	int count = 0;
 	int idx = 0;
 	bool found = false;
@@ -1874,9 +1880,9 @@ bool NVoice::buildTupletList(int x0, int x1, char numNotes, QList<NMusElement> *
 	acc_elem = musElementList_.at(x0);
 	idx = x0;
 	while (!found && acc_elem != 0 && idx < x1) {
-		if (acc_elem->getType() & PLAYABLE) {
+		if (acc_elem->playable()) {
 			sum = acc_elem->getSubType() / MULTIPLICATOR;
-			elemlist->append(acc_elem);
+			elemlist->append( acc_elem->playable() );
 			acc_elem = musElementList_.next();
 			count = 1;
 			found = true;
@@ -1893,9 +1899,9 @@ bool NVoice::buildTupletList(int x0, int x1, char numNotes, QList<NMusElement> *
 	// update count, elemlist and sum
 	found = false;
 	while (!found && tupletable && acc_elem != 0 && idx <= x1) {
-		if (acc_elem->getType() & PLAYABLE) {
+		if (acc_elem->playable()) {
 			sum += acc_elem->getSubType() / MULTIPLICATOR;
-			elemlist->append(acc_elem);
+			elemlist->append( acc_elem->playable() );
 			acc_elem = musElementList_.next();
 			idx = musElementList_.at();
 			count++;
@@ -1917,13 +1923,13 @@ bool NVoice::buildTupletList(int x0, int x1, char numNotes, QList<NMusElement> *
 void NVoice::setTuplet(char numNotes, char playtime) {
 	int x0 = 0;
 	int x1 = 0;
-	QList<NMusElement> *elemlist = 0;
+	QList<NPlayable> *elemlist = 0;
 
 	if (!startElement_ || !endElement_) return;
 	x0 = (endElementIdx_ > startElemIdx_) ? startElemIdx_ : endElementIdx_;
 	x1 = (endElementIdx_ > startElemIdx_) ? endElementIdx_ : startElemIdx_;
 
-	elemlist = new QList<NMusElement>();
+	elemlist = new QList<NPlayable>();
 	if (!buildTupletList(x0, x1, numNotes, elemlist)) {
 		delete elemlist;
 		return;
@@ -1934,7 +1940,7 @@ void NVoice::setTuplet(char numNotes, char playtime) {
 		NResource::abort("setTuplet: internal error");
 	}
 	createUndoElement(x0, x1 - x0 + 1, 0);
-	NMusElement::computeTuplet(elemlist, numNotes, playtime);
+	NPlayable::computeTuplet(elemlist, numNotes, playtime);
 	// note: don't delete elemlist here, all tuplet notes refer to it
 }
 
@@ -1975,8 +1981,8 @@ int NVoice::deleteActualElem(status_type *status, unsigned int *status2, bool ba
 	}
 	else {
 		createUndoElement(currentElement_, 1, -1);
-		if (currentElement_->status_ & STAT_TUPLET) {
-			currentElement_->breakTuplet();
+		if ((currentElement_->status_ & STAT_TUPLET) && currentElement_->playable() ) {
+			currentElement_->playable()->breakTuplet();
 		}
 		if (musElementList_.find(currentElement_) == -1) {
 			NResource::abort("deleteActualElem: internal error", 2);
@@ -2203,7 +2209,8 @@ void NVoice::collectAndInsertPlayable(	int startTime,
 	bool isChord;
 	int dotcount;
 	int akpos;
-	NMusElement *elem2, *lastPattern;
+	NMusElement *lastPattern;
+	NChord *elem2;
 	QList<NNote> *noteList;
 	NNote *note;
 
@@ -3025,7 +3032,7 @@ void NVoice::tryToBuildAutoTriplet() {
 	    && !(elem->status_ & STAT_TUPLET))
 		ppn = musElementList_.at();
 
-	QList<NMusElement> *elemlist = new QList<NMusElement>();
+	QList<NPlayable> *elemlist = new QList<NPlayable>();
 	bool ok = false;
 	int x0 = ppn;
 	int x1 = cn;
@@ -3042,7 +3049,7 @@ void NVoice::tryToBuildAutoTriplet() {
 	// if succeeded, actually build triplet, else cleanup
 	if (ok) {
 		createUndoElement(x0, x1 - x0 + 1, 0);
-		NMusElement::computeTuplet(elemlist, 3, 2);
+		NPlayable::computeTuplet(elemlist, 3, 2);
 		// note: don't delete elemlist here, all tuplet notes refer to it
 	} else {
 		// if building the tuplet failed, elemlist is not used anymore
@@ -3083,8 +3090,9 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 				musElementList_.at(idx);
 			}
 		}
-		if ((elem_before->status_ & STAT_TUPLET) && (elem->status_ & STAT_TUPLET)) {
-			if (elem_before->getTupletList() == elem->getTupletList()) {
+		if ((elem_before->status_ & STAT_TUPLET) && (elem->status_ & STAT_TUPLET) &&
+				elem_before->playable() && elem->playable() ) {
+			if (elem_before->playable()->getTupletList() == elem->playable()->getTupletList()) {
 				currentElement_ = musElementList_.prev();
 				breakTuplet();
 				musElementList_.at(idx);
@@ -4629,8 +4637,8 @@ int NVoice::placeAt(int xpos, int sequNr) {
 	if (isChord && ((NChord *)playPosition_)->lastBeamed()) {
 		((NChord *) playPosition_)->computeBeames(stemPolicy_);
 	}
-	if (playPosition_->status_ & STAT_LAST_TUPLET) {
-		playPosition_->computeTuplet();
+	if ((playPosition_->status_ & STAT_LAST_TUPLET) && playPosition_->playable() ) {
+		playPosition_->playable()->computeTuplet();
 	}
 	width =  playPosition_->getBbox()->width();
 	playPosition_ = musElementList_.next();
@@ -5210,18 +5218,18 @@ void NVoice::appendNoteAt(int line, int offs, status_type status) {
 
 bool NVoice::buildTuplet(NMusElement *elem0, NMusElement *elem1, char numNotes, char playtime) {
 	bool found = false;
-	QList<NMusElement> *tupletlist;
+	QList<NPlayable> *tupletlist;
 
 	if (musElementList_.find(elem1) == -1) return false;
 	if (musElementList_.find(elem0) == -1) return false;
 
-	tupletlist = new QList<NMusElement>();
+	tupletlist = new QList<NPlayable>();
 	for (;elem0  && !found; elem0 = musElementList_.next()) {
 		found = elem0 == elem1;
-		if (!(elem0->getType() & PLAYABLE)) return false;
-		tupletlist->append(elem0);
+		if (!(elem0->playable())) return false;
+		tupletlist->append( elem0->playable() );
 	}
-	NMusElement::computeTuplet(tupletlist, numNotes, playtime);
+	NPlayable::computeTuplet(tupletlist, numNotes, playtime);
 	return true;
 }
 
@@ -5233,24 +5241,24 @@ bool NVoice::buildTuplet2(NMusElement *elem0, NMusElement *elem1, char numNotes,
 	bool found = false;
 	int tupletsum = 0;
 	int length;
-	QList<NMusElement> *tupletlist;
+	QList<NPlayable> *tupletlist;
 
 	if (musElementList_.find(elem1) == -1) return false;
 	if (musElementList_.find(elem0) == -1) return false;
 
-	tupletlist = new QList<NMusElement>();
+	tupletlist = new QList<NPlayable>();
 	for (;elem0  && !found; elem0 = musElementList_.next()) {
 		found = elem0 == elem1;
-		if (!(elem0->getType() & PLAYABLE)) {
+		if (!(elem0->playable())) {
 			delete tupletlist;
 			return true; /* omit tuplet */
 		}
 		tupletsum += elem0->getSubType();
-		tupletlist->append(elem0);
+		tupletlist->append( elem0->playable() );
 	}
 	length = (128 / playlength * MULTIPLICATOR) / (tupletsum / numNotes);
 	if (dot) {length = length * 3; length /= 2;}
-	NMusElement::computeTuplet(tupletlist, numNotes, length);
+	NPlayable::computeTuplet(tupletlist, numNotes, length);
 	return true;
 }
 
@@ -6989,7 +6997,7 @@ void NVoice::createUndoElement(int startpos, int length, int count_of_added_item
 	NMusElement *elem;
 	NChord *chord;
 	QList<NChord> *beamlist;
-	QList<NMusElement> *tupletlist;
+	QList<NPlayable> *tupletlist;
 	minidx = startpos;
 	maxidx = minidx + length - 1;
 	char *err = "createUndoElement:: internal error";
@@ -7001,12 +7009,12 @@ void NVoice::createUndoElement(int startpos, int length, int count_of_added_item
 		elem = musElementList_.at(minidx);
 		for (;length && elem; elem = musElementList_.next(), length--) {
 			elemidx = musElementList_.at();
-			if (elem->status_ & STAT_TUPLET) {
+			if ((elem->status_ & STAT_TUPLET) && elem->playable() ) {
 				oldidx1 = musElementList_.at();
 				if (oldidx1 < 0) {
 					NResource::abort(err, 1);
 				}
-				tupletlist = elem->getTupletList();
+				tupletlist = elem->playable()->getTupletList();
 				firstidx = musElementList_.find(tupletlist->first());
 				lastidx = musElementList_.find(tupletlist->last());
 				if (firstidx < 0 || lastidx < 0) {

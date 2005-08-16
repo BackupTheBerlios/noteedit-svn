@@ -107,7 +107,7 @@ int NChord::numTexRows_ = 0;
 QList<NNote> NChord::acc_tex_row;
 
 NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, status_type status, unsigned int status2) :
-		 NMusElement(main_props, staff_props), m_(0.0), n_(0.0) {
+		 NPlayable(main_props, staff_props), m_(0.0), n_(0.0) {
 	NNote *note;
 	if (line > MAXLINE) line = MAXLINE;
 	else if (line < MINLINE) line = MINLINE;
@@ -534,7 +534,7 @@ void NChord::checkSlures() {
 	}
 }
 
-void NChord::setTupletParams(QList<NMusElement> *tupletList, 
+void NChord::setTupletParams(QList<NPlayable> *tupletList, 
 				bool last, double m, double n, double tuptexn, int xstart, int xend, char numnotes, char playtime) {
 	tupletList_ = tupletList;
 	SET_STATUS(last, status_, STAT_LAST_TUPLET);

@@ -61,7 +61,7 @@ class NABCExport  {
 		QString lyrics2ABC(QString *lyrics);
 		void outputMeter(NTimeSig *timesig, bool inHeader);
 		void outputBarSym(NSign *sign, int volta, bool isLast);
-		void outputTupletStart(int staff_nr, NMusElement *elem);
+		void outputTupletStart(int staff_nr, NPlayable *elem);
 		bool outputClefInfo(NClef *clef);
 		void outputPedalGlyphs();
 		void outputDrumDefinitions();

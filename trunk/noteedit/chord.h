@@ -43,7 +43,7 @@ struct trill_descr_str {
 	int trill_nr, endpos;
 };
 
-class NChord: public NMusElement {
+class NChord: public NPlayable {
 	public:
 		NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, status_type status = 0, unsigned int status2 = 0);
 		virtual ~NChord();
@@ -131,7 +131,7 @@ class NChord: public NMusElement {
 		void accumulateAccidentals(NKeySig *key);
 		virtual char getNumNotes() {return numTupNotes_;}
 		virtual char getPlaytime() {return tupRealTime_;}
-		virtual void setTupletParams(QList<NMusElement> *tupletList, 
+		virtual void setTupletParams(QList<NPlayable> *tupletList, 
 			bool last, double m , double n , double tuptexn, int xstart, int xend, char numnotes, char playtime);
 		QString *computeTeXBeam(int maxBeams, unsigned int *beamPool, int *beamNr, int *beamCount, NClef *clef, int maxflags, bool *problem128, bool *toomany);
 		QString *computeTeXTie(unsigned int *tiePool, NClef *clef, int maxtie, bool *toomany, bool spare);

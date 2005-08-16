@@ -50,6 +50,7 @@ class exportFrm;
 class badmeasure;
 class exportFrm;
 class NMusElement;
+class NPlayable;
 class NMainFrameWidget;
 
 class specialCharInfo {
@@ -85,7 +86,7 @@ class NPmxExport {
 		int staffsToExport_;
 		QString fileName;
 		QList<NStaff> *staffList_;
-		void inspectTuplet(NMusElement *elem, int staff_nr, int barnr_);
+		void inspectTuplet(NPlayable *elem, int staff_nr, int barnr_);
 		bool writeTrack(NVoice *voice, int staff_nr, int voice_nr,
 				int voice_count, int measpsystem, bool first, const char *endOfLine, int *barpos);
 		void handleSpecialChar(int elempos, QString *specialChar, int voice_count, bool force_output);

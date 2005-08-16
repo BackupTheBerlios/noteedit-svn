@@ -1029,7 +1029,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 						out_ << " bm";
 						voi->inBeam_ = true;
 					 }
-				     	 else if (elem->lastBeamed()) {
+				     	 else if (chord->lastBeamed()) {
 						out_ << " ebm";
 						voi->inBeam_ = false;
 					 }
@@ -1818,7 +1818,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 						out_ << " bm";
 						voi->inBeam_ = true;
 					 }
-				     	 else if (elem->lastBeamed()) {
+				     	 else if (chord->lastBeamed()) {
 						out_ << " ebm";
 						voi->inBeam_ = false;
 					 }

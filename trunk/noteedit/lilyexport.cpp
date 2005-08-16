@@ -1325,7 +1325,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					out_ << "#(set-octavation 0) ";
 				     }
 				     if (exportDialog_->lilyBeam->isChecked() || inLongacciaccatura) {
-				     	if (elem->lastBeamed()) {
+				     	if (chord->lastBeamed()) {
 						out_ << "] "; inbeam = false;
 				     	}
 				     }

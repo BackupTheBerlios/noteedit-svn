@@ -608,7 +608,7 @@ void NVoice::reconnectBeames() {
 	chord = (NChord *) ac_elem;
 	beamlist->append((NChord *) ac_elem);
 	ac_elem = musElementList_.prev();
-	while (ac_elem && (ac_elem->status_ & STAT_BEAMED) && !ac_elem->lastBeamed()) {
+	while (ac_elem && (ac_elem->status_ & STAT_BEAMED) && !chord->lastBeamed()) {
 		if (ac_elem->getType() & BAR_SYMS) {
 			ac_elem = musElementList_.prev();
 			continue;
@@ -1095,7 +1095,7 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 						}
 				     }
 				     reconnectCopiedTies((NChord *) clone_elem);
-				     if (clone_elem->lastBeamed()) {
+				     if ( ((NChord *)clone_elem) ->lastBeamed()) {
 				     		reconnectBeames();
 				     }
 			case T_REST:
@@ -1286,7 +1286,7 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 						}
 				     }
 				     reconnectCopiedTies((NChord *) clone_elem);
-				     if (clone_elem->lastBeamed()) {
+				     if (((NChord *)clone_elem)->lastBeamed()) {
 				     		reconnectBeames();
 				     }
 			case T_REST:
@@ -1396,7 +1396,7 @@ void NVoice::moveUp(int up) {
 	createUndoElement(currentElement_, 1, 0);
 	breakTies((NChord *) currentElement_);
 	makeKeysigAndClefActual();
-	currentElement_->moveUp(up, stemPolicy_, &(theStaff_->actualKeysig_));
+	((NChord *)currentElement_)->moveUp(up, stemPolicy_, &(theStaff_->actualKeysig_));
 	reconnectTiesAtferMove((NChord *) currentElement_);
 	if (!NResource::allowInsertEcho_) return;
 	NResource::mapper_->playImmediately(&(theStaff_->actualClef_), (NChord *) currentElement_,
@@ -1409,7 +1409,7 @@ void NVoice::moveDown(int down) {
 	createUndoElement(currentElement_, 1, 0);
 	breakTies((NChord *) currentElement_);
 	makeKeysigAndClefActual();
-	currentElement_->moveDown(down, stemPolicy_, &(theStaff_->actualKeysig_));
+	((NChord *)currentElement_)->moveDown(down, stemPolicy_, &(theStaff_->actualKeysig_));
 	reconnectTiesAtferMove((NChord *) currentElement_);
 	if (!NResource::allowInsertEcho_) return;
 	NResource::mapper_->playImmediately(&(theStaff_->actualClef_), (NChord *) currentElement_,
@@ -1423,7 +1423,7 @@ void NVoice::moveSemiToneUp() {
 	createUndoElement(currentElement_, 1, 0);
 	breakTies((NChord *) currentElement_);
 	makeKeysigAndClefActual();
-	currentElement_->moveSemiToneUp(stemPolicy_, &(theStaff_->actualClef_), &(theStaff_->actualKeysig_));
+	((NChord *)currentElement_)->moveSemiToneUp(stemPolicy_, &(theStaff_->actualClef_), &(theStaff_->actualKeysig_));
 	reconnectTiesAtferMove((NChord *) currentElement_);
 	if (!NResource::allowInsertEcho_) return;
 	NResource::mapper_->playImmediately(&(theStaff_->actualClef_), (NChord *) currentElement_,
@@ -1436,7 +1436,7 @@ void NVoice::moveSemiToneDown() {
 	createUndoElement(currentElement_, 1, 0);
 	breakTies((NChord *) currentElement_);
 	makeKeysigAndClefActual();
-	currentElement_->moveSemiToneDown(stemPolicy_, &(theStaff_->actualClef_), &(theStaff_->actualKeysig_));
+	((NChord *)currentElement_)->moveSemiToneDown(stemPolicy_, &(theStaff_->actualClef_), &(theStaff_->actualKeysig_));
 	reconnectTiesAtferMove((NChord *) currentElement_);
 	if (!NResource::allowInsertEcho_) return;
 	NResource::mapper_->playImmediately(&(theStaff_->actualClef_), (NChord *) currentElement_,
@@ -4621,11 +4621,12 @@ void NVoice::computeMidiTime(bool insertBars,  bool doAutoBeam) {
 
 int NVoice::placeAt(int xpos, int sequNr) {
 	int width;
-	if (playPosition_->getType() == T_CHORD) {
+	bool isChord;
+	if ( isChord = (playPosition_->getType() == T_CHORD) ) {
 		((NChord *) playPosition_)->checkAcc();
 	}
 	playPosition_->reposit(xpos, sequNr);
-	if (playPosition_->lastBeamed()) {
+	if (isChord && ((NChord *)playPosition_)->lastBeamed()) {
 		((NChord *) playPosition_)->computeBeames(stemPolicy_);
 	}
 	if (playPosition_->status_ & STAT_LAST_TUPLET) {

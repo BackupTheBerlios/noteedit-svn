@@ -49,10 +49,6 @@ class NMusElement {
 		virtual void draw(int flags = 0) = 0;
 		virtual void setStaffProps(staff_props_str *staff_props) {staff_props_ = staff_props;}
 		virtual void setMainProps(main_props_str *main_props) {main_props_ = main_props;}
-		virtual void moveUp(int, int, NKeySig *) {};
-		virtual void moveDown(int, int, NKeySig *) {};
-		virtual void moveSemiToneUp(int, NClef *, NKeySig *) {}
-		virtual void moveSemiToneDown(int, NClef *, NKeySig *) {}
 		virtual void changeLength(int) {};
 		virtual void changeBody(status_type) {};
 		virtual void changeOffs(int, NKeySig *) {}
@@ -76,9 +72,7 @@ class NMusElement {
 		virtual int intersects_horizontally(const QPoint p) const {return intersects(p);} /* for "normal" elements except NChords */
 		virtual void setDotted(int) {}
 		virtual int getMidiLength (bool = false) const {return 0;}
-		virtual bool lastBeamed() {return false;}
 		void breakTuplet();
-		virtual void breakBeames() {}
 		virtual QPoint *getTopY() {return 0;}
 		virtual int getTopY2() {return 0;}
 		virtual int getTopX2() {return 0;}

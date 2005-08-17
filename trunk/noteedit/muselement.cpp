@@ -62,13 +62,6 @@ int NMusElement::intersects (const QPoint p) const {
 	if (p.x() >= bbox_.left() && p.x() <= bbox_.right() && p.y() >= bbox_.top() && p.y() <= bbox_.bottom()) return 0;
 	return 1;
 }
-
-NPlayable * NMusElement::playable() {
-	if( !( getType() & PLAYABLE ) )
-		return 0;
-	return (NPlayable *)this;
-}
-
 	
 NPlayable::NPlayable(main_props_str *main_props, staff_props_str *staff_props) :
 	NMusElement( main_props, staff_props )

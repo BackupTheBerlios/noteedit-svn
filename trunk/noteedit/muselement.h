@@ -33,6 +33,12 @@
 class NClef;
 class NChordDiagram;
 class NPlayable;
+class NChord;
+class NRest;
+class NKeySig;
+class NTimeSig;
+class NSign;
+class NText;
 
 class NMusElement {
 	public :
@@ -87,7 +93,16 @@ class NMusElement {
 		virtual char getPlaytime() {return 2;}
 		int midiTime_;
 		virtual int computeMidiLength() const {return 0;}
-		NPlayable * playable();
+
+#define CONVERT_TO(type,classType)       return ((getType() & type) ? (classType *)this : 0 );
+		NPlayable * playable() {CONVERT_TO(PLAYABLE,NPlayable)} // converts the element to NPlayable
+		NChord * chord()       {CONVERT_TO(T_CHORD,NChord)}     // converts the element to NChord
+		NRest * rest()         {CONVERT_TO(T_REST,NRest)}       // converts the element to NRest
+		NSign * sign()         {CONVERT_TO(T_SIGN,NSign)}       // converts the element to NSign
+		NClef * clef()         {CONVERT_TO(T_CLEF,NClef)}       // converts the element to NClef
+		NKeySig * keySig()     {CONVERT_TO(T_KEYSIG,NKeySig)}   // converts the element to NKeySig
+		NTimeSig * timeSig()   {CONVERT_TO(T_TIMESIG,NTimeSig)} // converts the element to NTimeSig
+		NText * text()         {CONVERT_TO(T_TEXT,NText)}       // converts the element to NText
 
 	protected:
 		bool actual_;

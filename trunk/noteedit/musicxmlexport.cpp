@@ -1476,8 +1476,8 @@ void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 			dur = dur * 3 / 2;
 			break;
 	}
-	if (status & STAT_TUPLET) {
-		dur = dur * elem->getPlaytime() / elem->getNumNotes();
+	if (status & STAT_TUPLET && (elem->getType() & PLAYABLE) ) {
+		dur = dur * elem->playable()->getPlaytime() / elem->playable()->getNumNotes();
 	}
 	dur /= QUARTER_LENGTH;
 	switch (len) {
@@ -1507,8 +1507,8 @@ static int calcLengthForCalcDivisions(NMusElement *elem) {
 			len = len * 3 / 2;
 			break;
 	}
-	if (status & STAT_TUPLET) {
-		len = len * elem->getPlaytime() / elem->getNumNotes();
+	if (status & STAT_TUPLET && (elem->getType() & PLAYABLE) ) {
+		len = len * elem->playable()->getPlaytime() / elem->playable()->getNumNotes();
 	}
 	return len;
 }
@@ -1974,10 +1974,10 @@ void NMusicXMLExport::outputFrame(NChordDiagram *diag)
 
 void NMusicXMLExport::outputTimeMod(NMusElement *elem)
 {
-	if (elem->status_ & STAT_TUPLET) {
+	if (elem->status_ & STAT_TUPLET && (elem->getType() & PLAYABLE)) {
 		out_ << "\t\t\t\t<time-modification>\n";
-		out_ << "\t\t\t\t\t<actual-notes>" << (int) elem->getNumNotes() << "</actual-notes>\n";
-		out_ << "\t\t\t\t\t<normal-notes>" << (int) elem->getPlaytime() << "</normal-notes>\n";
+		out_ << "\t\t\t\t\t<actual-notes>" << (int) elem->playable()->getNumNotes() << "</actual-notes>\n";
+		out_ << "\t\t\t\t\t<normal-notes>" << (int) elem->playable()->getPlaytime() << "</normal-notes>\n";
 		out_ << "\t\t\t\t</time-modification>\n";
 	}
 }

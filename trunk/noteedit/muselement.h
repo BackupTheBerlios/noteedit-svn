@@ -30,8 +30,8 @@
 
 #include "internals.h"
 
-class NClef;
 class NChordDiagram;
+class NClef;
 class NPlayable;
 class NChord;
 class NRest;
@@ -63,17 +63,9 @@ class NMusElement {
 		virtual void setStaffProps(staff_props_str *staff_props) {staff_props_ = staff_props;}
 		virtual void setMainProps(main_props_str *main_props) {main_props_ = main_props;}
 
-		virtual void changeBody(status_type) {};
-		virtual void changeOffs(int, NKeySig *) {}
-		virtual void setActualTied(bool) {};
+		virtual int getMidiLength (bool = false) const {return 0;}
+
 		virtual QRect *getBbox () {return &bbox_;} 
-		virtual QList<NNote> *getNoteList() {return 0;}
-		virtual bool deleteNoteAtLine(int, int) {return false;}
-		virtual void deletePart(NNote *) {};
-		virtual NNote *searchLine(int , int) { return 0;}
-		virtual NNote *insertNewNote(int , int , int , status_type) {return 0;}
-		virtual void insertNewNote(NNote *) {};
-		virtual NChordDiagram *getChordChordDiagram() {return 0;}
 		void reposit(int xpos, int sequNr_);
 		virtual int getXposDecorated() {return xpos_;}
 		int getXpos() {return xpos_;}
@@ -81,18 +73,11 @@ class NMusElement {
 		void setActual(bool ac) {actual_ = ac;}
 		int intersects(const QPoint p) const;
 		virtual int intersects_horizontally(const QPoint p) const {return intersects(p);} /* for "normal" elements except NChords */
-		virtual void setDotted(int) {}
-		virtual int getMidiLength (bool = false) const {return 0;}
 		virtual QPoint *getTopY() {return 0;}
 		virtual int getTopY2() {return 0;}
 		virtual int getTopX2() {return 0;}
 		virtual double getBotY() {return 0.0;}
-		virtual void addChordDiagram(NChordDiagram *) {}
-		virtual void removeChordDiagram() {}
-		virtual char getNumNotes() {return 3;}
-		virtual char getPlaytime() {return 2;}
 		int midiTime_;
-		virtual int computeMidiLength() const {return 0;}
 
 #define CONVERT_TO(type,classType)       return ((getType() & type) ? (classType *)this : 0 );
 		NPlayable * playable() {CONVERT_TO(PLAYABLE,NPlayable)} // converts the element to NPlayable
@@ -134,6 +119,16 @@ class NPlayable : public NMusElement {
 		void unsetTuplet();
 		QString *computeTeXTuplet(NClef *clef);
 		bool isFirstInTuplet() {return tupletList_->first() == this;}
+
+		virtual NChordDiagram *getChordChordDiagram() = 0;
+		virtual void addChordDiagram(NChordDiagram *) = 0;
+		virtual void removeChordDiagram() = 0;
+		
+		virtual void setDotted(int) = 0;
+		
+		virtual char getNumNotes() = 0;
+		virtual char getPlaytime() = 0;
+		virtual int computeMidiLength() const = 0;
 
 	protected:
 		QList<NPlayable> *tupletList_;	// all elements in this element's tuplet

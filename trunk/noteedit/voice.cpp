@@ -122,7 +122,7 @@ void NVoice::getChordDiagramms(QList<chordDiagramName> *cdiagList, bool *gridsus
 
 	oldidx = musElementList_.at();
 	for (elem = musElementList_.first(); elem;  elem = musElementList_.next()) {
-		if ((diag = elem->getChordChordDiagram()) == NULL) continue;
+		if (!elem->playable() || ((diag = elem->playable()->getChordChordDiagram()) == NULL)) continue;
 		max_underscores = -1;
 		for (diag_name = cdiagList->first(); diag_name; diag_name = cdiagList->next()) {
 			if (diag_name->cdiagramm->isEqual(diag)) {
@@ -632,8 +632,8 @@ void NVoice::reconnectTuplets() {
 	if (musElementList_.find(ac_elem) == -1) {
 		NResource::abort("NVoice::reconnectTuplets: internal error");
 	}
-	numNotes = ac_elem->getNumNotes();
-	playtime = ac_elem->getPlaytime();
+	numNotes = (ac_elem->getType() & PLAYABLE) ? ac_elem->playable()->getNumNotes() : 0;
+	playtime = (ac_elem->getType() & PLAYABLE) ? ac_elem->playable()->getPlaytime() : 0;
 	ac_elem->calculateDimensionsAndPixmaps();
 	if( ac_elem->playable() )
 		tupletlist->append( ac_elem->playable() );
@@ -737,7 +737,7 @@ int NVoice::findBorderLineInVa(NChord *chord)  {
 						if (elem->getTopY2() < higestline) higestline = elem->getTopY2();
 						break;
 					}
-					h = elem->getNoteList()->first()->line - 2;
+					h = elem->chord()->getNoteList()->first()->line - 2;
 					if (h < minline) minline = h;
 					break;
 		}
@@ -970,7 +970,7 @@ int NVoice::findEndOfCrescendo(NChord *chord) {
 	}
 	dynamicendX = chord->getDynamicEnd();
 	elem = chord;
-	endofcrescendo = elem->midiTime_ + elem->getMidiLength();
+	endofcrescendo = chord->midiTime_ + chord->getMidiLength();
 	for (elem = musElementList_.next(); elem && !found; elem = musElementList_.next()) {
 		if (elem->getBbox()->left() > dynamicendX) {
 			found = true;
@@ -1051,7 +1051,7 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 		}
 		else if (musElementList_.count()) {
 			*dest_midi_time = musElementList_.getLast()->midiTime_ + musElementList_.getLast()->getMidiLength();
-			*part_in_current_measure = musElementList_.getLast()->midiTime_ + musElementList_.getLast()->getMidiLength() - lastbartime;
+			*part_in_current_measure = musElementList_.getLast()->midiTime_ +  musElementList_.getLast()->getMidiLength() - lastbartime;
 		}
 	}
 	clonelist = new QList<NMusElement>();
@@ -1473,7 +1473,7 @@ int NVoice::makePreviousElementActual(status_type *status, unsigned int *status2
 	currentElement_->draw();
 	*status = currentElement_->status_;
 	if (currentElement_->getType() == T_CHORD) {
-		*status |= currentElement_->getNoteList()->first()->status;
+		*status |= currentElement_->chord()->getNoteList()->first()->status;
 	}
 	*status2 = currentElement_->status2_;
 	return currentElement_->getSubType();
@@ -1504,7 +1504,7 @@ int NVoice::makeNextElementActual(status_type *status, unsigned int *status2) {
 	currentElement_->draw();
 	*status = currentElement_->status_;
 	if (currentElement_->getType() == T_CHORD) {
-		*status |= currentElement_->getNoteList()->first()->status;
+		*status |= currentElement_->chord()->getNoteList()->first()->status;
 	}
 	*status2 = currentElement_->status2_;
 	return currentElement_->getSubType();
@@ -1513,7 +1513,8 @@ int NVoice::makeNextElementActual(status_type *status, unsigned int *status2) {
 void NVoice::changeBodyOfActualElement() {
 	if (!currentElement_) return;
 	createUndoElement(currentElement_, 1, 0);
-	currentElement_->changeBody(main_props_->noteBody);
+	if( currentElement_->getType() == T_CHORD )
+		currentElement_->chord()->changeBody(main_props_->noteBody);
 }
 
 
@@ -1653,7 +1654,7 @@ void NVoice::changeActualOffs(int offs) {
 	createUndoElement(currentElement_, 1, 0);
 	breakTies((NChord *) currentElement_);
 	makeKeysigAndClefActual();
-	currentElement_->changeOffs(offs, &(theStaff_->actualKeysig_));
+	currentElement_->chord()->changeOffs(offs, &(theStaff_->actualKeysig_));
 	reconnectTiesAtferMove((NChord *) currentElement_);
 	NResource::mapper_->playImmediately(&(theStaff_->actualClef_), (NChord *) currentElement_,
 		theStaff_->getVoice(), theStaff_->getChannel(), theStaff_->getVolume(), theStaff_->transpose_);
@@ -1662,7 +1663,8 @@ void NVoice::changeActualOffs(int offs) {
 void NVoice::setDotted() {
 	if (!currentElement_) return;
 	createUndoElement(currentElement_, 1, 0);
-	currentElement_->setDotted(main_props_->dotcount);
+	if( currentElement_->getType() & PLAYABLE )
+		currentElement_->playable()->setDotted(main_props_->dotcount);
 }
 
 void NVoice::setAccent(unsigned int type){
@@ -1716,11 +1718,11 @@ void NVoice::setActualTied() {
 	if (main_props_->tied) {
 		reconnectTies(note);
 		findTieMember(note);
-		currentElement_->setActualTied(main_props_->tied);
+		chord->setActualTied(main_props_->tied);
 	}
 	else {
 		reconnectDeletedTies(note);
-		currentElement_->setActualTied(main_props_->tied);
+		chord->setActualTied(main_props_->tied);
 	}
 }
 
@@ -2004,7 +2006,7 @@ int NVoice::deleteActualElem(status_type *status, unsigned int *status2, bool ba
 	if (currentElement_ = musElementList_.current()) {
 		*status = currentElement_->status_;
 		if (currentElement_->getType() == T_CHORD) {
-			partlist = currentElement_->getNoteList();
+			partlist = currentElement_->chord()->getNoteList();
 			*status |= partlist->first()->status;
 		}
 		*status2 = currentElement_->status2_;
@@ -2044,7 +2046,7 @@ bool NVoice::deleteActualNote() {
 bool NVoice::deleteAtPosition(int y) {
 	int line;
 	bool ok = false;
-	NNote *note;
+	NNote *note = 0;
 
 	if (!currentElement_) return false;
 
@@ -2055,9 +2057,10 @@ bool NVoice::deleteAtPosition(int y) {
 	else {
 		line = 8 - 2 * (y+1 - theStaff_->staff_props_.base) / LINE_DIST;
 	}
-	note = currentElement_->searchLine(line, 2);
+	if( currentElement_->getType() == T_CHORD )
+		note = currentElement_->chord()->searchLine(line, 2);
 	if (note) {
-		ok = currentElement_->deleteNoteAtLine(line, stemPolicy_);
+		ok = currentElement_->chord()->deleteNoteAtLine(line, stemPolicy_);
 		reconnectDeletedTies(note);
 	}
 	else {
@@ -3158,7 +3161,7 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 			if (main_props_->triplet) status2 |= STAT2_AUTO_TRIPLET;
 			new_elem = 
 			new NChord(main_props_, &(theStaff_->staff_props_), this, line,  offs, main_props_->actualLength, stemPolicy_, status, status2);
-				part = new_elem->getNoteList()->first();
+				part = new_elem->chord()->getNoteList()->first();
 		break;
 		case T_REST:
 			is_rest = true;
@@ -3226,7 +3229,7 @@ bool NVoice::insertNewNoteAt(int line, QPoint p, int offs) {
 	bool found = false;
 	status_type status = STAT_FORCE;
 	NMusElement *elem;
-	NNote *note;
+	NNote *note = 0;
 
 	if (currentElement_) {
 		currentElement_->setActual(false);
@@ -3268,7 +3271,8 @@ bool NVoice::insertNewNoteAt(int line, QPoint p, int offs) {
 	createUndoElement(currentElement_, 1, 0);
 	if (main_props_->tied) status |= STAT_TIED;
 	status |= main_props_->noteBody;
-	note = currentElement_->insertNewNote(line, offs, stemPolicy_, status);
+	if( currentElement_->getType() == T_CHORD )
+		note = currentElement_->chord()->insertNewNote(line, offs, stemPolicy_, status);
 	if (note) {
 		reconnectTies(note);
 		if (main_props_->tied) {
@@ -3293,7 +3297,7 @@ bool NVoice::insertNewNoteAtCurrent(int line, int offs) {
 	bool found = false;
 	status_type status = STAT_FORCE;
 	NMusElement *elem;
-	NNote *note;
+	NNote *note = 0;
 
 	if (!currentElement_)  return false;
 	
@@ -3329,7 +3333,8 @@ bool NVoice::insertNewNoteAtCurrent(int line, int offs) {
 	currentElement_ = elem;
 	createUndoElement(currentElement_, 1, 0);
 	if (main_props_->tied) status |= STAT_TIED;
-	note = currentElement_->insertNewNote(line, offs, stemPolicy_, status);
+	if( currentElement_->getType() == T_CHORD )
+		note = currentElement_->chord()->insertNewNote(line, offs, stemPolicy_, status);
 	if (note) {
 		reconnectTies(note);
 		if (main_props_->tied) {
@@ -3382,7 +3387,7 @@ bool NVoice::insertAfterCurrent(NMusElement *elem) {
 	}
 	if (elem->getType() == T_CHORD) {
 		is_chord = true;
-		note = elem->getNoteList()->first();
+		note = elem->chord()->getNoteList()->first();
 	}
 	if (currentElement_) currentElement_->setActual(false);
 	if ((!musElementList_.isEmpty()) && (musElementList_.next())) {
@@ -3582,7 +3587,7 @@ void NVoice::detectABCSpecials(bool *with_drums, bool *with_pedal_marks) { /* fo
 	for (elem = musElementList_.first(); elem; elem = musElementList_.next()) {
 		if (elem->getType() == T_CHORD) {
 			if (elem->status2_ & (STAT2_PEDAL_ON | STAT2_PEDAL_OFF)) *with_pedal_marks = true;
-			for (note = elem->getNoteList()->first(); note; note = elem->getNoteList()->next()) {
+			for (note = elem->chord()->getNoteList()->first(); note; note = elem->chord()->getNoteList()->next()) {
 				if (note->status & BODY_MASK) *with_drums = true;
 			}
 			if (*with_pedal_marks && *with_drums) return;
@@ -4087,7 +4092,7 @@ NMidiEventStr* NVoice::getNextMidiEvent(int mtime, bool reachInfo) {
 			note_halt->special = actualMidiEvent_->special = NO_SPECIAL;
 		}
 		if (inVolumeCrtlMode_ && actualMidiEvent_->volum_ctrl_change == -1) {
-			notelist = playPosition_->getNoteList();
+			notelist = chord->getNoteList();
 			for (partOfTie = false, note = notelist->first(); note && !partOfTie; note = notelist->next()) {
 				if (note->status & STAT_PART_OF_TIE) partOfTie = true;
 			}
@@ -4106,7 +4111,7 @@ NMidiEventStr* NVoice::getNextMidiEvent(int mtime, bool reachInfo) {
 		if (chord->status2_ & STAT2_PEDAL_ON) actualMidiEvent_->status |= MIDI_STAT_PEDAL_ON;
 		if (chord->status2_ & STAT2_PEDAL_OFF) actualMidiEvent_->status  |= MIDI_STAT_PEDAL_OFF;
 		note_halt->notelist = 
-		actualMidiEvent_->notelist = playPosition_->getNoteList();
+		actualMidiEvent_->notelist = chord->getNoteList();
 		note_halt->xpos = 
 		actualMidiEvent_->xpos = playPosition_->getXpos();
 		note_halt->from = 
@@ -5032,7 +5037,7 @@ void NVoice::findTieMember(NNote *part) {
 	mus_elem = musElementList_.next();
 	while (!found && mus_elem) {
 		if (mus_elem->getType() == T_CHORD) {
-			noteList = mus_elem->getNoteList();
+			noteList = mus_elem->chord()->getNoteList();
 			oldpartidx = noteList->at();
 			for (note = noteList->first(); !found && note; note = noteList->next()) {
 				if (note->line == part->line && note->offs == part->offs) {
@@ -5082,7 +5087,7 @@ void NVoice::reconnectTies(NNote *part) {
 	}
 	for (mus_elem = musElementList_.prev(); mus_elem; mus_elem = musElementList_.prev()) {
 		if (mus_elem->getType() != T_CHORD) continue;
-		noteList = mus_elem->getNoteList();
+		noteList = mus_elem->chord()->getNoteList();
 		for (note = noteList->first(); note; note = noteList->next()) {
 			if (note->line == part->line && note->offs == part->offs) {
 				if (note->status & STAT_TIED) {
@@ -5207,7 +5212,9 @@ void NVoice::reconnectCopiedTies(NChord *chord) {
 
 void NVoice::appendNoteAt(int line, int offs, status_type status) {
 	NNote *note;
-	note = musElementList_.current()->insertNewNote(line, offs, STEM_POL_INDIVIDUAL, status);
+	if( musElementList_.current()->getType() != T_CHORD )
+		return;
+	note = musElementList_.current()->chord()->insertNewNote(line, offs, STEM_POL_INDIVIDUAL, status);
 	if (note) {
 		reconnectTies(note);
 		if (status & STAT_TIED) {
@@ -5440,7 +5447,7 @@ void NVoice::addLyrics(char *charlyrics, int verse) {
 		found = false;
 		while (!found && elem) {
 			if (!(found = elem->getType() == T_CHORD &&
-				 !(elem->getNoteList()->first()->status & STAT_PART_OF_TIE) && !(elem->status_ & STAT_GRACE))) {
+				 !(elem->chord()->getNoteList()->first()->status & STAT_PART_OF_TIE) && !(elem->status_ & STAT_GRACE))) {
 					elem = musElementList_.next();
 			}
 		}
@@ -5514,7 +5521,7 @@ void NVoice::updateLyrics() {
 	    }
 	    elem = musElementList_.first();
 	    while (elem  && idx1 >= 0) {
-		if (elem->getType() != T_CHORD || (elem->getNoteList()->first()->status & STAT_PART_OF_TIE)
+		if (elem->getType() != T_CHORD || (elem->chord()->getNoteList()->first()->status & STAT_PART_OF_TIE)
 			||  (elem->status_ & STAT_GRACE)) {
 			elem = musElementList_.next();
 			continue;
@@ -5969,7 +5976,7 @@ void NVoice::performClefChange(int type, int shift, bool region, int *dist, int 
 		switch(elem->getType()) {
 		case T_CHORD:
 			chord_seen = true;
-			for (note = elem->getNoteList()->first(); note; note = elem->getNoteList()->next()) {
+			for (note = elem->chord()->getNoteList()->first(); note; note = elem->chord()->getNoteList()->next()) {
 				if (xpos1 != -1) {
 					if (note->status & STAT_TIED) tied_notes.append(note);
 					if (note->status & STAT_PART_OF_TIE) part_of_tied_notes.append(note);
@@ -6098,7 +6105,7 @@ void NVoice::appendElem(int el_type, int line, int sub_type, int offs, status_ty
 		case T_CHORD:
 			is_chord = true;
 			new_elem = new NChord(main_props_, &(theStaff_->staff_props_), this, line, offs, sub_type, stemPolicy_, status);
-			note = new_elem->getNoteList()->first();
+			note = new_elem->chord()->getNoteList()->first();
 			break;
 		case T_REST:
 			new_elem = 
@@ -6703,7 +6710,7 @@ bool NVoice::insertChordDiagrammAt(unsigned int at, NChordDiagram *diag, NMusEle
 
 	if ((elem = findChordOrRestAt(last_bar_sym, at*MULTIPLICATOR)) == 0) return false;
 		
-	elem->addChordDiagram(diag);
+	elem->playable()->addChordDiagram(diag);
 	return true;
 }
 
@@ -6742,7 +6749,7 @@ void NVoice::setHalfsAccordingKeySig(bool withUndo) {
 				       keysig->setClef(clef);
 				     break;
 			case T_CHORD: if (!keysig) break;
-				     noteList = elem->getNoteList();			
+				     noteList = elem->chord()->getNoteList();			
 				     for (note = noteList->first(); note; note = noteList->next()) {
 					keysig->changeHalfTone(note);
 					note->status &= (~STAT_FORCE);
@@ -6789,7 +6796,7 @@ void NVoice::setHalfsTo(int type, bool region) {
 	}
         for (;elem && (idx0 <= idx1 || xpos1 == -1); elem = musElementList_.next(), idx0++) {
 		switch (elem->getType()) {
-			case T_CHORD: noteList = elem->getNoteList();			
+			case T_CHORD: noteList = elem->chord()->getNoteList();			
 				     for (note = noteList->first(); note; note = noteList->next()) {
 					if (note->offs == 1 && type == STAT_FLAT) {
 						note->line++; note->offs = -1;

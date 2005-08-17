@@ -901,7 +901,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 				     part = elem->getSubType(); 
 				     if (!(elem->status_ & STAT_GRACE)) {
 					     if (elem->status_ & STAT_TUPLET) {
-						total += elem->getPlaytime() * part / elem->getNumNotes();
+						total += elem->chord()->getPlaytime() * part / elem->chord()->getNumNotes();
 						tupletsum += part;
 					     }
 					     else {
@@ -979,7 +979,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					case 1:	out_ << "."; break;
 					case 2:	out_ << ".."; break;
 				     }
-			  	     for (note = elem->getNoteList()->first(); note; note = elem->getNoteList()->next()) {
+			  	     for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
 					     pitchOut(note, &(actual_staff->actualClef_), true);
 					     if (!drum_problem_written_ && (note->status & BODY_MASK)) {
 						drum_problem_written_ = true;
@@ -1038,7 +1038,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 				     if (elem->status_ & STAT_LAST_TUPLET) {
 					voi->inTuplet_ = false;
 					out_ << " } above  " <<
-						computeTripletString(tupletsum, elem->getNumNotes(), elem->getPlaytime(), &ok) << "; ";
+						computeTripletString(tupletsum, elem->chord()->getNumNotes(), elem->chord()->getPlaytime(), &ok) << "; ";
 					if (!ok) {
 						bad = new badmeasure(ERR_TUPLET, staff_nr, bar_nr_, total / 3, countof128th_);
 						badlist_.append(bad);
@@ -1186,7 +1186,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					   timestring.sprintf("%f*;", starttime + 1.0);
 					   pedals_ += timestring;
 				     }
-				     if ((diag = elem->getChordChordDiagram())) {
+				     if ((diag = chord->getChordChordDiagram())) {
 					starttime = ((elem->midiTime_ - *measure_start_time) / MULTIPLICATOR) / (double) (128 / curr_denom_);
 					writeChord(staff_nr, starttime, diag);
 				     }
@@ -1233,7 +1233,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 				     }
 
 				     if (elem->status_ & STAT_TUPLET) {
-					total += elem->getPlaytime() * part / elem->getNumNotes();
+					total += elem->rest()->getPlaytime() * part / elem->rest()->getNumNotes();
 					tupletsum += part;
 				     }
 				     else {
@@ -1264,14 +1264,14 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					case 2:	out_ << ".."; break;
 				     }
 				     out_ << ((elem->status_ & STAT_HIDDEN) ? "s; " : "r; ");
-				     if ((diag = elem->getChordChordDiagram())) {
+				     if ((diag = elem->rest()->getChordChordDiagram())) {
 					starttime = ((elem->midiTime_ - *measure_start_time) / MULTIPLICATOR) / (double) (128 / curr_denom_);
 					writeChord(staff_nr, starttime, diag);
 				     }
 				     if (elem->status_ & STAT_LAST_TUPLET) {
 					voi->inTuplet_ = false;
 					out_ << " } above  " <<
-						computeTripletString(tupletsum, elem->getNumNotes(), elem->getPlaytime(), &ok) << "; ";
+						computeTripletString(tupletsum, elem->rest()->getNumNotes(), elem->rest()->getPlaytime(), &ok) << "; ";
 					if (!ok) {
 						bad = new badmeasure(ERR_TUPLET, staff_nr, bar_nr_, total / 3, countof128th_);
 						badlist_.append(bad);
@@ -1701,7 +1701,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 				     part = elem->getSubType(); 
 				     if (!(elem->status_ & STAT_GRACE)) {
 					if (elem->status_ & STAT_TUPLET) {
-						total += elem->getPlaytime() * part / elem->getNumNotes();
+						total += elem->chord()->getPlaytime() * part / elem->chord()->getNumNotes();
 						tupletsum += part;
 					}
 					else {
@@ -1782,7 +1782,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 					case 2:	out_ << ".."; break;
 				     }
 				     loop2 = true;
-			  	     for (note = elem->getNoteList()->first(); note; note = elem->getNoteList()->next()) {
+			  	     for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
 					     pitchOut( note, &(actual_staff->actualClef_), true);
 					     if (!drum_problem_written_  && (note->status & BODY_MASK)) {
 						drum_problem_written_ = true;
@@ -1827,7 +1827,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 				     if (elem->status_ & STAT_LAST_TUPLET) {
 					voi->inTuplet_ = false;
 					out_ << " } above  " <<
-						computeTripletString(tupletsum, elem->getNumNotes(), elem->getPlaytime(), &ok) << "; ";
+						computeTripletString(tupletsum, chord->getNumNotes(), chord->getPlaytime(), &ok) << "; ";
 					if (!ok) {
 						bad = new badmeasure(ERR_TUPLET, staff_nr, bar_nr_, total / 3, countof128th_);
 						badlist_.append(bad);
@@ -1880,7 +1880,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 				     }
 				     part = elem->getSubType(); 
 				     if (elem->status_ & STAT_TUPLET) {
-					total += elem->getPlaytime() * part / elem->getNumNotes();
+					total += elem->rest()->getPlaytime() * part / elem->rest()->getNumNotes();
 					tupletsum += part;
 				     }
 				     else {
@@ -1914,7 +1914,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 				     if (elem->status_ & STAT_LAST_TUPLET) {
 					voi->inTuplet_ = false;
 					out_ << " } above  " <<
-						computeTripletString(tupletsum, elem->getNumNotes(), elem->getPlaytime(), &ok) << "; ";
+						computeTripletString(tupletsum, elem->rest()->getNumNotes(), elem->rest()->getPlaytime(), &ok) << "; ";
 					if (!ok) {
 						bad = new badmeasure(ERR_TUPLET, staff_nr, bar_nr_, total / 3, countof128th_);
 						badlist_.append(bad);

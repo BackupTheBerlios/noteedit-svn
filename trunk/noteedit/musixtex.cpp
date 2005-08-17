@@ -791,7 +791,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 					out_ << "\\hsk\\arpeggio{" << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW-1] <<
 						"}{" << (note2->line - note->line + 3) / 2 << '}';
 			     }
-			     if ((diag = elem->getChordChordDiagram()) != 0) {
+			     if ((diag = elem->chord()->getChordChordDiagram()) != 0) {
 				writeChordDiagram(diag);
 			     }
 			     for (z = 0, i = chord->getNumOfTexAccRows() - 1; i >= 0; i--, z++) {
@@ -1116,7 +1116,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 					out_ << "\\Uptext{\\metron{\\nq}{" << newTempo_ << "}}";
 					newTempo_ = -1;
 			     }
-			     if ((diag = elem->getChordChordDiagram()) != 0) {
+			     if ((diag = elem->rest()->getChordChordDiagram()) != 0) {
 				writeChordDiagram(diag);
 			     }
 			     s = elem->playable()->computeTeXTuplet(&(staff_elem->actualClef_));

@@ -1192,7 +1192,7 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 							}
 							if (voice_elem->getCurrentElement()->getType() & PLAYABLE) {
 								voice_elem->pubAddUndoElement();
-								voice_elem->getCurrentElement()->addChordDiagram(tmpChordDiagram_);
+								voice_elem->getCurrentElement()->playable()->addChordDiagram(tmpChordDiagram_);
 								setEdited();
 								tmpChordDiagram_ = 0;
 								selectedSign_ = 0;
@@ -2947,7 +2947,7 @@ void NMainFrameWidget::manageToolElement(bool becauseOfInsertion) {
     else
 	toolContainer_->hide();
 
-    if (elem && (diag = elem->getChordChordDiagram()) != 0) {
+    if (elem && elem->playable() && (diag = elem->playable()->getChordChordDiagram()) != 0) {
 		selectedElemForChord_ = elem;
 		chordDialog_->setFingers(diag->getStrings());
 		chordDialog_->show();
@@ -3906,8 +3906,8 @@ void NMainFrameWidget::createTuplet() {
 
 void NMainFrameWidget::setTempChord(NChordDiagram *cdiagram) {
 	if (!cdiagram) return;
-	if (selectedElemForChord_) {
-		selectedElemForChord_->addChordDiagram(cdiagram);
+	if (selectedElemForChord_ && selectedElemForChord_->playable()) {
+		selectedElemForChord_->playable()->addChordDiagram(cdiagram);
 		selectedElemForChord_ = 0;
 		reposit();
 		repaint();
@@ -3920,8 +3920,8 @@ void NMainFrameWidget::setTempChord(NChordDiagram *cdiagram) {
 }
 
 void NMainFrameWidget::RemoveChord() {
-	if (selectedElemForChord_) {
-		selectedElemForChord_->removeChordDiagram();
+	if (selectedElemForChord_ && selectedElemForChord_->playable()) {
+		selectedElemForChord_->playable()->removeChordDiagram();
 		selectedElemForChord_ = 0;
 	}
 }

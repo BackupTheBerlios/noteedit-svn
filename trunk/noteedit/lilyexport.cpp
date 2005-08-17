@@ -821,7 +821,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     prevElemIsBar = false;
 				     part = elem->getSubType(); 
 				     if (!(elem->status_ & STAT_GRACE)) {
-				     	total += (elem->status_ & STAT_TUPLET) ? elem->getPlaytime() * part / elem->getNumNotes() : part;
+				     	total += (elem->status_ & STAT_TUPLET) ? elem->chord()->getPlaytime() * part / elem->chord()->getNumNotes() : part;
 				     }
 				     switch (elem->status_ & DOT_MASK) {
 					case 1: total += part / 2; break;
@@ -829,7 +829,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     }
 				     if ((elem->status_ & STAT_TUPLET) && !intuplet) {
 					intuplet = true;
-					out_ << "\\times " << ((int) elem->getPlaytime()) << '/' << ((int) elem->getNumNotes()) << " { ";
+					out_ << "\\times " << ((int) elem->chord()->getPlaytime()) << '/' << ((int) elem->chord()->getNumNotes()) << " { ";
 				     }
 				     if (total > MULTIPLICATOR*countof128th_ && voi->isFirstVoice()) {
 					total = 0;
@@ -845,11 +845,11 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					bad = new badmeasure(LILY_ERR_NOTE_128, (staff_nr + 1), barNr_, total / 3, countof128th_);
 					badlist_.append(bad);
 				     }
-				     if (chordHasMixedTies(elem->getNoteList())) {
+				     if (chordHasMixedTies(chord->getNoteList())) {
 					bad = new badmeasure(LILY_ERR_NOTE_MIXED_TIES, (staff_nr + 1), barNr_, total / 3, countof128th_);
 					badlist_.append(bad);
 				     }
-				     if ((diag = elem->getChordChordDiagram()) != 0) {
+				     if ((diag = chord->getChordChordDiagram()) != 0) {
 					if (!NResource::lilyProperties_.lilyVersion2  && !fatTextWritten) {
 						fatTextWritten = true;
 						out_ << "\\fatText ";
@@ -1014,13 +1014,13 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					}
 				     }
 
-				     	if (elem->getNoteList()->count() > 1) {
+				     	if (chord->getNoteList()->count() > 1) {
 						out_ << "< ";
 						drumNotesChange = false;
 					}
 					
 				     first = true;
-			  	     for (note = elem->getNoteList()->first(); note; note = elem->getNoteList()->next()) {
+			  	     for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
 					     if (first) {
 					        if (!NResource::lilyProperties_.lilyVersion2 && (chord->status_ & STAT_PART_OF_SLUR)) {
 							out_ << ") ";
@@ -1054,7 +1054,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					     }
 					     if (first) {
 						first = false;
-					        if ((!NResource::lilyProperties_.lilyVersion2 || elem->getNoteList()->count() < 2) && (length != lastLength_ || lastDotted_ != (elem->status_ & DOT_MASK))) {
+					        if ((!NResource::lilyProperties_.lilyVersion2 || chord->getNoteList()->count() < 2) && (length != lastLength_ || lastDotted_ != (elem->status_ & DOT_MASK))) {
 						   if (part == DOUBLE_WHOLE_LENGTH) {
 							out_ << "\\breve ";
 						   }
@@ -1212,7 +1212,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     if (diag != 0) {
 					writeChordName(diag->getChordName());
 				     }
-					if (elem->getNoteList()->count() > 1) {
+					if (chord->getNoteList()->count() > 1) {
 				     		out_ << "> ";
 						drumNotesChange = true;
 					
@@ -1310,7 +1310,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						lastDynSym = " \\! ";
 					}
 				     }
-				     if (hasATie(elem->getNoteList())) {
+				     if (hasATie(chord->getNoteList())) {
 					out_ << "~ ";
 				     }
 				     if (vaendpos != 0 && chord->getBbox()->right() > vaendpos) {
@@ -1364,14 +1364,14 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					total = MULTIPLICATOR*countof128th_;
 				     }
 				     else {
-				        restlen = (elem->status_ & STAT_TUPLET) ? elem->getPlaytime() * part / elem->getNumNotes() : part;
+				        restlen = (elem->status_ & STAT_TUPLET) ? elem->rest()->getPlaytime() * part / elem->rest()->getNumNotes() : part;
 				     	total += restlen;
 				     }
 				     switch (elem->status_ & DOT_MASK) {
 					case 1: restlen += part / 2; total += part / 2; break;
 					case 2: restlen += 3 * part / 4; total += 3 * part / 4; break;
 				     }
-				     if ((diag = elem->getChordChordDiagram()) != 0) {
+				     if ((diag = elem->playable()->getChordChordDiagram()) != 0) {
 					if (!fatTextWritten) {
 						fatTextWritten = true;
 						out_ << "\\fatText ";
@@ -1391,7 +1391,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     }
 				     if ((elem->status_ & STAT_TUPLET) && !intuplet) {
 					intuplet = true;
-					out_ << "\\times " << ((int) elem->getPlaytime()) << '/' << ((int) elem->getNumNotes()) << " { ";
+					out_ << "\\times " << ((int) elem->rest()->getPlaytime()) << '/' << ((int) elem->rest()->getNumNotes()) << " { ";
 				     }
 				     if (total > MULTIPLICATOR*countof128th_ && voi->isFirstVoice()) {
 					total = 0;

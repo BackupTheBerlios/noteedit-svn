@@ -557,7 +557,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     if (!(elem->status_ & STAT_GRACE)) {
 					inGraceGroup = false;
 					if (elem->status_ & STAT_TUPLET) {
-						total += elem->getPlaytime() * part / elem->getNumNotes();
+						total += elem->chord()->getPlaytime() * part / elem->chord()->getNumNotes();
 					}
 					else {
 						total += part;
@@ -635,10 +635,10 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				        *pmxout_ << graceString;
 				     }
 				     if (beamstatus == IN_BEAM_UP) {
-				     	note = elem->getNoteList()->last();
+				     	note = chord->getNoteList()->last();
 				     }
 				     else {
-				     	note = elem->getNoteList()->first();
+				     	note = chord->getNoteList()->first();
 				     }
 				     pitchOut(&(actual_staff->actualKeysig_), note, elem->getSubType(), &(actual_staff->actualClef_), (NChord *) elem, staff_nr, barNr_+numMeasures);
 				     if (!drum_problem_written_ && (note->status & BODY_MASK)) {
@@ -693,10 +693,10 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     setSlur((NChord *) elem, staff_nr, barNr_+numMeasures);
 	
 			             if (beamstatus == IN_BEAM_UP) {
-					note = elem->getNoteList()->prev();
+					note = chord->getNoteList()->prev();
 				     }
 				     else {
-					note = elem->getNoteList()->next();
+					note = chord->getNoteList()->next();
 				      }		
 			  	     while (note) {
 					     *pmxout_ << "z";
@@ -717,10 +717,10 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     	     *pmxout_ << ' ';
 					     setTie(note, staff_nr, barNr_+numMeasures);
 			             	     if (beamstatus == IN_BEAM_UP) {
-						note = elem->getNoteList()->prev();
+						note = chord->getNoteList()->prev();
 				     	     }
 				     	     else {
-						note = elem->getNoteList()->next();
+						note = chord->getNoteList()->next();
 				      	     }		
 				     }
 				     if (elem->status_ & STAT_ARPEGG) {
@@ -741,7 +741,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     }
 				     else {
 					     if (elem->status_ & STAT_TUPLET) {
-						total += elem->getPlaytime() * part / elem->getNumNotes();
+						total += elem->rest()->getPlaytime() * part / elem->rest()->getNumNotes();
 					     }
 					     else {
 						total += part;
@@ -761,9 +761,9 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     if (elem->status_ & STAT_HIDDEN) *pmxout_ << 'b';
 				     if (elem->status_ & STAT_TUPLET) {
 					if (elem->playable()->isFirstInTuplet()) {
-						inspectTuplet(elem->playable(), staff_nr, barNr_+numMeasures);
-						*pmxout_  << computePMXTupletLength(elem->getPlaytime()*tupletBase_, staff_nr, barNr_+numMeasures);
-						lastLength_ = elem->getPlaytime()*tupletBase_;
+						inspectTuplet(elem->rest(), staff_nr, barNr_+numMeasures);
+						*pmxout_  << computePMXTupletLength(elem->rest()->getPlaytime()*tupletBase_, staff_nr, barNr_+numMeasures);
+						lastLength_ = elem->rest()->getPlaytime()*tupletBase_;
 					}
 				     }
 				     else if (part == MULTIREST) {
@@ -783,7 +783,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 					case 2: *pmxout_ << "dd"; break;
 				     }
 				     if (elem->status_ & STAT_TUPLET) {
-						if (elem->playable()->isFirstInTuplet()) *pmxout_ << "x" << (int) (elem->getNumNotes());
+						if (elem->rest()->isFirstInTuplet()) *pmxout_ << "x" << (int) (elem->rest()->getNumNotes());
 						if (elem->getSubType() != tupletBase_) *pmxout_ << 'D';
 				     }
 				     *pmxout_ << ' ';

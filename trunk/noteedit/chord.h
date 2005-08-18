@@ -151,6 +151,12 @@ class NChord: public NPlayable {
 				double increase;
 			} dynamic_descr;
 		} auxInfo_;
+
+		int trill_;
+		int dynamic_;
+		int va_;
+		bool dynamicAlign_;
+
 	private:
 		static void computeLineParams(QList<NChord> *beamList, double *np, double *mp);
 		void drawGraceChord(int flags);

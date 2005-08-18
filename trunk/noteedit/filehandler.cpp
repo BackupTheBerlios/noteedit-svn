@@ -1045,10 +1045,10 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 						badlist_.append(bad);
 					}
 				     }
-				     if (elem->trill_) {
+				     if (chord->trill_) {
 					dest_measure_start_time = *measure_start_time;
 					tt = voi->findTimeOfTrillEnd((NChord *) elem, &dest_measure_start_time, &count_of_measures);
-					if (elem->trill_ > 0) {
+					if (chord->trill_ > 0) {
 #if GCC_MAJ_VERS > 2
 						if (ornaments_->tellp() < 1) {
 #else
@@ -1074,14 +1074,14 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					else {
 						timestring.sprintf("%f", endtime + 1.0);
 					}
-					if (elem->trill_ > 0) {
+					if (chord->trill_ > 0) {
 						*ornaments_ << (starttime + 1.0) << " \"tr\" til " << timestring << ';';
 					}
 					else {
 						*trillsyms_ << (starttime + 1.0) << " \"~\" til " << timestring << ';';
 					}
 				     }
-				     if (elem->dynamic_) {
+				     if (chord->dynamic_) {
 					dest_measure_start_time = *measure_start_time;
 					tt = voi->findTimeOfDynamicEnd(chord, measure_start_time,
 						 &dest_measure_start_time, &count_of_measures);
@@ -1106,10 +1106,10 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 							(starttime + 1.0) << " til " << timestring << ';';
 				        }
 				     }
-				     if (elem->va_) {
+				     if (chord->va_) {
 					dest_measure_start_time = *measure_start_time;
 					tt = voi->findTimeOfVaEnd((NChord *) elem, &dest_measure_start_time, &count_of_measures);
-					if (elem->va_ > 0) {
+					if (chord->va_ > 0) {
 #if GCC_MAJ_VERS > 2
 						if (valines_->tellp() < 1) {
 #else
@@ -1135,7 +1135,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					else {
 						timestring.sprintf("%f", endtime + 1.0);
 					}
-					if (elem->va_ > 0) {
+					if (chord->va_ > 0) {
 						*valines_ << (starttime + 1.0) << " \"8va\" til " << timestring << ';';
 					}
 					else {

@@ -707,10 +707,10 @@ void NStaff::correctPitchBecauseOfVa()
 	     elem;
 	     elem = voice_elem->getNextPosition()) {
 		if (elem->getType() != T_CHORD) continue;
-		switch (elem->va_ & 0x00030000) {
+		switch (elem->chord()->va_ & 0x00030000) {
 		case 0x00010000:
 			tstart = elem->midiTime_;
-			sign = (elem->va_ & 0x8000) ? -1 : 1;
+			sign = (elem->chord()->va_ & 0x8000) ? -1 : 1;
 			break;
 		case 0x00030000:
 			tend = elem->midiTime_ + elem->getMidiLength();

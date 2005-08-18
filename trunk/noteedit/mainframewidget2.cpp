@@ -31,6 +31,7 @@
 #include "resource.h"
 #include "uiconnect.h"
 #include "voice.h"
+#include "chord.h"
 #include <kaction.h>
 #include <kstdaction.h>
 #include <klocale.h>
@@ -73,64 +74,68 @@ void NMainFrameWidget::insertLine() {
 /*------------------------------------ internal reactions -----------------------------------------*/
 
 void NMainFrameWidget::trillLengthChanged(int val) {
-
-    if( currentVoice_->getCurrentElement()->trill_ < 0 )
-	currentVoice_->getCurrentElement()->trill_ = -val;
-    else
-	currentVoice_->getCurrentElement()->trill_ = val;
-
+    if( currentVoice_->getCurrentElement()->chord() ) {
+	if( currentVoice_->getCurrentElement()->chord()->trill_ < 0 )
+	    currentVoice_->getCurrentElement()->chord()->trill_ = -val;
+	else
+	    currentVoice_->getCurrentElement()->chord()->trill_ = val;
+    }
     repaint();
 }
 
 void NMainFrameWidget::trillDisabled() {
-
-    currentVoice_->getCurrentElement()->trill_ = 0;
-    this->trillEnabled_->setChecked( true );
-    manageToolElement(true);
+    if( currentVoice_->getCurrentElement()->chord() ) {
+	currentVoice_->getCurrentElement()->chord()->trill_ = 0;
+	this->trillEnabled_->setChecked( true );
+	manageToolElement(true);
+    }
     repaint();
-
 }
 
 void NMainFrameWidget::dynamicPosChanged(int val) {
-
-    currentVoice_->getCurrentElement()->dynamic_ = val;
+    if( currentVoice_->getCurrentElement()->chord() ) {
+	currentVoice_->getCurrentElement()->chord()->dynamic_ = val;
+    }
     repaint();
     
 }
 
 void NMainFrameWidget::dynamicKill() {
-    
-    currentVoice_->getCurrentElement()->dynamic_ = 0;
-    dynamicDisable_->setChecked(true);
-    manageToolElement(true);
+    if( currentVoice_->getCurrentElement()->chord() ) {
+	currentVoice_->getCurrentElement()->chord()->dynamic_ = 0;
+	dynamicDisable_->setChecked(true);
+	manageToolElement(true);
+    }
     repaint();
     
 }
 
 void NMainFrameWidget::dynamicSwitch() {
-
-    currentVoice_->getCurrentElement()->dynamicAlign_ = this->dynamicAlignment_->isChecked();
+    if( currentVoice_->getCurrentElement()->chord() ) {
+	currentVoice_->getCurrentElement()->chord()->dynamicAlign_ = this->dynamicAlignment_->isChecked();
+    }
     repaint();
-
 }
 
 void NMainFrameWidget::vaLengthChanged(int val) {
-
-    if (currentVoice_->getCurrentElement()->va_ < 0) {
-    	currentVoice_->getCurrentElement()->va_ = -val;
-    }
-    else {
-    	currentVoice_->getCurrentElement()->va_ = val;
+    if( currentVoice_->getCurrentElement()->chord() ) {
+	if (currentVoice_->getCurrentElement()->chord()->va_ < 0) {
+	    currentVoice_->getCurrentElement()->chord()->va_ = -val;
+	}
+	else {
+	    currentVoice_->getCurrentElement()->chord()->va_ = val;
+	}
     }
     repaint();
     
 }
 
 void NMainFrameWidget::vaDisabled() {
-    
-    currentVoice_->getCurrentElement()->va_ = 0;
-    vaDisable_->setChecked(true);
-    manageToolElement(true);
+    if( currentVoice_->getCurrentElement()->chord() ) {
+	currentVoice_->getCurrentElement()->chord()->va_ = 0;
+	vaDisable_->setChecked(true);
+	manageToolElement(true);
+    }
     repaint();
     
 }

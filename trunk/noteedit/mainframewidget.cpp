@@ -1221,44 +1221,48 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 							KMessageBox::sorry(this, i18n("Please choose a note from first voice"), kapp->makeStdCaption(i18n("???")));
 							return;
 						}
+						if( !voice_elem->getCurrentElement()->chord() ) {
+							KMessageBox::sorry(this, i18n("Please choose a note!"), kapp->makeStdCaption(i18n("???")));
+							return;
+						}
 						switch(selectedSign_) {
-						    case TRILL:	if (voice_elem->getCurrentElement()->va_ != 0) break;
-						    		if (voice_elem->getCurrentElement()->dynamic_ != 0) break;
+						    case TRILL:	if (voice_elem->getCurrentElement()->chord()->va_ != 0) break;
+						    		if (voice_elem->getCurrentElement()->chord()->dynamic_ != 0) break;
 								voice_elem->pubAddUndoElement();  
-								if( voice_elem->getCurrentElement()->trill_ ) {
-								      if( voice_elem->getCurrentElement()->trill_ < 0 )
-								        voice_elem->getCurrentElement()->trill_ =
-									    -voice_elem->getCurrentElement()->trill_;
+								if( voice_elem->getCurrentElement()->chord()->trill_ ) {
+								      if( voice_elem->getCurrentElement()->chord()->trill_ < 0 )
+								        voice_elem->getCurrentElement()->chord()->trill_ =
+									    -voice_elem->getCurrentElement()->chord()->trill_;
 								  }
 								else 
-								  voice_elem->getCurrentElement()->trill_ = 4;
+								  voice_elem->getCurrentElement()->chord()->trill_ = 4;
 								break;
-						    case LNTRILL: if (voice_elem->getCurrentElement()->va_ != 0) break;
-						    		  if (voice_elem->getCurrentElement()->dynamic_ != 0) break;
+						    case LNTRILL: if (voice_elem->getCurrentElement()->chord()->va_ != 0) break;
+						    		  if (voice_elem->getCurrentElement()->chord()->dynamic_ != 0) break;
 								  voice_elem->pubAddUndoElement();
-								  if( voice_elem->getCurrentElement()->trill_ ) {
-									if( voice_elem->getCurrentElement()->trill_ > 0 )
-									    voice_elem->getCurrentElement()->trill_ =
-										-voice_elem->getCurrentElement()->trill_;
+								  if( voice_elem->getCurrentElement()->chord()->trill_ ) {
+									if( voice_elem->getCurrentElement()->chord()->trill_ > 0 )
+									    voice_elem->getCurrentElement()->chord()->trill_ =
+										-voice_elem->getCurrentElement()->chord()->trill_;
 								  }
 								else
-								    voice_elem->getCurrentElement()->trill_ = -3;
+								    voice_elem->getCurrentElement()->chord()->trill_ = -3;
 								break;
-						    case DYNAMIC: if (voice_elem->getCurrentElement()->trill_ != 0) break;
-						    		  if (voice_elem->getCurrentElement()->va_ != 0) break;
+						    case DYNAMIC: if (voice_elem->getCurrentElement()->chord()->trill_ != 0) break;
+						    		  if (voice_elem->getCurrentElement()->chord()->va_ != 0) break;
 								  voice_elem->pubAddUndoElement();
-								  voice_elem->getCurrentElement()->dynamic_ = 10;
-								  voice_elem->getCurrentElement()->dynamicAlign_ = true;
+								  voice_elem->getCurrentElement()->chord()->dynamic_ = 10;
+								  voice_elem->getCurrentElement()->chord()->dynamicAlign_ = true;
 								  break;
-						    case VA8:     if (voice_elem->getCurrentElement()->trill_ != 0) break;
-						    		  if (voice_elem->getCurrentElement()->dynamic_ != 0) break;
+						    case VA8:     if (voice_elem->getCurrentElement()->chord()->trill_ != 0) break;
+						    		  if (voice_elem->getCurrentElement()->chord()->dynamic_ != 0) break;
 						    		  voice_elem->pubAddUndoElement();
-								  voice_elem->getCurrentElement()->va_ = 10;
+								  voice_elem->getCurrentElement()->chord()->va_ = 10;
 								  break;
-						    case VA8_BASSA: if (voice_elem->getCurrentElement()->trill_ != 0) break;
-						    		  if (voice_elem->getCurrentElement()->dynamic_ != 0) break;
+						    case VA8_BASSA: if (voice_elem->getCurrentElement()->chord()->trill_ != 0) break;
+						    		  if (voice_elem->getCurrentElement()->chord()->dynamic_ != 0) break;
 						    		  voice_elem->pubAddUndoElement();
-								  voice_elem->getCurrentElement()->va_ = -10;
+								  voice_elem->getCurrentElement()->chord()->va_ = -10;
 								  break;
 						}
 						reposit();
@@ -2901,16 +2905,16 @@ void NMainFrameWidget::manageToolElement(bool becauseOfInsertion) {
 
     if (!editMode_ && !becauseOfInsertion) return;
     elem = currentVoice_->getCurrentElement();
-    if( elem && elem->trill_ ) {
+    if( elem && elem->chord() && elem->chord()->trill_ ) {
 	bool isneg = false;
-	if( currentVoice_->getCurrentElement()->trill_ < 0 ) {
-	    currentVoice_->getCurrentElement()->trill_ = -currentVoice_->getCurrentElement()->trill_;
+	if( currentVoice_->getCurrentElement()->chord()->trill_ < 0 ) {
+	    currentVoice_->getCurrentElement()->chord()->trill_ = -currentVoice_->getCurrentElement()->chord()->trill_;
 	    isneg = true;
 	}
-	trillLength_->setValue( currentVoice_->getCurrentElement()->trill_ );
+	trillLength_->setValue( currentVoice_->getCurrentElement()->chord()->trill_ );
 
 	if( isneg )
-	    currentVoice_->getCurrentElement()->trill_ = -currentVoice_->getCurrentElement()->trill_;
+	    currentVoice_->getCurrentElement()->chord()->trill_ = -currentVoice_->getCurrentElement()->chord()->trill_;
 	++elcnt;
 	tabWid_->setTabEnabled( trillLengthBase_, true );
     }
@@ -2918,20 +2922,20 @@ void NMainFrameWidget::manageToolElement(bool becauseOfInsertion) {
         tabWid_->setTabEnabled( trillLengthBase_, false );
     
 
-    if( elem && elem->dynamic_ ) {
-	dynamicPos_->setValue( currentVoice_->getCurrentElement()->dynamic_ );
+    if( elem && elem->chord() && elem->chord()->dynamic_ ) {
+	dynamicPos_->setValue( currentVoice_->getCurrentElement()->chord()->dynamic_ );
 	tabWid_->setTabEnabled( dynamicBase_, true );
 	++elcnt;
     }
     else 
       tabWid_->setTabEnabled( dynamicBase_, false );
 
-    if( elem && elem->va_ ) {
-	if( currentVoice_->getCurrentElement()->va_ < 0 ) {
-		vaLength_->setValue( -currentVoice_->getCurrentElement()->va_ );
+    if( elem && elem->chord() && elem->chord()->va_ ) {
+	if( currentVoice_->getCurrentElement()->chord()->va_ < 0 ) {
+		vaLength_->setValue( -currentVoice_->getCurrentElement()->chord()->va_ );
 	}
 	else {
-		vaLength_->setValue( currentVoice_->getCurrentElement()->va_ );
+		vaLength_->setValue( currentVoice_->getCurrentElement()->chord()->va_ );
 	}
 
 	++elcnt;

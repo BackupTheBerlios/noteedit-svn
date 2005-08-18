@@ -29,23 +29,13 @@
 
 
 NMusElement::NMusElement(main_props_str *main_props, staff_props_str *staff_props) {
-	midiTime_ = trill_ = dynamic_ = slurY_ = va_ = 0;
+	midiTime_ = 0;
 	staff_props_ = staff_props;
 	main_props_ = main_props;
 }
 
 void NMusElement::change(NMusElement *elem) {
-	trill_ = dynamic_ = slurY_ = 0;
 	staff_props_ = elem->staff_props_;
-	if( playable() && elem->playable() ) {// TODO It's a HACK
-		playable()->status_ = elem->playable()->status_;
-		playable()->status2_ = 0;
-	}
-	trill_ = elem->trill_;
-	dynamic_ = elem->dynamic_;
-	dynamicAlign_ = elem->dynamicAlign_;
-	va_ = elem->va_;
-	slurY_ = elem->slurY_;
 	main_props_ = elem->main_props_;
 }
 

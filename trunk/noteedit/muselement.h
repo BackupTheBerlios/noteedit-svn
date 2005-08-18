@@ -43,38 +43,32 @@ class NText;
 class NMusElement {
 	public :
 		NMusElement(main_props_str *main_props, staff_props_str *staff_props);
-
-		void change(NMusElement *elem);
-
-		int trill_;
-		int dynamic_;
-		int va_;
-		bool dynamicAlign_;
-		int slurY_;
-
-		virtual NMusElement *clone() = 0;
 		virtual ~NMusElement();
-		virtual int getType () const  = 0;
-		virtual int getSubType() const {return 0;}
-		virtual void draw(int flags = 0) = 0;
-		virtual void calculateDimensionsAndPixmaps() = 0;
-		virtual void setStaffProps(staff_props_str *staff_props) {staff_props_ = staff_props;}
-		virtual void setMainProps(main_props_str *main_props) {main_props_ = main_props;}
 
-		virtual int getMidiLength (bool = false) const {return 0;}
+		virtual void change(NMusElement *elem);                 // copy method, copies the NMusElement related values
+		virtual NMusElement *clone() = 0;                       // clones the element
 
-		virtual QRect *getBbox () {return &bbox_;} 
-		void reposit(int xpos, int sequNr_);
-		virtual int getXposDecorated() {return xpos_;}
-		int getXpos() {return xpos_;}
-		int getSequNr() {return sequNr_;}
-		void setActual(bool ac) {actual_ = ac;}
-		int intersects(const QPoint p) const;
+		virtual int getType () const  = 0;                      // gives the type of the element (T_CHORD, T_CLEF...)
+		virtual int getSubType() const {return 0;}              // gives the sub type of the element
+		virtual void draw(int flags = 0) = 0;                   // draws the element onto the screen
+		virtual void calculateDimensionsAndPixmaps() = 0;       // calculates the pixmap of the element
+
+		virtual void setStaffProps(staff_props_str *staff_props) {staff_props_ = staff_props;} // staff and main
+		virtual void setMainProps(main_props_str *main_props) {main_props_ = main_props;}      // properties
+
+		virtual int getMidiLength (bool = false) const {return 0;}     // midi length of the element
+
+		virtual QRect *getBbox () {return &bbox_;}              // gives the outliner rectangle of the element on the screen
+		int intersects(const QPoint p) const;                   // check if the point is inside of the outliner rectangle
 		virtual int intersects_horizontally(const QPoint p) const {return intersects(p);} /* for "normal" elements except NChords */
-		virtual QPoint *getTopY() {return 0;}
-		virtual int getTopY2() {return 0;}
-		virtual int getTopX2() {return 0;}
-		virtual double getBotY() {return 0.0;}
+
+		void setActual(bool ac) {actual_ = ac;}                 // sets the element actual (for red pixmaps)
+
+		void reposit(int xpos, int sequNr_);                    // sets the X position and sequence number of the element
+		virtual int getXposDecorated() {return xpos_;}          // ???
+		int getXpos() {return xpos_;}                           // the X position of the element (width0+width1+...)
+		int getSequNr() {return sequNr_;}                       // the sequence number of the element (0,1,2,...)
+
 		int midiTime_;
 
 #define CONVERT_TO(type,classType)       return ((getType() & type) ? (classType *)this : 0 );
@@ -88,18 +82,14 @@ class NMusElement {
 		NText * text()         {CONVERT_TO(T_TEXT,NText)}       // converts the element to NText
 
 	protected:
-		bool actual_;
-		int pixmapHeight_;
-		int pixmapWidth_;
-		QRect bbox_;
-		staff_props_str *staff_props_;
-		main_props_str *main_props_;
-		int xpos_;
-		int sequNr_;
-		int midiLength_;
-		double tupm_; double tupn_;
-		double tupTeXn_;
-		int xstart_, xend_;
+		bool actual_;                        // flag, on if the element is actual (red)
+		int pixmapHeight_;                   // the height of the element's pixmap
+		int pixmapWidth_;                    // the width of the element's pixmap
+		QRect bbox_;                         // the outliner rectangle on the screen
+		staff_props_str *staff_props_;       // staff properties
+		main_props_str *main_props_;         // main properties
+		int xpos_;                           // the X position of the element on the screen (width0+width1+...)
+		int sequNr_;                         // the sequence number of the element (0,1,2,...)
 };
 
 class NPlayable : public NMusElement {
@@ -131,8 +121,17 @@ class NPlayable : public NMusElement {
 		virtual char getPlaytime() = 0;
 		virtual int computeMidiLength() const = 0;
 
+		virtual QPoint *getTopY() = 0;
+		virtual int getTopY2() = 0;
+		virtual int getTopX2() = 0;
+		virtual double getBotY() = 0;
+
 	protected:
 		QList<NPlayable> *tupletList_;	// all elements in this element's tuplet
+		double tupm_; double tupn_;
+		int xstart_, xend_;
+		double tupTeXn_;
+		int midiLength_;
 };
 
 #endif // MUSELEMENT_H

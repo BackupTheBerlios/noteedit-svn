@@ -2886,9 +2886,9 @@ void MusicXMLParser::wdghStEl(const QString& tp)
 		} else if (wdghFirstChordPtr == 0) {
 			Str = "wedge without chords";
 			reportWarning(Str);
-		} else {
-			wdghFirstChordPtr->dynamicAlign_ = wdghTypeCres;
-			wdghFirstChordPtr->dynamic_ =
+		} else if ( wdghFirstChordPtr->chord() ) {
+			wdghFirstChordPtr->chord()->dynamicAlign_ = wdghTypeCres;
+			wdghFirstChordPtr->chord()->dynamic_ =
 				(dm << 16) | (dt / MULTIPLICATOR);
 		}
 		wdghInit();

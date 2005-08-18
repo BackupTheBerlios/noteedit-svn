@@ -109,6 +109,8 @@ QList<NNote> NChord::acc_tex_row;
 NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, status_type status, unsigned int status2) :
 		 NPlayable(main_props, staff_props), m_(0.0), n_(0.0) {
 	NNote *note;
+	trill_ = dynamic_ = va_ = 0;
+	dynamicAlign_ = false;
 	if (line > MAXLINE) line = MAXLINE;
 	else if (line < MINLINE) line = MINLINE;
 	xposDecor_ = xpos_ = 0;

@@ -702,7 +702,7 @@ int NVoice::findHighestLineInTrill(NChord *chord)  {
 			found = true;
 		}
 		switch (elem->getType()) {
-			case T_CHORD: 	if (elem->getTopY2() < higestline) higestline = elem->getTopY2();
+			case T_CHORD: 	if (elem->chord()->getTopY2() < higestline) higestline = elem->chord()->getTopY2();
 		}
 	}
 	if (oldidx >= 0) musElementList_.at(oldidx);
@@ -734,7 +734,7 @@ int NVoice::findBorderLineInVa(NChord *chord)  {
 		}
 		switch (elem->getType()) {
 			case T_CHORD: if (chord->va_ > 0) {
-						if (elem->getTopY2() < higestline) higestline = elem->getTopY2();
+						if (elem->chord()->getTopY2() < higestline) higestline = elem->chord()->getTopY2();
 						break;
 					}
 					h = elem->chord()->getNoteList()->first()->line - 2;
@@ -1126,7 +1126,7 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 						chord->resetBeamFlag();
 					}
 				     }
- 				     clone_elem->trill_ = clone_elem->dynamic_ = 0;
+ 				     clone_elem->chord()->trill_ = clone_elem->chord()->dynamic_ = 0;
 			case T_REST:
 				    if (clone_elem->rest()->status_ & STAT_TUPLET) {
 					if (!allElemsContained(clonelist, clone_elem->playable()->getTupletList())) {

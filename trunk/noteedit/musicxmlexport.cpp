@@ -147,8 +147,8 @@ void NMusicXMLExport::debugDumpElem(NMusElement *elem) {
 		<< " status=" <<  ( elem->playable() ? elem->playable()->status_ : 0 )
 		<< " status2=" << ( elem->playable() ? elem->playable()->status2_ : 0 )
 		<< dec << " ";
-	if (elem->va_) {
-		out_ << "va=" << elem->va_ << " ";
+	if (elem->chord() && elem->chord()->va_) {
+		out_ << "va=" << elem->chord()->va_ << " ";
 	}
 	switch (elem->getType()) {
 		case T_CHORD:

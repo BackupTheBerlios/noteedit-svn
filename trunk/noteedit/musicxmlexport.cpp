@@ -144,8 +144,8 @@ void NMusicXMLExport::debugDumpElem(NMusElement *elem) {
 //		<< " bbox-l,r=" << elem->getBbox()->left()
 //		<< "," << elem->getBbox()->right()
 		<< hex
-		<< " status=" << elem->status_
-		<< " status2=" << elem->status2_
+		<< " status=" <<  ( elem->playable() ? elem->playable()->status_ : 0 )
+		<< " status2=" << ( elem->playable() ? elem->playable()->status2_ : 0 )
 		<< dec << " ";
 	if (elem->va_) {
 		out_ << "va=" << elem->va_ << " ";
@@ -1466,7 +1466,7 @@ int NMusicXMLExport::calcDuration(int len, status_type status) {
 
 void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 	int len = elem->getSubType();
-	status_type status = elem->status_;
+	status_type status = ( elem->playable() ? elem->playable()->status_ : 0 );
 	dur = len * divisions_;
 	switch (status & DOT_MASK) {
 		case STAT_DOUBLE_DOT:
@@ -1498,7 +1498,7 @@ void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 
 static int calcLengthForCalcDivisions(NMusElement *elem) {
 	int len = elem->getSubType();
-	status_type status = elem->status_;
+	status_type status = ( elem->playable() ? elem->playable()->status_ : 0 );
 	switch (status & DOT_MASK) {
 		case STAT_DOUBLE_DOT:
 			len = len * 7 / 4;
@@ -1935,17 +1935,19 @@ void NMusicXMLExport::outputDirection(QString direction, QString placement = "")
 
 void NMusicXMLExport::outputDots(NMusElement *elem)
 {
-	switch (elem->status_ & DOT_MASK) {
-		case STAT_DOUBLE_DOT:
-			out_ << "\t\t\t\t<dot/>\n";
-			out_ << "\t\t\t\t<dot/>\n";
-			break;
-		case STAT_SINGLE_DOT:
-			out_ << "\t\t\t\t<dot/>\n";
-			break;
-		default:
-			// ignored
-			break;
+	if( elem->playable() ) {
+		switch (elem->playable()->status_ & DOT_MASK) {
+			case STAT_DOUBLE_DOT:
+				out_ << "\t\t\t\t<dot/>\n";
+				out_ << "\t\t\t\t<dot/>\n";
+				break;
+			case STAT_SINGLE_DOT:
+				out_ << "\t\t\t\t<dot/>\n";
+				break;
+			default:
+				// ignored
+				break;
+		}
 	}
 }
 
@@ -1974,7 +1976,7 @@ void NMusicXMLExport::outputFrame(NChordDiagram *diag)
 
 void NMusicXMLExport::outputTimeMod(NMusElement *elem)
 {
-	if (elem->status_ & STAT_TUPLET && (elem->getType() & PLAYABLE)) {
+	if ((elem->getType() & PLAYABLE) && ( elem->playable()->status_ & STAT_TUPLET) ) {
 		out_ << "\t\t\t\t<time-modification>\n";
 		out_ << "\t\t\t\t\t<actual-notes>" << (int) elem->playable()->getNumNotes() << "</actual-notes>\n";
 		out_ << "\t\t\t\t\t<normal-notes>" << (int) elem->playable()->getPlaytime() << "</normal-notes>\n";

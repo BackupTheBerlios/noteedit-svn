@@ -165,19 +165,19 @@ void NVoice::paperDimensiones(int width) {
 
 int NVoice::getElemState(status_type *status, unsigned int *status2, bool *playable) {
 	NChord *chord;
-	*status = 0;
+	*status = *status2 = 0;
 	*playable = false;
-	if (!currentElement_) return -1;
-	*status = currentElement_->status_;
+	if( !currentElement_ ) return -1;
+	if( !( *playable = (currentElement_->getType() & PLAYABLE))) {
+		return -1;
+	}
+	*status = currentElement_->playable()->status_;
 	if (currentElement_->getType() == T_CHORD) {
 		chord = (NChord *) currentElement_;
 		*status |= chord->getActualNote()->status;
 	}
-	*status2 = currentElement_->status2_;
-	if (*playable = (currentElement_->getType() & PLAYABLE)) {
-		return currentElement_->getSubType();
-	}
-	return -1;
+	*status2 = currentElement_->playable()->status2_;
+	return currentElement_->getSubType();
 }
 
 int NVoice::checkElementForNoteInsertion(const int line, const QPoint p, status_type *status, unsigned int *status2, bool *playable, bool *delete_elem, bool *insertNewNote, int offs) {
@@ -216,8 +216,11 @@ int NVoice::checkElementForNoteInsertion(const int line, const QPoint p, status_
 	}
 	currentElement_ = ac_elem;
 	currentElement_->setActual(true);
-	*status = currentElement_->status_;
-	*status2 = currentElement_->status2_;
+	if (! (*playable = (currentElement_->getType() & PLAYABLE))) {
+		return -1;
+	}
+	*status = currentElement_->playable()->status_;
+	*status2 = currentElement_->playable()->status2_;
 	if (currentElement_->getType() == T_CHORD) {
 		chord = (NChord *) currentElement_;
 		if (chord->setActualNote(line))  {
@@ -249,10 +252,7 @@ int NVoice::checkElementForNoteInsertion(const int line, const QPoint p, status_
 		}
 		*status |= chord->getActualNote()->status;
 	}
-	if (*playable = (currentElement_->getType() & PLAYABLE)) {
-		return currentElement_->getSubType();
-	}
-	return -1;
+	return currentElement_->getSubType();
 }
 
 bool NVoice::checkElementForElementInsertion(const QPoint p) {
@@ -508,7 +508,7 @@ void NVoice::deleteBlock() {
 		found = ac_elem == stop_elem;
 		if (ac_elem->getType() == T_CHORD) {
 			chord = (NChord *) ac_elem;
-			if ((ac_elem->status_ & STAT_TUPLET) && !wholeTupletDeleted(chord, start_elem->getXpos(), stop_elem->getXpos())) {
+			if ((chord->status_ & STAT_TUPLET) && !wholeTupletDeleted(chord, start_elem->getXpos(), stop_elem->getXpos())) {
 				chord->breakTuplet();
 			}
 			if (chord->status_ & STAT_BEAMED) {
@@ -528,7 +528,7 @@ void NVoice::deleteBlock() {
 			}
 		}
 		else {
-			if ((ac_elem->status_ & STAT_TUPLET) && ac_elem->playable() && !wholeTupletDeleted( ac_elem->playable(), start_elem->getXpos(), stop_elem->getXpos())) {
+			if (ac_elem->playable() && (ac_elem->playable()->status_ & STAT_TUPLET) && !wholeTupletDeleted( ac_elem->playable(), start_elem->getXpos(), stop_elem->getXpos())) {
 				ac_elem->playable()->breakTuplet();
 			}
 			musElementList_.remove();
@@ -608,7 +608,7 @@ void NVoice::reconnectBeames() {
 	chord = (NChord *) ac_elem;
 	beamlist->append((NChord *) ac_elem);
 	ac_elem = musElementList_.prev();
-	while (ac_elem && (ac_elem->status_ & STAT_BEAMED) && !chord->lastBeamed()) {
+	while (ac_elem && ac_elem->playable() && (ac_elem->playable()->status_ & STAT_BEAMED) && !chord->lastBeamed()) {
 		if (ac_elem->getType() & BAR_SYMS) {
 			ac_elem = musElementList_.prev();
 			continue;
@@ -638,7 +638,7 @@ void NVoice::reconnectTuplets() {
 	if( ac_elem->playable() )
 		tupletlist->append( ac_elem->playable() );
 	ac_elem = musElementList_.prev();
-	while (ac_elem && ac_elem->playable() && (ac_elem->status_ & STAT_TUPLET) && !(ac_elem->status_ & STAT_LAST_TUPLET)) {
+	while (ac_elem && ac_elem->playable() && (ac_elem->playable()->status_ & STAT_TUPLET) && !(ac_elem->playable()->status_ & STAT_LAST_TUPLET)) {
 		tupletlist->insert(0, ac_elem->playable() );
 		ac_elem = musElementList_.prev();
 	}
@@ -658,7 +658,7 @@ void NVoice::breakCopiedTuplets() {
 		return;
 	ac_elem->playable()->unsetTuplet();
 	ac_elem = musElementList_.prev();
-	while (ac_elem && ac_elem->playable() && (ac_elem->status_ & STAT_TUPLET) && !(ac_elem->status_ & STAT_LAST_TUPLET)) {
+	while (ac_elem && ac_elem->playable() && (ac_elem->playable()->status_ & STAT_TUPLET) && !(ac_elem->playable()->status_ & STAT_LAST_TUPLET)) {
 		ac_elem->playable()->unsetTuplet();
 		ac_elem = musElementList_.prev();
 	}
@@ -994,7 +994,7 @@ bool NVoice::beginsWithGrace() {
 	while (elem) {
 		if (elem->getType() & PLAYABLE) {
 			if (oldidx >= 0) musElementList_.at(oldidx);
-			return (elem->getType() == T_CHORD && (elem->status_ & STAT_GRACE));
+			return (elem->getType() == T_CHORD && (elem->chord()->status_ & STAT_GRACE));
 		}
 		elem = musElementList_.next();
 	}
@@ -1020,8 +1020,8 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 		currentElement_ = 0;
 	}
 	idx = searchPositionAndUpdateSigns(xpos, &ac_elem, &found, &elem_before, countof128th, 0, 0, &lastbartime);
-	if (found && elem_before) {
-		if ((elem_before->status_ & STAT_BEAMED) && (ac_elem->status_ & STAT_BEAMED)) {
+	if (found && elem_before && elem_before->playable() && ac_elem->playable() ) {
+		if ((elem_before->playable()->status_ & STAT_BEAMED) && (ac_elem->playable()->status_ & STAT_BEAMED)) {
 			if (((NChord *) elem_before)->getBeamList() == ((NChord *) ac_elem)->getBeamList()) {
 				currentElement_ = musElementList_.prev();
 				breakBeames();
@@ -1029,7 +1029,7 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 				currentElement_ = 0;
 			}
 		}
-		if ((elem_before->status_ & STAT_TUPLET) && (ac_elem->status_ & STAT_TUPLET) && 
+		if ((elem_before->playable()->status_ & STAT_TUPLET) && (ac_elem->playable()->status_ & STAT_TUPLET) && 
 				elem_before->playable() && ac_elem->playable() ) {
 			if ( elem_before->playable()->getTupletList() == ac_elem->playable()->getTupletList()) {
 				currentElement_ = musElementList_.prev();
@@ -1104,7 +1104,7 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 				     		reconnectBeames();
 				     }
 			case T_REST:
-				     if (clone_elem->status_ & STAT_LAST_TUPLET) {
+				     if (clone_elem->rest()->status_ & STAT_LAST_TUPLET) {
 						if (checkTuplets(clipboard, ac_elem->playable()->getTupletList())) {
 							reconnectTuplets();
 						}
@@ -1119,7 +1119,7 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 	}
 	for (clone_elem = clonelist->first(); clone_elem; clone_elem = clonelist->next()) {
 		switch (clone_elem->getType()) {
-			case T_CHORD: if (clone_elem->status_ & STAT_BEAMED) {
+			case T_CHORD: if (clone_elem->chord()->status_ & STAT_BEAMED) {
 					chord = (NChord *) clone_elem;
 					beamlist = chord->getBeamList();
 					if (beamlist->count() < 2 || !lastChordContained(clonelist, beamlist)) {
@@ -1128,7 +1128,7 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 				     }
  				     clone_elem->trill_ = clone_elem->dynamic_ = 0;
 			case T_REST:
-				    if (clone_elem->status_ & STAT_TUPLET) {
+				    if (clone_elem->rest()->status_ & STAT_TUPLET) {
 					if (!allElemsContained(clonelist, clone_elem->playable()->getTupletList())) {
 						clone_elem->playable()->resetTupletFlag();
 					}
@@ -1174,8 +1174,8 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 			found = true;
 		}
 	}
-	if (found && elem_before) {
-		if ((elem_before->status_ & STAT_BEAMED) && (ac_elem->status_ & STAT_BEAMED)) {
+	if (found && elem_before && elem_before->playable() && ac_elem->playable() ) {
+		if ((elem_before->playable()->status_ & STAT_BEAMED) && (ac_elem->playable()->status_ & STAT_BEAMED)) {
 			if (((NChord *) elem_before)->getBeamList() == ((NChord *) ac_elem)->getBeamList()) {
 				idx = musElementList_.at();
 				currentElement_ = musElementList_.prev();
@@ -1184,7 +1184,7 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 				currentElement_ = 0;
 			}
 		}
-		if ((elem_before->status_ & STAT_TUPLET) && (ac_elem->status_ & STAT_TUPLET) &&
+		if ((elem_before->playable()->status_ & STAT_TUPLET) && (ac_elem->playable()->status_ & STAT_TUPLET) &&
 				elem_before->playable() && ac_elem->playable() ) {
 			if ( elem_before->playable()->getTupletList() == ac_elem->playable()->getTupletList()) {
 				idx = musElementList_.at();
@@ -1296,7 +1296,7 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 				     		reconnectBeames();
 				     }
 			case T_REST:
-				     if (clone_elem->status_ & STAT_LAST_TUPLET) {
+				     if (clone_elem->rest()->status_ & STAT_LAST_TUPLET) {
 						if (checkTuplets(clipboard, ac_elem->playable()->getTupletList())) {
 							reconnectTuplets();
 						}
@@ -1311,7 +1311,7 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 	}
 	for (clone_elem = clonelist->first(); clone_elem; clone_elem = clonelist->next()) {
 		switch (clone_elem->getType()) {
-			case T_CHORD: if (clone_elem->status_ & STAT_BEAMED) {
+			case T_CHORD: if (clone_elem->chord()->status_ & STAT_BEAMED) {
 					chord = (NChord *) clone_elem;
 					beamlist = chord->getBeamList();
 					if (beamlist->count() < 2 || !lastChordContained(clonelist, beamlist)) {
@@ -1319,7 +1319,7 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 					}
 				     }
 			case T_REST:
-				    if (clone_elem->status_ & STAT_TUPLET) {
+				    if (clone_elem->rest()->status_ & STAT_TUPLET) {
 					if (!lastElemContained(clonelist, clone_elem->playable()->getTupletList())) {
 						clone_elem->playable()->resetTupletFlag();
 					}
@@ -1471,11 +1471,13 @@ int NVoice::makePreviousElementActual(status_type *status, unsigned int *status2
 	currentElement_ = musElementList_.current();
 	currentElement_->setActual(true);
 	currentElement_->draw();
-	*status = currentElement_->status_;
+	if( currentElement_->playable() ) {
+		*status = currentElement_->playable()->status_;
+		*status2 = currentElement_->playable()->status2_;
+	}
 	if (currentElement_->getType() == T_CHORD) {
 		*status |= currentElement_->chord()->getNoteList()->first()->status;
 	}
-	*status2 = currentElement_->status2_;
 	return currentElement_->getSubType();
 }
 
@@ -1502,11 +1504,13 @@ int NVoice::makeNextElementActual(status_type *status, unsigned int *status2) {
 	currentElement_ = musElementList_.current();
 	currentElement_->setActual(true);
 	currentElement_->draw();
-	*status = currentElement_->status_;
+	if( currentElement_->playable() ) {
+		*status = currentElement_->playable()->status_;
+		*status2 = currentElement_->playable()->status2_;
+	}
 	if (currentElement_->getType() == T_CHORD) {
 		*status |= currentElement_->chord()->getNoteList()->first()->status;
 	}
-	*status2 = currentElement_->status2_;
 	return currentElement_->getSubType();
 }
 
@@ -1522,7 +1526,7 @@ void NVoice::changeActualChord() {
 	if (!currentElement_ || !currentElement_->playable() ) return;
 	createUndoElement(currentElement_, 1, 0);
 	currentElement_->playable()->changeLength(main_props_->actualLength);
-	if (currentElement_->status_ & STAT_TUPLET) {
+	if (currentElement_->playable()->status_ & STAT_TUPLET) {
 		currentElement_->playable()->breakTuplet();
 	}
 }
@@ -1544,8 +1548,8 @@ void NVoice::breakBeames() {
 	QList<NChord> *beamlist;
 	int first_beam_idx, last_beam_idx;
 	if (!currentElement_) return;
-	if (!(currentElement_->status_ & STAT_BEAMED)) return;
 	chord = (NChord *) currentElement_;
+	if (!(chord->status_ & STAT_BEAMED)) return;
 	beamlist = chord->getBeamList();
 	first_beam_idx = musElementList_.find(beamlist->first());
 	last_beam_idx = musElementList_.find(beamlist->last());
@@ -1635,7 +1639,7 @@ void NVoice::breakTuplet() {
 	int first_trip_idx, last_trip_idx;
 
 	if (!currentElement_ || !currentElement_->playable() ) return;
-	if (!(currentElement_->status_ & STAT_TUPLET)) return;
+	if (!(currentElement_->playable()->status_ & STAT_TUPLET)) return;
 	oldidx = musElementList_.at();
 	tupletlist = currentElement_->playable()->getTupletList();
 	first_trip_idx = musElementList_.find(tupletlist->first());
@@ -1673,25 +1677,25 @@ void NVoice::setAccent(unsigned int type){
 	    && (currentElement_->getType() != T_REST))
 		return;
 	createUndoElement(currentElement_, 1, 0);
-	if (currentElement_->status_ & STAT_STACC)
-	    currentElement_->status_ ^= STAT_STACC;
+	if (currentElement_->playable()->status_ & STAT_STACC)
+	    currentElement_->playable()->status_ ^= STAT_STACC;
 	for (int i = 19; i <= 23; i++)
-	    if (currentElement_->status_ & (1 << i))
-	        currentElement_->status_ ^= (1 << i);
+	    if (currentElement_->playable()->status_ & (1 << i))
+	        currentElement_->playable()->status_ ^= (1 << i);
 	if (currentElement_->getType() == T_CHORD) {
 	    switch(type){
-	        case STAT_STACC: SET_STATUS(main_props_->staccato, currentElement_->status_, STAT_STACC); break;
-	        case STAT_SFORZ: SET_STATUS(main_props_->sforzato, currentElement_->status_, STAT_SFORZ); break;
-	        case STAT_PORTA: SET_STATUS(main_props_->portato, currentElement_->status_, STAT_PORTA); break;
-	        case STAT_STPIZ: SET_STATUS(main_props_->strong_pizzicato, currentElement_->status_, STAT_STPIZ); break;
-	        case STAT_SFZND: SET_STATUS(main_props_->sforzando, currentElement_->status_, STAT_SFZND); break;
-	        case STAT_FERMT: SET_STATUS(main_props_->fermate, currentElement_->status_, STAT_FERMT); break;
+	        case STAT_STACC: SET_STATUS(main_props_->staccato, currentElement_->playable()->status_, STAT_STACC); break;
+	        case STAT_SFORZ: SET_STATUS(main_props_->sforzato, currentElement_->playable()->status_, STAT_SFORZ); break;
+	        case STAT_PORTA: SET_STATUS(main_props_->portato, currentElement_->playable()->status_, STAT_PORTA); break;
+	        case STAT_STPIZ: SET_STATUS(main_props_->strong_pizzicato, currentElement_->playable()->status_, STAT_STPIZ); break;
+	        case STAT_SFZND: SET_STATUS(main_props_->sforzando, currentElement_->playable()->status_, STAT_SFZND); break;
+	        case STAT_FERMT: SET_STATUS(main_props_->fermate, currentElement_->playable()->status_, STAT_FERMT); break;
 	        default: printf("illegal accent, ID: %i\n", type); fflush(stdout); break;
 	    }
 	} else if ((currentElement_->getType() == T_REST) && (currentElement_->getSubType() != MULTIREST)) {
 	    // on normal rest, fermata is allowed
 	    switch(type){
-	        case STAT_FERMT: SET_STATUS(main_props_->fermate, currentElement_->status_, STAT_FERMT); break;
+	        case STAT_FERMT: SET_STATUS(main_props_->fermate, currentElement_->playable()->status_, STAT_FERMT); break;
 	        default: /* ignore other accents */ break;
 	    }
 	}
@@ -1731,7 +1735,7 @@ void NVoice::setHidden() {
 	if (!currentElement_) return;
 	if (currentElement_->getType() != T_REST) return;
 	createUndoElement(currentElement_, 1, 0);
-	currentElement_->status_ ^= STAT_HIDDEN;
+	currentElement_->rest()->status_ ^= STAT_HIDDEN;
 }
 
 void NVoice::setArpeggio() {
@@ -1795,7 +1799,7 @@ void NVoice::setBeamed() {
 	chordlist = new QList<NChord>();
 	while (!found && acc_elem != 0 && idx <= x1) {
 		if (acc_elem->getType() == T_CHORD) {
-			if (acc_elem->getSubType() < QUARTER_LENGTH && !(acc_elem->status_ & STAT_BEAMED)) {
+			if (acc_elem->getSubType() < QUARTER_LENGTH && !(acc_elem->chord()->status_ & STAT_BEAMED)) {
 				chord = (NChord *) acc_elem;
 				chordlist->append(chord);
 				acc_elem = musElementList_.next();
@@ -1983,7 +1987,7 @@ int NVoice::deleteActualElem(status_type *status, unsigned int *status2, bool ba
 	}
 	else {
 		createUndoElement(currentElement_, 1, -1);
-		if ((currentElement_->status_ & STAT_TUPLET) && currentElement_->playable() ) {
+		if (currentElement_->playable() && (currentElement_->playable()->status_ & STAT_TUPLET) ) {
 			currentElement_->playable()->breakTuplet();
 		}
 		if (musElementList_.find(currentElement_) == -1) {
@@ -2004,12 +2008,12 @@ int NVoice::deleteActualElem(status_type *status, unsigned int *status2, bool ba
 	}
 	if (!musElementList_.current()) musElementList_.first(); 
 	if (currentElement_ = musElementList_.current()) {
-		*status = currentElement_->status_;
+		*status = currentElement_->playable() ? currentElement_->playable()->status_ : 0;
 		if (currentElement_->getType() == T_CHORD) {
 			partlist = currentElement_->chord()->getNoteList();
 			*status |= partlist->first()->status;
 		}
-		*status2 = currentElement_->status2_;
+		*status2 = currentElement_->playable() ? currentElement_->playable()->status2_ : 0;
 		
 		 /* if the last element was deleted by Key_Delete or the first element was deleted by Key_Backspace, none get selected */
 		if ( (backspace && (!removedFirst)) || (!backspace && (!removedLast)) ) {
@@ -2392,7 +2396,7 @@ void NVoice::autoBar() {
 		}
 		else if (ticks > maxticks) {
 		   	akpos = musElementList_.at();
-			if (elem->status_ & STAT_TUPLET) {
+			if (elem->playable() && (elem->playable()->status_ & STAT_TUPLET) ) {
 				len2 = ticks - maxticks;
 				ticks = elem->getMidiLength() - len2;
 				akpos = musElementList_.at();
@@ -2481,7 +2485,7 @@ void NVoice::autoBarVoice123andSoOn() {
 	theStaff_->resetSpecialElement();
 	for (elem = musElementList_.first(); elem; elem = musElementList_.next()) {
 		while ((specialElement = theStaff_->findBarInStaff(elem->midiTime_, elem->midiTime_ + elem->getMidiLength()))) {
-			if (elem->status_ & STAT_TUPLET) {
+			if (elem->playable() && ( elem->playable()->status_ & STAT_TUPLET) ) {
 				elem = musElementList_.next();
 				continue;
 			}
@@ -2578,7 +2582,7 @@ void NVoice::autoBeam() {
 		switch (elem->getType()) {
 			case T_CHORD:
 				if (elem->getSubType() <= NOTE8_LENGTH) {
-					if (beamlist->count() > 0 && (beameEndRequired(beamlist, &current_timesig, beats) || ((elem->status_ & STAT_GRACE) != status))) {
+					if (beamlist->count() > 0 && (beameEndRequired(beamlist, &current_timesig, beats) || ((elem->chord()->status_ & STAT_GRACE) != status))) {
 						if (beamlist->count() > 1) {
 							NChord::computeBeames(beamlist, stemPolicy_);
 						}
@@ -2586,7 +2590,7 @@ void NVoice::autoBeam() {
 							beamlist->clear();
 						}
 						beamlist = new QList<NChord>();
-						status = elem->status_ & STAT_GRACE;
+						status = elem->chord()->status_ & STAT_GRACE;
 					}
 					beats += elem->getMidiLength(true);
 					beamlist->append((NChord *)elem);
@@ -2688,7 +2692,7 @@ void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 		switch (elem->getType()) {
 			case T_CHORD:
 				if (elem->getSubType() <= NOTE8_LENGTH) {
-					if (beamlist->count() > 0 && (beameEndRequired(beamlist, &current_timesig, beats) || ((elem->status_ & STAT_GRACE) != status))) {
+					if (beamlist->count() > 0 && (beameEndRequired(beamlist, &current_timesig, beats) || ((elem->chord()->status_ & STAT_GRACE) != status))) {
 						if (beamlist->count() > 1) {
 							oldidx = musElementList_.at();
 							x0 = musElementList_.find(beamlist->first());
@@ -2704,7 +2708,7 @@ void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 							beamlist->clear();
 						}
 						beamlist = new QList<NChord>();
-						status = elem->status_ & STAT_GRACE;
+						status = elem->chord()->status_ & STAT_GRACE;
 					}
 					beats += elem->getMidiLength(true);
 					beamlist->append((NChord *)elem);
@@ -3023,16 +3027,16 @@ void NVoice::tryToBuildAutoTriplet() {
 	int cn = -1;			// index of current note
 	NMusElement *elem = 0;
 	elem = musElementList_.current();
-	if (elem && (elem->status2_ & STAT2_AUTO_TRIPLET)
-	    && !(elem->status_ & STAT_TUPLET))
+	if (elem && elem->playable() && (elem->playable()->status2_ & STAT2_AUTO_TRIPLET)
+	    && !(elem->playable()->status_ & STAT_TUPLET))
 		cn = musElementList_.at();
 	elem = musElementList_.prev();
-	if (elem && (elem->status2_ & STAT2_AUTO_TRIPLET)
-	    && !(elem->status_ & STAT_TUPLET))
+	if (elem && elem->playable() && (elem->playable()->status2_ & STAT2_AUTO_TRIPLET)
+	    && !(elem->playable()->status_ & STAT_TUPLET))
 		pn = musElementList_.at();
 	elem = musElementList_.prev();
-	if (elem && (elem->status2_ & STAT2_AUTO_TRIPLET)
-	    && !(elem->status_ & STAT_TUPLET))
+	if (elem && elem->playable() && (elem->playable()->status2_ & STAT2_AUTO_TRIPLET)
+	    && !(elem->playable()->status_ & STAT_TUPLET))
 		ppn = musElementList_.at();
 
 	QList<NPlayable> *elemlist = new QList<NPlayable>();
@@ -3085,16 +3089,15 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 	else {
 		idx = searchPositionAndUpdateSigns(xpos, &elem, &found, &elem_before, &countof128th, &lastbaridx);
 	}
-	if (elem_before && found) {
-		if ((elem_before->status_ & STAT_BEAMED) && (elem->status_ & STAT_BEAMED)) {
+	if (elem_before && found && elem_before->playable() && elem->playable()) {
+		if ((elem_before->playable()->status_ & STAT_BEAMED) && (elem->playable()->status_ & STAT_BEAMED)) {
 			if (((NChord *) elem_before)->getBeamList() == ((NChord *) elem)->getBeamList()) {
 				currentElement_ =musElementList_.prev();
 				breakBeames();
 				musElementList_.at(idx);
 			}
 		}
-		if ((elem_before->status_ & STAT_TUPLET) && (elem->status_ & STAT_TUPLET) &&
-				elem_before->playable() && elem->playable() ) {
+		if ((elem_before->playable()->status_ & STAT_TUPLET) && (elem->playable()->status_ & STAT_TUPLET) ) {
 			if (elem_before->playable()->getTupletList() == elem->playable()->getTupletList()) {
 				currentElement_ = musElementList_.prev();
 				breakTuplet();
@@ -3586,7 +3589,7 @@ void NVoice::detectABCSpecials(bool *with_drums, bool *with_pedal_marks) { /* fo
 	NNote *note;
 	for (elem = musElementList_.first(); elem; elem = musElementList_.next()) {
 		if (elem->getType() == T_CHORD) {
-			if (elem->status2_ & (STAT2_PEDAL_ON | STAT2_PEDAL_OFF)) *with_pedal_marks = true;
+			if (elem->chord()->status2_ & (STAT2_PEDAL_ON | STAT2_PEDAL_OFF)) *with_pedal_marks = true;
 			for (note = elem->chord()->getNoteList()->first(); note; note = elem->chord()->getNoteList()->next()) {
 				if (note->status & BODY_MASK) *with_drums = true;
 			}
@@ -4086,7 +4089,7 @@ NMidiEventStr* NVoice::getNextMidiEvent(int mtime, bool reachInfo) {
 			note_halt->valid = false;
 		}
 		else {
-			actualMidiEvent_->length = (playPosition_->status_ & STAT_STACC) ? 
+			actualMidiEvent_->length = (playPosition_->playable() && (playPosition_->playable()->status_ & STAT_STACC)) ? 
 			(playPosition_->getMidiLength(true) >> 1) : playPosition_->getMidiLength(true);
 			actualMidiEvent_->partlength = 0;
 			note_halt->special = actualMidiEvent_->special = NO_SPECIAL;
@@ -4642,7 +4645,7 @@ int NVoice::placeAt(int xpos, int sequNr) {
 	if (isChord && ((NChord *)playPosition_)->lastBeamed()) {
 		((NChord *) playPosition_)->computeBeames(stemPolicy_);
 	}
-	if ((playPosition_->status_ & STAT_LAST_TUPLET) && playPosition_->playable() ) {
+	if ( playPosition_->playable() && (playPosition_->playable()->status_ & STAT_LAST_TUPLET) ) {
 		playPosition_->playable()->computeTuplet();
 	}
 	width =  playPosition_->getBbox()->width();
@@ -4967,14 +4970,14 @@ QString NVoice::determineGraceKind(status_type *status) {
 	
 	*status = GRACE_PMX_OK;
 	elem = musElementList_.current();
-	if (elem == 0 || elem->getType() != T_CHORD || !(elem->status_ & STAT_GRACE)) {
+	if (elem == 0 || elem->getType() != T_CHORD || !(elem->chord()->status_ & STAT_GRACE)) {
 		NResource::abort("NVoice::determineGraceKind: internal error");
 	}
 	oldidx = musElementList_.at();
 	elem = musElementList_.prev();
-	grace_after = (elem && elem->getType() == T_CHORD && !(elem->status_ & STAT_GRACE));
+	grace_after = (elem && elem->getType() == T_CHORD && !(elem->chord()->status_ & STAT_GRACE));
 	elem = musElementList_.at(oldidx);
-	while (elem->getType() == T_CHORD && (elem->status_ & STAT_GRACE)) {
+	while (elem->getType() == T_CHORD && (elem->chord()->status_ & STAT_GRACE)) {
 		grace_count++;
 		if (elem->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE) {
 			stroken = true;
@@ -4988,7 +4991,7 @@ QString NVoice::determineGraceKind(status_type *status) {
 			}
 			sixteenth = true;
 		}
-		if (elem->status_ & STAT_SLURED) slured = true;
+		if (elem->chord()->status_ & STAT_SLURED) slured = true;
 		elem = musElementList_.next();
 	}
 	musElementList_.at(oldidx);
@@ -5291,8 +5294,8 @@ void NVoice::insertAtTime(unsigned int time, NMusElement *elem, bool splitPlayab
 		if (el->midiTime_ >= (int) time && (el->getType() & PLAYABLE)) {
 			if (		splitPlayables &&
 					lastPlayableIdx >=0 &&				// needs to come before lastPlayable data
-					!(el->status_ & STAT_TUPLET) &&
-					!(lastPlayable->status_ & STAT_TUPLET) &&
+					!(el->playable()->status_ & STAT_TUPLET) &&
+					!(lastPlayable->playable()->status_ & STAT_TUPLET) &&
 					el->midiTime_ > (int) time &&
 			    		lastPlayable->midiTime_ + lastPlayable->getMidiLength() > time) {
 				len1 = time - lastPlayable->midiTime_;
@@ -5447,7 +5450,7 @@ void NVoice::addLyrics(char *charlyrics, int verse) {
 		found = false;
 		while (!found && elem) {
 			if (!(found = elem->getType() == T_CHORD &&
-				 !(elem->chord()->getNoteList()->first()->status & STAT_PART_OF_TIE) && !(elem->status_ & STAT_GRACE))) {
+				 !(elem->chord()->getNoteList()->first()->status & STAT_PART_OF_TIE) && !(elem->chord()->status_ & STAT_GRACE))) {
 					elem = musElementList_.next();
 			}
 		}
@@ -5522,7 +5525,7 @@ void NVoice::updateLyrics() {
 	    elem = musElementList_.first();
 	    while (elem  && idx1 >= 0) {
 		if (elem->getType() != T_CHORD || (elem->chord()->getNoteList()->first()->status & STAT_PART_OF_TIE)
-			||  (elem->status_ & STAT_GRACE)) {
+			||  (elem->chord()->status_ & STAT_GRACE)) {
 			elem = musElementList_.next();
 			continue;
 		}
@@ -5839,7 +5842,7 @@ void NVoice::collChords() {
 	}
 	
 	for (elem = musElementList_.first(); elem; elem = musElementList_.next()) {
-		if (elem->getType() != T_CHORD || (elem->status_ & STAT_TUPLET)) {
+		if (elem->getType() != T_CHORD || (elem->chord()->status_ & STAT_TUPLET)) {
 			if (first && firstIdx != lastIdx) {
 				combineChords(firstIdx, lastIdx);
 			}
@@ -5889,7 +5892,7 @@ void NVoice::collChords() {
 
 	restlen = 0;
 	for (elem = musElementList_.first(); elem; elem = musElementList_.next()) {
-		if (elem->getType() != T_REST || (elem->status_ & STAT_TUPLET)) {
+		if (elem->getType() != T_REST || (elem->rest()->status_ & STAT_TUPLET)) {
 			if (restlist.count() > 1) {
 				collectAndInsertPlayable(restlist.first()->midiTime_, &restlist, restlen, true);
 			}
@@ -6045,7 +6048,7 @@ bool NVoice::buildBeam(NMusElement *elem0, NMusElement *elem1) {
 	while (!found && elem0 != 0) {
 		found = elem0 == elem1;
 		if (elem0->getType() == T_CHORD) {
-			if (elem0->getSubType() >= QUARTER_LENGTH || (elem0->status_ & STAT_BEAMED)) {
+			if (elem0->getSubType() >= QUARTER_LENGTH || (elem0->chord()->status_ & STAT_BEAMED)) {
 				delete beamlist;
 				return false;
 			}
@@ -6236,7 +6239,7 @@ NChord *NVoice::findChordAt(NMusElement *from, int mididist) {
 	}
 	found = false;
 	while (!found && elem)  {
-		if (elem->getType() == T_CHORD && !(elem->status_ & STAT_GRACE )) {
+		if (elem->getType() == T_CHORD && !(elem->chord()->status_ & STAT_GRACE )) {
 			diff = actualmiditime - mididist;
 			if (diff < 0) diff = -diff;
 			if (mindist > diff) {
@@ -6339,7 +6342,7 @@ NChord *NVoice::findChordInMeasureAt(int refpoint, NMusElement *from, int till_m
 	}
 			
 	while (!found && elem)  {
-		if (elem->getType() == T_CHORD && !(elem->status_ & STAT_GRACE )) {
+		if (elem->getType() == T_CHORD && !(elem->chord()->status_ & STAT_GRACE )) {
 			diff = actualmiditime - mididist;
 			if (diff < 0) diff = -diff;
 			if (mindist > diff) {
@@ -6357,7 +6360,7 @@ NChord *NVoice::findChordInMeasureAt(int refpoint, NMusElement *from, int till_m
 	}
 	if (!found) {
 		for (elem = musElementList_.last(); !found && elem && elem->getXpos() > refpoint; elem = musElementList_.prev()) {
-			if (elem->getType() == T_CHORD && !(elem->status_ & STAT_GRACE )) {
+			if (elem->getType() == T_CHORD && !(elem->chord()->status_ & STAT_GRACE )) {
 				found = true;
 				nearestchord = (NChord *) elem;
 			}
@@ -6468,7 +6471,7 @@ NMusElement *NVoice::findChordOrRestAt(NMusElement *from, int mididist) {
 	}
 	elem = musElementList_.next();
 	while (!found && elem)  {
-		if (elem->getType() == T_REST || elem->getType() == T_CHORD && !(elem->status_ & STAT_GRACE)) {
+		if (elem->getType() == T_REST || elem->getType() == T_CHORD && !(elem->playable()->status_ & STAT_GRACE)) {
 			diff = actualmiditime - mididist;
 			if (diff < 0) diff = -diff;
 			if (mindist > diff) {
@@ -6843,7 +6846,7 @@ void NVoice::pasteAtIndex(QList<NMusElement> *clipBoard, int idx) {
 			case T_CHORD: chord = (NChord *) ac_elem;
 				     reconnectCopiedTies(chord);
 			case T_REST:
-				     if (ac_elem->status_ & STAT_LAST_TUPLET) {
+				     if (ac_elem->rest()->status_ & STAT_LAST_TUPLET) {
 						reconnectTuplets();
 				     }
 				     break;
@@ -7016,7 +7019,8 @@ void NVoice::createUndoElement(int startpos, int length, int count_of_added_item
 		elem = musElementList_.at(minidx);
 		for (;length && elem; elem = musElementList_.next(), length--) {
 			elemidx = musElementList_.at();
-			if ((elem->status_ & STAT_TUPLET) && elem->playable() ) {
+			status_type status_ = elem->playable() ? elem->playable()->status_ : 0;
+			if ( status_ & STAT_TUPLET) {
 				oldidx1 = musElementList_.at();
 				if (oldidx1 < 0) {
 					NResource::abort(err, 1);
@@ -7037,7 +7041,7 @@ void NVoice::createUndoElement(int startpos, int length, int count_of_added_item
 				if (lastidx > maxidx) {maxidx = lastidx; limits_changed = true;}
 				musElementList_.at(oldidx1);
 			}
-			if (elem->status_ & STAT_BEAMED) {
+			if (status_ & STAT_BEAMED) {
 				oldidx1 = musElementList_.at();
 				if (oldidx1 < 0) {
 					NResource::abort(err, 5);
@@ -7059,7 +7063,7 @@ void NVoice::createUndoElement(int startpos, int length, int count_of_added_item
 				if (lastidx > maxidx) {maxidx = lastidx; limits_changed = true;}
 				musElementList_.at(oldidx1);
 			}
-			if (elem->status_ & STAT_SLURED) {
+			if (status_ & STAT_SLURED) {
 				oldidx1 = musElementList_.at();
 				if (oldidx1 < 0) {
 					NResource::abort(err, 9);
@@ -7080,7 +7084,7 @@ void NVoice::createUndoElement(int startpos, int length, int count_of_added_item
 				if (lastidx > maxidx) {maxidx = lastidx; limits_changed = true;}
 				musElementList_.at(oldidx1);
 			}
-			if (elem->status_ & STAT_PART_OF_SLUR) {
+			if (status_ & STAT_PART_OF_SLUR) {
 				oldidx1 = musElementList_.at();
 				if (oldidx1 < 0) {
 					NResource::abort(err, 9);
@@ -7196,7 +7200,7 @@ NChord *NVoice::findLastChordBetweenXpos(int xpos1, int xpos2)
 		if ((xpos1 <= elem->getBbox()->left())
 		     && (elem->getBbox()->left() < xpos2)
 		     && (elem->getType() == T_CHORD)
-		     && !(elem->status_ & STAT_GRACE)) {
+		     && !(elem->chord()->status_ & STAT_GRACE)) {
 			chord = (NChord *) elem;
 		}
 	}

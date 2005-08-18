@@ -481,6 +481,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 	NStaff *actual_staff;
 	NChord *chord;
 	NNote *note;
+	NRest *rest;
 	NKeySig *ksig;
 	NClef *clef;
 	badmeasure *bad;
@@ -553,17 +554,18 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 		elempos = elem->getXpos();
 		switch (elem->getType()) {
 			case T_CHORD: 
+				     chord = (NChord *) elem;
 				     part = elem->getSubType(); 
-				     if (!(elem->status_ & STAT_GRACE)) {
+				     if (!(chord->status_ & STAT_GRACE)) {
 					inGraceGroup = false;
-					if (elem->status_ & STAT_TUPLET) {
-						total += elem->chord()->getPlaytime() * part / elem->chord()->getNumNotes();
+					if (chord->status_ & STAT_TUPLET) {
+						total += chord->getPlaytime() * part / chord->getNumNotes();
 					}
 					else {
 						total += part;
 					}
 				     }
-				     switch (elem->status_ & DOT_MASK) {
+				     switch (chord->status_ & DOT_MASK) {
 					case 1: total += part / 2; break;
 					case 2: total += 3 * part / 4; break;
 				     }
@@ -572,7 +574,6 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 					bad = new badmeasure(PMX_ERR_BAD_NOTE_COUNT, staff_nr, barNr_+numMeasures, total / 3, countof128th_);
 					badlist_.append(bad);
 				     }
-				     chord = (NChord *) elem;
 				     if (va_descr_[staff_nr-1].trill_nr >= 0 && 	
 					chord->getBbox()->right() > va_descr_[staff_nr-1].endpos) {
 					*pmxout_ << "\\Toctfin" << va_descr_[staff_nr-1].trill_nr << "\\ ";
@@ -621,7 +622,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     		}
 					}
 				     }
-				     if (!inGraceGroup && elem->status_ & STAT_GRACE) {
+				     if (!inGraceGroup && chord->status_ & STAT_GRACE) {
 					graceString =  voice->determineGraceKind(&grace_status);
 					inGraceGroup = true;
 					if (grace_status == WARN_MIXED_GRACES) {
@@ -640,37 +641,37 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     else {
 				     	note = chord->getNoteList()->first();
 				     }
-				     pitchOut(&(actual_staff->actualKeysig_), note, elem->getSubType(), &(actual_staff->actualClef_), (NChord *) elem, staff_nr, barNr_+numMeasures);
+				     pitchOut(&(actual_staff->actualKeysig_), note, elem->getSubType(), &(actual_staff->actualClef_), chord, staff_nr, barNr_+numMeasures);
 				     if (!drum_problem_written_ && (note->status & BODY_MASK)) {
 					drum_problem_written_ = true;
 					bad = new badmeasure(PMX_ERR_DRUM_STAFF, staff_nr, barNr_+numMeasures, total / 3, countof128th_);
 					badlist_.append(bad);
 				     }
-				     switch (elem->status_ & DOT_MASK) {
+				     switch (chord->status_ & DOT_MASK) {
 					case 1: *pmxout_ << "d"; break;
 					case 2: *pmxout_ << "dd"; break;
 				     }
-				     if ((elem->status_ & STAT_TUPLET) && elem->getSubType() != tupletBase_)  *pmxout_ << 'D';
+				     if ((chord->status_ & STAT_TUPLET) && elem->getSubType() != tupletBase_)  *pmxout_ << 'D';
 #ifdef THIS_IS_WRONG
 				     base_shifted = note->status & STAT_SHIFTED;
 #endif
 				     *pmxout_ << ' ';
-				     if (elem->status_ & STAT_STACC) {
+				     if (chord->status_ & STAT_STACC) {
 					*pmxout_ << "ou ";
 				     }
-				     if (elem->status_ & STAT_SFORZ) {
+				     if (chord->status_ & STAT_SFORZ) {
 					*pmxout_ << "o^ ";
 				     }
-				     if (elem->status_ & STAT_PORTA) {
+				     if (chord->status_ & STAT_PORTA) {
 					*pmxout_ << "o_ ";
 				     }
-				     if (elem->status_ & STAT_SFZND) {
+				     if (chord->status_ & STAT_SFZND) {
 					*pmxout_ << "o> ";
 				     }
-				     if (elem->status_ & STAT_FERMT) {
+				     if (chord->status_ & STAT_FERMT) {
 				        *pmxout_ << "of ";
 				     }
-				     if (elem->status_ & STAT_ARPEGG) {
+				     if (chord->status_ & STAT_ARPEGG) {
 				        *pmxout_ << "? ";
 				     }
 				     if (chord->trill_ < 0) {
@@ -690,7 +691,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 					dynEndPos = 0;
 				     }
 				     setTie(note, staff_nr, barNr_+numMeasures);
-				     setSlur((NChord *) elem, staff_nr, barNr_+numMeasures);
+				     setSlur(chord, staff_nr, barNr_+numMeasures);
 	
 			             if (beamstatus == IN_BEAM_UP) {
 					note = chord->getNoteList()->prev();
@@ -700,7 +701,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				      }		
 			  	     while (note) {
 					     *pmxout_ << "z";
-					     pitchOut(&(actual_staff->actualKeysig_), note, -1, &(actual_staff->actualClef_), (NChord *) elem, staff_nr, barNr_+numMeasures);
+					     pitchOut(&(actual_staff->actualKeysig_), note, -1, &(actual_staff->actualClef_), chord, staff_nr, barNr_+numMeasures);
 					     if (!drum_problem_written_ && (note->status & BODY_MASK)) {
 						drum_problem_written_ = true;
 						bad = new badmeasure(PMX_ERR_DRUM_STAFF, staff_nr, barNr_+numMeasures, total / 3, countof128th_);
@@ -723,7 +724,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 						note = chord->getNoteList()->next();
 				      	     }		
 				     }
-				     if (elem->status_ & STAT_ARPEGG) {
+				     if (chord->status_ & STAT_ARPEGG) {
 				     		*pmxout_ << "? ";
 				     }
 				     if (exportDialog_->pmxKeepBeams->isChecked()) {
@@ -734,20 +735,21 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     } 
 				     break;
 			case T_REST:
+				     rest = elem->rest();
 				     inGraceGroup = false;
 				     part = elem->getSubType(); 
 				     if (part == MULTIREST) {
 						total += MULTIPLICATOR*countof128th_;
 				     }
 				     else {
-					     if (elem->status_ & STAT_TUPLET) {
-						total += elem->rest()->getPlaytime() * part / elem->rest()->getNumNotes();
+					     if (rest->status_ & STAT_TUPLET) {
+						total += rest->getPlaytime() * part / rest->getNumNotes();
 					     }
 					     else {
 						total += part;
 					     }
 				     }
-				     switch (elem->status_ & DOT_MASK) {
+				     switch (rest->status_ & DOT_MASK) {
 					case 1: total += part / 2; break;
 					case 2: total += 3 * part / 4; break;
 				     }
@@ -758,12 +760,12 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     }
 					
 				     *pmxout_ << 'r';
-				     if (elem->status_ & STAT_HIDDEN) *pmxout_ << 'b';
-				     if (elem->status_ & STAT_TUPLET) {
-					if (elem->playable()->isFirstInTuplet()) {
-						inspectTuplet(elem->rest(), staff_nr, barNr_+numMeasures);
-						*pmxout_  << computePMXTupletLength(elem->rest()->getPlaytime()*tupletBase_, staff_nr, barNr_+numMeasures);
-						lastLength_ = elem->rest()->getPlaytime()*tupletBase_;
+				     if (rest->status_ & STAT_HIDDEN) *pmxout_ << 'b';
+				     if (rest->status_ & STAT_TUPLET) {
+					if (rest->isFirstInTuplet()) {
+						inspectTuplet(rest, staff_nr, barNr_+numMeasures);
+						*pmxout_  << computePMXTupletLength(rest->getPlaytime()*tupletBase_, staff_nr, barNr_+numMeasures);
+						lastLength_ = rest->getPlaytime()*tupletBase_;
 					}
 				     }
 				     else if (part == MULTIREST) {
@@ -772,18 +774,18 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 						badlist_.append(bad);
 					}
 					lastLength_ = 1111; /* invalidate */
-					*pmxout_ << 'm' << ((NRest *) elem)->getMultiRestLength();
+					*pmxout_ << 'm' << rest->getMultiRestLength();
 				     }
 				     else if (lastLength_ != elem->getSubType()) {
 				     	*pmxout_ << computePMXLength(elem->getSubType());
 					lastLength_ = elem->getSubType();
 				     }
-				     switch (elem->status_ & DOT_MASK) {
+				     switch (rest->status_ & DOT_MASK) {
 					case 1: *pmxout_ << "d"; break;
 					case 2: *pmxout_ << "dd"; break;
 				     }
-				     if (elem->status_ & STAT_TUPLET) {
-						if (elem->rest()->isFirstInTuplet()) *pmxout_ << "x" << (int) (elem->rest()->getNumNotes());
+				     if (rest->status_ & STAT_TUPLET) {
+						if (rest->isFirstInTuplet()) *pmxout_ << "x" << (int) (rest->getNumNotes());
 						if (elem->getSubType() != tupletBase_) *pmxout_ << 'D';
 				     }
 				     *pmxout_ << ' ';

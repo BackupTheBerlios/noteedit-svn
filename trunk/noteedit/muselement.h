@@ -46,8 +46,6 @@ class NMusElement {
 
 		void change(NMusElement *elem);
 
-		status_type status_; /* element's flags - 64 bit long! */
-		unsigned int status2_;
 		int trill_;
 		int dynamic_;
 		int va_;
@@ -106,6 +104,9 @@ class NMusElement {
 
 class NPlayable : public NMusElement {
 	public:
+		status_type status_; /* element's flags - 64 bit long! */
+		unsigned int status2_;
+
 		NPlayable(main_props_str *main_props, staff_props_str *staff_props);
 		virtual void changeLength(int) = 0;
 

@@ -454,7 +454,7 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 					voiceStatList_[idx].dynEndPos = chord->getDynamicEnd();
 					voiceStatList_[idx].lastDynSym = (char *) (chord->dynamicAlign_ ? "!crescendo)!" : "!diminuendo)!");
 				      }
-				      if (elem->status_ & STAT_ARPEGG) {
+				      if (chord->status_ & STAT_ARPEGG) {
 				      	out_ << "!arpeggio!";
 				      }
 				      inChord = chord->getNoteList()->count() > 1;
@@ -710,7 +710,7 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 							out_ << "!invertedfermata!";
 						}
 				      }
-				      if (elem->status_ & STAT_ARPEGG) {
+				      if (chord->status_ & STAT_ARPEGG) {
 				      	out_ << "!arpeggio!";
 				      }
 				      inChord = chord->getNoteList()->count() > 1;

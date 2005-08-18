@@ -29,15 +29,18 @@
 
 
 NMusElement::NMusElement(main_props_str *main_props, staff_props_str *staff_props) {
-	midiTime_ = status2_ = status_ = trill_ = dynamic_ = slurY_ = va_ = 0;
+	midiTime_ = trill_ = dynamic_ = slurY_ = va_ = 0;
 	staff_props_ = staff_props;
 	main_props_ = main_props;
 }
 
 void NMusElement::change(NMusElement *elem) {
-	status_ = status2_ = trill_ = dynamic_ = slurY_ = 0;
+	trill_ = dynamic_ = slurY_ = 0;
 	staff_props_ = elem->staff_props_;
-	status_ = elem->status_;
+	if( playable() && elem->playable() ) {// TODO It's a HACK
+		playable()->status_ = elem->playable()->status_;
+		playable()->status2_ = 0;
+	}
 	trill_ = elem->trill_;
 	dynamic_ = elem->dynamic_;
 	dynamicAlign_ = elem->dynamicAlign_;
@@ -64,7 +67,7 @@ int NMusElement::intersects (const QPoint p) const {
 }
 	
 NPlayable::NPlayable(main_props_str *main_props, staff_props_str *staff_props) :
-	NMusElement( main_props, staff_props )
+	NMusElement( main_props, staff_props ), status_( 0 ), status2_( 0 )
 {
 }
 

@@ -810,8 +810,8 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 			}
 		}
 		switch (elem->getType()) {
-			case T_CHORD: if (PosOfHiddenRepeat < 0) {
-				     chord = (NChord *) elem;
+			case T_CHORD: chord = (NChord *) elem;
+				     if (PosOfHiddenRepeat < 0) {
 					if (acr = voi->determineAnacrusis()) {
 						out_ << "\\partial " << (128 / acr);
 						if (NResource::lilyProperties_.lilySemicolons) out_ << ";";

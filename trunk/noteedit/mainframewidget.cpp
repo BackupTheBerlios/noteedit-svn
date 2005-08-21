@@ -4971,7 +4971,7 @@ void NMainFrameWidget::setButton(int nr) {
    status2 - pedal sustain
    length - element length type. If -1 given, element doesn't have MIDI length (eg. barlines). */
 void NMainFrameWidget::updateInterface(status_type status, unsigned int status2, int length) {
-	if (status == -1) return;
+	if (length == -1) return;
 
 	// avoid feedback
 	// Note from David: you can use blockSignals instead (avoids duplicating code for connect/disconnect)
@@ -5259,7 +5259,10 @@ void NMainFrameWidget::nextElement() {
 	unsigned int val, status2;
 	val = currentVoice_->makeNextElementActual(&status, &status2);
 	if (editMode_)
-		updateInterface(status, status2, val);
+		if (currentVoice_->getCurrentElement()->playable())
+			updateInterface(status, status2, val);
+		else
+			updateInterface(status, status2, -1);
 	manageToolElement(false);
 	repaint();
 }
@@ -5271,7 +5274,10 @@ void NMainFrameWidget::prevElement() {
 	unsigned int val, status2;
 	val = currentVoice_->makePreviousElementActual(&status, &status2);
 	if (editMode_)
-		updateInterface(status, status2, val);
+		if (currentVoice_->getCurrentElement()->playable())
+			updateInterface(status, status2, val);
+		else
+			updateInterface(status, status2, -1);
 	manageToolElement(false);
 	repaint();
 }
@@ -5577,7 +5583,10 @@ void NMainFrameWidget::deleteElem(bool backspace) {
 	if (playing_) return;
 	val = currentVoice_->deleteActualElem(&status, &status2, backspace);
 	if (editMode_)
-		updateInterface(status, status2, val);
+		if (currentVoice_->getCurrentElement()->playable())
+			updateInterface(status, status2, val);
+		else
+			updateInterface(status, status2, -1);
 
 	computeMidiTimes(false);
 	if (!editiones_) setEdited(val != -1);

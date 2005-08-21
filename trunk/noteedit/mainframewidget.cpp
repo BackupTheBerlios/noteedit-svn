@@ -361,8 +361,8 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	new KAction( i18n("Tip of the &day"), "idea", 0, this, SLOT(showTipOfTheDay()), actionCollection(), "help_tipoftheday" );
 
 	// ------------ Actions for toolbar buttons, KDE interface --------
-	selectbutton_ = new KToggleAction(i18n("select"), "selector", 0, actionCollection(), "select");
-	note_buttons_[0] = new KToggleAction(i18n("breve"), "breve", 0, actionCollection(), "breve");
+	selectbutton_ = new KToggleAction(i18n("Select mode"), "selector", 0, actionCollection(), "select");
+	note_buttons_[0] = new KToggleAction(i18n("Breve"), "breve", 0, actionCollection(), "breve");
 	note_buttons_[1] = new KToggleAction(i18n("Full note"), "fullnote", 0, actionCollection(), "full");
 	note_buttons_[2] = new KToggleAction(i18n("Half note"), "halfnote", 0, actionCollection(), "half");
 	note_buttons_[3] = new KToggleAction(i18n("Quarter note"), "quarternote", 0, actionCollection(), "quarter");
@@ -393,7 +393,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	sforzatobutton_->setExclusiveGroup("accgrp");
 	portatobutton_ = new KToggleAction(i18n("Portato"), "portatonote", 0, actionCollection(), "portato");
 	portatobutton_->setExclusiveGroup("accgrp");
-	fermatebutton_ = new KToggleAction(i18n("Fermate"), "fermatenote", 0, actionCollection(), "fermate");
+	fermatebutton_ = new KToggleAction(i18n("Fermata"), "fermatenote", 0, actionCollection(), "fermate");
 	fermatebutton_->setExclusiveGroup("accgrp");
 	arpeggbutton_ = new KToggleAction(i18n("Arpeggio"), "arpegg", 0, actionCollection(), "arpegg");
 	arpeggbutton_->setExclusiveGroup("accgrp");
@@ -428,21 +428,21 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 #endif
 	editbutton_ = new KToggleAction(i18n("Edit mode"), "editicon", 0, actionCollection(), "edit");
 	allowKbInsertButton_ = new KToggleAction(i18n("Insert from keyboard"), "singlekey",  0, actionCollection(), "kbinsert");
-	gluebutton_ = new KToggleAction(i18n("glue"), "rivet", 0, actionCollection(), "glue");
+	gluebutton_ = new KToggleAction(i18n("Glue"), "rivet", 0, actionCollection(), "glue");
 	stemUpbutton_ = new KToggleAction(i18n("Stem up"), "stemupicon", 0, actionCollection(), "stemUp");
 	stemDownbutton_ = new KToggleAction(i18n("Stem down"), "stemdownicon", 0, actionCollection(), "stemDown");
 
 	allowKbInsertButton_->setOn(NResource::allowKeyboardInsert_);
 
-	crossDrumBu_ = new KToggleAction(i18n("drum1"), "perccross", 0, actionCollection(), "cross_drum");
+	crossDrumBu_ = new KToggleAction(i18n("Cross notehead style"), "perccross", 0, actionCollection(), "cross_drum");
 	crossDrumBu_->setExclusiveGroup( "note_body_group" );
-	cross2DrumBu = new KToggleAction(i18n("drum2"), "perccross2", 0, actionCollection(), "cross2_drum");
+	cross2DrumBu = new KToggleAction(i18n("Plus notehead style"), "perccross2", 0, actionCollection(), "cross2_drum");
 	cross2DrumBu->setExclusiveGroup( "note_body_group" );
-	crossCricDrumBu_ = new KToggleAction(i18n("drum3"), "perccrosscirc", 0, actionCollection(), "cross_cric_drum");
+	crossCricDrumBu_ = new KToggleAction(i18n("Cross-Circle notehead style"), "perccrosscirc", 0, actionCollection(), "cross_cric_drum");
 	crossCricDrumBu_->setExclusiveGroup( "note_body_group" );
-	rectDrumBu_ = new KToggleAction(i18n("drum4"), "percrect", 0, actionCollection(), "rect_drum");
+	rectDrumBu_ = new KToggleAction(i18n("Slash notehead style"), "percrect", 0, actionCollection(), "rect_drum");
 	rectDrumBu_->setExclusiveGroup( "note_body_group" );
-	triaDrumBu_ = new KToggleAction(i18n("drum5"), "perctrian", 0, actionCollection(), "tria_drum");
+	triaDrumBu_ = new KToggleAction(i18n("Triangle notehead style"), "perctrian", 0, actionCollection(), "tria_drum");
 	triaDrumBu_->setExclusiveGroup( "note_body_group" );
 	
 	connect(note_buttons_[0],  SIGNAL(toggled(bool)), this, SLOT(setToDFull(bool)));
@@ -531,7 +531,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	voiceList_.append(currentVoice_ = currentStaff_->getVoiceNr(0));
 	enableCriticalButtons(true);
 	main_props_.voiceDisplay =
-	voiceDisplay_ = new NNumberDisplay(0, currentStaff_->voiceCount(), i18n("voice sel."), 0, actionCollection(), "voicenumber");
+	voiceDisplay_ = new NNumberDisplay(0, currentStaff_->voiceCount(), i18n("Selected voice"), 0, actionCollection(), "voicenumber");
 	connect(voiceDisplay_, SIGNAL(valChanged(int)), this, SLOT(changeActualVoice(int)));
 	currentStaff_->setActual(true);
 	lastYHeight_ = 50 + (4+LINE_OVERFLOW/2)*LINE_DIST;
@@ -587,37 +587,37 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 
 	keys_ = new KAccel(this);
 
-	keys_->insertItem( i18n( "move up" ), "KEmoveup",  Key_Up);
+	keys_->insertItem( i18n( "Move up" ), "KEmoveup",  Key_Up);
 	keys_->connectItem( "KEmoveup", this, SLOT( KE_moveUp() ) );
-	keys_->insertItem( i18n( "move down" ), "KEmovedown",  Key_Down);
+	keys_->insertItem( i18n( "Move down" ), "KEmovedown",  Key_Down);
 	keys_->connectItem( "KEmovedown", this, SLOT( KE_moveDown() ) );
-	keys_->insertItem( i18n( "move semi up" ), "KEmoveSemiUp",  CTRL+Key_Up);
+	keys_->insertItem( i18n( "Move semi up" ), "KEmoveSemiUp",  CTRL+Key_Up);
 	keys_->connectItem( "KEmoveSemiUp", this, SLOT( KE_moveSemiUp() ) );
-	keys_->insertItem( i18n( "move semi down" ), "KEmoveSemiDown",  CTRL+Key_Down);
+	keys_->insertItem( i18n( "Move semi down" ), "KEmoveSemiDown",  CTRL+Key_Down);
 	keys_->connectItem( "KEmoveSemiDown", this, SLOT( KE_moveSemiDown() ) );
-	keys_->insertItem( i18n( "move left" ), "KEmoveleft",  Key_Left);
+	keys_->insertItem( i18n( "Move left" ), "KEmoveleft",  Key_Left);
 	keys_->connectItem( "KEmoveleft", this, SLOT( KE_moveLeft() ) );
-	keys_->insertItem( i18n( "move start" ), "KEmovestart",  Key_Home);
+	keys_->insertItem( i18n( "Move start" ), "KEmovestart",  Key_Home);
 	keys_->connectItem( "KEmovestart", this, SLOT( KE_moveStart() ) );
-	keys_->insertItem( i18n( "move right" ), "KEmoveright",  Key_Right);
+	keys_->insertItem( i18n( "Move right" ), "KEmoveright",  Key_Right);
 	keys_->connectItem( "KEmoveright", this, SLOT( KE_moveRight() ) );
-	keys_->insertItem( i18n( "move end" ), "KEmoveend",  Key_End);
+	keys_->insertItem( i18n( "Move end" ), "KEmoveend",  Key_End);
 	keys_->connectItem( "KEmoveend", this, SLOT( KE_moveEnd() ) );
-	keys_->insertItem( i18n( "delete forward" ), "KEdelete",  Key_Delete);
+	keys_->insertItem( i18n( "Delete forward" ), "KEdelete",  Key_Delete);
 	keys_->connectItem( "KEdelete", this, SLOT( KE_delete() ) );
-	keys_->insertItem( i18n( "delete chord note" ), "KEremovechordnote", CTRL+Key_Delete);
+	keys_->insertItem( i18n( "Delete chord note" ), "KEremovechordnote", CTRL+Key_Delete);
 	keys_->connectItem( "KEremovechordnote", this, SLOT( KE_removechordnote() ) );
-	keys_->insertItem( i18n( "delete before" ), "KEremove", Key_Backspace);
+	keys_->insertItem( i18n( "Delete before" ), "KEremove", Key_Backspace);
 	keys_->connectItem( "KEremove", this, SLOT( KE_remove() ) );
-	keys_->insertItem( i18n( "toggle play" ), "KEplay", Key_Space);
+	keys_->insertItem( i18n( "Toggle play" ), "KEplay", Key_Space);
 	keys_->connectItem( "KEplay", this, SLOT( KE_play() ) );
-	keys_->insertItem( i18n( "leave current mode" ), "KEleave", Key_Escape);
+	keys_->insertItem( i18n( "Leave current mode" ), "KEleave", Key_Escape);
 	keys_->connectItem( "KEleave", this, SLOT( KE_leaveCurrentMode() ) );	
-	keys_->insertItem( i18n( "toggle edit" ), "KEedit",  Key_E);
+	keys_->insertItem( i18n( "Toggle edit" ), "KEedit",  Key_E);
 	keys_->connectItem( "KEedit", this, SLOT( KE_edit() ) );
-	keys_->insertItem( i18n( "insert chord note" ), "KEinsertchordnote",  CTRL+Key_Return);
+	keys_->insertItem( i18n( "Insert chord note" ), "KEinsertchordnote",  CTRL+Key_Return);
 	keys_->connectItem( "KEinsertchordnote", this, SLOT( KE_insertchordnote() ) );
-	keys_->insertItem( i18n( "insert note" ), "KEinsertnote",  Key_Return);
+	keys_->insertItem( i18n( "Insert note" ), "KEinsertnote",  Key_Return);
 	keys_->connectItem( "KEinsertnote", this, SLOT( KE_insertnote() ) );
 	
 	/* note length selection keys */
@@ -660,48 +660,48 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->insertItem( i18n( "Select 9th voice" ), "KEVoice9", CTRL+Key_9);
 	keys_->connectItem( "KEVoice9", this, SLOT( KE_voice9() ) );
 	
-	keys_->insertItem( i18n( "set tied" ), "KEtie", Key_Apostrophe);
+	keys_->insertItem( i18n( "Set tied" ), "KEtie", Key_Apostrophe);
 	keys_->connectItem( "KEtie", this, SLOT( KE_tie() ) );
-	keys_->insertItem( i18n( "set tied" ), "KEtie1", "Alt+AsciiTilde");
+	keys_->insertItem( i18n( "Set tied" ), "KEtie1", "Alt+AsciiTilde");
 	keys_->connectItem( "KEtie1", this, SLOT( KE_tie() ) );
-	keys_->insertItem( i18n( "dot" ), "KEdot", Key_Period);
+	keys_->insertItem( i18n( "Set dotted" ), "KEdot", Key_Period);
 	keys_->connectItem( "KEdot", this, SLOT( KE_dot() ) );
-	keys_->insertItem( i18n( "flat" ), "KEflat", Key_Minus);
+	keys_->insertItem( i18n( "Flat" ), "KEflat", Key_Minus);
 	keys_->connectItem( "KEflat", this, SLOT( KE_flat() ) );
-	keys_->insertItem( i18n( "sharp" ), "KEsharp", Key_NumberSign);
+	keys_->insertItem( i18n( "Sharp" ), "KEsharp", Key_NumberSign);
 	keys_->connectItem( "KEsharp", this, SLOT( KE_sharp() ) );
-	keys_->insertItem( i18n( "sharp" ), "KEsharp1", Key_Plus);
+	keys_->insertItem( i18n( "Sharp" ), "KEsharp1", Key_Plus);
 	keys_->connectItem( "KEsharp1", this, SLOT( KE_sharp() ) );
-	keys_->insertItem( i18n( "natural" ), "KEnatural", Key_N);
+	keys_->insertItem( i18n( "Natural" ), "KEnatural", Key_N);
 	keys_->connectItem( "KEnatural", this, SLOT( KE_natural() ) );
-	keys_->insertItem( i18n( "natural" ), "KEnatural1", "Shift+Equal");
+	keys_->insertItem( i18n( "Natural" ), "KEnatural1", "Shift+Equal");
 	keys_->connectItem( "KEnatural1", this, SLOT( KE_natural() ) );
-	keys_->insertItem( i18n( "set bar at" ), "KEbar", Key_Bar);
+	keys_->insertItem( i18n( "Set bar" ), "KEbar", Key_Bar);
 	keys_->connectItem( "KEbar", this, SLOT( KE_bar() ) );
-	keys_->insertItem( i18n( "set bar after" ), "KEtab", Key_Tab);
+	keys_->insertItem( i18n( "Set bar after" ), "KEtab", Key_Tab);
 	keys_->connectItem( "KEtab", this, SLOT( KE_tab() ) );
-	keys_->insertItem( i18n( "insert rest" ), "KErest", SHIFT+Key_Return);
+	keys_->insertItem( i18n( "Insert rest" ), "KErest", SHIFT+Key_Return);
 	keys_->connectItem( "KErest", this, SLOT( KE_insertRest() ) );
-	keys_->insertItem( i18n( "toggle beam" ), "KEunderscore", "Shift+Underscore");
+	keys_->insertItem( i18n( "Toggle beam" ), "KEunderscore", "Shift+Underscore");
 	keys_->connectItem( "KEunderscore", this, SLOT( KE_underscore() ) );
-	keys_->insertItem( i18n( "keyboard insert mode" ), "KEkeybordInsert", Key_K);
+	keys_->insertItem( i18n( "Keyboard Insert mode" ), "KEkeybordInsert", Key_K);
 	keys_->connectItem( "KEkeybordInsert", this, SLOT( KE_keybordInsert() ) );
 
 /*------------------------- "note" keys -----------------------------------------------*/
 
-	keys_->insertItem( i18n( "pitch C" ), "KEpitchC", "C");
+	keys_->insertItem( i18n( "Pitch C" ), "KEpitchC", "C");
 	keys_->connectItem( "KEpitchC", this, SLOT( KE_pitch_C() ) );
-	keys_->insertItem( i18n( "pitch D" ), "KEpitchD", "D");
+	keys_->insertItem( i18n( "Pitch D" ), "KEpitchD", "D");
 	keys_->connectItem( "KEpitchD", this, SLOT( KE_pitch_D() ) );
-	keys_->insertItem( i18n( "pitch E" ), "KEpitchE", SHIFT+Key_E);
+	keys_->insertItem( i18n( "Pitch E" ), "KEpitchE", SHIFT+Key_E);
 	keys_->connectItem( "KEpitchE", this, SLOT( KE_pitch_E() ) );
-	keys_->insertItem( i18n( "pitch F" ), "KEpitchF", "F");
+	keys_->insertItem( i18n( "Pitch F" ), "KEpitchF", "F");
 	keys_->connectItem( "KEpitchF", this, SLOT( KE_pitch_F() ) );
-	keys_->insertItem( i18n( "pitch G" ), "KEpitchG", "G");
+	keys_->insertItem( i18n( "Pitch G" ), "KEpitchG", "G");
 	keys_->connectItem( "KEpitchG", this, SLOT( KE_pitch_G() ) );
-	keys_->insertItem( i18n( "pitch A" ), "KEpitchA", "A");
+	keys_->insertItem( i18n( "Pitch A" ), "KEpitchA", "A");
 	keys_->connectItem( "KEpitchA", this, SLOT( KE_pitch_A() ) );
-	keys_->insertItem( i18n( "pitch B" ), "KEpitchB", "B");
+	keys_->insertItem( i18n( "Pitch B" ), "KEpitchB", "B");
 	keys_->connectItem( "KEpitchB", this, SLOT( KE_pitch_B() ) );
 
 	keys_->readSettings();

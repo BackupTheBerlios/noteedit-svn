@@ -60,3 +60,5 @@ version 2.9.0:
 	policy. For eg. slurs for voices in poliphony music (2 voices, 1st has stems up, 2nd has stems down) are at the same side as stems, whereas for single voice staff without poliphony, slurs are at the opposite side. Also, every note (class NChord) has a new private NVoice *voice_ variable which defines which voice does this note/chord belong to. R333, R334
 	* Implemented standard paper sizes (a6, a5, a4, a3, letter, tabloid, legal) in Lilypond export filter and updated export dialog. R336
 	* Many aestetic bugs fixed (not unified capital letters, nicer expressions) in UI. Updated Slovenian translation. R348
+	* Fixed bug #4437 - NoteEdit crashes in auto scroll when playing:
+	  Fixed crash when turning the page and try to show the current clef. If the clef wasn't placed at all, NoteEdit crashed. Thanks to bensonkao for hunting it down and the idea how to fix it.

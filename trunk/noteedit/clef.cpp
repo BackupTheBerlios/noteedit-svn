@@ -792,7 +792,9 @@ void NClef::draw(int /* dummy */) {
 }
 
 void NClef::drawContextClef() {
-	main_props_->tp->beginUnclippedYtranslated();
-	main_props_->tp->drawPixmap(main_props_->context_clef_xpos, nbaseDrawPoint_.y(), *blackPixmap_);
-	main_props_->tp->end();
+	if (main_props_) {
+		main_props_->tp->beginUnclippedYtranslated();
+		main_props_->tp->drawPixmap(main_props_->context_clef_xpos, nbaseDrawPoint_.y(), *blackPixmap_);
+		main_props_->tp->end();
+	}
 }

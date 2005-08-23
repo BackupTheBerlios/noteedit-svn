@@ -527,6 +527,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	lastYHeight_ = 0;
 	help_x1_ = dummy_note_y_ = -1;
 	lastXpos_ = oldLastXpos_ = 0;
+	main_props_.lastMidiTime = 0;
 	staffList_.append(currentStaff_ = new NStaff(Y_STAFF_BASE +  NResource::overlength_, 0, 0, this));
 	voiceList_.append(currentVoice_ = currentStaff_->getVoiceNr(0));
 	enableCriticalButtons(true);
@@ -1138,6 +1139,11 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 	if (playing_) return;
 	keyLine_ = NULL_LINE;
 	if ((evt->state() & QEvent::MouseButtonPress)) return;
+	
+	/* remember the last selected element's Midi time, so it gets restored when needed */
+	if (currentVoice_->getCurrentElement())
+		main_props_.lastMidiTime = currentVoice_->getCurrentElement()->midiTime_;
+		
 	switch (evt->button()) {
 		case LeftButton:
 			if (evt->type() == QEvent::MouseButtonDblClick) {
@@ -1290,7 +1296,7 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 				delete_elem = /*main_props_.actualLength > 0 && !editMode_ &&*/ (evt->state() & ControlButton) != 0;
 				insert_new_note = main_props_.actualLength > 0 && !editMode_ && (evt->state() & ControlButton) == 0;
 				TRANSY2LINE(evt->y(), dline, line);
-				if ((val = checkAllStaffsForNoteInsertion(line, p, &status, &status2, &playable, &delete_elem, &insert_new_note)) > 0) {
+				if ( (val = checkAllStaffsForNoteInsertion(line, p, &status, &status2, &playable, &delete_elem, &insert_new_note)) > 0 ) {
 					if (editMode_) {
 						if (playable) {
 							updateInterface(status, status2, val);

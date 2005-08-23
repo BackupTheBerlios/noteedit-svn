@@ -42,6 +42,7 @@ class main_props_str {
 		main_props_str();
 		~main_props_str();
 		int dotcount;
+		int lastMidiTime; /* The last MIDI time of an event that happened. eg. The cycling through elements methods find their track where to start easier. */
 		bool hidden;
 		bool tied;
 		bool triplet;

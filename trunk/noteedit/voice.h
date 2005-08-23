@@ -200,6 +200,7 @@ class NVoice {
 		void cleanupRests(int shortestRest, bool region);
 		static int quant(int l, int *dotcount, int maxlength);
 		void pubAddUndoElement();
+		NMusElement *selectNearestMidiEvent(int MidiTime, bool nearestRight = false);
 /*------------------------- insertion due to user interaction --------------------*/
 		void insertTmpElemAtPosition(int xpos, NMusElement *tmpElem);
 		int findLastBarTime(int xpos);
@@ -327,8 +328,8 @@ class NVoice {
 /*------------------------------ voice properies -----------------------------------------*/
 		bool	firstVoice_;
 		QList<NMusElement> musElementList_;
-		NMusElement *currentElement_;			// the selected element (drawn in red)
-								// if no element is selected, then 0
+		NMusElement *currentElement_;			// the actual element (drawn in red)
+		                             			// if no element is selected, then 0
 		NMusElement *specialElement_;
 		NStaff  *theStaff_;
 /*-------------------------------- drawing voice ----------------------------------------------*/

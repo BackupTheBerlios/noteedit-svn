@@ -920,10 +920,10 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				dysymDescr_[staff_nr].lastDynSym = 0;
 				dysymDescr_[staff_nr].dynEndPos = 0;
 			     } 
-			     if (chord->status2_ & STAT2_PEDAL_ON) {
+			     if (chord->status_ & STAT_PEDAL_ON) {
 			     	out_ << "\\PED";
 			     }
-			     if (chord->status2_ & STAT2_PEDAL_OFF) {
+			     if (chord->status_ & STAT_PEDAL_OFF) {
 			     	out_ << "\\DEP";
 			     }
 #ifdef AAA

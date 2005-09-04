@@ -45,7 +45,7 @@ struct trill_descr_str {
 
 class NChord: public NPlayable {
 	public:
-		NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, status_type status = 0, unsigned int status2 = 0);
+		NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, status_type status = 0 );
 		virtual ~NChord();
 		virtual NChord *clone();
 		virtual void changeLength(int length);

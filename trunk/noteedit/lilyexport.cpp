@@ -1132,7 +1132,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 								lastDynSym = (char *) (chord->dynamicAlign_ ? " \\rc " : " \\rced ");
 							}
 						}
-						if (chord->status2_ & STAT2_PEDAL_ON) {
+						if (chord->status_ & STAT_PEDAL_ON) {
 							if (NResource::lilyProperties_.lilyVersion2) {
 								out_ << "\\sustainDown ";
 							}
@@ -1140,7 +1140,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 								out_ << " \\spanrequest \\start \"Sustain\" ";
 							}
 						}
-						if (chord->status2_ & STAT2_PEDAL_OFF) {
+						if (chord->status_ & STAT_PEDAL_OFF) {
 							if (NResource::lilyProperties_.lilyVersion2) {
 								out_ << "\\sustainUp ";
 							}

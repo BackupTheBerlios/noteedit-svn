@@ -414,10 +414,10 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 					        out_ << "!wedge!";
 				      if (chord->status_ & STAT_SFZND)
 					        out_ << "!accent!";
-				      if (chord->status2_ & STAT2_PEDAL_ON) {
+				      if (chord->status_ & STAT_PEDAL_ON) {
 				      		out_ << "!ped!";
 				      }
-				      if (chord->status2_ & STAT2_PEDAL_OFF) {
+				      if (chord->status_ & STAT_PEDAL_OFF) {
 				      		out_ << "!ped-end!";
 				      }
 				      if (chord->status_ & STAT_FERMT) {

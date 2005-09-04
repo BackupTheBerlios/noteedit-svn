@@ -202,6 +202,10 @@
 #define STAT_BODY_RECT ((status_type)1 << 31)
 /* body is triangle */
 #define STAT_BODY_TRIA ((status_type)1 << 32)
+/* pedal status values */
+#define STAT_PEDAL_ON ((status_type)1 << 33)
+#define STAT_PEDAL_OFF ((status_type)1 << 34)
+#define STAT_AUTO_TRIPLET ((status_type)1 << 35)
 
 
 #define CHORD_STAT_PART ( STAT_SINGLE_DOT | STAT_DOUBLE_DOT | STAT_BEAMED | STAT_SLURED | \
@@ -217,9 +221,5 @@
 
 #define SET_STATUS(condition, stat_var, stat_bit) if (condition) {stat_var |= stat_bit;} else {stat_var &= (~stat_bit);}
 
-// definition of status bits in NMusElement::status2_
-#define STAT2_PEDAL_ON (1 << 0)
-#define STAT2_PEDAL_OFF (1 << 1)
-#define STAT2_AUTO_TRIPLET (1 << 2)
 
 #endif /* CONSTANTS_H */

@@ -145,7 +145,6 @@ void NMusicXMLExport::debugDumpElem(NMusElement *elem) {
 //		<< "," << elem->getBbox()->right()
 		<< hex
 		<< " status=" <<  ( elem->playable() ? elem->playable()->status_ : 0 )
-		<< " status2=" << ( elem->playable() ? elem->playable()->status2_ : 0 )
 		<< dec << " ";
 	if (elem->chord() && elem->chord()->va_) {
 		out_ << "va=" << elem->chord()->va_ << " ";
@@ -554,10 +553,10 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 				      // occur in a rest. Sometimes both pedal on and off are found,
 				      // in which case pedal on has priority.
 				      // LVIFIX: may need to add relative-x,y and offset for proper positioning
-				      if (chord->status2_ & STAT2_PEDAL_ON) {
+				      if (chord->status_ & STAT_PEDAL_ON) {
 					outputDirection("\t\t\t\t\t<pedal type=\"start\"/>\n",
 							"below");
-				      } else if (chord->status2_ & STAT2_PEDAL_OFF) {
+				      } else if (chord->status_ & STAT_PEDAL_OFF) {
 					outputDirection("\t\t\t\t\t<pedal type=\"stop\"/>\n",
 							"below");
 				      }

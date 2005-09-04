@@ -127,10 +127,10 @@ class NVoice {
 		bool voiceSet_;
 		int yRestOffs_;
 /*--------------------------------- search for something in voice ----------------------------- */
-		int checkElementForNoteInsertion(const int line, const QPoint p, status_type *status, unsigned int *status2, bool *playable, bool *delete_elem, bool *insertNewNote, int offs);
+		int checkElementForNoteInsertion(const int line, const QPoint p, status_type *status, bool *playable, bool *delete_elem, bool *insertNewNote, int offs);
 		bool checkElementForElementInsertion(const QPoint p);
 		bool deleteActualNote();
-		int getElemState(status_type *status, unsigned int *status2, bool *playable);
+		int getElemState(status_type *status, bool *playable);
 		void grabElements();
 		void findAppropriateElems();
 		void trimmRegion(int *x0, int *x1);
@@ -167,8 +167,8 @@ class NVoice {
 		void moveDown(int down);
 		void moveSemiToneUp();
 		void moveSemiToneDown();
-		int makePreviousElementActual(status_type *status, unsigned int *status2);
-		int makeNextElementActual(status_type *status, unsigned int *status2);
+		int makePreviousElementActual(status_type *status);
+		int makeNextElementActual(status_type *status);
 		void changeActualChord();
 		void changeBodyOfActualElement();
 		void changeActualStem();
@@ -191,7 +191,7 @@ class NVoice {
 		void resetSlured();
 		void setBeamed();
 		void setTuplet(char numNotes, char playtime);
-		int deleteActualElem(status_type *status, unsigned int *status2, bool backspace);
+		int deleteActualElem(status_type *status, bool backspace);
 		bool deleteAtPosition(int y);
 		void autoBar();
 		void autoBarVoice123andSoOn();

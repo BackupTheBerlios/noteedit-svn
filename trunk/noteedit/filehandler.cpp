@@ -1171,7 +1171,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					   timestring.sprintf("%f;", starttime + 1.0);
 					   rolls_ += timestring;
 				     }
-				     if (chord->status2_ & STAT2_PEDAL_ON) {
+				     if (chord->status_ & STAT_PEDAL_ON) {
 					   starttime = ((chord->midiTime_ - *measure_start_time) / MULTIPLICATOR) / (double) (128 / curr_denom_);
 					   if (pedals_.isEmpty()) {
 					   	pedals_.sprintf("pedal %d: ",  staff_nr);
@@ -1179,7 +1179,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					   timestring.sprintf("%f;", starttime + 1.0);
 					   pedals_ += timestring;
 				     }
-				     if (chord->status2_ & STAT2_PEDAL_OFF) {
+				     if (chord->status_ & STAT_PEDAL_OFF) {
 					   starttime = ((chord->midiTime_ - *measure_start_time) / MULTIPLICATOR) / (double) (128 / curr_denom_);
 					   if (pedals_.isEmpty()) {
 					   	pedals_.sprintf("pedal %d: ",  staff_nr);
@@ -1865,7 +1865,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 					   timestring.sprintf("%f;", starttime + 1.0);
 					   rolls_ += timestring;
 				     }
-				     if (chord->status2_ & (STAT2_PEDAL_ON | STAT2_PEDAL_OFF)) {
+				     if (chord->status_ & (STAT_PEDAL_ON | STAT_PEDAL_OFF)) {
 					bad = new badmeasure(ERR_PEDAL_IN_2ND, staff_nr, bar_nr_, total / 3, countof128th_);
 					fatallist_.append(bad);
 				     }

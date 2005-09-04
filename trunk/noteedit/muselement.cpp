@@ -57,7 +57,7 @@ int NMusElement::intersects (const QPoint p) const {
 }
 	
 NPlayable::NPlayable(main_props_str *main_props, staff_props_str *staff_props) :
-	NMusElement( main_props, staff_props ), status_( 0 ), status2_( 0 )
+	NMusElement( main_props, staff_props ), status_( 0 )
 {
 }
 

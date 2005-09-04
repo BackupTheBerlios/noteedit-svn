@@ -106,7 +106,7 @@ QPoint NChord::StrokeDist2_(STROKE_X_2, STROKE_Y_2);
 int NChord::numTexRows_ = 0;
 QList<NNote> NChord::acc_tex_row;
 
-NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, status_type status, unsigned int status2) :
+NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, status_type status) :
 		 NPlayable(main_props, staff_props), m_(0.0), n_(0.0) {
 	NNote *note;
 	trill_ = dynamic_ = va_ = 0;
@@ -121,8 +121,7 @@ NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice 
 	if (length > WHOLE_LENGTH || (status & STAT_GRACE)) {
 		note->status &= (~BODY_MASK);
 	}
-	status_ = (status & STAT_GRACE) ? (status & GRACE_STAT_PART) : (status & CHORD_STAT_PART);
-	status2_ = (status & STAT_GRACE) ? 0 : status2;
+	status_ = (status & STAT_GRACE) ? (status & GRACE_STAT_PART) : (status & (CHORD_STAT_PART | STAT_PEDAL_ON | STAT_PEDAL_OFF | STAT_AUTO_TRIPLET ));
 	midiLength_ = computeMidiLength();
 	actualNote_ = 0;
 	note->line = line;
@@ -164,7 +163,6 @@ NChord* NChord::clone() {
 		cchord->noteList_.append(cnote);
 	}
 	cchord->status_     = status_;
-	cchord->status2_     = status2_;
 	cchord->trill_	    = trill_;
 	cchord->dynamic_    = dynamic_;
 	cchord->dynamicAlign_ = dynamicAlign_;
@@ -473,12 +471,12 @@ void NChord::setArpeggio(bool on) {
 
 void NChord::setPedalOn(bool on) {
 	if (status_ & STAT_GRACE) return;
-	SET_STATUS(on, status2_, STAT2_PEDAL_ON);
+	SET_STATUS(on, status_, STAT_PEDAL_ON);
 }
 
 void NChord::setPedalOff(bool on) {
 	if (status_ & STAT_GRACE) return;
-	SET_STATUS(on, status2_, STAT2_PEDAL_OFF);
+	SET_STATUS(on, status_, STAT_PEDAL_OFF);
 }
 
 void NChord::resetSlurForward() {
@@ -1586,10 +1584,10 @@ void NChord::draw(int flags) {
 		// sforzando draw
 		the_painter->drawPixmap (QPoint(acc_point_.x() - (NResource::sforzandoPixmap_->width() / 2 ), u1_.setAccentAboveChord_ ? acc_point_.y() - (NResource::sforzandoPixmap_->height() / 2) : acc_point_.y() ), actual_ ? *NResource::sforzandoRedPixmap_ : 
 				    *NResource::sforzandoPixmap_ );	
-	if (status2_ & STAT2_PEDAL_ON) 
+	if (status_ & STAT_PEDAL_ON) 
 		// pedal on draw
 		the_painter->drawPixmap (pedal_point_, actual_ ? *NResource::pedonRedPixmap_ : *NResource::pedonPixmap_ );	
-	if (status2_ & STAT2_PEDAL_OFF) 
+	if (status_ & STAT_PEDAL_OFF) 
 		// pedal off draw
 		the_painter->drawPixmap (pedal_point_, actual_ ? *NResource::pedoffRedPixmap_ : *NResource::pedoffPixmap_ );	
 

@@ -69,8 +69,8 @@ class NStaff {
 		QString staffName_;
 		int overlength_, underlength_;
 		bool trimmRegionToWholeStaff(int *x0, int *x1);
-		int checkElementForNoteInsertion(const int line, const QPoint p, status_type *status, unsigned int *status2, bool *playable, bool *delete_elem, bool *insertNewNote, int offs) {
-			return actualVoice_->checkElementForNoteInsertion(line, p, status, status2, playable, delete_elem, insertNewNote, offs); }
+		int checkElementForNoteInsertion(const int line, const QPoint p, status_type *status, bool *playable, bool *delete_elem, bool *insertNewNote, int offs) {
+			return actualVoice_->checkElementForNoteInsertion(line, p, status, playable, delete_elem, insertNewNote, offs); }
 		bool checkElementForElementInsertion(const QPoint p) {
 			return actualVoice_->checkElementForElementInsertion(p); }
 		int findLineOf(int pitchNumber, int acYLine, int xpos);

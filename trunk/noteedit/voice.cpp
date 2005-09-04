@@ -163,9 +163,9 @@ void NVoice::paperDimensiones(int width) {
 
 /*--------------------------------- search for something in voice ----------------------------- */
 
-int NVoice::getElemState(status_type *status, unsigned int *status2, bool *playable) {
+int NVoice::getElemState(status_type *status, bool *playable) {
 	NChord *chord;
-	*status = *status2 = 0;
+	*status = 0;
 	*playable = false;
 	if( !currentElement_ ) return -1;
 	if( !( *playable = (currentElement_->getType() & PLAYABLE))) {
@@ -176,17 +176,16 @@ int NVoice::getElemState(status_type *status, unsigned int *status2, bool *playa
 		chord = (NChord *) currentElement_;
 		*status |= chord->getActualNote()->status;
 	}
-	*status2 = currentElement_->playable()->status2_;
 	return currentElement_->getSubType();
 }
 
-int NVoice::checkElementForNoteInsertion(const int line, const QPoint p, status_type *status, unsigned int *status2, bool *playable, bool *delete_elem, bool *insertNewNote, int offs) {
+int NVoice::checkElementForNoteInsertion(const int line, const QPoint p, status_type *status, bool *playable, bool *delete_elem, bool *insertNewNote, int offs) {
 	bool found;
 	NMusElement *ac_elem;
 	NChord *chord;
 	int val;
 
-	*status2 = *status = 0;
+	*status = 0;
 	*playable = false;
 
 	found = false;
@@ -220,7 +219,6 @@ int NVoice::checkElementForNoteInsertion(const int line, const QPoint p, status_
 		return -1;
 	}
 	*status = currentElement_->playable()->status_;
-	*status2 = currentElement_->playable()->status2_;
 	if (currentElement_->getType() == T_CHORD) {
 		chord = (NChord *) currentElement_;
 		if (chord->setActualNote(line))  {
@@ -1453,7 +1451,7 @@ void NVoice::moveSemiToneDown() {
 		theStaff_->getVoice(), theStaff_->getChannel(), theStaff_->getVolume(), theStaff_->transpose_);
 }
 
-int NVoice::makePreviousElementActual(status_type *status, unsigned int *status2) {
+int NVoice::makePreviousElementActual(status_type *status) {
 	*status = 0;
 	
 	/* Check if there is actual element. If not, select the nearest at the last known MIDI location when something happened.
@@ -1485,7 +1483,6 @@ int NVoice::makePreviousElementActual(status_type *status, unsigned int *status2
 	currentElement_->draw();
 	if( currentElement_->playable() ) {
 		*status = currentElement_->playable()->status_;
-		*status2 = currentElement_->playable()->status2_;
 	}
 	if (currentElement_->getType() == T_CHORD) {
 		*status |= currentElement_->chord()->getNoteList()->first()->status;
@@ -1493,7 +1490,7 @@ int NVoice::makePreviousElementActual(status_type *status, unsigned int *status2
 	return currentElement_->getSubType();
 }
 
-int NVoice::makeNextElementActual(status_type *status, unsigned int *status2) {
+int NVoice::makeNextElementActual(status_type *status) {
 	*status = 0;
 	
 	/* Check if there is actual element. If not, select the nearest at the last known MIDI location when something happened.
@@ -1526,7 +1523,6 @@ int NVoice::makeNextElementActual(status_type *status, unsigned int *status2) {
 	currentElement_->draw();
 	if( currentElement_->playable() ) {
 		*status = currentElement_->playable()->status_;
-		*status2 = currentElement_->playable()->status2_;
 	}
 	if (currentElement_->getType() == T_CHORD) {
 		*status |= currentElement_->chord()->getNoteList()->first()->status;
@@ -1829,10 +1825,10 @@ void NVoice::setPedalOn() {
 	if (currentElement_->getType() != T_CHORD) return;
 	chord = (NChord *) currentElement_;
 	if (main_props_->pedal_on) {
-		if (chord->status2_ & STAT2_PEDAL_ON) return;
+		if (chord->status_ & STAT_PEDAL_ON) return;
 	}
 	else {
-		if (!(chord->status2_ & STAT2_PEDAL_ON)) return;
+		if (!(chord->status_ & STAT_PEDAL_ON)) return;
 	}
 	createUndoElement(currentElement_, 1, 0);
 	chord->setPedalOn(main_props_->pedal_on);
@@ -1844,10 +1840,10 @@ void NVoice::setPedalOff() {
 	if (currentElement_->getType() != T_CHORD) return;
 	chord = (NChord *) currentElement_;
 	if (main_props_->pedal_off) {
-		if (chord->status2_ & STAT2_PEDAL_OFF) return;
+		if (chord->status_ & STAT_PEDAL_OFF) return;
 	}
 	else {
-		if (!(chord->status2_ & STAT2_PEDAL_OFF)) return;
+		if (!(chord->status_ & STAT_PEDAL_OFF)) return;
 	}
 	createUndoElement(currentElement_, 1, 0);
 	chord->setPedalOff(main_props_->pedal_off);
@@ -2020,13 +2016,13 @@ void NVoice::setTuplet(char numNotes, char playtime) {
 	// note: don't delete elemlist here, all tuplet notes refer to it
 }
 
-int NVoice::deleteActualElem(status_type *status, unsigned int *status2, bool backspace) {
+int NVoice::deleteActualElem(status_type *status, bool backspace) {
 	NNote *note;
 	QList<NNote> *partlist;
 	NChord *chord;
 	bool removedLast = false; /* are we deleting the last element? */
 	bool removedFirst = false; /* are we deleting the first element? */
-	*status2 = *status = 0;
+	*status = 0;
 	if (!currentElement_) return -1;
 	if (musElementList_.isEmpty()) {
 		return -1;
@@ -2086,7 +2082,6 @@ int NVoice::deleteActualElem(status_type *status, unsigned int *status2, bool ba
 			partlist = currentElement_->chord()->getNoteList();
 			*status |= partlist->first()->status;
 		}
-		*status2 = currentElement_->playable() ? currentElement_->playable()->status2_ : 0;
 		
 		 /* if the last element was deleted by Key_Delete or the first element was deleted by Key_Backspace, none get selected */
 		if ( (backspace && (!removedFirst)) || (!backspace && (!removedLast)) ) {
@@ -3100,15 +3095,15 @@ void NVoice::tryToBuildAutoTriplet() {
 	int cn = -1;			// index of current note
 	NMusElement *elem = 0;
 	elem = musElementList_.current();
-	if (elem && elem->playable() && (elem->playable()->status2_ & STAT2_AUTO_TRIPLET)
+	if (elem && elem->playable() && (elem->playable()->status_ & STAT_AUTO_TRIPLET)
 	    && !(elem->playable()->status_ & STAT_TUPLET))
 		cn = musElementList_.at();
 	elem = musElementList_.prev();
-	if (elem && elem->playable() && (elem->playable()->status2_ & STAT2_AUTO_TRIPLET)
+	if (elem && elem->playable() && (elem->playable()->status_ & STAT_AUTO_TRIPLET)
 	    && !(elem->playable()->status_ & STAT_TUPLET))
 		pn = musElementList_.at();
 	elem = musElementList_.prev();
-	if (elem && elem->playable() && (elem->playable()->status2_ & STAT2_AUTO_TRIPLET)
+	if (elem && elem->playable() && (elem->playable()->status_ & STAT_AUTO_TRIPLET)
 	    && !(elem->playable()->status_ & STAT_TUPLET))
 		ppn = musElementList_.at();
 
@@ -3142,7 +3137,6 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 	NMusElement *new_elem, *elem_before, *elem;
 	bool found, is_chord = false, is_rest = false;
 	status_type status = 0;
-	unsigned int status2 = 0;
 	int idx, idx2;
 	int lastbaridx = 0;
 	int dotcount;
@@ -3232,11 +3226,11 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 			if (main_props_->arpeggio) status |= STAT_ARPEGG;
 			status |= (main_props_->dotcount & DOT_MASK);
 			status |= (main_props_->noteBody & BODY_MASK);
-			if (main_props_->pedal_on) status2 |= STAT2_PEDAL_ON;
-			if (main_props_->pedal_off) status2 |= STAT2_PEDAL_OFF;
-			if (main_props_->triplet) status2 |= STAT2_AUTO_TRIPLET;
+			if (main_props_->pedal_on) status |= STAT_PEDAL_ON;
+			if (main_props_->pedal_off) status |= STAT_PEDAL_OFF;
+			if (main_props_->triplet) status |= STAT_AUTO_TRIPLET;
 			new_elem = 
-			new NChord(main_props_, &(theStaff_->staff_props_), this, line,  offs, main_props_->actualLength, stemPolicy_, status, status2);
+			new NChord(main_props_, &(theStaff_->staff_props_), this, line,  offs, main_props_->actualLength, stemPolicy_, status );
 				part = new_elem->chord()->getNoteList()->first();
 		break;
 		case T_REST:
@@ -3662,7 +3656,7 @@ void NVoice::detectABCSpecials(bool *with_drums, bool *with_pedal_marks) { /* fo
 	NNote *note;
 	for (elem = musElementList_.first(); elem; elem = musElementList_.next()) {
 		if (elem->getType() == T_CHORD) {
-			if (elem->chord()->status2_ & (STAT2_PEDAL_ON | STAT2_PEDAL_OFF)) *with_pedal_marks = true;
+			if (elem->chord()->status_ & (STAT_PEDAL_ON | STAT_PEDAL_OFF)) *with_pedal_marks = true;
 			for (note = elem->chord()->getNoteList()->first(); note; note = elem->chord()->getNoteList()->next()) {
 				if (note->status & BODY_MASK) *with_drums = true;
 			}
@@ -4184,8 +4178,8 @@ NMidiEventStr* NVoice::getNextMidiEvent(int mtime, bool reachInfo) {
 				actualMidiEvent_->volume = 127;
 			}
 		}
-		if (chord->status2_ & STAT2_PEDAL_ON) actualMidiEvent_->status |= MIDI_STAT_PEDAL_ON;
-		if (chord->status2_ & STAT2_PEDAL_OFF) actualMidiEvent_->status  |= MIDI_STAT_PEDAL_OFF;
+		if (chord->status_ & STAT_PEDAL_ON) actualMidiEvent_->status |= MIDI_STAT_PEDAL_ON;
+		if (chord->status_ & STAT_PEDAL_OFF) actualMidiEvent_->status  |= MIDI_STAT_PEDAL_OFF;
 		note_halt->notelist = 
 		actualMidiEvent_->notelist = chord->getNoteList();
 		note_halt->xpos = 

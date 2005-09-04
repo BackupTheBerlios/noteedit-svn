@@ -507,7 +507,7 @@ class NMainFrameWidget : public QWidget
                 int leftx_, topy_, boty_;
 /*----------------------------- update of buttons due to selection ------------------*/
 		void setButton(int nr);
-		void updateInterface(status_type status, unsigned int status2, int length);
+		void updateInterface(status_type status, int length);
 		void playButtonReset();
 /*-----------------------------(re-)storing ----------------------------------------*/
 		void writeStaffs(const char *fname);
@@ -537,7 +537,7 @@ class NMainFrameWidget : public QWidget
 		int x0_, y0_, x1_;
 		int xori_;
 		QRect   selRect_;
-		int checkAllStaffsForNoteInsertion(const int line, const QPoint p, status_type *status, unsigned int *status2, bool *playable, bool *delete_elem, bool *insert_new_note);
+		int checkAllStaffsForNoteInsertion(const int line, const QPoint p, status_type *status, bool *playable, bool *delete_elem, bool *insert_new_note);
 		bool checkStaffIntersection(const QPoint p);
 		QList<NVoice> voiceList_;
 		QList<NStaff> staffList_;

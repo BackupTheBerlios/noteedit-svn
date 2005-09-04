@@ -1122,7 +1122,7 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 			   	
 
 	status_type status;
-	unsigned int val, status2, newXpos;
+	unsigned int val, newXpos;
 	bool playable;
 	QPoint p;
 	NVoice *voice_elem;
@@ -1296,17 +1296,17 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 				delete_elem = /*main_props_.actualLength > 0 && !editMode_ &&*/ (evt->state() & ControlButton) != 0;
 				insert_new_note = main_props_.actualLength > 0 && !editMode_ && (evt->state() & ControlButton) == 0;
 				TRANSY2LINE(evt->y(), dline, line);
-				if ( (val = checkAllStaffsForNoteInsertion(line, p, &status, &status2, &playable, &delete_elem, &insert_new_note)) > 0 ) {
+				if ( (val = checkAllStaffsForNoteInsertion(line, p, &status, &playable, &delete_elem, &insert_new_note)) > 0 ) {
 					if (editMode_) {
 						if (playable) {
-							updateInterface(status, status2, val);
+							updateInterface(status, val);
 						}
 						else
-							updateInterface(0, 0, -1);
+							updateInterface(0, -1);
 					}
 				}
 				else if (editMode_)
-					updateInterface(0, 0, -1);
+					updateInterface(0, -1);
 
 				if (delete_elem) {
 					deleteElem(true);
@@ -2027,7 +2027,6 @@ void NMainFrameWidget::pitchToLine(int pitchNumber) {
 	int halfLines, offs;
 	int newXpos;
 	status_type status;
-	int status2;
 	NChord *newchord;
 	QPoint curpos;
 	int ydist;
@@ -2059,10 +2058,9 @@ void NMainFrameWidget::pitchToLine(int pitchNumber) {
 			if (main_props_.arpeggio) status |= STAT_ARPEGG;
 			status |= (main_props_.dotcount & DOT_MASK);
 			status |= (main_props_.noteBody & BODY_MASK);
-			status2 = 0;
-			if (main_props_.pedal_on) status2 |= STAT2_PEDAL_ON;
-			if (main_props_.pedal_off) status2 |= STAT2_PEDAL_OFF;
-			newchord = new NChord(&main_props_, currentStaff_->getStaffPropsAddr(), currentVoice_, halfLines, offs, main_props_.actualLength, currentVoice_->stemPolicy_, status, status2);
+			if (main_props_.pedal_on) status |= STAT_PEDAL_ON;
+			if (main_props_.pedal_off) status |= STAT_PEDAL_OFF;
+			newchord = new NChord(&main_props_, currentStaff_->getStaffPropsAddr(), currentVoice_, halfLines, offs, main_props_.actualLength, currentVoice_->stemPolicy_, status);
 			if (!currentVoice_->insertAfterCurrent(newchord)) return;
 			setEdited();
 			computeMidiTimes(true);
@@ -3106,7 +3104,7 @@ void NMainFrameWidget::setStemDown(bool on) {
 void NMainFrameWidget::setEditMode(bool on) {
 	editMode_ = on;
 	status_type status;
-	unsigned int status2, val, i;
+	unsigned int val, i;
 	bool playable;
 	QCursor *cursor;
 	if (on) {
@@ -3165,9 +3163,9 @@ void NMainFrameWidget::setEditMode(bool on) {
 		if (hiddenrestbutton_->isChecked()) {
 			status_before_edit_mode_ |= STAT_HIDDEN;
 		}
-		val = currentVoice_->getElemState(&status, &status2, &playable);
+		val = currentVoice_->getElemState(&status, &playable);
 		if (playable) {
-			updateInterface(status, status2, val);
+			updateInterface(status, val);
 		}
 	}
 	else {
@@ -3327,7 +3325,6 @@ void NMainFrameWidget::readNotesFromMidiMapper() {
 #ifdef WITH_TSE3
 	NChord *newchord;
 	status_type status;
-	unsigned int status2;
 	NMusElement *curElem;
 	int line, offs, *pitch;
 	int newXpos;
@@ -3364,11 +3361,10 @@ void NMainFrameWidget::readNotesFromMidiMapper() {
 	if (main_props_.arpeggio) status |= STAT_ARPEGG;
 	status |= (main_props_.dotcount & DOT_MASK);
 	status |= (main_props_.noteBody & BODY_MASK);
-	status2 = 0;
-	if (main_props_.pedal_on) status2 |= STAT2_PEDAL_ON;
-	if (main_props_.pedal_off) status2 |= STAT2_PEDAL_OFF;
+	if (main_props_.pedal_on) status |= STAT_PEDAL_ON;
+	if (main_props_.pedal_off) status |= STAT_PEDAL_OFF;
 	newchord = new NChord(&main_props_, currentStaff_->getStaffPropsAddr(), currentVoice_, line, offs, main_props_.actualLength, 
-				currentVoice_->stemPolicy_, status, status2);
+				currentVoice_->stemPolicy_, status );
 	for (pitch = pitches->next(); pitch; pitch = pitches->next()) {
 		currentStaff_->actualClef_.midi2Line(*pitch, &line, &offs, currentStaff_->actualKeysig_.getSubType());
 		newchord->insertNewNote(line, offs, currentVoice_->stemPolicy_, status);
@@ -4974,9 +4970,8 @@ void NMainFrameWidget::setButton(int nr) {
 
 /* Updates buttons, labels and internals (main_props_) according to the musElement's properties:
    status - general properties (accidentals, stems, beams, articulation, gracenotes)
-   status2 - pedal sustain
    length - element length type. If -1 given, element doesn't have MIDI length (eg. barlines). */
-void NMainFrameWidget::updateInterface(status_type status, unsigned int status2, int length) {
+void NMainFrameWidget::updateInterface(status_type status, int length) {
 	if (length == -1) return;
 
 	// avoid feedback
@@ -4999,8 +4994,8 @@ void NMainFrameWidget::updateInterface(status_type status, unsigned int status2,
 	sforzandobutton_->setOn (status & STAT_SFZND);
 	fermatebutton_->setOn (status & STAT_FERMT);
 	arpeggbutton_->setOn (status & STAT_ARPEGG);
-	pedonbutton_->setOn (status2 & STAT2_PEDAL_ON);
-	pedoffbutton_->setOn (status2 & STAT2_PEDAL_OFF);
+	pedonbutton_->setOn (status & STAT_PEDAL_ON);
+	pedoffbutton_->setOn (status & STAT_PEDAL_OFF);
 
 	stemUpbutton_->setOn(status & STAT_STEM_UP);
 	stemDownbutton_->setOn(!(status & STAT_STEM_UP));
@@ -5037,8 +5032,8 @@ void NMainFrameWidget::updateInterface(status_type status, unsigned int status2,
 	main_props_.fermate   = (status & STAT_FERMT);
 	main_props_.grace     = (status & STAT_GRACE);
 	main_props_.actualLength = length;
-	main_props_.pedal_on = (status2 & STAT2_PEDAL_ON); 
-	main_props_.pedal_off = (status2 & STAT2_PEDAL_OFF); 
+	main_props_.pedal_on = (status & STAT_PEDAL_ON); 
+	main_props_.pedal_off = (status & STAT_PEDAL_OFF); 
 	if (status & STAT_STEM_UP) {
 		main_props_.actualStemDir = STEM_DIR_UP;
 	}
@@ -5206,13 +5201,13 @@ void NMainFrameWidget::computeMidiTimes(bool insertBars, bool doAutoBeam) {
 
 /*------------------------------- selection ---------------------------------------*/
 
-int NMainFrameWidget::checkAllStaffsForNoteInsertion(const int line, const QPoint p, status_type *status, unsigned int *status2, bool *playable, bool *delete_elem, bool *insertNewNote) {
+int NMainFrameWidget::checkAllStaffsForNoteInsertion(const int line, const QPoint p, status_type *status, bool *playable, bool *delete_elem, bool *insertNewNote) {
 	int val;
 	NMusElement *elem;
 
 	if (playing_) return -1;
 	if (!checkStaffIntersection(p)) return -1;
-	if ((val = currentStaff_->checkElementForNoteInsertion(line, p, status, status2, playable, delete_elem, insertNewNote, actualOffs_)) > 0) {
+	if ((val = currentStaff_->checkElementForNoteInsertion(line, p, status, playable, delete_elem, insertNewNote, actualOffs_)) > 0) {
 		manageToolElement(false);
 		return val;
 	}
@@ -5262,13 +5257,13 @@ bool NMainFrameWidget::checkStaffIntersection(const QPoint p) {
 void NMainFrameWidget::nextElement() {
 	if (playing_) return;
 	status_type status;
-	unsigned int val, status2;
-	val = currentVoice_->makeNextElementActual(&status, &status2);
+	unsigned int val;
+	val = currentVoice_->makeNextElementActual(&status);
 	if (editMode_)
 		if (currentVoice_->getCurrentElement()->playable())
-			updateInterface(status, status2, val);
+			updateInterface(status, val);
 		else
-			updateInterface(status, status2, -1);
+			updateInterface(status, -1);
 	manageToolElement(false);
 	repaint();
 }
@@ -5277,13 +5272,13 @@ void NMainFrameWidget::nextElement() {
 void NMainFrameWidget::prevElement() {
 	if (playing_) return;
 	status_type status;
-	unsigned int val, status2;
-	val = currentVoice_->makePreviousElementActual(&status, &status2);
+	unsigned int val;
+	val = currentVoice_->makePreviousElementActual(&status);
 	if (editMode_)
 		if (currentVoice_->getCurrentElement()->playable())
-			updateInterface(status, status2, val);
+			updateInterface(status, val);
 		else
-			updateInterface(status, status2, -1);
+			updateInterface(status, -1);
 	manageToolElement(false);
 	repaint();
 }
@@ -5585,14 +5580,14 @@ void NMainFrameWidget::moveOctaveDown() {
 
 void NMainFrameWidget::deleteElem(bool backspace) {
 	status_type status;
-	unsigned int val, status2;
+	unsigned int val;
 	if (playing_) return;
-	val = currentVoice_->deleteActualElem(&status, &status2, backspace);
+	val = currentVoice_->deleteActualElem(&status, backspace);
 	if (editMode_)
 		if (currentVoice_->getCurrentElement()->playable())
-			updateInterface(status, status2, val);
+			updateInterface(status, val);
 		else
-			updateInterface(status, status2, -1);
+			updateInterface(status, -1);
 
 	computeMidiTimes(false);
 	if (!editiones_) setEdited(val != -1);

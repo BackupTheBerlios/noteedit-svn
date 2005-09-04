@@ -2008,9 +2008,9 @@ void MusicXMLParser::handlePedal(NChord * chord)
 	if (stPdl == "") {
 		return; // nothing to do
 	} else if (stPdl == "start") {
-		chord->status2_ |= STAT2_PEDAL_ON;
+		chord->status_ |= STAT_PEDAL_ON;
 	} else if (stPdl == "stop") {
-		chord->status2_ |= STAT2_PEDAL_OFF;
+		chord->status_ |= STAT_PEDAL_OFF;
 	} else {
 		Str = "illegal pedal type: " + stPdl;
 		reportWarning(Str);

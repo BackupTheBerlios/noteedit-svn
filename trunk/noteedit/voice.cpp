@@ -1108,7 +1108,7 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 				     		reconnectBeames();
 				     }
 			case T_REST:
-				     if (clone_elem->rest()->status_ & STAT_LAST_TUPLET) {
+				     if (clone_elem->playable()->status_ & STAT_LAST_TUPLET) {
 						if (checkTuplets(clipboard, ac_elem->playable()->getTupletList())) {
 							reconnectTuplets();
 						}
@@ -1132,7 +1132,7 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 				     }
  				     clone_elem->chord()->trill_ = clone_elem->chord()->dynamic_ = 0;
 			case T_REST:
-				    if (clone_elem->rest()->status_ & STAT_TUPLET) {
+				    if (clone_elem->playable()->status_ & STAT_TUPLET) {
 					if (!allElemsContained(clonelist, clone_elem->playable()->getTupletList())) {
 						clone_elem->playable()->resetTupletFlag();
 					}
@@ -1300,7 +1300,7 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 				     		reconnectBeames();
 				     }
 			case T_REST:
-				     if (clone_elem->rest()->status_ & STAT_LAST_TUPLET) {
+				     if (clone_elem->playable()->status_ & STAT_LAST_TUPLET) {
 						if (checkTuplets(clipboard, ac_elem->playable()->getTupletList())) {
 							reconnectTuplets();
 						}
@@ -1323,7 +1323,7 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 					}
 				     }
 			case T_REST:
-				    if (clone_elem->rest()->status_ & STAT_TUPLET) {
+				    if (clone_elem->playable()->status_ & STAT_TUPLET) {
 					if (!lastElemContained(clonelist, clone_elem->playable()->getTupletList())) {
 						clone_elem->playable()->resetTupletFlag();
 					}
@@ -6919,7 +6919,7 @@ void NVoice::pasteAtIndex(QList<NMusElement> *clipBoard, int idx) {
 			case T_CHORD: chord = (NChord *) ac_elem;
 				     reconnectCopiedTies(chord);
 			case T_REST:
-				     if (ac_elem->rest()->status_ & STAT_LAST_TUPLET) {
+				     if (ac_elem->playable()->status_ & STAT_LAST_TUPLET) {
 						reconnectTuplets();
 				     }
 				     break;

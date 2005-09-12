@@ -664,10 +664,10 @@ keydescriptions : keydescriptions keydescription
 		;
 
 keydescription : Y_PITCH '#'
-			{ current_staff->actualKeysig_.setAccentByNoteName($1, STAT_CROSS);}
+			{ current_staff->actualKeysig_.setAccentByNoteName($1, PROP_CROSS);}
 
 	       | Y_PITCH '&'
-			{current_staff->actualKeysig_.setAccentByNoteName($1, STAT_FLAT);}
+			{current_staff->actualKeysig_.setAccentByNoteName($1, PROP_FLAT);}
 	       ;
 
 
@@ -1427,31 +1427,31 @@ modi_detail: Y_WITH ornament
 		{$$ = 0; current_voice->setActualStemDir(STEM_DIR_DOWN);}
 
 	   | Y_GRACE
-		{$$ = STAT_GRACE;}
+		{$$ = PROP_GRACE;}
 
 	   | Y_GRACE ';' Y_SLASH Y_NUMBER
-		{$$ = (STAT_GRACE | INTERIM_STOKE);}
+		{$$ = (PROP_GRACE | INTERIM_STOKE);}
 
 	   ;
 
 
 ornament : '.' 
-		{$$ = STAT_STACC;}
+		{$$ = PROP_STACC;}
 	 |
 	   '^' 
-		{$$ = STAT_SFORZ;}
+		{$$ = PROP_SFORZ;}
 	 |
 	   '-' 
-		{$$ = STAT_PORTA;}
+		{$$ = PROP_PORTA;}
 	 |
 	   ',' 
-		{$$ = STAT_STPIZ;}
+		{$$ = PROP_STPIZ;}
 	 |
 	   '>' 
-		{$$ = STAT_SFZND;}
+		{$$ = PROP_SFZND;}
 	 |
 	   '"' Y_FERMATA '"'
-		{$$ = STAT_FERMT;}
+		{$$ = PROP_FERMT;}
 	 ;
 
 element : note
@@ -1488,7 +1488,7 @@ chord: note pitch
 
 
 note : length pitch
-	 {if ((current_modificators & STAT_GRACE) && (current_modificators & INTERIM_STOKE)) {
+	 {if ((current_modificators & PROP_GRACE) && (current_modificators & INTERIM_STOKE)) {
 		$1.length = INTERNAL_MARKER_OF_STROKEN_GRACE;
 		current_modificators &= (~INTERIM_STOKE);
 	 }
@@ -1496,7 +1496,7 @@ note : length pitch
 		 current_voice, $2.line, $2.offs, $1.length, current_voice->stemPolicy_, $1.status | $2.status | current_modificators);
 	 $$.beamstatus = $2.beamstatus;
 	 $$.slurdist = 0;
-	 if ($2.status &  STAT_SLURED) {
+	 if ($2.status &  PROP_SLURED) {
 		if ($2.slurdist < 1 || $2.slurdist > 1000) {
 			sprintf(Str, "bad slur distance: %d", $2.slurdist);
 			yyerror(Str);
@@ -1511,12 +1511,12 @@ note : length pitch
 
 rest : length 'r'
 	{int stat = 0;
-	 if (current_modificators & STAT_FERMT) stat = STAT_FERMT;
+	 if (current_modificators & PROP_FERMT) stat = PROP_FERMT;
 	 $$.element.muselem = new NRest(&(parser_params.mainWidget->main_props_), &(current_staff->staff_props_), &(current_voice->yRestOffs_), $1.length, $1.status | stat);
 	 $$.beamstatus = 0;
 	}
      | length 's'
-	{$$.element.muselem = new NRest(&(parser_params.mainWidget->main_props_), &(current_staff->staff_props_), &(current_voice->yRestOffs_), $1.length, $1.status | STAT_HIDDEN);
+	{$$.element.muselem = new NRest(&(parser_params.mainWidget->main_props_), &(current_staff->staff_props_), &(current_voice->yRestOffs_), $1.length, $1.status | PROP_HIDDEN);
 	 $$.beamstatus = 0;
 	}
 
@@ -1526,31 +1526,31 @@ length : Y_NUMBER
 		{$$.length = WHOLE_LENGTH / $1; $$.status = 0;} 
 
        | Y_NUMBER '.'
-		{$$.length = WHOLE_LENGTH / $1; $$.status = STAT_SINGLE_DOT;} 
+		{$$.length = WHOLE_LENGTH / $1; $$.status = PROP_SINGLE_DOT;} 
 
        | Y_NUMBER '.' '.'
-		{$$.length = WHOLE_LENGTH / $1; $$.status = STAT_DOUBLE_DOT;} 
+		{$$.length = WHOLE_LENGTH / $1; $$.status = PROP_DOUBLE_DOT;} 
 
        | Y_REAL_NUMBER /* "4." or so */
-       		{$$.length = WHOLE_LENGTH / ((int) ($1+0.4)); $$.status = STAT_SINGLE_DOT;} 
+       		{$$.length = WHOLE_LENGTH / ((int) ($1+0.4)); $$.status = PROP_SINGLE_DOT;} 
 
        | Y_REAL_NUMBER '.' /* "4.." or so */
-       		{$$.length = WHOLE_LENGTH / ((int) ($1+0.4)); $$.status = STAT_DOUBLE_DOT;} 
+       		{$$.length = WHOLE_LENGTH / ((int) ($1+0.4)); $$.status = PROP_DOUBLE_DOT;} 
 
        | Y_1_2
 		{$$.length = DOUBLE_WHOLE_LENGTH / $1; $$.status = 0;} 
 
        | Y_1_2 '.'
-		{$$.length = DOUBLE_WHOLE_LENGTH / $1; $$.status = STAT_SINGLE_DOT;} 
+		{$$.length = DOUBLE_WHOLE_LENGTH / $1; $$.status = PROP_SINGLE_DOT;} 
 
        | Y_1_2 '.' '.'
-		{$$.length = DOUBLE_WHOLE_LENGTH / $1; $$.status = STAT_DOUBLE_DOT;} 
+		{$$.length = DOUBLE_WHOLE_LENGTH / $1; $$.status = PROP_DOUBLE_DOT;} 
 
        ;
 
 pitch : Y_PITCH pitchsuffixes
 		{$$.line = current_staff->actualClef_.name2Line($1);
-		 if ($2.status & STAT_FORCE) {
+		 if ($2.status & PROP_FORCE) {
 			$$.offs = $2.offs;
 		 }
 		 else {
@@ -1584,19 +1584,19 @@ pitchsuffix : '+'
 		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.octavmodi = -7;}
 
 	    | '#'
-		{memset(&($$), 0, sizeof(struct status_descr_str));$$.offs = 1; $$.status = STAT_FORCE;}
+		{memset(&($$), 0, sizeof(struct status_descr_str));$$.offs = 1; $$.status = PROP_FORCE;}
 
 	    | '&'
-		{memset(&($$), 0, sizeof(struct status_descr_str));$$.offs -= 1; $$.status = STAT_FORCE;}
+		{memset(&($$), 0, sizeof(struct status_descr_str));$$.offs -= 1; $$.status = PROP_FORCE;}
 
 	    | 'x'
-		{memset(&($$), 0, sizeof(struct status_descr_str));$$.offs = 2;  $$.status = STAT_FORCE;}
+		{memset(&($$), 0, sizeof(struct status_descr_str));$$.offs = 2;  $$.status = PROP_FORCE;}
 
 	    | '~'
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = STAT_TIED; }
+		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_TIED; }
 
 	    | 'n'
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = STAT_FORCE;}
+		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_FORCE;}
 
     	    | slur_info
 
@@ -1623,22 +1623,22 @@ pitchsuffix : '+'
 	    ; 
 
 bodyinfo : Y_CROSS
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = STAT_BODY_CROSS;}
+		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_BODY_CROSS;}
 	  | Y_CROSS2
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = STAT_BODY_CROSS2;}
+		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_BODY_CROSS2;}
 	  | Y_CIRCLE_CROSS
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = STAT_BODY_CIRCLE_CROSS;}
+		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_BODY_CIRCLE_CROSS;}
 	  | Y_RECT
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = STAT_BODY_RECT;}
+		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_BODY_RECT;}
 	  | Y_TRIA
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = STAT_BODY_TRIA;}
+		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_BODY_TRIA;}
 	  ;
 
 
 slur_info : '<' Y_NUMBER '>'
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = STAT_SLURED, $$.slurdist = $2;}
+		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_SLURED, $$.slurdist = $2;}
 	  | '<' pitch '>'
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = STAT_SLURED, $$.slurdist = 1;}
+		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_SLURED, $$.slurdist = 1;}
 	
 	 ;
 

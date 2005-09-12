@@ -82,7 +82,7 @@ class NChord: public NPlayable {
 		NChord *getSlurPartner() { return slur_forward_;}
 		NChord *getSlurStart() { return slur_backward_;}
 		virtual void breakBeames();
-		virtual bool lastBeamed() {return ((status_ & STAT_BEAMED) && nextBeamedChord_ == 0);}
+		virtual bool lastBeamed() {return ((status_ & PROP_BEAMED) && nextBeamedChord_ == 0);}
 		bool beamHasOnlyTwoChords();
 		void removeFromBeam();
 		bool setOctaviationStart(int size);
@@ -94,8 +94,8 @@ class NChord: public NPlayable {
 		static void computeBeames(QList<NChord> *beamList, int stemPolicy);
 		bool setActualNote(int line);
 		bool equalTiedChord(NChord *chord2);
-		virtual void setBeamFlag() { status_ |= STAT_BEAMED; nextBeamedChord_ = (NChord *) 1;}
-		void resetBeamFlag() {status_ &= (~STAT_BEAMED); nextBeamedChord_ = 0; beamList_ = 0;}
+		virtual void setBeamFlag() { status_ |= PROP_BEAMED; nextBeamedChord_ = (NChord *) 1;}
+		void resetBeamFlag() {status_ &= (~PROP_BEAMED); nextBeamedChord_ = 0; beamList_ = 0;}
 		void computeBeames(int stemPolicy);
 		void setStemUp(bool stem_up);
 		int getGraceMidiStartTime() { return u1_.graceNoteStartTime_;}

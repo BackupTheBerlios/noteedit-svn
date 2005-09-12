@@ -54,9 +54,9 @@ void NKeyOffs::setKeysigObj(NKeySig *keysig_obj) {
 
 void NKeyOffs::set(status_type kind) {
 	switch (kind) {
-		case STAT_CROSS: crossButton_->setChecked(true); break;
-		case STAT_FLAT: flatButton_->setChecked(true); break;
-		case STAT_NATUR: naturButton_->setChecked(true); break;
+		case PROP_CROSS: crossButton_->setChecked(true); break;
+		case PROP_FLAT: flatButton_->setChecked(true); break;
+		case PROP_NATUR: naturButton_->setChecked(true); break;
 		default: NResource::abort("NKeyOffs::set(): internal error"); 
 	}
 }
@@ -65,19 +65,19 @@ void NKeyOffs::set(status_type kind) {
 void NKeyOffs::updateCross(bool on) {
 	if (!on) return;
 	if (!keysigObj_) return;
-	keysigObj_->setAccent(buNr_, STAT_CROSS);
+	keysigObj_->setAccent(buNr_, PROP_CROSS);
 }
 
 void NKeyOffs::updateFlat(bool on) {
 	if (!on) return;
 	if (!keysigObj_) return;
-	keysigObj_->setAccent(buNr_, STAT_FLAT);
+	keysigObj_->setAccent(buNr_, PROP_FLAT);
 }
 
 void NKeyOffs::updateNatural(bool on) {
 	if (!on) return;
 	if (!keysigObj_) return;
-	keysigObj_->setAccent(buNr_, STAT_NATUR);
+	keysigObj_->setAccent(buNr_, PROP_NATUR);
 }
 
 void NKeyOffs::setGeometry(int xpos, int ypos, int width, int height) {

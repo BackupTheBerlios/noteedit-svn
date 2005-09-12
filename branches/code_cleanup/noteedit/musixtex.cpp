@@ -397,7 +397,7 @@ void NMusiXTeX::doExport() {
 		if (ksig) {
 			if (ksig->isRegular(&kind, &z)) {
 				if (z != 0) {
-					out_ << "\\setsign{" << i << "}{" << ((kind == STAT_CROSS) ? z : -z) << "}" << endl;
+					out_ << "\\setsign{" << i << "}{" << ((kind == PROP_CROSS) ? z : -z) << "}" << endl;
 				}
 			}
 			else {
@@ -482,7 +482,7 @@ void NMusiXTeX::doExport() {
 			if (width > maxwidth) maxwidth = width;
 			switch(posit->elem->getType()) {
 			case T_CHORD:
-				if (posit->ev_type & STAT_GRACE) grace_notes = true;
+				if (posit->ev_type & PROP_GRACE) grace_notes = true;
 				break;
 			case T_SIGN:
 				switch (posit->elem->getSubType()) {
@@ -773,11 +773,11 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 			     writeStaffTexts(real_staff_nr);
 			     chord = (NChord *) elem;
 			     chord->initialize_acc_pos_computation();
-			     if ((chord->status_ & STAT_GRACE) && noteSizeIsNormal_) {
+			     if ((chord->status_ & PROP_GRACE) && noteSizeIsNormal_) {
 					out_ << "\\multnoteskip\\tinyvalue\\tinynotesize";
 					noteSizeIsNormal_ = false;
 			     }
-			     else if (!(chord->status_ & STAT_GRACE) && !noteSizeIsNormal_) {
+			     else if (!(chord->status_ & PROP_GRACE) && !noteSizeIsNormal_) {
 					out_ << "\\multnoteskip\\normalvalue\\normalnotesize";
 					noteSizeIsNormal_ = true;
 			     }
@@ -786,7 +786,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 					newTempo_ = -1;
 			     }
 			     notelist = chord->getNoteList();
-			     if (chord->status_ & STAT_ARPEGG) {
+			     if (chord->status_ & PROP_ARPEGG) {
 			     		note = notelist->first();
 					note2 = notelist->last();
 					out_ << "\\hsk\\arpeggio{" << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW-1] <<
@@ -813,7 +813,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				   }
 				}
 			     }
-			     stemdir = ((chord->status_ & STAT_STEM_UP) ? QString("u") : QString("l"));
+			     stemdir = ((chord->status_ & PROP_STEM_UP) ? QString("u") : QString("l"));
 			     countLyricsLines = chord->countOfLyricsLines();
 			     if (!exportDialog_->texMLyr->isChecked()) {
 			     	for (i = countLyricsLines-1; i >= 0; i--) {
@@ -846,7 +846,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				out_ << *s;
 				delete s;
 			     }
-			     if (chord->status_ & STAT_BEAMED) {
+			     if (chord->status_ & PROP_BEAMED) {
 				 s = chord->computeTeXBeam(MAXSTAFFSANDBEAMS, &beamPool_, &(ac_voice->beamNr_), &(ac_voice->beamCount_),
 						 &(staff_elem->actualClef_), MAXFLAGS, &problem128, &toomany);
 				 if (problem128) {
@@ -920,31 +920,31 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				dysymDescr_[staff_nr].lastDynSym = 0;
 				dysymDescr_[staff_nr].dynEndPos = 0;
 			     } 
-			     if (chord->status_ & STAT_PEDAL_ON) {
+			     if (chord->status_ & PROP_PEDAL_ON) {
 			     	out_ << "\\PED";
 			     }
-			     if (chord->status_ & STAT_PEDAL_OFF) {
+			     if (chord->status_ & PROP_PEDAL_OFF) {
 			     	out_ << "\\DEP";
 			     }
 #ifdef AAA
 			     for (note = notelist->first(); note; note = notelist->next()) {
-				if (note->status & STAT_FORCE) continue;
+				if (note->status & PROP_FORCE) continue;
 				switch (note->needed_acc) {
-					case STAT_NO_ACC:break;
-					case STAT_CROSS: out_ << "\\sh " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
+					case PROP_NO_ACC:break;
+					case PROP_CROSS: out_ << "\\sh " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
 						      break;
-					case STAT_NATUR: out_ << "\\na " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
+					case PROP_NATUR: out_ << "\\na " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
 						      break;
-					case STAT_FLAT:  out_ << "\\fl " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
+					case PROP_FLAT:  out_ << "\\fl " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
 						      break;
-					case STAT_DCROSS:out_ << "\\dsh " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
+					case PROP_DCROSS:out_ << "\\dsh " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
 						      break;
-					case STAT_DFLAT: out_ << "\\dfl " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
+					case PROP_DFLAT: out_ << "\\dfl " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
 						      break;
 				}
 			     }
 			     for (note = notelist->first(); note; note = notelist->next()) {
-				if (!(note->status & STAT_FORCE)) continue;
+				if (!(note->status & PROP_FORCE)) continue;
 				switch (note->offs) {
 					case  1: out_ << "\\sh " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
 						      break;
@@ -961,7 +961,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 #endif
 			     shiftes_notes_.clear(); non_shifted_notes_.clear(); shift_needed = false;
 			     for (note = notelist->first(); note; note = notelist->next()) {
-				if (note->status & STAT_SHIFTED) {
+				if (note->status & PROP_SHIFTED) {
 					shift_needed = true;
 					shiftes_notes_.append(note);
 				}
@@ -970,15 +970,15 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				}
 			     }
 			     if (shift_needed) {
-			     	notes_to_be_shifted = (chord->status_ & STAT_STEM_UP) ? &shiftes_notes_ : &non_shifted_notes_;
-			     	notes_not_to_be_shifted = (chord->status_ & STAT_STEM_UP) ? &non_shifted_notes_ : &shiftes_notes_;
+			     	notes_to_be_shifted = (chord->status_ & PROP_STEM_UP) ? &shiftes_notes_ : &non_shifted_notes_;
+			     	notes_not_to_be_shifted = (chord->status_ & PROP_STEM_UP) ? &non_shifted_notes_ : &shiftes_notes_;
 			     }
 			     else {
 				notes_to_be_shifted = &shiftes_notes_;
 			     	notes_not_to_be_shifted = &non_shifted_notes_;
 			     }
 			     base_note = notes_not_to_be_shifted->first();
-			     if (shift_needed && !(chord->status_ & STAT_STEM_UP)) {
+			     if (shift_needed && !(chord->status_ & PROP_STEM_UP)) {
 				out_ << "\\roff{";
 			     }
 			     if (notes_not_to_be_shifted->count() > 1) {
@@ -989,11 +989,11 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 					if (lastBodyState != (note->status & BODY_MASK)) {
 						body_changed = true;
 						switch (lastBodyState = (note->status & BODY_MASK)) {
-							case STAT_BODY_CROSS: bodyString = "x"; break;
-							case STAT_BODY_CROSS2: bodyString = "k"; break;
-							case STAT_BODY_CIRCLE_CROSS: bodyString = "ox"; break;
-							case STAT_BODY_RECT: bodyString = "ro"; break;
-							case STAT_BODY_TRIA: bodyString = "tg"; break;
+							case PROP_BODY_CROSS: bodyString = "x"; break;
+							case PROP_BODY_CROSS2: bodyString = "k"; break;
+							case PROP_BODY_CIRCLE_CROSS: bodyString = "ox"; break;
+							case PROP_BODY_RECT: bodyString = "ro"; break;
+							case PROP_BODY_TRIA: bodyString = "tg"; break;
 							default: bodyString = ""; break;
 						}
 					}
@@ -1016,18 +1016,18 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				out_ << "}";
 			     }
 			     if (shift_needed) {
-				out_ << ((chord->status_ & STAT_STEM_UP) ? "\\roff{" : "\\loff{"); 
+				out_ << ((chord->status_ & PROP_STEM_UP) ? "\\roff{" : "\\loff{"); 
 				lastBodyState = -1;
 				for (first = true, note = notes_to_be_shifted->first() ;note ; note = notes_to_be_shifted->next(), first = false) {
 					body_changed = false;
 					if (lastBodyState != (note->status & BODY_MASK)) {
 						body_changed = true;
 						switch (lastBodyState = (note->status & BODY_MASK)) {
-							case STAT_BODY_CROSS: bodyString = "x"; break;
-							case STAT_BODY_CROSS2: bodyString = "k"; break;
-							case STAT_BODY_CIRCLE_CROSS: bodyString = "ox"; break;
-							case STAT_BODY_RECT: bodyString = "ro"; break;
-							case STAT_BODY_TRIA: bodyString = "tg"; break;
+							case PROP_BODY_CROSS: bodyString = "x"; break;
+							case PROP_BODY_CROSS2: bodyString = "k"; break;
+							case PROP_BODY_CIRCLE_CROSS: bodyString = "ox"; break;
+							case PROP_BODY_RECT: bodyString = "ro"; break;
+							case PROP_BODY_TRIA: bodyString = "tg"; break;
 							default: bodyString = ""; break;
 						}
 					}
@@ -1049,14 +1049,14 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				out_ << "}}";
 			     }
 			     switch (base_note->status & BODY_MASK) {
-				case STAT_BODY_CROSS: bodyString = "x"; break;
-				case STAT_BODY_CROSS2: bodyString = "k"; break;
-				case STAT_BODY_CIRCLE_CROSS: bodyString = "ox"; break;
-				case STAT_BODY_RECT: bodyString = "ro"; break;
-				case STAT_BODY_TRIA: bodyString = "tg"; break;
+				case PROP_BODY_CROSS: bodyString = "x"; break;
+				case PROP_BODY_CROSS2: bodyString = "k"; break;
+				case PROP_BODY_CIRCLE_CROSS: bodyString = "ox"; break;
+				case PROP_BODY_RECT: bodyString = "ro"; break;
+				case PROP_BODY_TRIA: bodyString = "tg"; break;
 				default: bodyString = ""; break;
 			     }
-			     if (chord->status_ & STAT_BEAMED && ac_voice->beamNr_ >= 0) {
+			     if (chord->status_ & PROP_BEAMED && ac_voice->beamNr_ >= 0) {
 				musi_length.sprintf("%sqb%d", bodyString, ac_voice->beamNr_);
 			     }
 			     else switch (chord->getSubType()) {
@@ -1067,7 +1067,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				case NOTE8_LENGTH       : musi_length = QString(bodyString) + QString("c")+stemdir; break;
 				case NOTE16_LENGTH      : musi_length = QString(bodyString) + QString("cc")+stemdir; break;
 				/* case INTERNAL_MARKER_OF_STROKEN_GRACE: */
-				case NOTE32_LENGTH      : if (chord->status_ & STAT_GRACE) {
+				case NOTE32_LENGTH      : if (chord->status_ & PROP_GRACE) {
 						musi_length = QString("grcu"); break;
 					    }
 					    musi_length = QString(bodyString) + QString("ccc")+stemdir; break;
@@ -1078,29 +1078,29 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				case 1: out_ << "\\pt " << staff_elem->actualClef_.line2TexTab_[base_note->line + LINE_OVERFLOW]; break;
 				case 2: out_ << "\\ppt " <<  staff_elem->actualClef_.line2TexTab_[base_note->line + LINE_OVERFLOW]; break;
 			     }
-			     if (chord->status_ & STAT_STACC || chord->status_ & STAT_SFORZ ||
-			         chord->status_ & STAT_PORTA || chord->status_ & STAT_STPIZ ||
-				 chord->status_ & STAT_SFZND) {
+			     if (chord->status_ & PROP_STACC || chord->status_ & PROP_SFORZ ||
+			         chord->status_ & PROP_PORTA || chord->status_ & PROP_STPIZ ||
+				 chord->status_ & PROP_SFZND) {
 				out_ << '\\';
-				out_ << ((chord->status_ & STAT_STEM_UP) ? "l" : "u");
-				if (chord->status_ & STAT_STACC) out_ << "pz";
-				if (chord->status_ & STAT_SFORZ) out_ << "sfz";
-				if (chord->status_ & STAT_PORTA) out_ << "st";
-				if (chord->status_ & STAT_STPIZ) out_ << "ppz";
-				if (chord->status_ & STAT_SFZND) out_ << "sf";
+				out_ << ((chord->status_ & PROP_STEM_UP) ? "l" : "u");
+				if (chord->status_ & PROP_STACC) out_ << "pz";
+				if (chord->status_ & PROP_SFORZ) out_ << "sfz";
+				if (chord->status_ & PROP_PORTA) out_ << "st";
+				if (chord->status_ & PROP_STPIZ) out_ << "ppz";
+				if (chord->status_ & PROP_SFZND) out_ << "sf";
 				out_ << " " << staff_elem->actualClef_.line2TexTab_[base_note->line+LINE_OVERFLOW];
 			     }
 			     
-			     if(chord->status_ & STAT_FERMT) {
-			     	    note2 = (chord->status_ & STAT_STEM_UP) ? notelist->first() :  notelist->last();
-			    	    out_ << "\\fermata" << ((chord->status_ & STAT_STEM_UP) ? "down" : "up")
+			     if(chord->status_ & PROP_FERMT) {
+			     	    note2 = (chord->status_ & PROP_STEM_UP) ? notelist->first() :  notelist->last();
+			    	    out_ << "\\fermata" << ((chord->status_ & PROP_STEM_UP) ? "down" : "up")
 				         << " "
 				         << staff_elem->actualClef_.line2TexTab_[note2->line+LINE_OVERFLOW];
 				    }
 			     
 			     out_ << "\\" << musi_length << ' ';
 			     out_ << staff_elem->actualClef_.line2TexTab_[base_note->line+LINE_OVERFLOW];
-			     if (shift_needed && !(chord->status_ & STAT_STEM_UP)) {
+			     if (shift_needed && !(chord->status_ & PROP_STEM_UP)) {
 				out_ << '}';
 			     }
 			     for (i = chord->getNumOfTexAccRows() - 1; i >= 0; i--) {
@@ -1112,7 +1112,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 			     break;
 		case T_REST: rest = elem->rest();
 			     writeStaffTexts(real_staff_nr);
-			     if (rest->status_ & STAT_HIDDEN) break;
+			     if (rest->status_ & PROP_HIDDEN) break;
 			     if (extraDelimiter) out_ << extraDelimiter;
 			     if (staff_nr == 0 && newTempo_ >= 0) {
 					out_ << "\\Uptext{\\metron{\\nq}{" << newTempo_ << "}}";
@@ -1146,7 +1146,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 								badMeasures_.append(exerr);
 					    break;
 			     }
-			     if(rest->status_ & STAT_FERMT) {
+			     if(rest->status_ & PROP_FERMT) {
 				// LVIFIX does fermataup need a parameter and, if so, what should it be ?
 				// the "k" below is a random choice
 				out_ << "\\fermataup k";
@@ -1272,7 +1272,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 			     ksig = (NKeySig *) elem;
 			     if (ksig->isRegular(&kind, &z)) {
 				if (z != 0 || barNr_ > 1) {
-					pending_key_changes_.append(new pending_context_change_class(real_staff_nr, (kind == STAT_CROSS) ? z : -z));
+					pending_key_changes_.append(new pending_context_change_class(real_staff_nr, (kind == PROP_CROSS) ? z : -z));
 				}
 			     }
 			     break;

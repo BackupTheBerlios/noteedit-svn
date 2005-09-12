@@ -212,7 +212,7 @@ void NMusicXMLExport::debugDumpElem(NMusElement *elem) {
 			key = (NKeySig *) elem;
 			if (key->isRegular(&kind, &count)) {
 				out_ << " fifths=";
-				if (kind == STAT_FLAT) {
+				if (kind == PROP_FLAT) {
 					out_ << "-";
 				}
 				out_ << count;
@@ -553,10 +553,10 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 				      // occur in a rest. Sometimes both pedal on and off are found,
 				      // in which case pedal on has priority.
 				      // LVIFIX: may need to add relative-x,y and offset for proper positioning
-				      if (chord->status_ & STAT_PEDAL_ON) {
+				      if (chord->status_ & PROP_PEDAL_ON) {
 					outputDirection("\t\t\t\t\t<pedal type=\"start\"/>\n",
 							"below");
-				      } else if (chord->status_ & STAT_PEDAL_OFF) {
+				      } else if (chord->status_ & PROP_PEDAL_OFF) {
 					outputDirection("\t\t\t\t\t<pedal type=\"stop\"/>\n",
 							"below");
 				      }
@@ -653,7 +653,7 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 				     if (rest->getSubType() == MULTIREST) {
 					/* already handled */ ;
 				     }
-				     else if (rest->status_ & STAT_HIDDEN) {
+				     else if (rest->status_ & PROP_HIDDEN) {
 					len = rest->getSubType();
 					calcLength(rest, duration, noteType);
 					out_ << "\t\t\t<forward>\n";
@@ -677,18 +677,18 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 					outputTimeMod(rest);
 					bool needNotations = false;
 					bool fermata = false;
-					if (rest->status_ & STAT_FERMT) {
+					if (rest->status_ & PROP_FERMT) {
 						fermata = true;
 						needNotations = true;
 					}
 					bool tupletStart = false;
-					if ((rest->status_ & STAT_TUPLET)
+					if ((rest->status_ & PROP_TUPLET)
 					     && rest->isFirstInTuplet()) {
 						tupletStart = true;
 						needNotations = true;
 					}
 					bool tupletStop = false;
-					if (rest->status_ & STAT_LAST_TUPLET) {
+					if (rest->status_ & PROP_LAST_TUPLET) {
 						tupletStop = true;
 						needNotations = true;
 					}
@@ -859,7 +859,7 @@ bool NMusicXMLExport::writeOtherVoicesTill(int staff_nr, int voice_nr, NVoice *v
 					out_ << "<!-- multi rest (not supported in this voice) -->" << endl;
 					len = rest->getMultiRestLength() * QUARTER_LENGTH;
 				     }
-				     else if (rest->status_ & STAT_HIDDEN) {
+				     else if (rest->status_ & PROP_HIDDEN) {
 					len = rest->getSubType();
 					calcLength(rest, duration, noteType);
 					out_ << "\t\t\t<forward>\n";
@@ -882,18 +882,18 @@ bool NMusicXMLExport::writeOtherVoicesTill(int staff_nr, int voice_nr, NVoice *v
 					outputTimeMod(rest);
 					bool needNotations = false;
 					bool fermata = false;
-					if (rest->status_ & STAT_FERMT) {
+					if (rest->status_ & PROP_FERMT) {
 						fermata = true;
 						needNotations = true;
 					}
 					bool tupletStart = false;
-					if ((rest->status_ & STAT_TUPLET)
+					if ((rest->status_ & PROP_TUPLET)
 					     && rest->isFirstInTuplet()) {
 						tupletStart = true;
 						needNotations = true;
 					}
 					bool tupletStop = false;
-					if (rest->status_ & STAT_LAST_TUPLET) {
+					if (rest->status_ & PROP_LAST_TUPLET) {
 						tupletStop = true;
 						needNotations = true;
 					}
@@ -1188,7 +1188,7 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 	if (note_nr) {
 		out_ << "\t\t\t\t<chord/>\n";
 	}
-	if (chord->status_ & STAT_GRACE) {
+	if (chord->status_ & PROP_GRACE) {
 		if (chord->getSubType() != INTERNAL_MARKER_OF_STROKEN_GRACE) {
 			// normal grace
 			out_ << "\t\t\t\t<grace/>\n";
@@ -1206,13 +1206,13 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 	out_ << "\t\t\t\t\t<octave>" << octave + 4 << "</octave>\n";
 	out_ << "\t\t\t\t</pitch>\n";
 	// grace notes have a <type> but no <duration> element
-	if (!(chord->status_ & STAT_GRACE)) {
+	if (!(chord->status_ & PROP_GRACE)) {
 		out_ << "\t\t\t\t<duration>" << duration << "</duration>\n";
 	}
 	// accidental handling (borrowed from filehandler.cpp, NFileHandler::pitchOut)
-	if (!(note->status & STAT_PART_OF_TIE)) {
+	if (!(note->status & PROP_PART_OF_TIE)) {
 		QString accid = "";
-		if (note->status & STAT_FORCE) {
+		if (note->status & PROP_FORCE) {
 			switch (note->offs) {
 				case  1: accid = "sharp"; break;
 				case -1: accid = "flat"; break;
@@ -1223,11 +1223,11 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 		}
 		else {
 			switch (note->status & ACC_MASK) {
-				case STAT_CROSS:  accid = "sharp"; break;
-				case STAT_FLAT:   accid = "flat"; break;
-				case STAT_NATUR:  accid = "natural"; break;
-				case STAT_DCROSS: accid = "double-sharp"; break;
-				case STAT_DFLAT:  accid = "flat-flat"; break;
+				case PROP_CROSS:  accid = "sharp"; break;
+				case PROP_FLAT:   accid = "flat"; break;
+				case PROP_NATUR:  accid = "natural"; break;
+				case PROP_DCROSS: accid = "double-sharp"; break;
+				case PROP_DFLAT:  accid = "flat-flat"; break;
 			}
 		}
 		if (accid != "") {
@@ -1238,12 +1238,12 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 	bool needNotations = false;
         bool tieStart = false;
         bool tieStop  = false;
-	if (note->status & STAT_PART_OF_TIE) {
+	if (note->status & PROP_PART_OF_TIE) {
 		tieStop = true;
 		needNotations = true;
 		out_ << "\t\t\t\t<tie type=\"stop\"/>\n";
 	}
-	if (note->status & STAT_TIED) {
+	if (note->status & PROP_TIED) {
 		tieStart = true;
 		needNotations = true;
 		out_ << "\t\t\t\t<tie type=\"start\"/>\n";
@@ -1259,16 +1259,16 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 		needNotations = true;
 	}
 	bool needArti = false;
-	if (!note_nr && (chord->status_ & (STAT_STACC | STAT_SFORZ | STAT_PORTA | STAT_STPIZ | STAT_SFZND))) {
+	if (!note_nr && (chord->status_ & (PROP_STACC | PROP_SFORZ | PROP_PORTA | PROP_STPIZ | PROP_SFZND))) {
 		needArti = true;
 		needNotations = true;
 	}
 	bool fermata = false;
-	if (!note_nr && chord->status_ & STAT_FERMT) {
+	if (!note_nr && chord->status_ & PROP_FERMT) {
 		fermata = true;
 		needNotations = true;
 	}
-	if (chord->status_ & STAT_ARPEGG) {
+	if (chord->status_ & PROP_ARPEGG) {
 		needNotations = true;
 	}
 	bool needTrill = false;
@@ -1280,19 +1280,19 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 	out_ << "\t\t\t\t<type>" << noteType << "</type>\n";
 	outputDots(chord);
 	bool tupletStart = false;
-	if (!note_nr && (chord->status_ & STAT_TUPLET) && chord->isFirstInTuplet()) {
+	if (!note_nr && (chord->status_ & PROP_TUPLET) && chord->isFirstInTuplet()) {
 		tupletStart = true;
 		needNotations = true;
 	}
 	bool tupletStop = false;
-	if (!note_nr && (chord->status_ & STAT_LAST_TUPLET)) {
+	if (!note_nr && (chord->status_ & PROP_LAST_TUPLET)) {
 		tupletStop = true;
 		needNotations = true;
 	}
 	outputTimeMod(chord);
 	if (chord->getSubType() <= HALF_LENGTH) {
 		QString stemType = "";
-		if (chord->status_ & STAT_STEM_UP) {
+		if (chord->status_ & PROP_STEM_UP) {
 			stemType = "up";
 		} else {
 			stemType = "down";
@@ -1300,7 +1300,7 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 		out_ << "\t\t\t\t<stem>" << stemType << "</stem>\n";
 	}
 	// LVIFIX: add <staff>
-	if (!note_nr && chord->status_ & STAT_BEAMED) {
+	if (!note_nr && chord->status_ & PROP_BEAMED) {
 		QList<NChord> *beamlist = 0;		// the group of beamed notes
 		int currlvl = 0;			// beam level current note
 		int nextlvl = 0;			// beam level next note
@@ -1377,7 +1377,7 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 			// fermata's are generated.
 			out_ << "\t\t\t\t\t<fermata type=\"upright\"/>\n";
 		}
-		if (chord->status_ & STAT_ARPEGG) {
+		if (chord->status_ & PROP_ARPEGG) {
 			out_ << "\t\t\t\t\t<arpeggiate/>\n";
 		}
 		// articulations, which are mutually exclusive in NoteEdit
@@ -1386,19 +1386,19 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 		// <... placement="below"/>
 		if (needArti) {
 			out_ << "\t\t\t\t\t<articulations>\n";
-			if (chord->status_ & STAT_STACC) {
+			if (chord->status_ & PROP_STACC) {
 				out_ << "\t\t\t\t\t\t<staccato/>\n";
 			}
-			if (chord->status_ & STAT_SFORZ) {
+			if (chord->status_ & PROP_SFORZ) {
 				out_ << "\t\t\t\t\t\t<strong-accent/>\n";
 			}
-			if (chord->status_ & STAT_PORTA) {
+			if (chord->status_ & PROP_PORTA) {
 				out_ << "\t\t\t\t\t\t<tenuto/>\n";
 			}
-			if (chord->status_ & STAT_STPIZ) {
+			if (chord->status_ & PROP_STPIZ) {
 				out_ << "\t\t\t\t\t\t<staccatissimo/>\n";
 			}
-			if (chord->status_ & STAT_SFZND) {
+			if (chord->status_ & PROP_SFZND) {
 				out_ << "\t\t\t\t\t\t<accent/>\n";
 			}
 			out_ << "\t\t\t\t\t</articulations>\n";
@@ -1450,10 +1450,10 @@ void NMusicXMLExport::outputVoiceNr(int voice_nr) {
 int NMusicXMLExport::calcDuration(int len, status_type status) {
 	int dur = len * divisions_ / QUARTER_LENGTH;
 	switch (status & DOT_MASK) {
-		case STAT_DOUBLE_DOT:
+		case PROP_DOUBLE_DOT:
 			dur = dur * 7 / 4;
 			break;
-		case STAT_SINGLE_DOT:
+		case PROP_SINGLE_DOT:
 			dur = dur * 3 / 2;
 			break;
 	}
@@ -1468,14 +1468,14 @@ void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 	status_type status = ( elem->playable() ? elem->playable()->status_ : 0 );
 	dur = len * divisions_;
 	switch (status & DOT_MASK) {
-		case STAT_DOUBLE_DOT:
+		case PROP_DOUBLE_DOT:
 			dur = dur * 7 / 4;
 			break;
-		case STAT_SINGLE_DOT:
+		case PROP_SINGLE_DOT:
 			dur = dur * 3 / 2;
 			break;
 	}
-	if (status & STAT_TUPLET && (elem->getType() & PLAYABLE) ) {
+	if (status & PROP_TUPLET && (elem->getType() & PLAYABLE) ) {
 		dur = dur * elem->playable()->getPlaytime() / elem->playable()->getNumNotes();
 	}
 	dur /= QUARTER_LENGTH;
@@ -1499,14 +1499,14 @@ static int calcLengthForCalcDivisions(NMusElement *elem) {
 	int len = elem->getSubType();
 	status_type status = ( elem->playable() ? elem->playable()->status_ : 0 );
 	switch (status & DOT_MASK) {
-		case STAT_DOUBLE_DOT:
+		case PROP_DOUBLE_DOT:
 			len = len * 7 / 4;
 			break;
-		case STAT_SINGLE_DOT:
+		case PROP_SINGLE_DOT:
 			len = len * 3 / 2;
 			break;
 	}
-	if (status & STAT_TUPLET && (elem->getType() & PLAYABLE) ) {
+	if (status & PROP_TUPLET && (elem->getType() & PLAYABLE) ) {
 		len = len * elem->playable()->getPlaytime() / elem->playable()->getNumNotes();
 	}
 	return len;
@@ -1936,11 +1936,11 @@ void NMusicXMLExport::outputDots(NMusElement *elem)
 {
 	if( elem->playable() ) {
 		switch (elem->playable()->status_ & DOT_MASK) {
-			case STAT_DOUBLE_DOT:
+			case PROP_DOUBLE_DOT:
 				out_ << "\t\t\t\t<dot/>\n";
 				out_ << "\t\t\t\t<dot/>\n";
 				break;
-			case STAT_SINGLE_DOT:
+			case PROP_SINGLE_DOT:
 				out_ << "\t\t\t\t<dot/>\n";
 				break;
 			default:
@@ -1975,7 +1975,7 @@ void NMusicXMLExport::outputFrame(NChordDiagram *diag)
 
 void NMusicXMLExport::outputTimeMod(NMusElement *elem)
 {
-	if ((elem->getType() & PLAYABLE) && ( elem->playable()->status_ & STAT_TUPLET) ) {
+	if ((elem->getType() & PLAYABLE) && ( elem->playable()->status_ & PROP_TUPLET) ) {
 		out_ << "\t\t\t\t<time-modification>\n";
 		out_ << "\t\t\t\t\t<actual-notes>" << (int) elem->playable()->getNumNotes() << "</actual-notes>\n";
 		out_ << "\t\t\t\t\t<normal-notes>" << (int) elem->playable()->getPlaytime() << "</normal-notes>\n";
@@ -2006,7 +2006,7 @@ void NMusicXMLExport::outputKeySig(NKeySig *key) {
 
 	if (key->isRegular(&kind, &count)) {
 		switch(kind) {
-			case STAT_CROSS:
+			case PROP_CROSS:
 				switch (count) {
 					case 0: out_ << 0; break;
 					case 1: out_ << 1; break;
@@ -2019,7 +2019,7 @@ void NMusicXMLExport::outputKeySig(NKeySig *key) {
 					default: NResource::abort("NMusicXMLExport::outputKeySig", 1);
 				}
 				break;
-			case STAT_FLAT:
+			case PROP_FLAT:
 				switch (count) {
 					case 0: out_ <<  0; break;
 					case 1: out_ << -1; break;
@@ -2032,7 +2032,7 @@ void NMusicXMLExport::outputKeySig(NKeySig *key) {
 					default: NResource::abort("NMusicXMLExport::outputKeySig", 2);
 				}
 				break;
-			case STAT_NO_ACC:
+			case PROP_NO_ACC:
 				out_ << 0;
 				break;
 			default: NResource::abort("NMusicXMLExport::outputKeySig", 3);

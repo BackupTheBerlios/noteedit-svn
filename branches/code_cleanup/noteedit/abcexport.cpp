@@ -351,17 +351,17 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 		switch (elem->getType()) {
 			case T_CHORD: voiceStatList_[idx].lastBarSym = 0;
 				      chord = (NChord *) elem;
-				      if (chord->status_ & STAT_TUPLET) {
+				      if (chord->status_ & PROP_TUPLET) {
 				      	if (!inTuplet) {
 						inTuplet = true;
 						outputTupletStart(staff_nr, elem->playable() );
 					}
 				      }
-				      if (inGrace && !(chord->status_ & STAT_GRACE)) {
+				      if (inGrace && !(chord->status_ & PROP_GRACE)) {
 				      	inGrace = false;
 					out_ << '}';
 				      }
-				      if (chord->status_ & STAT_GRACE) {
+				      if (chord->status_ & PROP_GRACE) {
 				      	if (!inGrace) {
 						inGrace = true;
 						out_ << " {";
@@ -371,7 +371,7 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 					}
 				      }
 				      if (!inTuplet && chord->getSubType() < QUARTER_LENGTH) {
-				      	if (chord->status_ & STAT_BEAMED) {
+				      	if (chord->status_ & PROP_BEAMED) {
 						if (!inBeam) {
 							if (!inGrace) out_ << ' ';
 							inBeam = true;
@@ -404,24 +404,24 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 					writeChord(diag);
 				      }
 				      writePendingSigns(idx);
-				      if (chord->status_ & STAT_STACC)
+				      if (chord->status_ & PROP_STACC)
 						out_ << '.';
-				      if (chord->status_ & STAT_SFORZ) 
+				      if (chord->status_ & PROP_SFORZ) 
 					        out_ << "!sfz!";
-				      if (chord->status_ & STAT_PORTA)
+				      if (chord->status_ & PROP_PORTA)
 					        out_ << "!tenuto!";
-				      if (chord->status_ & STAT_STPIZ)
+				      if (chord->status_ & PROP_STPIZ)
 					        out_ << "!wedge!";
-				      if (chord->status_ & STAT_SFZND)
+				      if (chord->status_ & PROP_SFZND)
 					        out_ << "!accent!";
-				      if (chord->status_ & STAT_PEDAL_ON) {
+				      if (chord->status_ & PROP_PEDAL_ON) {
 				      		out_ << "!ped!";
 				      }
-				      if (chord->status_ & STAT_PEDAL_OFF) {
+				      if (chord->status_ & PROP_PEDAL_OFF) {
 				      		out_ << "!ped-end!";
 				      }
-				      if (chord->status_ & STAT_FERMT) {
-				      		if (chord->status_ & STAT_STEM_UP) {
+				      if (chord->status_ & PROP_FERMT) {
+				      		if (chord->status_ & PROP_STEM_UP) {
 							out_ << "!fermata!";
 						}
 						else {
@@ -454,7 +454,7 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 					voiceStatList_[idx].dynEndPos = chord->getDynamicEnd();
 					voiceStatList_[idx].lastDynSym = (char *) (chord->dynamicAlign_ ? "!crescendo)!" : "!diminuendo)!");
 				      }
-				      if (chord->status_ & STAT_ARPEGG) {
+				      if (chord->status_ & PROP_ARPEGG) {
 				      	out_ << "!arpeggio!";
 				      }
 				      inChord = chord->getNoteList()->count() > 1;
@@ -463,10 +463,10 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 				      }
 				      for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
 				     	outputNote(note, &(actual_staff->actualClef_), inChord);
-					if (!((chord->status_ & STAT_GRACE) && chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
+					if (!((chord->status_ & PROP_GRACE) && chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
 						outputLength(chord->getSubType(), chord->status_, inChord, note->status & BODY_MASK);
 					}
-					if (note->status & STAT_TIED) out_ << '-';
+					if (note->status & PROP_TIED) out_ << '-';
 				      }
 				      if (inChord) {
 				      	out_ << ']';
@@ -475,14 +475,14 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 				      	out_ << ')';
 					voiceStatList_[idx].slurDepth--;
 				      }
-				      if (chord->status_ & STAT_LAST_TUPLET) {
+				      if (chord->status_ & PROP_LAST_TUPLET) {
 				        inTuplet = false;
 					out_ << ' ';
 				      }
 				      break;
 			case T_REST: voiceStatList_[idx].lastBarSym = 0;
 				     rest = (NRest *) elem;
-				     if (rest->status_ & STAT_TUPLET) {
+				     if (rest->status_ & PROP_TUPLET) {
 				     	if (!inTuplet) {
 						inTuplet = true;
 						outputTupletStart(staff_nr, elem->playable());
@@ -499,14 +499,14 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 					writeChord(diag);
 				     }
 				     writePendingSigns(idx);
-				     if (rest->status_ & STAT_FERMT) {
+				     if (rest->status_ & PROP_FERMT) {
 					out_ << "!fermata!";
 				     }
 				     if (rest->getSubType() == MULTIREST) {
 				     	out_ << 'Z';
 					len = rest->getMultiRestLength() * QUARTER_LENGTH;
 				     }
-				     else if (rest->status_ & STAT_HIDDEN) {
+				     else if (rest->status_ & PROP_HIDDEN) {
 				        out_ << 'x';
 					len = rest->getSubType();
 				     }
@@ -515,7 +515,7 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 					len = rest->getSubType();
 				     }
 				     outputLength(len, rest->status_, true, false);
-				     if (rest->status_ & STAT_LAST_TUPLET) {
+				     if (rest->status_ & PROP_LAST_TUPLET) {
 				        inTuplet = false;
 					out_ << ' ';
 				     }
@@ -652,17 +652,17 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 		handleSpecialElements(actual_staff, elem);
 		switch (elem->getType()) {
 			case T_CHORD: chord = (NChord *) elem;
-				      if (chord->status_ & STAT_TUPLET) {
+				      if (chord->status_ & PROP_TUPLET) {
 				      	if (!inTuplet) {
 						inTuplet = true;
 						outputTupletStart(staff_nr, elem->playable());
 					}
 				      }
-				      if (inGrace && !(chord->status_ & STAT_GRACE)) {
+				      if (inGrace && !(chord->status_ & PROP_GRACE)) {
 				      	inGrace = false;
 					out_ << '}';
 				      }
-				      if (chord->status_ & STAT_GRACE) {
+				      if (chord->status_ & PROP_GRACE) {
 				      	if (!inGrace) {
 						inGrace = true;
 						out_ << '{';
@@ -672,7 +672,7 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 					}
 				      }
 				      if (!inTuplet && chord->getSubType() < QUARTER_LENGTH) {
-				      	if (chord->status_ & STAT_BEAMED) {
+				      	if (chord->status_ & PROP_BEAMED) {
 						if (!inBeam) {
 							if (!inGrace) out_ << ' ';
 							inBeam = true;
@@ -692,25 +692,25 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 				      	out_ << '(';
 					voiceStatList_[idx].slurDepth++;
 				      }
-				      if (chord->status_ & STAT_STACC)
+				      if (chord->status_ & PROP_STACC)
 						out_ << '.';
-				      if (chord->status_ & STAT_SFORZ) 
+				      if (chord->status_ & PROP_SFORZ) 
 					        out_ << "!sfz!";
-				      if (chord->status_ & STAT_PORTA)
+				      if (chord->status_ & PROP_PORTA)
 					        out_ << "!tenuto!";
-				      if (chord->status_ & STAT_STPIZ)
+				      if (chord->status_ & PROP_STPIZ)
 					        out_ << "!wedge!";
-				      if (chord->status_ & STAT_SFZND)
+				      if (chord->status_ & PROP_SFZND)
 					        out_ << "!accent!";
-				      if (chord->status_ & STAT_FERMT) {
-				      		if (chord->status_ & STAT_STEM_UP) {
+				      if (chord->status_ & PROP_FERMT) {
+				      		if (chord->status_ & PROP_STEM_UP) {
 							out_ << "!fermata!";
 						}
 						else {
 							out_ << "!invertedfermata!";
 						}
 				      }
-				      if (chord->status_ & STAT_ARPEGG) {
+				      if (chord->status_ & PROP_ARPEGG) {
 				      	out_ << "!arpeggio!";
 				      }
 				      inChord = chord->getNoteList()->count() > 1;
@@ -721,10 +721,10 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 				      staff_elem->setCorrectClefAccordingTime(elem->midiTime_);
 				      for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
 				     	outputNote(note, &(actual_staff->actualClef_), inChord);
-					if (!((chord->status_ & STAT_GRACE) && chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
+					if (!((chord->status_ & PROP_GRACE) && chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
 						outputLength(chord->getSubType(), chord->status_, inChord, note->status & BODY_MASK);
 					}
-					if (note->status & STAT_TIED) out_ << '-';
+					if (note->status & PROP_TIED) out_ << '-';
 				      }
 				      if (inChord) {
 				      	out_ << ']';
@@ -733,13 +733,13 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 				      	out_ << ')';
 					voiceStatList_[idx].slurDepth--;
 				      }
-				      if (chord->status_ & STAT_LAST_TUPLET) {
+				      if (chord->status_ & PROP_LAST_TUPLET) {
 				        inTuplet = false;
 					out_ << ' ';
 				      }
 				      break;
 			case T_REST: rest = (NRest *) elem;
-				     if (rest->status_ & STAT_TUPLET) {
+				     if (rest->status_ & PROP_TUPLET) {
 				     	if (!inTuplet) {
 						inTuplet = true;
 						outputTupletStart(staff_nr, elem->playable());
@@ -751,14 +751,14 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 					out_ << '}';
 				     }
 				     if (!inTuplet) out_ << ' ';
-				     if (rest->status_ & STAT_FERMT) {
+				     if (rest->status_ & PROP_FERMT) {
 					out_ << "!fermata!";
 				     }
 				     if (rest->getSubType() == MULTIREST) {
 				     	out_ << 'Z';
 					len = rest->getMultiRestLength() * QUARTER_LENGTH;
 				     }
-				     else if (rest->status_ & STAT_HIDDEN) {
+				     else if (rest->status_ & PROP_HIDDEN) {
 				        out_ << 'x';
 					len = rest->getSubType();
 				     }
@@ -767,7 +767,7 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 					len = rest->getSubType();
 				     }
 				     outputLength(len, rest->status_, true, false);
-				     if (rest->status_ & STAT_LAST_TUPLET) {
+				     if (rest->status_ & PROP_LAST_TUPLET) {
 				        inTuplet = false;
 					out_ << ' ';
 				     }
@@ -886,27 +886,27 @@ void NABCExport::outputNote(NNote *note, NClef *actualClef, bool inInChord) {
 	bool percussion = actualClef->getSubType() == DRUM_CLEF || actualClef->getSubType() == DRUM_BASS_CLEF;
 	bool prec_note = false;
 	switch (note->status & BODY_MASK) {
-		case STAT_BODY_CROSS:
+		case PROP_BODY_CROSS:
 			if (!inInChord) out_ << '[';
 			out_ << "!head-x!";
 			prec_note = true;
 			break;
-		case STAT_BODY_CROSS2:
+		case PROP_BODY_CROSS2:
 			if (!inInChord) out_ << '[';
 			out_ << "!head-cr!";
 			prec_note = true;
 			break;
-		case STAT_BODY_CIRCLE_CROSS:
+		case PROP_BODY_CIRCLE_CROSS:
 			if (!inInChord) out_ << '[';
 			out_ << "!head-ci!";
 			prec_note = true;
 			break;
-		case STAT_BODY_RECT:
+		case PROP_BODY_RECT:
 			if (!inInChord) out_ << '[';
 			out_ << "!head-re!";
 			prec_note = true;
 			break;
-		case STAT_BODY_TRIA:
+		case PROP_BODY_TRIA:
 			if (!inInChord) out_ << '[';
 			out_ << "!head-t!";
 			prec_note = true;
@@ -914,7 +914,7 @@ void NABCExport::outputNote(NNote *note, NClef *actualClef, bool inInChord) {
 	}
 	
 	
-	if (!prec_note && !percussion && (note->needed_acc || (note->status & STAT_FORCE))) {
+	if (!prec_note && !percussion && (note->needed_acc || (note->status & PROP_FORCE))) {
 		switch(note->offs) {
 			case -2: out_ << "__"; break;
 			case -1: out_ << "_";  break;
@@ -945,11 +945,11 @@ void NABCExport::outputNote(NNote *note, NClef *actualClef, bool inInChord) {
 
 void NABCExport::outputLength(int len, status_type status, bool inChord, bool drumNote) {
 	unsigned int k;
-	if (len == QUARTER_LENGTH && !(status & (STAT_SINGLE_DOT | STAT_DOUBLE_DOT))) {
+	if (len == QUARTER_LENGTH && !(status & (PROP_SINGLE_DOT | PROP_DOUBLE_DOT))) {
 		if (!inChord && drumNote) out_ << ']';
 		return;
 	}
-	if (status & STAT_GRACE) len <<= 1; // Dont' know ???
+	if (status & PROP_GRACE) len <<= 1; // Dont' know ???
 	if (len > DOUBLE_WHOLE_LENGTH) {
 		out_ << (len / QUARTER_LENGTH);
 		if (!inChord && drumNote) out_ << ']';
@@ -958,29 +958,29 @@ void NABCExport::outputLength(int len, status_type status, bool inChord, bool dr
 	switch (len) {
 		case DOUBLE_WHOLE_LENGTH: 
 			switch (status & DOT_MASK) {
-				case STAT_DOUBLE_DOT: out_ << "13"; break;
-				case STAT_SINGLE_DOT: out_ << "12"; break;
+				case PROP_DOUBLE_DOT: out_ << "13"; break;
+				case PROP_SINGLE_DOT: out_ << "12"; break;
 				default: out_ << "8"; break;
 			}
 			break;
 		case WHOLE_LENGTH:
 			switch (status & DOT_MASK) {
-				case STAT_DOUBLE_DOT: out_ << "7"; break;
-				case STAT_SINGLE_DOT: out_ << "6"; break;
+				case PROP_DOUBLE_DOT: out_ << "7"; break;
+				case PROP_SINGLE_DOT: out_ << "6"; break;
 				default: out_ << "4"; break;
 			}
 			break;
 		case HALF_LENGTH:
 			switch (status & DOT_MASK) {
-				case STAT_DOUBLE_DOT: out_ << "14/4"; break;
-				case STAT_SINGLE_DOT: out_ << "3"; break;
+				case PROP_DOUBLE_DOT: out_ << "14/4"; break;
+				case PROP_SINGLE_DOT: out_ << "3"; break;
 				default: out_ << "2"; break;
 			}
 			break;
 		default:
 			switch (status & DOT_MASK) {
-				case STAT_DOUBLE_DOT: out_ << "7/" << ((QUARTER_LENGTH / len) * 4); break;
-				case STAT_SINGLE_DOT: out_ << "3/" << ((QUARTER_LENGTH / len) * 2); break;
+				case PROP_DOUBLE_DOT: out_ << "7/" << ((QUARTER_LENGTH / len) * 4); break;
+				case PROP_SINGLE_DOT: out_ << "3/" << ((QUARTER_LENGTH / len) * 2); break;
 				default: //out_ << '/' << (QUARTER_LENGTH / len); break;
 					 for(k = (QUARTER_LENGTH / len) - 1; k; k >>= 1) {
 					 	out_ << '/';
@@ -1212,7 +1212,7 @@ void NABCExport::outputKeySig(NKeySig *key, bool inHeader) {
 
 	if (key->isRegular(&kind, &count)) {
 		switch(kind) {
-			case STAT_CROSS:
+			case PROP_CROSS:
 				switch (count) {
 					case 0: out_ << 'C'; break;
 					case 1: out_ << 'G'; break;
@@ -1225,7 +1225,7 @@ void NABCExport::outputKeySig(NKeySig *key, bool inHeader) {
 					default: NResource::abort("NABCExport::outputKeySig", 1);
 				}
 				break;
-			case STAT_FLAT:
+			case PROP_FLAT:
 				switch (count) {
 					case 0: out_ << 'C'; break;
 					case 1: out_ << 'F'; break;
@@ -1238,7 +1238,7 @@ void NABCExport::outputKeySig(NKeySig *key, bool inHeader) {
 					default: NResource::abort("NABCExport::outputKeySig", 2);
 				}
 				break;
-			case STAT_NO_ACC:
+			case PROP_NO_ACC:
 				out_ << "C";
 				break;
 			default: NResource::abort("NABCExport::outputKeySig", 3);

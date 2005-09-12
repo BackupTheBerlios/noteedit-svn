@@ -1282,10 +1282,10 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 				voiceTime += len3;
 				status = 0;
 				if (dotcount) {
-					status = STAT_SINGLE_DOT;
+					status = PROP_SINGLE_DOT;
 				}
 				if (!first) {
-					status |= STAT_HIDDEN;
+					status |= PROP_HIDDEN;
 				}
 				rest = new NRest(main_props, staff_props, &(voice->yRestOffs_), len2, status);
 				voice->appendElem(rest);
@@ -1375,10 +1375,10 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 				voiceTime += len3;
 				if (addRest) {
 					if (dotcount) {
-						status = STAT_SINGLE_DOT;
+						status = PROP_SINGLE_DOT;
 					}
 					if (!first) {
-						status |= STAT_HIDDEN;
+						status |= PROP_HIDDEN;
 					}
 					rest = new NRest(main_props, staff_props, &(voice->yRestOffs_), len2, status);
 					voice->appendElem(rest);
@@ -1392,7 +1392,7 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 				}
 				else {
 					clef->midi2Line(ptr->U.norm_evt.pitches[0], &line, &offs);
-					status = dotcount ? STAT_SINGLE_DOT : 0;
+					status = dotcount ? PROP_SINGLE_DOT : 0;
 					if (computeAverageVolume) {
 						newVolume = (int) (averageVolume + dynamic / 127.0 * (double) (ptr->U.norm_evt.volume - averageVolume));
 					}
@@ -1427,17 +1427,17 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 					else {
 						body = 0;
 						if (drum_channel) {
-							body = (STAT_BODY_CROSS << ((line + LINE_OVERFLOW) % 5));
+							body = (PROP_BODY_CROSS << ((line + LINE_OVERFLOW) % 5));
 						}
 						if (stacatto) {
-							status |= STAT_STACC;
+							status |= PROP_STACC;
 						}
 						chord = new NChord(main_props, staff_props, voice, line, offs, len2, ptr->stem_policy, status | body);
 						for (j = 1; j < ptr->U.norm_evt.num_pitches; j++) {
 							clef->midi2Line(ptr->U.norm_evt.pitches[j], &line, &offs);
 							body = 0;
 							if (drum_channel) {
-								body = (STAT_BODY_CROSS << ((line + LINE_OVERFLOW) % 5));
+								body = (PROP_BODY_CROSS << ((line + LINE_OVERFLOW) % 5));
 							}
 							chord->insertNewNote(line, offs, ptr->stem_policy, status | body);
 						}

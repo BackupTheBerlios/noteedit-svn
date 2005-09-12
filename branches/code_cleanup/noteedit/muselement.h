@@ -101,7 +101,7 @@ class NPlayable : public NMusElement {
 
 		void breakTuplet();
 		void changeTupletList(QList<NPlayable> *tList) {tupletList_ = tList;}
-		void resetTupletFlag() { status_ &= (~((STAT_TUPLET | STAT_LAST_TUPLET))); tupletList_ = 0; midiLength_ = computeMidiLength();}
+		void resetTupletFlag() { status_ &= (~((PROP_TUPLET | PROP_LAST_TUPLET))); tupletList_ = 0; midiLength_ = computeMidiLength();}
 		QList<NPlayable> *getTupletList() {return tupletList_;}
 		void computeTuplet();
 		static void computeTuplet(QList<NPlayable> *tupletlList, char numNotes, char playtime);

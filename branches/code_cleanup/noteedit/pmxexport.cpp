@@ -254,7 +254,7 @@ void NPmxExport::doExport() {
 		out_ << "        0      ";
 	}
 	if (keysig->isRegular(&kind, &count)) {
-		if (kind == STAT_FLAT) count = -count;
+		if (kind == PROP_FLAT) count = -count;
 		out_ << count << endl;
 	}
 	else {
@@ -520,7 +520,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 	}
 	if (pendingKeySig_ && first) {
 		if (pendingKeySig_->isRegular(&kind, &count)) {
-			if (kind == STAT_CROSS) {
+			if (kind == PROP_CROSS) {
 				specialChar.sprintf("K+0+%d ", count);
 			}
 			else {
@@ -556,9 +556,9 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 			case T_CHORD: 
 				     chord = (NChord *) elem;
 				     part = elem->getSubType(); 
-				     if (!(chord->status_ & STAT_GRACE)) {
+				     if (!(chord->status_ & PROP_GRACE)) {
 					inGraceGroup = false;
-					if (chord->status_ & STAT_TUPLET) {
+					if (chord->status_ & PROP_TUPLET) {
 						total += chord->getPlaytime() * part / chord->getNumNotes();
 					}
 					else {
@@ -598,9 +598,9 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 					}
 				      }
 				     if (exportDialog_->pmxKeepBeams->isChecked()) {
-					if ((chord->status_ & STAT_BEAMED) && beamstatus == OUTSIDE_BEAM) {
+					if ((chord->status_ & PROP_BEAMED) && beamstatus == OUTSIDE_BEAM) {
 						*pmxout_ << '[';
-						if (chord->status_ & STAT_STEM_UP) {
+						if (chord->status_ & PROP_STEM_UP) {
 							beamstatus = IN_BEAM_UP;
 							*pmxout_ << "u ";
 						}
@@ -622,7 +622,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     		}
 					}
 				     }
-				     if (!inGraceGroup && chord->status_ & STAT_GRACE) {
+				     if (!inGraceGroup && chord->status_ & PROP_GRACE) {
 					graceString =  voice->determineGraceKind(&grace_status);
 					inGraceGroup = true;
 					if (grace_status == WARN_MIXED_GRACES) {
@@ -651,27 +651,27 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 					case 1: *pmxout_ << "d"; break;
 					case 2: *pmxout_ << "dd"; break;
 				     }
-				     if ((chord->status_ & STAT_TUPLET) && elem->getSubType() != tupletBase_)  *pmxout_ << 'D';
+				     if ((chord->status_ & PROP_TUPLET) && elem->getSubType() != tupletBase_)  *pmxout_ << 'D';
 #ifdef THIS_IS_WRONG
-				     base_shifted = note->status & STAT_SHIFTED;
+				     base_shifted = note->status & PROP_SHIFTED;
 #endif
 				     *pmxout_ << ' ';
-				     if (chord->status_ & STAT_STACC) {
+				     if (chord->status_ & PROP_STACC) {
 					*pmxout_ << "ou ";
 				     }
-				     if (chord->status_ & STAT_SFORZ) {
+				     if (chord->status_ & PROP_SFORZ) {
 					*pmxout_ << "o^ ";
 				     }
-				     if (chord->status_ & STAT_PORTA) {
+				     if (chord->status_ & PROP_PORTA) {
 					*pmxout_ << "o_ ";
 				     }
-				     if (chord->status_ & STAT_SFZND) {
+				     if (chord->status_ & PROP_SFZND) {
 					*pmxout_ << "o> ";
 				     }
-				     if (chord->status_ & STAT_FERMT) {
+				     if (chord->status_ & PROP_FERMT) {
 				        *pmxout_ << "of ";
 				     }
-				     if (chord->status_ & STAT_ARPEGG) {
+				     if (chord->status_ & PROP_ARPEGG) {
 				        *pmxout_ << "? ";
 				     }
 				     if (chord->trill_ < 0) {
@@ -709,10 +709,10 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 					     }
 #ifdef THIS_IS_WRONG
 					     if (base_shifted) {
-						if (!(note->status & STAT_SHIFTED)) *pmxout_ << "r";
+						if (!(note->status & PROP_SHIFTED)) *pmxout_ << "r";
 					     }
 					     else {
-				     	     	if (note->status & STAT_SHIFTED) *pmxout_ << "r";
+				     	     	if (note->status & PROP_SHIFTED) *pmxout_ << "r";
 					     }
 #endif
 				     	     *pmxout_ << ' ';
@@ -724,7 +724,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 						note = chord->getNoteList()->next();
 				      	     }		
 				     }
-				     if (chord->status_ & STAT_ARPEGG) {
+				     if (chord->status_ & PROP_ARPEGG) {
 				     		*pmxout_ << "? ";
 				     }
 				     if (exportDialog_->pmxKeepBeams->isChecked()) {
@@ -742,7 +742,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 						total += MULTIPLICATOR*countof128th_;
 				     }
 				     else {
-					     if (rest->status_ & STAT_TUPLET) {
+					     if (rest->status_ & PROP_TUPLET) {
 						total += rest->getPlaytime() * part / rest->getNumNotes();
 					     }
 					     else {
@@ -760,8 +760,8 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     }
 					
 				     *pmxout_ << 'r';
-				     if (rest->status_ & STAT_HIDDEN) *pmxout_ << 'b';
-				     if (rest->status_ & STAT_TUPLET) {
+				     if (rest->status_ & PROP_HIDDEN) *pmxout_ << 'b';
+				     if (rest->status_ & PROP_TUPLET) {
 					if (rest->isFirstInTuplet()) {
 						inspectTuplet(rest, staff_nr, barNr_+numMeasures);
 						*pmxout_  << computePMXTupletLength(rest->getPlaytime()*tupletBase_, staff_nr, barNr_+numMeasures);
@@ -784,7 +784,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 					case 1: *pmxout_ << "d"; break;
 					case 2: *pmxout_ << "dd"; break;
 				     }
-				     if (rest->status_ & STAT_TUPLET) {
+				     if (rest->status_ & PROP_TUPLET) {
 						if (rest->isFirstInTuplet()) *pmxout_ << "x" << (int) (rest->getNumNotes());
 						if (elem->getSubType() != tupletBase_) *pmxout_ << 'D';
 				     }
@@ -905,7 +905,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				if (barNr_ < 2) break;
 				ksig = (NKeySig *) elem;
 				if (ksig->isRegular(&kind, &count)) {
-					if (kind == STAT_CROSS) {
+					if (kind == PROP_CROSS) {
 						specialChar.sprintf("K+0+%d ", count);
 					}
 					else {
@@ -977,7 +977,7 @@ void NPmxExport::pitchOut(NKeySig *ksig, const NNote *note, int length, NClef *a
 	*pmxout_ << ac_clef->line2PMXName(note->line, &octave);
 	tone = ac_clef->line2Midi( note->line, 0 );
 	octaveneeded = abs(lastTone_ - tone) > 5;
-	if (chord->status_ & STAT_TUPLET) {
+	if (chord->status_ & PROP_TUPLET) {
 		if (chord->isFirstInTuplet() &&  length >= 0) {
 			inspectTuplet(chord, staff_nr, barnr);
 			firstTuplet = true;
@@ -985,27 +985,27 @@ void NPmxExport::pitchOut(NKeySig *ksig, const NNote *note, int length, NClef *a
 			lastLength_ = chord->getPlaytime()*tupletBase_;
 		}
 	}
-	else if (!(chord->status_ & STAT_GRACE) && length >= 0 && (lastLength_ != length || octaveneeded)) {
+	else if (!(chord->status_ & PROP_GRACE) && length >= 0 && (lastLength_ != length || octaveneeded)) {
 		*pmxout_  << computePMXLength(length);
 		lastLength_ = length;
 	}
-	if (!(note->status & STAT_PART_OF_TIE)) {
-		if (!(note->status & STAT_FORCE)) {
+	if (!(note->status & PROP_PART_OF_TIE)) {
+		if (!(note->status & PROP_FORCE)) {
 			switch (note->needed_acc) {
-				case STAT_CROSS: *pmxout_ << "s"; ksig->setTempAccent(note->line, STAT_CROSS); break;
-				case STAT_FLAT: *pmxout_ << "f"; ksig->setTempAccent(note->line, STAT_FLAT); break;
-				case STAT_NATUR: *pmxout_ << "n"; ksig->setTempAccent(note->line, STAT_NATUR); break;
-				case STAT_DCROSS: *pmxout_ << "ss"; ksig->setTempAccent(note->line, STAT_DCROSS); break;
-				case STAT_DFLAT: *pmxout_ << "ff"; ksig->setTempAccent(note->line, STAT_DFLAT); break;
+				case PROP_CROSS: *pmxout_ << "s"; ksig->setTempAccent(note->line, PROP_CROSS); break;
+				case PROP_FLAT: *pmxout_ << "f"; ksig->setTempAccent(note->line, PROP_FLAT); break;
+				case PROP_NATUR: *pmxout_ << "n"; ksig->setTempAccent(note->line, PROP_NATUR); break;
+				case PROP_DCROSS: *pmxout_ << "ss"; ksig->setTempAccent(note->line, PROP_DCROSS); break;
+				case PROP_DFLAT: *pmxout_ << "ff"; ksig->setTempAccent(note->line, PROP_DFLAT); break;
 			}
 		}
 		else {
 			switch (note->offs) {
-				case  1: *pmxout_ << "s"; ksig->setTempAccent(note->line, STAT_CROSS); break;
-				case -1: *pmxout_ << "f"; ksig->setTempAccent(note->line, STAT_FLAT); break;
-				case  0: *pmxout_ << "n"; ksig->setTempAccent(note->line, STAT_NATUR); break;
-				case  2: *pmxout_ << "ss"; ksig->setTempAccent(note->line, STAT_DCROSS); break;
-				case -2: *pmxout_ << "ff"; ksig->setTempAccent(note->line, STAT_DFLAT); break;
+				case  1: *pmxout_ << "s"; ksig->setTempAccent(note->line, PROP_CROSS); break;
+				case -1: *pmxout_ << "f"; ksig->setTempAccent(note->line, PROP_FLAT); break;
+				case  0: *pmxout_ << "n"; ksig->setTempAccent(note->line, PROP_NATUR); break;
+				case  2: *pmxout_ << "ss"; ksig->setTempAccent(note->line, PROP_DCROSS); break;
+				case -2: *pmxout_ << "ff"; ksig->setTempAccent(note->line, PROP_DFLAT); break;
 			}
 		}
 	}
@@ -1093,7 +1093,7 @@ void NPmxExport::setTie(NNote *note, int staff_nr, int barnr) {
 	int i;
 	bool found = false;
 
-	if ((note->status & STAT_TIED) && !(note->status & STAT_PART_OF_TIE)) { 
+	if ((note->status & PROP_TIED) && !(note->status & PROP_PART_OF_TIE)) { 
 		for (i = 0; i < MAXTIES && !found; i++) {
 			found = !((1 << i) & tiePool_);
 		}
@@ -1111,13 +1111,13 @@ void NPmxExport::setTie(NNote *note, int staff_nr, int barnr) {
 			tieMember->TeXTieNr = i;
 		}
 	}
-	else if ((note->status & STAT_PART_OF_TIE) && (note->status & STAT_TIED)) {
+	else if ((note->status & PROP_PART_OF_TIE) && (note->status & PROP_TIED)) {
 		if (note->TeXTieNr >= 0) {
 			*pmxout_ << "s" << note->TeXTieNr << ' ';
 			*pmxout_ << "s" << note->TeXTieNr << ' ';
 		}
 	}
-	else if ((note->status & STAT_PART_OF_TIE) && !(note->status & STAT_TIED)) {
+	else if ((note->status & PROP_PART_OF_TIE) && !(note->status & PROP_TIED)) {
 		if (note->TeXTieNr >= 0) {
 			*pmxout_ << "s" << note->TeXTieNr << ' ';
 			tiePool_ = tiePool_ & (~(1 << note->TeXTieNr));
@@ -1130,13 +1130,13 @@ void NPmxExport::setSlur(NChord *chord, int staff_nr, int barnr) {
 	int i;
 	bool found = false;
 
-	if (chord->status_ & STAT_GRACE) {
-		if ((chord->status_ & STAT_SLURED)) {
+	if (chord->status_ & PROP_GRACE) {
+		if ((chord->status_ & PROP_SLURED)) {
 			chord->setPartnerSlurNr(-1);
 		}
 		return;
 	}
-	if ((chord->status_ & STAT_SLURED) && !(chord->status_ & STAT_PART_OF_SLUR)) { 
+	if ((chord->status_ & PROP_SLURED) && !(chord->status_ & PROP_PART_OF_SLUR)) { 
 		for (i = 0; i < MAXSLURS && !found; i++) {
 			found = !((1 << i) & slurPool_);
 		}
@@ -1153,14 +1153,14 @@ void NPmxExport::setSlur(NChord *chord, int staff_nr, int barnr) {
 		chord->setTeXSlurNr(i);
 		chord->setPartnerSlurNr(i);
 	}
-	else if ((chord->status_ & STAT_PART_OF_SLUR) && (chord->status_ & STAT_SLURED)) {
+	else if ((chord->status_ & PROP_PART_OF_SLUR) && (chord->status_ & PROP_SLURED)) {
 		if (chord->getTeXSlurNr() >= 0) {
 			*pmxout_ << "s" << chord->getTeXSlurNr() << ' ';
 			*pmxout_ << "s" << chord->getTeXSlurNr() << ' ';
 			chord->setPartnerSlurNr(chord->getTeXSlurNr());
 		}
 	}
-	else if ((chord->status_ & STAT_PART_OF_SLUR) && ! (chord->status_ & STAT_SLURED)) {
+	else if ((chord->status_ & PROP_PART_OF_SLUR) && ! (chord->status_ & PROP_SLURED)) {
 		if (chord->getTeXSlurNr() >= 0) {
 			*pmxout_ << "s" << chord->getTeXSlurNr() << ' ';
 			slurPool_ = slurPool_ & (~(1 << chord->getTeXSlurNr()));

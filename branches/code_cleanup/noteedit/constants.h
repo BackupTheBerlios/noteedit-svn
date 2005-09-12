@@ -129,95 +129,95 @@
 // TBD and also in NNote::status ?
 
 /* is single-dotted */
-/* NOTE! STAT_SINGLE_DOT *must* have value 1 to correctly work with dotcount and must be within 32bits not to crash as dotcount is still int and not status_type */
-#define STAT_SINGLE_DOT   ((status_type)1 << 0)
+/* NOTE! PROP_SINGLE_DOT *must* have value 1 to correctly work with dotcount and must be within 32bits not to crash as dotcount is still int and not status_type */
+#define PROP_SINGLE_DOT   ((status_type)1 << 0)
 /* is double-dotted */
-/* NOTE! STAT_DOUBLE_DOT *must* have value 2 to correctly work with dotcount and must be within 32bits not to crash as dotcount is still int and not status_type */
-#define STAT_DOUBLE_DOT   ((status_type)1 << 1)
+/* NOTE! PROP_DOUBLE_DOT *must* have value 2 to correctly work with dotcount and must be within 32bits not to crash as dotcount is still int and not status_type */
+#define PROP_DOUBLE_DOT   ((status_type)1 << 1)
 /* has dot */
-#define DOT_MASK     (STAT_SINGLE_DOT | STAT_DOUBLE_DOT)
+#define DOT_MASK     (PROP_SINGLE_DOT | PROP_DOUBLE_DOT)
 /* is hidden rest */
-#define STAT_HIDDEN   ((status_type)1 << 2)
+#define PROP_HIDDEN   ((status_type)1 << 2)
 /* has accidentals: sharp */
-#define STAT_CROSS   ((status_type)1 << 3)
+#define PROP_CROSS   ((status_type)1 << 3)
 /* has accidentals: flat */
-#define STAT_FLAT    ((status_type)1 << 4)
+#define PROP_FLAT    ((status_type)1 << 4)
 /* has accidentals: double-sharp */
-#define STAT_DCROSS  ((status_type)1 << 5)
+#define PROP_DCROSS  ((status_type)1 << 5)
 /* has accidentals: double-flat */
-#define STAT_DFLAT   ((status_type)1 << 6)
+#define PROP_DFLAT   ((status_type)1 << 6)
 /* has accidentals: natural */
-#define STAT_NATUR   ((status_type)1 << 7)
+#define PROP_NATUR   ((status_type)1 << 7)
 /* doesn't have any accidentals defined at all */
-#define STAT_NO_ACC  0
+#define PROP_NO_ACC  0
 /* always show accidentals */
-#define STAT_FORCE   ((status_type)1 << 8)
+#define PROP_FORCE   ((status_type)1 << 8)
 /* has any accidentals */
-#define ACC_MASK     (STAT_CROSS | STAT_FLAT | STAT_DCROSS | STAT_DFLAT | STAT_NATUR)
+#define ACC_MASK     (PROP_CROSS | PROP_FLAT | PROP_DCROSS | PROP_DFLAT | PROP_NATUR)
 /* is beamed */
-#define STAT_BEAMED  ((status_type)1 << 9)
+#define PROP_BEAMED  ((status_type)1 << 9)
 /* has slur */
-#define STAT_SLURED  ((status_type)1 << 10)
+#define PROP_SLURED  ((status_type)1 << 10)
 /* has part of the slur */
-#define STAT_PART_OF_SLUR  ((status_type)1 << 11)
+#define PROP_PART_OF_SLUR  ((status_type)1 << 11)
 /* has tuplet (triola) */
-#define STAT_TUPLET   ((status_type)1 << 12)
+#define PROP_TUPLET   ((status_type)1 << 12)
 /* is the end of tuplet */
-#define STAT_LAST_TUPLET ((status_type)1 << 13)
+#define PROP_LAST_TUPLET ((status_type)1 << 13)
 /* stem direction: 1-up, 0-down */
-#define STAT_STEM_UP ((status_type)1 << 14)
+#define PROP_STEM_UP ((status_type)1 << 14)
 /* an exception with stem direction before beam */
-#define STAT_STEM_UP_BEFORE_BEAM ((status_type)1 << 15)
+#define PROP_STEM_UP_BEFORE_BEAM ((status_type)1 << 15)
 /* has tie */
-#define STAT_TIED    ((status_type)1 << 16)
+#define PROP_TIED    ((status_type)1 << 16)
 /* the last part of tie */
-#define STAT_PART_OF_TIE ((status_type)1 << 17)
+#define PROP_PART_OF_TIE ((status_type)1 << 17)
 
-#define STAT_SHIFTED ((status_type)1 << 18)
-#define STAT_VIRTUAL ((status_type)1 << 19)
+#define PROP_SHIFTED ((status_type)1 << 18)
+#define PROP_VIRTUAL ((status_type)1 << 19)
 // Note: If you want to change the values of sforzato - sforzando, study function setAccent(*) at first!
 /* has staccato accent */
-#define STAT_STACC   ((status_type)1 << 20)
+#define PROP_STACC   ((status_type)1 << 20)
 /* has sforzato accent */
-#define STAT_SFORZ   ((status_type)1 << 21)
+#define PROP_SFORZ   ((status_type)1 << 21)
 /* has portato accent */
-#define STAT_PORTA   ((status_type)1 << 22)
+#define PROP_PORTA   ((status_type)1 << 22)
 /* has strong pizzicato accent */
-#define STAT_STPIZ   ((status_type)1 << 23)
+#define PROP_STPIZ   ((status_type)1 << 23)
 /* has sforzando accent */
-#define STAT_SFZND   ((status_type)1 << 24)
+#define PROP_SFZND   ((status_type)1 << 24)
 /* has fermata */
-#define STAT_FERMT   ((status_type)1 << 25)
+#define PROP_FERMT   ((status_type)1 << 25)
 /* has arpeggio */
-#define STAT_ARPEGG ((status_type)1 << 26)
+#define PROP_ARPEGG ((status_type)1 << 26)
 /* is grace note */
-#define STAT_GRACE ((status_type)1 << 27)
+#define PROP_GRACE ((status_type)1 << 27)
 /* body is cross */
-#define STAT_BODY_CROSS ((status_type)1 << 28)
+#define PROP_BODY_CROSS ((status_type)1 << 28)
 /* body is alternative cross */
-#define STAT_BODY_CROSS2 ((status_type)1 << 29)
+#define PROP_BODY_CROSS2 ((status_type)1 << 29)
 /* body is cross with circle */
-#define STAT_BODY_CIRCLE_CROSS ((status_type)1 << 30)
+#define PROP_BODY_CIRCLE_CROSS ((status_type)1 << 30)
 /* body is rectangle */
-#define STAT_BODY_RECT ((status_type)1 << 31)
+#define PROP_BODY_RECT ((status_type)1 << 31)
 /* body is triangle */
-#define STAT_BODY_TRIA ((status_type)1 << 32)
+#define PROP_BODY_TRIA ((status_type)1 << 32)
 /* pedal status values */
-#define STAT_PEDAL_ON ((status_type)1 << 33)
-#define STAT_PEDAL_OFF ((status_type)1 << 34)
-#define STAT_AUTO_TRIPLET ((status_type)1 << 35)
+#define PROP_PEDAL_ON ((status_type)1 << 33)
+#define PROP_PEDAL_OFF ((status_type)1 << 34)
+#define PROP_AUTO_TRIPLET ((status_type)1 << 35)
 
 
-#define CHORD_STAT_PART ( STAT_SINGLE_DOT | STAT_DOUBLE_DOT | STAT_BEAMED | STAT_SLURED | \
-	 STAT_PART_OF_SLUR | STAT_TUPLET | STAT_LAST_TUPLET | STAT_STEM_UP | STAT_STACC | \
-	 STAT_SFORZ | STAT_PORTA | STAT_STPIZ | STAT_SFZND | STAT_FERMT | STAT_GRACE | STAT_ARPEGG)
+#define CHORD_PROP_PART ( PROP_SINGLE_DOT | PROP_DOUBLE_DOT | PROP_BEAMED | PROP_SLURED | \
+	 PROP_PART_OF_SLUR | PROP_TUPLET | PROP_LAST_TUPLET | PROP_STEM_UP | PROP_STACC | \
+	 PROP_SFORZ | PROP_PORTA | PROP_STPIZ | PROP_SFZND | PROP_FERMT | PROP_GRACE | PROP_ARPEGG)
 
-#define GRACE_STAT_PART ( STAT_BEAMED | STAT_SLURED | STAT_PART_OF_SLUR | STAT_STEM_UP | STAT_GRACE )
+#define GRACE_PROP_PART ( PROP_BEAMED | PROP_SLURED | PROP_PART_OF_SLUR | PROP_STEM_UP | PROP_GRACE )
 
-#define NOTE_STAT_PART (~CHORD_STAT_PART)
+#define NOTE_PROP_PART (~CHORD_PROP_PART)
 
-#define BODY_MASK ( STAT_BODY_CROSS | STAT_BODY_CROSS2 | STAT_BODY_CIRCLE_CROSS |\
-			STAT_BODY_RECT | STAT_BODY_TRIA )
+#define BODY_MASK ( PROP_BODY_CROSS | PROP_BODY_CROSS2 | PROP_BODY_CIRCLE_CROSS |\
+			PROP_BODY_RECT | PROP_BODY_TRIA )
 
 #define SET_STATUS(condition, stat_var, stat_bit) if (condition) {stat_var |= stat_bit;} else {stat_var &= (~stat_bit);}
 

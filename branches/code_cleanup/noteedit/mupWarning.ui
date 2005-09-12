@@ -1,0 +1,95 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>mupWarning</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>mupForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>339</width>
+            <height>118</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>MUP warning</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>11</number>
+        </property>
+        <property name="spacing">
+            <number>6</number>
+        </property>
+        <widget class="QLabel" row="0" column="0" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>Warning</cstring>
+            </property>
+            <property name="font">
+                <font>
+                    <bold>1</bold>
+                </font>
+            </property>
+            <property name="text">
+                <string>Saved, but MUP does not work!</string>
+            </property>
+        </widget>
+        <widget class="QCheckBox" row="1" column="0" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>showAgain</cstring>
+            </property>
+            <property name="text">
+                <string>Don't &amp;show this message in future</string>
+            </property>
+            <property name="accel">
+                <string>Alt+S</string>
+            </property>
+            <property name="checked">
+                <bool>false</bool>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="2" column="0">
+            <property name="name">
+                <cstring>OkBu</cstring>
+            </property>
+            <property name="text">
+                <string>&amp;OK</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="2" column="1">
+            <property name="name">
+                <cstring>DetBu</cstring>
+            </property>
+            <property name="text">
+                <string>&amp;Details &gt;&gt;</string>
+            </property>
+            <property name="accel">
+                <string>Alt+D</string>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>OkBu</sender>
+        <signal>clicked()</signal>
+        <receiver>mupForm</receiver>
+        <slot>slOk()</slot>
+    </connection>
+    <connection>
+        <sender>DetBu</sender>
+        <signal>clicked()</signal>
+        <receiver>mupForm</receiver>
+        <slot>slShowDet()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>slShowDet()</slot>
+    <slot>slOk()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

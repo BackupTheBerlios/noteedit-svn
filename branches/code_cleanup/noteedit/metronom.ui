@@ -1,0 +1,276 @@
+<!DOCTYPE UI><UI>
+<class>metronomForm</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>metronomForm</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>373</width>
+            <height>233</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Metronome - NoteEdit</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="1"  column="0"  rowspan="1"  colspan="4" >
+            <class>Line</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Line1</cstring>
+            </property>
+            <property>
+                <name>frameShape</name>
+                <enum>HLine</enum>
+            </property>
+            <property stdset="1">
+                <name>frameShadow</name>
+                <enum>Sunken</enum>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property>
+                <name>frameShape</name>
+                <enum>HLine</enum>
+            </property>
+        </widget>
+        <widget row="3"  column="1"  rowspan="1"  colspan="3" >
+            <class>NScaleEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>metBar</cstring>
+            </property>
+            <property stdset="1">
+                <name>minimumSize</name>
+                <size>
+                    <width>264</width>
+                    <height>33</height>
+                </size>
+            </property>
+        </widget>
+        <widget row="2"  column="1"  rowspan="1"  colspan="3" >
+            <class>NScaleEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>metTempo</cstring>
+            </property>
+            <property stdset="1">
+                <name>minimumSize</name>
+                <size>
+                    <width>264</width>
+                    <height>33</height>
+                </size>
+            </property>
+        </widget>
+        <widget row="4"  column="1"  rowspan="1"  colspan="3" >
+            <class>NScaleEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>metBeat</cstring>
+            </property>
+            <property stdset="1">
+                <name>minimumSize</name>
+                <size>
+                    <width>264</width>
+                    <height>32</height>
+                </size>
+            </property>
+        </widget>
+        <widget row="6"  column="2" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>ChanButt</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Cancel</string>
+            </property>
+        </widget>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>l1</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Device:</string>
+            </property>
+        </widget>
+        <widget row="0"  column="1"  rowspan="1"  colspan="3" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>metDev</cstring>
+            </property>
+        </widget>
+        <widget row="4"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>l4</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Beat note:</string>
+            </property>
+        </widget>
+        <widget row="3"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>l3</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Bar note:</string>
+            </property>
+        </widget>
+        <widget row="2"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>l2</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Record tempo:</string>
+            </property>
+        </widget>
+        <widget row="5"  column="0"  rowspan="1"  colspan="4" >
+            <class>Line</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Line2</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget row="6"  column="1" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>startButt</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Start recording</string>
+            </property>
+        </widget>
+        <spacer row="6"  column="0" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer1</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="6"  column="3" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer2</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+    </grid>
+</widget>
+<customwidgets>
+    <customwidget>
+        <class>NScaleEdit</class>
+        <header location="local">scaleedit_impl.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+    </customwidget>
+</customwidgets>
+<images>
+    <image>
+        <name>image0</name>
+        <data format="XPM.GZ" length="646">789c6dd2c10ac2300c00d07bbf2234b7229d1ddec44f503c0ae2a154410f53d0ed20e2bf6bdb656dd6861dd23d9a66591b0587fd1654235ebded6f0edcd53e419d87ae7b1f4f9b8f906d0bfe012317426a70b07bdc2f3ec77f8ed6b89559061a0343d06a124cc105596482585094bc0ae599b04646c9018926491b2205e140c485cace25755c175d0a967b622ff900b8cc9c7d29af594ea722d589167f813aa852ba07d94b9dce296e883fe7bb163f23896753</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>startButt</sender>
+        <signal>clicked()</signal>
+        <receiver>metronomForm</receiver>
+        <slot>startSlot()</slot>
+    </connection>
+    <connection>
+        <sender>ChanButt</sender>
+        <signal>clicked()</signal>
+        <receiver>metronomForm</receiver>
+        <slot>abortSlot()</slot>
+    </connection>
+    <slot access="public">abortSlot()</slot>
+    <slot access="public">startSlot()</slot>
+</connections>
+</UI>

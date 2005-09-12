@@ -1,0 +1,503 @@
+#MIN_CONFIG(3.0.0)
+
+stdlibdirs="/usr/lib /usr/local/lib /usr/X11/lib /usr/X11R6/lib"
+stdincdirs="/usr/include /usr/local/include  /usr/X11/include /usr/X11R6/lib"
+
+dnl
+dnl FIND_PACKAGE(<name>, <libname>, <includename>,<libdirs>,<incldirs>)
+dnl
+
+AC_DEFUN(FIND_PACKAGE,[
+	echo -n "checking $1... "
+
+	for dir in $4
+	do
+		if test -f $dir/lib$2.so || test -f $dir/lib$2.a
+		then
+			lib_$1=$dir
+			break
+		fi
+	done
+
+	for dir in $5
+	do
+		if test -f $dir/$3
+		then
+			inc_$1=$dir
+			break
+		fi
+	done
+	echo "libs in $lib_$1; includes in $inc_$1"
+])
+
+dnl
+dnl AC_NEW_ARG(<arg-name>)
+dnl
+
+AC_DEFUN(AC_NEW_ARG,[
+	AC_ARG_WITH($1-include,[  --with-$1-include=DIR   	$1 headers in DIR])
+	AC_ARG_WITH($1-libs,[  --with-$1-libs=DIR    	$1 libraries in DIR])
+])
+
+libtse3requ="yes"
+AC_ARG_WITH(libtse3,[  --with-libtse3	   	(default) the new library by Pete Goodliffe <pete.goodliffe@pace.co.uk>)])
+AC_NEW_ARG(libtse3)
+AC_ARG_WITH(libkmid,[  --with-libkmid          	use libkmid instead of libtse3 (not all features available, see README)])
+AC_NEW_ARG(libkmid)
+AC_ARG_WITH(libs,[  --without-libs          	without any library (cause machine depencies, not all features available, see README)])
+AC_ARG_WITH(oldlily,[  --with-oldlily	       	use LilyPond 1.2.17 syntax to export])
+AC_ARG_WITH(anthem,[  --with-anthem=DIR		produce Anthem plugin, DIR=Athem source directory])	
+AC_ARG_WITH(fadein,[  --without-fadein		say \"--without-fadein\" if (de)crescendo gives unexpected results])	
+AC_ARG_WITH(arts,[  --without-arts		say \"--without-arts\" if you never want to create an aRts scheduler])	
+AC_ARG_WITH(printing,[  --with-printing		say \"--with-printing\" for quasi direct printing (using abcm2ps)])	
+
+if test "X$USE_EXCEPTIONS" = "X"
+then
+	echo ""
+	echo "########################################################"
+	echo "# Your compiler does not support \"-fexceptions\" option #"
+	echo "# This will probably cause problems during compilation #"
+	echo "# of \"midimapper.cpp\" file.                            #"
+	echo "########################################################"
+	echo ""
+fi 
+
+echo -n "Testing compiler version ... "
+rm -f compvers.cc compvers.o compvers
+cat >compvers.cc << EOF
+#include <stdio.h>
+main() {
+	char *v = __VERSION__;
+	printf("%c", *v);
+}
+
+EOF
+${CXX} compvers.cc -o compvers
+if test $? -ne 0
+then
+	echo "Cannot compile a simple C++ program! See compvers.cc"
+	exit
+fi
+
+ccversion=`./compvers`
+if test $? -ne 0
+then
+	echo "Cannot run a simple C++ program! See compvers.cc"
+	exit
+fi
+echo "$ccversion"
+${CXX} compvers.cc -o compvers
+if test "X$ccversion" = "X2"
+then
+	AC_DEFINE(GCC_MAJ_VERS, 2, [main version number of gcc])
+	rm -f compvers.cc compvers.o compvers
+elif test "X$ccversion" = "X3"
+then
+	AC_DEFINE(GCC_MAJ_VERS, 3, [main version number of gcc])
+	rm -f compvers.cc compvers.o compvers
+elif test "X$ccversion" = "X4"
+then
+	AC_DEFINE(GCC_MAJ_VERS, 4, [main version number of gcc])
+	rm -f compvers.cc compvers.o compvers
+else
+	echo ""
+	echo "Cannot determine g++ version"
+	echo "Check your compiler installation or"
+	echo "try to find out why \"./compvers\" doesn't"
+	echo "supply \"2\", \"3\" or \"4\"!"
+	echo ""
+	exit
+fi
+ 
+
+rm -f kde_qttest.cpp
+cat >kde_qttest.cpp << EOF
+#include <kapp.h>
+#include <qglobal.h>
+
+#if KDE_VERSION >= 290
+#if QT_VERSION < 300
+#error "you cannot use KDE3 together with QT < 3! Please check QTDIR environment variable or use configure --with-qt-dir="
+#endif
+#else
+#if QT_VERSION >= 300
+#error "you cannot use KDE2 together with QT >= 3! Please check QTDIR environment variable or use configure --with-qt-dir="
+#endif
+#endif
+EOF
+${CXX} -c kde_qttest.cpp -I$qt_includes -I$kde_includes 
+if test $? -ne 0
+then
+	echo ""
+	echo "There seems to be a KDE <--> Qt version conflict."
+	echo "Please check the configure parameters. Set the"
+	echo "enviroment variable QTDIR or use the configure option"
+	echo "\"--with-qt-libs=\" and \"--with-qt-libs-includes\""
+	echo ""
+	echo "Note further: If you have different KDE/Qt versions make"
+	echo "sure the PATH variable only references the KDE/Qt version"
+	echo "you wish to use for NoteEdit!"
+	echo ""
+	rm -f kde_qttest.cpp
+	exit
+fi
+rm -f kde_qttest.cpp
+
+
+if test "X$with_fadein" != "Xno"
+then
+	AC_DEFINE(WITH_FADE_IN, 1, [disable fade in/out for (de)cresendo])
+fi
+
+AC_PROG_YACC
+
+YACC="$YACC -d"
+rm -f yacctest.y y.tab.c
+cat >yacctest.y << EOF
+%token Y_A
+%%
+start: Y_A
+     ;
+%%
+EOF
+$YACC yacctest.y 2>/dev/null > /dev/null
+if test $? -ne 0
+then
+	echo ""
+	echo "Cannot run a simple YACC/Bison program. Perhaps YACC/Bison isn't"
+	echo "installed? Please install! Or check why:"
+	echo ""
+	echo "         $YACC yacctest.y"
+	echo ""
+	echo "doesn't work!"
+	echo ""
+	exit
+fi
+rm -f yacctest.y y.tab.c
+
+
+LEX=""
+AM_PROG_LEX
+if test "X$LEX" = "X"
+then
+	echo "This packages needs lex or flex! Please install!"
+	exit
+fi
+rm -f noteeditlextest.l noteeditlextest.c noteeditlextest
+cat >noteeditlextest.l << EOF
+%%
+a	return 2;
+%%
+int yywrap() {return 1;}
+main() {
+	int a = yylineno;
+}
+EOF
+$LEX -t noteeditlextest.l > noteeditlextest.c 
+if test $? -ne 0
+then
+	echo ""
+	echo "ERROR: Lex does not work! Perhaps (f)lex isn't installed!"
+	echo "Please install or find out why why"
+	echo ""
+	echo "	$MYLEX -t noteeditlextest.l"
+	echo ""
+	echo "doesn't work!"
+	exit
+fi
+
+${CC} -o  noteeditlextest  noteeditlextest.c 2>/dev/null > /dev/null
+if test $? -ne 0
+then
+	$LEX -l -t noteeditlextest.l > noteeditlextest.c 
+	if test $? -ne 0
+	then
+		echo ""
+		echo "ERROR: Lex does not work! Please find out why"
+		echo ""
+		echo "	$MYLEX -l -t noteeditlextest.l"
+		echo ""
+		echo "doesn't work!"
+		exit
+	fi
+	${CC} -o  noteeditlextest  noteeditlextest.c 2>/dev/null > /dev/null
+	if test $? -ne 0
+	then
+		echo ""
+		echo "ERROR: Lex does not work! Please find out why"
+		echo ""
+		echo "	$MYLEX -l -t noteeditlextest.l >noteeditlextest.c"
+		echo "  cc -o  noteeditlextest  noteeditlextest.c"
+		echo ""
+		echo "doesn't work!"
+		exit
+	fi
+	LEX="$LEX -l"
+fi
+rm -f noteeditlextest.l noteeditlextest.c noteeditlextest
+
+if test "$with_libs" = "no" -o "$with_libkmid" = "yes"
+then
+	libtse3requ="no"
+fi
+
+if test "X$with_printing" = "Xyes"
+then
+	AC_DEFINE(WITH_DIRECT_PRINTING, 1, [enable quasi direct printing (using abcm2ps)])
+	
+fi
+
+if test "X$with_libtse3_include" = "X"
+then
+	with_libtse3_include=$stdincdirs
+fi
+
+if test "X$with_libtse3_libs" = "X"
+then
+	with_libtse3_libs=$stdlibdirs
+fi
+
+if test "$libtse3requ" = "yes"
+then
+	FIND_PACKAGE(libtse3, tse3, tse3/TSE3.h, $with_libtse3_libs, $with_libtse3_include)
+
+	if test "X$lib_libtse3" = "X" -o "X$inc_libtse3" = "X"
+	then
+		echo ""
+		echo "libtse3 not found! Please install!"
+		echo "If you have installed libtse3 in an unusual directory"
+		echo "use \"--with-libtse3-include=\" and/or \"--with-libtse3-libs=\""
+		echo ""
+		echo "There are options to bypass libtse3! But this causes some"
+		echo "restrictions; see README"
+		echo ""
+		exit 
+
+	fi
+	cat >tse3vtest.cc << EOF
+#include <istream.h>
+#include <tse3/TSE3.h>
+int main() {
+	cout << TSE3::TSE3_Version() << endl;
+	return 0;
+}
+EOF
+	${CXX} -W -Wall -ansi -pedantic -g tse3vtest.cc -I$inc_libtse3 -I$kde_includes -L$lib_libtse3 \
+	 -Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -lpthread -o tse3vtest 2>/dev/null > /dev/null
+	if test $? -ne 0
+	then
+		echo ""
+		echo "      ERROR: TSE3 found but unable to link a simple TSE3 example!"
+		echo "	    Please see example file \"tse3vtest.cc\" and try to find out"
+		echo "      why it doesn't compile using the following command:"
+		echo "      ${CXX} -W -Wall -ansi -pedantic -g tse3vtest.cc -I$inc_libtse3 -I$kde_includes -L$lib_libtse3 -Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -lpthread -o tse3vtest"
+		echo ""
+		exit
+	fi
+	changequote(<<, >>)dnl
+	VERS=`./tse3vtest`
+	changequote([, ])dnl
+        tse_maj=`echo $VERS | sed -e 's/^\(.*\)\..*\..*$/\1/'`
+        tse_mid=`echo $VERS | sed -e 's/^.*\.\(.*\)\..*$/\1/'`
+        tse_min=`echo $VERS | sed -e 's/^.*\..*\.\(.*\)$/\1/'`
+	if test "X$VERS" = "X"
+	then
+		echo "      ERROR: TSE3 found but unable to run a simple TSE3 example!"
+		echo "	    Please see example file \"tse3vtest.cc\" and try to find out"
+		echo "      why it doesn't run, compiled with:"
+		echo "      ${CXX} -W -Wall -ansi -pedantic -g tse3vtest.cc -I$inc_libtse3 -I$kde_includes -L$lib_libtse3 -Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -lpthread -o tse3vtest"
+		exit
+	fi
+	if test "$tse_maj" -eq 0 -a "$tse_mid" -eq 2 -a "$tse_min" -lt 3  
+	then
+		echo ""
+		echo "      Excuse: NoteEdit cannot deal with tse3-0.2.$tse_min Please use"
+		echo "      tse-0.2.3 or later"
+		echo "      See http://TSE3.sourceforge.net for downloading newer versions of TSE3"
+		echo ""
+		rm -f tse3vtest tse3vtest.cc
+		exit
+	fi
+	if test "$tse_mid" -lt 2 
+	then
+		echo ""
+		echo "      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+		echo "      I found tse3-$tse_maj.$tse_mid.$tse_min" 
+		echo "      It works. But you should think about update. Probably future versions"
+		echo "      of NoteEdit will require tse3-0.2.x"
+		echo "      See http://TSE3.sourceforge.net for downloading newer versions of TSE3"
+		echo "      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+		echo ""
+	fi
+		
+	if test "$tse_maj" -lt 0 -o "$tse_mid" -lt 1 -o \( "$tse_mid" -lt 2 -a "$tse_min" -lt 2 \)
+	then 
+		echo ""
+		echo "      ERROR: TSE3 $VERS found but this version of \"noteedit\" needs >= TSE3-0.1.2"
+		echo "      or later. But NOT tse3-0.2.0!!!"
+		echo "      See http://TSE3.sourceforge.net for downloading newer versions of TSE3"
+		echo ""
+		rm -f tse3vtest tse3vtest.cc
+		exit
+	fi
+	rm -f tse3vtest tse3vtest.cc
+	
+	TSE3INCLUDE="-I$inc_libtse3"
+	TSE3LIBS="-L$lib_libtse3 -ltse3"
+	if test "$tse_mid" -gt 1
+	then
+		AC_DEFINE(TSE3_MID_VERSION_NR, 2, [the middle version number of TSE3])
+	else
+		AC_DEFINE(TSE3_MID_VERSION_NR, 1, [the middle version number of TSE3])
+	fi
+	if test "$with_arts" != "no" 
+	then
+		echo -n "checking for TSE3 with aRts ..."
+	if test "$tse_mid" -gt 1
+	then
+		cat >tse3vtest2.cc << EOF
+#include <tse3/plt/Factory.h>
+#include <tse3/plt/Arts.h>
+int main() {
+	TSE3::MidiSchedulerFactory theFactory_;
+	TSE3::MidiScheduler           *theScheduler_;
+	TSE3::Plt::UnixMidiSchedulerFactory::setPreferredPlatform(TSE3::Plt::UnixMidiSchedulerFactory::UnixPlatform_Alsa);
+	theScheduler_ = theFactory_.createScheduler();
+	return 0;
+}
+EOF
+	else
+		cat >tse3vtest2.cc << EOF
+#include <tse3/plt/Arts.h>
+int main() {
+	TSE3::Plt::ArtsMidiSchedulerFactory theARtsFactory_;
+	TSE3::MidiScheduler           *theScheduler_;
+	theScheduler_ = theARtsFactory_.createScheduler();
+	return 0;
+}
+EOF
+
+	fi
+		${CXX} -W -Wall -ansi -pedantic -g tse3vtest2.cc -I$inc_libtse3 -I$kde_includes -L$lib_libtse3 \
+	 	-Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -lpthread -o tse3vtest2  2>/dev/null > /dev/null
+		if test $? -ne 0
+		then
+			echo " no"
+			echo "${CXX} -W -Wall -ansi -pedantic -g tse3vtest2.cc -I$inc_libtse3 -I$kde_includes -L$lib_libtse3 \
+				-Wl,-rpath $lib_libtse3 -ltse3 -L$kde_libraries -Wl,-rpath $kde_libraries -lpthread -o tse3vtest2"
+		else
+			echo " yes"
+			AC_DEFINE(TSE3_HAS_ARTS, 1, [Define if TSE3 has an aRts MIDI scheduler])
+		fi
+	fi
+	rm -f tse3vtest tse3vtest.cc
+fi
+
+if test "$with_libs" = "no"
+then
+	echo ""
+	echo "This produces the version without any library. Please note:"
+	echo "	This causes some restrictions; see README"
+	echo ""
+fi
+
+if test "$with_libkmid" = "yes"
+then
+	if test "X$with_libkmid_include" = "X"
+	then
+		with_libkmid_include=$stdincdirs
+	fi
+	
+	if test "X$with_libkmid_libs" = "X"
+	then
+		with_libkmid_libs=$stdlibdirs
+	fi
+
+	AC_DEFINE(WITH_LIBKMID, 1, [Define if you want to use libkmid instead of libtse3])
+	FIND_PACKAGE(libkmid, kmid, libkmid/libkmid.h, $with_libkmid_libs, $with_libkmid_include)
+
+	if test "X$lib_libkmid" = "X" -o "X$inc_libkmid" = "X"
+	then
+		echo ""
+		echo "libkmid not found! Please install!"
+		echo "There are options to bypass all libs! But this causes some"
+		echo "restrictions; see README"
+		echo ""
+		exit 
+
+	fi
+	echo ""
+	echo "This produces the version with libkmid. Please note:"
+	echo "	This causes some restrictions; see README"
+	echo ""
+	KMIDINCLUDE="-I$inc_libkmid"
+	KMIDLIBS="-L$lib_libkmid -lkmid"
+fi
+
+if test "$libtse3requ" = "yes"
+then
+    AC_DEFINE(WITH_TSE3, 1, [Define if libtse3 present])
+fi
+
+if test "$with_oldlily" = "yes"
+then
+    AC_DEFINE(WITH_OLDLILY, 1, [Define if old lily present])
+fi
+
+if test $with_anthem
+then
+	if test "X$lib_libtse3" = "X" -o "X$inc_libtse3" = "X"
+	then
+		echo "Anthem plugin requires TSE3 library!"
+		exit
+	fi 
+	if test ! \( -f $with_anthem/anthem/phraseeditors/PhraseEditor.h \)
+	then
+		echo "File $with_anthem/anthem/phraseeditors/PhraseEditor.h"
+		echo does not exist!
+		exit
+	fi
+	AC_DEFINE(ANTHEM_PLUGIN, 1, [Define if old lily present])
+	ANTHEMINCLUDE=-I$with_anthem
+fi
+
+if test "$kde_qtver" = "3"
+then
+	echo "cp noteedit/lyrics.ui.qt3 noteedit/lyrics.ui"
+	cp noteedit/lyrics.ui.qt3 noteedit/lyrics.ui
+	echo "cp kguitar_excerpt/fingerlist.h.qt3 kguitar_excerpt/fingerlist.h"
+	cp kguitar_excerpt/fingerlist.h.qt3 kguitar_excerpt/fingerlist.h
+else
+	echo "cp noteedit/lyrics.ui.qt2 noteedit/lyrics.ui"
+	cp noteedit/lyrics.ui.qt2 noteedit/lyrics.ui
+	echo "cp kguitar_excerpt/fingerlist.h.qt2 kguitar_excerpt/fingerlist.h"
+	cp kguitar_excerpt/fingerlist.h.qt2 kguitar_excerpt/fingerlist.h
+fi
+
+LEX_PREFIX="NEDIT"
+LEX_RESTART="${LEX_PREFIX}restart"
+LEX_LINENO="${LEX_PREFIX}lineno"
+YACC_PARSE="${LEX_PREFIX}parse"
+YACC_LVAL="${LEX_PREFIX}lval"
+
+if test "X$kde_use_final" != "Xno"
+then
+	SPECIAL_FLAGS_FOR_FINAL="\$(PREFIX_DEF) \$(USE_EXCEPTIONS)"
+else
+	SPECIAL_FLAGS_FOR_FINAL=""
+fi
+
+AM_INIT_AUTOMAKE(noteedit, 2.8.0)
+AC_SUBST(SPECIAL_FLAGS_FOR_FINAL)
+AC_SUBST(LEX)
+AC_SUBST(YACC)
+AC_SUBST(LEX_PREFIX)
+AC_SUBST(LEX_RESTART)
+AC_SUBST(LEX_LINENO)
+AC_SUBST(YACC_PARSE)
+AC_SUBST(YACC_LVAL)
+AC_SUBST(ANTHEMINCLUDE)
+AC_SUBST(TSE3INCLUDE)
+AC_SUBST(TSE3LIBS)
+AC_SUBST(KMIDINCLUDE)
+AC_SUBST(KMIDLIBS)

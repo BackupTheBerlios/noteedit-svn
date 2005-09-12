@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=NoteEdit
+Name[de]=Noteneditor
+Name[sv]=Notredigerare
+Name[pl]=Edytor nut
+Name[sl]=NoteEdit
+Exec=noteedit %i %m -caption "%c"
+MimeType=audio/x-notes
+Type=Application
+Comment=Note editor
+Comment[de]=Noteneditor
+Comment[sv]=Notredigerare
+Comment[pl]=Edytor nut
+Comment[sl]=Urejevalnik glasbenih dokumentov
+Terminal=0
+Icon=noteedit
+ServiceTypes=Browser/View
+X-KDE-Library=libnoteedit
+Categories=Qt;KDE;Audio;
+Encoding=UTF-8

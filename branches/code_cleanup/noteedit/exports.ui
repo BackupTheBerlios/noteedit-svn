@@ -1,0 +1,2045 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>exportForm</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>exportForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>621</width>
+            <height>502</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>File export - NoteEdit</string>
+    </property>
+    <spacer>
+        <property name="name">
+            <cstring>Spacer1</cstring>
+        </property>
+        <property name="orientation">
+            <enum>Horizontal</enum>
+        </property>
+        <property name="sizeType">
+            <enum>Expanding</enum>
+        </property>
+        <property name="sizeHint">
+            <size>
+                <width>215</width>
+                <height>20</height>
+            </size>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>11</x>
+                <y>226</y>
+                <width>215</width>
+                <height>20</height>
+            </rect>
+        </property>
+    </spacer>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>ba</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>232</x>
+                <y>467</y>
+                <width>186</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Cancel</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>be</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>424</x>
+                <y>467</y>
+                <width>186</width>
+                <height>24</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Start &amp;export</string>
+        </property>
+    </widget>
+    <widget class="QTabWidget">
+        <property name="name">
+            <cstring>card</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>24</y>
+                <width>590</width>
+                <height>437</height>
+            </rect>
+        </property>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>&amp;MIDI format</string>
+            </attribute>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>t1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>136</width>
+                        <height>22</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>MIDI information line:</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>midiInfo</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>152</x>
+                        <y>10</y>
+                        <width>422</width>
+                        <height>22</height>
+                    </rect>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>MusiX&amp;TeX format</string>
+            </attribute>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QGroupBox" row="0" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>x1</cstring>
+                    </property>
+                    <property name="title">
+                        <string>Page geometry</string>
+                    </property>
+                    <grid>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>11</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <widget class="QLabel" row="0" column="2">
+                            <property name="name">
+                                <cstring>l4</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Width:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="1" column="2">
+                            <property name="name">
+                                <cstring>l5</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Height:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="1" column="0">
+                            <property name="name">
+                                <cstring>l3</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Left margin:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="0" column="0">
+                            <property name="name">
+                                <cstring>l2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Top margin:</string>
+                            </property>
+                        </widget>
+                        <widget class="QSpinBox" row="1" column="3">
+                            <property name="name">
+                                <cstring>texHeight</cstring>
+                            </property>
+                            <property name="maxValue">
+                                <number>500</number>
+                            </property>
+                            <property name="minValue">
+                                <number>-500</number>
+                            </property>
+                            <property name="value">
+                                <number>250</number>
+                            </property>
+                        </widget>
+                        <widget class="QSpinBox" row="0" column="1">
+                            <property name="name">
+                                <cstring>texTop</cstring>
+                            </property>
+                            <property name="maxValue">
+                                <number>500</number>
+                            </property>
+                            <property name="minValue">
+                                <number>-500</number>
+                            </property>
+                            <property name="value">
+                                <number>-10</number>
+                            </property>
+                        </widget>
+                        <widget class="QSpinBox" row="0" column="3">
+                            <property name="name">
+                                <cstring>texWidth</cstring>
+                            </property>
+                            <property name="maxValue">
+                                <number>500</number>
+                            </property>
+                            <property name="minValue">
+                                <number>-500</number>
+                            </property>
+                            <property name="value">
+                                <number>170</number>
+                            </property>
+                        </widget>
+                        <widget class="QSpinBox" row="1" column="1">
+                            <property name="name">
+                                <cstring>texLeft</cstring>
+                            </property>
+                            <property name="maxValue">
+                                <number>500</number>
+                            </property>
+                            <property name="minValue">
+                                <number>-500</number>
+                            </property>
+                            <property name="value">
+                                <number>-10</number>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="4">
+                            <property name="name">
+                                <cstring>texLandscape</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Landscape</string>
+                            </property>
+                        </widget>
+                    </grid>
+                </widget>
+                <widget class="QGroupBox" row="1" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>x2</cstring>
+                    </property>
+                    <property name="title">
+                        <string>Additional</string>
+                    </property>
+                    <grid>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>11</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <spacer row="1" column="4">
+                            <property name="name">
+                                <cstring>Spacer1_3</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QSpinBox" row="1" column="3">
+                            <property name="name">
+                                <cstring>texParindent</cstring>
+                            </property>
+                            <property name="value">
+                                <number>10</number>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox" row="0" column="3" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>texTempo</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;With tempo signs</string>
+                            </property>
+                            <property name="checked">
+                                <bool>true</bool>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="3">
+                            <property name="name">
+                                <cstring>texVolume</cstring>
+                            </property>
+                            <property name="text">
+                                <string>With &amp;volume signs</string>
+                            </property>
+                            <property name="checked">
+                                <bool>true</bool>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="1" column="0">
+                            <property name="name">
+                                <cstring>TextLabel1</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Indent:</string>
+                            </property>
+                        </widget>
+                        <spacer row="1" column="1" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>Spacer2</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QLabel" row="2" column="0" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>t1_2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>MusiXTeX-Cmd:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit" row="2" column="2" rowspan="1" colspan="3">
+                            <property name="name">
+                                <cstring>musixtexcmd</cstring>
+                            </property>
+                        </widget>
+                    </grid>
+                </widget>
+                <widget class="QPushButton" row="2" column="0">
+                    <property name="name">
+                        <cstring>musixStaff</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Staff selection</string>
+                    </property>
+                </widget>
+                <spacer row="2" column="1">
+                    <property name="name">
+                        <cstring>Spacer3</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QGroupBox" row="0" column="2" rowspan="2" colspan="1">
+                    <property name="name">
+                        <cstring>x3</cstring>
+                    </property>
+                    <property name="title">
+                        <string>Page generation</string>
+                    </property>
+                    <grid>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>11</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <widget class="QCheckBox" row="8" column="2">
+                            <property name="name">
+                                <cstring>texUcs</cstring>
+                            </property>
+                            <property name="text">
+                                <string>ucs</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="3">
+                            <property name="name">
+                                <cstring>texMeasures_</cstring>
+                            </property>
+                            <property name="text">
+                                <string>L&amp;imit line measures</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox" row="2" column="0" rowspan="2" colspan="3">
+                            <property name="name">
+                                <cstring>texTies</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Spa&amp;re ties</string>
+                            </property>
+                        </widget>
+                        <spacer row="1" column="0">
+                            <property name="name">
+                                <cstring>Spacer4</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QCheckBox" row="4" column="0" rowspan="1" colspan="3">
+                            <property name="name">
+                                <cstring>texBar</cstring>
+                            </property>
+                            <property name="text">
+                                <string>With bar &amp;numbers</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox" row="5" column="0" rowspan="1" colspan="3">
+                            <property name="name">
+                                <cstring>texMLyr</cstring>
+                            </property>
+                            <property name="text">
+                                <string>With musix&amp;lyr</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox" row="6" column="0" rowspan="1" colspan="3">
+                            <property name="name">
+                                <cstring>texOmitPageNumbering</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Omit page numbering</string>
+                            </property>
+                        </widget>
+                        <widget class="QComboBox" row="7" column="0">
+                            <item>
+                                <property name="text">
+                                    <string>ASCII</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>UTF-8</string>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>texOutputEncoding</cstring>
+                            </property>
+                            <property name="maxCount">
+                                <number>9</number>
+                            </property>
+                            <property name="duplicatesEnabled">
+                                <bool>true</bool>
+                            </property>
+                        </widget>
+                        <widget class="QComboBox" row="8" column="0">
+                            <item>
+                                <property name="text">
+                                    <string></string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>latin1</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>cp1251</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>koi8-u</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>koi8-r</string>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>texInputEncoding</cstring>
+                            </property>
+                        </widget>
+                        <widget class="QComboBox" row="9" column="0">
+                            <item>
+                                <property name="text">
+                                    <string>Small size</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Normal size</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Large size</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Very large size</string>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>texSize</cstring>
+                            </property>
+                            <property name="font">
+                                <font>
+                                </font>
+                            </property>
+                            <property name="currentItem">
+                                <number>1</number>
+                            </property>
+                            <property name="duplicatesEnabled">
+                                <bool>true</bool>
+                            </property>
+                        </widget>
+                        <widget class="QComboBox" row="7" column="1" rowspan="1" colspan="2">
+                            <item>
+                                <property name="text">
+                                    <string></string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>T2A</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>T2B</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>T2C</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>OT1</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>OT2</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>X2</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>LCY</string>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>texFontModule</cstring>
+                            </property>
+                        </widget>
+                        <widget class="QSlider" row="1" column="1" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>measureVal</cstring>
+                            </property>
+                            <property name="enabled">
+                                <bool>false</bool>
+                            </property>
+                            <property name="minValue">
+                                <number>2</number>
+                            </property>
+                            <property name="maxValue">
+                                <number>24</number>
+                            </property>
+                            <property name="value">
+                                <number>4</number>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                        </widget>
+                        <widget class="QLCDNumber" row="3" column="2">
+                            <property name="name">
+                                <cstring>j1</cstring>
+                            </property>
+                            <property name="enabled">
+                                <bool>true</bool>
+                            </property>
+                            <property name="intValue" stdset="0">
+                                <number>4</number>
+                            </property>
+                        </widget>
+                    </grid>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>A&amp;BC music</string>
+            </attribute>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QGroupBox" row="0" column="0">
+                    <property name="name">
+                        <cstring>GroupBox10</cstring>
+                    </property>
+                    <property name="title">
+                        <string>Page geometry</string>
+                    </property>
+                    <grid>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>11</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <widget class="QSpinBox" row="3" column="1">
+                            <property name="name">
+                                <cstring>ABCStaffSep</cstring>
+                            </property>
+                            <property name="maxValue">
+                                <number>50</number>
+                            </property>
+                            <property name="minValue">
+                                <number>5</number>
+                            </property>
+                            <property name="value">
+                                <number>16</number>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox" row="4" column="0">
+                            <property name="name">
+                                <cstring>ABCExprAbove</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Expressiones above</string>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="3" column="0">
+                            <property name="name">
+                                <cstring>TextLabel1_4</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Staff separation:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="1" column="0">
+                            <property name="name">
+                                <cstring>TextLabel2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Height:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="0" column="0">
+                            <property name="name">
+                                <cstring>TextLabel1_2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Width:</string>
+                            </property>
+                        </widget>
+                        <widget class="QSpinBox" row="1" column="1">
+                            <property name="name">
+                                <cstring>ABCHeight</cstring>
+                            </property>
+                            <property name="maxValue">
+                                <number>500</number>
+                            </property>
+                            <property name="minValue">
+                                <number>10</number>
+                            </property>
+                            <property name="value">
+                                <number>297</number>
+                            </property>
+                        </widget>
+                        <widget class="QSpinBox" row="0" column="1">
+                            <property name="name">
+                                <cstring>ABCWidth</cstring>
+                            </property>
+                            <property name="maxValue">
+                                <number>500</number>
+                            </property>
+                            <property name="minValue">
+                                <number>10</number>
+                            </property>
+                            <property name="value">
+                                <number>210</number>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="2" column="0">
+                            <property name="name">
+                                <cstring>TextLabel1_3</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Scale:</string>
+                            </property>
+                        </widget>
+                        <widget class="QSpinBox" row="2" column="1">
+                            <property name="name">
+                                <cstring>ABCscale</cstring>
+                            </property>
+                            <property name="prefix">
+                                <string></string>
+                            </property>
+                            <property name="suffix">
+                                <string>/100</string>
+                            </property>
+                            <property name="maxValue">
+                                <number>200</number>
+                            </property>
+                            <property name="minValue">
+                                <number>10</number>
+                            </property>
+                            <property name="value">
+                                <number>75</number>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox" row="5" column="0">
+                            <property name="name">
+                                <cstring>ABCMeasNumInBox</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Measure numbers in a box</string>
+                            </property>
+                        </widget>
+                    </grid>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>PM&amp;X format</string>
+            </attribute>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QGroupBox" row="0" column="0">
+                    <property name="name">
+                        <cstring>x4</cstring>
+                    </property>
+                    <property name="title">
+                        <string>Page geometry</string>
+                    </property>
+                    <grid>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>11</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <widget class="QLabel" row="0" column="0">
+                            <property name="name">
+                                <cstring>l6</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Width:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="1" column="0">
+                            <property name="name">
+                                <cstring>l7</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Height:</string>
+                            </property>
+                        </widget>
+                        <widget class="QSpinBox" row="0" column="1">
+                            <property name="name">
+                                <cstring>pmxWidth</cstring>
+                            </property>
+                            <property name="maxValue">
+                                <number>500</number>
+                            </property>
+                            <property name="value">
+                                <number>170</number>
+                            </property>
+                        </widget>
+                        <widget class="QSpinBox" row="1" column="1">
+                            <property name="name">
+                                <cstring>pmxHeight</cstring>
+                            </property>
+                            <property name="maxValue">
+                                <number>500</number>
+                            </property>
+                            <property name="value">
+                                <number>250</number>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>pmxLandscape</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Landscape</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>pmxKeepBeams</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Keep beams</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox" row="4" column="0" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>pmxMLyr</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;With musixlyr</string>
+                            </property>
+                        </widget>
+                    </grid>
+                </widget>
+                <widget class="QGroupBox" row="0" column="1">
+                    <property name="name">
+                        <cstring>x5</cstring>
+                    </property>
+                    <property name="title">
+                        <string>Settings</string>
+                    </property>
+                    <grid>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>11</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <widget class="NScaleEdit" row="1" column="1">
+                            <property name="name">
+                                <cstring>pmxMeasure</cstring>
+                            </property>
+                            <property name="minimumSize">
+                                <size>
+                                    <width>225</width>
+                                    <height>36</height>
+                                </size>
+                            </property>
+                        </widget>
+                        <widget class="NScaleEdit" row="3" column="1">
+                            <property name="name">
+                                <cstring>pmxNum</cstring>
+                            </property>
+                            <property name="minimumSize">
+                                <size>
+                                    <width>225</width>
+                                    <height>36</height>
+                                </size>
+                            </property>
+                        </widget>
+                        <widget class="NScaleEdit" row="2" column="1">
+                            <property name="name">
+                                <cstring>pmxSystem</cstring>
+                            </property>
+                            <property name="minimumSize">
+                                <size>
+                                    <width>225</width>
+                                    <height>36</height>
+                                </size>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="1" column="0">
+                            <property name="name">
+                                <cstring>l8</cstring>
+                            </property>
+                            <property name="frameShadow">
+                                <enum>Plain</enum>
+                            </property>
+                            <property name="text">
+                                <string>&lt;center&gt;Measures&lt;br&gt;per system:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="2" column="0">
+                            <property name="name">
+                                <cstring>l9</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&lt;center&gt;Systems&lt;br&gt;per page:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="3" column="0">
+                            <property name="name">
+                                <cstring>l10</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&lt;center&gt;Number&lt;br&gt;of pages:</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton" row="4" column="1">
+                            <property name="name">
+                                <cstring>pmxStaff</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Staff selection</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+S</string>
+                            </property>
+                        </widget>
+                        <spacer row="0" column="0">
+                            <property name="name">
+                                <cstring>Spacer28</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Vertical</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Fixed</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <spacer row="5" column="0" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>Spacer1_2</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                    </grid>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Lil&amp;yPond format</string>
+            </attribute>
+            <widget class="QButtonGroup">
+                <property name="name">
+                    <cstring>x6</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>270</width>
+                        <height>240</height>
+                    </rect>
+                </property>
+                <property name="title">
+                    <string>Page geometry</string>
+                </property>
+                <widget class="QSpinBox">
+                    <property name="name">
+                        <cstring>lilyCWidth</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>180</x>
+                            <y>150</y>
+                            <width>80</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="buttonSymbols">
+                        <enum>UpDownArrows</enum>
+                    </property>
+                    <property name="maxValue">
+                        <number>500</number>
+                    </property>
+                    <property name="minValue">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>170</number>
+                    </property>
+                </widget>
+                <widget class="QSpinBox">
+                    <property name="name">
+                        <cstring>lilyCHeight</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>180</x>
+                            <y>180</y>
+                            <width>80</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="maxValue">
+                        <number>500</number>
+                    </property>
+                    <property name="minValue">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>250</number>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>lilySLand</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>30</x>
+                            <y>80</y>
+                            <width>220</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Landscape</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+L</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>l11</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>30</x>
+                            <y>150</y>
+                            <width>121</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Width:</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>lilyCLand</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>30</x>
+                            <y>210</y>
+                            <width>220</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Landscape</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+L</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>l12</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>30</x>
+                            <y>180</y>
+                            <width>121</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Height:</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox">
+                    <item>
+                        <property name="text">
+                            <string>A6</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>A5</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>A4</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>A3</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Legal</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Letter</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Tabloid</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>lilySPageSize</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>30</x>
+                            <y>50</y>
+                            <width>140</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="currentItem">
+                        <number>2</number>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer18</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>120</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>140</x>
+                            <y>100</y>
+                            <width>120</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                </spacer>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer16</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>121</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>100</y>
+                            <width>121</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                </spacer>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>lilySPage</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>20</y>
+                            <width>250</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="text">
+                        <string>Use &amp;standard page size</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+S</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                    <property name="buttonGroupId">
+                        <number>0</number>
+                    </property>
+                </widget>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>lilyCPage</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>120</y>
+                            <width>250</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Use &amp;custom page size</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+C</string>
+                    </property>
+                    <property name="buttonGroupId">
+                        <number>0</number>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="QGroupBox">
+                <property name="name">
+                    <cstring>x7</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>260</y>
+                        <width>269</width>
+                        <height>140</height>
+                    </rect>
+                </property>
+                <property name="title">
+                    <string>Additional attributes</string>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>l14</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>50</y>
+                            <width>90</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Volume signs:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>l13</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>21</y>
+                            <width>180</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Global size:</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox">
+                    <item>
+                        <property name="text">
+                            <string>11</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>13</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>16</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>20</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>23</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>26</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>lilyFont</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>198</x>
+                            <y>21</y>
+                            <width>60</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <property name="currentItem">
+                        <number>2</number>
+                    </property>
+                </widget>
+                <widget class="QComboBox">
+                    <item>
+                        <property name="text">
+                            <string>No volume signs</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Volume signs above</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Volume signs below</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>lilyVol</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>70</y>
+                            <width>250</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <property name="currentItem">
+                        <number>2</number>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="QGroupBox">
+                <property name="name">
+                    <cstring>x8</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>290</x>
+                        <y>10</y>
+                        <width>290</width>
+                        <height>350</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>0</height>
+                    </size>
+                </property>
+                <property name="title">
+                    <string>Generating parameters</string>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer13</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>270</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>21</y>
+                            <width>270</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                </spacer>
+                <widget class="QSlider">
+                    <property name="name">
+                        <cstring>lilyMeasureVal</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>90</x>
+                            <y>170</y>
+                            <width>120</width>
+                            <height>24</height>
+                        </rect>
+                    </property>
+                    <property name="minValue">
+                        <number>2</number>
+                    </property>
+                    <property name="maxValue">
+                        <number>24</number>
+                    </property>
+                    <property name="value">
+                        <number>4</number>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>lilyBeam</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>47</y>
+                            <width>270</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Keep &amp;beams</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+B</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>lilyStem</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>73</y>
+                            <width>270</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Keep stem directions</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+K</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>lilyDrumNotes</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>99</y>
+                            <width>270</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Export drum notes</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>lilyVoice</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>125</y>
+                            <width>270</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Only voices</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+O</string>
+                    </property>
+                </widget>
+                <widget class="QLCDNumber">
+                    <property name="name">
+                        <cstring>LCDNumber13</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>220</x>
+                            <y>170</y>
+                            <width>64</width>
+                            <height>24</height>
+                        </rect>
+                    </property>
+                    <property name="intValue" stdset="0">
+                        <number>4</number>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>lilyTies</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>207</y>
+                            <width>270</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Sparse &amp;ties</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+T</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>lilyMeasure</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>150</y>
+                            <width>270</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>L&amp;imit the measures</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+I</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox">
+                    <item>
+                        <property name="text">
+                            <string>ASCII</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Latin1</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Unicode</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>UTF-8</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>lilyOutputCoding</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>260</y>
+                            <width>178</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>l15</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>240</y>
+                            <width>270</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Character encoding:</string>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>lilyStaff</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>290</x>
+                        <y>370</y>
+                        <width>290</width>
+                        <height>30</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>&amp;Staff selection</string>
+                </property>
+                <property name="accel">
+                    <string>Alt+S</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>MusicXML</string>
+            </attribute>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>TextLabel1_5</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>560</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>The MusicXML export filter doesn't require any additional parameters.</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Save Params</string>
+            </attribute>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QGroupBox" row="0" column="0" rowspan="1" colspan="3">
+                    <property name="name">
+                        <cstring>paperSize</cstring>
+                    </property>
+                    <property name="title">
+                        <string>Page geometry</string>
+                    </property>
+                    <widget class="QLabel">
+                        <property name="name">
+                            <cstring>wLabel</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>30</x>
+                                <y>70</y>
+                                <width>60</width>
+                                <height>30</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Width:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel">
+                        <property name="name">
+                            <cstring>hlabel</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>27</x>
+                                <y>94</y>
+                                <width>91</width>
+                                <height>30</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Height:</string>
+                        </property>
+                    </widget>
+                    <widget class="QSpinBox">
+                        <property name="name">
+                            <cstring>pWidth</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>150</x>
+                                <y>70</y>
+                                <width>111</width>
+                                <height>21</height>
+                            </rect>
+                        </property>
+                        <property name="maxValue">
+                            <number>500</number>
+                        </property>
+                        <property name="minValue">
+                            <number>1</number>
+                        </property>
+                        <property name="value">
+                            <number>170</number>
+                        </property>
+                    </widget>
+                    <widget class="QSpinBox">
+                        <property name="name">
+                            <cstring>pHeight</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>150</x>
+                                <y>100</y>
+                                <width>111</width>
+                                <height>21</height>
+                            </rect>
+                        </property>
+                        <property name="maxValue">
+                            <number>500</number>
+                        </property>
+                        <property name="minValue">
+                            <number>1</number>
+                        </property>
+                        <property name="value">
+                            <number>250</number>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>paramMeasureNums</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>10</x>
+                                <y>150</y>
+                                <width>250</width>
+                                <height>20</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>&amp;With measure numbers</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+W</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>paramEnable</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>10</x>
+                                <y>20</y>
+                                <width>121</width>
+                                <height>20</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Enable</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>paramLand</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>160</x>
+                                <y>20</y>
+                                <width>131</width>
+                                <height>20</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Landscape</string>
+                        </property>
+                    </widget>
+                </widget>
+                <widget class="QPushButton" row="1" column="2">
+                    <property name="name">
+                        <cstring>OkBu</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Dismiss</string>
+                    </property>
+                </widget>
+                <spacer row="1" column="1">
+                    <property name="name">
+                        <cstring>Spacer7</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <spacer row="1" column="0">
+                    <property name="name">
+                        <cstring>Spacer6</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+            </grid>
+        </widget>
+    </widget>
+</widget>
+<customwidgets>
+    <customwidget>
+        <class>NScaleEdit</class>
+        <header location="local">scaleedit_impl.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+    </customwidget>
+</customwidgets>
+<images>
+    <image name="image0">
+        <data format="XBM.GZ" length="79">789c534e494dcbcc4b554829cdcdad8c2fcf4c29c95030e0524611cd48cd4ccf28010a1797249664262b2467241641a592324b8aa363156c15aab914146aadb90067111b1f</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>musixStaff</sender>
+        <signal>clicked()</signal>
+        <receiver>exportForm</receiver>
+        <slot>musixStaffSig()</slot>
+    </connection>
+    <connection>
+        <sender>lilyStaff</sender>
+        <signal>clicked()</signal>
+        <receiver>exportForm</receiver>
+        <slot>lilyStaffSig()</slot>
+    </connection>
+    <connection>
+        <sender>be</sender>
+        <signal>clicked()</signal>
+        <receiver>exportForm</receiver>
+        <slot>startExport()</slot>
+    </connection>
+    <connection>
+        <sender>measureVal</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>j1</receiver>
+        <slot>display(int)</slot>
+    </connection>
+    <connection>
+        <sender>texMeasures_</sender>
+        <signal>clicked()</signal>
+        <receiver>exportForm</receiver>
+        <slot>texMeasures()</slot>
+    </connection>
+    <connection>
+        <sender>lilyMeasureVal</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>LCDNumber13</receiver>
+        <slot>display(int)</slot>
+    </connection>
+    <connection>
+        <sender>lilyMeasure</sender>
+        <signal>clicked()</signal>
+        <receiver>exportForm</receiver>
+        <slot>lilyMeasures()</slot>
+    </connection>
+    <connection>
+        <sender>texLandscape</sender>
+        <signal>clicked()</signal>
+        <receiver>exportForm</receiver>
+        <slot>musixLandSlot()</slot>
+    </connection>
+    <connection>
+        <sender>pmxLandscape</sender>
+        <signal>clicked()</signal>
+        <receiver>exportForm</receiver>
+        <slot>pmxLandSlot()</slot>
+    </connection>
+    <connection>
+        <sender>ba</sender>
+        <signal>clicked()</signal>
+        <receiver>exportForm</receiver>
+        <slot>closeIt()</slot>
+    </connection>
+    <connection>
+        <sender>OkBu</sender>
+        <signal>clicked()</signal>
+        <receiver>exportForm</receiver>
+        <slot>closeIt()</slot>
+    </connection>
+    <connection>
+        <sender>paramLand</sender>
+        <signal>clicked()</signal>
+        <receiver>exportForm</receiver>
+        <slot>paramLandSlot()</slot>
+    </connection>
+    <connection>
+        <sender>pmxStaff</sender>
+        <signal>clicked()</signal>
+        <receiver>exportForm</receiver>
+        <slot>pmxStaffSig()</slot>
+    </connection>
+    <connection>
+        <sender>lilyCLand</sender>
+        <signal>clicked()</signal>
+        <receiver>exportForm</receiver>
+        <slot>lilyLandSlot()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>closeIt()</slot>
+    <slot>lilyLandSlot()</slot>
+    <slot>lilyMeasures()</slot>
+    <slot>lilyStaffSig()</slot>
+    <slot>musixLandSlot()</slot>
+    <slot>musixStaffSig()</slot>
+    <slot>paramLandSlot()</slot>
+    <slot>pmxLandSlot()</slot>
+    <slot>pmxStaffSig()</slot>
+    <slot>startExport()</slot>
+    <slot>texMeasures()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>nscaleedit.h</includehint>
+    <includehint>nscaleedit.h</includehint>
+    <includehint>nscaleedit.h</includehint>
+</includehints>
+</UI>

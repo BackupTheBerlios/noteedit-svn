@@ -337,7 +337,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	new KAction( i18n("&Import recording"), "folder_sound", 0, this, SLOT(importRecording()), actionCollection(), "staff_importrec" );
 #endif
 	new KAction( i18n("Select &Multi Staff..."),  0, this, SLOT(multiStaffDialog()), actionCollection(), "edit_multistaff" );
-	new KAction( i18n("&Goto bar..."), "goto", 0, this, SLOT(gotoDialog()), actionCollection(), "edit_goto" );
+	new KAction( i18n("&Goto measure..."), "goto", 0, this, SLOT(gotoDialog()), actionCollection(), "edit_goto" );
 	criticalButtons_.append
 		(new KAction( i18n("&Auto Bar..."),  0, this, SLOT(autoBar()), actionCollection(), "edit_autobar" ));
 	//new KAction( i18n("Auto&beam..."),  0, this, SLOT(autoBeamDialog()), actionCollection(), "edit_autobeam" );
@@ -687,6 +687,9 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->connectItem( "KEunderscore", this, SLOT( KE_underscore() ) );
 	keys_->insertItem( i18n( "Keyboard Insert mode" ), "KEkeybordInsert", Key_K);
 	keys_->connectItem( "KEkeybordInsert", this, SLOT( KE_keybordInsert() ) );
+	keys_->insertItem( i18n( "Goto measure" ), "KEGotoMeasure",  CTRL+Key_G);
+	keys_->connectItem( "KEGotoMeasure", this, SLOT( gotoDialog() ) );
+
 
 /*------------------------- "note" keys -----------------------------------------------*/
 
@@ -708,7 +711,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->readSettings();
 	connect(&timer_, SIGNAL(timeout()), this, SLOT(playNext()));
 	x0_ = x1_ = y0_  = 0;
-	selectbutton_->setOn(true); /* go to selection mode */
+	selectbutton_->setOn(true); /* go to selection mode, by disabling the other buttons */
 	main_props_.directPainter->setPaintDevice(notePart_);
 	help_x0_ = -1;
 	keyLine_ = NULL_LINE;
@@ -4057,7 +4060,7 @@ void NMainFrameWidget::toggleStaffContext() {
 
 void NMainFrameWidget::gotoDialog() {
 	if (playing_) return;
-	scaleFrm_->desc->setText(i18n("<center>Please choose the target point!</center>"));
+	scaleFrm_->desc->setText(i18n("<center>Please choose the target measure number!</center>"));
 	scaleFrm_->chkbox->hide();
 	scaleFrm_->scal_ed->setAll(0, lastBarNr_ - 1, 0);
 	scaleFrm_->setCaption(kapp->makeStdCaption(i18n("Goto")));

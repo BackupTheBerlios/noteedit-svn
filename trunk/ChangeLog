@@ -61,5 +61,8 @@ version 2.9.0:
 	* Implemented standard paper sizes (a6, a5, a4, a3, letter, tabloid, legal) in Lilypond export filter and updated export dialog. R336
 	* Many aestetic bugs fixed (not unified capital letters, nicer expressions) in UI. Updated Slovenian translation. R348,R350
 	* Fixed bug #4437 - NoteEdit crashes in auto scroll when playing:
-	  Fixed crash when turning the page and try to show the current clef. If the clef wasn't placed at all, NoteEdit crashed. Thanks to bensonkao for hunting it down and the idea how to fix it.
+	  Fixed crash when turning the page and try to show the current clef.
+	  If the clef wasn't placed at all, NoteEdit crashed. Thanks to
+	  bensonkao for hunting it down and the idea how to fix it. R349
 	* Implemented new method NVoice::selectNearestMidiEvent(int midiTime, bool fromRight = false). It selects the nearest musElement to the given MIDI time. This is useful for eg. When you delete a block of notes and want to use left&right, so the cycling methods are able to find their track now. Also, int main_props_str.lastMidiTime stores the last MIDI times that something happened. Currently, it gets remembered when a note gets deselected with mouse click (when you click on empty space in select mode), when you delete an element (using both backspace or del) or when you delete the whole note block. R351
+	* Added CTRL+G shortcut for Goto measure. Some other similar strings tidied up. Updated translations. R357

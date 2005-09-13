@@ -943,7 +943,7 @@ void NABCExport::outputNote(NNote *note, NClef *actualClef, bool inInChord) {
 	for (; octave < 1; octave++) out_ << ',';
 }
 
-void NABCExport::outputLength(int len, status_type status, bool inChord, bool drumNote) {
+void NABCExport::outputLength(int len, property_type status, bool inChord, bool drumNote) {
 	unsigned int k;
 	if (len == QUARTER_LENGTH && !(status & (PROP_SINGLE_DOT | PROP_DOUBLE_DOT))) {
 		if (!inChord && drumNote) out_ << ']';
@@ -1206,7 +1206,7 @@ void NABCExport::outputMeter(NTimeSig *timesig, bool inHeader) {
 
 void NABCExport::outputKeySig(NKeySig *key, bool inHeader) {
 	int count;
-	status_type kind;
+	property_type kind;
 	badinfo *bad;
 	out_ << "K: ";
 

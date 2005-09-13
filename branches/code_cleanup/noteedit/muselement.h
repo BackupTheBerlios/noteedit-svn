@@ -94,7 +94,7 @@ class NMusElement {
 
 class NPlayable : public NMusElement {
 	public:
-		status_type status_; /* element's flags - 64 bit long! */
+		property_type status_; /* element's flags - 64 bit long! */
 
 		NPlayable(main_props_str *main_props, staff_props_str *staff_props);
 		virtual void changeLength(int) = 0;

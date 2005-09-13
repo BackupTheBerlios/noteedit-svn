@@ -148,7 +148,7 @@ TSE3::Track *NTSE3Handler::createTSE3Track(NVoice *voice, int nr, TSE3::Song *so
 
 	thePhraseEditor.reset();
 	int sign = 0;
-	status_type kind;
+	property_type kind;
 
 	voice->getStaff()->startPlaying();  /* necessary to reset some member variables in all staffs (EndIdx_) */
 	actual_staff = voice->getStaff();

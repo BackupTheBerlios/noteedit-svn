@@ -127,10 +127,10 @@ class NVoice {
 		bool voiceSet_;
 		int yRestOffs_;
 /*--------------------------------- search for something in voice ----------------------------- */
-		int checkElementForNoteInsertion(const int line, const QPoint p, status_type *status, bool *playable, bool *delete_elem, bool *insertNewNote, int offs);
+		int checkElementForNoteInsertion(const int line, const QPoint p, property_type *status, bool *playable, bool *delete_elem, bool *insertNewNote, int offs);
 		bool checkElementForElementInsertion(const QPoint p);
 		bool deleteActualNote();
-		int getElemState(status_type *status, bool *playable);
+		int getElemState(property_type *status, bool *playable);
 		void grabElements();
 		void findAppropriateElems();
 		void trimmRegion(int *x0, int *x1);
@@ -167,8 +167,8 @@ class NVoice {
 		void moveDown(int down);
 		void moveSemiToneUp();
 		void moveSemiToneDown();
-		int makePreviousElementActual(status_type *status);
-		int makeNextElementActual(status_type *status);
+		int makePreviousElementActual(property_type *status);
+		int makeNextElementActual(property_type *status);
 		void changeActualChord();
 		void changeBodyOfActualElement();
 		void changeActualStem();
@@ -191,7 +191,7 @@ class NVoice {
 		void resetSlured();
 		void setBeamed();
 		void setTuplet(char numNotes, char playtime);
-		int deleteActualElem(status_type *status, bool backspace);
+		int deleteActualElem(property_type *status, bool backspace);
 		bool deleteAtPosition(int y);
 		void autoBar();
 		void autoBarVoice123andSoOn();
@@ -269,7 +269,7 @@ class NVoice {
 		NClef *getFirstClef();
 		NTimeSig *getFirstTimeSig();
 		NKeySig *getFirstKeysig();
-		QString determineGraceKind(status_type *status);
+		QString determineGraceKind(property_type *status);
 		NMusElement *getCurrentPosition();
 		NMusElement *getNextPosition();
 		NMusElement *getPrevPosition();
@@ -286,8 +286,8 @@ class NVoice {
 		NChord *findLastChordBetweenXpos(int xpos1, int xpos2);
 		int getVaAtXpos(int xpos);
 /*--------------------------- appending due to reading ---------------------------*/
-		void appendNoteAt(int line, int offs, status_type status);
-		void appendElem(int el_type, int line, int sub_type, int offs = 0, status_type status = 0);
+		void appendNoteAt(int line, int offs, property_type status);
+		void appendElem(int el_type, int line, int sub_type, int offs = 0, property_type status = 0);
 		void appendElem(NMusElement *elem);
 		void correctReadTrillsSlursAndDynamicsStringsAndVAs();
 		bool setProvisionalTrill(int kind, unsigned int at, unsigned int till_meascount, unsigned int till, NMusElement *last_bar_sym);

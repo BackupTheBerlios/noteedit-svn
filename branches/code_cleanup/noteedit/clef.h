@@ -48,7 +48,7 @@ class NClef : public NMusElement {
 		virtual int getSubType() const {return clefKind_;}
 		virtual int getType() const {return T_CLEF;}
 		const char *line2TexTab_;
-		int getAccPos(status_type kind, int nr);
+		int getAccPos(property_type kind, int nr);
 		int noteNumber2Line(int note_number) const ;
 		int line2NoteNumber(int line ) const;
 		int lineOfC4();

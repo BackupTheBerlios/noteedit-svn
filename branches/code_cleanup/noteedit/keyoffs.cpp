@@ -52,7 +52,7 @@ void NKeyOffs::setKeysigObj(NKeySig *keysig_obj) {
 	keysigObj_ = keysig_obj;
 }
 
-void NKeyOffs::set(status_type kind) {
+void NKeyOffs::set(property_type kind) {
 	switch (kind) {
 		case PROP_CROSS: crossButton_->setChecked(true); break;
 		case PROP_FLAT: flatButton_->setChecked(true); break;

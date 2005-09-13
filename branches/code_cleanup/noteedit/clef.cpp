@@ -472,7 +472,7 @@ int NClef::name2Line(char name) const {
 	return line;
 }
 
-int NClef::getAccPos(status_type kind, int nr) {
+int NClef::getAccPos(property_type kind, int nr) {
 	switch (kind) {
 		case PROP_CROSS: return sharpPosTab_[nr];
 		case PROP_FLAT: return flatPosTab_[nr];

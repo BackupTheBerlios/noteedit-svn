@@ -106,7 +106,7 @@ QPoint NChord::StrokeDist2_(STROKE_X_2, STROKE_Y_2);
 int NChord::numTexRows_ = 0;
 QList<NNote> NChord::acc_tex_row;
 
-NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, status_type status) :
+NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, property_type status) :
 		 NPlayable(main_props, staff_props), m_(0.0), n_(0.0) {
 	NNote *note;
 	trill_ = dynamic_ = va_ = 0;
@@ -405,7 +405,7 @@ bool NChord::setOctaviationStop(int size) {
 }
 
 
-void NChord::changeBody(status_type bodyType) {
+void NChord::changeBody(property_type bodyType) {
 	NNote *note;
 	if (status_ & PROP_GRACE) return;
 	note = noteList_.at(actualNote_);
@@ -752,7 +752,7 @@ bool NChord::removeNote(NNote *note, int voices_stem_policy) {
 }
 
 
-NNote *NChord::insertNewNote(int line, int offs, int voices_stem_policy, status_type status) {
+NNote *NChord::insertNewNote(int line, int offs, int voices_stem_policy, property_type status) {
 	NNote *note, *new_part;
 	int idx;
 	bool found = false;

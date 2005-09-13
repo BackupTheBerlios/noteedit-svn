@@ -163,7 +163,7 @@ void NVoice::paperDimensiones(int width) {
 
 /*--------------------------------- search for something in voice ----------------------------- */
 
-int NVoice::getElemState(status_type *status, bool *playable) {
+int NVoice::getElemState(property_type *status, bool *playable) {
 	NChord *chord;
 	*status = 0;
 	*playable = false;
@@ -179,7 +179,7 @@ int NVoice::getElemState(status_type *status, bool *playable) {
 	return currentElement_->getSubType();
 }
 
-int NVoice::checkElementForNoteInsertion(const int line, const QPoint p, status_type *status, bool *playable, bool *delete_elem, bool *insertNewNote, int offs) {
+int NVoice::checkElementForNoteInsertion(const int line, const QPoint p, property_type *status, bool *playable, bool *delete_elem, bool *insertNewNote, int offs) {
 	bool found;
 	NMusElement *ac_elem;
 	NChord *chord;
@@ -1155,7 +1155,7 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 	QList<NChord> *beamlist;
 	NMusElement *ac_elem, *elem_before = 0, *clone_elem;
 	QList<NMusElement> *clonelist;
-	status_type status;
+	property_type status;
 	int dotcount;
 	int diff_total, len, len2, lastElemTime;
 	NRest *rest;
@@ -1451,7 +1451,7 @@ void NVoice::moveSemiToneDown() {
 		theStaff_->getVoice(), theStaff_->getChannel(), theStaff_->getVolume(), theStaff_->transpose_);
 }
 
-int NVoice::makePreviousElementActual(status_type *status) {
+int NVoice::makePreviousElementActual(property_type *status) {
 	*status = 0;
 	
 	/* Check if there is actual element. If not, select the nearest at the last known MIDI location when something happened.
@@ -1490,7 +1490,7 @@ int NVoice::makePreviousElementActual(status_type *status) {
 	return currentElement_->getSubType();
 }
 
-int NVoice::makeNextElementActual(status_type *status) {
+int NVoice::makeNextElementActual(property_type *status) {
 	*status = 0;
 	
 	/* Check if there is actual element. If not, select the nearest at the last known MIDI location when something happened.
@@ -2016,7 +2016,7 @@ void NVoice::setTuplet(char numNotes, char playtime) {
 	// note: don't delete elemlist here, all tuplet notes refer to it
 }
 
-int NVoice::deleteActualElem(status_type *status, bool backspace) {
+int NVoice::deleteActualElem(property_type *status, bool backspace) {
 	NNote *note;
 	QList<NNote> *partlist;
 	NChord *chord;
@@ -2618,7 +2618,7 @@ bool NVoice::beameEndRequired(QList<NChord> *beamlist_so_far, NTimeSig *timesig,
 void NVoice::autoBeam() {
 	NMusElement *elem;
 	QList<NChord> *beamlist;
-	status_type status = 0;
+	property_type status = 0;
 	int beats = 0;
 	NMusElement *specElem;
 	NTimeSig current_timesig(0, 0);
@@ -2713,7 +2713,7 @@ void NVoice::autoBeam() {
 void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 	NMusElement *elem, *specElem;
 	QList<NChord> *beamlist;
-	status_type status = 0;
+	property_type status = 0;
 	int beats = 0;
 	int x0, x1;
 	int oldidx;
@@ -3136,7 +3136,7 @@ void NVoice::tryToBuildAutoTriplet() {
 void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int offs, NMusElement *tmpElem) {
 	NMusElement *new_elem, *elem_before, *elem;
 	bool found, is_chord = false, is_rest = false;
-	status_type status = 0;
+	property_type status = 0;
 	int idx, idx2;
 	int lastbaridx = 0;
 	int dotcount;
@@ -3297,7 +3297,7 @@ bool NVoice::insertNewNoteAt(int line, QPoint p, int offs) {
 	int lastbaridx = 0;
 	int lastbarpos = 0;
 	bool found = false;
-	status_type status = PROP_FORCE;
+	property_type status = PROP_FORCE;
 	NMusElement *elem;
 	NNote *note = 0;
 
@@ -3365,7 +3365,7 @@ bool NVoice::insertNewNoteAt(int line, QPoint p, int offs) {
 bool NVoice::insertNewNoteAtCurrent(int line, int offs) {
 	int lastbaridx = 0;
 	bool found = false;
-	status_type status = PROP_FORCE;
+	property_type status = PROP_FORCE;
 	NMusElement *elem;
 	NNote *note = 0;
 
@@ -5024,7 +5024,7 @@ int NVoice::findElemRef(const NMusElement *elem) {
 	return musElementList_.findRef(elem);
 }
 
-QString NVoice::determineGraceKind(status_type *status) {
+QString NVoice::determineGraceKind(property_type *status) {
 	QString graceString;
 	int oldidx;
 	NMusElement *elem;
@@ -5280,7 +5280,7 @@ void NVoice::reconnectCopiedTies(NChord *chord) {
 /*--------------------------- appending due to reading ---------------------------*/
 
 
-void NVoice::appendNoteAt(int line, int offs, status_type status) {
+void NVoice::appendNoteAt(int line, int offs, property_type status) {
 	NNote *note;
 	if( musElementList_.current()->getType() != T_CHORD )
 		return;
@@ -6163,7 +6163,7 @@ bool NVoice::buildBeam(NMusElement *elem0, NMusElement *elem1) {
 	return true;
 }
 
-void NVoice::appendElem(int el_type, int line, int sub_type, int offs, status_type status) {
+void NVoice::appendElem(int el_type, int line, int sub_type, int offs, property_type status) {
 	NMusElement *new_elem;
 	NNote *note;
 	NTimeSig *timesig;
@@ -7086,7 +7086,7 @@ void NVoice::createUndoElement(int startpos, int length, int count_of_added_item
 		elem = musElementList_.at(minidx);
 		for (;length && elem; elem = musElementList_.next(), length--) {
 			elemidx = musElementList_.at();
-			status_type status_ = elem->playable() ? elem->playable()->status_ : 0;
+			property_type status_ = elem->playable() ? elem->playable()->status_ : 0;
 			if ( status_ & PROP_TUPLET) {
 				oldidx1 = musElementList_.at();
 				if (oldidx1 < 0) {

@@ -55,8 +55,8 @@ NClef NKeySig::defaultClef_(0, &NResource::nullprops_);
 NKeySig::NKeySig(main_props_str *main_props, staff_props_str *staff_props) :
 	NMusElement(main_props, staff_props) {
 	int i;
-	accents_ = new status_type[7];
-	tempAccents_ = new status_type[MAXLINE-MINLINE+1];
+	accents_ = new property_type[7];
+	tempAccents_ = new property_type[MAXLINE-MINLINE+1];
 
 	/* clear the accents_ and tempAccents_ arrays to PROP_NATUR and PROP_NO_ACC */
 	for (i=0; i<7; accents_[i++] = PROP_NATUR);
@@ -76,8 +76,8 @@ NKeySig::NKeySig(main_props_str *main_props, staff_props_str *staff_props) :
 void NKeySig::change(NKeySig *ksig) {
 	statusChanged_ = true;
 	NMusElement::change(ksig);
-	memcpy(accents_, ksig->accents_, sizeof(status_type)*7);
-	memcpy(tempAccents_, ksig->accents_, sizeof(status_type)*7);
+	memcpy(accents_, ksig->accents_, sizeof(property_type)*7);
+	memcpy(tempAccents_, ksig->accents_, sizeof(property_type)*7);
 	acClef_ = ksig->acClef_;
 	actual_ = false;
 	pixmapWidth_ = 5;
@@ -104,7 +104,7 @@ bool NKeySig::isEqual(NKeySig *otherKeysig) {
 }
 
 int NKeySig::getSubType() const {
-	status_type type = PROP_NO_ACC;
+	property_type type = PROP_NO_ACC;
 	for( int i = 0; i < 7; i++ ) {
 		if( accents_[ i ] != PROP_NATUR ) {
 			if( type != PROP_NO_ACC && type != accents_[ i ] )
@@ -128,7 +128,7 @@ void NKeySig::setClef(NClef * ac_clef) {
 
 void NKeySig::changeHalfTone(NNote *note) {
 	int notenr = acClef_->line2NoteNumber(note->line);
-	status_type kind;
+	property_type kind;
 	int count;
 	statusChanged_ = true;
 	switch (note->offs) {
@@ -153,8 +153,8 @@ void NKeySig::changeHalfTone(NNote *note) {
 }
 
 NKeySig *NKeySig::clone() {
-	status_type *tmp1;
-	status_type *tmp2;
+	property_type *tmp1;
+	property_type *tmp2;
 	NKeySig *ckeysig;
 	ckeysig = new NKeySig(main_props_, staff_props_);
 
@@ -168,7 +168,7 @@ NKeySig *NKeySig::clone() {
 
 	/* clear tempAccents_ array with PROP_NO_ACC */
 	for (int i=0; i<(MAXLINE-MINLINE+1); tempAccents_[i++]=PROP_NO_ACC);
-	memcpy(ckeysig->accents_, accents_, sizeof(status_type)*7);
+	memcpy(ckeysig->accents_, accents_, sizeof(property_type)*7);
 
 	ckeysig->resolv_redPixmap_ = ckeysig->resolvPixmap_ = ckeysig->keyPixmap_ = ckeysig->key_redPixmap_ = 0;
 	ckeysig->previousKeySig_ = ckeysig->computedPreviousKeySig_ = 0;
@@ -225,7 +225,7 @@ void NKeySig::print() {
 
 int NKeySig::getOffset(int line) {
 	int pp, idx;
-	status_type status;
+	property_type status;
 
 	idx = LINE2TABIDX(line);
 	if ((status = tempAccents_[idx]) == PROP_NO_ACC) {
@@ -252,9 +252,9 @@ int NKeySig::determineDistanceUp(NNote *note) {
 
 	
 
-status_type NKeySig::accentNeeded(int line, int offs) {
+property_type NKeySig::accentNeeded(int line, int offs) {
 	int note, idx;
-	status_type status;
+	property_type status;
 
 	idx = LINE2TABIDX(line);
 	if ((status = tempAccents_[idx]) == PROP_NO_ACC) {
@@ -294,19 +294,19 @@ void NKeySig::reset() {
 }
 
 	
-void NKeySig::setTempAccent(int line, status_type kind) {
+void NKeySig::setTempAccent(int line, property_type kind) {
 	tempAccents_[LINE2TABIDX(line)] = kind;
 	
 }
 
-status_type NKeySig::getAccent(int note) {
+property_type NKeySig::getAccent(int note) {
 	if (note < 0 || note > 6) {
 		NResource::abort("getAccent(): internal error");
 	}
 	return accents_[note];
 }
 
-void NKeySig::setAccent(int note, status_type kind) {
+void NKeySig::setAccent(int note, property_type kind) {
 	if (note < 0 || note > 7) {
 		NResource::abort("setAccent(): internal error");
 	}
@@ -317,7 +317,7 @@ void NKeySig::setAccent(int note, status_type kind) {
         key_redPixmap_ = 0;
 }
 
-void NKeySig::setRegular(int count, status_type kind) {
+void NKeySig::setRegular(int count, property_type kind) {
 	int i, *tab;
 	if (count > 7) return;
 	statusChanged_ = true;
@@ -344,7 +344,7 @@ int NKeySig::accentCount() {
 	return count;
 }
 
-bool NKeySig::isRegular(status_type *kind, int *count) {
+bool NKeySig::isRegular(property_type *kind, int *count) {
 	bool ok[7];
 	int i;
 	*kind = PROP_NO_ACC;
@@ -402,7 +402,7 @@ char *NKeySig::toString() {
 	return NKeySig::str;
 }
 
-void NKeySig::setAccentByNoteName(char pitch, status_type kind) {
+void NKeySig::setAccentByNoteName(char pitch, property_type kind) {
 	for( int i=0; i < 7; i++ )
 		if( pitch == nameTab_[i] ) {
 			setAccent(i, kind );
@@ -411,7 +411,7 @@ void NKeySig::setAccentByNoteName(char pitch, status_type kind) {
 }
 
 void NKeySig::calculateDimensionsAndPixmaps() {
-	status_type kind;
+	property_type kind;
 	int count;
 	int i, j;
 	int draw_offs;
@@ -628,13 +628,13 @@ void NKeySig::drawContextKeySig() {
 void NKeySig::changeInContextKeySig(NKeySig *ksig) {
 	NMusElement::change(ksig);
 	acClef_ = ksig->acClef_;
-	memcpy(accents_, ksig->accents_, sizeof(status_type)*7);
+	memcpy(accents_, ksig->accents_, sizeof(property_type)*7);
 	pixmapWidth_ = 5;
 	if (staff_props_->base) calculateContextPixmap();
 }
 
 void NKeySig::calculateContextPixmap() { /* for faster computation of context key */
-	status_type kind;
+	property_type kind;
 	int count;
 	int i, j;
 	int draw_offs;

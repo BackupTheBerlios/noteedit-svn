@@ -270,7 +270,7 @@ void NMidiExport::writeTrack(NVoice *voice, NTimeSig *firstTsig) {
 	NMidiEventStr *m_evt, *m_evt2, *m_events;
 	int myTime, lastEventTime = 0, noteoff;
 	int sign = 0;
-	status_type kind;
+	property_type kind;
 	NTimeSig *timesig;
 	QString *lyrics;
 	QList<NMidiEventStr> stopList;

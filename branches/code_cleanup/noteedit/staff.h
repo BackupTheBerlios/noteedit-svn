@@ -69,7 +69,7 @@ class NStaff {
 		QString staffName_;
 		int overlength_, underlength_;
 		bool trimmRegionToWholeStaff(int *x0, int *x1);
-		int checkElementForNoteInsertion(const int line, const QPoint p, status_type *status, bool *playable, bool *delete_elem, bool *insertNewNote, int offs) {
+		int checkElementForNoteInsertion(const int line, const QPoint p, property_type *status, bool *playable, bool *delete_elem, bool *insertNewNote, int offs) {
 			return actualVoice_->checkElementForNoteInsertion(line, p, status, playable, delete_elem, insertNewNote, offs); }
 		bool checkElementForElementInsertion(const QPoint p) {
 			return actualVoice_->checkElementForElementInsertion(p); }
@@ -91,7 +91,7 @@ class NStaff {
 			voicelist_.getFirst()->setCorrectClefAccordingTime(miditime);
 		}
 		void transpose(int semitones);
-		void setHalfsTo(status_type type);
+		void setHalfsTo(property_type type);
 		void cleanupRests(int shortestRest);
 		void checkContext(int xpos) {theFirstVoice_->checkContext(xpos);}
 		void resetSpecialElement() {theFirstVoice_->resetSpecialElement();}

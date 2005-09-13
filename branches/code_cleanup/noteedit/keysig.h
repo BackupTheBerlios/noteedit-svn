@@ -38,15 +38,15 @@ class NKeySig : public NMusElement {
 		char *toString();                                       // converts the keys into an ASCII representation
 		virtual int getSubType() const;                         // returns the type of the Key Signature (SHARP, FLAT, 0)
 
-		void setAccent(int note, status_type kind);             // changes the signature of a note
-		void setAccentByNoteName(char pitch, status_type kind); // adds a new signature to the key signature
-		status_type getAccent(int note);                        // gives the modifier of a note (without temporary signatures)
-		void setTempAccent(int line, status_type kind);         // sets temporary accent for a line (barlines clear these kind of accents)
+		void setAccent(int note, property_type kind);             // changes the signature of a note
+		void setAccentByNoteName(char pitch, property_type kind); // adds a new signature to the key signature
+		property_type getAccent(int note);                        // gives the modifier of a note (without temporary signatures)
+		void setTempAccent(int line, property_type kind);         // sets temporary accent for a line (barlines clear these kind of accents)
 		void deleteTempAccents();                               // deletes the temporary accents (at the bar line)
-		status_type accentNeeded(int line, int offs);           // tells what kind of accent is needed for printing the note
+		property_type accentNeeded(int line, int offs);           // tells what kind of accent is needed for printing the note
 
-		void setRegular(int count, status_type kind);           // changes the signature to a regular one
-		bool isRegular(status_type *kind, int *count);          // tells whether the key signature is regular
+		void setRegular(int count, property_type kind);           // changes the signature to a regular one
+		bool isRegular(property_type *kind, int *count);          // tells whether the key signature is regular
 
 		void setClef(NClef *ac_clef);                           // sets the clef belonging to this key signature
 		int getOffset(int line);                                // determines the offset used for a line (-1, 0, 1, with temporary sigs)
@@ -70,8 +70,8 @@ class NKeySig : public NMusElement {
 		void calculateContextPixmap();
 	private:
 		int accentCount();                       // the number of accents in the key signature
-		status_type *accents_;                   // the accents for the notes ( C[0] - B[6] )
-		status_type *tempAccents_;               // the accent is placed only once in a bar, status whether the note is already accented
+		property_type *accents_;                   // the accents for the notes ( C[0] - B[6] )
+		property_type *tempAccents_;               // the accent is placed only once in a bar, status whether the note is already accented
 		static int nameTab_[7];                  // the names of the notes
 		static int crossTab_[7];                 // the regular locations of the crosses
 		static int flatTab_[7];                  // the regular locations of the flats

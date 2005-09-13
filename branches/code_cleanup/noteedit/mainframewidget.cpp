@@ -1121,7 +1121,7 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 				l = (dl >= 0.0) ? (int) (dl + 0.5)  : (int) (dl - 0.5)
 			   	
 
-	status_type status;
+	property_type status;
 	unsigned int val, newXpos;
 	bool playable;
 	QPoint p;
@@ -2026,7 +2026,7 @@ void NMainFrameWidget::pitchToLine(int pitchNumber) {
 	if (playing_) return;
 	int halfLines, offs;
 	int newXpos;
-	status_type status;
+	property_type status;
 	NChord *newchord;
 	QPoint curpos;
 	int ydist;
@@ -2881,7 +2881,7 @@ void NMainFrameWidget::setHidden(bool on) {
 	}
 }
 
-void NMainFrameWidget::forceAccent(status_type acc, bool val) {
+void NMainFrameWidget::forceAccent(property_type acc, bool val) {
 	if (playing_) return;
 	main_props_.staccato = main_props_.sforzato = main_props_.portato = 
 	main_props_.strong_pizzicato = main_props_.sforzando = main_props_.fermate = false;
@@ -3103,7 +3103,7 @@ void NMainFrameWidget::setStemDown(bool on) {
 
 void NMainFrameWidget::setEditMode(bool on) {
 	editMode_ = on;
-	status_type status;
+	property_type status;
 	unsigned int val, i;
 	bool playable;
 	QCursor *cursor;
@@ -3324,7 +3324,7 @@ void NMainFrameWidget::setKbInsertMode(bool on) {
 void NMainFrameWidget::readNotesFromMidiMapper() {
 #ifdef WITH_TSE3
 	NChord *newchord;
-	status_type status;
+	property_type status;
 	NMusElement *curElem;
 	int line, offs, *pitch;
 	int newXpos;
@@ -4650,7 +4650,7 @@ void NMainFrameWidget::setInsertionKey() {
 void NMainFrameWidget::changeKey(int idx) {
 	int i;
 	int count;
-	status_type kind;
+	property_type kind;
 
 	if (idx > 7) {
 		count = idx - 7;
@@ -4971,7 +4971,7 @@ void NMainFrameWidget::setButton(int nr) {
 /* Updates buttons, labels and internals (main_props_) according to the musElement's properties:
    status - general properties (accidentals, stems, beams, articulation, gracenotes)
    length - element length type. If -1 given, element doesn't have MIDI length (eg. barlines). */
-void NMainFrameWidget::updateInterface(status_type status, int length) {
+void NMainFrameWidget::updateInterface(property_type status, int length) {
 	if (length == -1) return;
 
 	// avoid feedback
@@ -5201,7 +5201,7 @@ void NMainFrameWidget::computeMidiTimes(bool insertBars, bool doAutoBeam) {
 
 /*------------------------------- selection ---------------------------------------*/
 
-int NMainFrameWidget::checkAllStaffsForNoteInsertion(const int line, const QPoint p, status_type *status, bool *playable, bool *delete_elem, bool *insertNewNote) {
+int NMainFrameWidget::checkAllStaffsForNoteInsertion(const int line, const QPoint p, property_type *status, bool *playable, bool *delete_elem, bool *insertNewNote) {
 	int val;
 	NMusElement *elem;
 
@@ -5256,7 +5256,7 @@ bool NMainFrameWidget::checkStaffIntersection(const QPoint p) {
 
 void NMainFrameWidget::nextElement() {
 	if (playing_) return;
-	status_type status;
+	property_type status;
 	unsigned int val;
 	val = currentVoice_->makeNextElementActual(&status);
 	if (editMode_)
@@ -5271,7 +5271,7 @@ void NMainFrameWidget::nextElement() {
 
 void NMainFrameWidget::prevElement() {
 	if (playing_) return;
-	status_type status;
+	property_type status;
 	unsigned int val;
 	val = currentVoice_->makePreviousElementActual(&status);
 	if (editMode_)
@@ -5579,7 +5579,7 @@ void NMainFrameWidget::moveOctaveDown() {
 }
 
 void NMainFrameWidget::deleteElem(bool backspace) {
-	status_type status;
+	property_type status;
 	unsigned int val;
 	if (playing_) return;
 	val = currentVoice_->deleteActualElem(&status, backspace);

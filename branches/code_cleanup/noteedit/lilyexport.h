@@ -25,7 +25,7 @@
 #define LILYEXPORT_H
 
 #include "config.h"
-#include "muselement.h" /* needed for status_type */
+#include "muselement.h" /* needed for property_type */
 #if GCC_MAJ_VERS > 2
 #include <sstream>
 #include <fstream>
@@ -74,7 +74,7 @@ class NLilyExport {
 		void writeChordName(QString chordname);
 		void analyseGroup(layoutDef *group, NMainFrameWidget *mainWidget, int staffCount, bool *continuedBars, bool *discontinuedBars);
 		bool continuedOutsideAGroup(NMainFrameWidget *mainWidget, int staffCount);
-		const char *LilyPondKeyName(status_type kind, int count);
+		const char *LilyPondKeyName(property_type kind, int count);
 		int lastLine_, lastLength_, lastDotted_;
 		int depth_;
 		int actualStemPolicy_;
@@ -96,7 +96,7 @@ class NLilyExport {
 		bool va_problem_written_;
 		QString lastLilyPondfile_;
 		static QRegExp nonAlphas_, digits_, whiteSpaces_, relSyms, starOnly;
-		status_type noteBody_;
+		property_type noteBody_;
 		bool noStrongPizzMsg_;
 		QByteArray scoreBraceMasks;
 		void buildBraceMasks(QList<NStaff> *stafflist, const NMainFrameWidget *mainWidget);

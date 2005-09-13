@@ -89,7 +89,7 @@ void NPmxExport::doExport() {
 	QList<QString> lyrNames;
 	QString *lyrName;
 	QString lyricslist[NUM_LYRICS];
-	status_type kind;
+	property_type kind;
 	int count;
 	int acr;
 	bool staffsWritten, first;
@@ -485,7 +485,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 	NKeySig *ksig;
 	NClef *clef;
 	badmeasure *bad;
-	status_type kind;
+	property_type kind;
 	int count, i;
 	char lastDynSym = 0;
 	int dynEndPos = 0;
@@ -498,7 +498,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 	int hline;
 	QString specialChar;
 	QString *s;
-	status_type grace_status;
+	property_type grace_status;
 	bool inGraceGroup = false;
 	bool nested, toomany;
 	QString graceString;

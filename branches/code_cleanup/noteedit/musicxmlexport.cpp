@@ -133,7 +133,7 @@ void NMusicXMLExport::debugDumpElem(NMusElement *elem) {
 	NClef *clef;
 	int count;
 	NKeySig *key;
-	status_type kind;
+	property_type kind;
 	NNote *note;
 	NSign *sign;
 	NTimeSig *timesig;
@@ -1447,7 +1447,7 @@ void NMusicXMLExport::outputVoiceNr(int voice_nr) {
 	out_ << "\t\t\t\t<voice>" << voice_nr << "</voice>\n";
 }
 
-int NMusicXMLExport::calcDuration(int len, status_type status) {
+int NMusicXMLExport::calcDuration(int len, property_type status) {
 	int dur = len * divisions_ / QUARTER_LENGTH;
 	switch (status & DOT_MASK) {
 		case PROP_DOUBLE_DOT:
@@ -1465,7 +1465,7 @@ int NMusicXMLExport::calcDuration(int len, status_type status) {
 
 void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 	int len = elem->getSubType();
-	status_type status = ( elem->playable() ? elem->playable()->status_ : 0 );
+	property_type status = ( elem->playable() ? elem->playable()->status_ : 0 );
 	dur = len * divisions_;
 	switch (status & DOT_MASK) {
 		case PROP_DOUBLE_DOT:
@@ -1497,7 +1497,7 @@ void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 
 static int calcLengthForCalcDivisions(NMusElement *elem) {
 	int len = elem->getSubType();
-	status_type status = ( elem->playable() ? elem->playable()->status_ : 0 );
+	property_type status = ( elem->playable() ? elem->playable()->status_ : 0 );
 	switch (status & DOT_MASK) {
 		case PROP_DOUBLE_DOT:
 			len = len * 7 / 4;
@@ -1999,7 +1999,7 @@ void NMusicXMLExport::outputMeter(NTimeSig *timesig) {
 void NMusicXMLExport::outputKeySig(NKeySig *key) {
 	badinfo *bad;
 	int count;
-	status_type kind;
+	property_type kind;
 
 	out_ << "\t\t\t\t<key>\n";
 	out_ << "\t\t\t\t\t<fifths>";

@@ -556,16 +556,16 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 			case T_CHORD: 
 				     chord = (NChord *) elem;
 				     part = elem->getSubType(); 
-				     if (!(chord->status_ & PROP_GRACE)) {
+				     if (!(chord->properties_ & PROP_GRACE)) {
 					inGraceGroup = false;
-					if (chord->status_ & PROP_TUPLET) {
+					if (chord->properties_ & PROP_TUPLET) {
 						total += chord->getPlaytime() * part / chord->getNumNotes();
 					}
 					else {
 						total += part;
 					}
 				     }
-				     switch (chord->status_ & DOT_MASK) {
+				     switch (chord->properties_ & DOT_MASK) {
 					case 1: total += part / 2; break;
 					case 2: total += 3 * part / 4; break;
 				     }
@@ -598,9 +598,9 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 					}
 				      }
 				     if (exportDialog_->pmxKeepBeams->isChecked()) {
-					if ((chord->status_ & PROP_BEAMED) && beamstatus == OUTSIDE_BEAM) {
+					if ((chord->properties_ & PROP_BEAMED) && beamstatus == OUTSIDE_BEAM) {
 						*pmxout_ << '[';
-						if (chord->status_ & PROP_STEM_UP) {
+						if (chord->properties_ & PROP_STEM_UP) {
 							beamstatus = IN_BEAM_UP;
 							*pmxout_ << "u ";
 						}
@@ -622,7 +622,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     		}
 					}
 				     }
-				     if (!inGraceGroup && chord->status_ & PROP_GRACE) {
+				     if (!inGraceGroup && chord->properties_ & PROP_GRACE) {
 					graceString =  voice->determineGraceKind(&grace_status);
 					inGraceGroup = true;
 					if (grace_status == WARN_MIXED_GRACES) {
@@ -647,31 +647,31 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 					bad = new badmeasure(PMX_ERR_DRUM_STAFF, staff_nr, barNr_+numMeasures, total / 3, countof128th_);
 					badlist_.append(bad);
 				     }
-				     switch (chord->status_ & DOT_MASK) {
+				     switch (chord->properties_ & DOT_MASK) {
 					case 1: *pmxout_ << "d"; break;
 					case 2: *pmxout_ << "dd"; break;
 				     }
-				     if ((chord->status_ & PROP_TUPLET) && elem->getSubType() != tupletBase_)  *pmxout_ << 'D';
+				     if ((chord->properties_ & PROP_TUPLET) && elem->getSubType() != tupletBase_)  *pmxout_ << 'D';
 #ifdef THIS_IS_WRONG
 				     base_shifted = note->status & PROP_SHIFTED;
 #endif
 				     *pmxout_ << ' ';
-				     if (chord->status_ & PROP_STACC) {
+				     if (chord->properties_ & PROP_STACC) {
 					*pmxout_ << "ou ";
 				     }
-				     if (chord->status_ & PROP_SFORZ) {
+				     if (chord->properties_ & PROP_SFORZ) {
 					*pmxout_ << "o^ ";
 				     }
-				     if (chord->status_ & PROP_PORTA) {
+				     if (chord->properties_ & PROP_PORTA) {
 					*pmxout_ << "o_ ";
 				     }
-				     if (chord->status_ & PROP_SFZND) {
+				     if (chord->properties_ & PROP_SFZND) {
 					*pmxout_ << "o> ";
 				     }
-				     if (chord->status_ & PROP_FERMT) {
+				     if (chord->properties_ & PROP_FERMT) {
 				        *pmxout_ << "of ";
 				     }
-				     if (chord->status_ & PROP_ARPEGG) {
+				     if (chord->properties_ & PROP_ARPEGG) {
 				        *pmxout_ << "? ";
 				     }
 				     if (chord->trill_ < 0) {
@@ -724,7 +724,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 						note = chord->getNoteList()->next();
 				      	     }		
 				     }
-				     if (chord->status_ & PROP_ARPEGG) {
+				     if (chord->properties_ & PROP_ARPEGG) {
 				     		*pmxout_ << "? ";
 				     }
 				     if (exportDialog_->pmxKeepBeams->isChecked()) {
@@ -742,14 +742,14 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 						total += MULTIPLICATOR*countof128th_;
 				     }
 				     else {
-					     if (rest->status_ & PROP_TUPLET) {
+					     if (rest->properties_ & PROP_TUPLET) {
 						total += rest->getPlaytime() * part / rest->getNumNotes();
 					     }
 					     else {
 						total += part;
 					     }
 				     }
-				     switch (rest->status_ & DOT_MASK) {
+				     switch (rest->properties_ & DOT_MASK) {
 					case 1: total += part / 2; break;
 					case 2: total += 3 * part / 4; break;
 				     }
@@ -760,8 +760,8 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     }
 					
 				     *pmxout_ << 'r';
-				     if (rest->status_ & PROP_HIDDEN) *pmxout_ << 'b';
-				     if (rest->status_ & PROP_TUPLET) {
+				     if (rest->properties_ & PROP_HIDDEN) *pmxout_ << 'b';
+				     if (rest->properties_ & PROP_TUPLET) {
 					if (rest->isFirstInTuplet()) {
 						inspectTuplet(rest, staff_nr, barNr_+numMeasures);
 						*pmxout_  << computePMXTupletLength(rest->getPlaytime()*tupletBase_, staff_nr, barNr_+numMeasures);
@@ -780,11 +780,11 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     	*pmxout_ << computePMXLength(elem->getSubType());
 					lastLength_ = elem->getSubType();
 				     }
-				     switch (rest->status_ & DOT_MASK) {
+				     switch (rest->properties_ & DOT_MASK) {
 					case 1: *pmxout_ << "d"; break;
 					case 2: *pmxout_ << "dd"; break;
 				     }
-				     if (rest->status_ & PROP_TUPLET) {
+				     if (rest->properties_ & PROP_TUPLET) {
 						if (rest->isFirstInTuplet()) *pmxout_ << "x" << (int) (rest->getNumNotes());
 						if (elem->getSubType() != tupletBase_) *pmxout_ << 'D';
 				     }
@@ -977,7 +977,7 @@ void NPmxExport::pitchOut(NKeySig *ksig, const NNote *note, int length, NClef *a
 	*pmxout_ << ac_clef->line2PMXName(note->line, &octave);
 	tone = ac_clef->line2Midi( note->line, 0 );
 	octaveneeded = abs(lastTone_ - tone) > 5;
-	if (chord->status_ & PROP_TUPLET) {
+	if (chord->properties_ & PROP_TUPLET) {
 		if (chord->isFirstInTuplet() &&  length >= 0) {
 			inspectTuplet(chord, staff_nr, barnr);
 			firstTuplet = true;
@@ -985,7 +985,7 @@ void NPmxExport::pitchOut(NKeySig *ksig, const NNote *note, int length, NClef *a
 			lastLength_ = chord->getPlaytime()*tupletBase_;
 		}
 	}
-	else if (!(chord->status_ & PROP_GRACE) && length >= 0 && (lastLength_ != length || octaveneeded)) {
+	else if (!(chord->properties_ & PROP_GRACE) && length >= 0 && (lastLength_ != length || octaveneeded)) {
 		*pmxout_  << computePMXLength(length);
 		lastLength_ = length;
 	}
@@ -1130,13 +1130,13 @@ void NPmxExport::setSlur(NChord *chord, int staff_nr, int barnr) {
 	int i;
 	bool found = false;
 
-	if (chord->status_ & PROP_GRACE) {
-		if ((chord->status_ & PROP_SLURED)) {
+	if (chord->properties_ & PROP_GRACE) {
+		if ((chord->properties_ & PROP_SLURED)) {
 			chord->setPartnerSlurNr(-1);
 		}
 		return;
 	}
-	if ((chord->status_ & PROP_SLURED) && !(chord->status_ & PROP_PART_OF_SLUR)) { 
+	if ((chord->properties_ & PROP_SLURED) && !(chord->properties_ & PROP_PART_OF_SLUR)) { 
 		for (i = 0; i < MAXSLURS && !found; i++) {
 			found = !((1 << i) & slurPool_);
 		}
@@ -1153,14 +1153,14 @@ void NPmxExport::setSlur(NChord *chord, int staff_nr, int barnr) {
 		chord->setTeXSlurNr(i);
 		chord->setPartnerSlurNr(i);
 	}
-	else if ((chord->status_ & PROP_PART_OF_SLUR) && (chord->status_ & PROP_SLURED)) {
+	else if ((chord->properties_ & PROP_PART_OF_SLUR) && (chord->properties_ & PROP_SLURED)) {
 		if (chord->getTeXSlurNr() >= 0) {
 			*pmxout_ << "s" << chord->getTeXSlurNr() << ' ';
 			*pmxout_ << "s" << chord->getTeXSlurNr() << ' ';
 			chord->setPartnerSlurNr(chord->getTeXSlurNr());
 		}
 	}
-	else if ((chord->status_ & PROP_PART_OF_SLUR) && ! (chord->status_ & PROP_SLURED)) {
+	else if ((chord->properties_ & PROP_PART_OF_SLUR) && ! (chord->properties_ & PROP_SLURED)) {
 		if (chord->getTeXSlurNr() >= 0) {
 			*pmxout_ << "s" << chord->getTeXSlurNr() << ' ';
 			slurPool_ = slurPool_ & (~(1 << chord->getTeXSlurNr()));

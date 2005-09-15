@@ -25,7 +25,7 @@ struct parser_param_str {
 	QList<layoutDef> contList;
 };
 
-struct status_descr_str {
+struct property_descr_str {
 	int octavmodi;
 	int offs, slurdist;
 	property_type status;

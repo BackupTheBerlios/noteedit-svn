@@ -822,14 +822,14 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     }
 				     prevElemIsBar = false;
 				     part = elem->getSubType(); 
-				     if (!(chord->status_ & PROP_GRACE)) {
-				     	total += (chord->status_ & PROP_TUPLET) ? chord->getPlaytime() * part / chord->getNumNotes() : part;
+				     if (!(chord->properties_ & PROP_GRACE)) {
+				     	total += (chord->properties_ & PROP_TUPLET) ? chord->getPlaytime() * part / chord->getNumNotes() : part;
 				     }
-				     switch (chord->status_ & DOT_MASK) {
+				     switch (chord->properties_ & DOT_MASK) {
 					case 1: total += part / 2; break;
 					case 2: total += 3 * part / 4; break;
 				     }
-				     if ((chord->status_ & PROP_TUPLET) && !intuplet) {
+				     if ((chord->properties_ & PROP_TUPLET) && !intuplet) {
 					intuplet = true;
 					out_ << "\\times " << ((int) elem->chord()->getPlaytime()) << '/' << ((int) elem->chord()->getNumNotes()) << " { ";
 				     }
@@ -908,7 +908,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					}
 				     }
 				     if (/*hasContraryStems(elem->getNoteList()) && */ exportDialog_->lilyStem->isChecked()) {
-					if (chord->status_ & PROP_STEM_UP) {
+					if (chord->properties_ & PROP_STEM_UP) {
 						if (actualStemPolicy_ != STEM_DIR_UP) {
 #ifndef WITH_OLDLILY
 							out_ << "\\stemUp ";
@@ -937,8 +937,8 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 #endif	// WITH_OLDLILY
 					actualStemPolicy_ = STEM_UNSET;
 				     }
-				     if (chord->status_ & PROP_GRACE) {
-					if (!slur_problem_written && chord->status_ & PROP_SLURED && !NResource::lilyProperties_.lilySluresInGraces) {
+				     if (chord->properties_ & PROP_GRACE) {
+					if (!slur_problem_written && chord->properties_ & PROP_SLURED && !NResource::lilyProperties_.lilySluresInGraces) {
 						bad = new badmeasure(LILY_ERR_SLURES_IN_GRACES, (staff_nr + 1), barNr_, total / 3, countof128th_);
 						badlist_.append(bad);
 						slur_problem_written = true;
@@ -947,7 +947,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						inGrace = true;
 						strokenGrace = true;
 						inA_tura = inLongacciaccatura = false;
-						if (/* NResource::lilyProperties_.lilyProperties || */ !(chord->status_ & PROP_SLURED)) {
+						if (/* NResource::lilyProperties_.lilyProperties || */ !(chord->properties_ & PROP_SLURED)) {
 							out_ << "\\grace { ";
 							if (!NResource::lilyProperties_.lilyVersion2 && elem->getSubType() != INTERNAL_MARKER_OF_STROKEN_GRACE) {
 								strokenGrace = false;
@@ -957,7 +957,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						else { // LilyPond-2.2.x
 							elem2 = voi->getNextPosition();
 							voi->getPrevPosition();
-							if (elem2->getType() == T_CHORD && !(elem2->chord()->status_ & PROP_GRACE)) {
+							if (elem2->getType() == T_CHORD && !(elem2->chord()->properties_ & PROP_GRACE)) {
 								if (elem->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE) {
 									out_ << "\\acciaccatura ";
 								}
@@ -968,7 +968,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 								inA_tura = true;
 							}
 							else if (elem2->getType() == T_CHORD && elem->getSubType() == NOTE16_LENGTH && elem2->getSubType() == NOTE16_LENGTH &&
-								(chord->status_ & PROP_BEAMED) && (elem2->chord()->status_ & PROP_BEAMED)) {
+								(chord->properties_ & PROP_BEAMED) && (elem2->chord()->properties_ & PROP_BEAMED)) {
 								out_ << "\\acciaccatura { ";
 								strokenGrace = false;
 								inLongacciaccatura = true;
@@ -990,7 +990,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						out_ << "} ";
 					}
 					else if (!NResource::lilyProperties_.lilyVersion2 && exportDialog_->lilyBeam->isChecked()) {
-						if ((chord->status_ & PROP_BEAMED) && !inbeam) {
+						if ((chord->properties_ & PROP_BEAMED) && !inbeam) {
 							out_ << "[ "; inbeam = true;
 				     		}
 					}
@@ -1023,7 +1023,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     first = true;
 			  	     for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
 					     if (first) {
-					        if (!NResource::lilyProperties_.lilyVersion2 && (chord->status_ & PROP_PART_OF_SLUR)) {
+					        if (!NResource::lilyProperties_.lilyVersion2 && (chord->properties_ & PROP_PART_OF_SLUR)) {
 							out_ << ") ";
 					        }
 					     }
@@ -1047,7 +1047,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						}
 					      }
 					     pitchOut(note, &(actual_staff->actualClef_));
-					     if ((chord->status_ & PROP_GRACE) && (elem->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
+					     if ((chord->properties_ & PROP_GRACE) && (elem->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
 						length = WHOLE_LENGTH / (NOTE8_LENGTH);
 					     }
 					     else {
@@ -1055,7 +1055,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					     }
 					     if (first) {
 						first = false;
-					        if ((!NResource::lilyProperties_.lilyVersion2 || chord->getNoteList()->count() < 2) && (length != lastLength_ || lastDotted_ != (chord->status_ & DOT_MASK))) {
+					        if ((!NResource::lilyProperties_.lilyVersion2 || chord->getNoteList()->count() < 2) && (length != lastLength_ || lastDotted_ != (chord->properties_ & DOT_MASK))) {
 						   if (part == DOUBLE_WHOLE_LENGTH) {
 							out_ << "\\breve ";
 						   }
@@ -1063,25 +1063,25 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						   	out_ << length;
 						   }
 						   lastLength_ = length;
-						   switch (chord->status_ & DOT_MASK) {
+						   switch (chord->properties_ & DOT_MASK) {
 							case 1:	out_ << "."; break;
 							case 2:	out_ << ".."; break;
 						   }
-						   lastDotted_ = chord->status_ & DOT_MASK;
+						   lastDotted_ = chord->properties_ & DOT_MASK;
 					        }
-						if (!NResource::lilyProperties_.lilyVersion2 && chord->status_ & PROP_ARPEGG) {
+						if (!NResource::lilyProperties_.lilyVersion2 && chord->properties_ & PROP_ARPEGG) {
 							out_ << "\\arpeggio ";
 						}
-						if (chord->status_ & PROP_STACC) {
+						if (chord->properties_ & PROP_STACC) {
 							out_ << "-.";
 					        }
-						if (chord->status_ & PROP_SFORZ) {
+						if (chord->properties_ & PROP_SFORZ) {
 							out_ << "-^";
 						}
-						if (chord->status_ & PROP_PORTA) {
+						if (chord->properties_ & PROP_PORTA) {
 							out_ << "--";
 						}
-						if (chord->status_ & PROP_STPIZ) {
+						if (chord->properties_ & PROP_STPIZ) {
 							if (!noStrongPizzMsg_)
 								KMessageBox::sorry
 									(0,
@@ -1090,10 +1090,10 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 									);
 							noStrongPizzMsg_ = true;
 						}
-						if (chord->status_ & PROP_SFZND) {
+						if (chord->properties_ & PROP_SFZND) {
 							out_ << "->";
 						}
-						if (chord->status_ & PROP_FERMT) {
+						if (chord->properties_ & PROP_FERMT) {
 							out_ << "\\fermata";
 						}
 						if (chord->trill_ > 0 && trilledNotes == 0) {
@@ -1132,7 +1132,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 								lastDynSym = (char *) (chord->dynamicAlign_ ? " \\rc " : " \\rced ");
 							}
 						}
-						if (chord->status_ & PROP_PEDAL_ON) {
+						if (chord->properties_ & PROP_PEDAL_ON) {
 							if (NResource::lilyProperties_.lilyVersion2) {
 								out_ << "\\sustainDown ";
 							}
@@ -1140,7 +1140,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 								out_ << " \\spanrequest \\start \"Sustain\" ";
 							}
 						}
-						if (chord->status_ & PROP_PEDAL_OFF) {
+						if (chord->properties_ & PROP_PEDAL_OFF) {
 							if (NResource::lilyProperties_.lilyVersion2) {
 								out_ << "\\sustainUp ";
 							}
@@ -1202,7 +1202,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 								out_ << "_#'(large \"accel.\") ";
 								pending_segnos_rirads_accels &= (~(PENDING_ACCELERANDO));
 							}
-							if (chord->status_ & PROP_SLURED) {
+							if (chord->properties_ & PROP_SLURED) {
 						   		out_ << " ( ";
 							}
 						}
@@ -1217,7 +1217,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     		out_ << "> ";
 						drumNotesChange = true;
 					
-				        if (NResource::lilyProperties_.lilyVersion2 && (length != lastLength_ || lastDotted_ != (chord->status_ & DOT_MASK))) {
+				        if (NResource::lilyProperties_.lilyVersion2 && (length != lastLength_ || lastDotted_ != (chord->properties_ & DOT_MASK))) {
 						if (part == DOUBLE_WHOLE_LENGTH) {
 							out_ << "\\breve ";
 						   }
@@ -1225,15 +1225,15 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						   	out_ << length;
 						   }
 						   lastLength_ = length;
-						   switch (chord->status_ & DOT_MASK) {
+						   switch (chord->properties_ & DOT_MASK) {
 							case 1:	out_ << "."; break;
 							case 2:	out_ << ".."; break;
 						   }
-						   lastDotted_ = chord->status_ & DOT_MASK;
+						   lastDotted_ = chord->properties_ & DOT_MASK;
 					        }
 				     }
 				     if (NResource::lilyProperties_.lilyVersion2) {
-					if ((chord->status_ & PROP_SLURED) && !inA_tura && !inLongacciaccatura) {
+					if ((chord->properties_ & PROP_SLURED) && !inA_tura && !inLongacciaccatura) {
 					  		out_ << " ( ";
 					}
 					if (pendingVolSig) {
@@ -1252,7 +1252,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						}
 						pending_text = 0;
 					}
-					if (chord->status_ & PROP_ARPEGG) {
+					if (chord->properties_ & PROP_ARPEGG) {
 						out_ << "\\arpeggio ";
 					}
 					if (pending_segnos_rirads_accels & PENDING_SEGNO) {
@@ -1287,7 +1287,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						out_ << "_\\markup{\\large\\italic accel.} ";
 						pending_segnos_rirads_accels &= (~(PENDING_ACCELERANDO));
 					}
-					if ((chord->status_ & PROP_PART_OF_SLUR) && !inLongacciaccatura) {
+					if ((chord->properties_ & PROP_PART_OF_SLUR) && !inLongacciaccatura) {
 						if (inA_tura) {
 							inA_tura = false;
 						}
@@ -1296,7 +1296,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						}
 					}
 					if (exportDialog_->lilyBeam->isChecked() || inLongacciaccatura) {
-						if ((chord->status_ & PROP_BEAMED) && !inbeam) {
+						if ((chord->properties_ & PROP_BEAMED) && !inbeam) {
 							out_ << "[ "; inbeam = true;
 						}
 					}
@@ -1334,7 +1334,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				//	out_ << "~ ";
 				 //    }
 				     lastLine_ = saveLine;
-				     if (chord->status_ & PROP_LAST_TUPLET) {
+				     if (chord->properties_ & PROP_LAST_TUPLET) {
 					intuplet = false;
 					out_ << " } ";
 				     }
@@ -1366,10 +1366,10 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					total = MULTIPLICATOR*countof128th_;
 				     }
 				     else {
-				        restlen = (rest->status_ & PROP_TUPLET) ? rest->getPlaytime() * part / rest->getNumNotes() : part;
+				        restlen = (rest->properties_ & PROP_TUPLET) ? rest->getPlaytime() * part / rest->getNumNotes() : part;
 				     	total += restlen;
 				     }
-				     switch (rest->status_ & DOT_MASK) {
+				     switch (rest->properties_ & DOT_MASK) {
 					case 1: restlen += part / 2; total += part / 2; break;
 					case 2: restlen += 3 * part / 4; total += 3 * part / 4; break;
 				     }
@@ -1391,7 +1391,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					}
 					out_ << "} ";
 				     }
-				     if ((rest->status_ & PROP_TUPLET) && !intuplet) {
+				     if ((rest->properties_ & PROP_TUPLET) && !intuplet) {
 					intuplet = true;
 					out_ << "\\times " << ((int) rest->getPlaytime()) << '/' << ((int) rest->getNumNotes()) << " { ";
 				     }
@@ -1422,30 +1422,30 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					out_ << 'R' << currentDenominator_ << '*' <<
 						(currentNumerator_ * rest->getMultiRestLength());
 				     }
-				     else if (restlen == MULTIPLICATOR*countof128th_ && !(rest->status_ & PROP_HIDDEN)) {
+				     else if (restlen == MULTIPLICATOR*countof128th_ && !(rest->properties_ & PROP_HIDDEN)) {
 				        length = WHOLE_LENGTH / part;
 				     	out_ << 'R';
 					out_ << length;
 					lastDotted_ = lastLength_ = 1111; /* invalidate */
-					switch (rest->status_ & DOT_MASK) {
+					switch (rest->properties_ & DOT_MASK) {
 						case 1: out_ << "."; break;
 						case 2: out_ << ".."; break;
 					}
 				     }
 				     else {
-				     	out_ << ((rest->status_ & PROP_HIDDEN) ? "s" : "r");
+				     	out_ << ((rest->properties_ & PROP_HIDDEN) ? "s" : "r");
 				     	length = WHOLE_LENGTH / part;
-				     	if (length != lastLength_  || lastDotted_ != (rest->status_ & DOT_MASK)) {
+				     	if (length != lastLength_  || lastDotted_ != (rest->properties_ & DOT_MASK)) {
 						out_ << length;
 						lastLength_ = length;
-				     		switch (rest->status_ & DOT_MASK) {
+				     		switch (rest->properties_ & DOT_MASK) {
 							case 1:	out_ << "."; break;
 							case 2:	out_ << ".."; break;
 				     		}
-						lastDotted_ = rest->status_ & DOT_MASK;
+						lastDotted_ = rest->properties_ & DOT_MASK;
 				     	}
 				     }
-				     if (rest->status_ & PROP_FERMT) {
+				     if (rest->properties_ & PROP_FERMT) {
 					out_ << "\\fermata";
 				     }
 				     if (!NResource::lilyProperties_.lilyVersion2) {
@@ -1533,7 +1533,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						pending_segnos_rirads_accels &= (~(PENDING_ACCELERANDO));
 					     }
 				     }
-				     if (rest->status_ & PROP_LAST_TUPLET) {
+				     if (rest->properties_ & PROP_LAST_TUPLET) {
 					intuplet = false;
 					out_ << " } ";
 				     }

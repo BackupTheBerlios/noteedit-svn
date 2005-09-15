@@ -532,7 +532,7 @@ class NMainFrameWidget : public QWidget
 		int lastBarNr_;
 /*------------------------------- selection ---------------------------------------*/
 		bool editMode_;
-		property_type status_before_edit_mode_; /* selected buttons before going to edit mode */
+		property_type props_before_edit_mode_; /* selected buttons before going to edit mode */
 		int length_before_edit_mode_; /* selected note/rest length button before going to edit mode */
 		int x0_, y0_, x1_;
 		int xori_;

@@ -125,9 +125,6 @@
 #define INTERNAL_MARKER_OF_STROKEN_GRACE (NOTE32_LENGTH)
 
 
-// definition of status bits in NMusElement::status_
-// TBD and also in NNote::status ?
-
 /* is single-dotted */
 /* NOTE! PROP_SINGLE_DOT *must* have value 1 to correctly work with dotcount and must be within 32bits not to crash as dotcount is still int and not property_type */
 #define PROP_SINGLE_DOT   ((property_type)1 << 0)

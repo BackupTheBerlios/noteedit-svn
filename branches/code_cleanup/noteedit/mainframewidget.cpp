@@ -3109,7 +3109,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 	QCursor *cursor;
 	if (on) {
 		selectbutton_->setOn(false);
-		status_before_edit_mode_ = 0;
+		props_before_edit_mode_ = 0;
 		notePart_->setCursor( *NResource::cursor_edit_);
 		
 		/* save the selected note/rest length button */
@@ -3120,48 +3120,48 @@ void NMainFrameWidget::setEditMode(bool on) {
 			}
 
 		/* save other properties */
-		status_before_edit_mode_ |= (BODY_MASK & main_props_.noteBody);
+		props_before_edit_mode_ |= (BODY_MASK & main_props_.noteBody);
 		if (sforzatobutton_->isChecked()) {
-			status_before_edit_mode_ |= PROP_SFORZ;
+			props_before_edit_mode_ |= PROP_SFORZ;
 		}
 		if (portatobutton_->isChecked()) {
-			status_before_edit_mode_ |= PROP_PORTA;
+			props_before_edit_mode_ |= PROP_PORTA;
 		}
 		if (strong_pizzicatobutton_->isChecked()) {
-			status_before_edit_mode_ |= PROP_STPIZ;
+			props_before_edit_mode_ |= PROP_STPIZ;
 		}
 		if (sforzandobutton_->isChecked()) {
-			status_before_edit_mode_ |= PROP_SFZND;
+			props_before_edit_mode_ |= PROP_SFZND;
 		}
 		if (fermatebutton_->isChecked()) {
-			status_before_edit_mode_ |= PROP_FERMT;
+			props_before_edit_mode_ |= PROP_FERMT;
 		}
 		if (arpeggbutton_->isChecked()) {
-			status_before_edit_mode_ |= PROP_ARPEGG;
+			props_before_edit_mode_ |= PROP_ARPEGG;
 		}
 		if (staccatobutton_->isChecked()) {
-			status_before_edit_mode_ |= PROP_STACC;
+			props_before_edit_mode_ |= PROP_STACC;
 		}
 		if (tiebutton_->isChecked()) {
-			status_before_edit_mode_ |= PROP_TIED;
+			props_before_edit_mode_ |= PROP_TIED;
 		}
 		if (crossDrumBu_->isChecked()) {
-			status_before_edit_mode_ |= PROP_BODY_CROSS;
+			props_before_edit_mode_ |= PROP_BODY_CROSS;
 		}
 		if (cross2DrumBu->isChecked()) {
-			status_before_edit_mode_ |= PROP_BODY_CROSS2;
+			props_before_edit_mode_ |= PROP_BODY_CROSS2;
 		}
 		if (crossCricDrumBu_->isChecked()) {
-			status_before_edit_mode_ |= PROP_BODY_CIRCLE_CROSS;
+			props_before_edit_mode_ |= PROP_BODY_CIRCLE_CROSS;
 		}
 		if (rectDrumBu_->isChecked()) {
-			status_before_edit_mode_ |= PROP_BODY_RECT;
+			props_before_edit_mode_ |= PROP_BODY_RECT;
 		}
 		if (triaDrumBu_->isChecked()) {
-			status_before_edit_mode_ |= PROP_BODY_TRIA;
+			props_before_edit_mode_ |= PROP_BODY_TRIA;
 		}
 		if (hiddenrestbutton_->isChecked()) {
-			status_before_edit_mode_ |= PROP_HIDDEN;
+			props_before_edit_mode_ |= PROP_HIDDEN;
 		}
 		val = currentVoice_->getElemState(&status, &playable);
 		if (playable) {
@@ -3186,7 +3186,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			offs_buttons_[i]->setOn(false);
 		}
 		/*
-		if (status_before_edit_mode_ & PROP_TIED) {
+		if (props_before_edit_mode_ & PROP_TIED) {
 			tiebutton_->setOn(true);
 			main_props_.tied = true;
 		}
@@ -3197,7 +3197,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 		*/
 		tiebutton_->setOn(false);
 		main_props_.tied = false;
-		if (status_before_edit_mode_ & PROP_STACC) {
+		if (props_before_edit_mode_ & PROP_STACC) {
 			staccatobutton_->setOn(true);
 			main_props_.staccato = true;
 		}
@@ -3205,7 +3205,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			staccatobutton_->setOn(false);
 			main_props_.staccato = false;
 		}
-		if (status_before_edit_mode_ & PROP_SFZND) {
+		if (props_before_edit_mode_ & PROP_SFZND) {
 			sforzatobutton_->setOn(true);
 			main_props_.sforzando = true;
 		}
@@ -3213,7 +3213,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			sforzatobutton_->setOn(false);
 			main_props_.sforzando = false;
 		}
-		if (status_before_edit_mode_ & PROP_PORTA) {
+		if (props_before_edit_mode_ & PROP_PORTA) {
 			portatobutton_->setOn(true);
 			main_props_.portato = true;
 		}
@@ -3221,7 +3221,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			portatobutton_->setOn(false);
 			main_props_.portato = false;
 		}
-		if (status_before_edit_mode_ & PROP_STPIZ) {
+		if (props_before_edit_mode_ & PROP_STPIZ) {
 			strong_pizzicatobutton_->setOn(true);
 			main_props_.strong_pizzicato = true;
 		}
@@ -3229,7 +3229,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			strong_pizzicatobutton_->setOn(false);
 			main_props_.strong_pizzicato = false;
 		}
-		if (status_before_edit_mode_ & PROP_SFZND) {
+		if (props_before_edit_mode_ & PROP_SFZND) {
 			sforzandobutton_->setOn(true);
 			main_props_.sforzando = true;
 		}
@@ -3237,7 +3237,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			sforzandobutton_->setOn(false);
 			main_props_.sforzando = false;
 		}
-		if (status_before_edit_mode_ & PROP_FERMT) {
+		if (props_before_edit_mode_ & PROP_FERMT) {
 			fermatebutton_->setOn(true);
 			main_props_.fermate = true;
 		}
@@ -3245,7 +3245,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			fermatebutton_->setOn(false);
 			main_props_.fermate = false;
 		}
-		if (status_before_edit_mode_ & PROP_ARPEGG) {
+		if (props_before_edit_mode_ & PROP_ARPEGG) {
 			arpeggbutton_->setOn(true);
 			main_props_.arpeggio = true;
 		}
@@ -3253,7 +3253,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			arpeggbutton_->setOn(false);
 			main_props_.arpeggio = false;
 		}
-		if (status_before_edit_mode_ & PROP_HIDDEN) {
+		if (props_before_edit_mode_ & PROP_HIDDEN) {
 			hiddenrestbutton_->setOn(true);
 			main_props_.hidden = true;
 		}
@@ -3261,7 +3261,7 @@ void NMainFrameWidget::setEditMode(bool on) {
 			hiddenrestbutton_->setOn(false);
 			main_props_.hidden = false;
 		}
-		switch (main_props_.noteBody = (status_before_edit_mode_ & BODY_MASK)) {
+		switch (main_props_.noteBody = (props_before_edit_mode_ & BODY_MASK)) {
 			case PROP_BODY_CROSS: crossDrumBu_->setOn(true); break;
 			case PROP_BODY_CROSS2: cross2DrumBu->setOn(true); break;
 			case PROP_BODY_CIRCLE_CROSS: crossCricDrumBu_->setOn(true); break;

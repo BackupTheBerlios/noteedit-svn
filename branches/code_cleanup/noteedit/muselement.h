@@ -94,14 +94,14 @@ class NMusElement {
 
 class NPlayable : public NMusElement {
 	public:
-		property_type status_; /* element's flags - 64 bit long! */
+		property_type properties_; /* element's flags - 64 bit long! */
 
 		NPlayable(main_props_str *main_props, staff_props_str *staff_props);
 		virtual void changeLength(int) = 0;
 
 		void breakTuplet();
 		void changeTupletList(QList<NPlayable> *tList) {tupletList_ = tList;}
-		void resetTupletFlag() { status_ &= (~((PROP_TUPLET | PROP_LAST_TUPLET))); tupletList_ = 0; midiLength_ = computeMidiLength();}
+		void resetTupletFlag() { properties_ &= (~((PROP_TUPLET | PROP_LAST_TUPLET))); tupletList_ = 0; midiLength_ = computeMidiLength();}
 		QList<NPlayable> *getTupletList() {return tupletList_;}
 		void computeTuplet();
 		static void computeTuplet(QList<NPlayable> *tupletlList, char numNotes, char playtime);

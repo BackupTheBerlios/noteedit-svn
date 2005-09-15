@@ -105,7 +105,7 @@ void yyerror(char *s);
 		unsigned int beamstatus;
 		int slurdist;
 	} noteparam;
-	struct status_descr_str statusdescr;
+	struct property_descr_str statusdescr;
 	struct {
 		unsigned int beamstatus;
 		unsigned int slurdist;
@@ -1573,30 +1573,30 @@ pitchsuffixes : pitchsuffixes pitchsuffix
 			}
 
 		  |
-			{memset(&($$), 0, sizeof(struct status_descr_str));}
+			{memset(&($$), 0, sizeof(struct property_descr_str));}
 
 		  ;
 
 pitchsuffix : '+'
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.octavmodi = 7;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.octavmodi = 7;}
 
 	    | '-'
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.octavmodi = -7;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.octavmodi = -7;}
 
 	    | '#'
-		{memset(&($$), 0, sizeof(struct status_descr_str));$$.offs = 1; $$.status = PROP_FORCE;}
+		{memset(&($$), 0, sizeof(struct property_descr_str));$$.offs = 1; $$.status = PROP_FORCE;}
 
 	    | '&'
-		{memset(&($$), 0, sizeof(struct status_descr_str));$$.offs -= 1; $$.status = PROP_FORCE;}
+		{memset(&($$), 0, sizeof(struct property_descr_str));$$.offs -= 1; $$.status = PROP_FORCE;}
 
 	    | 'x'
-		{memset(&($$), 0, sizeof(struct status_descr_str));$$.offs = 2;  $$.status = PROP_FORCE;}
+		{memset(&($$), 0, sizeof(struct property_descr_str));$$.offs = 2;  $$.status = PROP_FORCE;}
 
 	    | '~'
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_TIED; }
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_TIED; }
 
 	    | 'n'
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_FORCE;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_FORCE;}
 
     	    | slur_info
 
@@ -1606,7 +1606,7 @@ pitchsuffix : '+'
 			YYERROR;
 		 }
 		 pending_elements[voiceNumber].inbeam = 1;
-		 memset(&($$), 0, sizeof(struct status_descr_str));$$.beamstatus = BEAM_START;
+		 memset(&($$), 0, sizeof(struct property_descr_str));$$.beamstatus = BEAM_START;
 		}
 
 	    | Y_EBM
@@ -1615,7 +1615,7 @@ pitchsuffix : '+'
 			YYERROR;
 		 }
 		 pending_elements[voiceNumber].inbeam = 0;
-		 memset(&($$), 0, sizeof(struct status_descr_str));$$.beamstatus = BEAM_END;
+		 memset(&($$), 0, sizeof(struct property_descr_str));$$.beamstatus = BEAM_END;
 		}
 
 	    | bodyinfo
@@ -1623,22 +1623,22 @@ pitchsuffix : '+'
 	    ; 
 
 bodyinfo : Y_CROSS
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_BODY_CROSS;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_BODY_CROSS;}
 	  | Y_CROSS2
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_BODY_CROSS2;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_BODY_CROSS2;}
 	  | Y_CIRCLE_CROSS
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_BODY_CIRCLE_CROSS;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_BODY_CIRCLE_CROSS;}
 	  | Y_RECT
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_BODY_RECT;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_BODY_RECT;}
 	  | Y_TRIA
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_BODY_TRIA;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_BODY_TRIA;}
 	  ;
 
 
 slur_info : '<' Y_NUMBER '>'
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_SLURED, $$.slurdist = $2;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_SLURED, $$.slurdist = $2;}
 	  | '<' pitch '>'
-		{memset(&($$), 0, sizeof(struct status_descr_str)); $$.status = PROP_SLURED, $$.slurdist = 1;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_SLURED, $$.slurdist = 1;}
 	
 	 ;
 

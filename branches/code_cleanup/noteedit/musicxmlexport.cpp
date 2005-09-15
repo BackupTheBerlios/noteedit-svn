@@ -144,7 +144,7 @@ void NMusicXMLExport::debugDumpElem(NMusElement *elem) {
 //		<< " bbox-l,r=" << elem->getBbox()->left()
 //		<< "," << elem->getBbox()->right()
 		<< hex
-		<< " status=" <<  ( elem->playable() ? elem->playable()->status_ : 0 )
+		<< " status=" <<  ( elem->playable() ? elem->playable()->properties_ : 0 )
 		<< dec << " ";
 	if (elem->chord() && elem->chord()->va_) {
 		out_ << "va=" << elem->chord()->va_ << " ";
@@ -553,10 +553,10 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 				      // occur in a rest. Sometimes both pedal on and off are found,
 				      // in which case pedal on has priority.
 				      // LVIFIX: may need to add relative-x,y and offset for proper positioning
-				      if (chord->status_ & PROP_PEDAL_ON) {
+				      if (chord->properties_ & PROP_PEDAL_ON) {
 					outputDirection("\t\t\t\t\t<pedal type=\"start\"/>\n",
 							"below");
-				      } else if (chord->status_ & PROP_PEDAL_OFF) {
+				      } else if (chord->properties_ & PROP_PEDAL_OFF) {
 					outputDirection("\t\t\t\t\t<pedal type=\"stop\"/>\n",
 							"below");
 				      }
@@ -619,7 +619,7 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 				     	  outputNote(note, voice_elem, &(actual_staff->actualClef_), va, staff_nr, 1, n);
 					  n++;
 				      }
-				      curTime_ += calcDuration(chord->getSubType(), chord->status_);
+				      curTime_ += calcDuration(chord->getSubType(), chord->properties_);
 				      if (chord == dynEndChord) {
 				        // dynamic ends after this chord
 					// LVIFIX: may need to add relative-x,y for proper positioning
@@ -653,7 +653,7 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 				     if (rest->getSubType() == MULTIREST) {
 					/* already handled */ ;
 				     }
-				     else if (rest->status_ & PROP_HIDDEN) {
+				     else if (rest->properties_ & PROP_HIDDEN) {
 					len = rest->getSubType();
 					calcLength(rest, duration, noteType);
 					out_ << "\t\t\t<forward>\n";
@@ -677,18 +677,18 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 					outputTimeMod(rest);
 					bool needNotations = false;
 					bool fermata = false;
-					if (rest->status_ & PROP_FERMT) {
+					if (rest->properties_ & PROP_FERMT) {
 						fermata = true;
 						needNotations = true;
 					}
 					bool tupletStart = false;
-					if ((rest->status_ & PROP_TUPLET)
+					if ((rest->properties_ & PROP_TUPLET)
 					     && rest->isFirstInTuplet()) {
 						tupletStart = true;
 						needNotations = true;
 					}
 					bool tupletStop = false;
-					if (rest->status_ & PROP_LAST_TUPLET) {
+					if (rest->properties_ & PROP_LAST_TUPLET) {
 						tupletStop = true;
 						needNotations = true;
 					}
@@ -836,7 +836,7 @@ bool NMusicXMLExport::writeOtherVoicesTill(int staff_nr, int voice_nr, NVoice *v
 				     	  outputNote(note, voice_elem, &(actual_staff->actualClef_), va, staff_nr, voice_nr, n);
 					  n++;
 				      }
-				      curTime_ += calcDuration(chord->getSubType(), chord->status_);
+				      curTime_ += calcDuration(chord->getSubType(), chord->properties_);
 #if 0
 // LVIFIX reenable when octava end is allowed in other voices than the first voice
 				      if (chord == vaEndChord) {
@@ -859,7 +859,7 @@ bool NMusicXMLExport::writeOtherVoicesTill(int staff_nr, int voice_nr, NVoice *v
 					out_ << "<!-- multi rest (not supported in this voice) -->" << endl;
 					len = rest->getMultiRestLength() * QUARTER_LENGTH;
 				     }
-				     else if (rest->status_ & PROP_HIDDEN) {
+				     else if (rest->properties_ & PROP_HIDDEN) {
 					len = rest->getSubType();
 					calcLength(rest, duration, noteType);
 					out_ << "\t\t\t<forward>\n";
@@ -882,18 +882,18 @@ bool NMusicXMLExport::writeOtherVoicesTill(int staff_nr, int voice_nr, NVoice *v
 					outputTimeMod(rest);
 					bool needNotations = false;
 					bool fermata = false;
-					if (rest->status_ & PROP_FERMT) {
+					if (rest->properties_ & PROP_FERMT) {
 						fermata = true;
 						needNotations = true;
 					}
 					bool tupletStart = false;
-					if ((rest->status_ & PROP_TUPLET)
+					if ((rest->properties_ & PROP_TUPLET)
 					     && rest->isFirstInTuplet()) {
 						tupletStart = true;
 						needNotations = true;
 					}
 					bool tupletStop = false;
-					if (rest->status_ & PROP_LAST_TUPLET) {
+					if (rest->properties_ & PROP_LAST_TUPLET) {
 						tupletStop = true;
 						needNotations = true;
 					}
@@ -1188,7 +1188,7 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 	if (note_nr) {
 		out_ << "\t\t\t\t<chord/>\n";
 	}
-	if (chord->status_ & PROP_GRACE) {
+	if (chord->properties_ & PROP_GRACE) {
 		if (chord->getSubType() != INTERNAL_MARKER_OF_STROKEN_GRACE) {
 			// normal grace
 			out_ << "\t\t\t\t<grace/>\n";
@@ -1206,7 +1206,7 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 	out_ << "\t\t\t\t\t<octave>" << octave + 4 << "</octave>\n";
 	out_ << "\t\t\t\t</pitch>\n";
 	// grace notes have a <type> but no <duration> element
-	if (!(chord->status_ & PROP_GRACE)) {
+	if (!(chord->properties_ & PROP_GRACE)) {
 		out_ << "\t\t\t\t<duration>" << duration << "</duration>\n";
 	}
 	// accidental handling (borrowed from filehandler.cpp, NFileHandler::pitchOut)
@@ -1259,16 +1259,16 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 		needNotations = true;
 	}
 	bool needArti = false;
-	if (!note_nr && (chord->status_ & (PROP_STACC | PROP_SFORZ | PROP_PORTA | PROP_STPIZ | PROP_SFZND))) {
+	if (!note_nr && (chord->properties_ & (PROP_STACC | PROP_SFORZ | PROP_PORTA | PROP_STPIZ | PROP_SFZND))) {
 		needArti = true;
 		needNotations = true;
 	}
 	bool fermata = false;
-	if (!note_nr && chord->status_ & PROP_FERMT) {
+	if (!note_nr && chord->properties_ & PROP_FERMT) {
 		fermata = true;
 		needNotations = true;
 	}
-	if (chord->status_ & PROP_ARPEGG) {
+	if (chord->properties_ & PROP_ARPEGG) {
 		needNotations = true;
 	}
 	bool needTrill = false;
@@ -1280,19 +1280,19 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 	out_ << "\t\t\t\t<type>" << noteType << "</type>\n";
 	outputDots(chord);
 	bool tupletStart = false;
-	if (!note_nr && (chord->status_ & PROP_TUPLET) && chord->isFirstInTuplet()) {
+	if (!note_nr && (chord->properties_ & PROP_TUPLET) && chord->isFirstInTuplet()) {
 		tupletStart = true;
 		needNotations = true;
 	}
 	bool tupletStop = false;
-	if (!note_nr && (chord->status_ & PROP_LAST_TUPLET)) {
+	if (!note_nr && (chord->properties_ & PROP_LAST_TUPLET)) {
 		tupletStop = true;
 		needNotations = true;
 	}
 	outputTimeMod(chord);
 	if (chord->getSubType() <= HALF_LENGTH) {
 		QString stemType = "";
-		if (chord->status_ & PROP_STEM_UP) {
+		if (chord->properties_ & PROP_STEM_UP) {
 			stemType = "up";
 		} else {
 			stemType = "down";
@@ -1300,7 +1300,7 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 		out_ << "\t\t\t\t<stem>" << stemType << "</stem>\n";
 	}
 	// LVIFIX: add <staff>
-	if (!note_nr && chord->status_ & PROP_BEAMED) {
+	if (!note_nr && chord->properties_ & PROP_BEAMED) {
 		QList<NChord> *beamlist = 0;		// the group of beamed notes
 		int currlvl = 0;			// beam level current note
 		int nextlvl = 0;			// beam level next note
@@ -1377,7 +1377,7 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 			// fermata's are generated.
 			out_ << "\t\t\t\t\t<fermata type=\"upright\"/>\n";
 		}
-		if (chord->status_ & PROP_ARPEGG) {
+		if (chord->properties_ & PROP_ARPEGG) {
 			out_ << "\t\t\t\t\t<arpeggiate/>\n";
 		}
 		// articulations, which are mutually exclusive in NoteEdit
@@ -1386,19 +1386,19 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 		// <... placement="below"/>
 		if (needArti) {
 			out_ << "\t\t\t\t\t<articulations>\n";
-			if (chord->status_ & PROP_STACC) {
+			if (chord->properties_ & PROP_STACC) {
 				out_ << "\t\t\t\t\t\t<staccato/>\n";
 			}
-			if (chord->status_ & PROP_SFORZ) {
+			if (chord->properties_ & PROP_SFORZ) {
 				out_ << "\t\t\t\t\t\t<strong-accent/>\n";
 			}
-			if (chord->status_ & PROP_PORTA) {
+			if (chord->properties_ & PROP_PORTA) {
 				out_ << "\t\t\t\t\t\t<tenuto/>\n";
 			}
-			if (chord->status_ & PROP_STPIZ) {
+			if (chord->properties_ & PROP_STPIZ) {
 				out_ << "\t\t\t\t\t\t<staccatissimo/>\n";
 			}
-			if (chord->status_ & PROP_SFZND) {
+			if (chord->properties_ & PROP_SFZND) {
 				out_ << "\t\t\t\t\t\t<accent/>\n";
 			}
 			out_ << "\t\t\t\t\t</articulations>\n";
@@ -1465,7 +1465,7 @@ int NMusicXMLExport::calcDuration(int len, property_type status) {
 
 void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 	int len = elem->getSubType();
-	property_type status = ( elem->playable() ? elem->playable()->status_ : 0 );
+	property_type status = ( elem->playable() ? elem->playable()->properties_ : 0 );
 	dur = len * divisions_;
 	switch (status & DOT_MASK) {
 		case PROP_DOUBLE_DOT:
@@ -1497,7 +1497,7 @@ void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 
 static int calcLengthForCalcDivisions(NMusElement *elem) {
 	int len = elem->getSubType();
-	property_type status = ( elem->playable() ? elem->playable()->status_ : 0 );
+	property_type status = ( elem->playable() ? elem->playable()->properties_ : 0 );
 	switch (status & DOT_MASK) {
 		case PROP_DOUBLE_DOT:
 			len = len * 7 / 4;
@@ -1935,7 +1935,7 @@ void NMusicXMLExport::outputDirection(QString direction, QString placement = "")
 void NMusicXMLExport::outputDots(NMusElement *elem)
 {
 	if( elem->playable() ) {
-		switch (elem->playable()->status_ & DOT_MASK) {
+		switch (elem->playable()->properties_ & DOT_MASK) {
 			case PROP_DOUBLE_DOT:
 				out_ << "\t\t\t\t<dot/>\n";
 				out_ << "\t\t\t\t<dot/>\n";
@@ -1975,7 +1975,7 @@ void NMusicXMLExport::outputFrame(NChordDiagram *diag)
 
 void NMusicXMLExport::outputTimeMod(NMusElement *elem)
 {
-	if ((elem->getType() & PLAYABLE) && ( elem->playable()->status_ & PROP_TUPLET) ) {
+	if ((elem->getType() & PLAYABLE) && ( elem->playable()->properties_ & PROP_TUPLET) ) {
 		out_ << "\t\t\t\t<time-modification>\n";
 		out_ << "\t\t\t\t\t<actual-notes>" << (int) elem->playable()->getNumNotes() << "</actual-notes>\n";
 		out_ << "\t\t\t\t\t<normal-notes>" << (int) elem->playable()->getPlaytime() << "</normal-notes>\n";

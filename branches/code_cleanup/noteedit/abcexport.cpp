@@ -351,17 +351,17 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 		switch (elem->getType()) {
 			case T_CHORD: voiceStatList_[idx].lastBarSym = 0;
 				      chord = (NChord *) elem;
-				      if (chord->status_ & PROP_TUPLET) {
+				      if (chord->properties_ & PROP_TUPLET) {
 				      	if (!inTuplet) {
 						inTuplet = true;
 						outputTupletStart(staff_nr, elem->playable() );
 					}
 				      }
-				      if (inGrace && !(chord->status_ & PROP_GRACE)) {
+				      if (inGrace && !(chord->properties_ & PROP_GRACE)) {
 				      	inGrace = false;
 					out_ << '}';
 				      }
-				      if (chord->status_ & PROP_GRACE) {
+				      if (chord->properties_ & PROP_GRACE) {
 				      	if (!inGrace) {
 						inGrace = true;
 						out_ << " {";
@@ -371,7 +371,7 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 					}
 				      }
 				      if (!inTuplet && chord->getSubType() < QUARTER_LENGTH) {
-				      	if (chord->status_ & PROP_BEAMED) {
+				      	if (chord->properties_ & PROP_BEAMED) {
 						if (!inBeam) {
 							if (!inGrace) out_ << ' ';
 							inBeam = true;
@@ -404,24 +404,24 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 					writeChord(diag);
 				      }
 				      writePendingSigns(idx);
-				      if (chord->status_ & PROP_STACC)
+				      if (chord->properties_ & PROP_STACC)
 						out_ << '.';
-				      if (chord->status_ & PROP_SFORZ) 
+				      if (chord->properties_ & PROP_SFORZ) 
 					        out_ << "!sfz!";
-				      if (chord->status_ & PROP_PORTA)
+				      if (chord->properties_ & PROP_PORTA)
 					        out_ << "!tenuto!";
-				      if (chord->status_ & PROP_STPIZ)
+				      if (chord->properties_ & PROP_STPIZ)
 					        out_ << "!wedge!";
-				      if (chord->status_ & PROP_SFZND)
+				      if (chord->properties_ & PROP_SFZND)
 					        out_ << "!accent!";
-				      if (chord->status_ & PROP_PEDAL_ON) {
+				      if (chord->properties_ & PROP_PEDAL_ON) {
 				      		out_ << "!ped!";
 				      }
-				      if (chord->status_ & PROP_PEDAL_OFF) {
+				      if (chord->properties_ & PROP_PEDAL_OFF) {
 				      		out_ << "!ped-end!";
 				      }
-				      if (chord->status_ & PROP_FERMT) {
-				      		if (chord->status_ & PROP_STEM_UP) {
+				      if (chord->properties_ & PROP_FERMT) {
+				      		if (chord->properties_ & PROP_STEM_UP) {
 							out_ << "!fermata!";
 						}
 						else {
@@ -454,7 +454,7 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 					voiceStatList_[idx].dynEndPos = chord->getDynamicEnd();
 					voiceStatList_[idx].lastDynSym = (char *) (chord->dynamicAlign_ ? "!crescendo)!" : "!diminuendo)!");
 				      }
-				      if (chord->status_ & PROP_ARPEGG) {
+				      if (chord->properties_ & PROP_ARPEGG) {
 				      	out_ << "!arpeggio!";
 				      }
 				      inChord = chord->getNoteList()->count() > 1;
@@ -463,8 +463,8 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 				      }
 				      for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
 				     	outputNote(note, &(actual_staff->actualClef_), inChord);
-					if (!((chord->status_ & PROP_GRACE) && chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
-						outputLength(chord->getSubType(), chord->status_, inChord, note->status & BODY_MASK);
+					if (!((chord->properties_ & PROP_GRACE) && chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
+						outputLength(chord->getSubType(), chord->properties_, inChord, note->status & BODY_MASK);
 					}
 					if (note->status & PROP_TIED) out_ << '-';
 				      }
@@ -475,14 +475,14 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 				      	out_ << ')';
 					voiceStatList_[idx].slurDepth--;
 				      }
-				      if (chord->status_ & PROP_LAST_TUPLET) {
+				      if (chord->properties_ & PROP_LAST_TUPLET) {
 				        inTuplet = false;
 					out_ << ' ';
 				      }
 				      break;
 			case T_REST: voiceStatList_[idx].lastBarSym = 0;
 				     rest = (NRest *) elem;
-				     if (rest->status_ & PROP_TUPLET) {
+				     if (rest->properties_ & PROP_TUPLET) {
 				     	if (!inTuplet) {
 						inTuplet = true;
 						outputTupletStart(staff_nr, elem->playable());
@@ -499,14 +499,14 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 					writeChord(diag);
 				     }
 				     writePendingSigns(idx);
-				     if (rest->status_ & PROP_FERMT) {
+				     if (rest->properties_ & PROP_FERMT) {
 					out_ << "!fermata!";
 				     }
 				     if (rest->getSubType() == MULTIREST) {
 				     	out_ << 'Z';
 					len = rest->getMultiRestLength() * QUARTER_LENGTH;
 				     }
-				     else if (rest->status_ & PROP_HIDDEN) {
+				     else if (rest->properties_ & PROP_HIDDEN) {
 				        out_ << 'x';
 					len = rest->getSubType();
 				     }
@@ -514,8 +514,8 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 				        out_ << 'z';
 					len = rest->getSubType();
 				     }
-				     outputLength(len, rest->status_, true, false);
-				     if (rest->status_ & PROP_LAST_TUPLET) {
+				     outputLength(len, rest->properties_, true, false);
+				     if (rest->properties_ & PROP_LAST_TUPLET) {
 				        inTuplet = false;
 					out_ << ' ';
 				     }
@@ -652,17 +652,17 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 		handleSpecialElements(actual_staff, elem);
 		switch (elem->getType()) {
 			case T_CHORD: chord = (NChord *) elem;
-				      if (chord->status_ & PROP_TUPLET) {
+				      if (chord->properties_ & PROP_TUPLET) {
 				      	if (!inTuplet) {
 						inTuplet = true;
 						outputTupletStart(staff_nr, elem->playable());
 					}
 				      }
-				      if (inGrace && !(chord->status_ & PROP_GRACE)) {
+				      if (inGrace && !(chord->properties_ & PROP_GRACE)) {
 				      	inGrace = false;
 					out_ << '}';
 				      }
-				      if (chord->status_ & PROP_GRACE) {
+				      if (chord->properties_ & PROP_GRACE) {
 				      	if (!inGrace) {
 						inGrace = true;
 						out_ << '{';
@@ -672,7 +672,7 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 					}
 				      }
 				      if (!inTuplet && chord->getSubType() < QUARTER_LENGTH) {
-				      	if (chord->status_ & PROP_BEAMED) {
+				      	if (chord->properties_ & PROP_BEAMED) {
 						if (!inBeam) {
 							if (!inGrace) out_ << ' ';
 							inBeam = true;
@@ -692,25 +692,25 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 				      	out_ << '(';
 					voiceStatList_[idx].slurDepth++;
 				      }
-				      if (chord->status_ & PROP_STACC)
+				      if (chord->properties_ & PROP_STACC)
 						out_ << '.';
-				      if (chord->status_ & PROP_SFORZ) 
+				      if (chord->properties_ & PROP_SFORZ) 
 					        out_ << "!sfz!";
-				      if (chord->status_ & PROP_PORTA)
+				      if (chord->properties_ & PROP_PORTA)
 					        out_ << "!tenuto!";
-				      if (chord->status_ & PROP_STPIZ)
+				      if (chord->properties_ & PROP_STPIZ)
 					        out_ << "!wedge!";
-				      if (chord->status_ & PROP_SFZND)
+				      if (chord->properties_ & PROP_SFZND)
 					        out_ << "!accent!";
-				      if (chord->status_ & PROP_FERMT) {
-				      		if (chord->status_ & PROP_STEM_UP) {
+				      if (chord->properties_ & PROP_FERMT) {
+				      		if (chord->properties_ & PROP_STEM_UP) {
 							out_ << "!fermata!";
 						}
 						else {
 							out_ << "!invertedfermata!";
 						}
 				      }
-				      if (chord->status_ & PROP_ARPEGG) {
+				      if (chord->properties_ & PROP_ARPEGG) {
 				      	out_ << "!arpeggio!";
 				      }
 				      inChord = chord->getNoteList()->count() > 1;
@@ -721,8 +721,8 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 				      staff_elem->setCorrectClefAccordingTime(elem->midiTime_);
 				      for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
 				     	outputNote(note, &(actual_staff->actualClef_), inChord);
-					if (!((chord->status_ & PROP_GRACE) && chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
-						outputLength(chord->getSubType(), chord->status_, inChord, note->status & BODY_MASK);
+					if (!((chord->properties_ & PROP_GRACE) && chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
+						outputLength(chord->getSubType(), chord->properties_, inChord, note->status & BODY_MASK);
 					}
 					if (note->status & PROP_TIED) out_ << '-';
 				      }
@@ -733,13 +733,13 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 				      	out_ << ')';
 					voiceStatList_[idx].slurDepth--;
 				      }
-				      if (chord->status_ & PROP_LAST_TUPLET) {
+				      if (chord->properties_ & PROP_LAST_TUPLET) {
 				        inTuplet = false;
 					out_ << ' ';
 				      }
 				      break;
 			case T_REST: rest = (NRest *) elem;
-				     if (rest->status_ & PROP_TUPLET) {
+				     if (rest->properties_ & PROP_TUPLET) {
 				     	if (!inTuplet) {
 						inTuplet = true;
 						outputTupletStart(staff_nr, elem->playable());
@@ -751,14 +751,14 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 					out_ << '}';
 				     }
 				     if (!inTuplet) out_ << ' ';
-				     if (rest->status_ & PROP_FERMT) {
+				     if (rest->properties_ & PROP_FERMT) {
 					out_ << "!fermata!";
 				     }
 				     if (rest->getSubType() == MULTIREST) {
 				     	out_ << 'Z';
 					len = rest->getMultiRestLength() * QUARTER_LENGTH;
 				     }
-				     else if (rest->status_ & PROP_HIDDEN) {
+				     else if (rest->properties_ & PROP_HIDDEN) {
 				        out_ << 'x';
 					len = rest->getSubType();
 				     }
@@ -766,8 +766,8 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 				        out_ << 'z';
 					len = rest->getSubType();
 				     }
-				     outputLength(len, rest->status_, true, false);
-				     if (rest->status_ & PROP_LAST_TUPLET) {
+				     outputLength(len, rest->properties_, true, false);
+				     if (rest->properties_ & PROP_LAST_TUPLET) {
 				        inTuplet = false;
 					out_ << ' ';
 				     }

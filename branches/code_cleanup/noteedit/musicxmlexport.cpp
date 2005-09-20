@@ -144,7 +144,7 @@ void NMusicXMLExport::debugDumpElem(NMusElement *elem) {
 //		<< " bbox-l,r=" << elem->getBbox()->left()
 //		<< "," << elem->getBbox()->right()
 		<< hex
-		<< " status=" <<  ( elem->playable() ? elem->playable()->properties_ : 0 )
+		<< " properties=" <<  ( elem->playable() ? elem->playable()->properties_ : 0 )
 		<< dec << " ";
 	if (elem->chord() && elem->chord()->va_) {
 		out_ << "va=" << elem->chord()->va_ << " ";
@@ -162,7 +162,7 @@ void NMusicXMLExport::debugDumpElem(NMusElement *elem) {
 					note = chord->getNoteList()->next()) {
 				out_ << endl << "  note"
 					<< hex
-					<< " status=" << note->status
+					<< " properties=" << note->properties
 					<< dec
 					<< " line=" << (int) note->line
 					<< " offs=" << (int) note->offs;
@@ -549,7 +549,7 @@ bool NMusicXMLExport::writeFirstVoice(NVoice *voice_elem, int staff_nr) {
 				      // In MusicXML pedal on/off are expressed as directions
 				      // containing direction-type pedal before the chord
 				      // they apply to.
-				      // In NoteEdit it is a status bit in the chord and cannot
+				      // In NoteEdit it is a property bit in the chord and cannot
 				      // occur in a rest. Sometimes both pedal on and off are found,
 				      // in which case pedal on has priority.
 				      // LVIFIX: may need to add relative-x,y and offset for proper positioning
@@ -1167,7 +1167,7 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 	char notename = ' ';
 	QString noteType = "";
 	int octave = 0;
-	if ((note->status & BODY_MASK) && !drum_problem_written_)  {
+	if ((note->properties & BODY_MASK) && !drum_problem_written_)  {
 		drum_problem_written_ = true;
 		bad = new badinfo(MUSICXML_ERRDRUM_STAFF, staff_nr, lastMeasureNum_);
 		badlist_.append(bad);
@@ -1210,9 +1210,9 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 		out_ << "\t\t\t\t<duration>" << duration << "</duration>\n";
 	}
 	// accidental handling (borrowed from filehandler.cpp, NFileHandler::pitchOut)
-	if (!(note->status & PROP_PART_OF_TIE)) {
+	if (!(note->properties & PROP_PART_OF_TIE)) {
 		QString accid = "";
-		if (note->status & PROP_FORCE) {
+		if (note->properties & PROP_FORCE) {
 			switch (note->offs) {
 				case  1: accid = "sharp"; break;
 				case -1: accid = "flat"; break;
@@ -1222,7 +1222,7 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 			}
 		}
 		else {
-			switch (note->status & ACC_MASK) {
+			switch (note->properties & ACC_MASK) {
 				case PROP_CROSS:  accid = "sharp"; break;
 				case PROP_FLAT:   accid = "flat"; break;
 				case PROP_NATUR:  accid = "natural"; break;
@@ -1238,12 +1238,12 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 	bool needNotations = false;
         bool tieStart = false;
         bool tieStop  = false;
-	if (note->status & PROP_PART_OF_TIE) {
+	if (note->properties & PROP_PART_OF_TIE) {
 		tieStop = true;
 		needNotations = true;
 		out_ << "\t\t\t\t<tie type=\"stop\"/>\n";
 	}
-	if (note->status & PROP_TIED) {
+	if (note->properties & PROP_TIED) {
 		tieStart = true;
 		needNotations = true;
 		out_ << "\t\t\t\t<tie type=\"start\"/>\n";
@@ -1447,9 +1447,9 @@ void NMusicXMLExport::outputVoiceNr(int voice_nr) {
 	out_ << "\t\t\t\t<voice>" << voice_nr << "</voice>\n";
 }
 
-int NMusicXMLExport::calcDuration(int len, property_type status) {
+int NMusicXMLExport::calcDuration(int len, property_type properties) {
 	int dur = len * divisions_ / QUARTER_LENGTH;
-	switch (status & DOT_MASK) {
+	switch (properties & DOT_MASK) {
 		case PROP_DOUBLE_DOT:
 			dur = dur * 7 / 4;
 			break;
@@ -1465,9 +1465,9 @@ int NMusicXMLExport::calcDuration(int len, property_type status) {
 
 void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 	int len = elem->getSubType();
-	property_type status = ( elem->playable() ? elem->playable()->properties_ : 0 );
+	property_type properties = ( elem->playable() ? elem->playable()->properties_ : 0 );
 	dur = len * divisions_;
-	switch (status & DOT_MASK) {
+	switch (properties & DOT_MASK) {
 		case PROP_DOUBLE_DOT:
 			dur = dur * 7 / 4;
 			break;
@@ -1475,7 +1475,7 @@ void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 			dur = dur * 3 / 2;
 			break;
 	}
-	if (status & PROP_TUPLET && (elem->getType() & PLAYABLE) ) {
+	if (properties & PROP_TUPLET && (elem->getType() & PLAYABLE) ) {
 		dur = dur * elem->playable()->getPlaytime() / elem->playable()->getNumNotes();
 	}
 	dur /= QUARTER_LENGTH;
@@ -1497,8 +1497,8 @@ void NMusicXMLExport::calcLength(NMusElement *elem, int& dur, QString& type) {
 
 static int calcLengthForCalcDivisions(NMusElement *elem) {
 	int len = elem->getSubType();
-	property_type status = ( elem->playable() ? elem->playable()->properties_ : 0 );
-	switch (status & DOT_MASK) {
+	property_type properties = ( elem->playable() ? elem->playable()->properties_ : 0 );
+	switch (properties & DOT_MASK) {
 		case PROP_DOUBLE_DOT:
 			len = len * 7 / 4;
 			break;
@@ -1506,7 +1506,7 @@ static int calcLengthForCalcDivisions(NMusElement *elem) {
 			len = len * 3 / 2;
 			break;
 	}
-	if (status & PROP_TUPLET && (elem->getType() & PLAYABLE) ) {
+	if (properties & PROP_TUPLET && (elem->getType() & PLAYABLE) ) {
 		len = len * elem->playable()->getPlaytime() / elem->playable()->getNumNotes();
 	}
 	return len;

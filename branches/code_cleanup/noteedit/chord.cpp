@@ -106,7 +106,7 @@ QPoint NChord::StrokeDist2_(STROKE_X_2, STROKE_Y_2);
 int NChord::numTexRows_ = 0;
 QList<NNote> NChord::acc_tex_row;
 
-NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, property_type status) :
+NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, property_type properties) :
 		 NPlayable(main_props, staff_props), m_(0.0), n_(0.0) {
 	NNote *note;
 	trill_ = dynamic_ = va_ = 0;
@@ -117,11 +117,11 @@ NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice 
 	length_ = length;
 	voice_ = voice;
 	note = new NNote;
-	note->status = (status & NOTE_PROP_PART);
-	if (length > WHOLE_LENGTH || (status & PROP_GRACE)) {
-		note->status &= (~BODY_MASK);
+	note->properties = (properties & NOTE_PROP_PART);
+	if (length > WHOLE_LENGTH || (properties & PROP_GRACE)) {
+		note->properties &= (~BODY_MASK);
 	}
-	properties_ = (status & PROP_GRACE) ? (status & GRACE_PROP_PART) : (status & (CHORD_PROP_PART | PROP_PEDAL_ON | PROP_PEDAL_OFF | PROP_AUTO_TRIPLET ));
+	properties_ = (properties & PROP_GRACE) ? (properties & GRACE_PROP_PART) : (properties & (CHORD_PROP_PART | PROP_PEDAL_ON | PROP_PEDAL_OFF | PROP_AUTO_TRIPLET ));
 	midiLength_ = computeMidiLength();
 	actualNote_ = 0;
 	note->line = line;
@@ -372,7 +372,7 @@ void NChord::changeLength(int length) {
 	} 
 	if (length > WHOLE_LENGTH) {
 		for (note = noteList_.first(); note; note = noteList_.next()) {
-			note->status &= (~BODY_MASK);
+			note->properties &= (~BODY_MASK);
 		}
 	}
 		
@@ -412,8 +412,8 @@ void NChord::changeBody(property_type bodyType) {
 	if (note == NULL) {
 		NResource::abort("changeBody: internal error");
 	}
-	note->status &= (~BODY_MASK);
-	note->status |= (bodyType & BODY_MASK);
+	note->properties &= (~BODY_MASK);
+	note->properties |= (bodyType & BODY_MASK);
 }
 
 void NChord::changeOffs(int offs, NKeySig *actual_keysig) {
@@ -424,11 +424,11 @@ void NChord::changeOffs(int offs, NKeySig *actual_keysig) {
 	}
 	if (offs == UNDEFINED_OFFS) {
 		note->offs = actual_keysig->getOffset(note->line);
-		note->status &= (~PROP_FORCE);
+		note->properties &= (~PROP_FORCE);
 		return;
 	}
 	note->offs = offs;
-	note->status |= PROP_FORCE;
+	note->properties |= PROP_FORCE;
 }
 
 void NChord::setActualTied(bool tied) {
@@ -438,14 +438,14 @@ void NChord::setActualTied(bool tied) {
 	if (note == NULL) {
 		NResource::abort("setActualTied: internal error");
 	}
-	SET_NOTE_PROPERTY(tied, note->status, PROP_TIED);
+	SET_NOTE_PROPERTY(tied, note->properties, PROP_TIED);
 }
 
 void NChord::removeAllTies(){
 	NNote *note;
 
 	for (note = noteList_.first(); note; note = noteList_.next()) {
-		note->status &= (~(PROP_TIED));
+		note->properties &= (~(PROP_TIED));
 	}
 }
 
@@ -457,9 +457,9 @@ void NChord::tieWith(NChord *otherChordBefore) {
 		if (note2 == NULL) {
 			NResource::abort("NChord::tieWith");
 		}
-		note->status |= PROP_PART_OF_TIE;
+		note->properties |= PROP_PART_OF_TIE;
 		note->tie_backward = note2;
-		note2->status |= PROP_TIED;
+		note2->properties |= PROP_TIED;
 		note2->tie_forward = note;
 	}
 }
@@ -752,7 +752,7 @@ bool NChord::removeNote(NNote *note, int voices_stem_policy) {
 }
 
 
-NNote *NChord::insertNewNote(int line, int offs, int voices_stem_policy, property_type status) {
+NNote *NChord::insertNewNote(int line, int offs, int voices_stem_policy, property_type properties) {
 	NNote *note, *new_part;
 	int idx;
 	bool found = false;
@@ -770,9 +770,9 @@ NNote *NChord::insertNewNote(int line, int offs, int voices_stem_policy, propert
 	new_part->line = line;
 	new_part->offs = offs;
 	if (length_ > WHOLE_LENGTH) {
-		status &= (~BODY_MASK);
+		properties &= (~BODY_MASK);
 	}
-	new_part->status = status;
+	new_part->properties = properties;
 	new_part->nbase_draw_point = QPoint(0, 0);
 	new_part->tie_forward = 0;
 	new_part->tie_backward = 0;
@@ -862,7 +862,7 @@ void NChord::checkAcc() {
 	NNote *note;
 	for (note = noteList_.first(); note; note = noteList_.next()) {
 		if (note->offs == UNDEFINED_OFFS) { /* can happen after reading */
-				if (note->status & PROP_PART_OF_TIE) {
+				if (note->properties & PROP_PART_OF_TIE) {
 					note->offs = note->tie_backward->offs;
 				}
 				else {
@@ -879,18 +879,18 @@ void NChord::checkAcc() {
 			 staff_props_->actual_keysig->setTempAccent(note->line, note->needed_acc);
 			break;
 		}
-		note->status &= (~ACC_MASK);
-		if (note->status & PROP_FORCE) {
+		note->properties &= (~ACC_MASK);
+		if (note->properties & PROP_FORCE) {
 			switch(note->offs) {
-				case -2: note->status |= PROP_DFLAT; break;
-				case -1: note->status |= PROP_FLAT; break;
-				case  0: note->status |= PROP_NATUR; break;
-				case  1: note->status |= PROP_CROSS; break;
-				case  2: note->status |= PROP_DCROSS; break;
+				case -2: note->properties |= PROP_DFLAT; break;
+				case -1: note->properties |= PROP_FLAT; break;
+				case  0: note->properties |= PROP_NATUR; break;
+				case  1: note->properties |= PROP_CROSS; break;
+				case  2: note->properties |= PROP_DCROSS; break;
 			}
 		}
 		else {
-			note->status |= (ACC_MASK & note->needed_acc);
+			note->properties |= (ACC_MASK & note->needed_acc);
 		}
 	}
 }
@@ -898,7 +898,7 @@ void NChord::checkAcc() {
 void NChord::accumulateAccidentals(NKeySig *key) {
 	NNote *note;
 	for (note = noteList_.first(); note; note = noteList_.next()) {
-		if (note->status & PROP_FORCE) {
+		if (note->properties & PROP_FORCE) {
 			switch (note->offs) {
 				case  1: key->setTempAccent(note->line, PROP_CROSS); break;
 				case -1: key->setTempAccent(note->line, PROP_FLAT); break;
@@ -908,7 +908,7 @@ void NChord::accumulateAccidentals(NKeySig *key) {
 			}
 		}
 		else {
-			switch (note->status & ACC_MASK) {
+			switch (note->properties & ACC_MASK) {
 				case PROP_CROSS: key->setTempAccent(note->line, PROP_CROSS); break;
 				case PROP_FLAT:  key->setTempAccent(note->line, PROP_FLAT); break;
 				case PROP_NATUR: key->setTempAccent(note->line, PROP_NATUR); break;
@@ -959,7 +959,7 @@ void NChord::calculateDimensionsAndPixmaps() {
 		x_acc_offs += ARPEGG_DIST;
 	}
 	for (note = noteList_.first(); note; note = noteList_.next()) {
-		switch (note->status & BODY_MASK) {
+		switch (note->properties & BODY_MASK) {
 			case PROP_BODY_CROSS:
 				switch (length_) {
 					case HALF_LENGTH:
@@ -1044,7 +1044,7 @@ void NChord::calculateDimensionsAndPixmaps() {
 					}
 				break;
 		}
-		switch (note->status & ACC_MASK) {
+		switch (note->properties & ACC_MASK) {
 			case PROP_NO_ACC: break;
 			case PROP_CROSS:
 			note->acc_draw_point = QPoint (xpos_+x_acc_offs, 
@@ -1081,14 +1081,14 @@ void NChord::calculateDimensionsAndPixmaps() {
 		else {
 			shoffs = 0;
 		}
-		SET_NOTE_PROPERTY(shoffs, note->status, PROP_SHIFTED);
+		SET_NOTE_PROPERTY(shoffs, note->properties, PROP_SHIFTED);
 		note->acc_offs = x_acc_offs;
 		note->nbase_draw_point = QPoint (xpos_+ x_aux_offs + shoffs + x_acc_offs, staff_props_->base -  LINE_DIST / 2 + 4 * LINE_DIST - note->line * LINE_DIST  / 2 + 1 + yoffs);
 		note->point_pos1 = QRect(xpos_+ x_aux_offs + shoffs + 2*NResource::nbasePixmapWidth2_ + POINT_DIST + x_acc_offs,
 				staff_props_->base -  LINE_DIST / 2 + 4 * LINE_DIST - note->line * LINE_DIST  / 2 + POINT_OFFS, 2*POINT_RAD, 2*POINT_RAD);
 		note->point_pos2 = QRect(xpos_+ x_aux_offs + shoffs + 2*NResource::nbasePixmapWidth2_ + 2*POINT_DIST+2*POINT_RAD + x_acc_offs,
 				staff_props_->base -  LINE_DIST / 2 + 4 * LINE_DIST - note->line * LINE_DIST  / 2 + POINT_OFFS, 2*POINT_RAD, 2*POINT_RAD);
-		if (note->status & (PROP_TIED | PROP_PART_OF_TIE)) {
+		if (note->properties & (PROP_TIED | PROP_PART_OF_TIE)) {
 		    note->tie_start_point_up = QPoint(note->nbase_draw_point.x() + NResource::nbasePixmapWidth2_, note->nbase_draw_point.y() +
                            NResource::nbasePixmapHeight_);
 		    note->tie_start_point_down = QPoint(note->nbase_draw_point.x() + NResource::nbasePixmapWidth2_, note->nbase_draw_point.y());
@@ -1279,7 +1279,7 @@ void NChord::calculateGraceChord() {
 		note->bodyPixmap =  NResource::tinyBasePixmap_;
 	        note->redBodyPixmap = NResource::tinyBaseRedPixmap_;
 		note->greyBodyPixmap = NResource::tinyBaseGreyPixmap_;
-		switch (note->status & ACC_MASK) {
+		switch (note->properties & ACC_MASK) {
 			case PROP_NO_ACC: break;
 			case PROP_CROSS:
 			note->acc_draw_point = QPoint (xpos_+x_acc_offs, 
@@ -1316,14 +1316,14 @@ void NChord::calculateGraceChord() {
 		else {
 			shoffs = 0;
 		}
-		SET_NOTE_PROPERTY(shoffs, note->status, PROP_SHIFTED);
+		SET_NOTE_PROPERTY(shoffs, note->properties, PROP_SHIFTED);
 		note->acc_offs = x_acc_offs;
 		note->nbase_draw_point = QPoint (xpos_+ x_aux_offs + shoffs + x_acc_offs, staff_props_->base -  LINE_DIST / 2 + 4 * LINE_DIST - note->line * LINE_DIST  / 2 + 1 + yoffs);
 		note->point_pos1 = QRect(xpos_+ x_aux_offs + shoffs + 2*NResource::tinyBasePixmapWidth2_ + POINT_DIST + x_acc_offs,
 				staff_props_->base -  LINE_DIST / 2 + 4 * LINE_DIST - note->line * LINE_DIST  / 2 + POINT_OFFS, 2*POINT_RAD, 2*POINT_RAD);
 		note->point_pos2 = QRect(xpos_+ x_aux_offs + shoffs + 2*NResource::tinyBasePixmapWidth2_ + 2*POINT_DIST+2*POINT_RAD + x_acc_offs,
 				staff_props_->base -  LINE_DIST / 2 + 4 * LINE_DIST - note->line * LINE_DIST  / 2 + POINT_OFFS, 2*POINT_RAD, 2*POINT_RAD);
-		if (note->status & (PROP_TIED | PROP_PART_OF_TIE)) {
+		if (note->properties & (PROP_TIED | PROP_PART_OF_TIE)) {
 		    note->tie_start_point_up = QPoint(note->nbase_draw_point.x() + NResource::tinyBasePixmapWidth2_, note->nbase_draw_point.y() +
                            NResource::tinyBasePixmapHeight_);
 		    note->tie_start_point_down = QPoint(note->nbase_draw_point.x() + NResource::tinyBasePixmapWidth2_, note->nbase_draw_point.y());
@@ -1495,7 +1495,7 @@ void NChord::draw(int flags) {
 				the_painter->drawPie(note->point_pos2, 0, 360*16);
 			}
 		}
-		if ((note->status & PROP_TIED) && note->tie_forward) {
+		if ((note->properties & PROP_TIED) && note->tie_forward) {
 			/* if there's no poliphony, ties are at the opposite side of stems,
 			   if there is polyphony, ties are at the same side as stems */
 			if ( ((properties_ & PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
@@ -1526,7 +1526,7 @@ void NChord::draw(int flags) {
 				the_painter->drawLine(xpos_+note->acc_offs, staff_props_->base - (i+1) * LINE_DIST, xpos_+note->acc_offs + 2*AUX_L_2, staff_props_->base - (i+1) * LINE_DIST);
 			}
 		}
-		switch (note->status & ACC_MASK) {
+		switch (note->properties & ACC_MASK) {
 			case PROP_CROSS:
 			the_painter->drawPixmap (note->acc_draw_point, (flags & DRAW_INDIRECT_GREY) ? *NResource::crossGreyPixmap_ : *NResource::crossPixmap_);
 			break;
@@ -1792,7 +1792,7 @@ void NChord::drawGraceChord(int flags) {
 				the_painter->drawPie(note->point_pos2, 0, 360*16);
 			}
 		}
-		if ((note->status & PROP_TIED) && note->tie_forward) {
+		if ((note->properties & PROP_TIED) && note->tie_forward) {
 			/* if there's no poliphony, ties are at the opposite side of stems,
 			   if there is polyphony, ties are at the same side as stems */
 			if ( ((properties_ & PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
@@ -1824,7 +1824,7 @@ void NChord::drawGraceChord(int flags) {
 				the_painter->drawLine(xpos_+note->acc_offs, staff_props_->base - (i+1) * LINE_DIST, xpos_+note->acc_offs + 2*AUX_L_2, staff_props_->base - (i+1) * LINE_DIST);
 			}
 		}
-		switch (note->status & ACC_MASK) {
+		switch (note->properties & ACC_MASK) {
 			case PROP_CROSS:
 			the_painter->drawPixmap (note->acc_draw_point, (flags & DRAW_INDIRECT_GREY) ? *NResource::crossGreyPixmap_ : *NResource::crossPixmap_);
 			break;
@@ -2164,7 +2164,7 @@ QString *NChord::computeTeXTie(unsigned int *tiePool, NClef *clef, int maxtie, b
 
 	if (spare) {
 		for (note = noteList_.first(); note; note = noteList_.next()) {
-			if (note->status & PROP_PART_OF_TIE) {
+			if (note->properties & PROP_PART_OF_TIE) {
 				note->TeXTieNr = note->tie_backward->TeXTieNr;
 				if (note->TeXTieNr >= 0) {
 					*toomany = *toomany || note->TeXTieNr >= maxtie;
@@ -2178,7 +2178,7 @@ QString *NChord::computeTeXTie(unsigned int *tiePool, NClef *clef, int maxtie, b
 			}
 		}
 		for (note = noteList_.first(); note; note = noteList_.next()) {
-			if (note->status & PROP_TIED) {
+			if (note->properties & PROP_TIED) {
 				note->TeXTieNr = -1;
 				if (!firstTiedPart) firstTiedPart = note;
 				else lastTiedPart = note;
@@ -2229,7 +2229,7 @@ QString *NChord::computeTeXTie(unsigned int *tiePool, NClef *clef, int maxtie, b
 	}
 	else {
 		for (note = noteList_.first(); note; note = noteList_.next()) {
-			if (note->status & PROP_PART_OF_TIE) {
+			if (note->properties & PROP_PART_OF_TIE) {
 				note->TeXTieNr = note->tie_backward->TeXTieNr;
 				*toomany = *toomany || note->TeXTieNr >= maxtie;
 				if (note->TeXTieNr < maxtie) {
@@ -2242,7 +2242,7 @@ QString *NChord::computeTeXTie(unsigned int *tiePool, NClef *clef, int maxtie, b
 			}
 		}
 		for (note = noteList_.first(); note; note = noteList_.next()) {
-			if (note->status & PROP_TIED) {
+			if (note->properties & PROP_TIED) {
 				tieNr = 0;
 				found = false;
 				while (!found && tieNr < 32) {
@@ -2343,7 +2343,7 @@ void NChord::initialize_acc_pos_computation() {
 		notes_available = false;
 		for (note = noteList_.first(); note; note = noteList_.next()) {
 			if (note->acc_TeX_pos != -1) continue;
-			if ((!(note->status & PROP_FORCE)) && !note->needed_acc) continue;
+			if ((!(note->properties & PROP_FORCE)) && !note->needed_acc) continue;
 			if (last_line == UNDEFINED_LINE) {
 				note->acc_TeX_pos = numTexRows_;
 				last_line = note->line;

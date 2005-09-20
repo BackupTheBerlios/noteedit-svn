@@ -928,7 +928,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 			     }
 #ifdef AAA
 			     for (note = notelist->first(); note; note = notelist->next()) {
-				if (note->status & PROP_FORCE) continue;
+				if (note->properties & PROP_FORCE) continue;
 				switch (note->needed_acc) {
 					case PROP_NO_ACC:break;
 					case PROP_CROSS: out_ << "\\sh " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
@@ -944,7 +944,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				}
 			     }
 			     for (note = notelist->first(); note; note = notelist->next()) {
-				if (!(note->status & PROP_FORCE)) continue;
+				if (!(note->properties & PROP_FORCE)) continue;
 				switch (note->offs) {
 					case  1: out_ << "\\sh " << staff_elem->actualClef_.line2TexTab_[note->line+LINE_OVERFLOW];
 						      break;
@@ -961,7 +961,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 #endif
 			     shiftes_notes_.clear(); non_shifted_notes_.clear(); shift_needed = false;
 			     for (note = notelist->first(); note; note = notelist->next()) {
-				if (note->status & PROP_SHIFTED) {
+				if (note->properties & PROP_SHIFTED) {
 					shift_needed = true;
 					shiftes_notes_.append(note);
 				}
@@ -986,9 +986,9 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				for (first = true, note = notes_not_to_be_shifted->first(); note; note = notes_not_to_be_shifted->next()) {
 					if (note == base_note) continue;
 					body_changed = false;
-					if (lastBodyState != (note->status & BODY_MASK)) {
+					if (lastBodyState != (note->properties & BODY_MASK)) {
 						body_changed = true;
-						switch (lastBodyState = (note->status & BODY_MASK)) {
+						switch (lastBodyState = (note->properties & BODY_MASK)) {
 							case PROP_BODY_CROSS: bodyString = "x"; break;
 							case PROP_BODY_CROSS2: bodyString = "k"; break;
 							case PROP_BODY_CIRCLE_CROSS: bodyString = "ox"; break;
@@ -1020,9 +1020,9 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				lastBodyState = -1;
 				for (first = true, note = notes_to_be_shifted->first() ;note ; note = notes_to_be_shifted->next(), first = false) {
 					body_changed = false;
-					if (lastBodyState != (note->status & BODY_MASK)) {
+					if (lastBodyState != (note->properties & BODY_MASK)) {
 						body_changed = true;
-						switch (lastBodyState = (note->status & BODY_MASK)) {
+						switch (lastBodyState = (note->properties & BODY_MASK)) {
 							case PROP_BODY_CROSS: bodyString = "x"; break;
 							case PROP_BODY_CROSS2: bodyString = "k"; break;
 							case PROP_BODY_CIRCLE_CROSS: bodyString = "ox"; break;
@@ -1048,7 +1048,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				}
 				out_ << "}}";
 			     }
-			     switch (base_note->status & BODY_MASK) {
+			     switch (base_note->properties & BODY_MASK) {
 				case PROP_BODY_CROSS: bodyString = "x"; break;
 				case PROP_BODY_CROSS2: bodyString = "k"; break;
 				case PROP_BODY_CIRCLE_CROSS: bodyString = "ox"; break;

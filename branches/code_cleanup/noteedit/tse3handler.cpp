@@ -195,7 +195,7 @@ TSE3::Track *NTSE3Handler::createTSE3Track(NVoice *voice, int nr, TSE3::Song *so
 				if (m_events->ev_time <= m_evt->ev_time) {
 					noteoff = MYTIME2TSE3TIME(m_events->ev_time) - 1;
 					for (note = m_events->notelist->first(); note; note = m_events->notelist->next()) {
-					  if (!(note->status & PROP_TIED) || (m_evt->special & TRILL_SPECS)) {
+					  if (!(note->properties & PROP_TIED) || (m_evt->special & TRILL_SPECS)) {
 					    thePhraseEditor.insert(
 					        TSE3::MidiEvent( TSE3::MidiCommand(TSE3::MidiCommand_NoteOff,
 					           m_events->midi_channel, deviceNumber, note->midiPitch+m_events->trilloffs, 0), noteoff)
@@ -239,7 +239,7 @@ TSE3::Track *NTSE3Handler::createTSE3Track(NVoice *voice, int nr, TSE3::Song *so
 					}
 				}
 				for (i = 0, note = m_evt->notelist->first(); note; note = m_evt->notelist->next(), i++) {
-			   		if ((note->status & PROP_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
+			   		if ((note->properties & PROP_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
 						note->midiPitch = note->tie_backward->midiPitch; /* for note off */
 					}
 			   		else if (m_evt->special != SPEC_ARPEGGIO || i == m_evt->arpegg_current) {
@@ -281,7 +281,7 @@ TSE3::Track *NTSE3Handler::createTSE3Track(NVoice *voice, int nr, TSE3::Song *so
 	while (m_events) {
 		noteoff = MYTIME2TSE3TIME(m_events->ev_time) - 1;
 		for (note = m_events->notelist->first(); note; note = m_events->notelist->next()) {
-			if (!(note->status & PROP_TIED)) {
+			if (!(note->properties & PROP_TIED)) {
 				thePhraseEditor.insert(
 				        TSE3::MidiEvent( TSE3::MidiCommand(TSE3::MidiCommand_NoteOff,
 					           m_events->midi_channel, deviceNumber, note->midiPitch+m_events->trilloffs, 0), noteoff)

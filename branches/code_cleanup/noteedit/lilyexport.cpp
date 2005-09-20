@@ -1027,13 +1027,13 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 							out_ << ") ";
 					        }
 					     }
-					     if (exportDialog_->lilyDrumNotes->isChecked() && !drum_problem_written_ && (note->status & BODY_MASK)) {
+					     if (exportDialog_->lilyDrumNotes->isChecked() && !drum_problem_written_ && (note->properties & BODY_MASK)) {
 						drum_problem_written_ = true;
 						bad = new badmeasure(LILY_ERR_DRUM_STAFF, staff_nr +1, 3 /* dummy */, total / 3, countof128th_);
 						badlist_.append(bad);
 					     }
-					     if (drumNotesChange && exportDialog_->lilyDrumNotes->isChecked() && noteBody_ != (note->status & BODY_MASK)) {
-						switch (noteBody_ = (note->status & BODY_MASK)) {
+					     if (drumNotesChange && exportDialog_->lilyDrumNotes->isChecked() && noteBody_ != (note->properties & BODY_MASK)) {
+						switch (noteBody_ = (note->properties & BODY_MASK)) {
 							case PROP_BODY_CROSS:
 							case PROP_BODY_CROSS2:
 								out_ << "\\bcr "; break;
@@ -2331,7 +2331,7 @@ void NLilyExport::pitchOut( const NNote *note, NClef *ac_clef) {
         	out_ << ',';
         	linediff += 7;
 	}
-	if (note->status & PROP_FORCE) {
+	if (note->properties & PROP_FORCE) {
 		out_ << '!';
 	}
 	lastLine_ = note->line;
@@ -2394,7 +2394,7 @@ bool NLilyExport::continuedOutsideAGroup(NMainFrameWidget *mainWidget, int staff
 bool NLilyExport::hasATie(QList<NNote> *notelist) {
 	NNote *note;
 	for (note = notelist->first(); note; note = notelist->next()) {
-		if (note->status & PROP_TIED) return true;
+		if (note->properties & PROP_TIED) return true;
 	}
 	return false;
 }
@@ -2414,7 +2414,7 @@ bool NLilyExport::chordHasMixedTies(QList<NNote> *notelist) {
 	bool hasTie = false;
 	NNote *note;
 	for (note = notelist->first(); note; note = notelist->next()) {
-		if (note->status & PROP_TIED) {hasTie = true; continue;}
+		if (note->properties & PROP_TIED) {hasTie = true; continue;}
 		if (hasTie) return true;
 	}
 	return false;

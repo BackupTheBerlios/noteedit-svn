@@ -331,7 +331,7 @@ void NMidiExport::writeTrack(NVoice *voice, NTimeSig *firstTsig) {
 				if (m_events->ev_time <= m_evt->ev_time) {
 					noteoff = MY2MIDITIME(m_events->ev_time) - 3;
 					for (note = m_events->notelist->first(); note; note = m_events->notelist->next()) {
-						if (!(note->status & PROP_TIED) || (m_evt->special & TRILL_SPECS)) {
+						if (!(note->properties & PROP_TIED) || (m_evt->special & TRILL_SPECS)) {
 							writeNoteOff(noteoff - lastEventTime, m_events->midi_channel, note->midiPitch+m_events->trilloffs, m_events->volume);
 							lastEventTime = noteoff;
 						}
@@ -370,7 +370,7 @@ void NMidiExport::writeTrack(NVoice *voice, NTimeSig *firstTsig) {
 					}
 				}
 				for (i = 0, note = m_evt->notelist->first(); note; note = m_evt->notelist->next(), i++) {
-			   		if ((note->status & PROP_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
+			   		if ((note->properties & PROP_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
 						note->midiPitch = note->tie_backward->midiPitch; /* for note off */
 					}
 			   		else if (m_evt->special != SPEC_ARPEGGIO || i == m_evt->arpegg_current) {
@@ -417,7 +417,7 @@ void NMidiExport::writeTrack(NVoice *voice, NTimeSig *firstTsig) {
 	while (m_events) {
 		noteoff = MY2MIDITIME(m_events->ev_time) - 3;
 		for (note = m_events->notelist->first(); note; note = m_events->notelist->next()) {
-			if (!(note->status & PROP_TIED) || (m_events->special & TRILL_SPECS)) {
+			if (!(note->properties & PROP_TIED) || (m_events->special & TRILL_SPECS)) {
 				writeNoteOff(noteoff - lastEventTime, m_events->midi_channel, note->midiPitch, m_events->volume);
 				lastEventTime = noteoff;
 			}

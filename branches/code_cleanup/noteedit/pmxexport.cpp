@@ -642,7 +642,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     	note = chord->getNoteList()->first();
 				     }
 				     pitchOut(&(actual_staff->actualKeysig_), note, elem->getSubType(), &(actual_staff->actualClef_), chord, staff_nr, barNr_+numMeasures);
-				     if (!drum_problem_written_ && (note->status & BODY_MASK)) {
+				     if (!drum_problem_written_ && (note->properties & BODY_MASK)) {
 					drum_problem_written_ = true;
 					bad = new badmeasure(PMX_ERR_DRUM_STAFF, staff_nr, barNr_+numMeasures, total / 3, countof128th_);
 					badlist_.append(bad);
@@ -653,7 +653,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     }
 				     if ((chord->properties_ & PROP_TUPLET) && elem->getSubType() != tupletBase_)  *pmxout_ << 'D';
 #ifdef THIS_IS_WRONG
-				     base_shifted = note->status & PROP_SHIFTED;
+				     base_shifted = note->properties & PROP_SHIFTED;
 #endif
 				     *pmxout_ << ' ';
 				     if (chord->properties_ & PROP_STACC) {
@@ -702,17 +702,17 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 			  	     while (note) {
 					     *pmxout_ << "z";
 					     pitchOut(&(actual_staff->actualKeysig_), note, -1, &(actual_staff->actualClef_), chord, staff_nr, barNr_+numMeasures);
-					     if (!drum_problem_written_ && (note->status & BODY_MASK)) {
+					     if (!drum_problem_written_ && (note->properties & BODY_MASK)) {
 						drum_problem_written_ = true;
 						bad = new badmeasure(PMX_ERR_DRUM_STAFF, staff_nr, barNr_+numMeasures, total / 3, countof128th_);
 						badlist_.append(bad);
 					     }
 #ifdef THIS_IS_WRONG
 					     if (base_shifted) {
-						if (!(note->status & PROP_SHIFTED)) *pmxout_ << "r";
+						if (!(note->properties & PROP_SHIFTED)) *pmxout_ << "r";
 					     }
 					     else {
-				     	     	if (note->status & PROP_SHIFTED) *pmxout_ << "r";
+				     	     	if (note->properties & PROP_SHIFTED) *pmxout_ << "r";
 					     }
 #endif
 				     	     *pmxout_ << ' ';
@@ -989,8 +989,8 @@ void NPmxExport::pitchOut(NKeySig *ksig, const NNote *note, int length, NClef *a
 		*pmxout_  << computePMXLength(length);
 		lastLength_ = length;
 	}
-	if (!(note->status & PROP_PART_OF_TIE)) {
-		if (!(note->status & PROP_FORCE)) {
+	if (!(note->properties & PROP_PART_OF_TIE)) {
+		if (!(note->properties & PROP_FORCE)) {
 			switch (note->needed_acc) {
 				case PROP_CROSS: *pmxout_ << "s"; ksig->setTempAccent(note->line, PROP_CROSS); break;
 				case PROP_FLAT: *pmxout_ << "f"; ksig->setTempAccent(note->line, PROP_FLAT); break;
@@ -1093,7 +1093,7 @@ void NPmxExport::setTie(NNote *note, int staff_nr, int barnr) {
 	int i;
 	bool found = false;
 
-	if ((note->status & PROP_TIED) && !(note->status & PROP_PART_OF_TIE)) { 
+	if ((note->properties & PROP_TIED) && !(note->properties & PROP_PART_OF_TIE)) { 
 		for (i = 0; i < MAXTIES && !found; i++) {
 			found = !((1 << i) & tiePool_);
 		}
@@ -1111,13 +1111,13 @@ void NPmxExport::setTie(NNote *note, int staff_nr, int barnr) {
 			tieMember->TeXTieNr = i;
 		}
 	}
-	else if ((note->status & PROP_PART_OF_TIE) && (note->status & PROP_TIED)) {
+	else if ((note->properties & PROP_PART_OF_TIE) && (note->properties & PROP_TIED)) {
 		if (note->TeXTieNr >= 0) {
 			*pmxout_ << "s" << note->TeXTieNr << ' ';
 			*pmxout_ << "s" << note->TeXTieNr << ' ';
 		}
 	}
-	else if ((note->status & PROP_PART_OF_TIE) && !(note->status & PROP_TIED)) {
+	else if ((note->properties & PROP_PART_OF_TIE) && !(note->properties & PROP_TIED)) {
 		if (note->TeXTieNr >= 0) {
 			*pmxout_ << "s" << note->TeXTieNr << ' ';
 			tiePool_ = tiePool_ & (~(1 << note->TeXTieNr));

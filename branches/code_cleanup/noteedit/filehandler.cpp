@@ -88,8 +88,8 @@ void NFileHandler::pitchOut( const NNote *note, NClef *ac_clef, bool with_tie) {
 	int i, octave;
 
 	out_ << ac_clef->line2Name(note->line, &octave, false, false);
-	if (!(note->status & PROP_PART_OF_TIE) && with_tie) {
-		if (note->status & PROP_FORCE) {
+	if (!(note->properties & PROP_PART_OF_TIE) && with_tie) {
+		if (note->properties & PROP_FORCE) {
 			switch (note->offs) {
 				case  1: out_ << "#"; break;
 				case -1: out_ << "&"; break;
@@ -99,7 +99,7 @@ void NFileHandler::pitchOut( const NNote *note, NClef *ac_clef, bool with_tie) {
 			}
 		}
 		else {
-			switch (note->status & ACC_MASK) {
+			switch (note->properties & ACC_MASK) {
 				case PROP_CROSS: out_ << "#";  break;
 				case PROP_FLAT: out_ << "&";   break;
 				case PROP_NATUR: out_ << "n";  break;
@@ -118,8 +118,8 @@ void NFileHandler::pitchOut( const NNote *note, NClef *ac_clef, bool with_tie) {
 			out_ << "-";
 		}
 	}
-	if ((note->status & PROP_TIED) && with_tie) out_ << "~";
-	switch (note->status & BODY_MASK) {
+	if ((note->properties & PROP_TIED) && with_tie) out_ << "~";
+	switch (note->properties & BODY_MASK) {
 		case PROP_BODY_CROSS: out_ << " bcr "; break;
 		case PROP_BODY_CROSS2: out_ << " bcr2 "; break;
 		case PROP_BODY_CIRCLE_CROSS: out_ << " bcrc "; break;
@@ -982,7 +982,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 				     }
 			  	     for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
 					     pitchOut(note, &(actual_staff->actualClef_), true);
-					     if (!drum_problem_written_ && (note->status & BODY_MASK)) {
+					     if (!drum_problem_written_ && (note->properties & BODY_MASK)) {
 						drum_problem_written_ = true;
 						bad = new badmeasure(ERR_DRUM_STAFF, staff_nr, 0 /*dummy */, 3 /* dummy */, countof128th_);
 						badlist_.append(bad);
@@ -1191,7 +1191,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					starttime = ((elem->midiTime_ - *measure_start_time) / MULTIPLICATOR) / (double) (128 / curr_denom_);
 					writeChord(staff_nr, starttime, diag);
 				     }
-				     if (!(chord->getNoteList()->first()->status & PROP_PART_OF_TIE) && !(chord->properties_ & PROP_GRACE)) {
+				     if (!(chord->getNoteList()->first()->properties & PROP_PART_OF_TIE) && !(chord->properties_ & PROP_GRACE)) {
 				        for (i = 0; i < NUM_LYRICS; i++) {
 				     		lyrics = chord->getLyrics(i);
 				     		if (lyrics) {
@@ -1787,7 +1787,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 				     loop2 = true;
 			  	     for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
 					     pitchOut( note, &(actual_staff->actualClef_), true);
-					     if (!drum_problem_written_  && (note->status & BODY_MASK)) {
+					     if (!drum_problem_written_  && (note->properties & BODY_MASK)) {
 						drum_problem_written_ = true;
 						bad = new badmeasure(ERR_DRUM_STAFF, staff_nr, 0 /*dummy */, 3 /* dummy */, countof128th_);
 						badlist_.append(bad);

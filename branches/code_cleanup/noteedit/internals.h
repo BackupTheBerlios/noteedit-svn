@@ -92,7 +92,7 @@ class NNote {
 		char acc_offs;
 		property_type needed_acc;
 		char acc_TeX_pos;
-		property_type status;
+		property_type properties;
 		QPoint tie_start_point_up, tie_start_point_down;
 		QPoint tie_forward_point_up, tie_forward_point_down;
 		QPoint tie_back_point_up, tie_back_point_down;

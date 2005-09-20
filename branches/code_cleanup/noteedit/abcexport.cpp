@@ -464,9 +464,9 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 				      for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
 				     	outputNote(note, &(actual_staff->actualClef_), inChord);
 					if (!((chord->properties_ & PROP_GRACE) && chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
-						outputLength(chord->getSubType(), chord->properties_, inChord, note->status & BODY_MASK);
+						outputLength(chord->getSubType(), chord->properties_, inChord, note->properties & BODY_MASK);
 					}
-					if (note->status & PROP_TIED) out_ << '-';
+					if (note->properties & PROP_TIED) out_ << '-';
 				      }
 				      if (inChord) {
 				      	out_ << ']';
@@ -722,9 +722,9 @@ bool NABCExport::writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffN
 				      for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
 				     	outputNote(note, &(actual_staff->actualClef_), inChord);
 					if (!((chord->properties_ & PROP_GRACE) && chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
-						outputLength(chord->getSubType(), chord->properties_, inChord, note->status & BODY_MASK);
+						outputLength(chord->getSubType(), chord->properties_, inChord, note->properties & BODY_MASK);
 					}
-					if (note->status & PROP_TIED) out_ << '-';
+					if (note->properties & PROP_TIED) out_ << '-';
 				      }
 				      if (inChord) {
 				      	out_ << ']';
@@ -885,7 +885,7 @@ void NABCExport::outputNote(NNote *note, NClef *actualClef, bool inInChord) {
 	char notename;
 	bool percussion = actualClef->getSubType() == DRUM_CLEF || actualClef->getSubType() == DRUM_BASS_CLEF;
 	bool prec_note = false;
-	switch (note->status & BODY_MASK) {
+	switch (note->properties & BODY_MASK) {
 		case PROP_BODY_CROSS:
 			if (!inInChord) out_ << '[';
 			out_ << "!head-x!";
@@ -914,7 +914,7 @@ void NABCExport::outputNote(NNote *note, NClef *actualClef, bool inInChord) {
 	}
 	
 	
-	if (!prec_note && !percussion && (note->needed_acc || (note->status & PROP_FORCE))) {
+	if (!prec_note && !percussion && (note->needed_acc || (note->properties & PROP_FORCE))) {
 		switch(note->offs) {
 			case -2: out_ << "__"; break;
 			case -1: out_ << "_";  break;
@@ -943,13 +943,13 @@ void NABCExport::outputNote(NNote *note, NClef *actualClef, bool inInChord) {
 	for (; octave < 1; octave++) out_ << ',';
 }
 
-void NABCExport::outputLength(int len, property_type status, bool inChord, bool drumNote) {
+void NABCExport::outputLength(int len, property_type properties, bool inChord, bool drumNote) {
 	unsigned int k;
-	if (len == QUARTER_LENGTH && !(status & (PROP_SINGLE_DOT | PROP_DOUBLE_DOT))) {
+	if (len == QUARTER_LENGTH && !(properties & (PROP_SINGLE_DOT | PROP_DOUBLE_DOT))) {
 		if (!inChord && drumNote) out_ << ']';
 		return;
 	}
-	if (status & PROP_GRACE) len <<= 1; // Dont' know ???
+	if (properties & PROP_GRACE) len <<= 1; // Dont' know ???
 	if (len > DOUBLE_WHOLE_LENGTH) {
 		out_ << (len / QUARTER_LENGTH);
 		if (!inChord && drumNote) out_ << ']';
@@ -957,28 +957,28 @@ void NABCExport::outputLength(int len, property_type status, bool inChord, bool 
 	}
 	switch (len) {
 		case DOUBLE_WHOLE_LENGTH: 
-			switch (status & DOT_MASK) {
+			switch (properties & DOT_MASK) {
 				case PROP_DOUBLE_DOT: out_ << "13"; break;
 				case PROP_SINGLE_DOT: out_ << "12"; break;
 				default: out_ << "8"; break;
 			}
 			break;
 		case WHOLE_LENGTH:
-			switch (status & DOT_MASK) {
+			switch (properties & DOT_MASK) {
 				case PROP_DOUBLE_DOT: out_ << "7"; break;
 				case PROP_SINGLE_DOT: out_ << "6"; break;
 				default: out_ << "4"; break;
 			}
 			break;
 		case HALF_LENGTH:
-			switch (status & DOT_MASK) {
+			switch (properties & DOT_MASK) {
 				case PROP_DOUBLE_DOT: out_ << "14/4"; break;
 				case PROP_SINGLE_DOT: out_ << "3"; break;
 				default: out_ << "2"; break;
 			}
 			break;
 		default:
-			switch (status & DOT_MASK) {
+			switch (properties & DOT_MASK) {
 				case PROP_DOUBLE_DOT: out_ << "7/" << ((QUARTER_LENGTH / len) * 4); break;
 				case PROP_SINGLE_DOT: out_ << "3/" << ((QUARTER_LENGTH / len) * 2); break;
 				default: //out_ << '/' << (QUARTER_LENGTH / len); break;

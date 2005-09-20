@@ -1700,18 +1700,18 @@ void NVoice::setAccent(unsigned int type){
 	        currentElement_->playable()->properties_ ^= (1 << i);
 	if (currentElement_->getType() == T_CHORD) {
 	    switch(type){
-	        case PROP_STACC: SET_STATUS(main_props_->staccato, currentElement_->playable()->properties_, PROP_STACC); break;
-	        case PROP_SFORZ: SET_STATUS(main_props_->sforzato, currentElement_->playable()->properties_, PROP_SFORZ); break;
-	        case PROP_PORTA: SET_STATUS(main_props_->portato, currentElement_->playable()->properties_, PROP_PORTA); break;
-	        case PROP_STPIZ: SET_STATUS(main_props_->strong_pizzicato, currentElement_->playable()->properties_, PROP_STPIZ); break;
-	        case PROP_SFZND: SET_STATUS(main_props_->sforzando, currentElement_->playable()->properties_, PROP_SFZND); break;
-	        case PROP_FERMT: SET_STATUS(main_props_->fermate, currentElement_->playable()->properties_, PROP_FERMT); break;
+	        case PROP_STACC: currentElement_->chord()->setProperty(PROP_STACC, main_props_->staccato); break;
+	        case PROP_SFORZ: currentElement_->chord()->setProperty(PROP_SFORZ, main_props_->sforzato); break;
+	        case PROP_PORTA: currentElement_->chord()->setProperty(PROP_PORTA, main_props_->portato); break;
+	        case PROP_STPIZ: currentElement_->chord()->setProperty(PROP_STPIZ, main_props_->strong_pizzicato); break;
+	        case PROP_SFZND: currentElement_->chord()->setProperty(PROP_SFZND, main_props_->sforzando); break;
+	        case PROP_FERMT: currentElement_->chord()->setProperty(PROP_FERMT, main_props_->fermate); break;
 	        default: printf("illegal accent, ID: %i\n", type); fflush(stdout); break;
 	    }
 	} else if ((currentElement_->getType() == T_REST) && (currentElement_->getSubType() != MULTIREST)) {
 	    // on normal rest, fermata is allowed
 	    switch(type){
-	        case PROP_FERMT: SET_STATUS(main_props_->fermate, currentElement_->playable()->properties_, PROP_FERMT); break;
+	        case PROP_FERMT: currentElement_->rest()->setProperty(PROP_FERMT, main_props_->fermate); break;
 	        default: /* ignore other accents */ break;
 	    }
 	}
@@ -5851,13 +5851,13 @@ void NVoice::combineChords(int firstIdx, int lastIdx) {
 			note = noteList->next(), note1 = noteList1->next(), note2 = noteList2->next()) {
 			note->status = 0;
 			if (first) {
-				SET_STATUS ((note1->status & PROP_PART_OF_TIE), note->status, PROP_PART_OF_TIE);
+				SET_NOTE_PROPERTY ((note1->status & PROP_PART_OF_TIE), note->status, PROP_PART_OF_TIE);
 			}
 			else {
 				note->status |= PROP_PART_OF_TIE;
 			}
 			if (MIDIlength < MULTIPLICATOR) {
-				SET_STATUS ((note2->status & PROP_TIED), note->status, PROP_TIED);
+				SET_NOTE_PROPERTY ((note2->status & PROP_TIED), note->status, PROP_TIED);
 			}
 			else {
 				note->status |= PROP_TIED;
@@ -5865,8 +5865,8 @@ void NVoice::combineChords(int firstIdx, int lastIdx) {
 			first = false;
 		}
 		newChord->properties_ = dotcount;
-		SET_STATUS ((firstChord->properties_ & PROP_STEM_UP_BEFORE_BEAM), newChord->properties_, PROP_STEM_UP);
-		SET_STATUS ((firstChord->properties_ & PROP_STEM_UP_BEFORE_BEAM), newChord->properties_, PROP_STEM_UP_BEFORE_BEAM);
+		newChord->setProperty(PROP_STEM_UP, (firstChord->properties_ & PROP_STEM_UP_BEFORE_BEAM));
+		newChord->setProperty(PROP_STEM_UP_BEFORE_BEAM, (firstChord->properties_ & PROP_STEM_UP_BEFORE_BEAM));
 		newChord->changeLength(len2);
 		if (endOfList) {
 			musElementList_.append(newChord);

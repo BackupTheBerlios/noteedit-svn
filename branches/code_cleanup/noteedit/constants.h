@@ -216,7 +216,7 @@
 #define BODY_MASK ( PROP_BODY_CROSS | PROP_BODY_CROSS2 | PROP_BODY_CIRCLE_CROSS |\
 			PROP_BODY_RECT | PROP_BODY_TRIA )
 
-#define SET_STATUS(condition, stat_var, stat_bit) if (condition) {stat_var |= stat_bit;} else {stat_var &= (~stat_bit);}
+#define SET_NOTE_PROPERTY(condition, stat_var, stat_bit) if (condition) {stat_var |= stat_bit;} else {stat_var &= (~stat_bit);}
 
 
 #endif /* CONSTANTS_H */

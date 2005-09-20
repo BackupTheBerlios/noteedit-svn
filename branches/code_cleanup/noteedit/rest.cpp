@@ -92,7 +92,7 @@ void NRest::changeLength(int length) {
 void NRest::setTupletParams(QList<NPlayable> *tupletList, 
 			bool last, double m, double n, double tuptexn, int xstart, int xend, char numnotes, char playtime) {
 	tupletList_ = tupletList;
-	SET_STATUS(last, properties_, PROP_LAST_TUPLET);
+	setProperty(PROP_LAST_TUPLET, last);
 	properties_ |= PROP_TUPLET;
 	tupTeXn_ = tuptexn;
 	tupm_ = m; tupn_ = n; xstart_ = xstart; xend_ = xend;

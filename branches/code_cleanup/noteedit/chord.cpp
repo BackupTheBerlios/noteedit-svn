@@ -97,10 +97,10 @@ QPoint NChord::StrokeDist1_(STROKE_X_1, STROKE_Y_1);
 QPoint NChord::StrokeDist2_(STROKE_X_2, STROKE_Y_2);
 
 
-#define STEM_LOGIC(line_expression) SET_STATUS((properties_ & PROP_GRACE) || (main_props_->actualStemDir == STEM_DIR_AUTO && \
+#define STEM_LOGIC(line_expression) setProperty(PROP_STEM_UP, (properties_ & PROP_GRACE) || (main_props_->actualStemDir == STEM_DIR_AUTO && \
 						voices_stem_policy == STEM_POL_INDIVIDUAL && (line_expression) < 4) || \
 		    				main_props_->actualStemDir == STEM_DIR_UP || \
-		    				(voices_stem_policy == STEM_POL_UP && main_props_->actualStemDir != STEM_DIR_DOWN), properties_, PROP_STEM_UP);
+		    				(voices_stem_policy == STEM_POL_UP && main_props_->actualStemDir != STEM_DIR_DOWN) );
 
 
 int NChord::numTexRows_ = 0;
@@ -438,7 +438,7 @@ void NChord::setActualTied(bool tied) {
 	if (note == NULL) {
 		NResource::abort("setActualTied: internal error");
 	}
-	SET_STATUS(tied, note->status, PROP_TIED);
+	SET_NOTE_PROPERTY(tied, note->status, PROP_TIED);
 }
 
 void NChord::removeAllTies(){
@@ -466,17 +466,17 @@ void NChord::tieWith(NChord *otherChordBefore) {
 
 void NChord::setArpeggio(bool on) {
 	if (properties_ & PROP_GRACE) return;
-	SET_STATUS(on, properties_, PROP_ARPEGG);
+	setProperty(PROP_ARPEGG, on);
 }
 
 void NChord::setPedalOn(bool on) {
 	if (properties_ & PROP_GRACE) return;
-	SET_STATUS(on, properties_, PROP_PEDAL_ON);
+	setProperty(PROP_PEDAL_ON, on);
 }
 
 void NChord::setPedalOff(bool on) {
 	if (properties_ & PROP_GRACE) return;
-	SET_STATUS(on, properties_, PROP_PEDAL_OFF);
+	setProperty(PROP_PEDAL_OFF, on);
 }
 
 void NChord::resetSlurForward() {
@@ -490,7 +490,7 @@ void NChord::resetSlurBackward() {
 }
 
 void NChord::setSlured(bool slured, NChord *partner) {
-	SET_STATUS(slured, properties_, PROP_SLURED);
+	setProperty(PROP_SLURED, slured);
 	if (slured) {
 		slur_forward_ = partner;
 		partner->slur_backward_ = this;
@@ -537,7 +537,7 @@ void NChord::checkSlures() {
 void NChord::setTupletParams(QList<NPlayable> *tupletList, 
 				bool last, double m, double n, double tuptexn, int xstart, int xend, char numnotes, char playtime) {
 	tupletList_ = tupletList;
-	SET_STATUS(last, properties_, PROP_LAST_TUPLET);
+	setProperty(PROP_LAST_TUPLET, last);
 	properties_ |= PROP_TUPLET;
 	tupTeXn_ = tuptexn;
 	tupm_ = m; tupn_ = n; xstart_ = xstart; xend_ = xend;
@@ -582,8 +582,8 @@ bool NChord::equalTiedChord(NChord *chord2) {
 
 void NChord::setStemUp(bool stem_up) {
 	if (properties_ & PROP_GRACE) return;
-	SET_STATUS(stem_up, properties_, PROP_STEM_UP);
-	SET_STATUS(stem_up, properties_, PROP_STEM_UP_BEFORE_BEAM);
+	setProperty(PROP_STEM_UP, stem_up);
+	setProperty(PROP_STEM_UP_BEFORE_BEAM, stem_up);
 	calculateDimensionsAndPixmaps();
 }
 
@@ -660,7 +660,7 @@ void NChord::computeBeames(QList<NChord> *beamList, int stemPolicy) {
 			{
 			forceStemUp = ((numStemUp > numStemDown) || stemPolicy == STEM_POL_UP);
 			for (chord = beamList->first(); chord; chord = beamList->next()) {
-				SET_STATUS(forceStemUp, chord->properties_, PROP_STEM_UP);
+				chord->setProperty( PROP_STEM_UP, forceStemUp);
 				chord->calculateDimensionsAndPixmaps();
 			}
 			computeLineParams(beamList, &n, &m);
@@ -1081,7 +1081,7 @@ void NChord::calculateDimensionsAndPixmaps() {
 		else {
 			shoffs = 0;
 		}
-		SET_STATUS(shoffs, note->status, PROP_SHIFTED);
+		SET_NOTE_PROPERTY(shoffs, note->status, PROP_SHIFTED);
 		note->acc_offs = x_acc_offs;
 		note->nbase_draw_point = QPoint (xpos_+ x_aux_offs + shoffs + x_acc_offs, staff_props_->base -  LINE_DIST / 2 + 4 * LINE_DIST - note->line * LINE_DIST  / 2 + 1 + yoffs);
 		note->point_pos1 = QRect(xpos_+ x_aux_offs + shoffs + 2*NResource::nbasePixmapWidth2_ + POINT_DIST + x_acc_offs,
@@ -1316,7 +1316,7 @@ void NChord::calculateGraceChord() {
 		else {
 			shoffs = 0;
 		}
-		SET_STATUS(shoffs, note->status, PROP_SHIFTED);
+		SET_NOTE_PROPERTY(shoffs, note->status, PROP_SHIFTED);
 		note->acc_offs = x_acc_offs;
 		note->nbase_draw_point = QPoint (xpos_+ x_aux_offs + shoffs + x_acc_offs, staff_props_->base -  LINE_DIST / 2 + 4 * LINE_DIST - note->line * LINE_DIST  / 2 + 1 + yoffs);
 		note->point_pos1 = QRect(xpos_+ x_aux_offs + shoffs + 2*NResource::tinyBasePixmapWidth2_ + POINT_DIST + x_acc_offs,
@@ -1930,7 +1930,7 @@ void NChord::moveUp(int up, int voices_stem_policy, NKeySig *key) {
 	if (NResource::moveAccKeysig_) {
 		note->offs = key->getOffset(note->line);
 	}
-	SET_STATUS((main_props_->actualStemDir == STEM_DIR_AUTO && noteList_.first()->line < 4) || main_props_->actualStemDir == STEM_DIR_UP, properties_, PROP_STEM_UP);
+	setProperty(PROP_STEM_UP, (main_props_->actualStemDir == STEM_DIR_AUTO && noteList_.first()->line < 4) || main_props_->actualStemDir == STEM_DIR_UP );
 	STEM_LOGIC(noteList_.first()->line);
 }
 
@@ -1949,7 +1949,7 @@ void NChord::moveDown(int down, int voices_stem_policy, NKeySig *key) {
 	if (NResource::moveAccKeysig_) {
 		note->offs = key->getOffset(note->line);
 	}
-	SET_STATUS((main_props_->actualStemDir == STEM_DIR_AUTO && noteList_.first()->line < 4) || main_props_->actualStemDir == STEM_DIR_UP, properties_, PROP_STEM_UP);
+	setProperty(PROP_STEM_UP, (main_props_->actualStemDir == STEM_DIR_AUTO && noteList_.first()->line < 4) || main_props_->actualStemDir == STEM_DIR_UP );
 	STEM_LOGIC(noteList_.first()->line);
 }
 
@@ -1972,7 +1972,7 @@ void NChord::moveSemiToneUp(int voices_stem_policy, NClef *clef, NKeySig *ksig) 
 	}
 	note->line = new_line;
 	note->offs = new_offs;
-	SET_STATUS((main_props_->actualStemDir == STEM_DIR_AUTO && noteList_.first()->line < 4) || main_props_->actualStemDir == STEM_DIR_UP, properties_, PROP_STEM_UP);
+	setProperty(PROP_STEM_UP, (main_props_->actualStemDir == STEM_DIR_AUTO && noteList_.first()->line < 4) || main_props_->actualStemDir == STEM_DIR_UP );
 	STEM_LOGIC(noteList_.first()->line);
 }
 
@@ -1994,7 +1994,7 @@ void NChord::moveSemiToneDown(int voices_stem_policy, NClef *clef, NKeySig *ksig
 	}
 	note->line = new_line;
 	note->offs = new_offs;
-	SET_STATUS((main_props_->actualStemDir == STEM_DIR_AUTO && noteList_.first()->line < 4) || main_props_->actualStemDir == STEM_DIR_UP, properties_, PROP_STEM_UP);
+	setProperty(PROP_STEM_UP, (main_props_->actualStemDir == STEM_DIR_AUTO && noteList_.first()->line < 4) || main_props_->actualStemDir == STEM_DIR_UP );
 	STEM_LOGIC(noteList_.first()->line);
 }
 

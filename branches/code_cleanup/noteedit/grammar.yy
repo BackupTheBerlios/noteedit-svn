@@ -96,16 +96,16 @@ void yyerror(char *s);
 	} key;
 	struct {
 		int length;
-		unsigned int status;
+		unsigned int properties;
 	} length;
 	struct {
 		int line;
 		int offs;
-		unsigned int status;
+		unsigned int properties;
 		unsigned int beamstatus;
 		int slurdist;
 	} noteparam;
-	struct property_descr_str statusdescr;
+	struct property_descr_str propertydescr;
 	struct {
 		unsigned int beamstatus;
 		unsigned int slurdist;
@@ -250,7 +250,7 @@ void yyerror(char *s);
 %type <length> length
 %type <noteparam> pitch
 %type <muselemdescr> note chord element rest
-%type <statusdescr> pitchsuffixes pitchsuffix slur_info bodyinfo
+%type <propertydescr> pitchsuffixes pitchsuffix slur_info bodyinfo
 %type <tupletdescr> elmentdescriptions elmentdescription clefchange keychange
 %type <tupletdescr2> tupletdescr
 %type <modidescr> modificators modificator modi_detail ornament
@@ -1471,7 +1471,7 @@ element : note
 
 chord: note pitch
 
-	{$1.element.chord->insertNewNote($2.line, $2.offs, STEM_POL_INDIVIDUAL, $2.status);
+	{$1.element.chord->insertNewNote($2.line, $2.offs, STEM_POL_INDIVIDUAL, $2.properties);
 	 $$.beamstatus = $2.beamstatus;
 	 $$.slurdist = $1.slurdist;
 	 }
@@ -1479,7 +1479,7 @@ chord: note pitch
 
      | chord pitch
 
-	{$1.element.chord->insertNewNote($2.line, $2.offs, STEM_POL_INDIVIDUAL, $2.status);
+	{$1.element.chord->insertNewNote($2.line, $2.offs, STEM_POL_INDIVIDUAL, $2.properties);
 	 $$.beamstatus = $2.beamstatus;
 	 $$.slurdist = $1.slurdist;
 	}
@@ -1493,10 +1493,10 @@ note : length pitch
 		current_modificators &= (~INTERIM_STOKE);
 	 }
 	 $$.element.chord = new NChord(&(parser_params.mainWidget->main_props_), &(current_staff->staff_props_),
-		 current_voice, $2.line, $2.offs, $1.length, current_voice->stemPolicy_, $1.status | $2.status | current_modificators);
+		 current_voice, $2.line, $2.offs, $1.length, current_voice->stemPolicy_, $1.properties | $2.properties | current_modificators);
 	 $$.beamstatus = $2.beamstatus;
 	 $$.slurdist = 0;
-	 if ($2.status &  PROP_SLURED) {
+	 if ($2.properties &  PROP_SLURED) {
 		if ($2.slurdist < 1 || $2.slurdist > 1000) {
 			sprintf(Str, "bad slur distance: %d", $2.slurdist);
 			yyerror(Str);
@@ -1512,52 +1512,52 @@ note : length pitch
 rest : length 'r'
 	{int stat = 0;
 	 if (current_modificators & PROP_FERMT) stat = PROP_FERMT;
-	 $$.element.muselem = new NRest(&(parser_params.mainWidget->main_props_), &(current_staff->staff_props_), &(current_voice->yRestOffs_), $1.length, $1.status | stat);
+	 $$.element.muselem = new NRest(&(parser_params.mainWidget->main_props_), &(current_staff->staff_props_), &(current_voice->yRestOffs_), $1.length, $1.properties | stat);
 	 $$.beamstatus = 0;
 	}
      | length 's'
-	{$$.element.muselem = new NRest(&(parser_params.mainWidget->main_props_), &(current_staff->staff_props_), &(current_voice->yRestOffs_), $1.length, $1.status | PROP_HIDDEN);
+	{$$.element.muselem = new NRest(&(parser_params.mainWidget->main_props_), &(current_staff->staff_props_), &(current_voice->yRestOffs_), $1.length, $1.properties | PROP_HIDDEN);
 	 $$.beamstatus = 0;
 	}
 
      ;
 
 length : Y_NUMBER
-		{$$.length = WHOLE_LENGTH / $1; $$.status = 0;} 
+		{$$.length = WHOLE_LENGTH / $1; $$.properties = 0;} 
 
        | Y_NUMBER '.'
-		{$$.length = WHOLE_LENGTH / $1; $$.status = PROP_SINGLE_DOT;} 
+		{$$.length = WHOLE_LENGTH / $1; $$.properties = PROP_SINGLE_DOT;} 
 
        | Y_NUMBER '.' '.'
-		{$$.length = WHOLE_LENGTH / $1; $$.status = PROP_DOUBLE_DOT;} 
+		{$$.length = WHOLE_LENGTH / $1; $$.properties = PROP_DOUBLE_DOT;} 
 
        | Y_REAL_NUMBER /* "4." or so */
-       		{$$.length = WHOLE_LENGTH / ((int) ($1+0.4)); $$.status = PROP_SINGLE_DOT;} 
+       		{$$.length = WHOLE_LENGTH / ((int) ($1+0.4)); $$.properties = PROP_SINGLE_DOT;} 
 
        | Y_REAL_NUMBER '.' /* "4.." or so */
-       		{$$.length = WHOLE_LENGTH / ((int) ($1+0.4)); $$.status = PROP_DOUBLE_DOT;} 
+       		{$$.length = WHOLE_LENGTH / ((int) ($1+0.4)); $$.properties = PROP_DOUBLE_DOT;} 
 
        | Y_1_2
-		{$$.length = DOUBLE_WHOLE_LENGTH / $1; $$.status = 0;} 
+		{$$.length = DOUBLE_WHOLE_LENGTH / $1; $$.properties = 0;} 
 
        | Y_1_2 '.'
-		{$$.length = DOUBLE_WHOLE_LENGTH / $1; $$.status = PROP_SINGLE_DOT;} 
+		{$$.length = DOUBLE_WHOLE_LENGTH / $1; $$.properties = PROP_SINGLE_DOT;} 
 
        | Y_1_2 '.' '.'
-		{$$.length = DOUBLE_WHOLE_LENGTH / $1; $$.status = PROP_DOUBLE_DOT;} 
+		{$$.length = DOUBLE_WHOLE_LENGTH / $1; $$.properties = PROP_DOUBLE_DOT;} 
 
        ;
 
 pitch : Y_PITCH pitchsuffixes
 		{$$.line = current_staff->actualClef_.name2Line($1);
-		 if ($2.status & PROP_FORCE) {
+		 if ($2.properties & PROP_FORCE) {
 			$$.offs = $2.offs;
 		 }
 		 else {
 		 	$$.offs = UNDEFINED_OFFS;
 		 }
 		 $$.line += $2.octavmodi;
-		 $$.status = $2.status;
+		 $$.properties = $2.properties;
 		 $$.beamstatus = $2.beamstatus;
 		 $$.slurdist = $2.slurdist;
 		}
@@ -1566,7 +1566,7 @@ pitch : Y_PITCH pitchsuffixes
 
 pitchsuffixes : pitchsuffixes pitchsuffix
 			{$$.octavmodi = $1.octavmodi + $2.octavmodi; 
-			 $$.status = $1.status | $2.status;
+			 $$.properties = $1.properties | $2.properties;
 			 $$.offs = $1.offs + $2.offs;
 			 $$.beamstatus = $1.beamstatus | $2.beamstatus;
 			 $$.slurdist = $1.slurdist + $2.slurdist;
@@ -1584,19 +1584,19 @@ pitchsuffix : '+'
 		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.octavmodi = -7;}
 
 	    | '#'
-		{memset(&($$), 0, sizeof(struct property_descr_str));$$.offs = 1; $$.status = PROP_FORCE;}
+		{memset(&($$), 0, sizeof(struct property_descr_str));$$.offs = 1; $$.properties = PROP_FORCE;}
 
 	    | '&'
-		{memset(&($$), 0, sizeof(struct property_descr_str));$$.offs -= 1; $$.status = PROP_FORCE;}
+		{memset(&($$), 0, sizeof(struct property_descr_str));$$.offs -= 1; $$.properties = PROP_FORCE;}
 
 	    | 'x'
-		{memset(&($$), 0, sizeof(struct property_descr_str));$$.offs = 2;  $$.status = PROP_FORCE;}
+		{memset(&($$), 0, sizeof(struct property_descr_str));$$.offs = 2;  $$.properties = PROP_FORCE;}
 
 	    | '~'
-		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_TIED; }
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.properties = PROP_TIED; }
 
 	    | 'n'
-		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_FORCE;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.properties = PROP_FORCE;}
 
     	    | slur_info
 
@@ -1623,22 +1623,22 @@ pitchsuffix : '+'
 	    ; 
 
 bodyinfo : Y_CROSS
-		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_BODY_CROSS;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.properties = PROP_BODY_CROSS;}
 	  | Y_CROSS2
-		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_BODY_CROSS2;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.properties = PROP_BODY_CROSS2;}
 	  | Y_CIRCLE_CROSS
-		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_BODY_CIRCLE_CROSS;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.properties = PROP_BODY_CIRCLE_CROSS;}
 	  | Y_RECT
-		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_BODY_RECT;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.properties = PROP_BODY_RECT;}
 	  | Y_TRIA
-		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_BODY_TRIA;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.properties = PROP_BODY_TRIA;}
 	  ;
 
 
 slur_info : '<' Y_NUMBER '>'
-		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_SLURED, $$.slurdist = $2;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.properties = PROP_SLURED, $$.slurdist = $2;}
 	  | '<' pitch '>'
-		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.status = PROP_SLURED, $$.slurdist = 1;}
+		{memset(&($$), 0, sizeof(struct property_descr_str)); $$.properties = PROP_SLURED, $$.slurdist = 1;}
 	
 	 ;
 

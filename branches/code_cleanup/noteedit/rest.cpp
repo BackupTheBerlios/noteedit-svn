@@ -30,14 +30,14 @@
 #define REST_POINT_DIST 6
 #define REST_POINT_RAD 5
 
-NRest::NRest(main_props_str *main_props, staff_props_str *staff_props, int *y_voice_offs, int length, property_type status) :
+NRest::NRest(main_props_str *main_props, staff_props_str *staff_props, int *y_voice_offs, int length, property_type properties) :
 		 NPlayable(main_props, staff_props) {
 	length_ = length;
 	switch (length) {
 		case MULTIREST: properties_ = 0;
-				multiRestLength_ = status;
+				multiRestLength_ = properties;
 				break;
-		default: properties_ = status;
+		default: properties_ = properties;
 			 multiRestLength_ = 0;
 			 break;
 	}

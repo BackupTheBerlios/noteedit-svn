@@ -685,7 +685,7 @@ bool MusicXMLParser::endElement( const QString&, const QString&,
 	QString Str;
 	if (false) {
 	} else if (qName == "accent") {
-		status |= PROP_SFZND;
+		properties |= PROP_SFZND;
 	} else if (qName == "accidental") {
 		stAcc = stCha;
 	} else if (qName == "actual-notes") {
@@ -760,7 +760,7 @@ bool MusicXMLParser::endElement( const QString&, const QString&,
 		stDyn = "f";
 	} else if (qName == "fermata") {
 		// NoteEdit does not distinguish between upright and inverted
-		status |= PROP_FERMT;
+		properties |= PROP_FERMT;
 	} else if (qName == "ff") {
 		stDyn = "ff";
 	} else if (qName == "fff") {
@@ -845,9 +845,9 @@ bool MusicXMLParser::endElement( const QString&, const QString&,
 	} else if (qName == "sign") {
 		if (stCln == "2") { stCsi2 = stCha; } else { stCsi = stCha; }
 	} else if (qName == "staccatissimo") {
-		status |= PROP_STPIZ;
+		properties |= PROP_STPIZ;
 	} else if (qName == "staccato") {
-		status |= PROP_STACC;
+		properties |= PROP_STACC;
 	} else if (qName == "staves") {
 		stSta = stCha;
 		if (stSta == "0") {
@@ -872,9 +872,9 @@ bool MusicXMLParser::endElement( const QString&, const QString&,
 	} else if (qName == "string") {
 		stStr = stCha;
 	} else if (qName == "strong-accent") {
-		status |= PROP_SFORZ;
+		properties |= PROP_SFORZ;
 	} else if (qName == "tenuto") {
-		status |= PROP_PORTA;
+		properties |= PROP_PORTA;
 	} else if (qName == "text") {
 		stTxt = stCha;
 		handleLyrics();
@@ -1017,7 +1017,7 @@ bool MusicXMLParser::addNote()
 	if (stGra) {
 		dur = 0;
 		if (stTyp == "eighth") {
-			status |= PROP_GRACE;
+			properties |= PROP_GRACE;
 			if (stGsl) {
 				length = INTERNAL_MARKER_OF_STROKEN_GRACE;
 			}
@@ -1025,7 +1025,7 @@ bool MusicXMLParser::addNote()
 			/* FIXME: Only 8th and 16th grace notes are supported by NoteEdit. If shorter found, set it to 16th */
 			stTyp = "16th";
 			length = mxmlNoteType2Ne(stTyp);
-			status |= PROP_GRACE;
+			properties |= PROP_GRACE;
 		} else {
 			Str = "illegal grace note <type>: " + stTyp;
 			reportWarning(Str);
@@ -1039,14 +1039,14 @@ bool MusicXMLParser::addNote()
 		}
 	}
 	if (stTie) {
-		status |= PROP_TIED;
+		properties |= PROP_TIED;
 	}
 	if (stDts == 0) {
-		/* do nothing status = 0 */ ;
+		/* do nothing properties = 0 */ ;
 	} else if (stDts == 1) {
-		status |= PROP_SINGLE_DOT;
+		properties |= PROP_SINGLE_DOT;
 	} else if (stDts == 2) {
-		status |= PROP_DOUBLE_DOT;
+		properties |= PROP_DOUBLE_DOT;
 	} else {
 		Str.setNum(stDts);
 		Str = "illegal number of dots: " + Str;
@@ -1075,15 +1075,15 @@ bool MusicXMLParser::addNote()
 		}
 	/* End of J.Anders 12-23-2003 */
 	} else if (stAcc == "flat-flat") {
-		offs = -2; status |= PROP_FORCE;
+		offs = -2; properties |= PROP_FORCE;
 	} else if (stAcc == "flat") {
-		offs = -1; status |= PROP_FORCE;
+		offs = -1; properties |= PROP_FORCE;
 	} else if (stAcc == "natural") {
-		offs =  0; status |= PROP_FORCE;
+		offs =  0; properties |= PROP_FORCE;
 	} else if (stAcc == "sharp") {
-		offs =  1; status |= PROP_FORCE;
+		offs =  1; properties |= PROP_FORCE;
 	} else if ((stAcc == "double-sharp") || (stAcc == "sharp-sharp")) {
-		offs =  2; status |= PROP_FORCE;
+		offs =  2; properties |= PROP_FORCE;
 	} else {
 		Str = "illegal <accidental> value: " + stAcc;
 		reportWarning(Str);
@@ -1145,7 +1145,7 @@ bool MusicXMLParser::addNote()
 					 &(staff->staff_props_),
 					 &(current_voice->yRestOffs_),
 					 length,
-					 status);
+					 properties);
 			current_voice->appendElem(rest);
 			handleTuplet(rest);
 			prev_time = current_time;
@@ -1178,7 +1178,7 @@ bool MusicXMLParser::addNote()
 					NNote * note = chrd->insertNewNote(line,
 								   offs,
 								   stemPol,
-								   status);
+								   properties);
 					// handle ties, for first note done
 					// by NVoice::appendElem. The .not
 					// parser first builds the chord and
@@ -1186,7 +1186,7 @@ bool MusicXMLParser::addNote()
 					// ties for all notes
 					if (note) {
 						current_voice->reconnectFileReadTies(note);
-						if (status & PROP_TIED) {
+						if (properties & PROP_TIED) {
 							current_voice->findTieMember(note);
 						}
 					}
@@ -1204,7 +1204,7 @@ bool MusicXMLParser::addNote()
 							   offs,
 							   length,
 							   stemPol,
-							   status);
+							   properties);
 				current_voice->appendElem(chrd);
 				lastChord = chrd;
 			}
@@ -1216,7 +1216,7 @@ bool MusicXMLParser::addNote()
 						   offs,
 						   length,
 						   stemPol,
-						   status);
+						   properties);
 			current_voice->appendElem(chrd);
 			lastChord = chrd;
 			// LVIFIX: this only handles chord diagram at notes
@@ -2673,7 +2673,7 @@ void MusicXMLParser::initStHarmony()
 
 void MusicXMLParser::initStNote()
 {
-	status = 0;
+	properties = 0;
 	stAcc = "";
 	stAlt = "";
 	stAno = "";

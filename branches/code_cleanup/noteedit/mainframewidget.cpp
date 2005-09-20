@@ -1121,7 +1121,7 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 				l = (dl >= 0.0) ? (int) (dl + 0.5)  : (int) (dl - 0.5)
 			   	
 
-	property_type status;
+	property_type properties;
 	unsigned int val, newXpos;
 	bool playable;
 	QPoint p;
@@ -1296,10 +1296,10 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 				delete_elem = /*main_props_.actualLength > 0 && !editMode_ &&*/ (evt->state() & ControlButton) != 0;
 				insert_new_note = main_props_.actualLength > 0 && !editMode_ && (evt->state() & ControlButton) == 0;
 				TRANSY2LINE(evt->y(), dline, line);
-				if ( (val = checkAllStaffsForNoteInsertion(line, p, &status, &playable, &delete_elem, &insert_new_note)) > 0 ) {
+				if ( (val = checkAllStaffsForNoteInsertion(line, p, &properties, &playable, &delete_elem, &insert_new_note)) > 0 ) {
 					if (editMode_) {
 						if (playable) {
-							updateInterface(status, val);
+							updateInterface(properties, val);
 						}
 						else
 							updateInterface(0, -1);
@@ -2026,7 +2026,7 @@ void NMainFrameWidget::pitchToLine(int pitchNumber) {
 	if (playing_) return;
 	int halfLines, offs;
 	int newXpos;
-	property_type status;
+	property_type properties;
 	NChord *newchord;
 	QPoint curpos;
 	int ydist;
@@ -2046,21 +2046,21 @@ void NMainFrameWidget::pitchToLine(int pitchNumber) {
 				halfLines, offs, currentStaff_->getVoice(), currentStaff_->getChannel(), currentStaff_->getVolume(), currentStaff_->transpose_);
 		}
 		if (main_props_.actualLength > 0 && kbInsertButton_->isOn()) {
-			status = 0;
-			if (main_props_.tied) status |= PROP_TIED;
-			if (main_props_.staccato) status |= PROP_STACC;
-			if (main_props_.sforzato) status |= PROP_SFORZ;
-			if (main_props_.portato) status |= PROP_PORTA;
-			if (main_props_.strong_pizzicato) status |= PROP_STPIZ;
-			if (main_props_.sforzando) status |= PROP_SFZND;
-			if (main_props_.fermate) status |= PROP_FERMT;
-			if (main_props_.grace) status |= PROP_GRACE;
-			if (main_props_.arpeggio) status |= PROP_ARPEGG;
-			status |= (main_props_.dotcount & DOT_MASK);
-			status |= (main_props_.noteBody & BODY_MASK);
-			if (main_props_.pedal_on) status |= PROP_PEDAL_ON;
-			if (main_props_.pedal_off) status |= PROP_PEDAL_OFF;
-			newchord = new NChord(&main_props_, currentStaff_->getStaffPropsAddr(), currentVoice_, halfLines, offs, main_props_.actualLength, currentVoice_->stemPolicy_, status);
+			properties = 0;
+			if (main_props_.tied) properties |= PROP_TIED;
+			if (main_props_.staccato) properties |= PROP_STACC;
+			if (main_props_.sforzato) properties |= PROP_SFORZ;
+			if (main_props_.portato) properties |= PROP_PORTA;
+			if (main_props_.strong_pizzicato) properties |= PROP_STPIZ;
+			if (main_props_.sforzando) properties |= PROP_SFZND;
+			if (main_props_.fermate) properties |= PROP_FERMT;
+			if (main_props_.grace) properties |= PROP_GRACE;
+			if (main_props_.arpeggio) properties |= PROP_ARPEGG;
+			properties |= (main_props_.dotcount & DOT_MASK);
+			properties |= (main_props_.noteBody & BODY_MASK);
+			if (main_props_.pedal_on) properties |= PROP_PEDAL_ON;
+			if (main_props_.pedal_off) properties |= PROP_PEDAL_OFF;
+			newchord = new NChord(&main_props_, currentStaff_->getStaffPropsAddr(), currentVoice_, halfLines, offs, main_props_.actualLength, currentVoice_->stemPolicy_, properties);
 			if (!currentVoice_->insertAfterCurrent(newchord)) return;
 			setEdited();
 			computeMidiTimes(true);
@@ -3103,7 +3103,7 @@ void NMainFrameWidget::setStemDown(bool on) {
 
 void NMainFrameWidget::setEditMode(bool on) {
 	editMode_ = on;
-	property_type status;
+	property_type properties;
 	unsigned int val, i;
 	bool playable;
 	QCursor *cursor;
@@ -3163,9 +3163,9 @@ void NMainFrameWidget::setEditMode(bool on) {
 		if (hiddenrestbutton_->isChecked()) {
 			props_before_edit_mode_ |= PROP_HIDDEN;
 		}
-		val = currentVoice_->getElemState(&status, &playable);
+		val = currentVoice_->getElemState(&properties, &playable);
 		if (playable) {
-			updateInterface(status, val);
+			updateInterface(properties, val);
 		}
 	}
 	else {
@@ -3324,7 +3324,7 @@ void NMainFrameWidget::setKbInsertMode(bool on) {
 void NMainFrameWidget::readNotesFromMidiMapper() {
 #ifdef WITH_TSE3
 	NChord *newchord;
-	property_type status;
+	property_type properties;
 	NMusElement *curElem;
 	int line, offs, *pitch;
 	int newXpos;
@@ -3349,25 +3349,25 @@ void NMainFrameWidget::readNotesFromMidiMapper() {
 		currentStaff_->getVoiceNr(0)->validateKeysig(-1, 200);
 	}
 	currentStaff_->actualClef_.midi2Line(*pitch, &line, &offs, currentStaff_->actualKeysig_.getSubType());
-	status = 0;
-	if (main_props_.tied) status |= PROP_TIED;
-	if (main_props_.staccato) status |= PROP_STACC;
-	if (main_props_.sforzato) status |= PROP_SFORZ;
-	if (main_props_.portato) status |= PROP_PORTA;
-	if (main_props_.strong_pizzicato) status |= PROP_STPIZ;
-	if (main_props_.sforzando) status |= PROP_SFZND;
-	if (main_props_.fermate) status |= PROP_FERMT;
-	if (main_props_.grace) status |= PROP_GRACE;
-	if (main_props_.arpeggio) status |= PROP_ARPEGG;
-	status |= (main_props_.dotcount & DOT_MASK);
-	status |= (main_props_.noteBody & BODY_MASK);
-	if (main_props_.pedal_on) status |= PROP_PEDAL_ON;
-	if (main_props_.pedal_off) status |= PROP_PEDAL_OFF;
+	properties = 0;
+	if (main_props_.tied) properties |= PROP_TIED;
+	if (main_props_.staccato) properties |= PROP_STACC;
+	if (main_props_.sforzato) properties |= PROP_SFORZ;
+	if (main_props_.portato) properties |= PROP_PORTA;
+	if (main_props_.strong_pizzicato) properties |= PROP_STPIZ;
+	if (main_props_.sforzando) properties |= PROP_SFZND;
+	if (main_props_.fermate) properties |= PROP_FERMT;
+	if (main_props_.grace) properties |= PROP_GRACE;
+	if (main_props_.arpeggio) properties |= PROP_ARPEGG;
+	properties |= (main_props_.dotcount & DOT_MASK);
+	properties |= (main_props_.noteBody & BODY_MASK);
+	if (main_props_.pedal_on) properties |= PROP_PEDAL_ON;
+	if (main_props_.pedal_off) properties |= PROP_PEDAL_OFF;
 	newchord = new NChord(&main_props_, currentStaff_->getStaffPropsAddr(), currentVoice_, line, offs, main_props_.actualLength, 
-				currentVoice_->stemPolicy_, status );
+				currentVoice_->stemPolicy_, properties );
 	for (pitch = pitches->next(); pitch; pitch = pitches->next()) {
 		currentStaff_->actualClef_.midi2Line(*pitch, &line, &offs, currentStaff_->actualKeysig_.getSubType());
-		newchord->insertNewNote(line, offs, currentVoice_->stemPolicy_, status);
+		newchord->insertNewNote(line, offs, currentVoice_->stemPolicy_, properties);
 	}
 	delete pitches;
 	if (!currentVoice_->insertAfterCurrent(newchord)) return;
@@ -4969,9 +4969,9 @@ void NMainFrameWidget::setButton(int nr) {
 }
 
 /* Updates buttons, labels and internals (main_props_) according to the musElement's properties:
-   status - general properties (accidentals, stems, beams, articulation, gracenotes)
+   properties - general properties (accidentals, stems, beams, articulation, gracenotes)
    length - element length type. If -1 given, element doesn't have MIDI length (eg. barlines). */
-void NMainFrameWidget::updateInterface(property_type status, int length) {
+void NMainFrameWidget::updateInterface(property_type properties, int length) {
 	if (length == -1) return;
 
 	// avoid feedback
@@ -4979,71 +4979,71 @@ void NMainFrameWidget::updateInterface(property_type status, int length) {
         // (For the KDE interface, this is not even necessary)
 	// Ok! Thank you (J.Anders)
 
-	beambutton_->setOn (status & PROP_BEAMED);
-	dotbutton_->setOn (status & PROP_SINGLE_DOT);
-	ddotbutton_->setOn (status & PROP_DOUBLE_DOT);
-	tiebutton_->setOn (status & PROP_TIED);
-	slurbutton_->setOn (status & PROP_SLURED);
-	tripletbutton_->setOn (status & PROP_TUPLET);
-	hiddenrestbutton_->setOn (status & PROP_HIDDEN);
-	main_props_.hidden = (status & PROP_HIDDEN);
-	staccatobutton_->setOn (status & PROP_STACC);
-	sforzatobutton_->setOn (status & PROP_SFORZ);
-	portatobutton_->setOn (status & PROP_PORTA);
-	strong_pizzicatobutton_->setOn (status & PROP_STPIZ);
-	sforzandobutton_->setOn (status & PROP_SFZND);
-	fermatebutton_->setOn (status & PROP_FERMT);
-	arpeggbutton_->setOn (status & PROP_ARPEGG);
-	pedonbutton_->setOn (status & PROP_PEDAL_ON);
-	pedoffbutton_->setOn (status & PROP_PEDAL_OFF);
+	beambutton_->setOn (properties & PROP_BEAMED);
+	dotbutton_->setOn (properties & PROP_SINGLE_DOT);
+	ddotbutton_->setOn (properties & PROP_DOUBLE_DOT);
+	tiebutton_->setOn (properties & PROP_TIED);
+	slurbutton_->setOn (properties & PROP_SLURED);
+	tripletbutton_->setOn (properties & PROP_TUPLET);
+	hiddenrestbutton_->setOn (properties & PROP_HIDDEN);
+	main_props_.hidden = (properties & PROP_HIDDEN);
+	staccatobutton_->setOn (properties & PROP_STACC);
+	sforzatobutton_->setOn (properties & PROP_SFORZ);
+	portatobutton_->setOn (properties & PROP_PORTA);
+	strong_pizzicatobutton_->setOn (properties & PROP_STPIZ);
+	sforzandobutton_->setOn (properties & PROP_SFZND);
+	fermatebutton_->setOn (properties & PROP_FERMT);
+	arpeggbutton_->setOn (properties & PROP_ARPEGG);
+	pedonbutton_->setOn (properties & PROP_PEDAL_ON);
+	pedoffbutton_->setOn (properties & PROP_PEDAL_OFF);
 
-	stemUpbutton_->setOn(status & PROP_STEM_UP);
-	stemDownbutton_->setOn(!(status & PROP_STEM_UP));
-        offs_buttons_[0]->setOn(status & PROP_CROSS);
-	if (status & PROP_CROSS) {
+	stemUpbutton_->setOn(properties & PROP_STEM_UP);
+	stemDownbutton_->setOn(!(properties & PROP_STEM_UP));
+        offs_buttons_[0]->setOn(properties & PROP_CROSS);
+	if (properties & PROP_CROSS) {
             actualOffs_ = 1;
         }
-        offs_buttons_[1]->setOn(status & PROP_FLAT);
-	if (status & PROP_FLAT) {
+        offs_buttons_[1]->setOn(properties & PROP_FLAT);
+	if (properties & PROP_FLAT) {
             actualOffs_ = -1;
         }
-        offs_buttons_[3]->setOn(status & PROP_DCROSS); 
-	if (status & PROP_DCROSS) {
+        offs_buttons_[3]->setOn(properties & PROP_DCROSS); 
+	if (properties & PROP_DCROSS) {
             actualOffs_ = 2;
         }
-        offs_buttons_[4]->setOn(status & PROP_DFLAT); 
-	if (status & PROP_DFLAT) {
+        offs_buttons_[4]->setOn(properties & PROP_DFLAT); 
+	if (properties & PROP_DFLAT) {
             actualOffs_ = -2;
         }
-        offs_buttons_[2]->setOn(status & PROP_NATUR);
-	if (status & PROP_NATUR) {
+        offs_buttons_[2]->setOn(properties & PROP_NATUR);
+	if (properties & PROP_NATUR) {
             actualOffs_ = 0;
         }
-	if (!(status & ACC_MASK)) {
+	if (!(properties & ACC_MASK)) {
 	    actualOffs_ = UNDEFINED_OFFS;
 	}
-	main_props_.dotcount = (status & DOT_MASK);
-	main_props_.tied = (status & PROP_TIED);
-	main_props_.staccato = (status & PROP_STACC);
-	main_props_.sforzato = (status & PROP_SFORZ);
-	main_props_.portato  = (status & PROP_PORTA);
-	main_props_.strong_pizzicato = (status & PROP_STPIZ);
-	main_props_.sforzato  = (status & PROP_SFZND);
-	main_props_.fermate   = (status & PROP_FERMT);
-	main_props_.grace     = (status & PROP_GRACE);
+	main_props_.dotcount = (properties & DOT_MASK);
+	main_props_.tied = (properties & PROP_TIED);
+	main_props_.staccato = (properties & PROP_STACC);
+	main_props_.sforzato = (properties & PROP_SFORZ);
+	main_props_.portato  = (properties & PROP_PORTA);
+	main_props_.strong_pizzicato = (properties & PROP_STPIZ);
+	main_props_.sforzato  = (properties & PROP_SFZND);
+	main_props_.fermate   = (properties & PROP_FERMT);
+	main_props_.grace     = (properties & PROP_GRACE);
 	main_props_.actualLength = length;
-	main_props_.pedal_on = (status & PROP_PEDAL_ON); 
-	main_props_.pedal_off = (status & PROP_PEDAL_OFF); 
-	if (status & PROP_STEM_UP) {
+	main_props_.pedal_on = (properties & PROP_PEDAL_ON); 
+	main_props_.pedal_off = (properties & PROP_PEDAL_OFF); 
+	if (properties & PROP_STEM_UP) {
 		main_props_.actualStemDir = STEM_DIR_UP;
 	}
-	else if (status & STEM_DIR_DOWN) {
+	else if (properties & STEM_DIR_DOWN) {
 		main_props_.actualStemDir = STEM_DIR_DOWN;
 	}
 	else {
 		main_props_.actualStemDir = STEM_DIR_AUTO;
 	}
-	main_props_.noteBody = (status & BODY_MASK);
+	main_props_.noteBody = (properties & BODY_MASK);
 	switch (main_props_.noteBody) {
 		case PROP_BODY_CROSS: crossDrumBu_->setOn(true); break;
 		case PROP_BODY_CROSS2: cross2DrumBu->setOn(true); break;
@@ -5201,13 +5201,13 @@ void NMainFrameWidget::computeMidiTimes(bool insertBars, bool doAutoBeam) {
 
 /*------------------------------- selection ---------------------------------------*/
 
-int NMainFrameWidget::checkAllStaffsForNoteInsertion(const int line, const QPoint p, property_type *status, bool *playable, bool *delete_elem, bool *insertNewNote) {
+int NMainFrameWidget::checkAllStaffsForNoteInsertion(const int line, const QPoint p, property_type *properties, bool *playable, bool *delete_elem, bool *insertNewNote) {
 	int val;
 	NMusElement *elem;
 
 	if (playing_) return -1;
 	if (!checkStaffIntersection(p)) return -1;
-	if ((val = currentStaff_->checkElementForNoteInsertion(line, p, status, playable, delete_elem, insertNewNote, actualOffs_)) > 0) {
+	if ((val = currentStaff_->checkElementForNoteInsertion(line, p, properties, playable, delete_elem, insertNewNote, actualOffs_)) > 0) {
 		manageToolElement(false);
 		return val;
 	}
@@ -5256,14 +5256,14 @@ bool NMainFrameWidget::checkStaffIntersection(const QPoint p) {
 
 void NMainFrameWidget::nextElement() {
 	if (playing_) return;
-	property_type status;
+	property_type properties;
 	unsigned int val;
-	val = currentVoice_->makeNextElementActual(&status);
+	val = currentVoice_->makeNextElementActual(&properties);
 	if (editMode_)
 		if (currentVoice_->getCurrentElement()->playable())
-			updateInterface(status, val);
+			updateInterface(properties, val);
 		else
-			updateInterface(status, -1);
+			updateInterface(properties, -1);
 	manageToolElement(false);
 	repaint();
 }
@@ -5271,14 +5271,14 @@ void NMainFrameWidget::nextElement() {
 
 void NMainFrameWidget::prevElement() {
 	if (playing_) return;
-	property_type status;
+	property_type properties;
 	unsigned int val;
-	val = currentVoice_->makePreviousElementActual(&status);
+	val = currentVoice_->makePreviousElementActual(&properties);
 	if (editMode_)
 		if (currentVoice_->getCurrentElement()->playable())
-			updateInterface(status, val);
+			updateInterface(properties, val);
 		else
-			updateInterface(status, -1);
+			updateInterface(properties, -1);
 	manageToolElement(false);
 	repaint();
 }
@@ -5579,15 +5579,15 @@ void NMainFrameWidget::moveOctaveDown() {
 }
 
 void NMainFrameWidget::deleteElem(bool backspace) {
-	property_type status;
+	property_type properties;
 	unsigned int val;
 	if (playing_) return;
-	val = currentVoice_->deleteActualElem(&status, backspace);
+	val = currentVoice_->deleteActualElem(&properties, backspace);
 	if (editMode_)
 		if (currentVoice_->getCurrentElement()->playable())
-			updateInterface(status, val);
+			updateInterface(properties, val);
 		else
-			updateInterface(status, -1);
+			updateInterface(properties, -1);
 
 	computeMidiTimes(false);
 	if (!editiones_) setEdited(val != -1);

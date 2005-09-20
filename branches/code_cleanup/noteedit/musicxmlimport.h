@@ -230,7 +230,7 @@ private:
 	QString stRig;				// rights
 	QString stTtl;				// title
 	// note (including forward/backup) -- initialized in initStNote()
-	property_type status;
+	property_type properties;
 	QString stAcc;				// accidental
 	QString stAlt;				// alter
 	QString	stAno;				// actual notes

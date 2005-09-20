@@ -1234,7 +1234,7 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 	unsigned int newVolume;
 	unsigned int voiceTime = 0;
 	unsigned int nextstart = 0, start = 0, stop = 0;
-	property_type status, body;
+	property_type properties, body;
 	bool inTriplet = false;
 	int dotcount;
 	int voldist;
@@ -1280,14 +1280,14 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 				}
 				len -= len3;
 				voiceTime += len3;
-				status = 0;
+				properties = 0;
 				if (dotcount) {
-					status = PROP_SINGLE_DOT;
+					properties = PROP_SINGLE_DOT;
 				}
 				if (!first) {
-					status |= PROP_HIDDEN;
+					properties |= PROP_HIDDEN;
 				}
-				rest = new NRest(main_props, staff_props, &(voice->yRestOffs_), len2, status);
+				rest = new NRest(main_props, staff_props, &(voice->yRestOffs_), len2, properties);
 				voice->appendElem(rest);
 #ifdef YYY
 				if (triplet) {
@@ -1315,7 +1315,7 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 			}
 		}
 		stop = ((ptr->eventType & EVT_CLASS_REST) || (ptr->eventType & (EVT_NORMAL_EVENT |  EVT_LAST_IN_TRIPLET))) ?  ptr->stop_time : ptr->U.norm_evt.triplet_stop_time;
-		status = 0;
+		properties = 0;
 		len = stop - start;
 		triplet = (ptr->eventType & (EVT_PART_OF_TRIPLET | EVT_LAST_IN_TRIPLET | EVT_FIRST_IN_TRIPLET));
 		stacatto = false;
@@ -1375,12 +1375,12 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 				voiceTime += len3;
 				if (addRest) {
 					if (dotcount) {
-						status = PROP_SINGLE_DOT;
+						properties = PROP_SINGLE_DOT;
 					}
 					if (!first) {
-						status |= PROP_HIDDEN;
+						properties |= PROP_HIDDEN;
 					}
-					rest = new NRest(main_props, staff_props, &(voice->yRestOffs_), len2, status);
+					rest = new NRest(main_props, staff_props, &(voice->yRestOffs_), len2, properties);
 					voice->appendElem(rest);
 					if (triplet) {
 						if (!inTriplet) {
@@ -1392,7 +1392,7 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 				}
 				else {
 					clef->midi2Line(ptr->U.norm_evt.pitches[0], &line, &offs);
-					status = dotcount ? PROP_SINGLE_DOT : 0;
+					properties = dotcount ? PROP_SINGLE_DOT : 0;
 					if (computeAverageVolume) {
 						newVolume = (int) (averageVolume + dynamic / 127.0 * (double) (ptr->U.norm_evt.volume - averageVolume));
 					}
@@ -1430,16 +1430,16 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 							body = (PROP_BODY_CROSS << ((line + LINE_OVERFLOW) % 5));
 						}
 						if (stacatto) {
-							status |= PROP_STACC;
+							properties |= PROP_STACC;
 						}
-						chord = new NChord(main_props, staff_props, voice, line, offs, len2, ptr->stem_policy, status | body);
+						chord = new NChord(main_props, staff_props, voice, line, offs, len2, ptr->stem_policy, properties | body);
 						for (j = 1; j < ptr->U.norm_evt.num_pitches; j++) {
 							clef->midi2Line(ptr->U.norm_evt.pitches[j], &line, &offs);
 							body = 0;
 							if (drum_channel) {
 								body = (PROP_BODY_CROSS << ((line + LINE_OVERFLOW) % 5));
 							}
-							chord->insertNewNote(line, offs, ptr->stem_policy, status | body);
+							chord->insertNewNote(line, offs, ptr->stem_policy, properties | body);
 						}
 						voice->appendElem(chord);
 						if (triplet && !before_triplet)  {

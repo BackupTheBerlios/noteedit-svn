@@ -900,20 +900,20 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 				     some_notes_or_rests_written_ = true;
 				     chord = (NChord *) elem;
 				     part = elem->getSubType(); 
-				     if (!(chord->properties_ & PROP_GRACE)) {
-					     if (chord->properties_ & PROP_TUPLET) {
+				     if (!(chord->hasProperty( PROP_GRACE ) )) {
+					     if (chord->hasProperty( PROP_TUPLET ) ) {
 						total += elem->chord()->getPlaytime() * part / elem->chord()->getNumNotes();
 						tupletsum += part;
 					     }
 					     else {
 						total += part;
 					     }
-					     switch (chord->properties_ & DOT_MASK) {
+					     switch (chord->properties() & DOT_MASK) {
 						case 1: total += part / 2; break;
 						case 2: total += 3 * part / 4; break;
 					     }
 				     }
-				     if ((chord->properties_ & PROP_TUPLET) && !voi->inTuplet_) {
+				     if ((chord->hasProperty( PROP_TUPLET ) ) && !voi->inTuplet_) {
 					voi->inTuplet_ = true;
 					tupletsum = part;
 					out_ << "{ ";
@@ -923,27 +923,27 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					bad = new badmeasure(ERR_NOTE_COUNT, staff_nr, bar_nr_, total / 3, countof128th_);
 					badlist_.append(bad);
 				     }
-				     if (chord->properties_ & PROP_SFORZ || chord->properties_ & PROP_PORTA ||
-				         chord->properties_ & PROP_STPIZ || chord->properties_ & PROP_SFZND ||
-					 chord->properties_ & PROP_STACC || chord->properties_ & PROP_FERMT) {
+				     if (chord->hasProperty( PROP_SFORZ ) || chord->hasProperty( PROP_PORTA ) ||
+				         chord->hasProperty( PROP_STPIZ ) || chord->hasProperty( PROP_SFZND ) ||
+					 chord->hasProperty( PROP_STACC ) || chord->hasProperty( PROP_FERMT ) ) {
 				    	    out_ << "[with ";
-				    	    if (chord->properties_ & PROP_STACC)
+				    	    if (chord->hasProperty( PROP_STACC ) )
 						out_ << ".";
-				    	    if (chord->properties_ & PROP_SFORZ) 
+				    	    if (chord->hasProperty( PROP_SFORZ ) )
 					        out_ << "^";
-					    if (chord->properties_ & PROP_PORTA)
+					    if (chord->hasProperty( PROP_PORTA ) )
 					        out_ << "-";
-					    if (chord->properties_ & PROP_STPIZ)
+					    if (chord->hasProperty( PROP_STPIZ ) )
 					        out_ << ",";
-					    if (chord->properties_ & PROP_SFZND)
+					    if (chord->hasProperty( PROP_SFZND ) )
 					        out_ << ">";
-					    if (chord->properties_ & PROP_FERMT)
+					    if (chord->hasProperty( PROP_FERMT ) )
 						out_ << "\"\\(ferm)\"";
 				    	    out_ << ']';
 				     }
-				     if (chord->properties_ & PROP_GRACE) {
+				     if (chord->hasProperty( PROP_GRACE ) ) {
 						inGrace = true;
-						if (!beam_grace_problem_reported && (chord->properties_ & PROP_BEAMED)) {
+						if (!beam_grace_problem_reported && (chord->hasProperty( PROP_BEAMED ) )) {
 							beam_grace_problem_reported = true;
 
 							bad = new badmeasure(ERR_BEAMS_IN_GRACES, staff_nr, bar_nr_, total / 3, countof128th_);
@@ -959,24 +959,24 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					inGrace = false;
 					beam_grace_problem_reported = false;
 				     }
-				     if (!(chord->properties_ & PROP_GRACE) && chord->getSubType() <= HALF_LENGTH) {
-					if (((chord->properties_ & PROP_STEM_UP) && 
+				     if (!(chord->hasProperty( PROP_GRACE ) ) && chord->getSubType() <= HALF_LENGTH) {
+					if (((chord->hasProperty( PROP_STEM_UP ) ) && 
 						(chord->getNoteList()->first()->line > 3 || voi->stemPolicy_ == STEM_POL_DOWN))  ||
-					    (!(chord->properties_ & PROP_STEM_UP) && 
+					    (!(chord->hasProperty( PROP_STEM_UP ) ) && 
 					    	(chord->getNoteList()->first()->line  < 4 || voi->stemPolicy_ == STEM_POL_UP))) {
-						out_ << ((chord->properties_ & PROP_STEM_UP) ? "[up]" : "[down] ");
+						out_ << ((chord->hasProperty( PROP_STEM_UP ) ) ? "[up]" : "[down] ");
 					}
 				     }
 				     if (part == DOUBLE_WHOLE_LENGTH) {
 					out_ << "1/2";
 				     }
-				     else if ((chord->properties_ & PROP_GRACE) && (chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
+				     else if ((chord->hasProperty( PROP_GRACE ) ) && (chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
 					out_ << "8";
 				     }
 				     else {
 				     	out_ << WHOLE_LENGTH / part;
 				     }
-				     switch (chord->properties_ & DOT_MASK) {
+				     switch (chord->properties() & DOT_MASK) {
 					case 1:	out_ << "."; break;
 					case 2:	out_ << ".."; break;
 				     }
@@ -988,7 +988,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 						badlist_.append(bad);
 					     }
 					     /* if (loop2) { */
-						if ((chord->properties_ & PROP_SLURED) && (chord->properties_ & PROP_GRACE)) { /* otherwise it is made by phrases */
+						if ((chord->hasProperty( PROP_SLURED ) ) && (chord->hasProperty( PROP_GRACE ))) { /* otherwise it is made by phrases */
 							dist = voi->computeSlurDist(chord);
 							if (dist > 1) { // possibly failes if there is a bar :-(
 								bad = new badmeasure(ERR_GRACE_SLUR, staff_nr, bar_nr_, 0, 0);
@@ -1007,7 +1007,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 #ifdef IS_MADE_WITH_PHRASES
 					     if (loop2) {
 						loop2 = false;
-						if (chord->properties_ & PROP_SLURED) {
+						if (chord->hasProperty( PROP_SLURED ) ) {
 							dist = voi->computeSlurDist(chord);
 							if (dist > 1) {
 								bad = new badmeasure(ERR_SLUR, staff_nr, bar_nr_, 0, 0);
@@ -1025,7 +1025,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					    }
 #endif
 				     }
-				     if (chord->properties_ & PROP_BEAMED) {
+				     if (chord->hasProperty( PROP_BEAMED ) ) {
 					if (!voi->inBeam_) {
 						out_ << " bm";
 						voi->inBeam_ = true;
@@ -1036,7 +1036,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					 }
 				     }
 				     out_ << "; ";
-				     if (chord->properties_ & PROP_LAST_TUPLET) {
+				     if (chord->hasProperty( PROP_LAST_TUPLET ) ) {
 					voi->inTuplet_ = false;
 					out_ << " } above  " <<
 						computeTripletString(tupletsum, elem->chord()->getNumNotes(), elem->chord()->getPlaytime(), &ok) << "; ";
@@ -1142,7 +1142,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 						*valines_ << (starttime + 1.0) << " \"8va bassa\" til " << timestring << ';';
 					}
 				     }
-				     if ((chord->properties_ & PROP_SLURED) && !(chord->properties_ & PROP_GRACE)) {
+				     if ((chord->hasProperty( PROP_SLURED ) ) && !(chord->hasProperty( PROP_GRACE ) )) {
 					dest_measure_start_time = *measure_start_time;
 					chord = ((NChord *) elem);
 					tt = voi->findTimeOfSlurEnd((NChord *) elem, &dest_measure_start_time, &count_of_measures);
@@ -1163,7 +1163,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					}
 					*phrases_ << (starttime + 1.0) << " til " << timestring << ';';
 				     }
-				     if (chord->properties_ & PROP_ARPEGG) {
+				     if (chord->hasProperty( PROP_ARPEGG ) ) {
 					   starttime = ((chord->midiTime_ - *measure_start_time) / MULTIPLICATOR) / (double) (128 / curr_denom_);
 					   if (rolls_.isEmpty()) {
 					   	rolls_.sprintf("roll %d 1: ",  staff_nr);
@@ -1171,7 +1171,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					   timestring.sprintf("%f;", starttime + 1.0);
 					   rolls_ += timestring;
 				     }
-				     if (chord->properties_ & PROP_PEDAL_ON) {
+				     if (chord->hasProperty( PROP_PEDAL_ON ) ) {
 					   starttime = ((chord->midiTime_ - *measure_start_time) / MULTIPLICATOR) / (double) (128 / curr_denom_);
 					   if (pedals_.isEmpty()) {
 					   	pedals_.sprintf("pedal %d: ",  staff_nr);
@@ -1179,7 +1179,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					   timestring.sprintf("%f;", starttime + 1.0);
 					   pedals_ += timestring;
 				     }
-				     if (chord->properties_ & PROP_PEDAL_OFF) {
+				     if (chord->hasProperty( PROP_PEDAL_OFF ) ) {
 					   starttime = ((chord->midiTime_ - *measure_start_time) / MULTIPLICATOR) / (double) (128 / curr_denom_);
 					   if (pedals_.isEmpty()) {
 					   	pedals_.sprintf("pedal %d: ",  staff_nr);
@@ -1191,7 +1191,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					starttime = ((elem->midiTime_ - *measure_start_time) / MULTIPLICATOR) / (double) (128 / curr_denom_);
 					writeChord(staff_nr, starttime, diag);
 				     }
-				     if (!(chord->getNoteList()->first()->properties & PROP_PART_OF_TIE) && !(chord->properties_ & PROP_GRACE)) {
+				     if (!(chord->getNoteList()->first()->properties & PROP_PART_OF_TIE) && !(chord->hasProperty( PROP_GRACE ))) {
 				        for (i = 0; i < NUM_LYRICS; i++) {
 				     		lyrics = chord->getLyrics(i);
 				     		if (lyrics) {
@@ -1234,18 +1234,18 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					break;
 				     }
 
-				     if (rest->properties_ & PROP_TUPLET) {
+				     if (rest->hasProperty( PROP_TUPLET ) ) {
 					total += rest->getPlaytime() * part / rest->getNumNotes();
 					tupletsum += part;
 				     }
 				     else {
 					total += part;
 				     }
-				     switch (rest->properties_ & DOT_MASK) {
+				     switch (rest->properties() & DOT_MASK) {
 					case 1: total += part / 2; break;
 					case 2: total += 3 * part / 4; break;
 				     }
-				     if ((rest->properties_ & PROP_TUPLET) && !voi->inTuplet_) {
+				     if ((rest->hasProperty( PROP_TUPLET ) ) && !voi->inTuplet_) {
 					voi->inTuplet_ = true;
 					tupletsum = part;
 					out_ << "{ ";
@@ -1255,22 +1255,22 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 					bad = new badmeasure(ERR_NOTE_COUNT, staff_nr, bar_nr_, total / 3, countof128th_);
 					badlist_.append(bad);
 				     }
-				     if (rest->properties_ & PROP_FERMT) {
+				     if (rest->hasProperty( PROP_FERMT ) ) {
 					out_ << "[with ";
 					out_ << "\"\\(ferm)\"";
 					out_ << ']';
 				     }
 				     out_ << WHOLE_LENGTH / part;
-				     switch (rest->properties_ & DOT_MASK) {
+				     switch (rest->properties() & DOT_MASK) {
 					case 1:	out_ << "."; break;
 					case 2:	out_ << ".."; break;
 				     }
-				     out_ << ((rest->properties_ & PROP_HIDDEN) ? "s; " : "r; ");
+				     out_ << ((rest->hasProperty( PROP_HIDDEN ) ) ? "s; " : "r; ");
 				     if (diag = rest->getChordChordDiagram()) {
 					starttime = ((elem->midiTime_ - *measure_start_time) / MULTIPLICATOR) / (double) (128 / curr_denom_);
 					writeChord(staff_nr, starttime, diag);
 				     }
-				     if (rest->properties_ & PROP_LAST_TUPLET) {
+				     if (rest->hasProperty( PROP_LAST_TUPLET ) ) {
 					voi->inTuplet_ = false;
 					out_ << " } above  " <<
 						computeTripletString(tupletsum, rest->getNumNotes(), rest->getPlaytime(), &ok) << "; ";
@@ -1703,20 +1703,20 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 					out_ << staff_nr << " " << voice_nr << ": ";
 				     }
 				     part = elem->getSubType(); 
-				     if (!(chord->properties_ & PROP_GRACE)) {
-					if (chord->properties_ & PROP_TUPLET) {
+				     if (!(chord->hasProperty( PROP_GRACE ))) {
+					if (chord->hasProperty( PROP_TUPLET )) {
 						total += chord->getPlaytime() * part / chord->getNumNotes();
 						tupletsum += part;
 					}
 					else {
 						total += part;
 					}
-					switch (chord->properties_ & DOT_MASK) {
+					switch (chord->properties() & DOT_MASK) {
 						case 1: total += part / 2; break;
 						case 2: total += 3 * part / 4; break;
 				     	}
 				     }
-				     if ((chord->properties_ & PROP_TUPLET) && !voi->inTuplet_) {
+				     if ((chord->hasProperty( PROP_TUPLET )) && !voi->inTuplet_) {
 					voi->inTuplet_ = true;
 					tupletsum = part;
 					out_ << "{ ";
@@ -1727,27 +1727,27 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 					badlist_.append(bad);
 				     }
 
-				     if (chord->properties_ & PROP_SFORZ || chord->properties_ & PROP_PORTA ||
-				         chord->properties_ & PROP_STPIZ || chord->properties_ & PROP_SFZND ||
-					 chord->properties_ & PROP_STACC || chord->properties_ & PROP_FERMT) {
+				     if (chord->hasProperty( PROP_SFORZ ) || chord->hasProperty( PROP_PORTA ) ||
+				         chord->hasProperty( PROP_STPIZ ) || chord->hasProperty( PROP_SFZND ) ||
+					 chord->hasProperty( PROP_STACC ) || chord->hasProperty( PROP_FERMT ) ) {
 				    	    out_ << "[with ";
-				    	    if (chord->properties_ & PROP_STACC)
+				    	    if (chord->hasProperty( PROP_STACC ) )
 						out_ << ".";
-				    	    if (chord->properties_ & PROP_SFORZ) 
+				    	    if (chord->hasProperty( PROP_SFORZ ) )
 					        out_ << "^";
-					    if (chord->properties_ & PROP_PORTA)
+					    if (chord->hasProperty( PROP_PORTA ) )
 					        out_ << "-";
-					    if (chord->properties_ & PROP_STPIZ)
+					    if (chord->hasProperty( PROP_STPIZ ) )
 					        out_ << ",";
-					    if (chord->properties_ & PROP_SFZND)
+					    if (chord->hasProperty( PROP_SFZND ) )
 					        out_ << ">";
-					    if (chord->properties_ & PROP_FERMT)
+					    if (chord->hasProperty( PROP_FERMT ) )
 						out_ << "\"\\(ferm)\"";
 					    out_ << "] ";
 				     }
-				     if (chord->properties_ & PROP_GRACE) {
+				     if (chord->hasProperty( PROP_GRACE ) ) {
 						inGrace = true;
-						if (!beam_grace_problem_reported && (chord->properties_ & PROP_BEAMED)) {
+						if (!beam_grace_problem_reported && (chord->hasProperty( PROP_BEAMED ))) {
 							beam_grace_problem_reported = true;
 
 							bad = new badmeasure(ERR_BEAMS_IN_GRACES, staff_nr, bar_nr_, total / 3, countof128th_);
@@ -1763,24 +1763,24 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 					inGrace = false;
 					beam_grace_problem_reported = false;
 				     }
-				     if (!(chord->properties_ & PROP_GRACE) && chord->getSubType() <= HALF_LENGTH) {
-					if (((chord->properties_ & PROP_STEM_UP) && 
+				     if (!(chord->hasProperty( PROP_GRACE )) && chord->getSubType() <= HALF_LENGTH) {
+					if (((chord->hasProperty( PROP_STEM_UP )) && 
 						(chord->getNoteList()->first()->line > 3 || voi->stemPolicy_ == STEM_POL_DOWN))  ||
-					    (!(chord->properties_ & PROP_STEM_UP) && 
+					    (!(chord->hasProperty( PROP_STEM_UP )) && 
 					    	(chord->getNoteList()->first()->line  < 4 || voi->stemPolicy_ == STEM_POL_UP))) {
-						out_ << ((chord->properties_ & PROP_STEM_UP) ? "[up]" : "[down] ");
+						out_ << ((chord->hasProperty( PROP_STEM_UP )) ? "[up]" : "[down] ");
 					}
 				     }
 				     if (part == DOUBLE_WHOLE_LENGTH) {
 					out_ << "1/2";
 				     }
-				     else if ((chord->properties_ & PROP_GRACE) && (chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
+				     else if ((chord->hasProperty( PROP_GRACE )) && (chord->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
 					out_ << "8";
 				     }
 				     else {
 				     	out_ << WHOLE_LENGTH / part;
 				     }
-				     switch (chord->properties_ & DOT_MASK) {
+				     switch (chord->properties() & DOT_MASK) {
 					case 1:	out_ << "."; break;
 					case 2:	out_ << ".."; break;
 				     }
@@ -1794,10 +1794,10 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 					     }
 					     if (loop2) {
 						loop2 = false;
-						if ((chord->properties_ & PROP_SLURED) && (voice_nr > 2 || (chord->properties_ & PROP_GRACE))) { /* otherwise it is made by phrases */
+						if ((chord->hasProperty( PROP_SLURED ) ) && (voice_nr > 2 || (chord->hasProperty( PROP_GRACE )))) { /* otherwise it is made by phrases */
 							dist = voi->computeSlurDist(chord);
 							if (dist > 1) { /* Note! There is no bar in 2nd, 3rd ... measure. So the index diff can be used */
-								if (chord->properties_ & PROP_GRACE) {
+								if (chord->hasProperty( PROP_GRACE ) ) {
 									bad = new badmeasure(ERR_GRACE_SLUR, staff_nr, bar_nr_, 0, 0);
 								}
 								else {
@@ -1816,7 +1816,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 						}
 					    }
 				     }
-				     if (chord->properties_ & PROP_BEAMED) {
+				     if (chord->hasProperty( PROP_BEAMED ) ) {
 					if (!voi->inBeam_) {
 						out_ << " bm";
 						voi->inBeam_ = true;
@@ -1827,7 +1827,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 					 }
 				     }
 				     out_ << "; ";
-				     if (chord->properties_ & PROP_LAST_TUPLET) {
+				     if (chord->hasProperty( PROP_LAST_TUPLET ) ) {
 					voi->inTuplet_ = false;
 					out_ << " } above  " <<
 						computeTripletString(tupletsum, chord->getNumNotes(), chord->getPlaytime(), &ok) << "; ";
@@ -1836,7 +1836,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 						badlist_.append(bad);
 					}
 				     }
-				     if (!(chord->properties_ & PROP_GRACE) && voice_nr == 2 && (chord->properties_ & PROP_SLURED)) { /* slurs for voices > 2 are incompatible */
+				     if (!(chord->hasProperty( PROP_GRACE ) ) && voice_nr == 2 && (chord->hasProperty( PROP_SLURED ) )) { /* slurs for voices > 2 are incompatible */
 					dest_measure_start_time = measure_start_time;
 					chord = ((NChord *) elem);
 					tt = voi->findTimeOfSlurEnd((NChord *) elem, &dest_measure_start_time, &count_of_measures);
@@ -1857,7 +1857,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 					}
 					*phrases_ << (starttime + 1.0) << " til " << timestring << ';';
 				     }
-				     if (chord->properties_ & PROP_ARPEGG) {
+				     if (chord->hasProperty( PROP_ARPEGG ) ) {
 					   starttime = ((chord->midiTime_ - measure_start_time) / MULTIPLICATOR) / (double) (128 / curr_denom_);
 					   if (rolls_.isEmpty()) {
 					   	rolls_.sprintf("roll %d %d: ", staff_nr, voice_nr);
@@ -1865,7 +1865,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 					   timestring.sprintf("%f;", starttime + 1.0);
 					   rolls_ += timestring;
 				     }
-				     if (chord->properties_ & (PROP_PEDAL_ON | PROP_PEDAL_OFF)) {
+				     if (chord->properties() & (PROP_PEDAL_ON | PROP_PEDAL_OFF)) {
 					bad = new badmeasure(ERR_PEDAL_IN_2ND, staff_nr, bar_nr_, total / 3, countof128th_);
 					fatallist_.append(bad);
 				     }
@@ -1883,18 +1883,18 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 					out_ << staff_nr << " " << voice_nr << ": ";
 				     }
 				     part = elem->getSubType(); 
-				     if (rest->properties_ & PROP_TUPLET) {
+				     if (rest->hasProperty( PROP_TUPLET ) ) {
 					total += rest->getPlaytime() * part / rest->getNumNotes();
 					tupletsum += part;
 				     }
 				     else {
 					total += part;
 				     }
-				     switch (rest->properties_ & DOT_MASK) {
+				     switch (rest->properties() & DOT_MASK) {
 					case 1: total += part / 2; break;
 					case 2: total += 3 * part / 4; break;
 				     }
-				     if ((rest->properties_ & PROP_TUPLET) && !voi->inTuplet_) {
+				     if ((rest->hasProperty( PROP_TUPLET ) ) && !voi->inTuplet_) {
 					voi->inTuplet_ = true;
 					tupletsum = part;
 					out_ << "{ ";
@@ -1904,18 +1904,18 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 					bad = new badmeasure(ERR_NOTE_COUNT, staff_nr, bar_nr_, total / 3, countof128th_);
 					badlist_.append(bad);
 				     }
-				     if (rest->properties_ & PROP_FERMT) {
+				     if (rest->hasProperty( PROP_FERMT ) ) {
 					out_ << "[with ";
 					out_ << "\"\\(ferm)\"";
 					out_ << ']';
 				     }
 				     out_ << WHOLE_LENGTH / part;
-				     switch (rest->properties_ & DOT_MASK) {
+				     switch (rest->properties() & DOT_MASK) {
 					case 1:	out_ << "."; break;
 					case 2:	out_ << ".."; break;
 				     }
-				     out_ << ((rest->properties_ & PROP_HIDDEN) ? "s; " : "r; ");
-				     if (rest->properties_ & PROP_LAST_TUPLET) {
+				     out_ << ((rest->hasProperty( PROP_HIDDEN ) ) ? "s; " : "r; ");
+				     if (rest->hasProperty( PROP_LAST_TUPLET ) ) {
 					voi->inTuplet_ = false;
 					out_ << " } above  " <<
 						computeTripletString(tupletsum, rest->getNumNotes(), rest->getPlaytime(), &ok) << "; ";

@@ -98,9 +98,9 @@ class NPlayable : public NMusElement {
 		inline void removeProperty( property_type prop ) { properties_ &= ~prop; }
 		inline void invertProperty( property_type prop ) { properties_ ^= prop; }
 		inline void setProperty( property_type prop, bool on ) { if(on) addProperty( prop ); else removeProperty( prop ); }
-		inline property_type properties() { return properties_; }
+		inline property_type properties() const { return properties_; }
 		inline void setProperties( property_type props ) { properties_ = props; }
-		inline bool hasProperty( property_type prop ) { return (properties_ & prop) == prop; }
+		inline property_type hasProperty( property_type prop ) const { return properties_ & prop; }
 
 		NPlayable(main_props_str *main_props, staff_props_str *staff_props);
 		virtual void changeLength(int) = 0;

@@ -97,7 +97,7 @@ QPoint NChord::StrokeDist1_(STROKE_X_1, STROKE_Y_1);
 QPoint NChord::StrokeDist2_(STROKE_X_2, STROKE_Y_2);
 
 
-#define STEM_LOGIC(line_expression) setProperty(PROP_STEM_UP, (properties_ & PROP_GRACE) || (main_props_->actualStemDir == STEM_DIR_AUTO && \
+#define STEM_LOGIC(line_expression) setProperty(PROP_STEM_UP, hasProperty ( PROP_GRACE) || (main_props_->actualStemDir == STEM_DIR_AUTO && \
 						voices_stem_policy == STEM_POL_INDIVIDUAL && (line_expression) < 4) || \
 		    				main_props_->actualStemDir == STEM_DIR_UP || \
 		    				(voices_stem_policy == STEM_POL_UP && main_props_->actualStemDir != STEM_DIR_DOWN) );
@@ -121,7 +121,7 @@ NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice 
 	if (length > WHOLE_LENGTH || (properties & PROP_GRACE)) {
 		note->properties &= (~BODY_MASK);
 	}
-	properties_ = (properties & PROP_GRACE) ? (properties & GRACE_PROP_PART) : (properties & (CHORD_PROP_PART | PROP_PEDAL_ON | PROP_PEDAL_OFF | PROP_AUTO_TRIPLET ));
+	setProperties( hasProperty( PROP_GRACE) ? (properties & GRACE_PROP_PART) : (properties & (CHORD_PROP_PART | PROP_PEDAL_ON | PROP_PEDAL_OFF | PROP_AUTO_TRIPLET )));
 	midiLength_ = computeMidiLength();
 	actualNote_ = 0;
 	note->line = line;
@@ -139,8 +139,8 @@ NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice 
 	STEM_LOGIC(line);
 	lyrics_ = 0;
 	lyricsPoints_ = 0;
-	if (properties_ & PROP_STEM_UP) {
-		properties_ |= PROP_STEM_UP_BEFORE_BEAM;
+	if (hasProperty( PROP_STEM_UP ) ) {
+		addProperty( PROP_STEM_UP_BEFORE_BEAM );
 	}
 	cdiagram_ = 0;
 	calculateFlagCount();
@@ -229,33 +229,33 @@ void NChord::computeStemBefore() {
 		else stemdowns++;
 	}
 	if (stemdowns > stemups) {
-		properties_ &= (~PROP_STEM_UP_BEFORE_BEAM);
+		removeProperty(PROP_STEM_UP_BEFORE_BEAM);
 	}
 	else {
-		properties_ |= PROP_STEM_UP_BEFORE_BEAM;
+		addProperty( PROP_STEM_UP_BEFORE_BEAM );
 	}
 }
 
 	
 
 int NChord::computeMidiLength() const {
-	if (properties_ & PROP_TUPLET) {
+	if (hasProperty( PROP_TUPLET ) ) {
 		return tupRealTime_ * length_ / numTupNotes_;
 	}
-	switch (properties_ & DOT_MASK) {
+	switch (properties() & DOT_MASK) {
 		case 1: return 3 * length_ / 2;
 		case 2: return 7 * length_ / 4;
 	}
 	return length_;
 }
 int NChord::getMidiLength(bool forPlayback) const {
-	if (!(properties_ & PROP_GRACE)) return midiLength_;
+	if (!hasProperty( PROP_GRACE )) return midiLength_;
 	return forPlayback ? INTERNAL_GRACE_MIDI_LENGTH : 0;
 }
 
 void NChord::setLyrics(QString *lyrics, int nr) {
 	int i;
-	if (properties_ & PROP_GRACE) return;
+	if (hasProperty(PROP_GRACE)) return;
 	if (nr < 0 || nr >= NUM_LYRICS) return;
 	if (!lyrics_) {
 		lyrics_ = new QString*[NUM_LYRICS];
@@ -350,12 +350,12 @@ QString *NChord::getLyrics(int nr) {
 void NChord::breakBeames() {
 	NChord *chord;
 	for (chord = beamList_->first(); chord; chord = beamList_->next()) {
-		chord->properties_ &= (~PROP_BEAMED);
-		if (chord->properties_ & PROP_STEM_UP_BEFORE_BEAM) {
-			chord->properties_ |= PROP_STEM_UP;
+		chord->removeProperty( PROP_BEAMED );
+		if (chord->hasProperty( PROP_STEM_UP_BEFORE_BEAM ) ) {
+			chord->addProperty( PROP_STEM_UP );
 		}	
 		else {
-			chord->properties_ &= (~PROP_STEM_UP);
+			chord->removeProperty( PROP_STEM_UP );
 		}
 		chord->calculateDimensionsAndPixmaps();
 	}
@@ -364,10 +364,10 @@ void NChord::breakBeames() {
 void NChord::changeLength(int length) {
 	NNote *note;
 	length_ = length;
-	if (properties_ & PROP_GRACE) {
+	if (hasProperty( PROP_GRACE ) ) {
 		if (length < NOTE16_LENGTH || length > NOTE8_LENGTH) return;
 	}
-	if (length > NOTE8_LENGTH && (properties_ & PROP_BEAMED)) {
+	if (length > NOTE8_LENGTH && hasProperty(PROP_BEAMED)) {
 		breakBeames();
 	} 
 	if (length > WHOLE_LENGTH) {
@@ -407,7 +407,7 @@ bool NChord::setOctaviationStop(int size) {
 
 void NChord::changeBody(property_type bodyType) {
 	NNote *note;
-	if (properties_ & PROP_GRACE) return;
+	if (hasProperty(PROP_GRACE)) return;
 	note = noteList_.at(actualNote_);
 	if (note == NULL) {
 		NResource::abort("changeBody: internal error");
@@ -433,7 +433,7 @@ void NChord::changeOffs(int offs, NKeySig *actual_keysig) {
 
 void NChord::setActualTied(bool tied) {
 	NNote *note;
-	if (properties_ & PROP_GRACE) return;
+	if (hasProperty(PROP_GRACE)) return;
 	note = noteList_.at(actualNote_);
 	if (note == NULL) {
 		NResource::abort("setActualTied: internal error");
@@ -451,7 +451,7 @@ void NChord::removeAllTies(){
 
 void NChord::tieWith(NChord *otherChordBefore) {
 	NNote *note, *note2;
-	if (properties_ & PROP_GRACE) return;
+	if (hasProperty(PROP_GRACE)) return;
 	for (note = noteList_.first(), note2 = otherChordBefore->noteList_.first();
 		note; note = noteList_.next(), note2 = otherChordBefore->noteList_.next()) {
 		if (note2 == NULL) {
@@ -465,27 +465,27 @@ void NChord::tieWith(NChord *otherChordBefore) {
 }
 
 void NChord::setArpeggio(bool on) {
-	if (properties_ & PROP_GRACE) return;
+	if (hasProperty(PROP_GRACE)) return;
 	setProperty(PROP_ARPEGG, on);
 }
 
 void NChord::setPedalOn(bool on) {
-	if (properties_ & PROP_GRACE) return;
+	if (hasProperty(PROP_GRACE)) return;
 	setProperty(PROP_PEDAL_ON, on);
 }
 
 void NChord::setPedalOff(bool on) {
-	if (properties_ & PROP_GRACE) return;
+	if (hasProperty(PROP_GRACE)) return;
 	setProperty(PROP_PEDAL_OFF, on);
 }
 
 void NChord::resetSlurForward() {
-	properties_ &= (~PROP_SLURED);
+	removeProperty(PROP_SLURED);
 	slur_forward_ = 0;
 }
 
 void NChord::resetSlurBackward() {
-	properties_ &=  (~PROP_PART_OF_SLUR);
+	removeProperty(PROP_PART_OF_SLUR);
 	slur_backward_ = 0;
 }
 
@@ -494,11 +494,11 @@ void NChord::setSlured(bool slured, NChord *partner) {
 	if (slured) {
 		slur_forward_ = partner;
 		partner->slur_backward_ = this;
-		partner->properties_ |= PROP_PART_OF_SLUR;
+		partner->addProperty( PROP_PART_OF_SLUR );
 		partner->calculateDimensionsAndPixmaps();
 	}
 	else {
-		slur_forward_->properties_ &= (~PROP_PART_OF_SLUR);
+		slur_forward_->removeProperty(PROP_PART_OF_SLUR);
 		slur_forward_->calculateDimensionsAndPixmaps();
 		slur_forward_->slur_backward_ = 0;
 		slur_forward_ = 0;
@@ -507,29 +507,29 @@ void NChord::setSlured(bool slured, NChord *partner) {
 }
 
 void NChord::breakSlurConnections() {
-	if (properties_ & PROP_SLURED) {
-		slur_forward_->properties_ &= (~PROP_PART_OF_SLUR);
+	if (hasProperty(PROP_SLURED)) {
+		slur_forward_->removeProperty(PROP_PART_OF_SLUR);
 		slur_forward_->slur_backward_ = 0;
-		properties_ &= (~PROP_SLURED);
+		removeProperty(PROP_SLURED);
 	}
-	if (properties_ & PROP_PART_OF_SLUR) {
-		slur_backward_->properties_ &= (~PROP_SLURED);
+	if (hasProperty( PROP_PART_OF_SLUR ) ) {
+		slur_backward_->removeProperty(PROP_SLURED);
 		slur_backward_->slur_forward_ = 0;
-		properties_ &= (~PROP_PART_OF_SLUR);
+		removeProperty(PROP_PART_OF_SLUR);
 	}
 }
 
 void NChord::checkSlures() {
-	if (properties_ & PROP_SLURED) {
-		slur_forward_->properties_ &= (~PROP_PART_OF_SLUR);
+	if (hasProperty( PROP_SLURED) ) {
+		slur_forward_->removeProperty(PROP_PART_OF_SLUR);
 		slur_forward_->slur_backward_ = 0;
-		properties_ &= (~PROP_SLURED);
+		removeProperty(PROP_SLURED);
 		slur_forward_ = 0;
 	}
-	if (properties_ & PROP_PART_OF_SLUR) {
-		slur_backward_->properties_ &= (~PROP_SLURED);
+	if (hasProperty( PROP_PART_OF_SLUR) ) {
+		slur_backward_->removeProperty(PROP_SLURED);
 		slur_backward_->slur_forward_ = 0;
-		properties_ &= (~PROP_PART_OF_SLUR);
+		removeProperty(PROP_PART_OF_SLUR);
 		slur_backward_ = 0;
 	}
 }
@@ -538,7 +538,7 @@ void NChord::setTupletParams(QList<NPlayable> *tupletList,
 				bool last, double m, double n, double tuptexn, int xstart, int xend, char numnotes, char playtime) {
 	tupletList_ = tupletList;
 	setProperty(PROP_LAST_TUPLET, last);
-	properties_ |= PROP_TUPLET;
+	addProperty(PROP_TUPLET);
 	tupTeXn_ = tuptexn;
 	tupm_ = m; tupn_ = n; xstart_ = xstart; xend_ = xend;
 	numTupNotes_ = numnotes; tupRealTime_ = playtime;
@@ -557,9 +557,9 @@ void NChord::setTupletParams(QList<NPlayable> *tupletList,
 }
 
 void NChord::setDotted(int dotcount) {
-	if (properties_ & PROP_GRACE) return;
-	properties_ &= (~DOT_MASK);
-	properties_ |= (dotcount & DOT_MASK);
+	if (hasProperty(PROP_GRACE)) return;
+	removeProperty(DOT_MASK);
+	addProperty(dotcount & DOT_MASK);
 	midiLength_ = computeMidiLength();
 }
 
@@ -571,7 +571,7 @@ bool NChord::equalTiedChord(NChord *chord2) {
 	NNote *note, *cnote;
 
 	if (noteList_.count() != chord2->noteList_.count()) return false;
-	if ((properties_ & PROP_TUPLET) || (chord2->properties_ & PROP_TUPLET)) return false;
+	if (hasProperty(PROP_TUPLET) || chord2->hasProperty(PROP_TUPLET)) return false;
 	for (note = noteList_.first(), cnote = chord2->noteList_.first(); note;
 		note = noteList_.next(), cnote = chord2->noteList_.next()) {
 		if (!note->tie_forward) return false;
@@ -581,7 +581,7 @@ bool NChord::equalTiedChord(NChord *chord2) {
 }
 
 void NChord::setStemUp(bool stem_up) {
-	if (properties_ & PROP_GRACE) return;
+	if (hasProperty(PROP_GRACE)) return;
 	setProperty(PROP_STEM_UP, stem_up);
 	setProperty(PROP_STEM_UP_BEFORE_BEAM, stem_up);
 	calculateDimensionsAndPixmaps();
@@ -626,7 +626,7 @@ void NChord::computeBeames(QList<NChord> *beamList, int stemPolicy) {
 	computeLineParams(beamList, &n, &m);
 	for (chord = beamList->first(); chord; chord = beamList->next()) {
 		nn = (double) chord->getTopY()->y() - m * (double) chord->getTopY()->x();
-		if (chord->properties_ & PROP_STEM_UP) {
+		if (chord->hasProperty(PROP_STEM_UP)) {
 			if (nn < minn) minn = nn;
 			++numStemUp;
 		}
@@ -695,20 +695,20 @@ void NChord::computeBeames(QList<NChord> *beamList, int stemPolicy) {
 }
 
 void NChord::setBeamParams(QList<NChord> *beamList, NChord *nextChord, double m, double n) {
-	properties_ |= PROP_BEAMED;
+	addProperty( PROP_BEAMED );
 	m_ = m; n_ = n;
 	nextBeamedChord_ = nextChord;
 	beamList_ = beamList;
 }
 
 bool NChord::beamHasOnlyTwoChords() {
-	if (!(properties_ & PROP_BEAMED)) return false;
+	if (!hasProperty(PROP_BEAMED)) return false;
 	return (beamList_->count() == 2);
 }
 
 void NChord::removeFromBeam() {
 	char *err = "internal error: removeFromBeam";
-	if (!(properties_ & PROP_BEAMED)  || beamList_ == 0) {
+	if (!hasProperty(PROP_BEAMED)  || beamList_ == 0) {
 		NResource::abort(err, 1);
 	}
 	if (beamList_->find(this) == -1) {
@@ -718,7 +718,7 @@ void NChord::removeFromBeam() {
 }
 
 void NChord::resetBeamFlags() {
-	properties_ &= (~(PROP_BEAMED));
+	removeProperty(PROP_BEAMED);
 	nextBeamedChord_ = 0;
 	beamList_ = 0;
 }
@@ -825,9 +825,9 @@ bool NChord::deleteNoteAtLine(int line, int voices_stem_policy) {
 
 NChord::~NChord () {
 	int i;
-	if (properties_ & PROP_BEAMED) {
+	if (hasProperty(PROP_BEAMED)) {
 		if (beamList_->find(this) == -1) {
-			printf("&GRACE= 0x%x\n", properties_ &PROP_GRACE); fflush(stdout);
+			printf("&GRACE= 0x%x\n", hasProperty( PROP_GRACE )); fflush(stdout);
 			NResource::abort("~Note: internal error");
 		}
 		beamList_->remove();
@@ -929,14 +929,14 @@ void NChord::calculateFlagCount() {
 		case NOTE128_LENGTH: flagCount_ = 5; break;
 		default: flagCount_ = 0;
 	}
-	if (properties_ & PROP_GRACE) {
+	if (hasProperty( PROP_GRACE )) {
 		if (flagCount_ > 2) flagCount_ = 1;
 	}
 }
 
 void NChord::calculateDimensionsAndPixmaps() {
 	xposDecor_ = xpos_;
-	if (properties_ & PROP_GRACE) {
+	if (hasProperty( PROP_GRACE )) {
 		calculateGraceChord();
 		return;
 	}
@@ -951,11 +951,11 @@ void NChord::calculateDimensionsAndPixmaps() {
 
 	pixmapHeight_ = NECK_LENGTH+1;
 	pixmapWidth_ = NResource::nbasePixmapWidth_+12;
-	if (length_ < QUARTER_LENGTH && (properties_ & PROP_STEM_UP) && !(properties_ & PROP_BEAMED) ) pixmapWidth_ += NResource::flagPixmapWidth_;
+	if (length_ < QUARTER_LENGTH && hasProperty(PROP_STEM_UP) && !hasProperty(PROP_BEAMED) ) pixmapWidth_ += NResource::flagPixmapWidth_;
 	min_line = noteList_.first()->line;
 	max_line = noteList_.last()->line;
 	x_aux_offs = min_line < -1  || max_line > 9 ? AUX_L_2 - NResource::nbasePixmapWidth2_ : 0;
-	if (properties_ & PROP_ARPEGG) {
+	if (hasProperty( PROP_ARPEGG )) {
 		x_acc_offs += ARPEGG_DIST;
 	}
 	for (note = noteList_.first(); note; note = noteList_.next()) {
@@ -1100,7 +1100,7 @@ void NChord::calculateDimensionsAndPixmaps() {
 		    note->tie_back_point_down = QPoint(note->nbase_draw_point.x() + NResource::nbasePixmapWidth2_-2, note->nbase_draw_point.y() -4);
 		}
 	}
-	if (properties_ & (PROP_SLURED | PROP_PART_OF_SLUR)) {
+	if (properties() & (PROP_SLURED | PROP_PART_OF_SLUR)) {
 	    note = noteList_.first();
 	    slur_start_point_up_ = QPoint(note->nbase_draw_point.x() + NResource::nbasePixmapWidth2_, note->nbase_draw_point.y() +
                           NResource::nbasePixmapHeight_ + SLURDIST);
@@ -1114,7 +1114,7 @@ void NChord::calculateDimensionsAndPixmaps() {
 	}
 	
 	pixmapHeight_ += (max_line - min_line) * LINE_DIST / 2+NResource::nbasePixmapHeight_;
-	if (properties_ & PROP_STEM_UP) {
+	if (hasProperty( PROP_STEM_UP )) {
 		nbaseLinePoint1_ = QPoint (xpos_+x_aux_offs+ NResource::nbasePixmapWidth_+x_acc_offs-1, staff_props_->base + 4 * LINE_DIST - 1 - min_line * LINE_DIST  / 2);
 		nbaseLinePoint2_ = QPoint (xpos_+x_aux_offs+ NResource::nbasePixmapWidth_+x_acc_offs-1, staff_props_->base + 4 * LINE_DIST - 1 - max_line * LINE_DIST  / 2 -
 		 	NECK_LENGTH - ((flagCount_ <=  1) ? 0 : ((flagCount_ - 1) * FLAG_DIST)));
@@ -1133,7 +1133,7 @@ void NChord::calculateDimensionsAndPixmaps() {
 		stacc_point_ = QRect(nbaseLinePoint1_ + QPoint(STACC_XDDIST, -STACC_YDDIST), QSize(2*STACC_SIZE, 2*STACC_SIZE));
 	}
 	nbaseLinePoint3_ = QPoint (xbpoint, (int) (m_ * xbpoint + n_));
-	if (properties_ & PROP_ARPEGG) {
+	if (hasProperty( PROP_ARPEGG )) {
 		arpeggDrawPoint_ = QPoint(xpos_-ARPEGG_DIST, staff_props_->base + 4 * LINE_DIST - max_line * LINE_DIST / 2);
 		arpeggParts_ = (max_line - min_line) * LINE_DIST / 2 / NResource::arpegPixmapHeight_;
 		if (arpeggParts_ < 1) arpeggParts_ = 1;
@@ -1151,7 +1151,7 @@ void NChord::calculateDimensionsAndPixmaps() {
 		acc_point_ = QPoint(xpos_ + x_aux_offs + x_shift_offs + x_acc_offs + ACC_XDDIST, staff_props_->base + ( LINE_DIST * 5 ) + ACC_BDIST);
 	}
 	else 
-	    if (properties_ & PROP_STEM_UP) 
+	    if (hasProperty( PROP_STEM_UP )) 
 		acc_point_ = QPoint(nbaseLinePoint1_ + QPoint(ACC_XUDIST, ACC_YUDIST));
 	    else {
 		u1_.setAccentAboveChord_ = true;
@@ -1185,11 +1185,11 @@ void NChord::calculateDimensionsAndPixmaps() {
 		xposDecor_ = xpos_ + -va_ * VA_LINE_LEN;
 	}
 	if (dynamic_) xposDecor_ = xpos_ + dynamic_;
-	if (properties_ & PROP_STEM_UP) {
+	if (hasProperty( PROP_STEM_UP )) {
 		pedal_point_ = nbaseLinePoint1_ + QPoint(PEDAL_X_DIST, PEDAL_Y_DIST);
 	}
 	else {
-		if (properties_ & PROP_BEAMED) {
+		if (hasProperty( PROP_BEAMED )) {
 			pedal_point_ = flag_pos_[0] + QPoint(PEDAL_X_DIST, PEDAL_Y_DIST);
 		}
 		else {
@@ -1221,13 +1221,13 @@ void NChord::calculateDimensionsAndPixmaps() {
 		}
 		main_props_->directPainter->end();
 	}
-	if (properties_ & PROP_BEAMED) {
+	if (hasProperty( PROP_BEAMED )) {
 		for (i = 0; i < 5; ++i) {
-			flag_pos_[i] = QPoint(xbpoint, (int) (m_ * xbpoint + n_) + ((properties_ & PROP_STEM_UP) ? FLAG_DIST : -FLAG_DIST) * i);
+			flag_pos_[i] = QPoint(xbpoint, (int) (m_ * xbpoint + n_) + (hasProperty( PROP_STEM_UP ) ? FLAG_DIST : -FLAG_DIST) * i);
 		}
 	}
 	else {
-		if (properties_ & PROP_STEM_UP) {
+		if (hasProperty( PROP_STEM_UP )) {
 			for (i = 0; i < 5; ++i) {
 				flag_pos_[i] = QPoint(xbpoint, nbaseLinePoint2_.y() + i * FLAG_DIST);
 			}
@@ -1238,7 +1238,7 @@ void NChord::calculateDimensionsAndPixmaps() {
 			}
 		}
 	}
-	if (properties_ & PROP_LAST_TUPLET) {
+	if (hasProperty( PROP_LAST_TUPLET )) {
 		tuplet0_ = QPoint(xstart_, int(xstart_ * tupm_ + tupn_));
 		tuplet1_ = QPoint(xend_, int(xend_ * tupm_ + tupn_));
 		tuplet00_ = tuplet0_ + QPoint(0, TUPLET_HEIGHT);
@@ -1247,7 +1247,7 @@ void NChord::calculateDimensionsAndPixmaps() {
 	}
 		
 	pixmapWidth_ += x_aux_offs+x_shift_offs + x_acc_offs;
-	switch(properties_ & DOT_MASK) {
+	switch(properties() & DOT_MASK) {
 		case 1: pixmapWidth_ += 3*POINT_DIST + 2*POINT_RAD; break;
 		case 2: pixmapWidth_ += 4*POINT_DIST+4*POINT_RAD; break;
 	}
@@ -1271,7 +1271,7 @@ void NChord::calculateGraceChord() {
 
 	pixmapHeight_ = NECK_LENGTH+1;
 	pixmapWidth_ = NResource::tinyBasePixmapWidth_+12;
-	if ((properties_ & PROP_STEM_UP) && !(properties_ & PROP_BEAMED) ) pixmapWidth_ += NResource::tinyFlagPixmapWidth_;
+	if (hasProperty(PROP_STEM_UP) && !hasProperty( PROP_BEAMED) ) pixmapWidth_ += NResource::tinyFlagPixmapWidth_;
 	min_line = noteList_.first()->line;
 	max_line = noteList_.last()->line;
 	x_aux_offs = min_line < -1  || max_line > 9 ? AUX_L_2 - NResource::tinyBasePixmapWidth2_ : 0;
@@ -1335,7 +1335,7 @@ void NChord::calculateGraceChord() {
 		    note->tie_back_point_down = QPoint(note->nbase_draw_point.x() + NResource::tinyBasePixmapWidth2_-2, note->nbase_draw_point.y() -4);
 		}
 	}
-	if (properties_ & (PROP_SLURED | PROP_PART_OF_SLUR)) {
+	if (properties() & (PROP_SLURED | PROP_PART_OF_SLUR)) {
 	    note = noteList_.first();
 	    slur_start_point_up_ = QPoint(note->nbase_draw_point.x() + NResource::tinyBasePixmapWidth2_, note->nbase_draw_point.y() +
                           NResource::tinyBasePixmapHeight_ + SLURDIST);
@@ -1361,9 +1361,9 @@ void NChord::calculateGraceChord() {
 	
 	// decide about accent alignment
 	
-	if (properties_ & PROP_BEAMED) {
+	if (hasProperty( PROP_BEAMED )) {
 		for (i = 0; i < 5; ++i) {
-			flag_pos_[i] = QPoint(xbpoint, (int) (m_ * xbpoint + n_) + ((properties_ & PROP_STEM_UP) ? FLAG_DIST : -FLAG_DIST) * i);
+			flag_pos_[i] = QPoint(xbpoint, (int) (m_ * xbpoint + n_) + (hasProperty( PROP_STEM_UP) ? FLAG_DIST : -FLAG_DIST) * i);
 		}
 	}
 	else {
@@ -1409,22 +1409,22 @@ QPoint *NChord::getTopY() {
 }
 
 int NChord::getTopY2() {
-	if (properties_ & PROP_STEM_UP) return nbaseLinePoint2_.y();
+	if (hasProperty(PROP_STEM_UP)) return nbaseLinePoint2_.y();
 	return nbaseLinePoint1_.y() - 10;
 }
 
 int NChord::getTopY3() {
-	int ytop = (properties_ & PROP_STEM_UP) ? nbaseLinePoint2_.y() : nbaseLinePoint1_.y() - 10;
+	int ytop = (hasProperty(PROP_STEM_UP)) ? nbaseLinePoint2_.y() : nbaseLinePoint1_.y() - 10;
 	return (ytop < staff_props_->base) ? ytop : staff_props_->base;
 }
 
 int NChord::getTopX2() {
-	if (properties_ & PROP_STEM_UP) return nbaseLinePoint2_.x();
+	if (hasProperty(PROP_STEM_UP)) return nbaseLinePoint2_.x();
 	return  nbaseLinePoint2_.x() + NResource::nbasePixmapWidth2_;
 }
 
 int NChord::getRefY() {
-	if (properties_ & PROP_STEM_UP) return staff_props_->base + 4 * LINE_DIST - noteList_.last()->line * LINE_DIST  / 2;
+	if (hasProperty(PROP_STEM_UP)) return staff_props_->base + 4 * LINE_DIST - noteList_.last()->line * LINE_DIST  / 2;
 	return staff_props_->base + 4 * LINE_DIST - noteList_.first()->line * LINE_DIST  / 2;
 }
 
@@ -1462,7 +1462,7 @@ void NChord::draw(int flags) {
 	if (flags &  (DRAW_DIRECT_RED | DRAW_DIRECT_BLACK)) {
 		if (bbox_.right() < main_props_->directPainter->getLeftBorder()) return;
 	}
-	if (properties_ & PROP_GRACE) {
+	if (hasProperty( PROP_GRACE )) {
 		drawGraceChord(flags);
 		return;
 	}
@@ -1488,18 +1488,18 @@ void NChord::draw(int flags) {
 		the_painter->drawPixmap (note->nbase_draw_point, ((actual_ && j == actualNote_) || (flags & DRAW_DIRECT_RED)) ?
 			 *(note->redBodyPixmap) : ((flags & DRAW_INDIRECT_GREY) ?  *(note->greyBodyPixmap) : *(note->bodyPixmap)));
 		if (flags & DRAW_DIRECT_RED) continue;
-		if (properties_ & DOT_MASK) {
+		if (properties() & DOT_MASK) {
 			the_painter->setBrush(actual_  ? NResource::redBrush_ : NResource::blackBrush_ );
 			the_painter->drawPie(note->point_pos1, 0, 360*16);
-			if ((properties_ & DOT_MASK) > 1) {
+			if ((properties() & DOT_MASK) > 1) {
 				the_painter->drawPie(note->point_pos2, 0, 360*16);
 			}
 		}
 		if ((note->properties & PROP_TIED) && note->tie_forward) {
 			/* if there's no poliphony, ties are at the opposite side of stems,
 			   if there is polyphony, ties are at the same side as stems */
-			if ( ((properties_ & PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
-			    || (!(properties_ & PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
+			if ( (hasProperty( PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
+			    || (!hasProperty(PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
 		    	pa.setPoint(0, note->tie_start_point_up);
 				pa.setPoint(1, note->tie_forward_point_up);
 				pa.setPoint(2, note->tie_forward->tie_back_point_up);
@@ -1545,19 +1545,19 @@ void NChord::draw(int flags) {
 		}
 	}
 	if (length_ < WHOLE_LENGTH) {
-		the_painter->drawLine(nbaseLinePoint1_, (properties_ & PROP_BEAMED)  ? nbaseLinePoint3_ : nbaseLinePoint2_);
+		the_painter->drawLine(nbaseLinePoint1_, hasProperty(PROP_BEAMED)  ? nbaseLinePoint3_ : nbaseLinePoint2_);
 	}
 	if (flags & (DRAW_DIRECT_RED | DRAW_DIRECT_BLACK)) {
 		the_painter->end();
 		return;
 	}
-	if (properties_ & PROP_STACC) {
+	if (hasProperty( PROP_STACC )) {
 		the_painter->setBrush(actual_ ? NResource::redBrush_ : NResource::blackBrush_);
 		the_painter->drawPie(stacc_point_, 0, 360*16);
 	}
 	
 	
-	if (properties_ & PROP_SFORZ)
+	if (hasProperty( PROP_SFORZ ))
 		// sforzato draw
 		if( u1_.setAccentAboveChord_ )
 			the_painter->drawPixmap (QPoint(acc_point_.x() - (NResource::sforzatoAbPixmap_->width() / 2 ), acc_point_.y() - (NResource::sforzatoAbPixmap_->height() / 2)), actual_ ? *NResource::sforzatoAbRedPixmap_ :
@@ -1566,12 +1566,12 @@ void NChord::draw(int flags) {
 			the_painter->drawPixmap (QPoint(acc_point_.x() - (NResource::sforzatoBePixmap_->width() / 2 ), acc_point_.y()), actual_ ? *NResource::sforzatoBeRedPixmap_ :
 					    *NResource::sforzatoBePixmap_ );
 					    
-	if (properties_ & PROP_PORTA) 
+	if (hasProperty( PROP_PORTA )) 
 		// portato draw
 		the_painter->drawPixmap (QPoint(acc_point_.x() - (NResource::portatoPixmap_->width() / 2 ), acc_point_.y()), actual_ ? *NResource::portatoRedPixmap_ : 
 				    *NResource::portatoPixmap_ );	
 
-	if (properties_ & PROP_STPIZ)
+	if (hasProperty( PROP_STPIZ ))
 		// strong pizzicato draw
 		if( u1_.setAccentAboveChord_ )
 			the_painter->drawPixmap (QPoint(acc_point_.x() - (NResource::strong_pizzicatoAbPixmap_->width() / 2 ), acc_point_.y() - (NResource::strong_pizzicatoAbPixmap_->height() / 2)), actual_ ? *NResource::strong_pizzicatoAbRedPixmap_ :
@@ -1580,18 +1580,18 @@ void NChord::draw(int flags) {
 			the_painter->drawPixmap (QPoint(acc_point_.x() - (NResource::strong_pizzicatoBePixmap_->width() / 2 ), acc_point_.y()), actual_ ? *NResource::strong_pizzicatoBeRedPixmap_ :
 					    *NResource::strong_pizzicatoBePixmap_ );
 
-	if (properties_ & PROP_SFZND) 
+	if (hasProperty( PROP_SFZND )) 
 		// sforzando draw
 		the_painter->drawPixmap (QPoint(acc_point_.x() - (NResource::sforzandoPixmap_->width() / 2 ), u1_.setAccentAboveChord_ ? acc_point_.y() - (NResource::sforzandoPixmap_->height() / 2) : acc_point_.y() ), actual_ ? *NResource::sforzandoRedPixmap_ : 
 				    *NResource::sforzandoPixmap_ );	
-	if (properties_ & PROP_PEDAL_ON) 
+	if (hasProperty( PROP_PEDAL_ON )) 
 		// pedal on draw
 		the_painter->drawPixmap (pedal_point_, actual_ ? *NResource::pedonRedPixmap_ : *NResource::pedonPixmap_ );	
-	if (properties_ & PROP_PEDAL_OFF) 
+	if (hasProperty( PROP_PEDAL_OFF )) 
 		// pedal off draw
 		the_painter->drawPixmap (pedal_point_, actual_ ? *NResource::pedoffRedPixmap_ : *NResource::pedoffPixmap_ );	
 
-	if (properties_ & PROP_FERMT)
+	if (hasProperty( PROP_FERMT ))
 		// fermate draw
 		if( u1_.setAccentAboveChord_ )
 			the_painter->drawPixmap (QPoint(acc_point_.x() - (NResource::fermateAbPixmap_->width() / 2 ), acc_point_.y() - (NResource::fermateAbPixmap_->height() / 4)), actual_ ? *NResource::fermateAbRedPixmap_ :
@@ -1600,7 +1600,7 @@ void NChord::draw(int flags) {
 			the_painter->drawPixmap (QPoint(acc_point_.x() - (NResource::fermateBePixmap_->width() / 2 ), acc_point_.y() - (NResource::fermateAbPixmap_->height() / 3)), actual_ ? *NResource::fermateBeRedPixmap_ :
 					    *NResource::fermateBePixmap_ );
 
-	if (properties_ & PROP_ARPEGG) {
+	if (hasProperty( PROP_ARPEGG )) {
 		for (i = 0; i < arpeggParts_; i++) {
 			the_painter->drawPixmap(arpeggDrawPoint_ + QPoint(0, i * NResource::arpegPixmapHeight_), *NResource::arpeggPixmap_);
 		}
@@ -1660,11 +1660,11 @@ void NChord::draw(int flags) {
 
 	}
 
-	if ((properties_ & PROP_SLURED) && slur_forward_) {
+	if (hasProperty(PROP_SLURED) && slur_forward_) {
 		/* if there's no poliphony, slurs are at the opposite side of stems,
 		   if there is polyphony, slurs are at the same side as stems */
-		if ( ((properties_ & PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
-		    || (!(properties_ & PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
+		if ( (hasProperty(PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
+		    || (!hasProperty(PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
 			pa.setPoint(0, slur_start_point_up_);
 			pa.setPoint(1, slur_forward_point_up_);
 			pa.setPoint(2, slur_forward_->slur_back_point_up_);
@@ -1681,7 +1681,7 @@ void NChord::draw(int flags) {
 		the_painter->drawQuadBezier(pa);
 #endif
 	}
-	if (properties_ & PROP_BEAMED) {
+	if (hasProperty(PROP_BEAMED)) {
 		if (flags & DRAW_DIRECT_RED) {
 			the_painter->setPen(NResource::redWidePen_);
 		}
@@ -1699,20 +1699,20 @@ void NChord::draw(int flags) {
 				else {
 					nextx = nbaseLinePoint2_.x() + SHORT_BEAM_LENGTH;
 				}
-				nextPoint = QPoint(nextx, (int) (m_ * nextx + n_) + ((properties_ & PROP_STEM_UP) ? FLAG_DIST : -FLAG_DIST)  * i);
+				nextPoint = QPoint(nextx, (int) (m_ * nextx + n_) + (hasProperty(PROP_STEM_UP) ? FLAG_DIST : -FLAG_DIST)  * i);
 				the_painter->drawLine(flag_pos_[i], nextPoint);
 			}
 		}
 		else {
 			for (i = 0;  i < flagCount_; ++i) {
 				nextx = nbaseLinePoint2_.x() - SHORT_BEAM_LENGTH;	
-				nextPoint = QPoint((int) nextx, (int) (m_ * nextx + n_) + ((properties_ & PROP_STEM_UP) ? FLAG_DIST : -FLAG_DIST) * i);
+				nextPoint = QPoint((int) nextx, (int) (m_ * nextx + n_) + (hasProperty(PROP_STEM_UP) ? FLAG_DIST : -FLAG_DIST) * i);
 				the_painter->drawLine(nextPoint, flag_pos_[i]);
 			}
 		}
 	}
 	else {
-		if (properties_ & PROP_STEM_UP) {
+		if (hasProperty( PROP_STEM_UP )) {
 			for (i = 0;  i < flagCount_; ++i) {
 				the_painter->drawPixmap (flag_pos_[i], (flags & DRAW_DIRECT_RED) ?
 					 *NResource::flagRedPixmap_ : ((flags & DRAW_INDIRECT_GREY) ?
@@ -1727,9 +1727,9 @@ void NChord::draw(int flags) {
 			}
 		}
 	}
-	if (properties_ & PROP_LAST_TUPLET) {
+	if (hasProperty( PROP_LAST_TUPLET )) {
 		the_painter->drawPixmap(tupletDigit_, *tupletMarker_);
-		if (!(properties_ & PROP_BEAMED)) {
+		if (!hasProperty( PROP_BEAMED )) {
 			the_painter->setPen((flags & DRAW_INDIRECT_GREY) ? NResource::greyWidePen_ : NResource::blackWidePen_);
 			the_painter->drawLine(tuplet00_, tuplet0_);
 			the_painter->drawLine(tuplet0_, tuplet1_);
@@ -1785,18 +1785,18 @@ void NChord::drawGraceChord(int flags) {
 		the_painter->drawPixmap (note->nbase_draw_point, ((actual_ &&  j == actualNote_)  || (flags & DRAW_DIRECT_RED)) ?
 			 *(note->redBodyPixmap) : ((flags & DRAW_INDIRECT_GREY) ?  *(note->greyBodyPixmap) : *(note->bodyPixmap)));
 		if (flags & DRAW_DIRECT_RED) continue;
-		if (properties_ & DOT_MASK) {
+		if (properties() & DOT_MASK) {
 			the_painter->setBrush(actual_  ? NResource::redBrush_ : NResource::blackBrush_ );
 			the_painter->drawPie(note->point_pos1, 0, 360*16);
-			if ((properties_ & DOT_MASK) > 1) {
+			if ((properties() & DOT_MASK) > 1) {
 				the_painter->drawPie(note->point_pos2, 0, 360*16);
 			}
 		}
 		if ((note->properties & PROP_TIED) && note->tie_forward) {
 			/* if there's no poliphony, ties are at the opposite side of stems,
 			   if there is polyphony, ties are at the same side as stems */
-			if ( ((properties_ & PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
-		        || (!(properties_ & PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
+			if ( (hasProperty(PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
+		        || (!hasProperty(PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
 		    	pa.setPoint(0, note->tie_start_point_up);
 				pa.setPoint(1, note->tie_forward_point_up);
 				pa.setPoint(2, note->tie_forward->tie_back_point_up);
@@ -1842,7 +1842,7 @@ void NChord::drawGraceChord(int flags) {
 			break;
 		}
 	}
-	the_painter->drawLine(nbaseLinePoint1_, (properties_ & PROP_BEAMED)  ? nbaseLinePoint3_ : nbaseLinePoint2_);
+	the_painter->drawLine(nbaseLinePoint1_, hasProperty(PROP_BEAMED)  ? nbaseLinePoint3_ : nbaseLinePoint2_);
 	if (length_ == INTERNAL_MARKER_OF_STROKEN_GRACE) {
 		the_painter->drawLine(tuplet0_, tuplet1_);
 	}
@@ -1850,12 +1850,12 @@ void NChord::drawGraceChord(int flags) {
 		the_painter->end();
 		return;
 	}
-	if (properties_ & PROP_STACC) {
+	if (hasProperty( PROP_STACC )) {
 		the_painter->setBrush(actual_ ? NResource::redBrush_ : NResource::blackBrush_);
 		the_painter->drawPie(stacc_point_, 0, 360*16);
 	}
 	
-	if ((properties_ & PROP_SLURED) && slur_forward_) {
+	if (hasProperty(PROP_SLURED) && slur_forward_) {
 		pa.setPoint(0, slur_start_point_up_);
 		pa.setPoint(1, slur_forward_point_up_);
 		pa.setPoint(2, slur_forward_->slur_back_point_up_);
@@ -1866,7 +1866,7 @@ void NChord::drawGraceChord(int flags) {
 		the_painter->drawQuadBezier(pa);
 #endif
 	}
-	if (properties_ & PROP_BEAMED) {
+	if (hasProperty(PROP_BEAMED)) {
 		if (flags & DRAW_DIRECT_RED) {
 			the_painter->setPen(NResource::redWidePen_);
 		}
@@ -1884,14 +1884,14 @@ void NChord::drawGraceChord(int flags) {
 				else {
 					nextx = nbaseLinePoint2_.x() + SHORT_BEAM_LENGTH;
 				}
-				nextPoint = QPoint(nextx, (int) (m_ * nextx + n_) + ((properties_ & PROP_STEM_UP) ? FLAG_DIST : -FLAG_DIST)  * i);
+				nextPoint = QPoint(nextx, (int) (m_ * nextx + n_) + (hasProperty(PROP_STEM_UP) ? FLAG_DIST : -FLAG_DIST)  * i);
 				the_painter->drawLine(flag_pos_[i], nextPoint);
 			}
 		}
 		else {
 			for (i = 0;  i < flagCount_; ++i) {
 				nextx = nbaseLinePoint2_.x() - SHORT_BEAM_LENGTH;	
-				nextPoint = QPoint((int) nextx, (int) (m_ * nextx + n_) + ((properties_ & PROP_STEM_UP) ? FLAG_DIST : -FLAG_DIST) * i);
+				nextPoint = QPoint((int) nextx, (int) (m_ * nextx + n_) + (hasProperty(PROP_STEM_UP) ? FLAG_DIST : -FLAG_DIST) * i);
 				the_painter->drawLine(nextPoint, flag_pos_[i]);
 			}
 		}
@@ -1903,9 +1903,9 @@ void NChord::drawGraceChord(int flags) {
 				 *NResource::tinyFlagGreyPixmap_ : *NResource::tinyFlagPixmap_));
 		}
 	}
-	if (properties_ & PROP_LAST_TUPLET) {
+	if (hasProperty(PROP_LAST_TUPLET)) {
 		the_painter->drawPixmap(tupletDigit_, *tupletMarker_);
-		if (!(properties_ & PROP_BEAMED)) {
+		if (!hasProperty(PROP_BEAMED)) {
 			the_painter->setPen((flags & DRAW_INDIRECT_GREY) ? NResource::greyWidePen_ : NResource::blackWidePen_);
 			the_painter->drawLine(tuplet00_, tuplet0_);
 			the_painter->drawLine(tuplet0_, tuplet1_);
@@ -2026,7 +2026,7 @@ QString *NChord::computeTeXBeam(int maxBeams, unsigned int *beamPool, int *beamN
 		fc2 = maxflags;
 		*problem128 = true;
 	}
-	beamdir = (properties_ & PROP_STEM_UP) ? 'u' : 'l';
+	beamdir = hasProperty(PROP_STEM_UP) ? 'u' : 'l';
 	if (this == beamList_->first()) {
 		i = 0; found = false;
 		while (i < maxBeams && !found) {
@@ -2048,7 +2048,7 @@ QString *NChord::computeTeXBeam(int maxBeams, unsigned int *beamPool, int *beamN
 			*s += QString("b");
 		}
 			
-		line1 = (properties_ & PROP_STEM_UP) ? noteList_.last()->line : noteList_.first()->line;
+		line1 = hasProperty(PROP_STEM_UP) ? noteList_.last()->line : noteList_.first()->line;
 		y_thoeretical1 = nbaseLinePoint2_.y();
 		y_practical1 = m_ * nbaseLinePoint2_.x() + n_;
 		line1 += (int) ((y_thoeretical1 - y_practical1) / (((double) LINE_DIST) / 2.0));
@@ -2058,12 +2058,12 @@ QString *NChord::computeTeXBeam(int maxBeams, unsigned int *beamPool, int *beamN
 			else if (line1 > MAXLINE) line1 =  MAXLINE;
 		}
 		lastChordInBeam = beamList_->last();
-		line2 = (properties_ & PROP_STEM_UP) ? lastChordInBeam->noteList_.last()->line : lastChordInBeam->noteList_.first()->line;
+		line2 = hasProperty(PROP_STEM_UP) ? lastChordInBeam->noteList_.last()->line : lastChordInBeam->noteList_.first()->line;
 		y_thoeretical2 = lastChordInBeam->nbaseLinePoint2_.y();
 		y_practical2 = m_ * lastChordInBeam->nbaseLinePoint2_.x() + n_;
 		line2 += (int) ((y_thoeretical2 - y_practical2) / (((double) LINE_DIST) / 2.0));
-		if ((lastChordInBeam->properties_ & PROP_STEM_UP) && !(properties_ & PROP_STEM_UP)) line2 += 14;
-		else if (!(lastChordInBeam->properties_ & PROP_STEM_UP) && (properties_ & PROP_STEM_UP)) line2 -= 14;
+		if (lastChordInBeam->hasProperty(PROP_STEM_UP) && !hasProperty(PROP_STEM_UP)) line2 += 14;
+		else if (!lastChordInBeam->hasProperty(PROP_STEM_UP) && hasProperty(PROP_STEM_UP)) line2 -= 14;
 		if (line2 < MINLINE || line2 > MAXLINE) {
 			printf("NChord::computeTeXBeam: line2 out of range\n");
 			if (line2 < MINLINE) line2 = MINLINE;
@@ -2259,7 +2259,7 @@ QString *NChord::computeTeXTie(unsigned int *tiePool, NClef *clef, int maxtie, b
 				note->TeXTieNr = tieNr;
 				if (tieNr < 6) {
 					if (s == 0) s = new QString();
-					tieDir = properties_ & PROP_STEM_UP ? 'd' : 'u';
+					tieDir = hasProperty( PROP_STEM_UP ) ? 'd' : 'u';
 					t.sprintf("\\itie%c%d%c", tieDir, note->TeXTieNr, clef->line2TexTab_[note->line+LINE_OVERFLOW]);
 					*s += t;
 				}
@@ -2278,9 +2278,9 @@ QString *NChord::computeTeXSlur(unsigned int *slurPool, NClef *clef, int maxslur
 	QString *s = 0, t;
 	*toomany = false;
 
-	if (!(properties_ & PROP_SLURED) && !(properties_ & PROP_PART_OF_SLUR)) return 0;
-	if (properties_ & PROP_PART_OF_SLUR) {
-		if (properties_ & PROP_STEM_UP) {
+	if (!hasProperty(PROP_SLURED) && !hasProperty(PROP_PART_OF_SLUR)) return 0;
+	if (hasProperty(PROP_PART_OF_SLUR)) {
+		if (hasProperty(PROP_STEM_UP)) {
 			note = noteList_.first();
 		}
 		else {
@@ -2293,8 +2293,8 @@ QString *NChord::computeTeXSlur(unsigned int *slurPool, NClef *clef, int maxslur
 		slurNr = auxInfo_.TeXSlurNr;
 		(*slurPool) = (*slurPool) & (~(1 << auxInfo_.TeXSlurNr));
 	}
-	if (properties_ & PROP_SLURED) {
-		if (properties_ & PROP_STEM_UP) {
+	if (hasProperty(PROP_SLURED)) {
+		if (hasProperty(PROP_STEM_UP)) {
 			note =  noteList_.first();
 		}
 		else {
@@ -2315,7 +2315,7 @@ QString *NChord::computeTeXSlur(unsigned int *slurPool, NClef *clef, int maxslur
 		auxInfo_.TeXSlurNr = slurNr;
 		if (slurNr < maxslur) {
 			if (s == 0) s = new QString();
-			slurDir = (properties_ & PROP_STEM_UP) ? 'd' : 'u';
+			slurDir = hasProperty(PROP_STEM_UP) ? 'd' : 'u';
 			t.sprintf("\\islur%c%d%c", slurDir, auxInfo_.TeXSlurNr, clef->line2TexTab_[note->line+LINE_OVERFLOW]);
 			*s += t;
 		}

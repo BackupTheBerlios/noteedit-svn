@@ -18,6 +18,9 @@
    <Action name="export_musicxml"/>
   </Menu>
   <Separator />
+  <Action name="print_preview"/>
+  <Action name="print"/>
+  <Separator />
   <Action name="quit"/>
   <Action name="close_all"/>
   </Menu>

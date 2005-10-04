@@ -49,7 +49,7 @@ AC_ARG_WITH(oldlily,[  --with-oldlily	       	use LilyPond 1.2.17 syntax to expo
 AC_ARG_WITH(anthem,[  --with-anthem=DIR		produce Anthem plugin, DIR=Athem source directory])	
 AC_ARG_WITH(fadein,[  --without-fadein		say \"--without-fadein\" if (de)crescendo gives unexpected results])	
 AC_ARG_WITH(arts,[  --without-arts		say \"--without-arts\" if you never want to create an aRts scheduler])	
-AC_ARG_WITH(printing,[  --with-printing		say \"--with-printing\" for quasi direct printing (using abcm2ps)])	
+AC_ARG_WITH(printing,[  --with-printing		say \"--with-printing\" for direct print preview and printing support])
 
 if test "X$USE_EXCEPTIONS" = "X"
 then
@@ -243,7 +243,7 @@ fi
 
 if test "X$with_printing" = "Xyes"
 then
-	AC_DEFINE(WITH_DIRECT_PRINTING, 1, [enable quasi direct printing (using abcm2ps)])
+	AC_DEFINE(WITH_DIRECT_PRINTING, 1, [enable print preview and printing support])
 	
 fi
 

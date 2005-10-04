@@ -451,6 +451,19 @@ unsigned int NResource::turnOverPoint_;
 //  Startup
 bool NResource::startupLoadLastScore_;
 
+#ifdef WITH_DIRECT_PRINTING
+
+int NResource::typesettingProgram_;
+int NResource::typesettingProgramFormat_;
+char NResource::typesettingProgramInvokation_[MAX_PROGRAM_LENGTH];
+char NResource::typesettingOptions_[MAX_OPTIONS_LENGTH];
+
+//  Preview program
+int NResource::previewProgram_;
+char NResource::previewProgramInvokation_[MAX_PROGRAM_LENGTH];
+char NResource::previewOptions_[MAX_OPTIONS_LENGTH];
+
+#endif
 
 bool NResource::showStaffNrs_ = true;
 bool NResource::showStaffNames_ = true;
@@ -639,6 +652,32 @@ NResource::NResource() {
 	useMidiPedal_ = kapp->config()->readBoolEntry("UseMidiHold", MIDI_PEDAL);
 	startupLoadLastScore_ = kapp->config()->readBoolEntry
 		("LoadLastScore", STARTUP_LOAD_LAST_SCORE);
+
+#ifdef WITH_DIRECT_PRINTING
+
+	//  PRINTING
+
+	//  Typesetting program
+	kapp->config()->setGroup("Printing");
+	typesettingProgram_ = kapp->config()->readNumEntry(
+                ("Typesetting program"), PRINTING_TYPESETTING_PROGRAM);
+	typesettingProgramFormat_ = kapp->config()->readNumEntry(
+                ("Format"), PRINTING_TYPESETTING_PROGRAM_FORMAT );
+	strcpy( typesettingProgramInvokation_, kapp->config()->readEntry(
+                ("Invokation"), PRINTING_TYPESETTING_PROGRAM_INVOKATION ).ascii() );
+	strcpy( typesettingOptions_, kapp->config()->readEntry(
+                ("Options"), PRINTING_DEFAULT_OPTIONS ).ascii() );
+
+	//  Preview program
+	kapp->config()->setGroup("Print preview");
+	previewProgram_ = kapp->config()->readNumEntry(
+                ("Preview program"), PRINTING_PREVIEW_PROGRAM );
+	strcpy(previewProgramInvokation_, kapp->config()->readEntry(
+                ("Invokation"), PRINTING_PREVIEW_PROGRAM_INVOKATION ).ascii() );
+	strcpy( previewOptions_, kapp->config()->readEntry(
+                ("Options"), PRINTING_DEFAULT_OPTIONS ).ascii() );
+
+#endif
 
 	kapp->config()->setGroup("Colors");
 	backgroundBrush_ =	QBrush
@@ -989,6 +1028,24 @@ NResource::~NResource() {
 	kapp->config()->setGroup("Startup");
 	kapp->config()->writeEntry(QString("LoadLastScore"), startupLoadLastScore_);
 
+#ifdef WITH_DIRECT_PRINTING
+
+	//  PRINTING
+
+	//  Typesetting program
+	kapp->config()->setGroup("Printing");
+	kapp->config()->writeEntry(QString("Typesetting program"), typesettingProgram_);
+	kapp->config()->writeEntry(QString("Format"),  typesettingProgramFormat_);
+	kapp->config()->writeEntry(QString("Invokation"), typesettingProgramInvokation_);
+	kapp->config()->writeEntry(QString("Options"), typesettingOptions_ );
+
+	//  Preview program
+	kapp->config()->setGroup("Print preview");
+	kapp->config()->writeEntry(QString("Preview program"), previewProgram_);
+	kapp->config()->writeEntry(QString("Invokation"), previewProgramInvokation_);
+	kapp->config()->writeEntry(QString("Options"), previewOptions_ );
+
+#endif
 
 	//  COLORS
 

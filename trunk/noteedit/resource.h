@@ -104,6 +104,11 @@
 #define LYRICS_LINE_LENGTH 1024
 #define LENGTH_OF_BAR_CHECK_ARRAY 20
 
+/* printing */
+
+#define MAX_PROGRAM_LENGTH 50
+#define MAX_OPTIONS_LENGTH 200
+
 class staff_props_str;
 class NMainWindow;
 class NMidiMapper;
@@ -447,6 +452,22 @@ class NResource : public QObject  {
 		//  Startup
 		static bool startupLoadLastScore_;
 
+#ifdef WITH_DIRECT_PRINTING
+
+		//  PRINTING
+
+		//  Typesetting program
+		static int typesettingProgram_;
+		static int typesettingProgramFormat_;
+		static char typesettingProgramInvokation_[MAX_PROGRAM_LENGTH];
+		static char typesettingOptions_[MAX_OPTIONS_LENGTH];
+
+		//  Preview program
+		static int previewProgram_;
+		static char previewProgramInvokation_[MAX_PROGRAM_LENGTH];
+		static char previewOptions_[MAX_OPTIONS_LENGTH];
+
+#endif
 
 		//  showStaffNrs_, showStaffNames_, showAuxLines_, showContext_ and showDrumToolbar_ are cached versions
 		//  kapp->config()->readBoolEntry(QString("ShowStaffNrs"), true),

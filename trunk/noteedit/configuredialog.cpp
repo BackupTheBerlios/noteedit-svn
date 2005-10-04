@@ -42,6 +42,7 @@
 #include <qtooltip.h>
 #include <qvbox.h>
 #include <qwhatsthis.h>
+#include <qlineedit.h>
 
 #include "configuredialog.h"
 #include "configuredefaultvalues.h"
@@ -171,6 +172,102 @@ ConfigureDialog::ConfigureDialog(NMainFrameWidget *mainWidget) :
 		(i18n("autom. bar insertion"), aGroup);
 	aAutomaticBarInsertion->setChecked(NResource::automaticBarInsertion_);
 
+#ifdef WITH_DIRECT_PRINTING
+
+	//  PRINTING
+	QVBox *pagePrinting = addVBoxPage
+		(i18n("Printing"), QString::null, BarIcon("print", KIcon::SizeLarge));
+
+	//  Typesetting program
+	QGroupBox *typesettingProgramGroup = new QGroupBox
+		(0, Horizontal, i18n("Typesetting &program"), pagePrinting);
+
+	QGridLayout *typesettingLayout = new QGridLayout
+                (typesettingProgramGroup->layout(), 4, 2);
+	QLabel *typesettingProgramLabel = new QLabel
+		(typesettingProgramGroup, i18n("&Program:"), typesettingProgramGroup );
+	typesettingLayout->addWidget(typesettingProgramLabel, 0, 0);
+
+	typesettingProgram = new QComboBox (i18n("Typesetting program"), typesettingProgramGroup );
+	typesettingProgram->insertItem( i18n("ABC Music") );
+	typesettingProgram->insertItem( i18n("PMX") );
+	typesettingProgram->insertItem( i18n("Lilypond") );
+	typesettingProgram->insertItem( i18n("MusiXTeX") );
+	typesettingProgram->insertItem( i18n("custom") );
+	typesettingProgram->setCurrentItem(NResource::typesettingProgram_);
+	typesettingLayout->addWidget(typesettingProgram, 0, 1);
+	tsProgram = 2;
+	connect( typesettingProgram, SIGNAL( activated( int )), this, SLOT(printLayout()) );
+
+	typesettingProgramFormatLabel = new QLabel
+		(typesettingProgramGroup, i18n("Export &format: "), typesettingProgramGroup );
+	typesettingLayout->addWidget(typesettingProgramFormatLabel, 1, 0);
+
+	typesettingProgramFormat = new QComboBox (i18n("Export format"), typesettingProgramGroup );
+	typesettingProgramFormat->insertItem( i18n("Midi") );
+	typesettingProgramFormat->insertItem( i18n("Lilypond") );
+	typesettingProgramFormat->insertItem( i18n("MusicXML") );
+	typesettingProgramFormat->insertItem( i18n("ABC Music") );
+	typesettingProgramFormat->insertItem( i18n("NoteEdit") );
+	typesettingProgramFormat->setCurrentItem(NResource::typesettingProgramFormat_);
+	typesettingLayout->addWidget(typesettingProgramFormat, 1, 1);
+
+	typesettingProgramInvokationLabel = new QLabel
+		(typesettingProgramGroup, i18n("&Invokation:"), typesettingProgramGroup );
+	typesettingLayout->addWidget(typesettingProgramInvokationLabel, 2, 0);
+
+	typesettingProgramInvokation = new QLineEdit
+	      ( i18n("Invokation"), typesettingProgramGroup );
+	typesettingProgramInvokation->setText(NResource::typesettingProgramInvokation_);
+	typesettingLayout->addWidget(typesettingProgramInvokation, 2, 1);
+
+	QLabel *typesettingOptionsLabel = new QLabel
+		(typesettingProgramGroup, i18n("&Options:"), typesettingProgramGroup );
+	typesettingLayout->addWidget(typesettingOptionsLabel, 3, 0);
+
+	typesettingOptions = new QLineEdit( i18n("Options"), typesettingProgramGroup );
+	typesettingOptions->setText(NResource::typesettingOptions_);
+	typesettingLayout->addWidget(typesettingOptions, 3, 1);
+
+	//  Preview program
+	QGroupBox *previewProgramGroup = new QGroupBox
+		(0, Horizontal, i18n("Pre&view program"), pagePrinting);
+	QGridLayout *previewLayout = new QGridLayout
+                (previewProgramGroup->layout(), 2, 2);
+
+	QLabel *previewProgramLabel = new QLabel
+		(previewProgramGroup, i18n("P&rogram:"), previewProgramGroup );
+	previewLayout->addWidget(previewProgramLabel, 0, 0);
+
+	previewProgram = new QComboBox (i18n("P&rogram"), previewProgramGroup );
+	previewProgram->insertItem( i18n("gv") );
+	previewProgram->insertItem( i18n("evince") );
+	previewProgram->insertItem( i18n("xpdf") );
+	previewProgram->insertItem( i18n("kghostview") );
+	previewProgram->insertItem( i18n("custom") );
+	previewProgram->setCurrentItem(NResource::previewProgram_);
+	previewLayout->addWidget(previewProgram, 0, 1);
+	connect( previewProgram, SIGNAL(activated( int )), this, SLOT(printLayout()) );
+	pvProgram = 0;
+
+	previewProgramInvokationLabel = new QLabel
+		(previewProgramGroup, i18n("I&nvokation: "), previewProgramGroup );
+	previewLayout->addWidget(previewProgramInvokationLabel, 1, 0);
+	previewProgramInvokation = new QLineEdit
+	      ( i18n("Invokation"), previewProgramGroup );
+	previewProgramInvokation->setText(NResource::previewProgramInvokation_);
+	previewLayout->addWidget(previewProgramInvokation, 1, 1);
+
+	QLabel *previewOptionsLabel = new QLabel
+		(previewProgramGroup, i18n("&Options:"), previewProgramGroup );
+	previewLayout->addWidget(previewOptionsLabel, 2, 0);
+
+        previewOptions = new QLineEdit( i18n("Options"), previewProgramGroup );
+	previewOptions->setText( NResource::previewOptions_ );
+	previewLayout->addWidget(previewOptions, 2, 1);
+	// Init Layout
+	printLayout();
+#endif
 
 	//  COLORS
 	QFrame *pageColors = addPage
@@ -419,6 +516,92 @@ ConfigureDialog::ConfigureDialog(NMainFrameWidget *mainWidget) :
 
 }
 
+#ifdef WITH_DIRECT_PRINTING
+
+// This method is called when a new item from the typesetting program
+// or preview program combobox is selected
+// It enables / disables elements of the print layout.
+void ConfigureDialog::printLayout() {
+  // Check the selected typesetting program
+  switch( typesettingProgram->currentItem() )
+  {
+    case 0: // ABC Music
+      typesettingProgramInvokation->setText( i18n("abcm2ps") );
+      typesettingProgramFormat->setCurrentItem(3);
+      break;
+    case 1: // PMX
+      typesettingProgramInvokation->setText( i18n("pmx") );
+      typesettingProgramFormat->setCurrentItem(4);
+      break;
+    case 2: // Lilypond
+      typesettingProgramInvokation->setText( i18n("lilypond") );
+      typesettingProgramFormat->setCurrentItem(1);
+      break;
+    case 3: // MusiXTeX
+      typesettingProgramInvokation->setText( i18n("musixtex") );
+      typesettingProgramFormat->setCurrentItem(4);
+      break;
+    case 4: default: // custom
+      // Was program changed to custom ?
+      if( tsProgram != typesettingProgram->currentItem() )
+      {
+	tsProgram = typesettingProgram->currentItem();
+	typesettingProgramInvokation->setText("");
+	typesettingProgramFormat->setCurrentItem(0);
+      }
+      break;
+  }
+  if( typesettingProgram->currentItem() == 4 ) // custom selected
+  {
+      typesettingProgramFormat->setEnabled( true );
+      typesettingProgramFormatLabel->setEnabled( true );
+      typesettingProgramInvokation->setEnabled( true );
+      typesettingProgramInvokationLabel->setEnabled( true );
+  }
+  else
+  {
+    typesettingProgramFormat->setEnabled( false );
+    typesettingProgramFormatLabel->setEnabled( false );
+    typesettingProgramInvokation->setEnabled( false );
+    typesettingProgramInvokationLabel->setEnabled( false );
+  }
+  switch( previewProgram->currentItem() )
+  {
+    case 0: // Ghostview
+      previewProgramInvokation->setText( i18n("gv") );
+      break;
+    case 1: // Gnome Evince
+      previewProgramInvokation->setText( i18n("evince") );
+      break;
+    case 2: // XPDF (PDF only!)
+      previewProgramInvokation->setText( i18n("xpdf") );
+      break;
+    case 3: // KDE KGhostview
+      previewProgramInvokation->setText( i18n("kghostview") );
+      break;
+    case 4: // custom
+      // Was program changed to custom ?
+      if( pvProgram != previewProgram->currentItem() )
+      {
+	pvProgram = previewProgram->currentItem();
+	previewProgramInvokation->setText( "" );
+      }
+      break;
+  }
+  if( previewProgram->currentItem() == 4 ) // custom selected
+  {
+    previewProgramInvokation->setEnabled( true );
+    previewProgramInvokationLabel->setEnabled( true );
+  }
+  else
+  {
+    previewProgramInvokation->setEnabled( false );
+    previewProgramInvokationLabel->setEnabled( false );
+  }
+}
+
+#endif
+
 void ConfigureDialog::slotApply() {
 
 	//  GENERAL
@@ -449,6 +632,26 @@ void ConfigureDialog::slotApply() {
 	NResource::moveAccKeysig_       = aMoveAccordingKeysig->isChecked();
 	NResource::automaticBarInsertion_= aAutomaticBarInsertion->isChecked();
 
+#ifdef WITH_DIRECT_PRINTING
+
+	//  PRINTING
+
+	//  typesetting program
+	NResource::typesettingProgram_ = typesettingProgram->currentItem();
+	NResource::typesettingProgramFormat_ = typesettingProgramFormat->currentItem();
+	strcpy( NResource::typesettingProgramInvokation_, 
+                typesettingProgramInvokation->text().ascii() );
+	strcpy( NResource::typesettingOptions_, 
+                typesettingOptions->text().ascii() );
+
+	//  Preview program
+	NResource::previewProgram_ = previewProgram->currentItem();
+	strcpy( NResource::previewProgramInvokation_, 
+                previewProgramInvokation->text().ascii() );
+	strcpy( NResource::previewOptions_, 
+                previewOptions->text().ascii() );
+
+#endif
 
 	//  COLORS
 
@@ -539,6 +742,36 @@ void ConfigureDialog::slotDefault() {
 	aMoveAccordingKeysig->setChecked(EDITING_MOVE_ACCORDING_KEYSIG);
 	aAutomaticBarInsertion->setChecked(EDITING_AUTOMATIC_BAR_INSERTION);
 
+#ifdef WITH_DIRECT_PRINTING
+
+	//  PRINTING
+
+	//  Typesetting program
+	typesettingProgram->setCurrentItem(PRINTING_TYPESETTING_PROGRAM);
+	if( 4 == typesettingProgram->currentItem() )
+	{
+	  typesettingProgramFormat->setEnabled( false );
+	  typesettingProgramInvokation->setEnabled( false );
+	}
+	else
+	{
+	  typesettingProgramFormat->setEnabled( true );
+	  typesettingProgramInvokation->setEnabled( true );
+	}
+	typesettingProgramFormat->setCurrentItem(PRINTING_TYPESETTING_PROGRAM_FORMAT);
+	typesettingProgramInvokation->setText(PRINTING_TYPESETTING_PROGRAM_INVOKATION);
+	typesettingOptions->setText(PRINTING_DEFAULT_OPTIONS);
+
+	//  Preview program
+	previewProgram->setCurrentItem(PRINTING_PREVIEW_PROGRAM);
+	if( 4 == previewProgram->currentItem() )
+	  previewProgramInvokation->setEnabled( false );
+	else
+	  previewProgramInvokation->setEnabled( true );
+	previewProgramInvokation->setText(PRINTING_PREVIEW_PROGRAM_INVOKATION);
+	previewOptions->setText(PRINTING_DEFAULT_OPTIONS);
+
+#endif
 
 	//  COLORS
 

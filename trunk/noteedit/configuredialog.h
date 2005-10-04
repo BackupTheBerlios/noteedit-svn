@@ -47,6 +47,9 @@ public:
 private slots:
 	void slotApply();
 	void slotDefault();
+#ifdef WITH_DIRECT_PRINTING
+	void printLayout();
+#endif
 
 private:
 
@@ -73,6 +76,28 @@ private:
 	QCheckBox *aMoveAccordingKeysig;
 	QCheckBox *aAutomaticBarInsertion;
 
+
+#ifdef WITH_DIRECT_PRINTING
+	//  PRINTING
+
+	//  Typesetting program
+	QComboBox *typesettingProgram;
+	QComboBox *typesettingProgramFormat;
+	QLabel    *typesettingProgramFormatLabel;
+	QLineEdit *typesettingProgramInvokation;
+	QLabel    *typesettingProgramInvokationLabel;
+	QLineEdit *typesettingOptions;
+
+	//  Preview program
+	QComboBox *previewProgram;
+	QLineEdit *previewProgramInvokation;
+	QLabel    *previewProgramInvokationLabel;
+	QLineEdit *previewOptions;
+
+	// Layout
+	int        tsProgram;
+	int        pvProgram;
+#endif
 
 	//  COLORS
 

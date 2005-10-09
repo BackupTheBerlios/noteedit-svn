@@ -26,7 +26,7 @@
 #include <qlist.h>
 #include <qvector.h>
 #include <qxml.h>
-#include "muselement.h" /* needed for status_type */
+#include "muselement.h" /* needed for property_type */
 
 int parseMusicXML();
 
@@ -230,7 +230,7 @@ private:
 	QString stRig;				// rights
 	QString stTtl;				// title
 	// note (including forward/backup) -- initialized in initStNote()
-	status_type status;
+	property_type properties;
 	QString stAcc;				// accidental
 	QString stAlt;				// alter
 	QString	stAno;				// actual notes

@@ -472,10 +472,10 @@ int NClef::name2Line(char name) const {
 	return line;
 }
 
-int NClef::getAccPos(status_type kind, int nr) {
+int NClef::getAccPos(property_type kind, int nr) {
 	switch (kind) {
-		case STAT_CROSS: return sharpPosTab_[nr];
-		case STAT_FLAT: return flatPosTab_[nr];
+		case PROP_CROSS: return sharpPosTab_[nr];
+		case PROP_FLAT: return flatPosTab_[nr];
 		default: NResource::abort("internal error in NClef::getAccPos");
 	}
 	return 0;
@@ -542,7 +542,7 @@ void NClef::midi2Line(unsigned int midival, int *line, int *offs, int ksigType) 
 			else {
 				*line = i + MINLINE - 1;
 				*offs = 1;
-				if (ksigType != STAT_FLAT) return;
+				if (ksigType != PROP_FLAT) return;
 				(*line)++;
 				*offs = -1;
 			}

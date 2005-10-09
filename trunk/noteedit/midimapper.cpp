@@ -167,7 +167,7 @@ void NMidiMapper::play_list(QList<NMidiEventStr> *play_list, int playTime) {
 		if (m_evt->ev_time != playTime || m_evt->midi_cmd != MNOTE_OFF) continue;
 		if (!m_evt->valid) continue;
 		for (note = m_evt->notelist->first(); note; note = m_evt->notelist->next()) {
-			if (!(note->status & STAT_TIED) || (m_evt->special & TRILL_SPECS)) {
+			if (!(note->properties & PROP_TIED) || (m_evt->special & TRILL_SPECS)) {
 				devMan_->noteOff(m_evt->midi_channel, note->midiPitch+m_evt->trilloffs, 0);
 			}
 		}
@@ -194,7 +194,7 @@ void NMidiMapper::play_list(QList<NMidiEventStr> *play_list, int playTime) {
 				}
 			}
 			for (i = 0, note = m_evt->notelist->first(); note; note = m_evt->notelist->next(), i++) {
-			   if ((note->status & STAT_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
+			   if ((note->properties & PROP_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
 					note->midiPitch = note->tie_backward->midiPitch; /* for note off */
 				}
 			   	else if (m_evt->special != SPEC_ARPEGGIO || i == m_evt->arpegg_current) {
@@ -486,7 +486,7 @@ void NMidiMapper::play_list(QList<NMidiEventStr> *play_list, int playTime) {
 		if (m_evt->ev_time != playTime || m_evt->midi_cmd != MNOTE_OFF) continue;
 		if (!m_evt->valid) continue;
 		for (note = m_evt->notelist->first(); note; note = m_evt->notelist->next()) {
-			if (!(note->status & STAT_TIED) || (m_evt->special & TRILL_SPECS)) {
+			if (!(note->properties & PROP_TIED) || (m_evt->special & TRILL_SPECS)) {
 				
 				theScheduler_->tx(TSE3::MidiCommand(TSE3::MidiCommand_NoteOff,
 						   m_evt->midi_channel, actualDevice_nr_, note->midiPitch+m_evt->trilloffs, 0));
@@ -517,7 +517,7 @@ void NMidiMapper::play_list(QList<NMidiEventStr> *play_list, int playTime) {
 				}
 			}
 			for (i = 0, note = m_evt->notelist->first(); note; note = m_evt->notelist->next(), i++) {
-			   if ((note->status & STAT_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
+			   if ((note->properties & PROP_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
 			        note->midiPitch = note->tie_backward->midiPitch; /* for note off */
 			   }
 			   else if (m_evt->special != SPEC_ARPEGGIO || i == m_evt->arpegg_current) {
@@ -802,7 +802,7 @@ void NMidiMapper::playMidiDev(QList<NMidiEventStr> *play_list, int playTime) con
 		if (m_evt->ev_time != playTime || m_evt->midi_cmd != MNOTE_OFF) continue;
 		if (!m_evt->valid) continue;
 		for (note = m_evt->notelist->first(); note; note = m_evt->notelist->next()) {
-			if (!(note->status & STAT_TIED) || (m_evt->special & TRILL_SPECS)) {
+			if (!(note->properties & PROP_TIED) || (m_evt->special & TRILL_SPECS)) {
 				SEQ_MIDIOUT(actualDevice_nr_, MIDI_NOTEOFF|m_evt->midi_channel);
 				SEQ_MIDIOUT(actualDevice_nr_, note->midiPitch+m_evt->trilloffs);
 				SEQ_MIDIOUT(actualDevice_nr_, 0);
@@ -838,7 +838,7 @@ void NMidiMapper::playMidiDev(QList<NMidiEventStr> *play_list, int playTime) con
 				}
 			}
 			for (i = 0, note = m_evt->notelist->first(); note; note = m_evt->notelist->next(), i++) {
-				if ((note->status & STAT_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
+				if ((note->properties & PROP_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
 					note->midiPitch = note->tie_backward->midiPitch; /* for note off */
 				}
 			   	else if (m_evt->special != SPEC_ARPEGGIO || i == m_evt->arpegg_current) {
@@ -878,7 +878,7 @@ void NMidiMapper::playSynthDev(QList<NMidiEventStr> *play_list, int playTime) co
 		if (m_evt->ev_time != playTime || m_evt->midi_cmd != MNOTE_OFF) continue;
 		if (!m_evt->valid) continue;
 		for (note = m_evt->notelist->first(); note; note = m_evt->notelist->next()) {
-			if (!(note->status & STAT_TIED) || (m_evt->special & TRILL_SPECS)) {
+			if (!(note->properties & PROP_TIED) || (m_evt->special & TRILL_SPECS)) {
 				SEQ_STOP_NOTE(actualDevice_nr_, m_evt->midi_channel, note->midiPitch+m_evt->trilloffs, 0);
 			}
 		}
@@ -897,7 +897,7 @@ void NMidiMapper::playSynthDev(QList<NMidiEventStr> *play_list, int playTime) co
 				SEQ_CONTROL(actualDevice_nr_, m_evt->midi_channel, CTL_MAIN_VOLUME, m_evt->volum_ctrl_change);
 			}
 			for (i = 0, note = m_evt->notelist->first(); note; note = m_evt->notelist->next(), i++) {
-				if ((note->status & STAT_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
+				if ((note->properties & PROP_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
 					note->midiPitch = note->tie_backward->midiPitch; /* for note off */
 				}
 			   	else if (m_evt->special != SPEC_ARPEGGIO || i == m_evt->arpegg_current) {

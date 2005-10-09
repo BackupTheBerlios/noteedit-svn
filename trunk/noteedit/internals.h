@@ -56,7 +56,7 @@ class main_props_str {
 		bool grace;
 		bool pedal_on;
 		bool pedal_off;
-		status_type noteBody;
+		property_type noteBody;
 		int actualLength;
 		int actualStemDir;
 		NTransPainter *p;
@@ -90,9 +90,9 @@ class NNote {
 		QRect point_pos2;
 		NNote *tie_forward, *tie_backward;
 		char acc_offs;
-		status_type needed_acc;
+		property_type needed_acc;
 		char acc_TeX_pos;
-		status_type status;
+		property_type properties;
 		QPoint tie_start_point_up, tie_start_point_down;
 		QPoint tie_forward_point_up, tie_forward_point_down;
 		QPoint tie_back_point_up, tie_back_point_down;

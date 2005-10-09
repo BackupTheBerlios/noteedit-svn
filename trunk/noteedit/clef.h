@@ -48,7 +48,7 @@ class NClef : public NMusElement {
 		virtual int getSubType() const {return clefKind_;}
 		virtual int getType() const {return T_CLEF;}
 		const char *line2TexTab_;
-		int getAccPos(status_type kind, int nr);
+		int getAccPos(property_type kind, int nr);
 		int noteNumber2Line(int note_number) const ;
 		int line2NoteNumber(int line ) const;
 		int lineOfC4();
@@ -59,7 +59,7 @@ class NClef : public NMusElement {
 		int getOctave();
 		int getShift() {return shift_;}
 		void setShift(int octave);
-		void midi2Line(unsigned int midival,int *line, int *offs, int ksigType = STAT_NO_ACC);
+		void midi2Line(unsigned int midival,int *line, int *offs, int ksigType = PROP_NO_ACC);
 		int line2Midi(int line, int offs);
 		static int chooseClefType(staffInfoClass *staffInfos, unsigned int minMidi, unsigned int MaxMidi, bool drumchannel);
 	private:

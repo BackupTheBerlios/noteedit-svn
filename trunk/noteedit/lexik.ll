@@ -133,8 +133,8 @@ inches		{return Y_INCHES;}
 {irregulaer}	{return Y_IRREGULAER_KEY;}
 key		{return Y_KEY;}
 keychange	{return Y_KEYCHANGE;}
-{keykind}	{if (strchr(yytext, '#')) YYLVAL.key.kind = STAT_CROSS;
-		 else                    YYLVAL.key.kind = STAT_FLAT;
+{keykind}	{if (strchr(yytext, '#')) YYLVAL.key.kind = PROP_CROSS;
+		 else                    YYLVAL.key.kind = PROP_FLAT;
 		 sscanf(yytext, "%d", &YYLVAL.key.count);
 		 return Y_KEYKIND;
 		}

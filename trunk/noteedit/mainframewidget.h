@@ -507,7 +507,7 @@ class NMainFrameWidget : public QWidget
                 int leftx_, topy_, boty_;
 /*----------------------------- update of buttons due to selection ------------------*/
 		void setButton(int nr);
-		void updateInterface(status_type status, int length);
+		void updateInterface(property_type properties, int length);
 		void playButtonReset();
 /*-----------------------------(re-)storing ----------------------------------------*/
 		void writeStaffs(const char *fname);
@@ -532,12 +532,12 @@ class NMainFrameWidget : public QWidget
 		int lastBarNr_;
 /*------------------------------- selection ---------------------------------------*/
 		bool editMode_;
-		status_type status_before_edit_mode_; /* selected buttons before going to edit mode */
+		property_type props_before_edit_mode_; /* selected buttons before going to edit mode */
 		int length_before_edit_mode_; /* selected note/rest length button before going to edit mode */
 		int x0_, y0_, x1_;
 		int xori_;
 		QRect   selRect_;
-		int checkAllStaffsForNoteInsertion(const int line, const QPoint p, status_type *status, bool *playable, bool *delete_elem, bool *insert_new_note);
+		int checkAllStaffsForNoteInsertion(const int line, const QPoint p, property_type *properties, bool *playable, bool *delete_elem, bool *insert_new_note);
 		bool checkStaffIntersection(const QPoint p);
 		QList<NVoice> voiceList_;
 		QList<NStaff> staffList_;
@@ -589,7 +589,7 @@ class NMainFrameWidget : public QWidget
 		int actualOffs_;
 		int staffCount_;
 		int keyLine_, keyOffs_;
-		void forceAccent(status_type acc, bool val);
+		void forceAccent(property_type acc, bool val);
 		void manageToolElement(bool becauseOfInsertion);
 /*-------------------------------- layout --------------------------------------*/
 		void renewStaffLayout();

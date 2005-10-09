@@ -148,12 +148,12 @@ TSE3::Track *NTSE3Handler::createTSE3Track(NVoice *voice, int nr, TSE3::Song *so
 
 	thePhraseEditor.reset();
 	int sign = 0;
-	status_type kind;
+	property_type kind;
 
 	voice->getStaff()->startPlaying();  /* necessary to reset some member variables in all staffs (EndIdx_) */
 	actual_staff = voice->getStaff();
 	if (actual_staff->actualKeysig_.isRegular(&kind, &sign)) {
-		if (kind == STAT_FLAT) {
+		if (kind == PROP_FLAT) {
 			sign = -sign;
 		}
 	}
@@ -195,7 +195,7 @@ TSE3::Track *NTSE3Handler::createTSE3Track(NVoice *voice, int nr, TSE3::Song *so
 				if (m_events->ev_time <= m_evt->ev_time) {
 					noteoff = MYTIME2TSE3TIME(m_events->ev_time) - 1;
 					for (note = m_events->notelist->first(); note; note = m_events->notelist->next()) {
-					  if (!(note->status & STAT_TIED) || (m_evt->special & TRILL_SPECS)) {
+					  if (!(note->properties & PROP_TIED) || (m_evt->special & TRILL_SPECS)) {
 					    thePhraseEditor.insert(
 					        TSE3::MidiEvent( TSE3::MidiCommand(TSE3::MidiCommand_NoteOff,
 					           m_events->midi_channel, deviceNumber, note->midiPitch+m_events->trilloffs, 0), noteoff)
@@ -239,7 +239,7 @@ TSE3::Track *NTSE3Handler::createTSE3Track(NVoice *voice, int nr, TSE3::Song *so
 					}
 				}
 				for (i = 0, note = m_evt->notelist->first(); note; note = m_evt->notelist->next(), i++) {
-			   		if ((note->status & STAT_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
+			   		if ((note->properties & PROP_PART_OF_TIE) && !(m_evt->special & TRILL_SPECS)) {
 						note->midiPitch = note->tie_backward->midiPitch; /* for note off */
 					}
 			   		else if (m_evt->special != SPEC_ARPEGGIO || i == m_evt->arpegg_current) {
@@ -281,7 +281,7 @@ TSE3::Track *NTSE3Handler::createTSE3Track(NVoice *voice, int nr, TSE3::Song *so
 	while (m_events) {
 		noteoff = MYTIME2TSE3TIME(m_events->ev_time) - 1;
 		for (note = m_events->notelist->first(); note; note = m_events->notelist->next()) {
-			if (!(note->status & STAT_TIED)) {
+			if (!(note->properties & PROP_TIED)) {
 				thePhraseEditor.insert(
 				        TSE3::MidiEvent( TSE3::MidiCommand(TSE3::MidiCommand_NoteOff,
 					           m_events->midi_channel, deviceNumber, note->midiPitch+m_events->trilloffs, 0), noteoff)
@@ -809,10 +809,10 @@ void NTSE3Handler::insertTimeAndKeySigs(QList<NStaff> *staffs) {
 			if (!keep_ || NResource::staffSelTrack_[trackInfoArray_[i]] && staff->getChannel() != DRUM_CHANNEL) {
 				keysig = new NKeySig(voice->getMainPropsAddr(), voice->getStaff()->getStaffPropsAddr());
 				if ((*kstritr)->data.data2 & 0xf) {
-					keysig->setRegular(((*kstritr)->data.data2 & 0xf), STAT_FLAT);
+					keysig->setRegular(((*kstritr)->data.data2 & 0xf), PROP_FLAT);
 				}
 				else if ((*kstritr)->data.data2 & 0xf0) {
-					keysig->setRegular(((((*kstritr)->data.data2) >> 4)) & 0xf, STAT_CROSS);
+					keysig->setRegular(((((*kstritr)->data.data2) >> 4)) & 0xf, PROP_CROSS);
 				}
 				else continue;
 				voice->insertAtTime(TSE3TIME2MYMIDITIME((*kstritr)->time.pulses), keysig, true);

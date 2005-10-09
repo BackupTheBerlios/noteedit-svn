@@ -57,14 +57,14 @@ int NMusElement::intersects (const QPoint p) const {
 }
 	
 NPlayable::NPlayable(main_props_str *main_props, staff_props_str *staff_props) :
-	NMusElement( main_props, staff_props ), status_( 0 )
+	NMusElement( main_props, staff_props ), properties_( 0 )
 {
 }
 
 void NPlayable::breakTuplet() {
 	NPlayable *elem;
 	for (elem = tupletList_->first(); elem; elem = tupletList_->next()) {
-		elem->status_ &= (~(STAT_TUPLET | STAT_LAST_TUPLET));
+		elem->removeProperty(PROP_TUPLET | PROP_LAST_TUPLET);
 		elem->changeLength(elem->getSubType());
 	}
 }
@@ -135,7 +135,7 @@ void NPlayable::computeTuplet(QList<NPlayable> *tupletList, char numNotes, char 
 }
 
 void NPlayable::unsetTuplet() {
-	status_ &= (~(STAT_TUPLET | STAT_LAST_TUPLET));
+	removeProperty( PROP_TUPLET | PROP_LAST_TUPLET );
 }
 
 
@@ -145,7 +145,7 @@ QString *NPlayable::computeTeXTuplet(NClef *clef) {
 	int line, delta = 0;
 	int maxheight = 20000;
 	int numNotes, playtime;
-	if (!(status_ & STAT_TUPLET)) return 0;
+	if (!hasProperty( PROP_TUPLET )) return 0;
 	if (tupletList_ == 0) {
 		NResource::abort("internal error: NPlayable::computeTeX: tupletList_ == 0");
 	}
@@ -156,7 +156,7 @@ QString *NPlayable::computeTeXTuplet(NClef *clef) {
 			if (elem->getTopY2() > maxheight) maxheight = elem->getTopY2();
 			if (elem->getType() != T_CHORD) continue;
 			if (elem->getSubType() > QUARTER_LENGTH) continue;
-			if (!(elem->status_ & STAT_STEM_UP)) delta = -4;
+			if (!elem->hasProperty(PROP_STEM_UP)) delta = -4;
 		}
 		s = new QString();
 		if (numNotes == 3 && playtime == 2) {

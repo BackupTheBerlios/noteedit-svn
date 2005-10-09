@@ -94,14 +94,20 @@ class NMusElement {
 
 class NPlayable : public NMusElement {
 	public:
-		status_type status_; /* element's flags - 64 bit long! */
+		inline void addProperty( property_type prop ) { properties_ |= prop; }
+		inline void removeProperty( property_type prop ) { properties_ &= ~prop; }
+		inline void invertProperty( property_type prop ) { properties_ ^= prop; }
+		inline void setProperty( property_type prop, bool on ) { if(on) addProperty( prop ); else removeProperty( prop ); }
+		inline property_type properties() const { return properties_; }
+		inline void setProperties( property_type props ) { properties_ = props; }
+		inline property_type hasProperty( property_type prop ) const { return properties_ & prop; }
 
 		NPlayable(main_props_str *main_props, staff_props_str *staff_props);
 		virtual void changeLength(int) = 0;
 
 		void breakTuplet();
 		void changeTupletList(QList<NPlayable> *tList) {tupletList_ = tList;}
-		void resetTupletFlag() { status_ &= (~((STAT_TUPLET | STAT_LAST_TUPLET))); tupletList_ = 0; midiLength_ = computeMidiLength();}
+		void resetTupletFlag() { removeProperty(PROP_TUPLET | PROP_LAST_TUPLET); tupletList_ = 0; midiLength_ = computeMidiLength();}
 		QList<NPlayable> *getTupletList() {return tupletList_;}
 		void computeTuplet();
 		static void computeTuplet(QList<NPlayable> *tupletlList, char numNotes, char playtime);
@@ -126,6 +132,8 @@ class NPlayable : public NMusElement {
 		virtual double getBotY() = 0;
 
 	protected:
+		property_type properties_; /* element's flags - 64 bit long! */
+
 		QList<NPlayable> *tupletList_;	// all elements in this element's tuplet
 		double tupm_; double tupn_;
 		int xstart_, xend_;

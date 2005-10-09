@@ -25,10 +25,10 @@ struct parser_param_str {
 	QList<layoutDef> contList;
 };
 
-struct status_descr_str {
+struct property_descr_str {
 	int octavmodi;
 	int offs, slurdist;
-	status_type status;
+	property_type properties;
 	unsigned int beamstatus;
 };
 

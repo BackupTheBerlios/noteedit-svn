@@ -60,7 +60,7 @@ struct staffdescr {
 class NLilyExport {
 	public:
 		NLilyExport();
-		void exportStaffs(QString fname, QList<NStaff> *stafflist, exportFrm *expWin, NMainFrameWidget *mainWidget);
+		void exportStaffs(QString fname, QPtrList<NStaff> *stafflist, exportFrm *expWin, NMainFrameWidget *mainWidget);
 	private:
 		ofstream out_;
 		void writeVoice(int staff_nr, int voice_nr,  NVoice *voi);
@@ -68,9 +68,9 @@ class NLilyExport {
 		void writeEncoded(const QString text);
 		void writeEncodedAndReplaced(const QString s);
 		void pitchOut( const NNote *note, NClef *ac_clef);
-		bool hasContraryStems(QList<NNote> *note);
-		bool chordHasMixedTies(QList<NNote> *note);
-		bool hasATie(QList<NNote> *note);
+		bool hasContraryStems(QPtrList<NNote> *note);
+		bool chordHasMixedTies(QPtrList<NNote> *note);
+		bool hasATie(QPtrList<NNote> *note);
 		void writeChordName(QString chordname);
 		void analyseGroup(layoutDef *group, NMainFrameWidget *mainWidget, int staffCount, bool *continuedBars, bool *discontinuedBars);
 		bool continuedOutsideAGroup(NMainFrameWidget *mainWidget, int staffCount);
@@ -84,7 +84,7 @@ class NLilyExport {
 		void tabsOut();
 		staffdescr *staffarray_;
 		int barNr_;
-		QList<badmeasure> badlist_;
+		QPtrList<badmeasure> badlist_;
 		exportFrm *exportDialog_;
 #if GCC_MAJ_VERS > 2
 		ostringstream *os_;
@@ -99,9 +99,9 @@ class NLilyExport {
 		property_type noteBody_;
 		bool noStrongPizzMsg_;
 		QByteArray scoreBraceMasks;
-		void buildBraceMasks(QList<NStaff> *stafflist, const NMainFrameWidget *mainWidget);
-		QList<QString> scoreBlock;
-		void buildScoreBlockAndFlush(int i, NStaff *staff_elem, const QString& label, QList<NStaff> *stafflist,
+		void buildBraceMasks(QPtrList<NStaff> *stafflist, const NMainFrameWidget *mainWidget);
+		QPtrList<QString> scoreBlock;
+		void buildScoreBlockAndFlush(int i, NStaff *staff_elem, const QString& label, QPtrList<NStaff> *stafflist,
 			const QByteArray braceMasks, bool flush);
 };
 

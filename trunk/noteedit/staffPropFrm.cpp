@@ -69,7 +69,7 @@ staffPropFrm::~staffPropFrm()
     voiceList_.clear();
 }
 
-void staffPropFrm::boot( int staffNr, QList<NStaff> *staffList ) {
+void staffPropFrm::boot( int staffNr, QPtrList<NStaff> *staffList ) {
     // Prevent apply from happen
     mbApply = true;
     QListIterator<NStaff> staffIterator(*staffList); // List of staffs

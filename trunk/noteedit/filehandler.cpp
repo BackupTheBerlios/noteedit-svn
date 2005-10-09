@@ -130,7 +130,7 @@ void NFileHandler::pitchOut( const NNote *note, NClef *ac_clef, bool with_tie) {
 
 
 	
-bool NFileHandler::writeStaffs(QString fname, QList<NStaff> *stafflist, NMainFrameWidget *mainWidget, bool showErrors) {
+bool NFileHandler::writeStaffs(QString fname, QPtrList<NStaff> *stafflist, NMainFrameWidget *mainWidget, bool showErrors) {
 	NVoice *voice_elem;
 	NStaff *staff_elem;
 	NMusElement *last_elem;
@@ -1549,7 +1549,7 @@ void NFileHandler::writeStaffLayout(NMainFrameWidget *mainWidget, int staffCount
 
 }
 
-int NFileHandler::determineMultiRest(QList<NStaff> *stafflist) {
+int NFileHandler::determineMultiRest(QPtrList<NStaff> *stafflist) {
 	NStaff *staff_elem;
 	int len;
 
@@ -1932,7 +1932,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 	if (something_written) out_ << endl;
 }
 	
-bool NFileHandler::readStaffs(const char *fname, QList<NVoice> *voilist, QList<NStaff> *stafflist, NMainFrameWidget *mainWidget) {
+bool NFileHandler::readStaffs(const char *fname, QPtrList<NVoice> *voilist, QPtrList<NStaff> *stafflist, NMainFrameWidget *mainWidget) {
 	FILE *fp;
 	int i;
 	extern int YYRESTART(FILE *fp);
@@ -1941,8 +1941,8 @@ bool NFileHandler::readStaffs(const char *fname, QList<NVoice> *voilist, QList<N
 	int parser_return;
 	NVoice *voice_elem;
 	NStaff *staff_elem;
-	QList<NVoice> newVoices;
-	QList<NStaff> newStaffs;
+	QPtrList<NVoice> newVoices;
+	QPtrList<NStaff> newStaffs;
 	layoutDef *layoutinfo;
 	int staffCount;
 

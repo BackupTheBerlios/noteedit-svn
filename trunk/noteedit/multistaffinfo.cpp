@@ -33,7 +33,7 @@
 
 #define INTERNAL_DRUM_CLEF_MARK 111
 
-NMultistaffInfo::NMultistaffInfo(NMainFrameWidget *mainWidget, QList<NStaff> *stafflist, int staff_count) {
+NMultistaffInfo::NMultistaffInfo(NMainFrameWidget *mainWidget, QPtrList<NStaff> *stafflist, int staff_count) {
 	NClef *clef;
 	int i, j, k, l;
 	int *clinfo;

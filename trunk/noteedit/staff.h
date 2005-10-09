@@ -37,7 +37,7 @@ class NStaff {
 	public:
 		NStaff(int base, int midi_channel, int voice, NMainFrameWidget *mainWidget);
 		~NStaff();
-		QList<NVoice> voicelist_;
+		QPtrList<NVoice> voicelist_;
 		void setBase(int base);
 		void paperDimensiones(int width);
 		int getBase() const {return staff_props_.base;}
@@ -49,7 +49,7 @@ class NStaff {
 		int determineMultiRest();
 		void setVolume(int vol) {midiVolume_ = vol;}
 		int getChannel() const {return midiChannel_;}
-		void getElementsAfter(QList<NPositStr> *plist, int mytime, int *num_positions, int *min_time);
+		void getElementsAfter(QPtrList<NPositStr> *plist, int mytime, int *num_positions, int *min_time);
 		int getWidth() {return width_;}
 		void validateKeysig(int startidx, int insertpos);
 		int voiceCount() {return voicelist_.count();}
@@ -110,7 +110,7 @@ class NStaff {
 		void setHalfsAccordingKeySig();
 		void addVoices(int nvoices);
 		void moveVoice(uint srcNr, uint tgtNr); /* move the voice from number src to tgt */
-		void updateVoiceList(QList<NVoice> *voicelist);
+		void updateVoiceList(QPtrList<NVoice> *voicelist);
 		void setMuted(bool muted);
 		bool getMuted() {return actualVoice_->muted_;}
 		int deleteVoice(NVoice *oldVoice, VoiceDialog *voicedialog, staffPropFrm *staffPropForm);

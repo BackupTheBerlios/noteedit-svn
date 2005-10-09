@@ -15,14 +15,14 @@
 struct parser_param_str {
 	const char *fname;
 	NMainFrameWidget *mainWidget;
-	QList<NStaff> *newStaffs;
-	QList<NVoice> *newVoices;
+	QPtrList<NStaff> *newStaffs;
+	QPtrList<NVoice> *newVoices;
 	QString scTitle_, scSubtitle_, scAuthor_, scLastAuthor_, scCopyright_, scComment_;
 	bool enableParams, with_measnum;
 	int paperwidth, paperheight;
-	QList<layoutDef> bracketList;
-	QList<layoutDef> braceList;
-	QList<layoutDef> contList;
+	QPtrList<layoutDef> bracketList;
+	QPtrList<layoutDef> braceList;
+	QPtrList<layoutDef> contList;
 };
 
 struct property_descr_str {

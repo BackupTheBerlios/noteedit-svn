@@ -32,7 +32,7 @@
 #include <qapplication.h>
 #include <qpixmap.h>
 #include <qstring.h>
-#include <qlist.h>
+#include <qptrlist.h>
 class NStaff;
 class layoutDef {
 	public:
@@ -50,7 +50,7 @@ class layoutDef {
 class NStaffLayout : public QDialog {
 	Q_OBJECT
 	public:
-		NStaffLayout(int staffCount, layoutDef *braceMatrix, layoutDef *bracketMatrix, layoutDef *barCont, QList<NStaff> *stafflist, QWidget *parent, char *name);
+		NStaffLayout(int staffCount, layoutDef *braceMatrix, layoutDef *bracketMatrix, layoutDef *barCont, QPtrList<NStaff> *stafflist, QWidget *parent, char *name);
 		~NStaffLayout();
 		bool hasChanged() {return hasChanged_;}
 	protected:
@@ -86,7 +86,7 @@ class NStaffLayout : public QDialog {
 		layoutDef *localBraceMatrix_;
 		layoutDef *localBracketMatrix_;
 		layoutDef *localBarCont_;
-		QList<NStaff> *staffList_;
+		QPtrList<NStaff> *staffList_;
 		bool hasChanged_;
 	private slots:
 		void slOk();

@@ -28,7 +28,7 @@
 #include <ktoolbar.h>
 
 #include <qcolor.h>
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qstring.h>
 #include <qregexp.h>
 
@@ -498,7 +498,7 @@ class NResource : public QObject  {
 		static staff_props_str nullprops_;
 		static NKeySig *nullKeySig_;
 		static NClef *nullClef_;
-		static QList<NMainWindow> windowList_;
+		static QPtrList<NMainWindow> windowList_;
 		static NMidiMapper *mapper_;
 		static int lastWindowX_, lastWindowY_;
 		static NVoice *voiceWithSelectedRegion_;
@@ -510,7 +510,7 @@ class NResource : public QObject  {
 		static bool dontShowMupWarnings_;
 #if KDE_VERSION < 220
 		static int tipNo_;
-		static QList<QString> theTips_;
+		static QPtrList<QString> theTips_;
 		void loadTips(QString fname);
 #endif
 		static bool *staffSelMute_;

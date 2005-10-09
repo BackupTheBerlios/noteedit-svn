@@ -276,13 +276,13 @@ void MusicXMLErrorHandler::setParser(MusicXMLParser * p)
 
 // readStaffs(): the public interface to the MusicXML parser
 
-bool MusicXMLParser::readStaffs(const char *fname, QList<NVoice> *voilist, QList<NStaff> *stafflist, NMainFrameWidget *mainWidget) {
+bool MusicXMLParser::readStaffs(const char *fname, QPtrList<NVoice> *voilist, QPtrList<NStaff> *stafflist, NMainFrameWidget *mainWidget) {
 	int i;
 	int parser_return;
 	NVoice *voice_elem;
 	NStaff *staff_elem;
-	QList<NVoice> newVoices;
-	QList<NStaff> newStaffs;
+	QPtrList<NVoice> newVoices;
+	QPtrList<NStaff> newStaffs;
 	layoutDef *layoutinfo;
 	int staffCount;
 

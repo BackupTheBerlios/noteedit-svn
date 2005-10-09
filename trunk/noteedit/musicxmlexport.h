@@ -25,7 +25,7 @@
 
 #include "config.h"
 
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qstring.h>
 #include "muselement.h" /* needed for property_type */
 #if GCC_MAJ_VERS > 2
@@ -56,23 +56,23 @@ class NChordDiagram;
 class NMusicXMLExport  {
 	public:
 		NMusicXMLExport();
-		void exportStaffs(QString fname, QList<NStaff> *stafflist, int count_of_voices, exportFrm *expWin, NMainFrameWidget *mainWidget);
+		void exportStaffs(QString fname, QPtrList<NStaff> *stafflist, int count_of_voices, exportFrm *expWin, NMainFrameWidget *mainWidget);
 	private:
 		void debugDumpElem(NMusElement * elem);
 		void debugDumpVoice(NVoice * voice_elem);
 		void debugDumpStaff(NStaff * staff_elem);
-		void debugDump(QList<NStaff> *stafflist, NMainFrameWidget *mainWidget);
+		void debugDump(QPtrList<NStaff> *stafflist, NMainFrameWidget *mainWidget);
 		bool writeFirstVoice(NVoice *voice_elem, int staff_nr);
 		bool writeOtherVoicesTill(int staff_nr, int voice_nr, NVoice *voice_elem, int stopTime);
 		void outputNote(NNote *note, NVoice *voice_elem, NClef *actualClef, int va, int staff_nr, int voice_nr, int note_nr);
 		void outputVoiceNr(int voice_nr);
 		int calcDuration(int len, property_type status);
 		void calcLength(NMusElement *elem, int& dur, QString& type);
-		void calcDivisions(QList<NStaff> *stafflist);
+		void calcDivisions(QPtrList<NStaff> *stafflist);
 		NChord * findDynEndChord(NStaff * staff_elem, NChord * start_chord);
 		NChord * findVaEndChord(NStaff * staff_elem, NChord * start_chord);
 		void outputKeySig(NKeySig *key);
-		void outputStaffAndVoiceDescription(QList<NStaff> *stafflist);
+		void outputStaffAndVoiceDescription(QPtrList<NStaff> *stafflist);
 		void outputMeter(NTimeSig *timesig);
 		void outputClefInfo(NClef *clef, int staff_nr);
 		void outputDegree(int val, int alt, QString typ);
@@ -94,7 +94,7 @@ class NMusicXMLExport  {
 				}
 				int type_, staffnr_, barnr_;
 		};
-		QList<badinfo> badlist_;
+		QPtrList<badinfo> badlist_;
 		class voice_stat_str {
 			public:
 				voice_stat_str() {

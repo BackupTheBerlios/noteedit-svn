@@ -73,7 +73,7 @@ void NPlayable::computeTuplet() {
 	computeTuplet(tupletList_, getNumNotes(), getPlaytime());
 }
 
-void NPlayable::computeTuplet(QList<NPlayable> *tupletList, char numNotes, char playtime) {
+void NPlayable::computeTuplet(QPtrList<NPlayable> *tupletList, char numNotes, char playtime) {
 #define TUPLET_DIST 24
 	NPlayable *elem, *elem0, *first_tuplet_member = 0;
 	double sumxi2, sumxi, sumxiyi, sumyi;

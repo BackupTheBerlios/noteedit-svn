@@ -64,7 +64,7 @@ NABCExport::NABCExport() {
 	chordDiagramList_.setAutoDelete(true);
 }
 
-void NABCExport::exportStaffs(QString fname, QList<NStaff> *stafflist, int count_of_voices, exportFrm *expWin, NMainFrameWidget *mainWidget) {
+void NABCExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, int count_of_voices, exportFrm *expWin, NMainFrameWidget *mainWidget) {
 	NStaff *staff_elem;
 	NVoice *voice_elem;
 	NClef *firstClef;
@@ -1027,7 +1027,7 @@ void NABCExport::outputTupletStart (int staff_nr, NPlayable *elem) {
 }
 			
 
-void NABCExport::outputStaffAndVoiceDescription(QList<NStaff> *stafflist, NMainFrameWidget *mainWidget) {
+void NABCExport::outputStaffAndVoiceDescription(QPtrList<NStaff> *stafflist, NMainFrameWidget *mainWidget) {
 	NStaff *staff_elem;
 	NVoice *voice_elem;
 	int voice_count;
@@ -1252,7 +1252,7 @@ void NABCExport::outputKeySig(NKeySig *key, bool inHeader) {
 	if (inHeader) out_ << " % key signature" << endl;
 }
 
-void NABCExport::outputMidi(QList<NStaff> *stafflist) {
+void NABCExport::outputMidi(QPtrList<NStaff> *stafflist) {
 	NStaff *staff_elem;
 	NVoice *voice_elem;
 	int voice_count;

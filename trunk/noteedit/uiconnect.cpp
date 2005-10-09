@@ -155,7 +155,7 @@ void exportFrm::closeIt() {
     
     }
 
-void exportFrm::initialize( QList<NStaff> *stafflist, QList<NVoice> *voicelist, QString fname ) {
+void exportFrm::initialize( QPtrList<NStaff> *stafflist, QPtrList<NVoice> *voicelist, QString fname ) {
 
     staffList_ = stafflist;
     voiceList_ = voicelist;
@@ -393,7 +393,7 @@ void scaleFrm::transSlotCancel() {
 
     }
 
-void scaleFrm::boot( QList<NStaff> *stafflist, QScrollBar *scrollx_ ) {
+void scaleFrm::boot( QPtrList<NStaff> *stafflist, QScrollBar *scrollx_ ) {
     
 #if QT_VERSION >= 300
     this->exec();
@@ -644,7 +644,7 @@ listFrm::listFrm( QWidget *parent ) : listForm( parent, 0, true ) {
 	this->ob->setFocus();
 }
 
-bool listFrm::boot( int val, short int type, const QString & caption, const QString & title, QList<NStaff> *staff ) {
+bool listFrm::boot( int val, short int type, const QString & caption, const QString & title, QPtrList<NStaff> *staff ) {
 
     this->choice->clear();
 
@@ -880,7 +880,7 @@ staffFrm::staffFrm( QWidget *parent ) : staffForm( parent, 0, true ) {
 #undef setOn /* Don't know why. Otherwise with --enable-finel all "setOn" are redefined to */
 #undef isOn  /* setChecked and all "isOn" are redefined to "setChecked" which causes errors.(?) */
 
-void staffFrm::boot( QList<NStaff> *stafflist, char unsigned id, int amount ) {
+void staffFrm::boot( QPtrList<NStaff> *stafflist, char unsigned id, int amount ) {
 	char *na = (char *)I18N_NOOP("[not available]");
 	this->elem->clear();
 	int i = 0;

@@ -24,7 +24,7 @@
 
 #define MULTISTAFFINFO_H
 
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qstring.h>
 #include "config.h"
 #if GCC_MAJ_VERS > 2
@@ -39,7 +39,7 @@ class NMainFrameWidget;
 class NStaff;
 class NMultistaffInfo {
 	public:
-		NMultistaffInfo(NMainFrameWidget *mainWidget, QList<NStaff> *stafflist, int staff_count);
+		NMultistaffInfo(NMainFrameWidget *mainWidget, QPtrList<NStaff> *stafflist, int staff_count);
 		~NMultistaffInfo();
 		int multistaffIdxOfStaff(int staff_nr, int *multistaffnr, int *numStaffsInMultistaff);
 		void writeAkkoladen(ofstream *out, bool pmxstyle);

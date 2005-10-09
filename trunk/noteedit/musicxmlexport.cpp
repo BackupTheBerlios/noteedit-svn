@@ -252,7 +252,7 @@ void NMusicXMLExport::debugDumpStaff(NStaff * staff_elem) {
 }
 
 
-void NMusicXMLExport::debugDump(QList<NStaff> *stafflist, NMainFrameWidget *mainWidget) {
+void NMusicXMLExport::debugDump(QPtrList<NStaff> *stafflist, NMainFrameWidget *mainWidget) {
 	if (!mainWidget->scTitle_.isEmpty()) {
 		out_ << "scTitle=" << mainWidget->scTitle_ << endl;
 	}
@@ -298,7 +298,7 @@ NMusicXMLExport::NMusicXMLExport() {
 
 // export all staffs
 
-void NMusicXMLExport::exportStaffs(QString fname, QList<NStaff> *stafflist, int count_of_voices, exportFrm * /* expWin */, NMainFrameWidget *mainWidget) {
+void NMusicXMLExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, int count_of_voices, exportFrm * /* expWin */, NMainFrameWidget *mainWidget) {
 	NStaff *staff_elem;
 	NVoice *voice_elem;
 	NClef *firstClef;
@@ -1301,7 +1301,7 @@ void NMusicXMLExport::outputNote(NNote *note, NVoice *voice_elem, NClef *actualC
 	}
 	// LVIFIX: add <staff>
 	if (!note_nr && chord->hasProperty( PROP_BEAMED ) ) {
-		QList<NChord> *beamlist = 0;		// the group of beamed notes
+		QPtrList<NChord> *beamlist = 0;		// the group of beamed notes
 		int currlvl = 0;			// beam level current note
 		int nextlvl = 0;			// beam level next note
 		int prevlvl = 0;			// beam level previous note
@@ -1548,7 +1548,7 @@ static void divideBy(int div) {
 // divisions by prime factors. Initialize the list with QUARTER_LENGTH to make sure a quarter
 // note can always be written as an integral number of units.
 
-void NMusicXMLExport::calcDivisions(QList<NStaff> *stafflist) {
+void NMusicXMLExport::calcDivisions(QPtrList<NStaff> *stafflist) {
 	NStaff *staff_elem;
 	NVoice *voice_elem;
 	NMusElement *elem;
@@ -1682,7 +1682,7 @@ NChord * NMusicXMLExport::findVaEndChord(NStaff * staff_elem, NChord * start_cho
 
 // write the part list
 
-void NMusicXMLExport::outputStaffAndVoiceDescription(QList<NStaff> *stafflist) {
+void NMusicXMLExport::outputStaffAndVoiceDescription(QPtrList<NStaff> *stafflist) {
 	NStaff *staff_elem;
 	int staffcount;
 	int i;

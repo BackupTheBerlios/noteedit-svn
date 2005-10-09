@@ -148,7 +148,7 @@ class NMainFrameWidget : public QWidget
 		void setWithMeasureNums(bool with);
 		QString scTitle_, scSubtitle_, scAuthor_, scLastAuthor_, scCopyright_, scComment_;
 
-		QList<NMusElement> *getClipBoard(int clipBoardNr);
+		QPtrList<NMusElement> *getClipBoard(int clipBoardNr);
 		main_props_str main_props_;
 		void exportMusixTeXImm();
 		void exportLilyPondImm();
@@ -405,7 +405,7 @@ class NMainFrameWidget : public QWidget
 		void enableCriticalButtons(bool enable);
 		void pitchToLine(int pitchNumber);
 		KAccel *keys_;
-		QList<KAction> criticalButtons_;
+		QPtrList<KAction> criticalButtons_;
 		KToggleAction *playbutton_;
 		KToggleAction *stemUpbutton_;
 		KToggleAction *stemDownbutton_;
@@ -526,8 +526,8 @@ class NMainFrameWidget : public QWidget
 /*---------------------------- positioning ------------------------------------------*/
 		void xscrollDuringReplay(int val);
 		void computeMidiTimes(bool insertBars, bool doAutoBeam = false);
-		QList<NMidiEventStr> currentEvents_, nextEvents_;
-		QList<NMidiEventStr> *nextToPlay_, *nextToSearch_;
+		QPtrList<NMidiEventStr> currentEvents_, nextEvents_;
+		QPtrList<NMidiEventStr> *nextToPlay_, *nextToSearch_;
 		QScrollBar  *scrollx_, *scrolly_;
 		int lastBarNr_;
 /*------------------------------- selection ---------------------------------------*/
@@ -539,8 +539,8 @@ class NMainFrameWidget : public QWidget
 		QRect   selRect_;
 		int checkAllStaffsForNoteInsertion(const int line, const QPoint p, property_type *properties, bool *playable, bool *delete_elem, bool *insert_new_note);
 		bool checkStaffIntersection(const QPoint p);
-		QList<NVoice> voiceList_;
-		QList<NStaff> staffList_;
+		QPtrList<NVoice> voiceList_;
+		QPtrList<NStaff> staffList_;
 		NVoice *currentVoice_;
 		NStaff *currentStaff_;
 		void nextElement();
@@ -624,7 +624,7 @@ class NMainFrameWidget : public QWidget
 		QTimer midiInTimer_;
 #endif
 		double tempo_;
-		QList<NMidiEventStr> stopList_;
+		QPtrList<NMidiEventStr> stopList_;
 		void cleanupSelections();
 /*-------------------------------- static dadabase -------------------------------*/
 		static const char *keySigTab_[15];

@@ -23,8 +23,8 @@
 #ifndef MUSICXMLIMPORT_H
 
 #include <qmap.h>
-#include <qlist.h>
-#include <qvector.h>
+#include <qptrlist.h>
+#include <qptrvector.h>
 #include <qxml.h>
 #include "muselement.h" /* needed for property_type */
 
@@ -85,7 +85,7 @@ class MusicXMLParser : public QXmlDefaultHandler
 {
 public:
 	MusicXMLParser();
-	bool readStaffs(const char *fname, QList<NVoice> *voilist, QList<NStaff> *stafflist, NMainFrameWidget *mainWidget);
+	bool readStaffs(const char *fname, QPtrList<NVoice> *voilist, QPtrList<NStaff> *stafflist, NMainFrameWidget *mainWidget);
 	void setDocumentLocator(QXmlLocator *locator);
 	bool startDocument();
 	bool startElement(const QString&, const QString&, const QString&,
@@ -172,7 +172,7 @@ private:
 	int measure_start_time;		// tstart current measure
 	NChord * lastChord;		// last chord inserted
 	int iDiv;			// divisions
-	QVector<QString> partIds;	// part (staff) id's
+	QPtrVector<QString> partIds;	// part (staff) id's
 	QXmlLocator *lctr;
 	VoiceMapper vm;
 	// state variables for parsing

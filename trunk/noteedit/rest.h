@@ -51,7 +51,7 @@ class NRest : public NPlayable {
 		virtual char getPlaytime() {return tupRealTime_;}
 		virtual void addChordDiagram(NChordDiagram *cdiag);
 		virtual void removeChordDiagram();
-		virtual void setTupletParams(QList<NPlayable> *tupelList, bool last, double m,
+		virtual void setTupletParams(QPtrList<NPlayable> *tupelList, bool last, double m,
 						 double n , double tuptexn, int xstart, int xend, char numnotes, char playtime);
 		void setVoiceOffs(int *voice_offs) {yRestOffs_ = voice_offs;}
 		virtual int computeMidiLength() const;

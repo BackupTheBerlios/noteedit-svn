@@ -24,7 +24,7 @@
 
 #define ABCEXPORT_H
 
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qstring.h>
 #include "config.h"
 #if GCC_MAJ_VERS > 2
@@ -48,15 +48,15 @@ class chordDiagramName;
 class NABCExport  {
 	public:
 		NABCExport();
-		void exportStaffs(QString fname, QList<NStaff> *stafflist, int count_of_voices, exportFrm *expWin, NMainFrameWidget *mainWidget);
+		void exportStaffs(QString fname, QPtrList<NStaff> *stafflist, int count_of_voices, exportFrm *expWin, NMainFrameWidget *mainWidget);
 	private:
 		bool writeFirstVoice(NVoice *voice_elem, QString staffName, int staff_nr, int voice_count, int measure_count, bool lastStaff);
 		bool writeOtherVoicesTill(int staff_nr, int voice_nr, QString staffName, NVoice *voice_elem, NStaff *staff_elem, int stopTime);
 		void outputNote(NNote *note, NClef *actualClef, bool inInChord);
 		void outputLength(int len, property_type status, bool inChord, bool drumNote);
 		void outputKeySig(NKeySig *key, bool inHeader);
-		void outputMidi(QList<NStaff> *stafflist);
-		void outputStaffAndVoiceDescription(QList<NStaff> *stafflist, NMainFrameWidget *mainWidget);
+		void outputMidi(QPtrList<NStaff> *stafflist);
+		void outputStaffAndVoiceDescription(QPtrList<NStaff> *stafflist, NMainFrameWidget *mainWidget);
 		void outputVoiceParams(NVoice *voice, QString staffName);
 		QString lyrics2ABC(QString *lyrics);
 		void outputMeter(NTimeSig *timesig, bool inHeader);
@@ -72,7 +72,7 @@ class NABCExport  {
 		void writePendingSigns(int idx);
 		void appendContextChangeList(NVoice *voice_elem);
 		NClef *lastClef_;
-		QList<chordDiagramName> chordDiagramList_;
+		QPtrList<chordDiagramName> chordDiagramList_;
 #if GCC_MAJ_VERS > 2
 		ostringstream *lyricsLine_[NUM_LYRICS];
 #else
@@ -90,7 +90,7 @@ class NABCExport  {
 				}
 				int type_, staffnr_, barnr_;
 		};
-		QList<badinfo> badlist_;
+		QPtrList<badinfo> badlist_;
 		class voice_stat_str {
 			public:
 				voice_stat_str() {

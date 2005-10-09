@@ -50,7 +50,7 @@
 #define TEXTOFFS  (2*STAFF_LINE_DIST)
 
 
-NStaffLayout::NStaffLayout(int staffCount, layoutDef *braceMatrix, layoutDef *bracketMatrix, layoutDef *barCont, QList<NStaff> *stafflist, QWidget *parent, char *name) :
+NStaffLayout::NStaffLayout(int staffCount, layoutDef *braceMatrix, layoutDef *bracketMatrix, layoutDef *barCont, QPtrList<NStaff> *stafflist, QWidget *parent, char *name) :
 	QDialog(parent, name), 
 	quit_("Ok", this), cancel_(i18n ("Cancel"), this), brace_(i18n ("Set brace"), this), bracket_(i18n ("Set bracket"), this), bar_ ( i18n ("Continue bar"), this),
 	rembrace_( i18n ("Remove brace"), this), rembracket_(i18n("Remove bracket"), this), rembar_ ( i18n ("Discontinue bar"), this),

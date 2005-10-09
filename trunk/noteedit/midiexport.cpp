@@ -26,7 +26,7 @@
 #else
 #include <strstream.h>
 #endif
-#include <qlist.h>
+#include <qptrlist.h>
 #include <kmessagebox.h>
 #include <klocale.h>
 #include "midiexport.h"
@@ -131,7 +131,7 @@ void NMidiExport::writeCtlChange(int time, unsigned char chn, unsigned char ctl,
 	writeByte(pgm);
 }
 
-void NMidiExport::exportMidi(const char *fname, QList<NVoice> *voilist, char *miditext) {
+void NMidiExport::exportMidi(const char *fname, QPtrList<NVoice> *voilist, char *miditext) {
 	NVoice *voice_elem;
 	NTimeSig *timesig;
 #if GCC_MAJ_VERS > 2
@@ -222,7 +222,7 @@ void NMidiExport::writeTempo(int time, unsigned int tempo) {
 }
 
 
-void NMidiExport::writeCtrlTrack(QList<NVoice> *voilist, char *Title, char *miditext, NTimeSig *firstTsig, int keysig) {
+void NMidiExport::writeCtrlTrack(QPtrList<NVoice> *voilist, char *Title, char *miditext, NTimeSig *firstTsig, int keysig) {
 	long pos0, pos1;
 	unsigned int length;
 	int lastEventTime = 0;
@@ -273,7 +273,7 @@ void NMidiExport::writeTrack(NVoice *voice, NTimeSig *firstTsig) {
 	property_type kind;
 	NTimeSig *timesig;
 	QString *lyrics;
-	QList<NMidiEventStr> stopList;
+	QPtrList<NMidiEventStr> stopList;
 	stopList.setAutoDelete(false);
 
 	timesig = voice->getFirstTimeSig();

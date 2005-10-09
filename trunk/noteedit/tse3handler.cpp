@@ -71,7 +71,7 @@ static double TripletSnapVal_, TripletSnapVal_2_;
 static int TripletSnapInt_;
 static int TripletPart1_, TripletPart2_;
 static bool snapToTriplet_ = false;
-static QList<NMusElement> *tripletList_ = 0;
+static QPtrList<NMusElement> *tripletList_ = 0;
 #endif
 
 
@@ -101,7 +101,7 @@ NTSE3Handler::~NTSE3Handler() {
 #define MYTIME2TSE3TIME(t) ((int) (double) (TSE3::Clock::PPQN) * (double) (t) / (double) (QUARTER_LENGTH))
 #define TSE3TIME2MYMIDITIME(t) ((int) ((double) (t) * (double) QUARTER_LENGTH / (double) (TSE3::Clock::PPQN)))
 
-void NTSE3Handler::createTSE3(QList<NVoice> *voices) {
+void NTSE3Handler::createTSE3(QPtrList<NVoice> *voices) {
 	NVoice *voice;
 	NSign *sign;
 	int i;
@@ -143,7 +143,7 @@ TSE3::Track *NTSE3Handler::createTSE3Track(NVoice *voice, int nr, TSE3::Song *so
 	char trackName[20];
 	unsigned int myTime, noteoff;
 	int deviceNumber = NResource::mapper_->getActualDeviceNumber();
-	QList<NMidiEventStr> stopList;
+	QPtrList<NMidiEventStr> stopList;
 	stopList.setAutoDelete(false);
 
 	thePhraseEditor.reset();
@@ -462,7 +462,7 @@ void NTSE3Handler::TSE3PhraseEditToStaff(TSE3::PhraseEdit *phraseEdit, NStaff *s
 	emit endRecorded(true);
 }
 
-bool  NTSE3Handler::TSE3record(int channel, QList<NVoice> *voices) {
+bool  NTSE3Handler::TSE3record(int channel, QPtrList<NVoice> *voices) {
 	if (theSong_ == 0) {
 #ifdef IS_NOT_SO_GOOG
 		KMessageBox::sorry
@@ -581,7 +581,7 @@ void NTSE3Handler::TSE3Merge() {
 	TSE3::Phrase *newPhrase;
 	TSE3::Clock maxtime, endtime;
 	TSE3::Part *newPart = new TSE3::Part(), *part;
-	QList<TSE3::Track> removeableTracks;
+	QPtrList<TSE3::Track> removeableTracks;
 	QString phraseTitle;
 
 	for (z = 0, i = 0; i < theSong_->size(); ++i) {
@@ -617,7 +617,7 @@ void NTSE3Handler::TSE3Merge() {
 }
 		
 
-void NTSE3Handler::TSE3toScore(QList<NStaff> *staffs, QList<NVoice> *voices, bool keep) {
+void NTSE3Handler::TSE3toScore(QPtrList<NStaff> *staffs, QPtrList<NVoice> *voices, bool keep) {
 	oldvoiceList_ = voices;
 	oldstaffList_ = staffs;
 	if (theSong_ == 0) {
@@ -648,8 +648,8 @@ void NTSE3Handler::TSE3toScore(QList<NStaff> *staffs, QList<NVoice> *voices, boo
 	TSE3::PhraseEdit phraseEdit;
 	NStaff *staff;
 	NVoice *voice;
-	QList<NVoice> newVoices;
-	QList<NStaff> newStaffs;
+	QPtrList<NVoice> newVoices;
+	QPtrList<NStaff> newStaffs;
 	NSign *sign;
 	unsigned int i, j, k, l;
 	int noteCount;
@@ -784,7 +784,7 @@ void NTSE3Handler::TSE3toScore(QList<NStaff> *staffs, QList<NVoice> *voices, boo
 	emit endTSE3toScore(true);
 }
 
-void NTSE3Handler::insertTimeAndKeySigs(QList<NStaff> *staffs) {
+void NTSE3Handler::insertTimeAndKeySigs(QPtrList<NStaff> *staffs) {
 	//TSE3::TimeSigTrackIterator *tmtritr;
 	TSE3::PlayableIterator *tmtritr;
 	//TSE3::KeySigTrackIterator *kstritr;
@@ -991,11 +991,11 @@ int NTSE3Handler::threwCase( int item ) {
 }
 
 
-void NTSE3Handler::TSE3Rec2Staff(NStaff *staff, QList<NVoice> *voice_list) {
+void NTSE3Handler::TSE3Rec2Staff(NStaff *staff, QPtrList<NVoice> *voice_list) {
 	int noteCount;
 	int n, i, nr_voices;
 	NVoice *voice;
-	QList<NVoice> oldvoices;
+	QPtrList<NVoice> oldvoices;
 
 	if (recNum_ == 0) {
 		KMessageBox::sorry

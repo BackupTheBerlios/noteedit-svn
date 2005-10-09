@@ -128,7 +128,7 @@ NMidiMapper::~NMidiMapper() {
 }
 
 
-void NMidiMapper::stopAllNotes(QList<NMidiEventStr> *play_list) {
+void NMidiMapper::stopAllNotes(QPtrList<NMidiEventStr> *play_list) {
 	NMidiEventStr *m_evt;
 	NNote *note;
 	int i;
@@ -149,7 +149,7 @@ void NMidiMapper::stopAllNotes(QList<NMidiEventStr> *play_list) {
 	devMan_->sync();
 }
 
-void NMidiMapper::play_list(QList<NMidiEventStr> *play_list, int playTime) {
+void NMidiMapper::play_list(QPtrList<NMidiEventStr> *play_list, int playTime) {
 	NMidiEventStr *m_evt;
 	int i;
 	NNote *note;
@@ -242,7 +242,7 @@ void NMidiMapper::changeDevice(unsigned int index) {
 void NMidiMapper::playImmediately(NClef *clef, NChord *chord, int pgm, int chn, int vol, int transpose) {
 	if (actualDevice_nr_ < 0) return;
 	if (isInUse_) return;
-	QList<NNote> *notelist;
+	QPtrList<NNote> *notelist;
 	NNote *note;
 	struct dir_notes_str *immListElem;
 	if (!immList_.isEmpty())  {
@@ -446,7 +446,7 @@ void NMidiMapper::openDevice() {
 }
 
 
-void NMidiMapper::stopAllNotes(QList<NMidiEventStr> *play_list) {
+void NMidiMapper::stopAllNotes(QPtrList<NMidiEventStr> *play_list) {
 	NMidiEventStr *m_evt;
 	NNote *note;
 	int i;
@@ -468,7 +468,7 @@ void NMidiMapper::stopAllNotes(QList<NMidiEventStr> *play_list) {
 	}
 }
 
-void NMidiMapper::play_list(QList<NMidiEventStr> *play_list, int playTime) {
+void NMidiMapper::play_list(QPtrList<NMidiEventStr> *play_list, int playTime) {
 	NMidiEventStr *m_evt;
 	NNote *note;
 	int i;
@@ -575,7 +575,7 @@ void NMidiMapper::changeDevice(unsigned int index) {
 void NMidiMapper::playImmediately(NClef *clef, NChord *chord, int pgm, int chn, int vol, int transpose) {
 	if (actualDevice_nr_ < 0) return;
 	if (isInUse_) return;
-	QList<NNote> *notelist;
+	QPtrList<NNote> *notelist;
 	NNote *note;
 	struct dir_notes_str *immListElem;
 	if (!immList_.isEmpty())  {
@@ -728,14 +728,14 @@ NMidiMapper::NMidiMapper() : QObject() {
 }
 
 
-void NMidiMapper::stopAllNotes(QList<NMidiEventStr> * /* dummy */) {
+void NMidiMapper::stopAllNotes(QPtrList<NMidiEventStr> * /* dummy */) {
 	int i;
 	for ( i = 0; i < synthDevs_ + midiDevs_; i++ ) {
 		ioctl(seqfd, SNDCTL_SEQ_RESET, i);
 	}
 }
 
-void NMidiMapper::play_list(QList<NMidiEventStr> *play_list, int playTime) {
+void NMidiMapper::play_list(QPtrList<NMidiEventStr> *play_list, int playTime) {
 	(this->*play_func_)(play_list, playTime);
 }
 
@@ -783,7 +783,7 @@ void NMidiMapper::changePan(int chn, int pan) {
 	}
 }
 
-void NMidiMapper::playMidiDev(QList<NMidiEventStr> *play_list, int playTime) const{
+void NMidiMapper::playMidiDev(QPtrList<NMidiEventStr> *play_list, int playTime) const{
 	int i;
 	NMidiEventStr *m_evt;
 	NNote *note;
@@ -859,7 +859,7 @@ void NMidiMapper::playMidiDev(QList<NMidiEventStr> *play_list, int playTime) con
 	SEQ_DUMPBUF();
 }
 
-void NMidiMapper::playSynthDev(QList<NMidiEventStr> *play_list, int playTime) const{
+void NMidiMapper::playSynthDev(QPtrList<NMidiEventStr> *play_list, int playTime) const{
 	NNote *note;
 	NMidiEventStr *m_evt;
 	int i;
@@ -914,7 +914,7 @@ void NMidiMapper::playSynthDev(QList<NMidiEventStr> *play_list, int playTime) co
 	SEQ_DUMPBUF();
 }
 
-void NMidiMapper::playNull(QList<NMidiEventStr> *play_list, int playTime) const{
+void NMidiMapper::playNull(QPtrList<NMidiEventStr> *play_list, int playTime) const{
 	NMidiEventStr *m_evt;
 
 	for (m_evt = play_list->first(); m_evt; m_evt = play_list->next()) {
@@ -954,7 +954,7 @@ void NMidiMapper::changeDevice(unsigned int index) {
 void NMidiMapper::playImmediately(NClef *clef, NChord *chord, int pgm, int chn, int vol, int transpose) {
 	if (actualDevice_nr_ < 0) return;
 	if (isInUse_) return;
-	QList<NNote> *notelist;
+	QPtrList<NNote> *notelist;
 	NNote *note;
 	struct dir_notes_str *immListElem;
 	if (!immList_.isEmpty())  {
@@ -1036,10 +1036,10 @@ void NMidiMapper::setPaintDevice(NDbufferWidget *pd) {
 }
 
 #ifdef WITH_TSE3
-QList<int> *NMidiMapper::readEvents() {
+QPtrList<int> *NMidiMapper::readEvents() {
 	TSE3::MidiEvent evt;
 	TSE3::MidiCommand *midiOnCommand;
-	QList<int> *pitches = 0;
+	QPtrList<int> *pitches = 0;
 	bool first = true;
 	if (!theScheduler_) return 0;
 	while (1) {
@@ -1054,7 +1054,7 @@ QList<int> *NMidiMapper::readEvents() {
 				}
 				if (first) {
 					first = false;
-					pitches = new QList<int>();
+					pitches = new QPtrList<int>();
 					pitches->setAutoDelete(true);
 					readTime_.start();
 				}

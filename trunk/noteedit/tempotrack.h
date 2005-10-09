@@ -24,7 +24,7 @@
 #define TEMPOTRACK_H
 #include "sign.h"
 
-template<class type> class ordereList : public QList<type> {
+template<class type> class ordereList : public QPtrList<type> {
 	protected:
 		virtual int compareItems ( QCollection::Item item1, QCollection::Item item2 ) {
 			NSign *sign1, *sign2;

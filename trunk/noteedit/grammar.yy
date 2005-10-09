@@ -26,7 +26,7 @@
 #include "parsertypes.h"
 /* #define YYDEBUG 1 */
 #ifndef YACCDEBUG
-#include <qlist.h>
+#include <qptrlist.h>
 #include "muselement.h"
 #include "resource.h"
 #include "staff.h"
@@ -51,7 +51,7 @@ static int newtimesig = 0;
 static int before_first_music = 1;
 static QString newLine("\n");
 static QString newLineLiterally("\\n");
-static QList<chordDiagramName> chordDiagramList;
+static QPtrList<chordDiagramName> chordDiagramList;
 extern int chordname_expected;
 extern void enable_strings();
 struct slur_stack_str {
@@ -62,7 +62,7 @@ static struct pendings {
 	int newkeysig, newclef;
 	NMusElement *beamstart_chord;
 	NMusElement *lastBarSym;
-	QList<slur_stack_str> *slur_stack;
+	QPtrList<slur_stack_str> *slur_stack;
 	int inbeam;
 	NVoice *theVoice;
 } *pending_elements = 0;
@@ -688,7 +688,7 @@ musicpart : Y_MUSIC
 				}
 				pending_elements[i].beamstart_chord = 0;
 				pending_elements[i].lastBarSym = 0;
-				pending_elements[i].slur_stack = new QList<slur_stack_str>();
+				pending_elements[i].slur_stack = new QPtrList<slur_stack_str>();
 				pending_elements[i].slur_stack->setAutoDelete(true);
 				pending_elements[i].inbeam = 0;
 			}

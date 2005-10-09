@@ -48,6 +48,7 @@ void lilytest::check() {
 
     mkstemp( tempDir );
     char buf1[256];
+    int ver[3];
     
     char *env = getenv( "PATH" );
     char *envp;
@@ -60,30 +61,33 @@ void lilytest::check() {
 		found = true;
 	    envp = strtok(0, delim);
     }
-    if( !found ) {
+    if (found) {
+	strcat( buf1, " --version > " );
+	strcat( buf1, tempDir );
+	system( buf1 );
+	ifstream *is = new ifstream( tempDir, ios::in );
+	char buf[50];
+	is->getline( buf, 50 );
+	is->close();
+	delete is;
+	remove( tempDir );
+	if( sscanf( buf, "GNU LilyPond %i.%i.%i", &ver[0], &ver[1], &ver[2] ) != 3 ) {
+		if (sscanf( buf, "lilypond (GNU LilyPond) %i.%i.%i", &ver[0], &ver[1], &ver[2] ) != 3 ) {
+			printf( "detection not possible\n" );
+			NResource::lilyProperties_.lilyAvailable = false;
+			found = false;
+		}
+	}
+    } else {
 	printf("not available.\n");
 	NResource::lilyProperties_.lilyAvailable = false;
-	return;
     }
-	
-    strcat( buf1, " --version > " );
-    strcat( buf1, tempDir );
-    system( buf1 );
-    ifstream *is = new ifstream( tempDir, ios::in );
-    char buf[50];
-    is->getline( buf, 50 );
-    is->close();
-    delete is;
-    remove( tempDir );
-    int ver[3];
-    if( sscanf( buf, "GNU LilyPond %i.%i.%i", &ver[0], &ver[1], &ver[2] ) != 3 ) {
-    	if (sscanf( buf, "lilypond (GNU LilyPond) %i.%i.%i", &ver[0], &ver[1], &ver[2] ) != 3 ) {
-		printf( "detection not possible\n" );
-		NResource::lilyProperties_.lilyAvailable = false;
-		return;
-	}
+    if (!found) {
+        printf("Setting version to 2.6.3\n");
+        ver[0] = 2;
+        ver[1] = 6;
+        ver[2] = 3;
     }
-
     printf( "found version: %i.%i.%i\n", ver[0], ver[1], ver[2] );
     fflush(stdout);
 

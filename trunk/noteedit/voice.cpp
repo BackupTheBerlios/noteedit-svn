@@ -112,7 +112,7 @@ void NVoice::emptyVoice() {
 	invalidateReUndo(true);
 }
 
-void NVoice::getChordDiagramms(QList<chordDiagramName> *cdiagList, bool *gridsused, bool firstcall, bool *gridproblem) {
+void NVoice::getChordDiagramms(QPtrList<chordDiagramName> *cdiagList, bool *gridsused, bool firstcall, bool *gridproblem) {
 	NMusElement *elem;
 	NChordDiagram *diag;
 	chordDiagramName *diag_name;
@@ -487,7 +487,7 @@ void NVoice::deleteBlock() {
 	int x0, x1, idx;
 	bool found = false;
 	NNote *note;
-	QList<NNote> *partlist;
+	QPtrList<NNote> *partlist;
 	NMusElement *ac_elem, *stop_elem, *start_elem;
 	NChord *chord;
 
@@ -599,7 +599,7 @@ void NVoice::reconnectBeames() {
 	int oldidx;
 	NMusElement *ac_elem;
 	NChord *chord;
-	QList<NChord> *beamlist = new QList<NChord>();
+	QPtrList<NChord> *beamlist = new QPtrList<NChord>();
 
 	oldidx = musElementList_.at();
 	ac_elem = currentElement_;
@@ -627,7 +627,7 @@ void NVoice::reconnectTuplets() {
 	int oldidx;
 	int numNotes, playtime;
 	NMusElement *ac_elem;
-	QList<NPlayable> *tupletlist = new QList<NPlayable>();
+	QPtrList<NPlayable> *tupletlist = new QPtrList<NPlayable>();
 
 	oldidx = musElementList_.at();
 	ac_elem = currentElement_;
@@ -1004,14 +1004,14 @@ bool NVoice::beginsWithGrace() {
 	return false;
 }
 	
-void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool complete, int *part_in_current_measure, int *dest_midi_time, int *countof128th) {
+void NVoice::pasteAtPosition(int xpos, QPtrList<NMusElement> *clipboard, bool complete, int *part_in_current_measure, int *dest_midi_time, int *countof128th) {
 	int idx, startidx, i, num = 0;
 	bool found;
 	NChord *chord;
-	QList<NChord> lastSluredClones;
-	QList<NChord> *beamlist;
+	QPtrList<NChord> lastSluredClones;
+	QPtrList<NChord> *beamlist;
 	NMusElement *ac_elem, *elem_before = 0, *clone_elem;
-	QList<NMusElement> *clonelist;
+	QPtrList<NMusElement> *clonelist;
 	int lastbartime;
 	ac_elem = clipboard->first();
 
@@ -1056,7 +1056,7 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 			*part_in_current_measure = musElementList_.getLast()->midiTime_ +  musElementList_.getLast()->getMidiLength() - lastbartime;
 		}
 	}
-	clonelist = new QList<NMusElement>();
+	clonelist = new QPtrList<NMusElement>();
 	for (ac_elem = clipboard->first(); ac_elem; ac_elem = clipboard->next()) {
 		if (!complete) {
 			switch (ac_elem->getType()) {
@@ -1147,14 +1147,14 @@ void NVoice::pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool compl
 }
 
 
-void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128th, QList<NMusElement> *clipboard) {
+void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128th, QPtrList<NMusElement> *clipboard) {
 	int idx, startidx, num = 0;
 	bool found;
 	NChord *chord;
-	QList<NChord> lastSluredClones;
-	QList<NChord> *beamlist;
+	QPtrList<NChord> lastSluredClones;
+	QPtrList<NChord> *beamlist;
 	NMusElement *ac_elem, *elem_before = 0, *clone_elem;
-	QList<NMusElement> *clonelist;
+	QPtrList<NMusElement> *clonelist;
 	property_type properties;
 	int dotcount;
 	int diff_total, len, len2, lastElemTime;
@@ -1199,7 +1199,7 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 	}
 	lastElemTime = elem_before ? elem_before->midiTime_ + elem_before->getMidiLength() : 0;
 	diff_total = dest_time - lastElemTime - part_in_measure;
-	clonelist = new QList<NMusElement>();
+	clonelist = new QPtrList<NMusElement>();
 	if (diff_total > 0) {
 		countof128th *= MULTIPLICATOR;
 		len = diff_total % countof128th;
@@ -1561,7 +1561,7 @@ void NVoice::changeActualStem() {
 
 void NVoice::breakBeames() {
 	NChord *chord;
-	QList<NChord> *beamlist;
+	QPtrList<NChord> *beamlist;
 	int first_beam_idx, last_beam_idx;
 	if (!currentElement_) return;
 	chord = (NChord *) currentElement_;
@@ -1576,7 +1576,7 @@ void NVoice::breakBeames() {
 	chord->breakBeames();
 }
 
-bool NVoice::lastChordContained(QList<NMusElement> *clonelist, QList<NChord> *beamlist) {
+bool NVoice::lastChordContained(QPtrList<NMusElement> *clonelist, QPtrList<NChord> *beamlist) {
 	int oldidx = clonelist->at();
 	NChord *lastChord = beamlist->last();
 	NMusElement *elem;
@@ -1596,7 +1596,7 @@ bool NVoice::lastChordContained(QList<NMusElement> *clonelist, QList<NChord> *be
 	return false;
 }
 
-bool NVoice::allElemsContained(QList<NMusElement> *clonelist, QList<NPlayable> *tupletlist) {
+bool NVoice::allElemsContained(QPtrList<NMusElement> *clonelist, QPtrList<NPlayable> *tupletlist) {
 	NMusElement *elem;
 
 	for (elem = tupletlist->first(); elem; elem = tupletlist->next()) {
@@ -1605,7 +1605,7 @@ bool NVoice::allElemsContained(QList<NMusElement> *clonelist, QList<NPlayable> *
 	return true;
 }
 
-bool NVoice::lastElemContained(QList<NMusElement> *clonelist, QList<NPlayable> *tupletlist) {
+bool NVoice::lastElemContained(QPtrList<NMusElement> *clonelist, QPtrList<NPlayable> *tupletlist) {
 	int oldidx = clonelist->at();
 	NMusElement *lastelem = tupletlist->last();
 	NMusElement *elem;
@@ -1626,7 +1626,7 @@ bool NVoice::lastElemContained(QList<NMusElement> *clonelist, QList<NPlayable> *
 }
 
 
-bool NVoice::checkTuplets(QList<NMusElement> *copielist, QList<NPlayable> *tupletlist) {
+bool NVoice::checkTuplets(QPtrList<NMusElement> *copielist, QPtrList<NPlayable> *tupletlist) {
 	int oldidx = copielist->at();
 	bool found;
 	NMusElement *elem0, *elem1;
@@ -1651,7 +1651,7 @@ bool NVoice::checkTuplets(QList<NMusElement> *copielist, QList<NPlayable> *tuple
 	
 void NVoice::breakTuplet() {
 	int oldidx;
-	QList<NPlayable> *tupletlist;
+	QPtrList<NPlayable> *tupletlist;
 	int first_trip_idx, last_trip_idx;
 
 	if (!currentElement_ || !currentElement_->playable() ) return;
@@ -1853,7 +1853,7 @@ void NVoice::setBeamed() {
 	int count, x0, x1, idx;
 	bool found, beamable = true;
 	NMusElement *acc_elem;
-	QList<NChord> *chordlist;
+	QPtrList<NChord> *chordlist;
 	NChord *chord;
 
 	if (!startElement_ || !endElement_) return;
@@ -1862,7 +1862,7 @@ void NVoice::setBeamed() {
 	idx = x0;
 	found = false;
 	acc_elem = musElementList_.at(x0);
-	chordlist = new QList<NChord>();
+	chordlist = new QPtrList<NChord>();
 	while (!found && acc_elem != 0 && idx <= x1) {
 		if (acc_elem->getType() == T_CHORD) {
 			if (acc_elem->getSubType() < QUARTER_LENGTH && !(acc_elem->chord()->hasProperty( PROP_BEAMED ))) {
@@ -1929,7 +1929,7 @@ void NVoice::setBeamed() {
 // note:	always clears elemlist at start
 // note:	LVIFIX tbd: positions musElementList_ at ???
 
-bool NVoice::buildTupletList(int x0, int x1, char numNotes, QList<NPlayable> *elemlist) {
+bool NVoice::buildTupletList(int x0, int x1, char numNotes, QPtrList<NPlayable> *elemlist) {
 	int count = 0;
 	int idx = 0;
 	bool found = false;
@@ -1995,13 +1995,13 @@ bool NVoice::buildTupletList(int x0, int x1, char numNotes, QList<NPlayable> *el
 void NVoice::setTuplet(char numNotes, char playtime) {
 	int x0 = 0;
 	int x1 = 0;
-	QList<NPlayable> *elemlist = 0;
+	QPtrList<NPlayable> *elemlist = 0;
 
 	if (!startElement_ || !endElement_) return;
 	x0 = (endElementIdx_ > startElemIdx_) ? startElemIdx_ : endElementIdx_;
 	x1 = (endElementIdx_ > startElemIdx_) ? endElementIdx_ : startElemIdx_;
 
-	elemlist = new QList<NPlayable>();
+	elemlist = new QPtrList<NPlayable>();
 	if (!buildTupletList(x0, x1, numNotes, elemlist)) {
 		delete elemlist;
 		return;
@@ -2018,7 +2018,7 @@ void NVoice::setTuplet(char numNotes, char playtime) {
 
 int NVoice::deleteActualElem(property_type *properties, bool backspace) {
 	NNote *note;
-	QList<NNote> *partlist;
+	QPtrList<NNote> *partlist;
 	NChord *chord;
 	bool removedLast = false; /* are we deleting the last element? */
 	bool removedFirst = false; /* are we deleting the first element? */
@@ -2276,7 +2276,7 @@ int NVoice::quant(int l, int *dotcount, int maxlength) {
 // targetlength
 
 void NVoice::collectAndInsertPlayable(	int startTime,
-					QList<NMusElement> *patterns,
+					QPtrList<NMusElement> *patterns,
 					int targetLength,
 					bool useExistingElement,
 					bool beforeBarSig) {	// beforeBarSig: first short note, then the long one
@@ -2286,7 +2286,7 @@ void NVoice::collectAndInsertPlayable(	int startTime,
 	int akpos;
 	NMusElement *lastPattern;
 	NChord *elem2;
-	QList<NNote> *noteList;
+	QPtrList<NNote> *noteList;
 	NNote *note;
 
 	if (patterns->isEmpty()) {
@@ -2376,9 +2376,9 @@ void NVoice::autoBar() {
 	NTimeSig *timesig;
 	NRest *rest;
 	NMusElement *elem, *nextElem;
-	QList <NMusElement> elems;
+	QPtrList <NMusElement> elems;
 	NNote *note;
-	QList <NNote> *part;
+	QPtrList <NNote> *part;
 
 	createUndoElement(0, musElementList_.count(), 0);
 
@@ -2546,7 +2546,7 @@ void NVoice::autoBarVoice123andSoOn() {
 	NMusElement *elem, *specialElement;
 	int specialElemTime;
         int barpos, akpos, len1, len2;
-	QList <NMusElement> elems;
+	QPtrList <NMusElement> elems;
 
 	createUndoElement(0, musElementList_.count(), 0);
 	computeMidiTime(false, false);
@@ -2578,7 +2578,7 @@ void NVoice::autoBarVoice123andSoOn() {
 	setCountOfAddedItems(musElementList_.count());
 }
 
-bool NVoice::beameEndRequired(QList<NChord> *beamlist_so_far, NTimeSig *timesig, int beats) {
+bool NVoice::beameEndRequired(QPtrList<NChord> *beamlist_so_far, NTimeSig *timesig, int beats) {
 	int shortestNote = DOUBLE_WHOLE_LENGTH;
 	NChord *chord;
 	struct rule_str *wild_ptr = NULL, *rule_ptr = NULL, *ptr;
@@ -2617,13 +2617,13 @@ bool NVoice::beameEndRequired(QList<NChord> *beamlist_so_far, NTimeSig *timesig,
 
 void NVoice::autoBeam() {
 	NMusElement *elem;
-	QList<NChord> *beamlist;
+	QPtrList<NChord> *beamlist;
 	property_type properties = 0;
 	int beats = 0;
 	NMusElement *specElem;
 	NTimeSig current_timesig(0, 0);
 
-	beamlist = new QList<NChord>();
+	beamlist = new QPtrList<NChord>();
 	createUndoElement(0, musElementList_.count(), 0);
 	if (!firstVoice_) {
 		theStaff_->resetSpecialElement();
@@ -2634,7 +2634,7 @@ void NVoice::autoBeam() {
 			while (specElem =  theStaff_->checkSpecialElement(elem->getXpos())) {
 				if (beamlist->count() > 1) {
 					NChord::computeBeames(beamlist, stemPolicy_);
-					beamlist = new QList<NChord>();
+					beamlist = new QPtrList<NChord>();
 				}
 				else {
 					beamlist->clear();
@@ -2657,7 +2657,7 @@ void NVoice::autoBeam() {
 						else {
 							beamlist->clear();
 						}
-						beamlist = new QList<NChord>();
+						beamlist = new QPtrList<NChord>();
 						properties = elem->chord()->properties() & PROP_GRACE;
 					}
 					beats += elem->getMidiLength(true);
@@ -2666,7 +2666,7 @@ void NVoice::autoBeam() {
 				else {
 					if (beamlist->count() > 1) {
 						NChord::computeBeames(beamlist, stemPolicy_);
-						beamlist = new QList<NChord>();
+						beamlist = new QPtrList<NChord>();
 					}
 					else {
 						beamlist->clear();
@@ -2677,7 +2677,7 @@ void NVoice::autoBeam() {
 				if (elem->getSubType() & BAR_SYMS) {
 					if (beamlist->count() > 1) {
 						NChord::computeBeames(beamlist, stemPolicy_);
-						beamlist = new QList<NChord>();
+						beamlist = new QPtrList<NChord>();
 					}
 					else {
 						beamlist->clear();
@@ -2689,7 +2689,7 @@ void NVoice::autoBeam() {
 				beats += elem->getMidiLength(true);
 				if (beamlist->count() > 1) {
 					NChord::computeBeames(beamlist, stemPolicy_);
-					beamlist = new QList<NChord>();
+					beamlist = new QPtrList<NChord>();
 				}
 				else {
 					beamlist->clear();
@@ -2702,7 +2702,7 @@ void NVoice::autoBeam() {
 	}
 	if (beamlist->count() > 1) {
 		NChord::computeBeames(beamlist, stemPolicy_);
-		beamlist = new QList<NChord>();
+		beamlist = new QPtrList<NChord>();
 	}
 	else {
 		beamlist->clear();
@@ -2712,7 +2712,7 @@ void NVoice::autoBeam() {
 
 void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 	NMusElement *elem, *specElem;
-	QList<NChord> *beamlist;
+	QPtrList<NChord> *beamlist;
 	property_type properties = 0;
 	int beats = 0;
 	int x0, x1;
@@ -2725,7 +2725,7 @@ void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 		current_timesig.setSignature(tsig->getNumerator(), tsig->getDenominator());
 	}
 
-	beamlist = new QList<NChord>();
+	beamlist = new QPtrList<NChord>();
 	elem = musElementList_.at(indexOfLastBar);
 	if (!firstVoice_) {
 		theStaff_->resetSpecialElement();
@@ -2744,7 +2744,7 @@ void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 					createUndoElement(x0, x1 - x0 + 1, 0);
 					if (oldidx >= 0) musElementList_.at(oldidx);
 					NChord::computeBeames(beamlist, stemPolicy_);
-					beamlist = new QList<NChord>();
+					beamlist = new QPtrList<NChord>();
 				}
 				else {
 					beamlist->clear();
@@ -2775,7 +2775,7 @@ void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 						else {
 							beamlist->clear();
 						}
-						beamlist = new QList<NChord>();
+						beamlist = new QPtrList<NChord>();
 						properties = elem->chord()->properties() & PROP_GRACE;
 					}
 					beats += elem->getMidiLength(true);
@@ -2792,7 +2792,7 @@ void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 						createUndoElement(x0, x1 - x0 + 1, 0);
 						if (oldidx >= 0) musElementList_.at(oldidx);
 						NChord::computeBeames(beamlist, stemPolicy_);
-						beamlist = new QList<NChord>();
+						beamlist = new QPtrList<NChord>();
 					}
 					else {
 						beamlist->clear();
@@ -2811,7 +2811,7 @@ void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 						createUndoElement(x0, x1 - x0 + 1, 0);
 						if (oldidx >= 0) musElementList_.at(oldidx);
 						NChord::computeBeames(beamlist, stemPolicy_);
-						beamlist = new QList<NChord>();
+						beamlist = new QPtrList<NChord>();
 					}
 					else {
 						beamlist->clear();
@@ -2831,7 +2831,7 @@ void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 					createUndoElement(x0, x1 - x0 + 1, 0);
 					if (oldidx >= 0) musElementList_.at(oldidx);
 					NChord::computeBeames(beamlist, stemPolicy_);
-					beamlist = new QList<NChord>();
+					beamlist = new QPtrList<NChord>();
 				}
 				else {
 					beamlist->clear();
@@ -2852,7 +2852,7 @@ void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 		createUndoElement(x0, x1 - x0 + 1, 0);
 		if (oldidx >= 0) musElementList_.at(oldidx);
 		NChord::computeBeames(beamlist, stemPolicy_);
-		beamlist = new QList<NChord>();
+		beamlist = new QPtrList<NChord>();
 	}
 	else {
 		beamlist->clear();
@@ -2860,8 +2860,8 @@ void NVoice::checkBeams(int indexOfLastBar, NTimeSig *tsig) {
 	}
 }
 
-void NVoice::eliminateRests(QList<NMusElement> *foundRests, int restSum, int over, NChord *lastChord) {
-	QList<NMusElement> elems;
+void NVoice::eliminateRests(QPtrList<NMusElement> *foundRests, int restSum, int over, NChord *lastChord) {
+	QPtrList<NMusElement> elems;
 	int len1;
 
 	if (lastChord->hasProperty( PROP_BEAMED )) lastChord->breakBeames();
@@ -2875,7 +2875,7 @@ void NVoice::cleanupRests(int shortestRest, bool region) {
 	//int x0, x1, idx;
 	NChord* lastChord = 0;
 	NMusElement *elem, *stop_elem;
-	QList<NMusElement> foundRests;
+	QPtrList<NMusElement> foundRests;
 	int restSum = 0;
 	int over;
 	int xpos0 = -1, xpos1 = -1;
@@ -3018,7 +3018,7 @@ void NVoice::searchPositionAndUpdateTimesig(int dest_xpos, int *countof128th) {
 
 int NVoice::validateKeysig(int lastbaridx, int insertpos) {
 	NMusElement *elem;
-	QList<NNote> *noteList;
+	QPtrList<NNote> *noteList;
 	NNote *note;
 	int lastbarpos;
 	bool found;
@@ -3107,7 +3107,7 @@ void NVoice::tryToBuildAutoTriplet() {
 	    && !(elem->playable()->hasProperty( PROP_TUPLET )))
 		ppn = musElementList_.at();
 
-	QList<NPlayable> *elemlist = new QList<NPlayable>();
+	QPtrList<NPlayable> *elemlist = new QPtrList<NPlayable>();
 	bool ok = false;
 	int x0 = ppn;
 	int x1 = cn;
@@ -3888,7 +3888,7 @@ NMidiEventStr* NVoice::getNextMidiEvent(int mtime, bool reachInfo) {
 	bool found = false;
 	bool isGraceNote = false;
 	NMidiEventStr *note_halt;
-	QList<NNote> *notelist;
+	QPtrList<NNote> *notelist;
 	NNote *note;
 	bool partOfTie;
 	NChord *chord;
@@ -4507,7 +4507,7 @@ void NVoice::computeMidiTime(bool insertBars, bool doAutoBeam) {
 	int last_note_time = -1;
 	bool chord_seen;
 	bool not_grace_seen;
-	QList <NMusElement> elems;
+	QPtrList <NMusElement> elems;
 	NMusElement *elem;
 	NChord *graceNotes[MAXGRACENOTES];
 	NTimeSig current_timesig(0, 0);
@@ -4608,7 +4608,7 @@ void NVoice::computeMidiTime(bool insertBars,  bool doAutoBeam) {
 	int last_note_time = -1;
 	bool chord_seen = false;
 	bool not_grace_seen;
-	QList <NMusElement> elems;
+	QPtrList <NMusElement> elems;
 	NMusElement *elem;
 	NChord *graceNotes[MAXGRACENOTES];
 	NTimeSig current_timesig(0, 0);
@@ -5081,7 +5081,7 @@ QString NVoice::determineGraceKind(property_type *properties) {
 
 void NVoice::handleChordTies(NChord *chord, bool find_member) {
 	NNote *note;
-	QList<NNote> *noteList;
+	QPtrList<NNote> *noteList;
 
 	noteList = chord->getNoteList();
 	for (note = noteList->first(); note; note = noteList->next()) {
@@ -5098,7 +5098,7 @@ void NVoice::findTieMember(NNote *part) {
 	bool found = false;
 	NMusElement *mus_elem;
 	NNote *note, *new_part;
-	QList<NNote> *noteList;
+	QPtrList<NNote> *noteList;
 
 	oldidx = musElementList_.at();
 	if (musElementList_.find(part->chordref) == -1) {
@@ -5149,7 +5149,7 @@ void NVoice::reconnectTies(NNote *part) {
 	int oldidx;
 	NNote *note, *successor;
 	NMusElement *mus_elem;
-	QList<NNote> *noteList;
+	QPtrList<NNote> *noteList;
 
 	oldidx = musElementList_.at();
 	if (musElementList_.find(part->chordref) == -1) {
@@ -5295,12 +5295,12 @@ void NVoice::appendNoteAt(int line, int offs, property_type properties) {
 
 bool NVoice::buildTuplet(NMusElement *elem0, NMusElement *elem1, char numNotes, char playtime) {
 	bool found = false;
-	QList<NPlayable> *tupletlist;
+	QPtrList<NPlayable> *tupletlist;
 
 	if (musElementList_.find(elem1) == -1) return false;
 	if (musElementList_.find(elem0) == -1) return false;
 
-	tupletlist = new QList<NPlayable>();
+	tupletlist = new QPtrList<NPlayable>();
 	for (;elem0  && !found; elem0 = musElementList_.next()) {
 		found = elem0 == elem1;
 		if (!(elem0->playable())) return false;
@@ -5318,12 +5318,12 @@ bool NVoice::buildTuplet2(NMusElement *elem0, NMusElement *elem1, char numNotes,
 	bool found = false;
 	int tupletsum = 0;
 	int length;
-	QList<NPlayable> *tupletlist;
+	QPtrList<NPlayable> *tupletlist;
 
 	if (musElementList_.find(elem1) == -1) return false;
 	if (musElementList_.find(elem0) == -1) return false;
 
-	tupletlist = new QList<NPlayable>();
+	tupletlist = new QPtrList<NPlayable>();
 	for (;elem0  && !found; elem0 = musElementList_.next()) {
 		found = elem0 == elem1;
 		if (!(elem0->playable())) {
@@ -5343,7 +5343,7 @@ void NVoice::insertAtTime(unsigned int time, NMusElement *elem, bool splitPlayab
 	NMusElement *el, *lastPlayable;
 	NRest *newRest;
 	NChord *newChord;
-	QList<NNote> *noteList;
+	QPtrList<NNote> *noteList;
 	NNote *note;
 	int dotcount;
 	int idx, lastPlayableIdx = -1;		// also a flag if *lastPlayable valid
@@ -5693,8 +5693,8 @@ void NVoice::transpose(int semitones, bool region) {
 	int line, offs;
 	int xpos0 = -1, xpos1 = -1;
 	int idx0 = -1, idx1 = -1;
-	QList<NNote> tied_notes;
-	QList<NNote> part_of_tied_notes;
+	QPtrList<NNote> tied_notes;
+	QPtrList<NNote> part_of_tied_notes;
 
 	theStaff_->actualClef_.change(NResource::nullClef_);
 	theStaff_->actualKeysig_.change(NResource::nullKeySig_);        
@@ -5810,7 +5810,7 @@ void NVoice::combineChords(int firstIdx, int lastIdx) {
 	int oldidx;
 	NMusElement *elem;
 	NChord *chord, *newChord;
-	QList<NNote> *noteList, *noteList1, *noteList2;
+	QPtrList<NNote> *noteList, *noteList1, *noteList2;
 	NChord *firstChord, *lastChord;
 	NNote *note, *note1, *note2;
 	bool first;
@@ -5896,7 +5896,7 @@ void NVoice::combineChords(int firstIdx, int lastIdx) {
 void NVoice::collChords() {
 	NMusElement *elem;
 	NChord *first = 0, *last, *chord, *chordBefore;
-	QList<NMusElement> restlist;
+	QPtrList<NMusElement> restlist;
 	int firstIdx, lastIdx;
 	int restlen;
 	int takt;
@@ -5997,8 +5997,8 @@ void NVoice::performClefChange(int type, int shift, bool region, int *dist, int 
 	int xpos0 = -1, xpos1 = -1;
 	int idx0 = -1, idx1 = -1;
 	int dd = 0;
-	QList<NNote> tied_notes;
-	QList<NNote> part_of_tied_notes;
+	QPtrList<NNote> tied_notes;
+	QPtrList<NNote> part_of_tied_notes;
 	NClef clef(main_props_, &(theStaff_->staff_props_));
 
 	if (*dist != UNDEFINED_DIST) dd = *dist;
@@ -6106,12 +6106,12 @@ void NVoice::performClefChange(int type, int shift, bool region, int *dist, int 
 /* that cross signs, except barsyms                          */
 bool NVoice::buildBeam(NMusElement *elem0, NMusElement *elem1) {
 	bool found = false;
-	QList<NChord> *beamlist;
+	QPtrList<NChord> *beamlist;
 	NChord *chord, *prevchord = 0;
 
 	if (musElementList_.find(elem1) == -1) return false;
 	if (musElementList_.find(elem0) == -1) return false;
-	beamlist = new QList<NChord>();
+	beamlist = new QPtrList<NChord>();
 	while (!found && elem0 != 0) {
 		found = elem0 == elem1;
 		if (elem0->getType() == T_CHORD) {
@@ -6216,7 +6216,7 @@ void NVoice::appendElem(int el_type, int line, int sub_type, int offs, property_
 }
 
 void NVoice::appendElem(NMusElement *elem) {
-	QList<NNote> *noteList;
+	QPtrList<NNote> *noteList;
 	NNote *note;
 	NChord *chord;
 	musElementList_.append(elem);
@@ -6805,7 +6805,7 @@ void NVoice::setHalfsAccordingKeySig(bool withUndo) {
 	NKeySig *keysig = NResource::nullKeySig_;
 	NNote *note;
 	NClef *clef;
-	QList<NNote> *noteList;
+	QPtrList<NNote> *noteList;
 
 	if (withUndo) {
 		createUndoElement(0, musElementList_.count(), 0);
@@ -6832,7 +6832,7 @@ void NVoice::setHalfsAccordingKeySig(bool withUndo) {
 void NVoice::setHalfsTo(int type, bool region) {
 	NMusElement *elem;
 	NNote *note;
-	QList<NNote> *noteList;
+	QPtrList<NNote> *noteList;
 	int xpos0 = -1, xpos1 = -1;
 	int idx0 = -1, idx1 = -1;
 
@@ -6884,7 +6884,7 @@ void NVoice::setHalfsTo(int type, bool region) {
 /*---------------------------------- undo ---------------------------------------*/
 
 
-void NVoice::pasteAtIndex(QList<NMusElement> *clipBoard, int idx) {
+void NVoice::pasteAtIndex(QPtrList<NMusElement> *clipBoard, int idx) {
 	int oldidx;
 	NMusElement *ac_elem;
 	NChord *chord;
@@ -6925,7 +6925,7 @@ void NVoice::pasteAtIndex(QList<NMusElement> *clipBoard, int idx) {
 void NVoice::deleteRange(int startpos, int numelements, int newitems, int reason) {
 	int oldidx;
 	NNote *note;
-	QList<NNote> *noteList;
+	QPtrList<NNote> *noteList;
 	NMusElement *ac_elem;
 	NChord *chord;
 
@@ -6970,16 +6970,16 @@ NVoice *NVoice::redoPossible() {
 
 
 
-QList<NMusElement> *NVoice::cloneGroup(int firstidx, int lastidx) {
+QPtrList<NMusElement> *NVoice::cloneGroup(int firstidx, int lastidx) {
 	bool found = false;
 	NMusElement *elem, *lastelem, *cloneelem;
 	NChord *slurpartner = 0, *chord, *slured_chord;
-	QList<NChord> *clonebeamlist = 0;
-	QList<NMusElement> *clonelist;
+	QPtrList<NChord> *clonebeamlist = 0;
+	QPtrList<NMusElement> *clonelist;
 	char *err = "cloneGroup: internal error";
 
 	if (lastidx < firstidx) return 0;
-	clonelist = new QList<NMusElement>();
+	clonelist = new QPtrList<NMusElement>();
 	lastelem = musElementList_.at(lastidx);
 	elem = musElementList_.at(firstidx);
 	if (elem == 0 || lastelem == 0) {
@@ -7002,7 +7002,7 @@ QList<NMusElement> *NVoice::cloneGroup(int firstidx, int lastidx) {
 			}
 			if (chord->hasProperty( PROP_BEAMED )) {
 				if (clonebeamlist == 0) {
-					clonebeamlist = new QList<NChord>();
+					clonebeamlist = new QPtrList<NChord>();
 				}
 				clonebeamlist->append((NChord *) cloneelem);
 				if (chord->lastBeamed()) {
@@ -7073,8 +7073,8 @@ void NVoice::createUndoElement(int startpos, int length, int count_of_added_item
 	bool limits_changed;
 	NMusElement *elem;
 	NChord *chord;
-	QList<NChord> *beamlist;
-	QList<NPlayable> *tupletlist;
+	QPtrList<NChord> *beamlist;
+	QPtrList<NPlayable> *tupletlist;
 	minidx = startpos;
 	maxidx = minidx + length - 1;
 	char *err = "createUndoElement:: internal error";
@@ -7235,7 +7235,7 @@ void NVoice::setCountOfAddedItems(int count_of_added_items) {
 }
 
 
-void NVoice::freeCloneGroup(QList<NMusElement> *group) {
+void NVoice::freeCloneGroup(QPtrList<NMusElement> *group) {
 	if (group == 0) return;
 	group->setAutoDelete(true);
 	group->clear();

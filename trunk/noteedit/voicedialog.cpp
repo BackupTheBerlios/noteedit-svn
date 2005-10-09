@@ -164,7 +164,7 @@ void VoiceBox::destroy() {
 
 
 VoiceDialog::VoiceDialog
-	(NMainFrameWidget *mainWidget, int staffNr, QList<NStaff> *staffList) :
+	(NMainFrameWidget *mainWidget, int staffNr, QPtrList<NStaff> *staffList) :
 	KDialogBase
 		(Tabbed,                               //  dialogFace
 		 kapp->makeStdCaption(i18n("Voices")), //  caption
@@ -186,7 +186,7 @@ VoiceDialog::VoiceDialog
 		 staffIterator.current();
 		 ++staffIterator, ++i
 		) {
-		pageList_.append(new QList<VoiceBox>());
+		pageList_.append(new QPtrList<VoiceBox>());
 		QHBox *currentPage = addHBoxPage
 			(staffIterator.current()->staffName_.isEmpty() ?
 			 i18n("Staff %1").arg(i) :
@@ -223,7 +223,7 @@ void VoiceDialog::slotUser1() { /* create voice */
 	NStaff *current_staff;
 	NVoice *new_voice;
 	VoiceBox *currentBox;
-	QList<VoiceBox> *voice_box_list;
+	QPtrList<VoiceBox> *voice_box_list;
 	QHBox *currentPage;
 
 	int num;
@@ -253,7 +253,7 @@ void VoiceDialog::slotUser1() { /* create voice */
 
 void VoiceDialog::slotApply() {
 	VoiceBox *voice_box;
-	QList<VoiceBox> *voice_box_list;
+	QPtrList<VoiceBox> *voice_box_list;
 	if ((voice_box_list = pageList_.at(myActivePageIndex ())) == 0) {
 		NResource::abort("VoiceDialog::slotUser2: internal error");
 	}
@@ -276,7 +276,7 @@ void VoiceDialog::accept() {
 
 bool VoiceDialog::destroyVoice(VoiceBox *rem_box, NVoice *voice) {
 	VoiceBox *voice_box;
-	QList<VoiceBox> *voice_box_list;
+	QPtrList<VoiceBox> *voice_box_list;
 	NStaff *current_staff;
 	int i;
 

@@ -1248,7 +1248,7 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 	NChord *chord = 0, *chord2;
 	NRest *rest;
 	NSign *sign;
-	QList<NPlayable> *tupletList = 0;
+	QPtrList<NPlayable> *tupletList = 0;
 	struct unrolled_midi_events_str *ptr, *nptr;
 	l = array_len_;
 	voiceTime = 0;
@@ -1292,7 +1292,7 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 #ifdef YYY
 				if (triplet) {
 					if (!inTriplet) {
-						tupletList = new QList<NPlayable>();
+						tupletList = new QPtrList<NPlayable>();
 						inTriplet = true;
 					}
 					tupletList->append(rest);
@@ -1384,7 +1384,7 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 					voice->appendElem(rest);
 					if (triplet) {
 						if (!inTriplet) {
-							tupletList = new QList<NPlayable>();
+							tupletList = new QPtrList<NPlayable>();
 							inTriplet = true;
 						}
 						tupletList->append(rest);
@@ -1444,7 +1444,7 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 						voice->appendElem(chord);
 						if (triplet && !before_triplet)  {
 							if (!inTriplet) {
-								tupletList = new QList<NPlayable>();
+								tupletList = new QPtrList<NPlayable>();
 								inTriplet = true;
 							}
 							tupletList->append(chord);
@@ -1454,7 +1454,7 @@ void NMidiTimeScale::createVoice(int nr, main_props_str *main_props, staff_props
 						if (before_triplet) {
 							before_triplet = false;
 							len = stop - ptr->split_time;
-							tupletList = new QList<NPlayable>();
+							tupletList = new QPtrList<NPlayable>();
 							inTriplet = true;
 						}
 						if (potential_after_triplet) {

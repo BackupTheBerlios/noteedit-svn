@@ -38,7 +38,7 @@
 #include <tse3/plt/OSS.h>
 #include <tse3/MidiFile.h>
 #include <tse3/util/PowerQuantise.h>
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qtimer.h>
 #include "clef.h"
 
@@ -57,17 +57,17 @@ class NTSE3Handler : public QObject {
 	public:
 		NTSE3Handler(NMainFrameWidget *mainWidget);
 		~NTSE3Handler();
-		void createTSE3(QList<NVoice> *voices);
+		void createTSE3(QPtrList<NVoice> *voices);
 		void playSong();
 		bool writeTSE3(const char *fname);
 		bool readTSE3(const char *fname);
 		bool TSE3MidiOut(const char *fname);
 		bool TSE3MidiIn(const char *fname);
-		bool TSE3record(int channel, QList<NVoice> *voices);
-		void TSE3toScore(QList<NStaff> *staffs, QList<NVoice> *voices, bool keep);
+		bool TSE3record(int channel, QPtrList<NVoice> *voices);
+		void TSE3toScore(QPtrList<NStaff> *staffs, QPtrList<NVoice> *voices, bool keep);
 		void TSE3PhraseEditToStaff(TSE3::PhraseEdit *phraseEdit, NStaff *staff);
-		void TSE3Rec2Staff(NStaff *staff, QList<NVoice> *voice_list);
-		void insertTimeAndKeySigs(QList<NStaff> *staffs);
+		void TSE3Rec2Staff(NStaff *staff, QPtrList<NVoice> *voice_list);
+		void insertTimeAndKeySigs(QPtrList<NStaff> *staffs);
 		void initFiltering();
 		void doRecord();
 		static int threwCase( int item );
@@ -85,7 +85,7 @@ class NTSE3Handler : public QObject {
 		filterFrm *filterDialog_;
 		int staffTime_;
 		int recNum_;
-		void createChordFromMidiEventList(QList<TSE3::MidiEvent> *eventList, NStaff *staff, NVoice *voice, int *midiOnTime, int *minMidiOffTime);
+		void createChordFromMidiEventList(QPtrList<TSE3::MidiEvent> *eventList, NStaff *staff, NVoice *voice, int *midiOnTime, int *minMidiOffTime);
 		bool TSE3TrackLimits(TSE3::PlayableIterator *tri, int *noteCount);
 		int minimalNote(int nr);
 		int minimalTripletNote(int nr);
@@ -109,8 +109,8 @@ class NTSE3Handler : public QObject {
 		int numCounter_;
 		bool keep_;
 		double averageVolume_;
-		QList<NVoice> *oldvoiceList_;
-		QList<NStaff> *oldstaffList_;
+		QPtrList<NVoice> *oldvoiceList_;
+		QPtrList<NStaff> *oldstaffList_;
 };
 
 #endif

@@ -15,7 +15,7 @@ class staffPropFrm : public staffPropForm {
 	~staffPropFrm();
         void setValuesFromActualStaff(int staffNr);
 	bool destroyVoice(VoiceBox *rem_box, NVoice *voice);
-	void boot( int staffNr, QList<NStaff> * );
+	void boot( int staffNr, QPtrList<NStaff> * );
 
     private slots:
 	void refresh();
@@ -26,8 +26,8 @@ class staffPropFrm : public staffPropForm {
 	void slotPropertyChanged();
 
     private:
-        QList<NStaff> *staffList_;
-        QList <VoiceBox> voiceList_;
+        QPtrList<NStaff> *staffList_;
+        QPtrList <VoiceBox> voiceList_;
 	NStaff *actualStaff_;
 	NMainFrameWidget *mw_;
 	QString *staffNames_;

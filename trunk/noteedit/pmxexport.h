@@ -33,7 +33,7 @@
 #include <fstream.h>
 #include <strstream.h>
 #endif
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qstring.h>
 
 using namespace std;
@@ -70,10 +70,10 @@ struct trill_descr_str;
 
 class NPmxExport {
 	public:
-		void exportStaffs(QString fname, QList<NStaff> *stafflist, exportFrm *frmWin, NMainFrameWidget *mainWidget);
+		void exportStaffs(QString fname, QPtrList<NStaff> *stafflist, exportFrm *frmWin, NMainFrameWidget *mainWidget);
 		void doExport();
 	private:
-		QList<badmeasure> badlist_;
+		QPtrList<badmeasure> badlist_;
 		QString lyrics2TeX(QString *lyrics);
 		ofstream out_;
 #if GCC_MAJ_VERS > 2
@@ -85,7 +85,7 @@ class NPmxExport {
 		exportFrm *exportDialog_;
 		int staffsToExport_;
 		QString fileName;
-		QList<NStaff> *staffList_;
+		QPtrList<NStaff> *staffList_;
 		void inspectTuplet(NPlayable *elem, int staff_nr, int barnr_);
 		bool writeTrack(NVoice *voice, int staff_nr, int voice_nr,
 				int voice_count, int measpsystem, bool first, const char *endOfLine, int *barpos);
@@ -119,7 +119,7 @@ class NPmxExport {
 		bool drum_problem_written_;
 		unsigned int tiePool_, slurPool_, vaPool_;
 		QString LastPMXfile_;
-		QList<specialCharInfo> specialCharList_;
+		QPtrList<specialCharInfo> specialCharList_;
 		struct trill_descr_str *va_descr_;
 		NMainFrameWidget *mainWidget_;
 };

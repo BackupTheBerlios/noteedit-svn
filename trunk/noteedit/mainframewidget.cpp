@@ -3331,7 +3331,7 @@ void NMainFrameWidget::readNotesFromMidiMapper() {
 	NMusElement *curElem;
 	int line, offs, *pitch;
 	int newXpos;
-	QList<int> *pitches;
+	QPtrList<int> *pitches;
 
 	pitches = NResource::mapper_->readEvents();
 	if (!pitches) return;
@@ -3418,7 +3418,7 @@ void NMainFrameWidget::grabElementsAccording() {
 	}
 }
 
-QList<NMusElement> *NMainFrameWidget::getClipBoard(int clipBoardNr) {
+QPtrList<NMusElement> *NMainFrameWidget::getClipBoard(int clipBoardNr) {
 	voiceList_.at(clipBoardNr);
 	return voiceList_.current()->getClipBoard();
 }
@@ -4785,7 +4785,7 @@ void NMainFrameWidget::yscroll(int val) {
 
 void NMainFrameWidget::playNext() {
 	NMidiEventStr *m_events;
-	QList<NMidiEventStr> *tmp;
+	QPtrList<NMidiEventStr> *tmp;
 	NVoice *voice_elem;
 	int min_time = (1 << 30);
 	int last_time = myTime_;
@@ -5137,7 +5137,7 @@ bool NMainFrameWidget::readStaffs(const char *fname) {
 
 void NMainFrameWidget::reposit() {
 	NPositStr *posit;
-	QList<NPositStr> plist;
+	QPtrList<NPositStr> plist;
 	int min_time;
 	int maxwidth, width;
 	int current_xpos = LEFT_SPACE;

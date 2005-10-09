@@ -75,7 +75,7 @@ class VoiceDialog : public KDialogBase {
 	Q_OBJECT
 
 public:
-	VoiceDialog(NMainFrameWidget *, int staffNr, QList<NStaff> *);
+	VoiceDialog(NMainFrameWidget *, int staffNr, QPtrList<NStaff> *);
 	~VoiceDialog();
 	bool destroyVoice(VoiceBox *rem_box, NVoice *voice);
 	int myActivePageIndex()  {
@@ -90,8 +90,8 @@ private slots:
 
 private:
 	NMainFrameWidget *mainWidget_;
-	QList<QList <VoiceBox> > pageList_;
-	QList<NStaff> *staffList_;
+	QPtrList<QPtrList <VoiceBox> > pageList_;
+	QPtrList<NStaff> *staffList_;
 	int firstPageIdx_; /* there seems to be a bug in activePageIndex() */
 
 };

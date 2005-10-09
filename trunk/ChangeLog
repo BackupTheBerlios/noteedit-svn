@@ -66,3 +66,6 @@ version 2.9.0:
 	  bensonkao for hunting it down and the idea how to fix it. R349
 	* Implemented new method NVoice::selectNearestMidiEvent(int midiTime, bool fromRight = false). It selects the nearest musElement to the given MIDI time. This is useful for eg. When you delete a block of notes and want to use left&right, so the cycling methods are able to find their track now. Also, int main_props_str.lastMidiTime stores the last MIDI times that something happened. Currently, it gets remembered when a note gets deselected with mouse click (when you click on empty space in select mode), when you delete an element (using both backspace or del) or when you delete the whole note block. R351
 	* Added CTRL+G shortcut for Goto measure. Some other similar strings tidied up. Updated translations. R357
+	* R370 -- merged branches/code_cleanup 353:369
+	* R371 -- Patch #627: Update Qt Collection Class names and #include's, from Henri Manson.
+

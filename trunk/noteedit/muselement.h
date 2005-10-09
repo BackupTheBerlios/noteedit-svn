@@ -108,10 +108,10 @@ class NPlayable : public NMusElement {
 		void breakTuplet();
 		void changeTupletList(QList<NPlayable> *tList) {tupletList_ = tList;}
 		void resetTupletFlag() { removeProperty(PROP_TUPLET | PROP_LAST_TUPLET); tupletList_ = 0; midiLength_ = computeMidiLength();}
-		QList<NPlayable> *getTupletList() {return tupletList_;}
+		QPtrList<NPlayable> *getTupletList() {return tupletList_;}
 		void computeTuplet();
-		static void computeTuplet(QList<NPlayable> *tupletlList, char numNotes, char playtime);
-		virtual void setTupletParams(QList<NPlayable> *, bool, double, double, double, int, int, char, char) {}
+		static void computeTuplet(QPtrList<NPlayable> *tupletlList, char numNotes, char playtime);
+		virtual void setTupletParams(QPtrList<NPlayable> *, bool, double, double, double, int, int, char, char) {}
 		void unsetTuplet();
 		QString *computeTeXTuplet(NClef *clef);
 		bool isFirstInTuplet() {return tupletList_->first() == this;}
@@ -134,7 +134,7 @@ class NPlayable : public NMusElement {
 	protected:
 		property_type properties_; /* element's flags - 64 bit long! */
 
-		QList<NPlayable> *tupletList_;	// all elements in this element's tuplet
+		QPtrList<NPlayable> *tupletList_;	// all elements in this element's tuplet
 		double tupm_; double tupn_;
 		int xstart_, xend_;
 		double tupTeXn_;

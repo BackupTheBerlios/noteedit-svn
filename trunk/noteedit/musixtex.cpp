@@ -77,7 +77,7 @@ NMusiXTeX::NMusiXTeX() {
 }
 
 
-void NMusiXTeX::exportStaffs(QString filen, QList<NStaff> *stafflist, exportFrm *form, NMainFrameWidget *mainWidget) {
+void NMusiXTeX::exportStaffs(QString filen, QPtrList<NStaff> *stafflist, exportFrm *form, NMainFrameWidget *mainWidget) {
 	mainWidget_ = mainWidget;
 	staffList_ = stafflist;
 	staffCount_ = stafflist->count();
@@ -92,7 +92,7 @@ void NMusiXTeX::doExport() {
 	NExportError *exerr;
 	NExportError *errptr;
 	NPositStr *posit;
-	QList<NPositStr> plist;
+	QPtrList<NPositStr> plist;
 	char *notesString;
 	bool withLyrics;
 #if GCC_MAJ_VERS > 2
@@ -103,7 +103,7 @@ void NMusiXTeX::doExport() {
 #endif
 	NStaff *staff_elem;
 	NVoice *voice_elem;
-	QList<QString> lyrNames;
+	QPtrList<QString> lyrNames;
 	QString *lyrName;
 	int myTime_ = 0;
 	int num_positions, maxwidth, min_time = (1 << 30);
@@ -739,7 +739,7 @@ void NMusiXTeX::writeContextChange() {
 }
 
 void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelimiter, NMusElement *elem, NStaff *staff_elem, NVoice *ac_voice) {
-	QList<NNote> *notelist;
+	QPtrList<NNote> *notelist;
 	NExportError *exerr;
 	QString *s;
 	char *bodyString;
@@ -755,7 +755,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 	NChord *chord;
 	NRest *rest;
 	NChordDiagram *diag;
-	QList<NNote> *notes_to_be_shifted, *notes_not_to_be_shifted;
+	QPtrList<NNote> *notes_to_be_shifted, *notes_not_to_be_shifted;
 	
 	int countLyricsLines;
 	bool shift_needed;
@@ -764,7 +764,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 	property_type kind;
 	int z, i;
 	int hline;
-	QList<NNote> *acc_list;
+	QPtrList<NNote> *acc_list;
 
 	lastSignWasBar_ = false;
 	lastSignWasRepeatClose_ = false;

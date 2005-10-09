@@ -89,7 +89,7 @@ void NRest::changeLength(int length) {
 	midiLength_ = computeMidiLength();
 }
 
-void NRest::setTupletParams(QList<NPlayable> *tupletList, 
+void NRest::setTupletParams(QPtrList<NPlayable> *tupletList, 
 			bool last, double m, double n, double tuptexn, int xstart, int xend, char numnotes, char playtime) {
 	tupletList_ = tupletList;
 	setProperty(PROP_LAST_TUPLET, last);

@@ -70,7 +70,7 @@
 
 #define PMX_FAC 0.5
 
-void NPmxExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFrm *frmWin, NMainFrameWidget *mainWidget) {
+void NPmxExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, exportFrm *frmWin, NMainFrameWidget *mainWidget) {
 	mainWidget_ = mainWidget;
 	staffList_ = stafflist;
 	exportDialog_ = frmWin;
@@ -86,7 +86,7 @@ void NPmxExport::doExport() {
 	NTimeSig *timesig;
 	NKeySig  *keysig;
 	NClef *clef;
-	QList<QString> lyrNames;
+	QPtrList<QString> lyrNames;
 	QString *lyrName;
 	QString lyricslist[NUM_LYRICS];
 	property_type kind;
@@ -1265,7 +1265,7 @@ bool NPmxExport::testContextChange(int voice_nr, NVoice *voice, bool first) {
 }
 		
 void NPmxExport::inspectTuplet(NPlayable *elem, int staff_nr, int barnr_) {
-	QList<NPlayable> *tupletlist;
+	QPtrList<NPlayable> *tupletlist;
 	badmeasure *bad;
 	int len1, len2;
 	NPlayable *elem2;

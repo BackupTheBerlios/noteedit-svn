@@ -30,7 +30,7 @@ class NTimeSig;
 
 class NMidiExport {
 	public: 
-		void exportMidi(const char *fname, QList<NVoice> *voicelist, char *miditext = 0);
+		void exportMidi(const char *fname, QPtrList<NVoice> *voicelist, char *miditext = 0);
 	private:
 		void writeTrack(NVoice *voice, NTimeSig *firstTsig);
 		void writePgmChange(int time, unsigned char chn, unsigned char pgm);
@@ -46,7 +46,7 @@ class NMidiExport {
 		void writeTimeSig(int time, int num, int denom);
 		void writeKeySig(int time, int sig);
 		void writeTempo(int time, unsigned int tempo);
-		void writeCtrlTrack(QList<NVoice> *voilist, char *Title, char *miditext, NTimeSig *firstTsig, int keysig);
+		void writeCtrlTrack(QPtrList<NVoice> *voilist, char *Title, char *miditext, NTimeSig *firstTsig, int keysig);
 		FILE *midiout_;
 };
 

@@ -104,7 +104,7 @@ QPoint NChord::StrokeDist2_(STROKE_X_2, STROKE_Y_2);
 
 
 int NChord::numTexRows_ = 0;
-QList<NNote> NChord::acc_tex_row;
+QPtrList<NNote> NChord::acc_tex_row;
 
 NChord::NChord(main_props_str *main_props, staff_props_str *staff_props, NVoice *voice, int line, int offs, int length, int voices_stem_policy, property_type properties) :
 		 NPlayable(main_props, staff_props), m_(0.0), n_(0.0) {
@@ -534,7 +534,7 @@ void NChord::checkSlures() {
 	}
 }
 
-void NChord::setTupletParams(QList<NPlayable> *tupletList, 
+void NChord::setTupletParams(QPtrList<NPlayable> *tupletList, 
 				bool last, double m, double n, double tuptexn, int xstart, int xend, char numnotes, char playtime) {
 	tupletList_ = tupletList;
 	setProperty(PROP_LAST_TUPLET, last);
@@ -587,7 +587,7 @@ void NChord::setStemUp(bool stem_up) {
 	calculateDimensionsAndPixmaps();
 }
 
-void NChord::computeLineParams(QList<NChord> *beamList, double *np, double *mp) {
+void NChord::computeLineParams(QPtrList<NChord> *beamList, double *np, double *mp) {
 	NChord *chord;
 	double sumxi2, sumxi, sumxiyi, sumyi;
 	int count;
@@ -611,7 +611,7 @@ void NChord::computeLineParams(QList<NChord> *beamList, double *np, double *mp) 
 	*np = n; *mp = m;
 }
 
-void NChord::computeBeames(QList<NChord> *beamList, int stemPolicy) {
+void NChord::computeBeames(QPtrList<NChord> *beamList, int stemPolicy) {
 #define MANY 1e30
 	NChord *chord0, *chord;
 	double n, m, nn, minn = MANY, maxn = -MANY;
@@ -694,7 +694,7 @@ void NChord::computeBeames(QList<NChord> *beamList, int stemPolicy) {
 	chord0->calculateDimensionsAndPixmaps();
 }
 
-void NChord::setBeamParams(QList<NChord> *beamList, NChord *nextChord, double m, double n) {
+void NChord::setBeamParams(QPtrList<NChord> *beamList, NChord *nextChord, double m, double n) {
 	addProperty( PROP_BEAMED );
 	m_ = m; n_ = n;
 	nextBeamedChord_ = nextChord;
@@ -2361,7 +2361,7 @@ void NChord::initialize_acc_pos_computation() {
 	noteList_.at(oldidx); 
 }
 
-QList<NNote> *NChord::getAccTexRow(int row_nr) {
+QPtrList<NNote> *NChord::getAccTexRow(int row_nr) {
 	int oldidx;
 	NNote *note;
 

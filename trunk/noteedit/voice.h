@@ -55,7 +55,7 @@ class NPositStr {
 
 class undostr {
 	public:
-		QList<NMusElement> *backup_area;
+		QPtrList<NMusElement> *backup_area;
 		int first_replaced_item;
 		int num_of_replaced_items;
 		NVoice *ref;
@@ -104,7 +104,7 @@ class NVoice {
 		void setHalfsAccordingKeySig(bool withUndo);
 		void setHalfsTo(int type, bool region);
 		void emptyVoice();
-		void getChordDiagramms(QList<chordDiagramName> *cdiagList, bool *gridsused, bool firstcall, bool *gridproblem);
+		void getChordDiagramms(QPtrList<chordDiagramName> *cdiagList, bool *gridsused, bool firstcall, bool *gridproblem);
 		int getMidiEndTime() {return midiEndTime_;}
 		bool isLast () {return musElementList_.current() == musElementList_.getLast();}
 		bool isLastElem(NMusElement *elem) {return elem == musElementList_.getLast();}
@@ -139,10 +139,10 @@ class NVoice {
 		void findStartElemAt(int x0, int x1);
 		bool wholeTupletDeleted(NPlayable *ac_elem, int posOfFirst, int posOfLast);
 		bool wholeBeamDeleted(NChord *ac_elem, int posOfFirst, int posOfLast);
-		void pasteAtMidiTime(int dest_time, int part_in_measure, int countof128th, QList<NMusElement> *clipboard);
-		void pasteAtPosition(int xpos, QList<NMusElement> *clipboard, bool complete, int *part_in_current_measure, int *dest_midi_time, int *countof128th);
-		void pasteAtIndex(QList<NMusElement> *clipBoard, int idx);
-		QList<NMusElement> *getClipBoard() {return &clipBoard_;}
+		void pasteAtMidiTime(int dest_time, int part_in_measure, int countof128th, QPtrList<NMusElement> *clipboard);
+		void pasteAtPosition(int xpos, QPtrList<NMusElement> *clipboard, bool complete, int *part_in_current_measure, int *dest_midi_time, int *countof128th);
+		void pasteAtIndex(QPtrList<NMusElement> *clipBoard, int idx);
+		QPtrList<NMusElement> *getClipBoard() {return &clipBoard_;}
 		int getBarsymTimeBefore(int till_meascount, int miditime);
 		int computeSlurDist(NChord *chord);
 		int findTimeOfTrillEnd(NChord *chord, int *destmestime, int *mescount);
@@ -178,10 +178,10 @@ class NVoice {
 		void breakBeames();
 		void breakTuplet();
 		void breakCopiedTuplets();
-		bool checkTuplets(QList<NMusElement> *copielist, QList<NPlayable> *tupletlist);
-		bool lastChordContained(QList<NMusElement> *clonelist, QList<NChord> *beamlist);
-		bool lastElemContained(QList<NMusElement> *clonelist, QList<NPlayable> *tupletlist);
-		bool allElemsContained(QList<NMusElement> *clonelist, QList<NPlayable> *tupletlist);
+		bool checkTuplets(QPtrList<NMusElement> *copielist, QPtrList<NPlayable> *tupletlist);
+		bool lastChordContained(QPtrList<NMusElement> *clonelist, QPtrList<NChord> *beamlist);
+		bool lastElemContained(QPtrList<NMusElement> *clonelist, QPtrList<NPlayable> *tupletlist);
+		bool allElemsContained(QPtrList<NMusElement> *clonelist, QPtrList<NPlayable> *tupletlist);
 		void setActualTied();
 		void setHidden(); /* toggle hidden rest */
 		void setArpeggio();
@@ -310,7 +310,7 @@ class NVoice {
 		void addLyrics(char *charlyrics, int verse);
 		void copyLyricsToEditor();
 		void collChords();
-		QList<NText> provStrings_;
+		QPtrList<NText> provStrings_;
 /*------------------------------ Lyrics -------------------------------------------*/
 		void updateLyrics();
 		int countOfLyricsLines();
@@ -327,7 +327,7 @@ class NVoice {
 	private: 
 /*------------------------------ voice properies -----------------------------------------*/
 		bool	firstVoice_;
-		QList<NMusElement> musElementList_;
+		QPtrList<NMusElement> musElementList_;
 		NMusElement *currentElement_;			// the actual element (drawn in red)
 		                             			// if no element is selected, then 0
 		NMusElement *specialElement_;
@@ -357,10 +357,10 @@ class NVoice {
 
 /*----------------------- dealing with beams -------------------------------------*/
 		void reconnectBeames();
-		bool beameEndRequired(QList<NChord> *beamlist_so_far, NTimeSig *timesig, int beats);
+		bool beameEndRequired(QPtrList<NChord> *beamlist_so_far, NTimeSig *timesig, int beats);
 /*----------------------- dealing with tuplets -------------------------------------*/
 		void reconnectTuplets();
-		bool buildTupletList(int x0, int x1, char numNotes, QList<NPlayable> *elemlist);
+		bool buildTupletList(int x0, int x1, char numNotes, QPtrList<NPlayable> *elemlist);
 		void tryToBuildAutoTriplet();
 /*----------------------- search -------------------------------------*/
 		int searchPositionAndUpdateSigns(int dest_xpos, NMusElement **elem, bool *found, NMusElement **elem_before = 0, 
@@ -373,7 +373,7 @@ class NVoice {
 		int savePosition_;
 		int midiEndTime_;
 		NPositStr *pPtr_;
-		QList<NNote> virtualChord_;
+		QPtrList<NNote> virtualChord_;
 /*--------------------------- bar numbering -------------------------------------*/
 		int barNr_;
 /*---------------------------------- undo ---------------------------------------*/
@@ -392,9 +392,9 @@ class NVoice {
 
 		QRegExp wordPattern1_, wordPattern2_, escapedApostroph_;
 		main_props_str *main_props_;
-		QList<NMusElement> clipBoard_;
-		void eliminateRests(QList<NMusElement> *foundRests, int restSum, int over, NChord *lastChord);
-		void collectAndInsertPlayable(int startTime, QList<NMusElement> *patterns, int targetLength,
+		QPtrList<NMusElement> clipBoard_;
+		void eliminateRests(QPtrList<NMusElement> *foundRests, int restSum, int over, NChord *lastChord);
+		void collectAndInsertPlayable(int startTime, QPtrList<NMusElement> *patterns, int targetLength,
 			bool useExistingElement,
 			bool beforeBarSig = false );	// if true: first the short note, then the long one
 		static undostr undoelem_[MAXUNDO];
@@ -413,8 +413,8 @@ class NVoice {
 		void deleteLastUndo();
 		void invalidateReUndo(bool with_undo = false);
 		void setCountOfAddedItems(int count_of_added_items);
-		void freeCloneGroup(QList<NMusElement> *group);
-		QList<NMusElement> *cloneGroup(int firstidx, int lastidx);
+		void freeCloneGroup(QPtrList<NMusElement> *group);
+		QPtrList<NMusElement> *cloneGroup(int firstidx, int lastidx);
 };
 
 #endif // VOICE_H

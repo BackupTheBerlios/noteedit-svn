@@ -55,7 +55,7 @@ class NChord: public NPlayable {
 		virtual void moveDown(int up, int voices_stem_policy, NKeySig *key = 0);
 		virtual void moveSemiToneUp(int voices_stem_policy, NClef *clef, NKeySig *ksig = 0);
 		virtual void moveSemiToneDown(int voices_stem_policy, NClef *clef, NKeySig *ksig = 0);
-		virtual QList<NNote> *getNoteList() {return &noteList_;}
+		virtual QPtrList<NNote> *getNoteList() {return &noteList_;}
 		virtual int getSubType() const {return length_;}
 		virtual int getType() const {return T_CHORD;}
 		virtual bool deleteNoteAtLine(int line, int voices_stem_policy);
@@ -91,7 +91,7 @@ class NChord: public NPlayable {
 		virtual int getMidiLength(bool forPlayback = false) const;
 		virtual void calculateDimensionsAndPixmaps();
 		virtual void calculateFlagCount();
-		static void computeBeames(QList<NChord> *beamList, int stemPolicy);
+		static void computeBeames(QPtrList<NChord> *beamList, int stemPolicy);
 		bool setActualNote(int line);
 		bool equalTiedChord(NChord *chord2);
 		virtual void setBeamFlag() { addProperty( PROP_BEAMED ); nextBeamedChord_ = (NChord *) 1;}
@@ -122,16 +122,16 @@ class NChord: public NPlayable {
 		void computeStemBefore();
 		int countOfLyricsLines();
 		QString *getLyrics(int nr);
-		void setBeamParams(QList<NChord> *beamList, NChord *nextChord, double m, double n);
+		void setBeamParams(QPtrList<NChord> *beamList, NChord *nextChord, double m, double n);
 		void resetBeamFlags();
 		virtual int computeMidiLength() const;
-		QList<NChord> *getBeamList() { return beamList_;}
-		void changeBeamList(QList<NChord> *blist) {beamList_ = blist;}
+		QPtrList<NChord> *getBeamList() { return beamList_;}
+		void changeBeamList(QPtrList<NChord> *blist) {beamList_ = blist;}
 		void checkAcc();
 		void accumulateAccidentals(NKeySig *key);
 		virtual char getNumNotes() {return numTupNotes_;}
 		virtual char getPlaytime() {return tupRealTime_;}
-		virtual void setTupletParams(QList<NPlayable> *tupletList, 
+		virtual void setTupletParams(QPtrList<NPlayable> *tupletList, 
 			bool last, double m , double n , double tuptexn, int xstart, int xend, char numnotes, char playtime);
 		QString *computeTeXBeam(int maxBeams, unsigned int *beamPool, int *beamNr, int *beamCount, NClef *clef, int maxflags, bool *problem128, bool *toomany);
 		QString *computeTeXTie(unsigned int *tiePool, NClef *clef, int maxtie, bool *toomany, bool spare);
@@ -141,7 +141,7 @@ class NChord: public NPlayable {
 		QString *computeTeXVa(bool bassa, int hline, unsigned int *vaPool, NClef *clef, struct trill_descr_str *trill_descr,
 			bool *nested, bool *toomany);
 		void initialize_acc_pos_computation();
-		QList<NNote> *getAccTexRow(int row_nr);
+		QPtrList<NNote> *getAccTexRow(int row_nr);
 		int getNumOfTexAccRows() {return numTexRows_;}
 		union {
 			short TeXSlurNr;
@@ -158,7 +158,7 @@ class NChord: public NPlayable {
 		bool dynamicAlign_;
 
 	private:
-		static void computeLineParams(QList<NChord> *beamList, double *np, double *mp);
+		static void computeLineParams(QPtrList<NChord> *beamList, double *np, double *mp);
 		void drawGraceChord(int flags);
 		void calculateGraceChord();
 		int length_;
@@ -170,9 +170,9 @@ class NChord: public NPlayable {
 		NChord *nextBeamedChord_;
 		int *lyricsdist_;
 		QPoint flag_pos_[5];
-		QList<NNote> noteList_;
+		QPtrList<NNote> noteList_;
 		double m_, n_;
-		QList<NChord> *beamList_;
+		QPtrList<NChord> *beamList_;
 		QPoint tuplet0_, tuplet1_;
 		QPoint tuplet00_, tuplet01_;
 		QPoint tupletDigit_;
@@ -199,7 +199,7 @@ class NChord: public NPlayable {
 		int narrow_left_, narrow_right_;
 		int trilly_, vaY_;
 		static int numTexRows_;
-		static QList<NNote> acc_tex_row;
+		static QPtrList<NNote> acc_tex_row;
 		static QPoint StrokeDist1_, StrokeDist2_;
 };
 

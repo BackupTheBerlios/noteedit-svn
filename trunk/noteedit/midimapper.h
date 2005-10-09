@@ -105,7 +105,7 @@ class NMidiEventStr {
 		NMidiEventStr *next, *notehalt;
 		NVoice *from;
 		NMusElement *ref;
-		QList<NNote> *notelist;
+		QPtrList<NNote> *notelist;
 };
 
 struct dir_notes_str {
@@ -124,14 +124,14 @@ class NMidiMapper : public QObject{
 #ifdef WITH_TSE3
 		NMidiMapper(TSE3::MidiScheduler *scheduler);
 		void setEchoChannel(int chn, int prog);
-		QList<int> *readEvents();
+		QPtrList<int> *readEvents();
 #elif defined (WITH_LIBKMID)
 		bool isSynth(unsigned int port) const {return port >= midiDevs_;}
 #else
 		bool isSynth(unsigned int port) const {return port < synthDevs_;}
 #endif
-		void play_list(QList<NMidiEventStr> *play_list, int playTime);
-		void stopAllNotes(QList<NMidiEventStr> *play_list);
+		void play_list(QPtrList<NMidiEventStr> *play_list, int playTime);
+		void stopAllNotes(QPtrList<NMidiEventStr> *play_list);
 		void changeProg(int chn, int pgm);
 		void changeReverb(int chn, int rev);
 		void changeChorus(int chn, int chor);
@@ -150,7 +150,7 @@ class NMidiMapper : public QObject{
 		int actualDevice_nr_;
 		unsigned int channelPool_;
 		int lastSelectedChannel_;
-		QList<dir_notes_str> immList_;
+		QPtrList<dir_notes_str> immList_;
 #ifdef WITH_LIBKMID
 
 		DeviceManager *devMan_;
@@ -180,10 +180,10 @@ class NMidiMapper : public QObject{
 					struct synth_info synth_inf;
 				} devdata;
 		} *devices_, *actualDevice_;
-		void playMidiDev(QList<NMidiEventStr> *play_list, int playTime) const;
-		void playSynthDev(QList<NMidiEventStr> *play_list, int playTime) const;
-		void playNull(QList<NMidiEventStr> *play_list, int playTime) const;
-		void (NMidiMapper::*play_func_)(QList<NMidiEventStr> *play_list, int playTime) const;
+		void playMidiDev(QPtrList<NMidiEventStr> *play_list, int playTime) const;
+		void playSynthDev(QPtrList<NMidiEventStr> *play_list, int playTime) const;
+		void playNull(QPtrList<NMidiEventStr> *play_list, int playTime) const;
+		void (NMidiMapper::*play_func_)(QPtrList<NMidiEventStr> *play_list, int playTime) const;
 #endif
 };
 

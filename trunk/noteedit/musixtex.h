@@ -97,7 +97,7 @@ class NMultistaffInfo;
 class NMusiXTeX {
 	public:
 		NMusiXTeX();
-		void exportStaffs(QString filen, QList<NStaff> *stafflist, exportFrm *form, NMainFrameWidget *mainWidget);
+		void exportStaffs(QString filen, QPtrList<NStaff> *stafflist, exportFrm *form, NMainFrameWidget *mainWidget);
 		void doExport();
 	private:
 		void generate(int staff_nr, int real_staff_nr, const char *extraDelimiter,
@@ -130,16 +130,16 @@ class NMusiXTeX {
 		unsigned int beamPool_;
 		struct trill_descr_str *trill_descr_;
 		struct trill_descr_str *va_descr_;
-		QList<NExportError> badMeasures_;
+		QPtrList<NExportError> badMeasures_;
 		exportFrm *exportDialog_;
-		QList<NStaff> *staffList_;
-		QList<NNote> shiftes_notes_, non_shifted_notes_;
+		QPtrList<NStaff> *staffList_;
+		QPtrList<NNote> shiftes_notes_, non_shifted_notes_;
 		long lastBarPos_;
 		int newTempo_;
 		struct dynamics_descr_str *dysymDescr_;
 		QString fileName;
-		QList<pending_context_change_class> pending_key_changes_, pending_time_changes_;
-		QList<textDescr> pending_texts_;
+		QPtrList<pending_context_change_class> pending_key_changes_, pending_time_changes_;
+		QPtrList<textDescr> pending_texts_;
 		NMainFrameWidget *mainWidget_;
 		void externalCmd (QString command, QString filename);
 };

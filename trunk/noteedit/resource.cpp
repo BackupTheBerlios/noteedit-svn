@@ -483,7 +483,7 @@ int  NResource::overlength_ = DEFAULT_OVERLENGTH;
 int  NResource::schedulerRequest_ = ALL_SCHEDULERS;
 int  NResource::defZoomval_ = PREFERRED_ZOOM_VAL;
 staff_props_str NResource::nullprops_;
-QList<NMainWindow> NResource::windowList_;
+QPtrList<NMainWindow> NResource::windowList_;
 NMidiMapper *NResource::mapper_;
 int NResource::lastWindowX_ = 0;
 int NResource::lastWindowY_ = 0;
@@ -502,7 +502,7 @@ int NResource::globalFlatPlus_ = 0;
 QString NResource::lyrics_[5];
 #if KDE_VERSION < 220
 int NResource::tipNo_;
-QList<QString> NResource::theTips_;
+QPtrList<QString> NResource::theTips_;
 #endif
 bool NResource::dontShowMupWarnings_ = false;
 bool *NResource::staffSelMute_ = 0;

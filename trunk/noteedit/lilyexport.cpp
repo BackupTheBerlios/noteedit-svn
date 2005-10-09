@@ -99,7 +99,7 @@ NLilyExport::NLilyExport() {
 	scoreBlock.setAutoDelete( TRUE );
 }
 
-void NLilyExport::exportStaffs(QString fname, QList<NStaff> *stafflist, exportFrm *expWin, NMainFrameWidget *mainWidget) {
+void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, exportFrm *expWin, NMainFrameWidget *mainWidget) {
 	int i, j;
 	double wh;
 	int k, str;
@@ -2036,7 +2036,7 @@ if (NResource::lilyProperties_.lilyVersion24) {
 	buildScoreBlockAndFlush() can easily set Choir-/PianoStaff braces.
 */
 
-void NLilyExport::buildBraceMasks(QList<NStaff> *stafflist, const NMainFrameWidget *mainWidget)
+void NLilyExport::buildBraceMasks(QPtrList<NStaff> *stafflist, const NMainFrameWidget *mainWidget)
 {
 	NStaff *staff_el;
 	int m, mm, beg, end, nb;
@@ -2084,7 +2084,7 @@ void NLilyExport::buildBraceMasks(QList<NStaff> *stafflist, const NMainFrameWidg
 void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 						NStaff *staff_elem,
 						const QString& label,
-						QList<NStaff> *stafflist,
+						QPtrList<NStaff> *stafflist,
 						const QByteArray braceMasks,
 						bool flush )
 {
@@ -2391,7 +2391,7 @@ bool NLilyExport::continuedOutsideAGroup(NMainFrameWidget *mainWidget, int staff
 }
 
 
-bool NLilyExport::hasATie(QList<NNote> *notelist) {
+bool NLilyExport::hasATie(QPtrList<NNote> *notelist) {
 	NNote *note;
 	for (note = notelist->first(); note; note = notelist->next()) {
 		if (note->properties & PROP_TIED) return true;
@@ -2399,7 +2399,7 @@ bool NLilyExport::hasATie(QList<NNote> *notelist) {
 	return false;
 }
 
-bool NLilyExport::hasContraryStems(QList<NNote> *notelist) {
+bool NLilyExport::hasContraryStems(QPtrList<NNote> *notelist) {
 	int stemdir = STEM_UNSET;
 	NNote *note;
 	for (note = notelist->first(); note; note = notelist->next()) {
@@ -2410,7 +2410,7 @@ bool NLilyExport::hasContraryStems(QList<NNote> *notelist) {
 	return false;
 }
 
-bool NLilyExport::chordHasMixedTies(QList<NNote> *notelist) {
+bool NLilyExport::chordHasMixedTies(QPtrList<NNote> *notelist) {
 	bool hasTie = false;
 	NNote *note;
 	for (note = notelist->first(); note; note = notelist->next()) {

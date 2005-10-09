@@ -108,7 +108,7 @@ void NStaff::moveVoice(uint srcNr, uint tgtNr) {
 	actualVoice_ = voicelist_.at(tgtNr);
 }
 
-void NStaff::updateVoiceList(QList<NVoice> *voicelist) {
+void NStaff::updateVoiceList(QPtrList<NVoice> *voicelist) {
 	NVoice *voice_elem;
 
 	for (voice_elem = voicelist_.first(); voice_elem; voice_elem = voicelist_.next()) {
@@ -246,7 +246,7 @@ void NStaff::validateKeysig(int startidx, int insertpos) {
 }
 
 
-void NStaff::getElementsAfter(QList<NPositStr> *plist, int mytime, int *num_positions, int *min_time) {
+void NStaff::getElementsAfter(QPtrList<NPositStr> *plist, int mytime, int *num_positions, int *min_time) {
 	NPositStr *posit;
 	NVoice *voice_elem;
 	int i;
@@ -586,7 +586,7 @@ void NStaff::handleEnding1() {
 void NStaff::pasteAtPosition(int xpos, NStaff *from) {
 	NVoice *srcVoice, *destVoice;
 	bool complete = true;
-	QList<NMusElement> *clipboard;
+	QPtrList<NMusElement> *clipboard;
 	int countof128th, dest_time, part_in_measure;
 
 	if (actualVoiceNr_ == -1) {

@@ -93,7 +93,7 @@ class exportFrm : public exportForm {
     public:
 	exportFrm( NMainFrameWidget *mainWidget, QWidget *parent = 0 );
 	~exportFrm();
-	void initialize( QList<NStaff> *stafflist, QList<NVoice> *voicelist, QString fname );
+	void initialize( QPtrList<NStaff> *stafflist, QPtrList<NVoice> *voicelist, QString fname );
 	void boot();
 	bool paramsEnabled();
 	void setEnabled(bool ok);
@@ -119,8 +119,8 @@ class exportFrm : public exportForm {
 	void paramLandSlot();
 	
     private:
-	QList<NStaff> *staffList_;
-	QList<NVoice> *voiceList_;
+	QPtrList<NStaff> *staffList_;
+	QPtrList<NVoice> *voiceList_;
 	QString sourceFile_;
 	staffFrm *staffDialog_;
 	NMainFrameWidget *mainWidget_;
@@ -131,7 +131,7 @@ class scaleFrm : public scaleForm {
 
     public:
 	scaleFrm( QWidget *parent );
-	void boot( QList<NStaff> *staffList_, QScrollBar *scrollx_  );
+	void boot( QPtrList<NStaff> *staffList_, QScrollBar *scrollx_  );
 	bool boot( main_props_str *props_str_, NStaff *currentStaff_, NVoice *currentVoice, NMusElement **tmpElem_, int subtype );
 	int boot();
 	
@@ -214,7 +214,7 @@ class listFrm : public listForm {
 
     public:
 	listFrm( QWidget *parent );
-	bool boot( int val, short int type, const QString & caption, const QString & title, QList<NStaff> *staff = 0 );
+	bool boot( int val, short int type, const QString & caption, const QString & title, QPtrList<NStaff> *staff = 0 );
 	
     private slots:
 	void okSlot();
@@ -289,7 +289,7 @@ class staffFrm : public staffForm {
 
     public:
 	staffFrm( QWidget *parent );
-	void boot( QList<NStaff> *stafflist, char unsigned id, int amount = 0 );
+	void boot( QPtrList<NStaff> *stafflist, char unsigned id, int amount = 0 );
 
     private slots:
 	void slCh();

@@ -31,7 +31,7 @@
 #include <strstream.h>
 #include <fstream.h>
 #endif
-#include <qlist.h>
+#include <qptrlist.h>
 #if QT_VERSION >= 300
 #include <qregexp.h>
 #endif
@@ -100,8 +100,8 @@ class pending_sign_information_class {
 class NFileHandler {
 	public:
 		NFileHandler();
-		bool readStaffs(const char *fname, QList<NVoice> *voilist, QList<NStaff> *stafflist, NMainFrameWidget *mainWidget);
-		bool writeStaffs(QString fname, QList<NStaff> *stafflist, NMainFrameWidget *mainWidget, bool showErrors);
+		bool readStaffs(const char *fname, QPtrList<NVoice> *voilist, QPtrList<NStaff> *stafflist, NMainFrameWidget *mainWidget);
+		bool writeStaffs(QString fname, QPtrList<NStaff> *stafflist, NMainFrameWidget *mainWidget, bool showErrors);
 	private:
 		void pitchOut( const NNote *note, NClef *ac_clef, bool with_tie);
 		int writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int multirestlength, int *measure_start_time);
@@ -116,7 +116,7 @@ class NFileHandler {
 		void writeChord(int staff_nr, double starttime, NChordDiagram *diag);
 		void writeStaffLayout(NMainFrameWidget *mainWidget, int staffCount);
 		QString computeTripletString(int tupletsum, char numNotes, char playtime, bool *ok);
-		int determineMultiRest(QList<NStaff> *stafflist);
+		int determineMultiRest(QPtrList<NStaff> *stafflist);
 		bool divide_multi_rest(int staff_nr, int voice_nr, int multirestlength);
 		QString lyrics2MUP(QString *lyrics);
 		ofstream out_;
@@ -124,8 +124,8 @@ class NFileHandler {
 		char s_[LINE_LENGTH];
 		int **pending_multi_rests_;
 		int lyricsLineCount_;
-		QList<pending_sign_information_class> pending_program_changes_, pending_volume_sigs_, pending_tempo_sigs_;
-		QList<chordDiagramName> chordDiagramList_;
+		QPtrList<pending_sign_information_class> pending_program_changes_, pending_volume_sigs_, pending_tempo_sigs_;
+		QPtrList<chordDiagramName> chordDiagramList_;
 #if GCC_MAJ_VERS > 2
 		ostringstream *os_;
 		ostringstream *ornaments_;
@@ -166,8 +166,8 @@ class NFileHandler {
 		bool some_notes_or_rests_written_;
 		mupWrn* mupWarn_;
 		mupFatl* mupFatl_;
-		QList<badmeasure> badlist_;
-		QList<badmeasure> fatallist_;
+		QPtrList<badmeasure> badlist_;
+		QPtrList<badmeasure> fatallist_;
 		QRegExp newLines_;
 		
 };

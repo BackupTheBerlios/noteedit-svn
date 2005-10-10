@@ -4960,6 +4960,7 @@ void NMainFrameWidget::preparePixmaps() {
    nr < 0 -> check selectbutton_
 */
 void NMainFrameWidget::setButton(int nr) {
+	if ((editMode_) && (nr < 0)) return;
 	if (nr >= 0) {
 		note_buttons_[nr]->setOn(true);
 	}
@@ -4975,8 +4976,6 @@ void NMainFrameWidget::setButton(int nr) {
    properties - general properties (accidentals, stems, beams, articulation, gracenotes)
    length - element length type. If -1 given, element doesn't have MIDI length (eg. barlines). */
 void NMainFrameWidget::updateInterface(property_type properties, int length) {
-	if (length == -1) return;
-
 	// avoid feedback
 	// Note from David: you can use blockSignals instead (avoids duplicating code for connect/disconnect)
         // (For the KDE interface, this is not even necessary)
@@ -5262,11 +5261,15 @@ void NMainFrameWidget::nextElement() {
 	property_type properties;
 	unsigned int val;
 	val = currentVoice_->makeNextElementActual(&properties);
-	if (editMode_)
+	if (editMode_) {
+		/* First clean up the interface, so the new element doesn't inherit any properties from the old one. */
+		updateInterface(0, -1);
+		
 		if (currentVoice_->getCurrentElement()->playable())
 			updateInterface(properties, val);
 		else
 			updateInterface(properties, -1);
+	}
 	manageToolElement(false);
 	repaint();
 }
@@ -5277,11 +5280,15 @@ void NMainFrameWidget::prevElement() {
 	property_type properties;
 	unsigned int val;
 	val = currentVoice_->makePreviousElementActual(&properties);
-	if (editMode_)
+	if (editMode_) {
+		/* First clean up the interface, so the new element doesn't inherit any properties from the old one. */
+		updateInterface(0, -1);
+		
 		if (currentVoice_->getCurrentElement()->playable())
 			updateInterface(properties, val);
 		else
 			updateInterface(properties, -1);
+	}
 	manageToolElement(false);
 	repaint();
 }

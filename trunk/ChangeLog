@@ -68,4 +68,4 @@ version 2.9.0:
 	* Added CTRL+G shortcut for Goto measure. Some other similar strings tidied up. Updated translations. R357
 	* R370 -- merged branches/code_cleanup 353:369
 	* R371 -- Patch #627: Update Qt Collection Class names and #include's, from Henri Manson.
-
+	* R372 -- FIXED: When cycling through elements, new element doesn't inherit any properties from the old one, because of the buttons feedback! The interface is now first cleaned (all the properties buttons are set to off) and then set to new.

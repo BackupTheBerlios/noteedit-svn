@@ -5478,7 +5478,7 @@ void NMainFrameWidget::TSE3MidiOut() {
 	kbbutton_->setOn(false);
 	QString fileName = this->checkFileName(KFileDialog::getSaveFileName(QString::null, midi_file_pattern, this), (char *)".mid");
 	if (fileName.isNull() )  return;
-	if (!tse3Handler_->TSE3MidiOut(fileName.ascii()))
+	if (!tse3Handler_->TSE3MidiOut(fileName.local8Bit()))
 		KMessageBox::sorry
 		  (this,
 		   i18n("Error writing file \"%1\".").arg(fileName),
@@ -5494,7 +5494,7 @@ bool NMainFrameWidget::TSE3MidiIn() {
 	kbbutton_->setOn(false);
 	QString fileName = KFileDialog::getOpenFileName( QString::null, midi_file_pattern, this );
 	if (fileName.isNull() )  return false;
-	if (!tse3Handler_->TSE3MidiIn(fileName.ascii())) {
+	if (!tse3Handler_->TSE3MidiIn(fileName.local8Bit())) {
 		KMessageBox::sorry
 		  (this,
 		   i18n("File read error \"%1\".").arg(fileName),

@@ -385,6 +385,7 @@ char NClef::line2PMXName(int line, int *octave) const {
 				case  8: c = 'a'; break;
 				case  9: c = 'b'; break;
 			}
+			break;
 		case SOPRANO_CLEF:
 			*octave = 4;
 			while (line > 6) {

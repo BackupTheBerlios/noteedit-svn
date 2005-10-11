@@ -1032,7 +1032,7 @@ void NVoice::pasteAtPosition(int xpos, QPtrList<NMusElement> *clipboard, bool co
 			}
 		}
 		if (elem_before->playable() && ac_elem->playable() && elem_before->playable()->hasProperty( PROP_TUPLET ) &&
-			ac_elem->playable()->hasProperty( PROP_TUPLET) ) {
+			ac_elem->playable()->hasProperty( PROP_TUPLET ) ) {
 			if ( elem_before->playable()->getTupletList() == ac_elem->playable()->getTupletList()) {
 				currentElement_ = musElementList_.prev();
 				breakTuplet();

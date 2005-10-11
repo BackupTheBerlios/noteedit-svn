@@ -603,8 +603,8 @@ void NStaff::pasteAtPosition(int xpos, NStaff *from) {
 			if (from->voiceCount() > voiceCount()) {
 				KMessageBox::sorry
 					(0,
-					 i18n("The destination staff has less voices than source staff"),
-					 kapp->makeStdCaption("paste")
+					 i18n("Unable to paste! The destination staff has less voices than the source staff."),
+					 kapp->makeStdCaption("Paste")
 					);
 				return;
 			}
@@ -626,10 +626,10 @@ void NStaff::pasteAtPosition(int xpos, NStaff *from) {
 		else {
 			srcVoice = from->getActualVoice(); 
 			if (!actualVoice_->isFirstVoice() && srcVoice->isFirstVoice()) {
-				KMessageBox::sorry
+				KMessageBox::warning
 					(0,
-					 i18n("You paste a first voice to no-first voice! This deletes all non-first-voice elements!"),
-					 kapp->makeStdCaption("paste")
+					 i18n("You are going to copy elements from the first voice and paste them to the non-first voice!\nSpecial elements that can only be expressed in the first voice are not going to be copied!"),
+					 kapp->makeStdCaption("Paste")
 					);
 				complete = false;
 			}

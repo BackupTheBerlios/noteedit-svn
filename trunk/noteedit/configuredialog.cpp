@@ -240,11 +240,11 @@ ConfigureDialog::ConfigureDialog(NMainFrameWidget *mainWidget) :
 	previewLayout->addWidget(previewProgramLabel, 0, 0);
 
 	previewProgram = new QComboBox (i18n("P&rogram"), previewProgramGroup );
-	previewProgram->insertItem( i18n("gv") );
-	previewProgram->insertItem( i18n("evince") );
-	previewProgram->insertItem( i18n("xpdf") );
-	previewProgram->insertItem( i18n("kghostview") );
-	previewProgram->insertItem( i18n("custom") );
+	previewProgram->insertItem("gv");
+	previewProgram->insertItem("evince");
+	previewProgram->insertItem("xpdf");
+	previewProgram->insertItem("kghostview");
+	previewProgram->insertItem(i18n("custom"));
 	previewProgram->setCurrentItem(NResource::previewProgram_);
 	previewLayout->addWidget(previewProgram, 0, 1);
 	connect( previewProgram, SIGNAL(activated( int )), this, SLOT(printLayout()) );
@@ -526,19 +526,19 @@ void ConfigureDialog::printLayout() {
   switch( typesettingProgram->currentItem() )
   {
     case 0: // ABC Music
-      typesettingProgramInvokation->setText( i18n("abcm2ps") );
+      typesettingProgramInvokation->setText("abcm2ps");
       typesettingProgramFormat->setCurrentItem(3);
       break;
     case 1: // PMX
-      typesettingProgramInvokation->setText( i18n("pmx") );
+      typesettingProgramInvokation->setText("pmx");
       typesettingProgramFormat->setCurrentItem(4);
       break;
     case 2: // Lilypond
-      typesettingProgramInvokation->setText( i18n("lilypond") );
+      typesettingProgramInvokation->setText("lilypond");
       typesettingProgramFormat->setCurrentItem(1);
       break;
     case 3: // MusiXTeX
-      typesettingProgramInvokation->setText( i18n("musixtex") );
+      typesettingProgramInvokation->setText("musixtex");
       typesettingProgramFormat->setCurrentItem(4);
       break;
     case 4: default: // custom
@@ -568,16 +568,16 @@ void ConfigureDialog::printLayout() {
   switch( previewProgram->currentItem() )
   {
     case 0: // Ghostview
-      previewProgramInvokation->setText( i18n("gv") );
+      previewProgramInvokation->setText("gv");
       break;
     case 1: // Gnome Evince
-      previewProgramInvokation->setText( i18n("evince") );
+      previewProgramInvokation->setText("evince");
       break;
     case 2: // XPDF (PDF only!)
-      previewProgramInvokation->setText( i18n("xpdf") );
+      previewProgramInvokation->setText("xpdf");
       break;
     case 3: // KDE KGhostview
-      previewProgramInvokation->setText( i18n("kghostview") );
+      previewProgramInvokation->setText("kghostview");
       break;
     case 4: // custom
       // Was program changed to custom ?

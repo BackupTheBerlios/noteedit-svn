@@ -99,12 +99,12 @@
                     <rect>
                         <x>10</x>
                         <y>10</y>
-                        <width>136</width>
+                        <width>200</width>
                         <height>22</height>
                     </rect>
                 </property>
                 <property name="text">
-                    <string>MIDI information line:</string>
+                    <string>Additional MIDI parameters:</string>
                 </property>
             </widget>
             <widget class="QLineEdit">
@@ -113,9 +113,9 @@
                 </property>
                 <property name="geometry">
                     <rect>
-                        <x>152</x>
+                        <x>214</x>
                         <y>10</y>
-                        <width>422</width>
+                        <width>360</width>
                         <height>22</height>
                     </rect>
                 </property>
@@ -1141,57 +1141,6 @@
                         <string>Height:</string>
                     </property>
                 </widget>
-                <widget class="QComboBox">
-                    <item>
-                        <property name="text">
-                            <string>A6</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property name="text">
-                            <string>A5</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property name="text">
-                            <string>A4</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property name="text">
-                            <string>A3</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property name="text">
-                            <string>Legal</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property name="text">
-                            <string>Letter</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property name="text">
-                            <string>Tabloid</string>
-                        </property>
-                    </item>
-                    <property name="name">
-                        <cstring>lilySPageSize</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>30</x>
-                            <y>50</y>
-                            <width>140</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="currentItem">
-                        <number>2</number>
-                    </property>
-                </widget>
                 <spacer>
                     <property name="name">
                         <cstring>Spacer18</cstring>
@@ -1293,6 +1242,57 @@
                     </property>
                     <property name="buttonGroupId">
                         <number>0</number>
+                    </property>
+                </widget>
+                <widget class="QComboBox">
+                    <item>
+                        <property name="text">
+                            <string>A6</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>A5</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>A4</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>A3</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>US Legal</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>US Letter</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Tabloid</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>lilySPageSize</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>30</x>
+                            <y>50</y>
+                            <width>140</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="currentItem">
+                        <number>2</number>
                     </property>
                 </widget>
             </widget>

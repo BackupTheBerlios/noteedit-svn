@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-13 21:31+0200\n"
+"POT-Creation-Date: 2005-10-11 23:35+0200\n"
 "PO-Revision-Date: 2005-06-12 22:31+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -74,31 +74,31 @@ msgstr "Notrad %1, takt %2: Trioler kan inte sluta med en paus i PMX\n"
 msgid "ABC music produced. But there are some problems."
 msgstr "MusiXTeX skapat, men det uppstod några problem."
 
-#: clef.cpp:460
+#: clef.cpp:461
 msgid "name2Line: internal error"
 msgstr "name2Line: internt fel"
 
-#: clef.cpp:461
+#: clef.cpp:462
 msgid "name2Line"
 msgstr "name2Line"
 
-#: configuredialog.cpp:68
+#: configuredialog.cpp:69
 msgid "General"
 msgstr "Allmänt"
 
-#: configuredialog.cpp:72
+#: configuredialog.cpp:73
 msgid "Autosave"
 msgstr "Spara regelbundet i bakgrunden"
 
-#: configuredialog.cpp:74
+#: configuredialog.cpp:75
 msgid "&Enable autosave"
 msgstr "Aktiv&era"
 
-#: configuredialog.cpp:78
+#: configuredialog.cpp:79
 msgid "The current score will be saved regularly if this is enabled."
 msgstr "Partituret kommer att sparas regelbundet om detta är valt."
 
-#: configuredialog.cpp:83
+#: configuredialog.cpp:84
 msgid ""
 "The current score will be saved regularly if this is enabled. It will be "
 "saved to <filename>.sav, where <filename> is the name of the file to which "
@@ -114,15 +114,15 @@ msgstr ""
 "unnamed<nummer>.not.sav, där <nummer> är ett positivt heltal med syftet att "
 "göra namnet unikt."
 
-#: configuredialog.cpp:95
+#: configuredialog.cpp:96
 msgid " minutes"
 msgstr " minuter"
 
-#: configuredialog.cpp:96
+#: configuredialog.cpp:97
 msgid "Autosave &interval:"
 msgstr "T&idsavstånd:"
 
-#: configuredialog.cpp:100
+#: configuredialog.cpp:101
 msgid ""
 "The time interval between the occations when the current score is saved if "
 "there are unsaved changes."
@@ -130,33 +130,33 @@ msgstr ""
 "Tidsavståndet mellan de tillfällen då partituret sparas om det finns "
 "osparade ändringar."
 
-#: configuredialog.cpp:112
+#: configuredialog.cpp:113
 msgid "Startup"
 msgstr "Igångkörning"
 
-#: configuredialog.cpp:114
+#: configuredialog.cpp:115
 msgid "useMidi&Pedal"
 msgstr ""
 
-#: configuredialog.cpp:116
+#: configuredialog.cpp:117
 msgid ""
 "enable MIDI pedal instruction (does not work on all sound cards; especially "
 "TiMidity++)"
 msgstr ""
 
-#: configuredialog.cpp:118
+#: configuredialog.cpp:119
 msgid "&Tip of the day"
 msgstr "Dagens &tips"
 
-#: configuredialog.cpp:124
+#: configuredialog.cpp:125
 msgid "A tip is shown when the application has started if this is enabled."
 msgstr "Ett tip visas när programmet har kör igång om detta är valt."
 
-#: configuredialog.cpp:127
+#: configuredialog.cpp:128
 msgid "Load la&st score"
 msgstr "Ladda &senaste partitur"
 
-#: configuredialog.cpp:132
+#: configuredialog.cpp:133
 msgid ""
 "The last score that was open the last time the appliaction was used will be "
 "loaded if this is enabled."
@@ -164,140 +164,235 @@ msgstr ""
 "Det senaste partituret som var öppet när programmet kördes senast kommer att "
 "öppnas om detta är valt."
 
-#: configuredialog.cpp:137
+#: configuredialog.cpp:138
 msgid "Turn Over"
 msgstr "Sidbyte"
 
-#: configuredialog.cpp:145
+#: configuredialog.cpp:146
 msgid "page turn point:"
 msgstr "Sidbytespunkt:"
 
-#: configuredialog.cpp:149
+#: configuredialog.cpp:150
 msgid "Determine the offset at which the turn over takes place."
 msgstr "Bestäm var sidbyte ska ske."
 
-#: configuredialog.cpp:155
+#: configuredialog.cpp:156
 msgid "Editing"
 msgstr "Redigering"
 
-#: configuredialog.cpp:162
+#: configuredialog.cpp:163
 #, fuzzy
 msgid "auto &beam insertion"
 msgstr "Självständig taktstrecksinfogning"
 
-#: configuredialog.cpp:165
+#: configuredialog.cpp:166
 msgid "insert &echo"
 msgstr "Infoga &eko"
 
-#: configuredialog.cpp:168
+#: configuredialog.cpp:169
 msgid "Move according ke&ysig"
 msgstr "Fl&ytta enligt förtecken"
 
-#: configuredialog.cpp:171
+#: configuredialog.cpp:172
 msgid "autom. bar insertion"
 msgstr "Självständig taktstrecksinfogning"
 
-#: configuredialog.cpp:177
+#: configuredialog.cpp:179
+#, fuzzy
+msgid "Printing"
+msgstr "Redigering"
+
+#: configuredialog.cpp:183
+msgid "Typesetting &program"
+msgstr ""
+
+#: configuredialog.cpp:188
+#, fuzzy
+msgid "&Program:"
+msgstr "&Programbyten:"
+
+#: configuredialog.cpp:191
+msgid "Typesetting program"
+msgstr ""
+
+#: configuredialog.cpp:192 configuredialog.cpp:210
+msgid "ABC Music"
+msgstr ""
+
+#: configuredialog.cpp:193
+msgid "PMX"
+msgstr ""
+
+#: configuredialog.cpp:194 configuredialog.cpp:208
+#, fuzzy
+msgid "Lilypond"
+msgstr "Exportera till LilyPond"
+
+#: configuredialog.cpp:195
+#, fuzzy
+msgid "MusiXTeX"
+msgstr "MusiX&TeX-format"
+
+#: configuredialog.cpp:196 configuredialog.cpp:247
+#, fuzzy
+msgid "custom"
+msgstr "Författare:"
+
+#: configuredialog.cpp:203
+#, fuzzy
+msgid "Export &format: "
+msgstr "Exportproblem"
+
+#: configuredialog.cpp:206
+#, fuzzy
+msgid "Export format"
+msgstr "Exportproblem"
+
+#: configuredialog.cpp:207
+msgid "Midi"
+msgstr ""
+
+#: configuredialog.cpp:209 rc.cpp:462
+#, no-c-format
+msgid "MusicXML"
+msgstr ""
+
+#: configuredialog.cpp:211 noteedit_part.cpp:68
+msgid "NoteEdit"
+msgstr "Notredigerare"
+
+#: configuredialog.cpp:216
+msgid "&Invokation:"
+msgstr ""
+
+#: configuredialog.cpp:220 configuredialog.cpp:257
+#, fuzzy
+msgid "Invokation"
+msgstr "In&formation..."
+
+#: configuredialog.cpp:225 configuredialog.cpp:262
+msgid "&Options:"
+msgstr ""
+
+#: configuredialog.cpp:234
+msgid "Pre&view program"
+msgstr ""
+
+#: configuredialog.cpp:239
+#, fuzzy
+msgid "P&rogram:"
+msgstr "programmerare"
+
+#: configuredialog.cpp:242
+#, fuzzy
+msgid "P&rogram"
+msgstr "programmerare"
+
+#: configuredialog.cpp:254
+msgid "I&nvokation: "
+msgstr ""
+
+#: configuredialog.cpp:274
 msgid "Colors"
 msgstr "Färger"
 
-#: configuredialog.cpp:188
+#: configuredialog.cpp:285
 msgid "&Backgrounds:"
 msgstr "&Bakgrunder:"
 
-#: configuredialog.cpp:196
+#: configuredialog.cpp:293
 msgid "Selection bac&kgrounds:"
 msgstr "Ba&kgrunder vid markering:"
 
-#: configuredialog.cpp:203
+#: configuredialog.cpp:300
 msgid "&Staffs:"
 msgstr "Notra&der:"
 
-#: configuredialog.cpp:210
+#: configuredialog.cpp:307
 msgid "Selected sta&ffs:"
 msgstr "Mark&erade notrader:"
 
-#: configuredialog.cpp:216
+#: configuredialog.cpp:313
 msgid "Ba&rs:"
 msgstr "Taktst&reck:"
 
-#: configuredialog.cpp:223
+#: configuredialog.cpp:320
 msgid "Sele&cted bars:"
 msgstr "Markerade taktstre&ck:"
 
-#: configuredialog.cpp:230
+#: configuredialog.cpp:327
 msgid "Bar n&umbers:"
 msgstr "Taktn&ummer:"
 
-#: configuredialog.cpp:237
+#: configuredialog.cpp:334
 msgid "Selected bar nu&mbers:"
 msgstr "&Markerade taktnummer:"
 
-#: configuredialog.cpp:244
+#: configuredialog.cpp:341
 msgid "&Tempo signatures:"
 msgstr "&Temposignaturer:"
 
-#: configuredialog.cpp:252
+#: configuredialog.cpp:349
 msgid "Selected temp&o signatures:"
 msgstr "Markerade temposi&gnaturer:"
 
-#: configuredialog.cpp:259
+#: configuredialog.cpp:356
 msgid "&Volume signatures:"
 msgstr "&Ljudstyrkesignaturer:"
 
-#: configuredialog.cpp:268
+#: configuredialog.cpp:365
 msgid "Selected volume si&gnatures:"
 msgstr "Markerade l&judstyrkesignaturer:"
 
-#: configuredialog.cpp:277
+#: configuredialog.cpp:374
 msgid "&Program changes:"
 msgstr "&Programbyten:"
 
-#: configuredialog.cpp:286
+#: configuredialog.cpp:383
 msgid "Selected program c&hanges:"
 msgstr "Markerade programb&yten:"
 
-#: configuredialog.cpp:295
+#: configuredialog.cpp:392
 msgid "Special &endings:"
 msgstr "S&ärskilda slut:"
 
-#: configuredialog.cpp:303
+#: configuredialog.cpp:400
 msgid "Selected spec&ial endings:"
 msgstr "Markerade särsk&ilda slut:"
 
-#: configuredialog.cpp:310
+#: configuredialog.cpp:407
 msgid "Staff &names:"
 msgstr "&Notradsnamn:"
 
-#: configuredialog.cpp:317
+#: configuredialog.cpp:414
 msgid "Se&lected staff names:"
 msgstr "Markerade notrader&s namn:"
 
-#: configuredialog.cpp:324
+#: configuredialog.cpp:421
 msgid "L&yrics:"
 msgstr "S&ångtexter:"
 
-#: configuredialog.cpp:332
+#: configuredialog.cpp:429
 msgid "staff con&text:"
 msgstr ""
 
-#: configuredialog.cpp:338
+#: configuredialog.cpp:435
 msgid "Sound"
 msgstr "Ljud"
 
-#: configuredialog.cpp:343
+#: configuredialog.cpp:440
 msgid "Sequencers"
 msgstr "Sekvenserare"
 
-#: configuredialog.cpp:344
+#: configuredialog.cpp:441
 msgid "A&LSA"
 msgstr "A&LSA"
 
-#: configuredialog.cpp:349
+#: configuredialog.cpp:446
 msgid "Attempt to create an ALSA MIDI scheduler at startup."
 msgstr "Försök skapa en ALSA-MIDI-schemaläggare när programmet körs igång."
 
-#: configuredialog.cpp:354
+#: configuredialog.cpp:451
 msgid ""
 "The TSE3 sequencer library will attempt to create an ALSA (Advanced Linux "
 "Sound Architecture) MIDI scheduler when the application starts if this is "
@@ -307,15 +402,15 @@ msgstr ""
 "Sound Architecture)-MIDI-schemaläggare när programmet körs igång om detta är "
 "valt. Välj detta om du använder ALSA för att komma åt ditt ljudkort."
 
-#: configuredialog.cpp:360
+#: configuredialog.cpp:457
 msgid "O&SS"
 msgstr "O&SS"
 
-#: configuredialog.cpp:365
+#: configuredialog.cpp:462
 msgid "Attempt to create an OSS MIDI scheduler at startup."
 msgstr "Försök skapa en OSS-MIDI-scheduler när programmet körs igång."
 
-#: configuredialog.cpp:370
+#: configuredialog.cpp:467
 msgid ""
 "The TSE3 sequencer library will attempt to create an OSS (Open Sound System) "
 "MIDI scheduler when the application starts if this is enabled. Enable this "
@@ -325,62 +420,62 @@ msgstr ""
 "System)-MIDI-schemaläggare när programmet körs igång om detta är valt. Välj "
 "detta om du använder OSS för att komma åt ditt ljudkort."
 
-#: configuredialog.cpp:379
+#: configuredialog.cpp:476
 msgid "&MIDI devices"
 msgstr "&MIDI-enheter"
 
-#: configuredialog.cpp:384
+#: configuredialog.cpp:481
 #, fuzzy
 msgid "Chords"
 msgstr "Kör:"
 
-#: configuredialog.cpp:387 configuredialog.cpp:388
+#: configuredialog.cpp:484 configuredialog.cpp:485
 #, fuzzy
 msgid "Chordnames"
 msgstr "kör-aahn"
 
-#: configuredialog.cpp:389
+#: configuredialog.cpp:486
 msgid "American, sharps"
 msgstr ""
 
-#: configuredialog.cpp:390
+#: configuredialog.cpp:487
 msgid "American, flats"
 msgstr ""
 
-#: configuredialog.cpp:391
+#: configuredialog.cpp:488
 msgid "American, mixed"
 msgstr ""
 
-#: configuredialog.cpp:392
+#: configuredialog.cpp:489
 msgid "European, sharps"
 msgstr ""
 
-#: configuredialog.cpp:393
+#: configuredialog.cpp:490
 msgid "European, flats"
 msgstr ""
 
-#: configuredialog.cpp:394
+#: configuredialog.cpp:491
 msgid "European, mixed"
 msgstr ""
 
-#: configuredialog.cpp:395
+#: configuredialog.cpp:492
 #, fuzzy
 msgid "Jazz, sharps"
 msgstr "jazzgitarr"
 
-#: configuredialog.cpp:396
+#: configuredialog.cpp:493
 msgid "Jazz, flats"
 msgstr ""
 
-#: configuredialog.cpp:397
+#: configuredialog.cpp:494
 msgid "Jazz, mixed"
 msgstr ""
 
-#: configuredialog.cpp:402 configuredialog.cpp:403
+#: configuredialog.cpp:499 configuredialog.cpp:500
 msgid "Dominant 7"
 msgstr ""
 
-#: configuredialog.cpp:410 configuredialog.cpp:411
+#: configuredialog.cpp:507 configuredialog.cpp:508
 msgid "Alterations"
 msgstr ""
 
@@ -1704,67 +1799,67 @@ msgstr "Välj stämma"
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Välj stämma:</center>"
 
-#: mainframewidget.cpp:5335 mainframewidget.cpp:5477
+#: mainframewidget.cpp:5342 mainframewidget.cpp:5484
 msgid "Error writing file \"%1\"."
 msgstr "Fel vid skrivning till fil \"%1\"."
 
-#: mainframewidget.cpp:5336
+#: mainframewidget.cpp:5343
 msgid "Write TSE3"
 msgstr "Skriv TSE3"
 
-#: mainframewidget.cpp:5352
+#: mainframewidget.cpp:5359
 #, fuzzy
 msgid "This overrides the current staff! Continue?"
 msgstr "Detta ersätter den valda stämman! Fortsätt?"
 
-#: mainframewidget.cpp:5353
+#: mainframewidget.cpp:5360
 msgid "Import Recording"
 msgstr "Importera inspelning"
 
-#: mainframewidget.cpp:5354 rc.cpp:534
+#: mainframewidget.cpp:5361 rc.cpp:534
 #, no-c-format
 msgid "&Import Recording"
 msgstr "&Importera inspelning"
 
-#: mainframewidget.cpp:5396
+#: mainframewidget.cpp:5403
 #, fuzzy
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Detta tar bort den valda stämman! Är du säker?"
 
-#: mainframewidget.cpp:5397
+#: mainframewidget.cpp:5404
 #, fuzzy
 msgid "Confirmation"
 msgstr "Sånginformation"
 
-#: mainframewidget.cpp:5425
+#: mainframewidget.cpp:5432
 msgid "Error creating Score"
 msgstr "Fel vid skapande av partitur."
 
-#: mainframewidget.cpp:5426
+#: mainframewidget.cpp:5433
 msgid "Creating Score"
 msgstr "Skapar partitur"
 
-#: mainframewidget.cpp:5478 tse3handler.cpp:366
+#: mainframewidget.cpp:5485 tse3handler.cpp:366
 msgid "TSE3 MIDI out"
 msgstr "TSE3 MIDI ut"
 
-#: mainframewidget.cpp:5493 mainframewidget.cpp:5528
+#: mainframewidget.cpp:5500 mainframewidget.cpp:5535
 msgid "File read error \"%1\"."
 msgstr "Fel vid läsning av filen \"%1\". "
 
-#: mainframewidget.cpp:5494
+#: mainframewidget.cpp:5501
 msgid "TSE3 MIDI in"
 msgstr "TSE3 MIDI in"
 
-#: mainframewidget.cpp:5529
+#: mainframewidget.cpp:5536
 msgid "Read TSE3"
 msgstr "Läs TSE3"
 
-#: mainframewidget.cpp:5653
+#: mainframewidget.cpp:5660
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Filen \"%1\" finns redan! Skriv över?"
 
-#: mainframewidget.cpp:5654
+#: mainframewidget.cpp:5661
 msgid "File already exists"
 msgstr "Filen finns redan"
 
@@ -1897,10 +1992,6 @@ msgstr "MusiXTeX skapat, men det uppstod några problem."
 #: musixtex.cpp:1477
 msgid "Output from MusiXTeX-Cmd"
 msgstr ""
-
-#: noteedit_part.cpp:68
-msgid "NoteEdit"
-msgstr "Notredigerare"
 
 #: noteedit_part.cpp:75
 #, fuzzy
@@ -2116,9 +2207,9 @@ msgid "&MIDI format"
 msgstr "&MIDI-format"
 
 #: rc.cpp:129
-#, no-c-format
-msgid "MIDI information line:"
-msgstr "MIDI-informationsrad:"
+#, fuzzy, no-c-format
+msgid "Additional MIDI parameters:"
+msgstr "Ytterligare engenskaper"
 
 #: rc.cpp:132
 #, no-c-format
@@ -2370,7 +2461,7 @@ msgstr "<center>System<br>per sida:"
 msgid "<center>Number<br>of pages:"
 msgstr "<center>Antal<br>sidor:"
 
-#: rc.cpp:309 rc.cpp:360 rc.cpp:459 rc.cpp:666
+#: rc.cpp:309 rc.cpp:339 rc.cpp:459 rc.cpp:666
 #, fuzzy, no-c-format
 msgid "Alt+S"
 msgstr "altsaxofon"
@@ -2387,52 +2478,52 @@ msgstr "altsaxofon"
 
 #: rc.cpp:336
 #, no-c-format
-msgid "A6"
-msgstr ""
-
-#: rc.cpp:339
-#, no-c-format
-msgid "A5"
+msgid "Use &standard page size"
 msgstr ""
 
 #: rc.cpp:342
 #, no-c-format
-msgid "A4"
+msgid "Use &custom page size"
 msgstr ""
 
-#: rc.cpp:345
+#: rc.cpp:345 rc.cpp:718
 #, no-c-format
-msgid "A3"
+msgid "Alt+C"
 msgstr ""
 
 #: rc.cpp:348
 #, no-c-format
-msgid "Legal"
+msgid "A6"
 msgstr ""
 
 #: rc.cpp:351
 #, no-c-format
-msgid "Letter"
+msgid "A5"
 msgstr ""
 
 #: rc.cpp:354
 #, no-c-format
-msgid "Tabloid"
+msgid "A4"
 msgstr ""
 
 #: rc.cpp:357
 #, no-c-format
-msgid "Use &standard page size"
+msgid "A3"
+msgstr ""
+
+#: rc.cpp:360
+#, no-c-format
+msgid "US Legal"
 msgstr ""
 
 #: rc.cpp:363
 #, no-c-format
-msgid "Use &custom page size"
+msgid "US Letter"
 msgstr ""
 
-#: rc.cpp:366 rc.cpp:718
+#: rc.cpp:366
 #, no-c-format
-msgid "Alt+C"
+msgid "Tabloid"
 msgstr ""
 
 #: rc.cpp:369
@@ -2569,11 +2660,6 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid "Character encoding:"
 msgstr "Påbörja in&spelning"
-
-#: rc.cpp:462
-#, no-c-format
-msgid "MusicXML"
-msgstr ""
 
 #: rc.cpp:465
 #, no-c-format
@@ -3715,11 +3801,11 @@ msgstr "applåder"
 msgid "Gun Shot"
 msgstr "gevärsskott"
 
-#: resource.cpp:554
+#: resource.cpp:567
 msgid "Details:"
 msgstr "Detaljer:"
 
-#: resource.cpp:605
+#: resource.cpp:618
 msgid ""
 "<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%"
 "1\"<br>Error Code is: %2</i><br><br>The program must be interrupted.<br>"
@@ -3727,7 +3813,7 @@ msgstr ""
 "<b>Ett internt fel inträffade någonstans.<br><br></b>Meddelandet är:<br> <i>"
 "\"%1\"<br>Felkoden är: %2</i><br><br>Programmet måste avbrytas.<br>"
 
-#: resource.cpp:609
+#: resource.cpp:622
 msgid "Internal error"
 msgstr "Internt fel"
 
@@ -3788,16 +3874,18 @@ msgid "This deletes voice %1! Are you sure?"
 msgstr "Detta tar bort stämma %1! Är du säker?"
 
 #: staff.cpp:606
-msgid "The destination staff has less voices than source staff"
+#, fuzzy
+msgid ""
+"Unable to paste! The destination staff has less voices than the source staff."
 msgstr "Målnotraden har färre stämmor än källnotraden"
 
 #: staff.cpp:631
 msgid ""
-"You paste a first voice to no-first voice! This deletes all non-first-voice "
-"elements!"
+"You are going to copy elements from the first voice and paste them to the "
+"non-first voice!\n"
+"Special elements that can only be expressed in the first voice are not going "
+"to be copied!"
 msgstr ""
-"Klistra en förstastämma till en ickeförstastämma: Detta tar bort alla "
-"ickeförstastämoelement!"
 
 #: staffPropFrm.cpp:24 uiconnect.cpp:654
 msgid "%1. %2"
@@ -4576,6 +4664,20 @@ msgstr ""
 #, fuzzy
 msgid "Chord constructor"
 msgstr "Partiturstyrning"
+
+#~ msgid ""
+#~ "You paste a first voice to no-first voice! This deletes all non-first-"
+#~ "voice elements!"
+#~ msgstr ""
+#~ "Klistra en förstastämma till en ickeförstastämma: Detta tar bort alla "
+#~ "ickeförstastämoelement!"
+
+#, fuzzy
+#~ msgid "evince"
+#~ msgstr "Enhet:"
+
+#~ msgid "MIDI information line:"
+#~ msgstr "MIDI-informationsrad:"
 
 #, fuzzy
 #~ msgid "Paper geometry"

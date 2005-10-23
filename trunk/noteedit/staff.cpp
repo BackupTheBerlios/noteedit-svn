@@ -626,7 +626,7 @@ void NStaff::pasteAtPosition(int xpos, NStaff *from) {
 		else {
 			srcVoice = from->getActualVoice(); 
 			if (!actualVoice_->isFirstVoice() && srcVoice->isFirstVoice()) {
-				KMessageBox::warning
+				KMessageBox::information
 					(0,
 					 i18n("You are going to copy elements from the first voice and paste them to the non-first voice!\nSpecial elements that can only be expressed in the first voice are not going to be copied!"),
 					 kapp->makeStdCaption("Paste")

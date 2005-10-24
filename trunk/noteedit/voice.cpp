@@ -70,7 +70,6 @@ int NVoice::redocounter_;
 
 NVoice::NVoice(NStaff *staff, NMainFrameWidget *mainWidget, bool isFirstVoice) :
 wordPattern1_("[^ \r\n\t][^ \r\n\t]*"), wordPattern2_("<[^>\r\n\t]*>"), escapedApostroph_("\\") {
-
 	int i;
 	mainWidget_ = mainWidget;
 	firstVoice_ = isFirstVoice;
@@ -595,10 +594,11 @@ void NVoice::setSlured() {
 	slured_chord->setSlured(true, partner);
 }
 
-void NVoice::reconnectBeames() {
+/* Rebuild the beam. Usually called from the last-beamed element (= musElementList_.current()).
+   uint neededNumber - a number of notes under the beam that have to match. Otherwise the beam is not created. The number can be ommitted, when we don't need a strict number of notes under the beam. */
+void NVoice::reconnectBeames(uint neededNumber) {
 	int oldidx;
 	NMusElement *ac_elem;
-	NChord *chord;
 	QPtrList<NChord> *beamlist = new QPtrList<NChord>();
 
 	oldidx = musElementList_.at();
@@ -607,20 +607,27 @@ void NVoice::reconnectBeames() {
 		NResource::abort("reconnectBeames: internal error");
 	}
 	ac_elem->calculateDimensionsAndPixmaps();
-	chord = (NChord *) ac_elem;
-	beamlist->append((NChord *) ac_elem);
-	ac_elem = musElementList_.prev();
-	while (ac_elem && ac_elem->playable() && (ac_elem->playable()->hasProperty( PROP_BEAMED ) ) && !chord->lastBeamed()) {
-		if (ac_elem->getType() & BAR_SYMS) {
-			ac_elem = musElementList_.prev();
-			continue;
-		}
-		ac_elem->calculateDimensionsAndPixmaps();
-		beamlist->insert(0, (NChord *) ac_elem);
-		ac_elem = musElementList_.prev();
-	}
-	chord->computeBeames(beamlist, stemPolicy_);
+	beamlist->append(ac_elem->chord());
+	
+	/* Add playable elements to the beamlist */
+	for (ac_elem = musElementList_.prev();
+	     ac_elem && ac_elem->playable() && ac_elem->playable()->hasProperty(PROP_BEAMED) && !ac_elem->chord()->lastBeamed();
+	     ac_elem = musElementList_.prev())
+		beamlist->insert(0, ac_elem->chord());
+	
 	if (oldidx >= 0) musElementList_.at(oldidx);
+
+	/* Exit immediately, if the neededNumber is >= 0 and the number doesn't match with the actual count.
+	   Break their beam and delete beamlist. */
+	if ((neededNumber) && (beamlist->count() != neededNumber)) {
+		for (beamlist->first(); beamlist->at() != -1; beamlist->next())
+			beamlist->current()->resetBeamFlags();
+		delete beamlist;
+		return;
+	}
+	/* Otherwise, assign the values to all members under the beam. */
+	for (beamlist->first(); beamlist->at() != -1; beamlist->next())
+		ac_elem->chord()->computeBeames(beamlist, stemPolicy_);	
 }
 
 void NVoice::reconnectTuplets() {
@@ -1004,6 +1011,13 @@ bool NVoice::beginsWithGrace() {
 	return false;
 }
 	
+/* Paste the selection at xpos coordinates.
+   int xpos - X coordinates in base units
+   QPtrList *clipboard - the list of items being copied
+   bool complete - copy special elements as well (barlines, arb. text etc.), used when copying from 1st -> 1st voice!
+   int *part_in_current measure ?
+   int *dest_midi_time ?
+   int *countof128th ? */
 void NVoice::pasteAtPosition(int xpos, QPtrList<NMusElement> *clipboard, bool complete, int *part_in_current_measure, int *dest_midi_time, int *countof128th) {
 	int idx, startidx, i, num = 0;
 	bool found;
@@ -1022,6 +1036,8 @@ void NVoice::pasteAtPosition(int xpos, QPtrList<NMusElement> *clipboard, bool co
 		currentElement_ = 0;
 	}
 	idx = searchPositionAndUpdateSigns(xpos, &ac_elem, &found, &elem_before, countof128th, 0, 0, &lastbartime);
+	
+	/* If beam or tuplet exists where pasting to, break it. */
 	if (found && elem_before && elem_before->playable() && ac_elem->playable() ) {
 		if (elem_before->playable()->hasProperty( PROP_BEAMED ) && (ac_elem->playable()->hasProperty(PROP_BEAMED))) {
 			if (((NChord *) elem_before)->getBeamList() == ((NChord *) ac_elem)->getBeamList()) {
@@ -1056,8 +1072,11 @@ void NVoice::pasteAtPosition(int xpos, QPtrList<NMusElement> *clipboard, bool co
 			*part_in_current_measure = musElementList_.getLast()->midiTime_ +  musElementList_.getLast()->getMidiLength() - lastbartime;
 		}
 	}
+	
+	/* - Begin cloning - */
 	clonelist = new QPtrList<NMusElement>();
 	for (ac_elem = clipboard->first(); ac_elem; ac_elem = clipboard->next()) {
+		/* Skip the special elements if pasting to non-first voice */
 		if (!complete) {
 			switch (ac_elem->getType()) {
 				case T_CHORD: 
@@ -1066,16 +1085,27 @@ void NVoice::pasteAtPosition(int xpos, QPtrList<NMusElement> *clipboard, bool co
 					 break;
 			}
 		}
-					      
+		
 		num++;
 		clone_elem = ac_elem->clone();
+		
+		/* Clean up lyrics */
 		if (!complete && ac_elem->getType() == T_CHORD) {
 			for (i = 0; i < NUM_LYRICS; ((NChord *) clone_elem)->deleteLyrics(i++));
 		}
+		
 		clone_elem->setStaffProps(&(theStaff_->staff_props_));
 		clone_elem->setMainProps(main_props_);
-		if (clone_elem->getType() == T_REST) ((NRest *) clone_elem)->setVoiceOffs(&yRestOffs_);
+		if (clone_elem->getType() == T_REST)
+			clone_elem->rest()->setVoiceOffs(&yRestOffs_);
+		
+		/* Clear the pointer to beamList until reconnectBeames() or resetBeamFlags() is called */		
+		if (clone_elem->getType() == T_CHORD)
+			clone_elem->chord()->setBeamList(0);
+		
 		clone_elem->setActual(false);
+		
+		/* Insert the cloned element into the main MusElement list */
 		if (found) {
 			musElementList_.insert(idx, clone_elem);
 			idx++;
@@ -1083,70 +1113,71 @@ void NVoice::pasteAtPosition(int xpos, QPtrList<NMusElement> *clipboard, bool co
 		else {
 			musElementList_.append(clone_elem);
 		}
+		
 		currentElement_ = clone_elem;
-		clonelist->append(clone_elem);
+		clonelist->append(clone_elem); /* Append the new cloned element to the temp clone list */
+	
 		switch (clone_elem->getType()) {
 			case T_KEYSIG: ((NKeySig *) clone_elem)->setClef(&theStaff_->actualClef_);
-					break;
-			case T_CHORD: chord = (NChord *) ac_elem;
-				     if (chord->hasProperty ( PROP_SLURED ) ) {
+				break;
+			case T_CHORD:
+				chord = ac_elem->chord();
+				if (chord->hasProperty ( PROP_SLURED ) ) {
 					lastSluredClones.insert(0, (NChord *) clone_elem);
-			             }
-				     if ((chord->hasProperty ( PROP_PART_OF_SLUR ) )) {
-						if (lastSluredClones.isEmpty()) {
-							chord->resetSlurBackward();
-						}
-						else {
-							lastSluredClones.first()->setSlured(true, (NChord *) clone_elem);
-							lastSluredClones.remove();
-						}
-				     }
-				     reconnectCopiedTies((NChord *) clone_elem);
-				     if ( ((NChord *)clone_elem) ->lastBeamed()) {
-				     		reconnectBeames();
-				     }
+				}
+				if ((chord->hasProperty ( PROP_PART_OF_SLUR ) )) {
+					if (lastSluredClones.isEmpty()) {
+						chord->resetSlurBackward();
+					}
+					else {
+						lastSluredClones.first()->setSlured(true, (NChord *) clone_elem);
+						lastSluredClones.remove();
+					}
+				}
+				reconnectCopiedTies(clone_elem->chord());
+				if (clone_elem->chord()->lastBeamed())
+					reconnectBeames(ac_elem->chord()->getBeamList()->count());
 			case T_REST:
-				     if (clone_elem->playable()->hasProperty( PROP_LAST_TUPLET ) ) {
-						if (checkTuplets(clipboard, ac_elem->playable()->getTupletList())) {
-							reconnectTuplets();
-						}
-#ifdef AAA /* see below! */
-						else {
-							breakCopiedTuplets();
-						}
-#endif
-				     }
-				     break;
+				if (clone_elem->playable()->hasProperty( PROP_LAST_TUPLET ) ) {
+					if (checkTuplets(clipboard, ac_elem->playable()->getTupletList())) {
+						reconnectTuplets();
+					}
+				}
+				break;
 		}
 	}
+
+	/* Break cloned beam and/or tuplet, if the whole group of notes under it isn't present. */
 	for (clone_elem = clonelist->first(); clone_elem; clone_elem = clonelist->next()) {
 		switch (clone_elem->getType()) {
-			case T_CHORD: if (clone_elem->chord()->hasProperty( PROP_BEAMED ) ) {
-					chord = (NChord *) clone_elem;
-					beamlist = chord->getBeamList();
-					if (beamlist->count() < 2 || !lastChordContained(clonelist, beamlist)) {
-						chord->resetBeamFlag();
-					}
-				     }
- 				     clone_elem->chord()->trill_ = clone_elem->chord()->dynamic_ = 0;
+			case T_CHORD:
+				/* Clean the beam params if the reconnectBeames() method wasn't able to create beamList for the element (ie. the pasted elements weren't beamed). */
+				if (clone_elem->chord()->hasProperty(PROP_BEAMED) &&
+				    !clone_elem->chord()->getBeamList())
+					clone_elem->chord()->resetBeamFlags();
+				
+				clone_elem->chord()->trill_ = clone_elem->chord()->dynamic_ = 0;
+				
+				chord->calculateDimensionsAndPixmaps();
 			case T_REST:
-				    if (clone_elem->playable()->hasProperty( PROP_TUPLET ) ) {
+				if (clone_elem->playable()->hasProperty( PROP_TUPLET ) ) {
 					if (!allElemsContained(clonelist, clone_elem->playable()->getTupletList())) {
 						clone_elem->playable()->resetTupletFlag();
 					}
-				    }
-				    break;
+				}
+				break;
 		}
 	}
 	for (chord = lastSluredClones.first(); chord; chord = lastSluredClones.next()) {
 		chord->resetSlurForward();
 	}
-		
+	
 	createUndoElement(startidx, 0, clonelist->count());
 	delete clonelist;
 }
 
 
+/* Is this really needed? New function selectNearestMidiEvent() or similar should replace this IMO -Matevz */
 void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128th, QPtrList<NMusElement> *clipboard) {
 	int idx, startidx, num = 0;
 	bool found;
@@ -1317,7 +1348,7 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 					chord = (NChord *) clone_elem;
 					beamlist = chord->getBeamList();
 					if (beamlist->count() < 2 || !lastChordContained(clonelist, beamlist)) {
-						chord->resetBeamFlag();
+						chord->resetBeamFlags();
 					}
 				     }
 			case T_REST:
@@ -1576,6 +1607,7 @@ void NVoice::breakBeames() {
 	chord->breakBeames();
 }
 
+/* Needed by pasteAtMidiTime() */
 bool NVoice::lastChordContained(QPtrList<NMusElement> *clonelist, QPtrList<NChord> *beamlist) {
 	int oldidx = clonelist->at();
 	NChord *lastChord = beamlist->last();
@@ -1596,12 +1628,21 @@ bool NVoice::lastChordContained(QPtrList<NMusElement> *clonelist, QPtrList<NChor
 	return false;
 }
 
+/* Returns true, if all elements under the tuplet are contained in clonelist */
 bool NVoice::allElemsContained(QPtrList<NMusElement> *clonelist, QPtrList<NPlayable> *tupletlist) {
 	NMusElement *elem;
+	int oldidx = clonelist->at();
 
-	for (elem = tupletlist->first(); elem; elem = tupletlist->next()) {
-		if (clonelist->find(elem) < 0) return false;
-	}
+	for (elem = tupletlist->first(); elem; elem = tupletlist->next())
+		if (clonelist->find(elem) < 0) {
+			if (oldidx >= 0)
+				clonelist->at(oldidx);
+			return false;
+		}
+	
+	if (oldidx >= 0)
+		clonelist->at(oldidx);
+	
 	return true;
 }
 
@@ -1613,15 +1654,15 @@ bool NVoice::lastElemContained(QPtrList<NMusElement> *clonelist, QPtrList<NPlaya
 	for (elem = clonelist->first(); elem; elem = clonelist->next()) {
 		if (elem->getType() != T_CHORD && elem->getType() != T_REST) continue;
 		if (elem == lastelem) {
-			if (oldidx >= 0) {
+			if (oldidx >= 0)
 				clonelist->at(oldidx);
-			}
 			return true;
 		}
 	}
-	if (oldidx >= 0) {
+	
+	if (oldidx >= 0)
 		clonelist->at(oldidx);
-	}
+	
 	return false;
 }
 
@@ -1863,20 +1904,19 @@ void NVoice::setBeamed() {
 	found = false;
 	acc_elem = musElementList_.at(x0);
 	chordlist = new QPtrList<NChord>();
+	
+	/* Only beamable notes (notes shorter than quarter) are added to the beamlist */
 	while (!found && acc_elem != 0 && idx <= x1) {
-		if (acc_elem->getType() == T_CHORD) {
-			if (acc_elem->getSubType() < QUARTER_LENGTH && !(acc_elem->chord()->hasProperty( PROP_BEAMED ))) {
-				chord = (NChord *) acc_elem;
-				chordlist->append(chord);
-				acc_elem = musElementList_.next();
-				idx = musElementList_.at();
-				count = 1;
-				found = true;
-			}
-			else {
-				acc_elem = musElementList_.next();
-				idx = musElementList_.at();
-			}
+		if ( acc_elem->getType() == T_CHORD &&
+		     acc_elem->getSubType() < QUARTER_LENGTH &&
+		     !(acc_elem->chord()->hasProperty( PROP_BEAMED )) )
+		{
+			chord = (NChord *) acc_elem;
+			chordlist->append(chord);
+			acc_elem = musElementList_.next();
+			idx = musElementList_.at();
+			count = 1;
+			found = true;
 		}
 		else {
 			acc_elem = musElementList_.next();

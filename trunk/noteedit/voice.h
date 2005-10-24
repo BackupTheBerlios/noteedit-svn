@@ -356,7 +356,7 @@ class NVoice {
 		void combineChords(int firstIdx, int lastIdx);
 
 /*----------------------- dealing with beams -------------------------------------*/
-		void reconnectBeames();
+		void reconnectBeames(uint neededNumber = 0);
 		bool beameEndRequired(QPtrList<NChord> *beamlist_so_far, NTimeSig *timesig, int beats);
 /*----------------------- dealing with tuplets -------------------------------------*/
 		void reconnectTuplets();

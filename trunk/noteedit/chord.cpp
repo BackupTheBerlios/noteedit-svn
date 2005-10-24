@@ -623,6 +623,8 @@ void NChord::computeBeames(QPtrList<NChord> *beamList, int stemPolicy) {
 	int numStemUp = 0, numStemDown = 0;
 	bool forceStemUp;
 
+	if (beamList->count() < 2) return;
+	
 	computeLineParams(beamList, &n, &m);
 	for (chord = beamList->first(); chord; chord = beamList->next()) {
 		nn = (double) chord->getTopY()->y() - m * (double) chord->getTopY()->x();

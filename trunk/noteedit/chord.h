@@ -95,7 +95,6 @@ class NChord: public NPlayable {
 		bool setActualNote(int line);
 		bool equalTiedChord(NChord *chord2);
 		virtual void setBeamFlag() { addProperty( PROP_BEAMED ); nextBeamedChord_ = (NChord *) 1;}
-		void resetBeamFlag() {removeProperty( PROP_BEAMED ); nextBeamedChord_ = 0; beamList_ = 0;}
 		void computeBeames(int stemPolicy);
 		void setStemUp(bool stem_up);
 		int getGraceMidiStartTime() { return u1_.graceNoteStartTime_;}
@@ -126,7 +125,7 @@ class NChord: public NPlayable {
 		void resetBeamFlags();
 		virtual int computeMidiLength() const;
 		QPtrList<NChord> *getBeamList() { return beamList_;}
-		void changeBeamList(QPtrList<NChord> *blist) {beamList_ = blist;}
+		void setBeamList(QPtrList<NChord> *beamList) {beamList_ = beamList;}
 		void checkAcc();
 		void accumulateAccidentals(NKeySig *key);
 		virtual char getNumNotes() {return numTupNotes_;}

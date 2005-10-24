@@ -64,6 +64,7 @@
 #include "musixtex.h"
 #include "pmxexport.h"
 #include "lilyexport.h"
+#include "musicxmlexport.h"
 #include "dbufferwidget.h"
 #include "numberdisplay.h"
 //#include "clefdialog.h"
@@ -227,12 +228,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	KStdAction::open( this, SLOT(fileOpen()), actionCollection() );
 	KStdAction::openNew( this, SLOT(newPaper()), actionCollection() );
 	KStdAction::save( this, SLOT(fileSave()), actionCollection() );
-	KStdAction::saveAs( this, SLOT(fileSaveAs()), actionCollection() );
-  
-#ifdef WITH_DIRECT_PRINTING
-	KStdAction::print( this, SLOT(filePrintNoPreview()), actionCollection());     // Jorge Windmeisser Oliver
-#endif
-  
+	KStdAction::saveAs( this, SLOT(fileSaveAs()), actionCollection() );  
 	KStdAction::undo( this, SLOT(undo()), actionCollection() );
 	KStdAction::redo( this, SLOT(redo()), actionCollection() );
 	KStdAction::zoomIn( this, SLOT(zoomIn()), actionCollection() );
@@ -249,6 +245,10 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	new KAction( i18n("Export M&usicXML..."), 0, this, SLOT(exportMusicXML()), actionCollection(), "export_musicxml" );
 	new KAction( i18n("&Output Params..."), 0, this, SLOT(setOutputParam()), actionCollection(), "set_params" );
 	lilyPort_ = new KAction( i18n("Export &LilyPond..."), 0, this, SLOT(exportLilyPond()), actionCollection(), "export_lily" );
+#ifdef WITH_DIRECT_PRINTING
+	new KAction( i18n("Print pre&view..."), "print_preview", 0, this, SLOT(filePrintPreview()), actionCollection(), "print_preview");
+	new KAction( i18n("&Print..."), "print", CTRL+Key_P, this, SLOT(filePrintNoPreview()), actionCollection(), "print" );
+#endif
 	new KAction( i18n("Score in&formation..."), "readme", 0, this, SLOT(scoreInfo()), actionCollection(), "score_information" );
 	new KAction( i18n("&Key configuration"), "configure_shortcuts", 0, this, SLOT(keyConfig()), actionCollection(), "keyconfig" );
 	new KAction( i18n("&Close"), "exit", 0, this, SLOT(quitDialog()), actionCollection(), "quit" );
@@ -517,6 +517,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	musicxmlFileReader_ = new MusicXMLParser();
 	lilyexport_ = new NLilyExport();
 	exportDialog_ = new exportFrm( this );
+	saveParametersDialog_ = new saveParametersFrm( this );
 	tupletDialog_ = new tupletDialogImpl( this );
 	setEdited(false);
 	NVoice::resetUndo();
@@ -808,6 +809,7 @@ NMainFrameWidget::~NMainFrameWidget() {
 	delete fhandler_;
 	delete lilyexport_;
 	delete exportDialog_;
+	delete saveParametersDialog_;
 	delete listDialog_;
 	delete zoomselect_;
 	delete multistaffDialog_;
@@ -3772,61 +3774,328 @@ void NMainFrameWidget::filePrintNoPreview() {
 #endif
 }         
 
+void NMainFrameWidget::setupPrinting(bool preview, IntPrinter *printer)
+{
+#ifdef WITH_DIRECT_PRINTING
+  // Print preview ?
+  if ( preview == false )
+  {
+    // Setup printer (shows the print dialog)
+    if( printer->setup(this) == false ) 
+      KMessageBox::error(0,i18n("Couldn't setup printer"), 
+                         kapp->makeStdCaption(i18n("???")));
+  }
+#endif
+}
+
 void NMainFrameWidget::filePrint(bool preview) {
 #ifdef WITH_DIRECT_PRINTING
-  
+
+    bool bCustomPrinting = false;
+
+    // No printing possible during playback
     if (playing_) return;
     
-    QString fabcm2ps=KStandardDirs::findExe("abcm2ps");
-    if (fabcm2ps.isNull()) {
-      KMessageBox::error (0,"abcm2ps was not found in your PATH, aborting", "Noteeditor");
+    // Find program used for printing (preview)
+    QString ftsetprog=KStandardDirs::findExe( NResource::typesettingProgramInvokation_ );
+    // Not found ? -> Tell the user and leave
+    if (ftsetprog.isNull()) {
+      KMessageBox::error (0, QString( NResource::typesettingProgramInvokation_ ) + " was not found in your PATH, aborting", "Noteeditor");
       return;
     }      
 
+    // Try to create a temporary file in /tmp
     QString tmpFile=tempnam("/tmp","note_");
     if (tmpFile.isNull()) {
       KMessageBox::error (0,"Couldn't access the /tmp directory, aborting", "Noteeditor");
       return;
     }
 
-    NABCExport abc;
-    KProcess abcm2ps;    
-    exportFrm *formBack=exportDialog_;
-    IntPrinter *printer=new IntPrinter(tmpFile);
-    KPrintDialogPage *abcExport=new ABCDialogPage(formBack,exportDialog_,formBack->tab_3,this);
-    printer->addDialogPage(abcExport);    
-
-    if (printer->setup(this)) {
-    abc.exportStaffs( tmpFile, &staffList_, voiceList_.count(), exportDialog_, this );
-    
-    abcm2ps << fabcm2ps << "-O=" << "-c" << tmpFile;
-    abcm2ps.start(KProcess::Block, KProcess::All);
-    unlink(tmpFile);
-    
-    if (abcm2ps.normalExit()) {     
-      QStringList printFile;
-      printFile << tmpFile+".ps";
-      printer->doPreparePrinting();       
-      if (!printer->printFiles(printFile,true))
-         {
-         unlink(tmpFile+".ps");
-         }
-      }
-    else {
-      KMessageBox::error(0,i18n("Couldn't translate into ABC format, aborting"), kapp->makeStdCaption(i18n("???")));
-      }
+    // Custom: Format decides which export filter to use
+    if( NResource::typesettingProgram_ == 4 )
+    {
+        bCustomPrinting = true;
+	// Find out which format was selected
+	switch( NResource::typesettingProgramFormat_ )
+	{
+	  case 0: // Midi
+	    NResource::typesettingProgram_ = 5; // This is now Midi
+	    break;
+	  case 1: // Lilypond
+	    NResource::typesettingProgram_ = 2;
+	    break;
+	  case 2: // MusicXML
+	    NResource::typesettingProgram_ = 6; // This is now MusicXML
+	    break;
+	  case 3: // ABC Music
+	    NResource::typesettingProgram_ = 0;
+	    break;
+	  case 4: // NoteEdit
+	    NResource::typesettingProgram_ = 7; // This is now NoteEdit
+	    break;
+	}
     }
-//    unlink(tmpFile+".ps");
+
+    // Get the right export
+    switch( NResource::typesettingProgram_ )
+    {
+      case 0: // ABC Music
+	printWithABC(preview, ftsetprog, tmpFile);
+        break;
+      case 1: // PMX
+	printWithPMX(preview, ftsetprog, tmpFile);
+        break;
+      case 2: // Lilypond
+	printWithLilypond(preview, ftsetprog, tmpFile);
+        break;
+      case 3: // MusiXTeX
+	printWithMusiXTeX(preview, ftsetprog, tmpFile);
+        break;
+      case 4: // Avoid warning
+	break;
+      case 5: // Midi
+	printWithMidi(preview, ftsetprog, tmpFile);
+        break;
+      case 6: // MusicXML
+	printWithMusicXML(preview, ftsetprog, tmpFile);
+        break;
+      case 7: default: // NoteEdit
+	printWithNative(preview, ftsetprog, tmpFile);
+        break;
+    }
 #endif /* WITH_DIRECT_PRINTING */
 }
 
+void NMainFrameWidget::printWithLilypond(bool preview, QString ftsetprg, QString tmpFile)
+{
+#ifdef WITH_DIRECT_PRINTING
+    // Init process, export form and printer
+    KProcess typesettingProgram;
+    IntPrinter *printer=new IntPrinter(tmpFile);
+    NLilyExport lily;
+    struct lily_options lilyOpts;
+    KPrintDialogPage *lilyExport=new PrintExportDialogPage(exportDialog_->FormatComboBox->text( LILY_PAGE ),this);
+    LilypondExportForm *form = new LilypondExportForm( lilyExport );
+    // Read options
+    exportDialog_->getLilyOptions( lilyOpts );
+    // Save options to new form
+    exportDialog_->setLilyOptions( *form, lilyOpts );
+    printer->addDialogPage(lilyExport);
+    setupPrinting(preview, printer);
+    delete form;
+    delete lilyExport;
+    delete printer;
+#endif
+}
+
+// 
+void NMainFrameWidget::filePrintPreviewFinished(KProcess *)
+{
+#ifdef WITH_DIRECT_PRINTING
+    printf("Finished.\n");
+    fflush(stdout);
+    // Remove preview file on exit of browser
+    unlink(previewFile_);
+#endif
+}
+
+void NMainFrameWidget::filePrintReceivedStdOut(KProcess *, char *buffer, int buflen)
+{
+#ifdef WITH_DIRECT_PRINTING
+  // Terminate manually
+  buffer[buflen] = 0;
+  printf("%s",buffer);
+  fflush(stdout);
+#endif
+}
+
+void NMainFrameWidget::filePrintReceivedStdErr(KProcess *, char *buffer, int buflen)
+{
+#ifdef WITH_DIRECT_PRINTING
+  // Terminate manually
+  buffer[buflen] = 0;
+  printf("%s",buffer);
+  fflush(stdout);
+#endif
+}
+
+void NMainFrameWidget::printWithABC(bool preview, QString ftsetprg, QString tmpFile)
+{
+#ifdef WITH_DIRECT_PRINTING
+    // Init process, export form and printer
+    KProcess typesettingProgram;
+    struct abc_options abcOpts;
+    IntPrinter *printer=new IntPrinter(tmpFile);
+    NABCExport abc;
+    QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
+
+    KPrintDialogPage *abcExport=new PrintExportDialogPage(exportDialog_->FormatComboBox->text( ABC_PAGE ),this);
+    ABCExportForm *form = new ABCExportForm( abcExport );
+    // Read options
+    exportDialog_->getABCOptions( abcOpts );
+    // Save options to new form
+    exportDialog_->setABCOptions( *form, abcOpts );
+    printer->addDialogPage(abcExport);
+    setupPrinting(preview, printer);
+    // Export file to abc
+    abc.exportStaffs( tmpFile, &staffList_, voiceList_.count(), exportDialog_, this );
+    
+    // Replace the %s String by tmpFile
+    printOptions.gres("%s",tmpFile);
+    // Earlier options: << "-O=" << "-c"
+    // Which file to use for printing ? Out.ps or tmpFile.ps (Option -O= !)
+    // We probably need to filter all -O options!
+    if( printOptions.find("-O=") == false && printOptions.find("-O =") == false)
+      printOptions.prepend("-O= ");
+    typesettingProgram << ftsetprg << printOptions;
+    connect( &typesettingProgram, SIGNAL( processExited (KProcess *) ), 
+             this, SLOT( filePrintPreviewFinished(KProcess *) ) );
+    // Output of convert process should be visible on console in case something fails
+    connect( &typesettingProgram, SIGNAL( receivedStdout(KProcess *, char *, int) ),
+	     this, SLOT( filePrintReceivedStdOut(KProcess *, char *, int) ) );
+    connect( &typesettingProgram, SIGNAL( receivedStderr(KProcess *, char *, int) ),
+	     this, SLOT( filePrintReceivedStdErr(KProcess *, char *, int) ) );
+    // Start converting exported file to a printable file
+    typesettingProgram.start(KProcess::Block, KProcess::All);
+    disconnect( &typesettingProgram, SIGNAL( processExited (KProcess *) ), 
+                this, SLOT( filePrintPreviewFinished(KProcess *) ) );
+    disconnect( &typesettingProgram, SIGNAL( receivedStdout(KProcess *, char *, int) ),
+	        this, SLOT( filePrintReceivedStdOut(KProcess *, char *, int) ) );
+    disconnect( &typesettingProgram, SIGNAL( receivedStderr(KProcess *, char *, int) ),
+	        this, SLOT( filePrintReceivedStdErr(KProcess *, char *, int) ) );
+    // Converting succesfull ?
+    if (typesettingProgram.normalExit()) 
+    {
+      // Preview the printable file ?
+      if( preview == true )
+      {
+	KProcess previewProgram;
+	QString fprevprog=KStandardDirs::findExe( NResource::previewProgramInvokation_ );
+	QStringList printpreviewOptions = QStringList::split( " ", QString(NResource::previewOptions_) );
+	// Preview File: abcm2ps strangely does not add the path to the created ps file
+        previewFile_ = QFileInfo( tmpFile ).fileName() + ".ps";
+	if( false == QFileInfo( previewFile_ ).exists() )
+          previewFile_ = tmpFile + ".ps";
+	if( false == QFileInfo( previewFile_ ).exists() )
+	{
+	  KMessageBox::sorry(this, i18n("File was not succesfully be converted."), 
+                             kapp->makeStdCaption(i18n("???")));
+          delete form;
+	  delete abcExport;
+	  delete printer;
+	  return;
+	}
+        // Replace the %s String by previewFile
+        printpreviewOptions.gres("%s",previewFile_);
+	previewProgram << fprevprog << printpreviewOptions;
+	// Signal exit of program so we can clean up
+	connect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
+                 this, SLOT( filePrintPreviewFinished(KProcess *) ) );
+	// Start preview
+	previewProgram.start(KProcess::DontCare, KProcess::All);
+	disconnect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
+                    this, SLOT( filePrintPreviewFinished(KProcess *) ) );
+      }
+      else
+      {
+        QString printFile;
+        printFile = QFileInfo( tmpFile ).fileName() + ".ps";
+	if( false == QFileInfo( printFile ).exists() )
+          printFile = tmpFile + ".ps";
+	if( false == QFileInfo( printFile ).exists() )
+	{
+	  KMessageBox::sorry(this, i18n("File was not succesfully be converted."), 
+                             kapp->makeStdCaption(i18n("???")));
+          delete form;
+	  delete abcExport;
+	  delete printer;
+	  return;
+	}
+        printer->doPreparePrinting();
+	// Print file
+        if (!printer->printFiles(printFile,true))
+          unlink(tmpFile+".ps");
+      }
+      unlink(tmpFile);
+    }
+    delete form;
+    delete abcExport;
+    delete printer;
+#endif
+}
+    
+void NMainFrameWidget::printWithPMX(bool preview, QString ftsetprg, QString tmpFile)
+{
+#ifdef WITH_DIRECT_PRINTING
+    // Init process, export form and printer
+    KProcess typesettingProgram;    
+    IntPrinter *printer=new IntPrinter(tmpFile);
+    NPmxExport pmx;
+    KPrintDialogPage *pmxExport=new PrintExportDialogPage(exportDialog_->FormatComboBox->text( PMX_PAGE ),this);
+    PMXExportForm *form;
+    printer->addDialogPage(pmxExport);
+    setupPrinting(preview, printer);
+#endif
+}
+    
+void NMainFrameWidget::printWithMusiXTeX(bool preview, QString ftsetprg, QString tmpFile)
+{
+#ifdef WITH_DIRECT_PRINTING
+    // Init process, export form and printer
+    KProcess typesettingProgram;    
+    exportFrm *formBack=exportDialog_;
+    MusiXTeXExportForm *form;
+    IntPrinter *printer=new IntPrinter(tmpFile);
+    NMusiXTeX musixtex;
+    KPrintDialogPage *musixtexExport=new PrintExportDialogPage(exportDialog_->FormatComboBox->text( MUSIX_PAGE ),this);
+    printer->addDialogPage(musixtexExport);
+    setupPrinting(preview, printer);
+#endif
+}
+    
+void NMainFrameWidget::printWithMusicXML(bool preview, QString ftsetprg, QString tmpFile)
+{
+#ifdef WITH_DIRECT_PRINTING
+    // Init process, export form and printer
+    KProcess typesettingProgram;    
+    exportFrm *formBack=exportDialog_;
+    MusicXMLExportForm *form;
+    IntPrinter *printer=new IntPrinter(tmpFile);
+    NMusicXMLExport musicxml;
+    // Currently we could omit to show the export dialog page as i
+    KPrintDialogPage *musicxmlExport=new PrintExportDialogPage(exportDialog_->FormatComboBox->text( MUSICXML_PAGE ),this);
+    printer->addDialogPage(musicxmlExport);
+    setupPrinting(preview, printer);
+#endif
+}
+    
+void NMainFrameWidget::printWithMidi(bool preview, QString ftsetprg, QString tmpFile)
+{
+#ifdef WITH_DIRECT_PRINTING
+    // Init process, export form and printer
+    KProcess typesettingProgram;    
+    exportFrm *formBack=exportDialog_;
+    MidiExportForm *form;
+    IntPrinter *printer=new IntPrinter(tmpFile);
+    NMidiExport midi;
+    KPrintDialogPage *midiExport=new PrintExportDialogPage(exportDialog_->FormatComboBox->text( MIDI_PAGE ),this);
+    printer->addDialogPage(midiExport);
+    setupPrinting(preview, printer);
+#endif
+}
+    
+void NMainFrameWidget::printWithNative(bool preview, QString ftsetprg, QString tmpFile)
+{
+#ifdef WITH_DIRECT_PRINTING
+#endif
+}
 
 void NMainFrameWidget::exportMidi() {	this->exportManager( MIDI_PAGE ); }
 void NMainFrameWidget::exportMusiXTeX() { this->exportManager( MUSIX_PAGE ); }
 void NMainFrameWidget::exportPMX() {	this->exportManager( PMX_PAGE ); }
 void NMainFrameWidget::exportABC() {	this->exportManager( ABC_PAGE ); }
 void NMainFrameWidget::exportLilyPond() {	this->exportManager( LILY_PAGE ); }
-void NMainFrameWidget::setOutputParam() {	this->exportManager( PARAM_PAGE ); }
+void NMainFrameWidget::setOutputParam() {	saveParametersDialog_->show(); }
 void NMainFrameWidget::exportMusicXML() {	this->exportManager( MUSICXML_PAGE ); }
 
 void NMainFrameWidget::importMidi() {
@@ -3844,7 +4113,8 @@ void NMainFrameWidget::importMidi() {
 void NMainFrameWidget::exportManager( int type ) {
     if (playing_) return;
 
-    exportDialog_->card->setCurrentPage( type );
+    exportDialog_->FormatComboBox->setCurrentItem( type );
+    exportDialog_->showExportForm( type );
     exportDialog_->initialize( &staffList_, &voiceList_, actualFname_);
     exportDialog_->boot();
 
@@ -3852,13 +4122,16 @@ void NMainFrameWidget::exportManager( int type ) {
 
 void NMainFrameWidget::exportMusixTeXImm() {
 	NResource::staffSelExport_ = 0;
-	exportDialog_->texWidth->setValue( 170 );
-	exportDialog_->texHeight->setValue( 250 );
-	exportDialog_->texTop->setValue( -24 );
-	exportDialog_->texLeft->setValue( -10 );
-	exportDialog_->texSize->setCurrentItem(1);
-	exportDialog_->texBar->setChecked(true);
-	exportDialog_->texTies->setChecked(false);
+	// RK: Several options have no default value!!
+	musixtex_options musixOpts;
+	musixOpts.width  = 170;
+	musixOpts.height = 250;
+	musixOpts.top    = -24;
+	musixOpts.left   = -10;
+	musixOpts.size   = 1;
+	musixOpts.bar    = true;
+	musixOpts.ties   = false;
+	exportDialog_->setMusiXTeXOptions(musixOpts);
         NMusiXTeX mt;
 	QRegExp notSuff(".not$");
 	QString fname(actualFname_);
@@ -3868,16 +4141,18 @@ void NMainFrameWidget::exportMusixTeXImm() {
 
 void NMainFrameWidget::exportLilyPondImm() {
 	NResource::staffSelExport_ = 0;
-	exportDialog_->lilyCWidth->setValue( 170 );
-	exportDialog_->lilyCHeight->setValue( 250 );
-	exportDialog_->lilyVoice->setChecked(false);
-	exportDialog_->lilyBeam->setChecked(false);
-	exportDialog_->lilyTies->setChecked(false);
-	exportDialog_->lilyTies->setChecked(false);
-	exportDialog_->lilyStem->setChecked(false);
-	exportDialog_->lilyDrumNotes->setChecked(false);
-	exportDialog_->lilyVol->setCurrentItem(1);
-	exportDialog_->lilyMeasure->setChecked(true);
+	struct lily_options lilyOpts;
+	// RK: Several options have no default value!!
+	lilyOpts.customWidth = 170;
+	lilyOpts.customHeight = 250;
+	lilyOpts.voice = false;
+	lilyOpts.beam = false;
+	lilyOpts.ties = false;
+	lilyOpts.stem = false;
+	lilyOpts.drumNotes = false;
+	lilyOpts.volume = 1;
+	lilyOpts.measure = true;
+	exportDialog_->setLilyOptions(lilyOpts);
 	NLilyExport le;
 	QRegExp notSuff(".not$");
 	QString fname(actualFname_);
@@ -3887,12 +4162,14 @@ void NMainFrameWidget::exportLilyPondImm() {
 
 void NMainFrameWidget::exportABCImm() {
 	NResource::staffSelExport_ = 0;
-	exportDialog_->ABCWidth->setValue( 210 );
-	exportDialog_->ABCHeight->setValue( 297 );
-	exportDialog_->ABCStaffSep->setValue(16);
-	exportDialog_->ABCExprAbove->setChecked(false);
-	exportDialog_->ABCscale->setValue(75);
-	exportDialog_->ABCMeasNumInBox->setChecked(false);
+	struct abc_options abcOpts;
+	abcOpts.width        = 210;
+	abcOpts.height       = 297;
+	abcOpts.staffSep     = 16;
+	abcOpts.exprAbove    = false;
+	abcOpts.scale        = 75;
+	abcOpts.measNumInBox = false;
+	exportDialog_->setABCOptions(abcOpts);
 	NABCExport abc;
 	QRegExp notSuff(".not$");
 	QString fname(actualFname_);
@@ -3975,7 +4252,7 @@ bool NMainFrameWidget::testEditiones() {
 }
 
 void NMainFrameWidget::keyConfig() {
-	KKeyDialog::configureKeys( keys_ );
+	KKeyDialog::configure( keys_, true, 0 );
 }
 
 
@@ -4004,7 +4281,7 @@ void NMainFrameWidget::quitDialog2() {
 	if (!testEditiones()) return;
 	
 	NResource::writeToolbarSettings(mainWindow->toolBarIterator());
-	NResource::defZoomval_ = zoomselect_->chooseZoomVal(main_props_.zoom * 200);
+	NResource::defZoomval_ = zoomselect_->chooseZoomVal((int)(main_props_.zoom * 200.0f+0.5f));
 	
 	if (NResource::windowList_.count() > 1) {
 		NResource::windowList_.removeRef(mainWindow);
@@ -4343,14 +4620,15 @@ void NMainFrameWidget::setTempTimesig(int num, int dom) {
 	tmpElem_ = tmpTimeSig_;
 	selectedSign_ = T_TIMESIG;
 }
-bool NMainFrameWidget::paramsEnabled() {return exportDialog_->paramsEnabled();}
-int NMainFrameWidget::getSaveWidth() {return exportDialog_->getSaveWidth();}
-bool NMainFrameWidget::withMeasureNums() {return exportDialog_->withMeasureNums();}
-int NMainFrameWidget::getSaveHeight() {return exportDialog_->getSaveHeight();}
-void NMainFrameWidget::setParamsEnabled(bool ok) {exportDialog_->setEnabled(ok);}
-void NMainFrameWidget::setSaveWidth(int width)  {exportDialog_->setSaveWidth(width);}
-void NMainFrameWidget::setSaveHeight(int height) {exportDialog_->setSaveHeight(height);}
-void NMainFrameWidget::setWithMeasureNums(bool with) {exportDialog_->setWithMeasureNums(with);}
+
+bool NMainFrameWidget::paramsEnabled() {return saveParametersDialog_->paramsEnabled();}
+int NMainFrameWidget::getSaveWidth() {return saveParametersDialog_->getSaveWidth();}
+bool NMainFrameWidget::withMeasureNums() {return saveParametersDialog_->withMeasureNums();}
+int NMainFrameWidget::getSaveHeight() {return saveParametersDialog_->getSaveHeight();}
+void NMainFrameWidget::setParamsEnabled(bool ok) {saveParametersDialog_->setEnabled(ok);}
+void NMainFrameWidget::setSaveWidth(int width)  {saveParametersDialog_->setSaveWidth(width);}
+void NMainFrameWidget::setSaveHeight(int height) {saveParametersDialog_->setSaveHeight(height);}
+void NMainFrameWidget::setWithMeasureNums(bool with) {saveParametersDialog_->setWithMeasureNums(with);}
 
 void NMainFrameWidget::newStaff() {
 	int staffYpos = 0;
@@ -5600,7 +5878,7 @@ void NMainFrameWidget::deleteElem(bool backspace) {
 			updateInterface(properties, -1);
 
 	computeMidiTimes(false);
-	if (!editiones_) setEdited(val != -1);
+	if (!editiones_) setEdited((int)val != -1);
 	reposit();
 	repaint();
 }
@@ -5679,56 +5957,29 @@ void NMainFrameWidget::showTipOfTheDay() {
 
 #ifdef WITH_DIRECT_PRINTING
 
-// Jorge Windmeisser Oliver
-
-ABCDialogPage::ABCDialogPage( exportFrm *formFrom, exportFrm *&formTo, QWidget *tab, QWidget *parent, const char *name )
+// RK: Completely simplified the dialog, layout cannot be done within this class
+PrintExportDialogPage::PrintExportDialogPage( QString title, QWidget *tab, QWidget *parent, const char *name )
  : KPrintDialogPage( parent, name )
- {
-//   mainScroller=new QScrollView(this);
-   doneReparenting=false;   
-#if QT_VERSION >= 300
-   position=formFrom->card->indexOf(tab);
-#else
-   // LVIFIX: Qt 2.3.1 does not provide QTabWidget::indexOf(), assume Qt 3.0 specific
-   position=0;
-#endif
-   title=formFrom->card->tabLabel(tab);
-   setTitle( title );
-   rep=QPoint(0,0);
-   copyFrom=formFrom;
-   copyTo=&formTo;
-   tab_=tab;
-   tab_->reparent(this,rep);
-//   mainScroller->addChild(tab_);
-   tab_->resize(tab->sizeHint());
-//   mainScroller->resize(this->size());
-//   this->resize(this->sizeHint());
- }
+{
+    setTitle( title );
+}
 
-ABCDialogPage::~ABCDialogPage()
- {
- if (!doneReparenting)
-    {
-    tab_->reparent(copyFrom->card,rep);
-    copyFrom->card->insertTab( tab_, title, position );         
-    }
- }
+PrintExportDialogPage::~PrintExportDialogPage()
+{
+}
 
-void ABCDialogPage::getOptions( QMap<QString,QString>& opts, bool incldef )
- {
- tab_->reparent(copyFrom->card,rep);
- copyFrom->card->insertTab( tab_, title, position ); 
- *copyTo=copyFrom;
- doneReparenting=true;
- }
+void PrintExportDialogPage::getOptions( QMap<QString,QString>& /*opts*/, bool /*incldef*/ )
+{
+}
 
- void ABCDialogPage::setOptions( const QMap<QString,QString>& opts )
- {
- }
+void PrintExportDialogPage::setOptions( const QMap<QString,QString>& /*opts*/ )
+{
+}
 
- bool ABCDialogPage::isValid( QString& msg)
- {
- }
+bool PrintExportDialogPage::isValid( QString& /*msg*/)
+{
+  return true;
+}
 
 #endif /* WITH_DIRECT_PRINTING */
 

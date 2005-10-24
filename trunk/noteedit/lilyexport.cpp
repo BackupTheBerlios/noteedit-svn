@@ -163,15 +163,17 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 	} else {
     	out_ << "\\version \"2.0\"" << endl << endl;        // Obsolete.
 	}
-	if (!exportDialog_->lilyVoice->isChecked()) {
+	// Read Lilypond options from form
+	exportDialog_->getLilyOptions( lilyOpts_ );
+	if (lilyOpts_.voice) {
 		if (NResource::lilyProperties_.lilyProperties) {
-			out_ << "\\include \"paper" << exportDialog_->lilyFont->currentText() << ".ly\"" << endl << endl;
+			out_ << "\\include \"paper" << lilyOpts_.font << ".ly\"" << endl << endl;
 		}
 		else {
-			out_ << "#(set-global-staff-size " << exportDialog_->lilyFont->currentText() <<')' << endl << endl;
+			out_ << "#(set-global-staff-size " << lilyOpts_.font <<')' << endl << endl;
 		}
 	}
-	if (exportDialog_->lilyDrumNotes->isChecked()) {
+	if (lilyOpts_.drumNotes) {
 		if (NResource::lilyProperties_.lilyVersion24) {
 			out_ << "bcr = { \\override Voice.NoteHead #'style = #'cross" << endl << '}' << endl;
 			out_ << "bdf = { \\override Voice.NoteHead #'style = #'default" << endl << '}' << endl;
@@ -292,7 +294,7 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 			} 
 			for (k = 0; k < str; k++) out_ << '\'';
 			out_ << " {" << endl << '\t';
-			if (exportDialog_->lilyBeam->isChecked()) {
+			if (lilyOpts_.beam) {
 				if (NResource::lilyProperties_.lilyProperties) {
 					out_ << "\\property Voice.autoBeaming = ##f" << endl << '\t';
 				}
@@ -300,7 +302,7 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 					out_ << "\\set Voice.autoBeaming = ##f" << endl << '\t';
 				}
 			}
-			if (exportDialog_->lilyTies->isChecked()) {
+			if (lilyOpts_.ties) {
 				if (NResource::lilyProperties_.lilyProperties) {
 					out_ << "\\property Thread.sparseTies = ##t" << endl << '\t';
 				}
@@ -360,7 +362,7 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 				} 
 				for (k = 0; k < str; k++) out_ << '\'';
                 out_ << " {" << endl << '\t';
-				if (!(exportDialog_->lilyStem->isChecked())) {
+				if (!(lilyOpts_.stem)) {
 					switch(j) {
 						case 0: out_ << "\\voiceOne "; break;
 						case 1: out_ << "\\voiceTwo "; break;
@@ -369,7 +371,7 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 					}
 				}
 				out_ <<  endl << '\t';
-				if (exportDialog_->lilyBeam->isChecked()) {
+				if (lilyOpts_.beam) {
 					if (NResource::lilyProperties_.lilyProperties) {
 						out_ << "\\property Voice.noAutoBeaming = ##t" << endl << '\t';
 					}
@@ -377,7 +379,7 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 						out_ << "\\set Voice.noAutoBeaming = ##t" << endl << '\t';
 					}
 				}
-				if (exportDialog_->lilyTies->isChecked()) {
+				if (lilyOpts_.ties) {
 					if (NResource::lilyProperties_.lilyProperties) {
 						out_ << "\\property Thread.sparseTies = ##t" << endl << '\t';
 					}
@@ -447,7 +449,7 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 	if (NResource::lilyProperties_.lilyVersion24)
 		buildScoreBlockAndFlush(0, NULL, "", stafflist, scoreBraceMasks, true);
 
-	if (!exportDialog_->lilyVoice->isChecked() && !NResource::lilyProperties_.lilyVersion24) {
+	if (!lilyOpts_.voice && !NResource::lilyProperties_.lilyVersion24) {
 		out_ << "\\score {" << endl;
 		out_ << "\t\\simultaneous {" << endl;
 		if (NResource::lilyProperties_.lilyProperties) {
@@ -598,23 +600,19 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 		/* export page size and orientation: */
 		out_ << "\t\\paper {" << endl;
 		/* custom page size */
-		if (exportDialog_->lilyCPage->isChecked()) {
-			if (sscanf(exportDialog_->lilyCWidth->text(), "%lf", &wh) != 1) {
-				wh = 250.0;
-			}
+		if (lilyOpts_.customPage) {
+		        wh = lilyOpts_.customWidth;
 	        out_ << "\t\tlinewidth = " << wh << " \\mm";
 			if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
 			out_ << endl;
-			if (sscanf(exportDialog_->lilyCHeight->text(), "%lf", &wh) != 1) {
-				wh = 170.0;
-			}
+		        wh = lilyOpts_.customHeight;
 	        out_ << "\t\ttextheight = " << wh << " \\mm";
 			if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
 			out_ << endl;
 		} else /* standard page size */
-		if (exportDialog_->lilySPage->isChecked()) {
+		if (lilyOpts_.standardPage) {
 			out_ << "\t\t#(set-paper-size \"";
-			switch (exportDialog_->lilySPageSize->currentItem()) {
+			switch (lilyOpts_.standardPageSize) {
 				case 0: out_ << "a6"; break;
 				case 1: out_ << "a5"; break;
 				case 2: out_ << "a4"; break;
@@ -629,8 +627,8 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 		}
 		
 		/* orientation */
-		if ( (exportDialog_->lilyCPage->isChecked() && exportDialog_->lilyCLand->isChecked()) 
-		    || (exportDialog_->lilySPage->isChecked() && exportDialog_->lilySLand->isChecked()) ) {
+		if ( (lilyOpts_.customPage && lilyOpts_.customLand ) 
+		    || (lilyOpts_.standardPage && lilyOpts_.standardLand) ) {
 			out_ << "\t\torientation = \"landscape\"";
 			if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
 			out_ << endl;
@@ -907,7 +905,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						}
 					}
 				     }
-				     if (/*hasContraryStems(elem->getNoteList()) && */ exportDialog_->lilyStem->isChecked()) {
+				     if (/*hasContraryStems(elem->getNoteList()) && */ lilyOpts_.stem) {
 					if (chord->hasProperty( PROP_STEM_UP ) ) {
 						if (actualStemPolicy_ != STEM_DIR_UP) {
 #ifndef WITH_OLDLILY
@@ -989,7 +987,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						}
 						out_ << "} ";
 					}
-					else if (!NResource::lilyProperties_.lilyVersion2 && exportDialog_->lilyBeam->isChecked()) {
+					else if (!NResource::lilyProperties_.lilyVersion2 && lilyOpts_.beam) {
 						if ((chord->hasProperty( PROP_BEAMED ) ) && !inbeam) {
 							out_ << "[ "; inbeam = true;
 				     		}
@@ -1027,12 +1025,12 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 							out_ << ") ";
 					        }
 					     }
-					     if (exportDialog_->lilyDrumNotes->isChecked() && !drum_problem_written_ && (note->properties & BODY_MASK)) {
+					     if (lilyOpts_.drumNotes && !drum_problem_written_ && (note->properties & BODY_MASK)) {
 						drum_problem_written_ = true;
 						bad = new badmeasure(LILY_ERR_DRUM_STAFF, staff_nr +1, 3 /* dummy */, total / 3, countof128th_);
 						badlist_.append(bad);
 					     }
-					     if (drumNotesChange && exportDialog_->lilyDrumNotes->isChecked() && noteBody_ != (note->properties & BODY_MASK)) {
+					     if (drumNotesChange && lilyOpts_.drumNotes && noteBody_ != (note->properties & BODY_MASK)) {
 						switch (noteBody_ = (note->properties & BODY_MASK)) {
 							case PROP_BODY_CROSS:
 							case PROP_BODY_CROSS2:
@@ -1150,7 +1148,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						}
 						if (!NResource::lilyProperties_.lilyVersion2) {
 							if (pendingVolSig) {
-								switch (exportDialog_->lilyVol->currentItem()) {
+								switch (lilyOpts_.volume) {
 									case 1: out_ << '^' << pendingVolSig; break;
 									case 2: out_  << pendingVolSig; break;
 								}
@@ -1237,7 +1235,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					  		out_ << " ( ";
 					}
 					if (pendingVolSig) {
-						switch (exportDialog_->lilyVol->currentItem()) {
+						switch (lilyOpts_.volume) {
 							case 1: out_ << '^' << pendingVolSig; break;
 							case 2: out_  << pendingVolSig; break;
 						}
@@ -1295,7 +1293,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 							out_ << ") ";
 						}
 					}
-					if (exportDialog_->lilyBeam->isChecked() || inLongacciaccatura) {
+					if (lilyOpts_.beam || inLongacciaccatura) {
 						if ((chord->hasProperty( PROP_BEAMED ) ) && !inbeam) {
 							out_ << "[ "; inbeam = true;
 						}
@@ -1325,7 +1323,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					octaviation = 0;
 					out_ << "#(set-octavation 0) ";
 				     }
-				     if (exportDialog_->lilyBeam->isChecked() || inLongacciaccatura) {
+				     if (lilyOpts_.beam || inLongacciaccatura) {
 				     	if (chord->lastBeamed()) {
 						out_ << "] "; inbeam = false;
 				     	}
@@ -1401,7 +1399,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					badlist_.append(bad);
 				     }
 				     if (pendingVolSig) {
-						switch (exportDialog_->lilyVol->currentItem()) {
+						switch (lilyOpts_.volume) {
 							case 1: out_ << '^' << pendingVolSig; break;
 							case 2: out_  << pendingVolSig; break;
 						}
@@ -1450,7 +1448,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     }
 				     if (!NResource::lilyProperties_.lilyVersion2) {
 					if (pendingVolSig) {
-						switch (exportDialog_->lilyVol->currentItem()) {
+						switch (lilyOpts_.volume) {
 							case 1: out_ << '^' << pendingVolSig; break;
 							case 2: out_  << pendingVolSig; break;
 						}
@@ -1664,8 +1662,8 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						lastBarPos = out_.tellp();
 						out_ << "| ";
 						prevElemIsBar = true;
-						if (exportDialog_->lilyMeasure->isChecked()) {
-							if (((++measure_counter) % exportDialog_->lilyMeasureVal->value()) == 0) {
+						if (lilyOpts_.measure) {
+							if (((++measure_counter) % lilyOpts_.measureVal) == 0) {
 								out_ << "\\break ";
 							 }
 						}
@@ -1704,8 +1702,8 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						lastBarPos = out_.tellp();
 						out_ << "\\bar \"||\" ";
 						prevElemIsBar = true;
-						if (exportDialog_->lilyMeasure->isChecked()) {
-							if (((++measure_counter) % exportDialog_->lilyMeasureVal->value()) == 0) {
+						if (lilyOpts_.measure) {
+							if (((++measure_counter) % lilyOpts_.measureVal) == 0) {
 								out_ << "\\break ";
 							 }
 						}
@@ -1764,8 +1762,8 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 							out_.seekp(lastBarPos);
 							out_ << "| " << endl;
 						}
-						if (exportDialog_->lilyMeasure->isChecked()) {
-							if (((++measure_counter) % exportDialog_->lilyMeasureVal->value()) == 0) {
+						if (lilyOpts_.measure) {
+							if (((++measure_counter) % lilyOpts_.measureVal) == 0) {
 								out_ << "\\break ";
 							 }
 						}
@@ -1806,8 +1804,8 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						barNr_ = ((NSign *) elem)->getBarNr();
 						AfterFirstBar = true;
 						lastLength_ = 1000; // invalidate
-						if (exportDialog_->lilyMeasure->isChecked()) {
-							if (((++measure_counter) % exportDialog_->lilyMeasureVal->value()) == 0) {
+						if (lilyOpts_.measure) {
+							if (((++measure_counter) % lilyOpts_.measureVal) == 0) {
 								out_ << "\\break ";
 							 }
 						}
@@ -1943,7 +1941,9 @@ void NLilyExport::writeEncodedAndReplaced(const QString s) {
  
 
 void NLilyExport::writeEncoded(const QString s) {
-	switch(exportDialog_->lilyOutputCoding->currentItem()) {
+	// Read Lilypond options from form
+	exportDialog_->getLilyOptions( lilyOpts_ );
+	switch(lilyOpts_.outputCoding) {
 	case 1: out_ << s.latin1() << ' ';
 		break;
 	case 2: out_ << s.unicode() << ' ';
@@ -2095,8 +2095,10 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 	static int ii, endDist;	// indices
 	static bool currentlyInGrandStaff, lyricsInGrandStaff;
 
+	// Read Lilypond options from form
+	exportDialog_->getLilyOptions( lilyOpts_ );
 	if (flush) {		// Flush, initialize for a next export and return.
-        	if (!exportDialog_->lilyVoice->isChecked()) {
+        	if (!lilyOpts_.voice) {
 			if (lyricsInGrandStaff) {
 				tmps.sprintf("2\\context { \\GrandStaff \\accepts Lyrics }\n");
 				scoreBlock.insert(scoreBlock.count()-2, new QString(tmps));
@@ -2141,10 +2143,10 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 		*/	
 		scoreBlock.append(new QString("0\\paper {\n"));
 		/* standard page size */
-		if (exportDialog_->lilySPage->isChecked()) {
+		if (lilyOpts_.standardPage) {
 			/* export standard paper size */
 			scoreBlock.append( new QString("1#(set-paper-size \""));
-			switch (exportDialog_->lilySPageSize->currentItem()) {
+			switch (lilyOpts_.standardPageSize) {
 				case 0: tmps.sprintf("0a6"); break;
 				case 1: tmps.sprintf("0a5"); break;
 				case 2: tmps.sprintf("0a4"); break;
@@ -2154,24 +2156,24 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 				case 6: tmps.sprintf("0tabloid"); break;
 			}
 			scoreBlock.append(new QString(tmps));
-			scoreBlock.append(new QString(exportDialog_->lilySLand->isChecked() ? "0\" 'landscape" : "0\""));
+			scoreBlock.append(new QString(lilyOpts_.standardLand ? "0\" 'landscape" : "0\""));
 			/* export orientation */
-//			if (exportDialog_->lilySLand->isChecked())
+//			if (lilyOpts_.standardLand)
 //				scoreBlock.append(new QString("0 'landscape"));
 			/* close the statement */
 			scoreBlock.append(new QString("0)\n"));
 		} else /* custom page size */
-		if (exportDialog_->lilyCPage->isChecked()) {
+		if (lilyOpts_.customPage) {
 			/* export width */
-			if (sscanf(exportDialog_->lilyCWidth->text(), "%lf", &wh) != 1) wh = 250.0;
+			wh = lilyOpts_.customWidth;
 			tmps.sprintf("1linewidth = %.3lf \\mm\n", wh);
 			scoreBlock.append( new QString(tmps));
 			/* export height */
-			if (sscanf(exportDialog_->lilyCHeight->text(), "%lf", &wh) != 1) wh = 170.0;
+			wh = lilyOpts_.customHeight;
 			tmps.sprintf("1textheight = %.3lf \\mm\n", wh );
 			scoreBlock.append( new QString(tmps));
 			/* export orientation*/
-			scoreBlock.append( new QString(exportDialog_->lilyCLand->isChecked() ? "1orientation = \"landscape\"\n" : "") );
+			scoreBlock.append( new QString(lilyOpts_.customLand ? "1orientation = \"landscape\"\n" : "") );
 		}
 		/* close \paper */
 		scoreBlock.append(new QString("0}\n"));

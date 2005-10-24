@@ -25,6 +25,10 @@
 #define MIDIEXPORT_H
 #include <stdio.h>
 
+struct midi_options
+{
+};
+
 class NVoice;
 class NTimeSig;
 
@@ -48,6 +52,7 @@ class NMidiExport {
 		void writeTempo(int time, unsigned int tempo);
 		void writeCtrlTrack(QPtrList<NVoice> *voilist, char *Title, char *miditext, NTimeSig *firstTsig, int keysig);
 		FILE *midiout_;
+		struct midi_options midiOpts_;
 };
 
 

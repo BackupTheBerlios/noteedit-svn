@@ -42,21 +42,17 @@
 #include <qtextview.h>
 #include <qlcdnumber.h> 
 #include <qradiobutton.h> 
+#include <qlayout.h>
 #if QT_VERSION >= 300
 #include <qlistview.h>
 #endif
-#include "uiconnect.h"
 #include "mainframewidget.h"
 #include "staff.h"
 #include "tse3handler.h"
-#include "musixtex.h"
 #include "rest.h"
 #include "notesel.h"
-#include "midiexport.h"
-#include "pmxexport.h"
-#include "abcexport.h"
 #include "filehandler.h"
-#include "lilyexport.h"
+#include "saveparametersform.h"
 #include "scaleedit_impl.h"
 #include "sign.h"
 #include "resource.h"
@@ -66,6 +62,7 @@
 #include "tse3handler.h"
 #endif
 #include "musicxmlexport.h"
+#include "uiconnect.h"
 
 
 /*-------------------------------- line sel ----------------------------------*/
@@ -101,36 +98,60 @@ int lineSelWg::getResult() {
 /*-------------------------------------------- exportForm ---------------------------------------*/
 
 exportFrm::exportFrm(NMainFrameWidget *mainWidget,  QWidget *parent ) : 
-	exportForm( parent, 0, false ) { // hint: false is only temporary at the modal position, it will be removed if the staff selection is reimplemented.
+	exportForm( parent, 0, false ) 
+{ // hint: false is only temporary at the modal position, it will be removed if the staff selection is reimplemented.
 	mainWidget_ = mainWidget;
+
+	// Create export forms
+        abcExportWidget_      = new ABCExportForm( this );
+	lilyExportWidget_     = new LilypondExportForm( this );
+	midiExportWidget_     = new MidiExportForm( this );
+	musixtexExportWidget_ = new MusiXTeXExportForm( this );
+	musicxmlExportWidget_ = new MusicXMLExportForm( this );
+	pmxExportWidget_      = new PMXExportForm( this );
+	exportFormLayout->removeItem( spacer32 );
+	iCurrentPage_ = LILY_PAGE;
+
 	this->be->setFocus();
-	this->pmxMeasure->setAll(1, 16, 4);
-	this->pmxNum->setAll(0, 100, 1);
-	this->pmxSystem->setAll(1, 100, 1);
+	pmxExportWidget_->pmxMeasure->setAll(1, 16, 4);
+	pmxExportWidget_->pmxNum->setAll(0, 100, 1);
+	pmxExportWidget_->pmxSystem->setAll(1, 100, 1);
 	if (NResource::musixScript_.isEmpty() || NResource::musixScript_.isNull()) {
-		this->musixtexcmd->setText("");
+		musixtexExportWidget_->musixtexcmd->setText("");
 	}
 	else {
-		this->musixtexcmd->setText(NResource::musixScript_);
+		musixtexExportWidget_->musixtexcmd->setText(NResource::musixScript_);
 	}
 	
 	/* LilyPond 2.6.x supports utf8 encoding. It should be set as default. */
 	if (NResource::lilyProperties_.lilyVersion26)
-		this->lilyOutputCoding->setCurrentItem(3);
+		lilyExportWidget_->lilyOutputCoding->setCurrentItem(3);
 		
 	/* LilyPond <2.2 doesn't support standard page sizes yet */
 	if (NResource::lilyProperties_.lilyProperties) {
-		this->lilyCPage->setChecked(true);
-		this->lilySPage->setEnabled(false);
-		this->lilySPageSize->setEnabled(false);
-		this->lilySLand->setEnabled(false);
+		lilyExportWidget_->lilyCPage->setChecked(true);
+		lilyExportWidget_->lilySPage->setEnabled(false);
+		lilyExportWidget_->lilySPageSize->setEnabled(false);
+		lilyExportWidget_->lilySLand->setEnabled(false);
 	}
 	
     staffDialog_ = new staffFrm( parent );
-    
-    }
+    // Connections to ui elements from lilypond export form
+    connect( lilyExportWidget_->lilyStaff, SIGNAL( clicked() ), this , SLOT( lilyStaffSig() ) );
+    connect( lilyExportWidget_->lilyCLand, SIGNAL( clicked() ), this, SLOT( lilyLandSlot() ) );
+    // Changing the format shows a new form
+    connect( FormatComboBox, SIGNAL( activated(int) ), this, SLOT( showExportForm( int ) ) );
+    // Connections to ui elements from musixtex export form
+    connect( musixtexExportWidget_->musixStaff, SIGNAL( clicked() ), this, SLOT( musixStaffSig() ) );
+    connect( musixtexExportWidget_->texMeasures_, SIGNAL( clicked() ), this, SLOT( texMeasures() ) );
+    connect( musixtexExportWidget_->texLandscape, SIGNAL( clicked() ), this, SLOT( musixLandSlot() ) );
+    // Connections to ui elements from pmx export form
+    connect( pmxExportWidget_->pmxLandscape, SIGNAL( clicked() ), this, SLOT( pmxLandSlot() ) );
+    connect( pmxExportWidget_->pmxStaff, SIGNAL( clicked() ), this, SLOT( pmxStaffSig() ) );
+}
 
-void exportFrm::boot() {
+void exportFrm::boot() 
+{
 	if( staffList_->isEmpty() ) {
 		KMessageBox::sorry
 			(0,
@@ -140,18 +161,20 @@ void exportFrm::boot() {
 		return;
 	}
   this->show();
-
+  // Hide all forms
+  abcExportWidget_->hide();
+  lilyExportWidget_->hide();
+  midiExportWidget_->hide();
+  musixtexExportWidget_->hide();
+  musicxmlExportWidget_->hide();
+  pmxExportWidget_->hide();
+  // Show Lilypond export form by default
+  showExportForm( iCurrentPage_ );
 }
 
 exportFrm::~exportFrm() {
 
     delete staffDialog_;
-    
-    }
-
-void exportFrm::closeIt() {
-
-    this->close();
     
     }
 
@@ -163,18 +186,86 @@ void exportFrm::initialize( QPtrList<NStaff> *stafflist, QPtrList<NVoice> *voice
 
     }
 
-void exportFrm::startExport() {
-    if (this->card->currentPageIndex() == PARAM_PAGE) {
-	this->close();
-	return;
-    }
-		
+// Closes the Dialog
+void exportFrm::closeIt() 
+{
+    this->close();   
+}
 
+void exportFrm::showExportForm( int iItem )
+{
+  // Hide current form
+  switch( iCurrentPage_ )
+  {
+    case MIDI_PAGE:
+      exportFormLayout->remove( midiExportWidget_ );
+      midiExportWidget_->hide();
+      break;
+    case MUSIX_PAGE:
+      exportFormLayout->remove( musixtexExportWidget_ );
+      musixtexExportWidget_->hide();
+      break;
+    case ABC_PAGE:
+      exportFormLayout->remove( abcExportWidget_ );
+      abcExportWidget_->hide();
+      break;
+    case PMX_PAGE:
+      exportFormLayout->remove( pmxExportWidget_ );
+      pmxExportWidget_->hide();
+      break;
+    case LILY_PAGE:
+      exportFormLayout->remove( lilyExportWidget_ );
+      lilyExportWidget_->hide();
+      break;
+    case MUSICXML_PAGE:
+      exportFormLayout->remove( musicxmlExportWidget_ );
+      musicxmlExportWidget_->hide();
+      break;
+    default:
+      break;
+  }
+  // Show Form of selected Item
+  switch( iItem )
+  {
+    case MIDI_PAGE:
+      exportFormLayout->addMultiCellWidget( midiExportWidget_, 1, 1, 0, 3 );
+      midiExportWidget_->show();
+      break;
+    case MUSIX_PAGE:
+      exportFormLayout->addMultiCellWidget( musixtexExportWidget_, 1, 1, 0, 3 );
+      musixtexExportWidget_->show();
+      break;
+    case ABC_PAGE:
+      exportFormLayout->addMultiCellWidget( abcExportWidget_, 1, 1, 0, 3 );
+      abcExportWidget_->show();
+      break;
+    case PMX_PAGE:
+      exportFormLayout->addMultiCellWidget( pmxExportWidget_, 1, 1, 0, 3 );
+      pmxExportWidget_->show();
+      break;
+    case LILY_PAGE:
+      exportFormLayout->addMultiCellWidget( lilyExportWidget_, 1, 1, 0, 3 );
+      lilyExportWidget_->show();
+      break;
+    case MUSICXML_PAGE:
+      exportFormLayout->addMultiCellWidget( musicxmlExportWidget_, 1, 1, 0, 3 );
+      musicxmlExportWidget_->show();
+      break;
+    default:
+      break;
+  }
+  // Page has changed, update it
+  iCurrentPage_ = iItem;
+}
+
+void exportFrm::startExport() 
+{
     char *ext[] = { (char *)".mid", (char *)".tex", (char *)".abc", (char *)".pmx", (char *)".ly", (char *)".xml" };
     char *desc[] = { (char *)"MIDI", (char *)"MusiXTeX", (char *)"ABC", (char *)"PMX",  (char *)"LilyPond", (char *)"MusicXML" };
 
 
-    if( card->currentPageIndex() == MUSIX_PAGE || card->currentPageIndex() == LILY_PAGE ) {
+    //if( card->currentPageIndex() == MUSIX_PAGE || card->currentPageIndex() == LILY_PAGE ) {
+    if( FormatComboBox->currentItem() == MUSIX_PAGE || FormatComboBox->currentItem() == LILY_PAGE ) {
 	if(! NResource::staffSelExport_ ) {
 	    NResource::staffSelExport_ = new bool[staffList_->count()];
 	    for(int unsigned i = 0; i < staffList_->count(); ++i )
@@ -197,11 +288,11 @@ void exportFrm::startExport() {
     QString mask;
     QString myFile = sourceFile_;
     if( sourceFile_.isNull() ) 
-	myFile.sprintf( "export%s", ext[card->currentPageIndex()] );
+	myFile.sprintf( "export%s", ext[FormatComboBox->currentItem()] );
     else
-	myFile.replace( sourceFile_.find( ".not", -4, true ), 4, ext[card->currentPageIndex()] );
-    mask.sprintf( "*%s|%s file (*%s)\n*.*|All files (*.*)", ext[this->card->currentPageIndex()], desc[card->currentPageIndex()], ext[card->currentPageIndex()] );
-    QString fileName = NMainFrameWidget::checkFileName(KFileDialog::getSaveFileName( myFile, mask, this), ext[this->card->currentPageIndex()] );
+	myFile.replace( sourceFile_.find( ".not", -4, true ), 4, ext[FormatComboBox->currentItem()] );
+    mask.sprintf( "*%s|%s file (*%s)\n*.*|All files (*.*)", ext[FormatComboBox->currentItem()], desc[FormatComboBox->currentItem()], ext[FormatComboBox->currentItem()] );
+    QString fileName = NMainFrameWidget::checkFileName(KFileDialog::getSaveFileName( myFile, mask, this), ext[FormatComboBox->currentItem()] );
 
     NMusiXTeX mt;
     NMidiExport me;
@@ -211,9 +302,9 @@ void exportFrm::startExport() {
     NMusicXMLExport muxml;
 
     if( !fileName.isNull() ) {
-        switch( this->card->currentPageIndex() ) {
-    	case MIDI_PAGE:    
-    		me.exportMidi( fileName, voiceList_, (char *) this->midiInfo->text().ascii());
+        switch( FormatComboBox->currentItem() ) {
+    	case MIDI_PAGE:
+    		me.exportMidi( fileName, voiceList_, (char *) midiExportWidget_->midiInfo->text().ascii());
 			break;
 	    case MUSIX_PAGE:  
 			mt.exportStaffs( fileName, staffList_, this,  mainWidget_);
@@ -256,13 +347,13 @@ void exportFrm::startExport() {
 
 void exportFrm::texMeasures() {
 
-    this->measureVal->setEnabled( this->texMeasures_->isChecked() );
+    musixtexExportWidget_->measureVal->setEnabled( musixtexExportWidget_->texMeasures_->isChecked() );
 
     }
 
 void exportFrm::lilyMeasures() {
 
-    this->lilyMeasureVal->setEnabled( this->lilyMeasure->isChecked() );
+    lilyExportWidget_->lilyMeasureVal->setEnabled( lilyExportWidget_->lilyMeasure->isChecked() );
 
     }
 
@@ -286,30 +377,30 @@ void exportFrm::pmxStaffSig() {
 
 void exportFrm::musixLandSlot() {
 
-    if( this->texLandscape->isChecked() ) {
-	this->texWidth->setValue( 250 );
-	this->texHeight->setValue( 170 );
-	this->texTop->setValue( -24 );
-	this->texLeft->setValue( -10 );
+    if( musixtexExportWidget_->texLandscape->isChecked() ) {
+	musixtexExportWidget_->texWidth->setValue( 250 );
+	musixtexExportWidget_->texHeight->setValue( 170 );
+	musixtexExportWidget_->texTop->setValue( -24 );
+	musixtexExportWidget_->texLeft->setValue( -10 );
 	}
     else {
-	this->texWidth->setValue( 170 );
-	this->texHeight->setValue( 250 );
-	this->texTop->setValue( -10 );
-	this->texLeft->setValue( -10 );
+	musixtexExportWidget_->texWidth->setValue( 170 );
+	musixtexExportWidget_->texHeight->setValue( 250 );
+	musixtexExportWidget_->texTop->setValue( -10 );
+	musixtexExportWidget_->texLeft->setValue( -10 );
 	}
 
     }
 
 void exportFrm::lilyLandSlot() {
 
-    if( this->lilyCLand->isChecked() ) {
-	this->lilyCWidth->setValue( 250 );
-	this->lilyCHeight->setValue( 170 );
+    if( lilyExportWidget_->lilyCLand->isChecked() ) {
+	lilyExportWidget_->lilyCWidth->setValue( 250 );
+	lilyExportWidget_->lilyCHeight->setValue( 170 );
 	}
     else {
-	this->lilyCWidth->setValue( 170 );
-	this->lilyCHeight->setValue( 250 );
+	lilyExportWidget_->lilyCWidth->setValue( 170 );
+	lilyExportWidget_->lilyCHeight->setValue( 250 );
 	}
 
     }
@@ -317,18 +408,207 @@ void exportFrm::lilyLandSlot() {
 
 void exportFrm::pmxLandSlot() {
 
-    if( this->pmxLandscape->isChecked() ) {
-	this->pmxWidth->setValue( 250 );
-	this->pmxHeight->setValue( 170 );
+    if( pmxExportWidget_->pmxLandscape->isChecked() ) {
+	pmxExportWidget_->pmxWidth->setValue( 250 );
+	pmxExportWidget_->pmxHeight->setValue( 170 );
 	}
     else {
-	this->pmxWidth->setValue( 170 );
-	this->pmxHeight->setValue( 250 );
+	pmxExportWidget_->pmxWidth->setValue( 170 );
+	pmxExportWidget_->pmxHeight->setValue( 250 );
 	}
 
     }
 
-void exportFrm::paramLandSlot() {
+// Read ABC options from form
+void exportFrm::getABCOptions(ABCExportForm &abcExportWidget, struct abc_options &abcOpts)
+{
+    bool ok;
+    QRegExp reg = QRegExp("/100");
+    QString s;
+
+    abcOpts.width = abcExportWidget.ABCWidth->text().toDouble(&ok);
+    if (!ok) abcOpts.width = 170.0; // Default Value
+    abcOpts.height = abcExportWidget.ABCHeight->text().toDouble(&ok);
+    if (!ok) abcOpts.height = 250.0; // Default Value
+    s = abcExportWidget.ABCscale->text();
+    s.replace (reg, ""); // Remove Scale help string
+    abcOpts.scale =  s.toDouble(&ok);
+    if (!ok) abcOpts.scale = 75.0; // Default Value
+    abcOpts.staffSep = abcExportWidget.ABCStaffSep->text().toDouble(&ok);
+    if (!ok) abcOpts.staffSep = 16.0; // Default Value
+    abcOpts.exprAbove = abcExportWidget.ABCExprAbove->isChecked();
+    abcOpts.measNumInBox = abcExportWidget.ABCMeasNumInBox->isChecked();
+}
+
+// Set ABC options into form
+void exportFrm::setABCOptions(ABCExportForm &abcExportWidget, struct abc_options abcOpts)
+{
+    abcExportWidget.ABCWidth->setValue( (int)abcOpts.width );
+    abcExportWidget.ABCHeight->setValue( (int)abcOpts.height );
+    abcExportWidget.ABCscale->setValue( (int)abcOpts.scale );
+    abcExportWidget.ABCStaffSep->setValue( (int)abcOpts.staffSep );
+    abcExportWidget.ABCExprAbove->setChecked( abcOpts.exprAbove );
+    abcExportWidget.ABCMeasNumInBox->setChecked( abcOpts.measNumInBox );
+}
+
+// Read Lilypond options from form
+void exportFrm::getLilyOptions(LilypondExportForm &lilyExportWidget, struct lily_options &lilyOpts)
+{
+  lilyOpts.voice            = lilyExportWidget.lilyVoice->isChecked();
+  lilyOpts.font             = lilyExportWidget.lilyFont->currentText();
+  lilyOpts.drumNotes        = lilyExportWidget.lilyDrumNotes->isChecked();
+  lilyOpts.stem             = lilyExportWidget.lilyStem->isChecked();
+  lilyOpts.beam             = lilyExportWidget.lilyBeam->isChecked();
+  lilyOpts.ties             = lilyExportWidget.lilyTies->isChecked();
+  lilyOpts.customPage       = lilyExportWidget.lilyCPage->isChecked();
+  if( sscanf(lilyExportWidget.lilyCWidth->text(),"%lf",&lilyOpts.customWidth) != 1)
+    lilyOpts.customWidth = 250.0;
+  if( sscanf(lilyExportWidget.lilyCHeight->text(),"%lf",&lilyOpts.customHeight) != 1)
+    lilyOpts.customHeight = 170.0;
+  lilyOpts.customLand       = lilyExportWidget.lilyCLand->isChecked();
+  lilyOpts.standardPage     = lilyExportWidget.lilySPage->isChecked();
+  lilyOpts.standardPageSize = lilyExportWidget.lilySPageSize->currentItem();
+  lilyOpts.standardLand     = lilyExportWidget.lilySLand->isChecked();
+  lilyOpts.volume           = lilyExportWidget.lilyVol->currentItem();
+  lilyOpts.measure          = lilyExportWidget.lilyMeasure->isChecked();
+  lilyOpts.measureVal       = lilyExportWidget.lilyMeasureVal->value();
+  lilyOpts.outputCoding     = lilyExportWidget.lilyOutputCoding->currentItem();
+}
+
+// Set Lilypond options into form
+void exportFrm::setLilyOptions(LilypondExportForm &lilyExportWidget, struct lily_options lilyOpts)
+{
+  lilyExportWidget.lilyVoice->setChecked( lilyOpts.voice );
+  lilyExportWidget.lilyFont->setCurrentText( lilyOpts.font );
+  lilyExportWidget.lilyDrumNotes->setChecked( lilyOpts.drumNotes );
+  lilyExportWidget.lilyStem->setChecked( lilyOpts.stem );
+  lilyExportWidget.lilyBeam->setChecked( lilyOpts.beam );
+  lilyExportWidget.lilyTies->setChecked( lilyOpts.ties );
+  lilyExportWidget.lilyCPage->setChecked( lilyOpts.customPage );
+  lilyExportWidget.lilyCWidth->setValue( (int)lilyOpts.customWidth );
+  lilyExportWidget.lilyCHeight->setValue( (int)lilyOpts.customHeight );
+  lilyExportWidget.lilyCLand->setChecked( lilyOpts.customLand );
+  lilyExportWidget.lilySPage->setChecked( lilyOpts.standardPage );
+  lilyExportWidget.lilySPageSize->setCurrentItem( lilyOpts.standardPageSize );
+  lilyExportWidget.lilySLand->setChecked( lilyOpts.standardLand );
+  lilyExportWidget.lilyVol->setCurrentItem( lilyOpts.volume );
+  lilyExportWidget.lilyMeasure->setChecked( lilyOpts.measure );
+  lilyExportWidget.lilyMeasureVal->setValue( lilyOpts.measureVal );
+  lilyExportWidget.lilyOutputCoding->setCurrentItem( lilyOpts.outputCoding );
+}
+
+// Read Midi options from form
+void exportFrm::getMidiOptions(MidiExportForm &/*midiExportWidget*/, struct midi_options &/*midiOpts*/)
+{
+}
+
+// Set Midi options into form
+void exportFrm::setMidiOptions(MidiExportForm &/*midiExportWidget*/, struct midi_options /*midiOpts*/)
+{
+}
+
+// Read MusiXTeX options from form
+void exportFrm::getMusiXTeXOptions(MusiXTeXExportForm &musixtexExportWidget, struct musixtex_options &musixtexOpts)
+{
+  musixtexOpts.left              = musixtexExportWidget.texLeft->value();
+  musixtexOpts.top               = musixtexExportWidget.texTop->value();
+  musixtexOpts.width             = musixtexExportWidget.texWidth->value();
+  musixtexOpts.height            = musixtexExportWidget.texHeight->value();
+  musixtexOpts.bar               = musixtexExportWidget.texBar->isChecked();
+  musixtexOpts.ties              = musixtexExportWidget.texTies->isChecked();
+  musixtexOpts.measures          = musixtexExportWidget.texMeasures_->isChecked();
+  musixtexOpts.measureVal        = musixtexExportWidget.measureVal->value();
+  musixtexOpts.outputEncoding    = musixtexExportWidget.texOutputEncoding->currentItem();
+  musixtexOpts.inputEncoding     = musixtexExportWidget.texInputEncoding->currentItem();
+  musixtexOpts.fontModule        = musixtexExportWidget.texFontModule->currentItem();
+  musixtexOpts.ucs               = musixtexExportWidget.texUcs->isChecked();
+  musixtexOpts.mLyr              = musixtexExportWidget.texMLyr->isChecked();
+  musixtexOpts.omitPageNumbering = musixtexExportWidget.texOmitPageNumbering->isChecked();
+  musixtexOpts.tempo             = musixtexExportWidget.texTempo->isChecked();
+  musixtexOpts.volume            = musixtexExportWidget.texVolume->isChecked();
+  musixtexOpts.musixtexcmd       = musixtexExportWidget.musixtexcmd->text();
+  musixtexOpts.parindent         = musixtexExportWidget.texParindent->value();
+}
+
+// Set MusixTeX options into form
+void exportFrm::setMusiXTeXOptions(MusiXTeXExportForm &musixtexExportWidget, struct musixtex_options musixtexOpts )
+{
+  musixtexExportWidget.texLeft->setValue( musixtexOpts.left ); 
+  musixtexExportWidget.texTop->setValue( musixtexOpts.top );
+  musixtexExportWidget.texWidth->setValue( musixtexOpts.width );
+  musixtexExportWidget.texHeight->setValue( musixtexOpts.height );
+  musixtexExportWidget.texBar->setChecked( musixtexOpts.bar );
+  musixtexExportWidget.texTies->setChecked( musixtexOpts.ties );
+  musixtexExportWidget.texMeasures_->setChecked( musixtexOpts.measures );
+  musixtexExportWidget.measureVal->setValue( musixtexOpts.measureVal );
+  musixtexExportWidget.texOutputEncoding->setCurrentItem( musixtexOpts.outputEncoding );
+  musixtexExportWidget.texInputEncoding->setCurrentItem( musixtexOpts.inputEncoding );
+  musixtexExportWidget.texFontModule->setCurrentItem( musixtexOpts.fontModule );
+  musixtexExportWidget.texUcs->setChecked( musixtexOpts.ucs );
+  musixtexExportWidget.texMLyr->setChecked( musixtexOpts.mLyr );
+  musixtexExportWidget.texOmitPageNumbering->setChecked( musixtexOpts.omitPageNumbering );
+  musixtexExportWidget.texTempo->setChecked( musixtexOpts.tempo );
+  musixtexExportWidget.texVolume->setChecked( musixtexOpts.volume );
+  musixtexExportWidget.musixtexcmd->setText( musixtexOpts.musixtexcmd );
+  musixtexExportWidget.texParindent->setValue( musixtexOpts.parindent );
+}
+
+// Read MusicXML options from form
+void exportFrm::getMusicXMLOptions(MusicXMLExportForm &/*musicxmlExportWidget*/, struct musicxml_options &/*musicxmlOpts*/)
+{
+}
+
+// Set MusicXML options into form
+void exportFrm::setMusicXMLOptions(MusicXMLExportForm &/*musicxmlExportWidget*/, struct musicxml_options /*musicxmlOpts*/)
+{
+}
+
+// Read PMX options from form
+void exportFrm::getPMXOptions(PMXExportForm &pmxExportWidget, struct pmx_options &pmxOpts)
+{
+  pmxOpts.mLyr      = pmxExportWidget.pmxMLyr->isChecked();
+  pmxOpts.num       = pmxExportWidget.pmxNum->getValue();
+  pmxOpts.system    = pmxExportWidget.pmxSystem->getValue();
+  pmxOpts.width     = pmxExportWidget.pmxWidth->value();
+  pmxOpts.height    = pmxExportWidget.pmxHeight->value();
+  pmxOpts.measure   = pmxExportWidget.pmxMeasure->getValue();
+  pmxOpts.keepBeams = pmxExportWidget.pmxKeepBeams->isChecked();
+}
+
+// Set PMX options into form
+void exportFrm::setPMXOptions(PMXExportForm &pmxExportWidget, struct pmx_options pmxOpts)
+{
+  pmxExportWidget.pmxMLyr->setChecked( pmxOpts.mLyr );
+  pmxExportWidget.pmxNum->setStartVal( pmxOpts.num );
+  pmxExportWidget.pmxSystem->setStartVal( pmxOpts.system );
+  pmxExportWidget.pmxWidth->setValue( pmxOpts.width );
+  pmxExportWidget.pmxHeight->setValue( pmxOpts.height );
+  pmxExportWidget.pmxMeasure->setStartVal( pmxOpts.measure );
+  pmxExportWidget.pmxKeepBeams->setChecked( pmxOpts.keepBeams );
+}
+
+/*------------------------------------ saveParametersForm ----------------------------------------*/
+
+// Constructor
+saveParametersFrm::saveParametersFrm( NMainFrameWidget *mainWidget, QWidget *parent ) :
+	SaveParametersForm( parent, 0, false ) 
+{
+    mainWidget_ = mainWidget;
+
+    // signals and slots connections
+    connect( OkBu, SIGNAL( clicked() ), this, SLOT( closeIt() ) );
+    connect( paramLand, SIGNAL( clicked() ), this, SLOT( paramLandSlot() ) );
+}
+
+// Closes the Dialog
+void saveParametersFrm::closeIt() 
+{
+    this->close();   
+}
+
+// Slot called if paramLand was changed
+// Changes width/height to it's corresponding default values
+void saveParametersFrm::paramLandSlot() {
 
     if( this->paramLand->isChecked() ) {
 	this->pWidth->setValue( 250 );
@@ -342,8 +622,8 @@ void exportFrm::paramLandSlot() {
 
     }
 
-
-int exportFrm::getSaveWidth() {
+// Reads the Save width
+int saveParametersFrm::getSaveWidth() {
 	QString s;
 	bool ok;
 	int width;
@@ -354,8 +634,8 @@ int exportFrm::getSaveWidth() {
 	return width;
 }
 
-
-int exportFrm::getSaveHeight() {
+// Reads the Save height
+int saveParametersFrm::getSaveHeight() {
 	QString s;
 	bool ok;
 	int height;
@@ -365,12 +645,13 @@ int exportFrm::getSaveHeight() {
 	if (!ok) height = 275;
 	return height;
 }
-bool exportFrm::paramsEnabled() {return paramEnable->isChecked();}
-void exportFrm::setEnabled(bool ok) {paramEnable->setChecked(ok);}
-bool exportFrm::withMeasureNums() {return paramMeasureNums->isChecked();}
-void exportFrm::setWithMeasureNums(bool with) {paramMeasureNums->setChecked(with);}
-void exportFrm::setSaveWidth(int width)  {pWidth->setValue(width);}
-void exportFrm::setSaveHeight(int height) {pHeight->setValue(height);}
+
+bool saveParametersFrm::paramsEnabled() {return paramEnable->isChecked();}
+void saveParametersFrm::setEnabled(bool ok) {paramEnable->setChecked(ok);}
+bool saveParametersFrm::withMeasureNums() {return paramMeasureNums->isChecked();}
+void saveParametersFrm::setWithMeasureNums(bool with) {paramMeasureNums->setChecked(with);}
+void saveParametersFrm::setSaveWidth(int width)  {pWidth->setValue(width);}
+void saveParametersFrm::setSaveHeight(int height) {pHeight->setValue(height);}
 
 /*----------------------------------------- scaleForm --------------------------------------------*/
 
@@ -902,7 +1183,7 @@ void staffFrm::boot( QPtrList<NStaff> *stafflist, char unsigned id, int amount )
 			items_[i]->setText(1, na);
 			items_[i]->setText(2, na);
 		}
-	bool *s;
+	bool *s = 0;
 
 	switch( id ) {
 
@@ -1045,7 +1326,7 @@ int staffelFrm::boot( unsigned char type ) {
 
     }
 
-void staffelFrm::resizeEvent( QResizeEvent *evt ) {
+void staffelFrm::resizeEvent( QResizeEvent */*evt*/ ) {
 
     if( selClass_ )
 	selClass_->resiz();

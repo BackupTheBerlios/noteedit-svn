@@ -93,7 +93,7 @@ void NMusiXTeX::doExport() {
 	NExportError *errptr;
 	NPositStr *posit;
 	QPtrList<NPositStr> plist;
-	char *notesString;
+	char notesString[10];
 	bool withLyrics;
 #if GCC_MAJ_VERS > 2
 	ostringstream os;
@@ -123,7 +123,7 @@ void NMusiXTeX::doExport() {
 	bool generalmeter_set;
 	int voice_count;
 	int staffs_to_export;
-	int real_staff_nr, staff_nr;
+	int real_staff_nr = -1, staff_nr; // RK: Was not initialized, is this correct ?
 	int dummy, multistaffnr;
 	int rst_nr;
 	int numOfStaffsInMultistaff;
@@ -138,9 +138,11 @@ void NMusiXTeX::doExport() {
 	maxSlurs_ = 6;
 	spare_ = false;
 	newTempo_ = -1;
-	limitMeasures_ = exportDialog_->texMeasures_->isChecked();
+	// Read options from export Dialog
+	exportDialog_->getMusiXTeXOptions( musixOpts_ );
+	limitMeasures_ = musixOpts_.measures;
 	if (limitMeasures_) {
-		maxMeasuresPerLine_ = exportDialog_->measureVal->value();
+		maxMeasuresPerLine_ = musixOpts_.measureVal;
 	}
 	if (NResource::staffSelExport_ == 0) {
 		NResource::staffSelExport_ = new bool[staffCount_];
@@ -192,6 +194,7 @@ void NMusiXTeX::doExport() {
 		lyrcsLineCounts[i] = false;
 	}
 	for (i = 0, staff_elem = staffList_->first(); staff_elem; staff_elem = staffList_->next(), i++) {
+		real_staff_nr = staffList_->find(staff_elem);
 		voice_elem = staff_elem->getVoiceNr(0);
 		if (voice_elem->getLastBarNr() > lastBarNr_) lastBarNr_ = voice_elem->getLastBarNr();
 		maxlyrics = voice_elem->countOfLyricsLines();
@@ -221,10 +224,10 @@ void NMusiXTeX::doExport() {
 	out_ << "\\documentclass{article}"  << endl;
 	out_ << "\\usepackage{musixtex}" << endl << endl;
 
-	switch(exportDialog_->texOutputEncoding->currentItem()) {
+	switch(musixOpts_.outputEncoding) {
 		case 1: out_ << "\\usepackage[utf8]{inputenc}" << endl; break;
 	}
-	switch(exportDialog_->texFontModule->currentItem()) {
+	switch(musixOpts_.fontModule) {
 		case 1: out_ << "\\usepackage[T2A]{fontenc}" << endl; break;
 		case 2: out_ << "\\usepackage[T2B]{fontenc}" << endl; break;
 		case 3: out_ << "\\usepackage[T2C]{fontenc}" << endl; break;
@@ -233,13 +236,13 @@ void NMusiXTeX::doExport() {
 		case 6: out_ << "\\usepackage[X2]{fontenc}" << endl; break;
 		case 7: out_ << "\\usepackage[LCY]{fontenc}" << endl; break;
 	}
-	switch(exportDialog_->texInputEncoding->currentItem()) {
+	switch(musixOpts_.inputEncoding) {
 		case 1: out_ << "\\usepackage[latin1]{inputenc}" << endl; break;
 		case 2: out_ << "\\usepackage[cp1251]{inputenc}" << endl; break;
 		case 3: out_ << "\\usepackage[koi8-u]{fontenc}" << endl; break;
 		case 4: out_ << "\\usepackage[koi8-r]{fontenc}" << endl; break;
 	}
-	if (exportDialog_->texUcs->isChecked()) {
+	if (musixOpts_.ucs) {
 		out_ << "\\usepackage{ucs}" << endl;
 	}
 	out_ << "\\input musixper.tex" << endl;
@@ -252,35 +255,35 @@ void NMusiXTeX::doExport() {
 		badMeasures_.append(exerr);
 		out_ << "\\input musixdbr.tex" << endl;
 	}
-	if (exportDialog_->texMLyr->isChecked()) {
+	if (musixOpts_.mLyr) {
 		out_ << "\\input musixlyr.tex"  << endl;
 	}
-	if (exportDialog_->texOmitPageNumbering->isChecked()) {
+	if (musixOpts_.omitPageNumbering) {
 	               out_ << endl << "\\pagestyle{empty}" << endl << endl;
 	}
 	out_ << "\\input musixgui.tex" << endl << endl;
-	out_ << "\\setlength{\\parindent}{" << exportDialog_->texParindent->text() << "mm}" << endl;
-	out_ << "\\setlength{\\textwidth}{" << exportDialog_->texWidth->text() << "mm}" << endl;
-	out_ << "\\setlength{\\textheight}{" << exportDialog_->texHeight->text() << "mm}" << endl;
-	out_ << "\\setlength{\\topmargin}{" << exportDialog_->texTop->text() << "mm}" << endl;
-	out_ << "\\setlength{\\oddsidemargin}{" << exportDialog_->texLeft->text() << "mm}" << endl << endl;
-	switch (exportDialog_->texSize->currentItem()) {
+	out_ << "\\setlength{\\parindent}{" << musixOpts_.parindent << "mm}" << endl;
+	out_ << "\\setlength{\\textwidth}{" << musixOpts_.width << "mm}" << endl;
+	out_ << "\\setlength{\\textheight}{" << musixOpts_.height << "mm}" << endl;
+	out_ << "\\setlength{\\topmargin}{" << musixOpts_.top << "mm}" << endl;
+	out_ << "\\setlength{\\oddsidemargin}{" << musixOpts_.left << "mm}" << endl << endl;
+	switch (musixOpts_.size) {
 		case 0: out_ << "\\smallmusicsize" << endl; break;
 		case 2: out_ << "\\largemusicsize" << endl; break;
 		case 3: out_ << "\\Largemusicsize" << endl; break;
 	}
-	if (!exportDialog_->texBar->isChecked()) {
+	if (musixOpts_.bar) {
 		out_ << "\\nobarnumbers" << endl;
 	}
 
 	out_ << "\\raiseguitar{20}" << endl;
 
-	spare_ = exportDialog_->texTies->isChecked();
+	spare_ = musixOpts_.ties;
 	out_ << "\\begin{document}" << endl << endl;
 
 	lyrNames.setAutoDelete(true);
 	k = 0;
-	for (i = 0, staff_elem = staffList_->first(); exportDialog_->texMLyr->isChecked() && staff_elem; staff_elem = staffList_->next(), i++) {
+	for (i = 0, staff_elem = staffList_->first(); musixOpts_.mLyr && staff_elem; staff_elem = staffList_->next(), i++) {
 		if (!NResource::staffSelExport_[i]) continue;
 		voice_elem = staff_elem->getVoiceNr(0);
 		voice_elem->setIdx(i);
@@ -359,7 +362,7 @@ void NMusiXTeX::doExport() {
 	if (!mStaffInf_->ContinuedBarLines()) {
 		if (mStaffInf_->DiscontOutsidePiano()) {
 			out_ << "\\indivbarrules" << endl << "\\allbarrules\\sepbarrule";
-			for (i = 0; i < staffCount_; i++) {
+			for (i = 0; i < (int)staffCount_; i++) {
 				if (mainWidget_->barCont_[i].valid) {
 					for (j = mainWidget_->barCont_[i].beg; j < mainWidget_->barCont_[i].end; j++) {
 						idx = mStaffInf_->multistaffIdxOfStaff(j, &multistaffnr, &numOfStaffsInMultistaff);
@@ -501,27 +504,27 @@ void NMusiXTeX::doExport() {
 				if (posit->elem->getMidiLength() < minlength) minlength = posit->elem->getMidiLength();
 			}
 		}
-		if (!exportDialog_->texMLyr->isChecked() && withLyrics) {
-			if (maxwidth < 12) notesString = "\\notes";
-			else if (maxwidth < 14) notesString = "\\notesp";
-			else if (maxwidth < 16) notesString = "\\Notes";
-			else if (maxwidth < 18) notesString = "\\Notesp";
-			else if (maxwidth < 20) notesString = "\\NOtes";
-			else if (maxwidth < 22) notesString = "\\NOtesp";
-			else if (maxwidth < 24) notesString = "\\NOTes";
-			else if (maxwidth < 26) notesString = "\\NOTesp";
-			else notesString = "\\NOTEs";
+		if (!musixOpts_.mLyr && withLyrics) {
+			if (maxwidth < 12)      strcpy( notesString, "\\notes" );
+			else if (maxwidth < 14) strcpy( notesString, "\\notesp" );
+			else if (maxwidth < 16) strcpy( notesString, "\\Notes" );
+			else if (maxwidth < 18) strcpy( notesString, "\\Notesp" );
+			else if (maxwidth < 20) strcpy( notesString, "\\NOtes" );
+			else if (maxwidth < 22) strcpy( notesString, "\\NOtesp" );
+			else if (maxwidth < 24) strcpy( notesString, "\\NOTes" );
+			else if (maxwidth < 26) strcpy( notesString, "\\NOTesp" );
+			else                    strcpy( notesString, "\\NOTEs" );
 		}
 		else {
-			if (grace_notes) notesString = "\\notes";
-			else if (minlength >= HALF_LENGTH*3/2) notesString = "\\NOTEs";
-			else if (minlength >= HALF_LENGTH) notesString = "\\NOTes";
-			else if (minlength >= QUARTER_LENGTH*3/2) notesString = "\\NOtesp";
-			else if (minlength >= QUARTER_LENGTH) notesString = "\\NOtes";
-			else if (minlength >= NOTE8_LENGTH*3/2) notesString = "\\Notesp";
-			else if (minlength >= NOTE8_LENGTH) notesString = "\\Notes";
-			else if (minlength >= NOTE16_LENGTH*3/2) notesString = "\\notesp";
-			else notesString = "\\notes";
+			if (grace_notes)                          strcpy( notesString, "\\notes" );
+			else if (minlength >= HALF_LENGTH*3/2)    strcpy( notesString, "\\NOTEs" );
+			else if (minlength >= HALF_LENGTH)        strcpy( notesString, "\\NOTes" );
+			else if (minlength >= QUARTER_LENGTH*3/2) strcpy( notesString, "\\NOtesp" );
+			else if (minlength >= QUARTER_LENGTH)     strcpy( notesString, "\\NOtes" );
+			else if (minlength >= NOTE8_LENGTH*3/2)   strcpy( notesString, "\\Notesp" );
+			else if (minlength >= NOTE8_LENGTH)       strcpy( notesString, "\\Notes" );
+			else if (minlength >= NOTE16_LENGTH*3/2)  strcpy( notesString, "\\notesp" );
+			else                                      strcpy( notesString, "\\notes" );
 		}
 
 		somethingProduced = false;
@@ -680,12 +683,12 @@ void NMusiXTeX::doExport() {
 		
 	}
 	// do musixtex-postprocessing if desired
-  	if (exportDialog_->musixtexcmd->text().isEmpty() || exportDialog_->musixtexcmd->text().isNull()) {
+  	if (musixOpts_.musixtexcmd.isEmpty() || musixOpts_.musixtexcmd.isNull()) {
 	  NResource::musixScript_.truncate(0);
 	}
 	else {
-	  externalCmd(exportDialog_->musixtexcmd->text(),fileName);
-	  NResource::musixScript_ = exportDialog_->musixtexcmd->text();
+	  externalCmd(musixOpts_.musixtexcmd,fileName);
+	  NResource::musixScript_ = musixOpts_.musixtexcmd;
   	}
 	
 }
@@ -742,7 +745,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 	QPtrList<NNote> *notelist;
 	NExportError *exerr;
 	QString *s;
-	char *bodyString;
+	char bodyString[5];
 	int lastBodyState;
 	bool first, body_changed;
 	QString stemdir;
@@ -815,7 +818,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 			     }
 			     stemdir = ((chord->hasProperty( PROP_STEM_UP ) ) ? QString("u") : QString("l"));
 			     countLyricsLines = chord->countOfLyricsLines();
-			     if (!exportDialog_->texMLyr->isChecked()) {
+			     if (!musixOpts_.mLyr) {
 			     	for (i = countLyricsLines-1; i >= 0; i--) {
 						lyrics = chord->getLyrics(i);
 						if (lyrics) {
@@ -986,15 +989,15 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				for (first = true, note = notes_not_to_be_shifted->first(); note; note = notes_not_to_be_shifted->next()) {
 					if (note == base_note) continue;
 					body_changed = false;
-					if (lastBodyState != (note->properties & BODY_MASK)) {
+					if (lastBodyState != (int)(note->properties & BODY_MASK)) {
 						body_changed = true;
-						switch (lastBodyState = (note->properties & BODY_MASK)) {
-							case PROP_BODY_CROSS: bodyString = "x"; break;
-							case PROP_BODY_CROSS2: bodyString = "k"; break;
-							case PROP_BODY_CIRCLE_CROSS: bodyString = "ox"; break;
-							case PROP_BODY_RECT: bodyString = "ro"; break;
-							case PROP_BODY_TRIA: bodyString = "tg"; break;
-							default: bodyString = ""; break;
+						switch (lastBodyState = (int)(note->properties & BODY_MASK)) {
+							case PROP_BODY_CROSS:        strcpy( bodyString, "x" ); break;
+							case PROP_BODY_CROSS2:       strcpy( bodyString, "k" ); break;
+							case PROP_BODY_CIRCLE_CROSS: strcpy( bodyString, "ox" ); break;
+							case PROP_BODY_RECT:         strcpy( bodyString, "ro" ); break;
+							case PROP_BODY_TRIA:         strcpy( bodyString, "tg" ); break;
+							default: bodyString[0] = 0; break;
 						}
 					}
 					if (body_changed || first) {
@@ -1020,15 +1023,15 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				lastBodyState = -1;
 				for (first = true, note = notes_to_be_shifted->first() ;note ; note = notes_to_be_shifted->next(), first = false) {
 					body_changed = false;
-					if (lastBodyState != (note->properties & BODY_MASK)) {
+					if (lastBodyState != (int)(note->properties & BODY_MASK)) {
 						body_changed = true;
-						switch (lastBodyState = (note->properties & BODY_MASK)) {
-							case PROP_BODY_CROSS: bodyString = "x"; break;
-							case PROP_BODY_CROSS2: bodyString = "k"; break;
-							case PROP_BODY_CIRCLE_CROSS: bodyString = "ox"; break;
-							case PROP_BODY_RECT: bodyString = "ro"; break;
-							case PROP_BODY_TRIA: bodyString = "tg"; break;
-							default: bodyString = ""; break;
+						switch (lastBodyState = (int)(note->properties & BODY_MASK)) {
+							case PROP_BODY_CROSS:        strcpy( bodyString, "x" ); break;
+							case PROP_BODY_CROSS2:       strcpy( bodyString, "k" ); break;
+							case PROP_BODY_CIRCLE_CROSS: strcpy( bodyString, "ox" ); break;
+							case PROP_BODY_RECT:         strcpy( bodyString, "ro" ); break;
+							case PROP_BODY_TRIA:         strcpy( bodyString, "tg" ); break;
+							default: bodyString[0] = 0; break;
 						}
 					}
 					if (body_changed || first) {
@@ -1049,12 +1052,12 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 				out_ << "}}";
 			     }
 			     switch (base_note->properties & BODY_MASK) {
-				case PROP_BODY_CROSS: bodyString = "x"; break;
-				case PROP_BODY_CROSS2: bodyString = "k"; break;
-				case PROP_BODY_CIRCLE_CROSS: bodyString = "ox"; break;
-				case PROP_BODY_RECT: bodyString = "ro"; break;
-				case PROP_BODY_TRIA: bodyString = "tg"; break;
-				default: bodyString = ""; break;
+				case PROP_BODY_CROSS:        strcpy( bodyString, "x" ); break;
+				case PROP_BODY_CROSS2:       strcpy( bodyString, "k" ); break;
+				case PROP_BODY_CIRCLE_CROSS: strcpy( bodyString, "ox" ); break;
+				case PROP_BODY_RECT:         strcpy( bodyString, "ro" ); break;
+				case PROP_BODY_TRIA:         strcpy( bodyString, "tg" ); break;
+				default: bodyString[0] = 0; break;
 			     }
 			     if (chord->hasProperty( PROP_BEAMED ) && ac_voice->beamNr_ >= 0) {
 				musi_length.sprintf("%sqb%d", bodyString, ac_voice->beamNr_);
@@ -1226,10 +1229,10 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 						   }
 						break;
 				case TEMPO_SIGNATURE: 
-						   if (!exportDialog_->texTempo->isChecked()) break;
+						   if (!musixOpts_.tempo) break;
 						   newTempo_ = ((NSign *) elem)->getTempo();
 						break;
-				case VOLUME_SIG: if (!exportDialog_->texVolume->isChecked()) break;
+				case VOLUME_SIG: if (!musixOpts_.volume) break;
 						out_ << "\\zchar{-7}";
 							switch(((NSign *) elem)->getVolType()) {
 								case V_PPPIANO : out_ << "\\ppp"; break;
@@ -1408,14 +1411,14 @@ QString NMusiXTeX::lyrics2TeX(QString *lyrics) {
 	if (ret.find(reg) != -1) {
 		return QString("");
 	}
-	if (exportDialog_->texOutputEncoding->currentItem() == 0) {
+	if (musixOpts_.outputEncoding == 0) {
 		NResource::germanUmlautsToTeX(&ret);
 	}
 	reg = QRegExp("#");
 	ret.replace (reg, "\\#");
 	reg = QRegExp("_");
 	ret.replace (reg, "\\_");
-	if (exportDialog_->texMLyr->isChecked()) {
+	if (musixOpts_.mLyr) {
 		reg = QRegExp("<");
 		ret.replace (reg, "{");
 		reg = QRegExp(">");
@@ -1425,7 +1428,7 @@ QString NMusiXTeX::lyrics2TeX(QString *lyrics) {
 		reg = QRegExp("[<>]");
 		ret.replace (reg, "");
 	}
-	if (exportDialog_->texOutputEncoding->currentItem() == 0) {
+	if (musixOpts_.outputEncoding == 0) {
 		return ret;
 	}
 	return ret.utf8();
@@ -1448,7 +1451,7 @@ void NMusiXTeX::externalCmd (QString command, QString filename) {
   }
   // change directory to place ".dvi" where ".tex" is
   if ((slashidx = filename.findRev('/')) >= 0) {
-  	if (slashidx < filename.length() - 1) {
+  	if (slashidx < (int)filename.length() - 1) {
 		destDir = filename.left(slashidx + 1);
 		command = "cd " + destDir + ';' + command;
 	}

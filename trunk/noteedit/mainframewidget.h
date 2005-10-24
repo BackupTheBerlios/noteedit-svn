@@ -68,6 +68,8 @@ class QPushButton;
 class NChordDiagram;
 class ChordSelector;
 class tupletDialogImpl;
+class IntPrinter;
+class KProcess;
 
 #ifdef WITH_TSE3
 #include <tse3/PhraseEdit.h>
@@ -83,6 +85,7 @@ class KRadioAction;
 class scaleFrm;
 class staffPropFrm;
 class exportFrm;
+class saveParametersFrm;
 class QSlider;
 class QCheckBox;
 class NMusElement;
@@ -271,7 +274,18 @@ class NMainFrameWidget : public QWidget
 /*------------------------------ printing--------------------------------------------*/
     void filePrint(bool);  // Jorge Windmeisser Oliver
     void filePrintPreview();
+    void filePrintPreviewFinished(KProcess *);
+    void filePrintReceivedStdOut(KProcess *, char *, int);
+    void filePrintReceivedStdErr(KProcess *, char *, int);
     void filePrintNoPreview();
+    void setupPrinting(bool, IntPrinter *); // Helper methods for filePrint
+    void printWithLilypond(bool, QString, QString);
+    void printWithABC(bool, QString, QString);
+    void printWithPMX(bool, QString, QString);
+    void printWithMusiXTeX(bool, QString, QString);
+    void printWithMusicXML(bool, QString, QString);
+    void printWithMidi(bool, QString, QString);
+    void printWithNative(bool, QString, QString);
 /*-----------------------------------------------------------------------------------*/        
 		void exportMusiXTeX();
 		void exportPMX();
@@ -517,6 +531,7 @@ class NMainFrameWidget : public QWidget
 		MusicXMLParser *musicxmlFileReader_;
 		NLilyExport *lilyexport_;
 		exportFrm *exportDialog_;
+		saveParametersFrm *saveParametersDialog_;
 		void exportManager( int type );
 
 /*------------------------------ TSE3 -----------------------------------------------*/
@@ -626,6 +641,8 @@ class NMainFrameWidget : public QWidget
 		double tempo_;
 		QPtrList<NMidiEventStr> stopList_;
 		void cleanupSelections();
+/*-------------------------------- printing -------------------------------*/
+		QString previewFile_;
 /*-------------------------------- static dadabase -------------------------------*/
 		static const char *keySigTab_[15];
 };
@@ -648,28 +665,16 @@ class IntPrinter : public KPrinter
  QString fileName_;
  }; 
 
- class ABCDialogPage : public KPrintDialogPage
+ class PrintExportDialogPage : public KPrintDialogPage
  {
  public:
-   ABCDialogPage( exportFrm *formFrom, exportFrm *&formTo, QWidget *tab, QWidget *parent = 0, const char *name = 0 );
-   ~ABCDialogPage();
+   PrintExportDialogPage( QString title, QWidget *tab, QWidget *parent = 0, const char *name = 0 );
+   ~PrintExportDialogPage();
 
    //reimplement virtual functions
    void getOptions( QMap<QString,QString>& opts, bool incldef = false );
    void setOptions( const QMap<QString,QString>& opts );
    bool isValid( QString& msg );
-
-   exportFrm *copyFrom;
-   exportFrm **copyTo;
-
-   QWidget *tab_;
-
- private:
-//   QScrollView *mainScroller;
-   QString title;
-   bool doneReparenting;
-   int position;
-   QPoint rep;
  };
 
 #endif /* WITH_DIRECT_PRINTING */

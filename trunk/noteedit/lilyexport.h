@@ -51,6 +51,26 @@ class layoutDef;
 #define STEM_DIR_UP 1
 #define STEM_DIR_DOWN 2
 
+struct lily_options
+{
+  bool    voice;
+  QString font;
+  bool    drumNotes;
+  bool    stem;
+  bool    beam;
+  bool    ties;
+  bool    customPage;
+  double  customWidth;
+  double  customHeight;
+  bool    customLand;
+  bool    standardPage;
+  int     standardPageSize;
+  bool    standardLand;
+  int     volume;
+  bool    measure;
+  int     measureVal;
+  int     outputCoding;
+};
 
 struct staffdescr {
 	int lyrics_count;
@@ -99,6 +119,7 @@ class NLilyExport {
 		property_type noteBody_;
 		bool noStrongPizzMsg_;
 		QByteArray scoreBraceMasks;
+		struct lily_options lilyOpts_;
 		void buildBraceMasks(QPtrList<NStaff> *stafflist, const NMainFrameWidget *mainWidget);
 		QPtrList<QString> scoreBlock;
 		void buildScoreBlockAndFlush(int i, NStaff *staff_elem, const QString& label, QPtrList<NStaff> *stafflist,

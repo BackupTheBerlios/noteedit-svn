@@ -68,6 +68,17 @@ class specialCharInfo {
 class NMultistaffInfo;
 struct trill_descr_str;
 
+struct pmx_options
+{
+  int width;
+  int height;
+  int num;
+  int system;
+  bool keepBeams;
+  int measure;
+  bool mLyr;
+};
+
 class NPmxExport {
 	public:
 		void exportStaffs(QString fname, QPtrList<NStaff> *stafflist, exportFrm *frmWin, NMainFrameWidget *mainWidget);
@@ -122,6 +133,7 @@ class NPmxExport {
 		QPtrList<specialCharInfo> specialCharList_;
 		struct trill_descr_str *va_descr_;
 		NMainFrameWidget *mainWidget_;
+		struct pmx_options pmxOpts_;
 };
 
 #endif //

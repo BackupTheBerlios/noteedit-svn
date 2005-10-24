@@ -44,6 +44,15 @@ class NClef;
 class NText;
 class chordDiagramName;
 
+struct abc_options
+{
+  double  width;
+  double  height;
+  double  scale;
+  double  staffSep;
+  bool    exprAbove;
+  bool    measNumInBox;
+};
 
 class NABCExport  {
 	public:
@@ -81,6 +90,7 @@ class NABCExport  {
 		int *countOfLyricsLines_;
 		QString createVoiceName(QString staffName,  int staff_nr, int voice_nr);
 		ofstream out_;
+		struct abc_options abcOpts_;
 		class badinfo {
 			public:
 				badinfo(int type, int staffnr, int barnr) {

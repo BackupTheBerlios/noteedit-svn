@@ -29,7 +29,20 @@
 
 #include "config.h"
 #include "lines.h"
+#include "abcexportform.h"
+#include "lilypondexportform.h"
+#include "midiexportform.h"
+#include "musicxmlexportform.h"
+#include "musixtexexportform.h"
+#include "pmxexportform.h"
 #include "exports.h"
+#include "saveparametersform.h"
+#include "midiexport.h"
+#include "pmxexport.h"
+#include "abcexport.h"
+#include "lilyexport.h"
+#include "musicxmlexport.h"
+#include "musixtex.h"
 #include "scaleEd.h"
 #include "smRest.h"
 #include "volume.h"
@@ -59,7 +72,6 @@
 #define PMX_PAGE	3
 #define LILY_PAGE	4
 #define MUSICXML_PAGE	5
-#define PARAM_PAGE	6
 
 class NTSE3Handler;
 class noteSel;
@@ -71,6 +83,12 @@ class staffFrm;
 class QCheckListItem;
 class NMusElement;
 struct main_props_str;
+struct abc_options;
+struct lily_options;
+struct midi_options;
+struct musixtex_options;
+struct musicxml_options;
+struct pmx_options;
 
 class lineSelWg : public lineSel {
 
@@ -95,18 +113,51 @@ class exportFrm : public exportForm {
 	~exportFrm();
 	void initialize( QPtrList<NStaff> *stafflist, QPtrList<NVoice> *voicelist, QString fname );
 	void boot();
-	bool paramsEnabled();
-	void setEnabled(bool ok);
-	int getSaveWidth();
-	int getSaveHeight();
-	bool withMeasureNums();
-	void setWithMeasureNums(bool with);
-	void setSaveWidth(int width);
-	void setSaveHeight(int height);
-	
+	// Updating (Reading/Saving) predefined form export widgets
+	void getABCOptions(ABCExportForm &abcExportWidget, struct abc_options &abcOpts);
+	void setABCOptions(ABCExportForm &abcExportWidget, struct abc_options abcOpts);
+	void getLilyOptions(LilypondExportForm &lilyExportWidget, struct lily_options &lilyOpts);
+	void setLilyOptions(LilypondExportForm &lilyExportWidget, struct lily_options lilyOpts);
+	void getMidiOptions(MidiExportForm &midiExportWidget, struct midi_options &midiOpts);
+	void setMidiOptions(MidiExportForm &midiExportWidget, struct midi_options midiOpts);
+	void getMusiXTeXOptions(MusiXTeXExportForm &musixtexExportWidget, struct musixtex_options &musixtexOpts);
+	void setMusiXTeXOptions(MusiXTeXExportForm &musixtexExportWidget, struct musixtex_options musixtexOpts);
+	void getMusicXMLOptions(MusicXMLExportForm &musicxmlExportWidget, struct musicxml_options &musicxmlOpts);
+	void setMusicXMLOptions(MusicXMLExportForm &musicxmlExportWidget, struct musicxml_options musicxmlOpts);
+	void getPMXOptions(PMXExportForm &pmxExportWidget, struct pmx_options &pmxOpts);
+	void setPMXOptions(PMXExportForm &pmxExportWidget, struct pmx_options pmxOpts);
+	// Same as above for updating form export widgets from this class
+	inline void getABCOptions(struct abc_options &abcOpts)
+	{ getABCOptions(*abcExportWidget_, abcOpts); };
+	inline void setABCOptions(struct abc_options abcOpts)
+	{ setABCOptions(*abcExportWidget_, abcOpts); };
+	inline void getLilyOptions(struct lily_options &lilyOpts)
+	{ getLilyOptions(*lilyExportWidget_, lilyOpts); };
+	inline void setLilyOptions(struct lily_options lilyOpts)
+	{ setLilyOptions(*lilyExportWidget_, lilyOpts); };
+	inline void getMidiOptions(struct midi_options &midiOpts)
+	{ getMidiOptions(*midiExportWidget_, midiOpts); };
+	inline void setMidiOptions(struct midi_options midiOpts)
+	{ setMidiOptions(*midiExportWidget_, midiOpts); };
+	inline void getMusiXTeXOptions(struct musixtex_options &musixtexOpts)
+	{ getMusiXTeXOptions(*musixtexExportWidget_, musixtexOpts); };
+	inline void setMusiXTeXOptions(struct musixtex_options musixtexOpts)
+	{ setMusiXTeXOptions(*musixtexExportWidget_, musixtexOpts); };
+	inline void getMusicXMLOptions(struct musicxml_options &musicxmlOpts)
+	{ getMusicXMLOptions(*musicxmlExportWidget_, musicxmlOpts); };
+	inline void setMusicXMLOptions(struct musicxml_options musicxmlOpts)
+	{ setMusicXMLOptions(*musicxmlExportWidget_, musicxmlOpts); };
+	inline void getPMXOptions(struct pmx_options &pmxOpts)
+	{ getPMXOptions(*pmxExportWidget_, pmxOpts); };
+	inline void setPMXOptions(struct pmx_options pmxOpts)
+	{ setPMXOptions(*pmxExportWidget_, pmxOpts); };
+
+    public slots:	
+	void showExportForm( int );
+
     private slots:
-	void closeIt();
 	void startExport();
+	void closeIt();
 	void texMeasures();
 	void musixStaffSig();
 	void pmxStaffSig();
@@ -116,7 +167,6 @@ class exportFrm : public exportForm {
 	void lilyLandSlot();
 	void lilyStaffSig();
 	void abcLandSlot();
-	void paramLandSlot();
 	
     private:
 	QPtrList<NStaff> *staffList_;
@@ -124,8 +174,35 @@ class exportFrm : public exportForm {
 	QString sourceFile_;
 	staffFrm *staffDialog_;
 	NMainFrameWidget *mainWidget_;
+	ABCExportForm *abcExportWidget_;
+	LilypondExportForm *lilyExportWidget_;
+	MidiExportForm *midiExportWidget_;
+	MusiXTeXExportForm *musixtexExportWidget_;
+	MusicXMLExportForm *musicxmlExportWidget_;
+	PMXExportForm *pmxExportWidget_;
+	int iCurrentPage_;
+    };
 
-    };    
+class saveParametersFrm : public SaveParametersForm
+{
+    public:
+	saveParametersFrm( NMainFrameWidget *mainWidget, QWidget *parent = 0 );
+	int getSaveWidth();
+	int getSaveHeight();
+	void setSaveWidth(int width);
+	void setSaveHeight(int height);
+	bool paramsEnabled();
+	void setEnabled(bool ok);
+	bool withMeasureNums();
+	void setWithMeasureNums(bool with);
+
+    private slots:
+	void paramLandSlot();
+	void closeIt();
+
+    private:
+	NMainFrameWidget *mainWidget_;
+};
 
 class scaleFrm : public scaleForm {
 

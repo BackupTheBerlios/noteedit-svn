@@ -46,6 +46,29 @@ struct dynamics_descr_str {
 	int dynEndPos;
 };
 
+struct musixtex_options
+{
+  int left;
+  int top;
+  int width;
+  int height;
+  int size;
+  bool bar;
+  bool ties;
+  bool measures;
+  int measureVal;
+  int outputEncoding;
+  int inputEncoding;
+  int fontModule;
+  bool ucs;
+  bool mLyr;
+  bool omitPageNumbering;
+  bool tempo;
+  bool volume;
+  QString musixtexcmd;
+  int parindent;
+};
+
 class NExportError {
 	public:
 		NExportError(int r, int m) {reason = r; measure = m;}
@@ -141,6 +164,7 @@ class NMusiXTeX {
 		QPtrList<pending_context_change_class> pending_key_changes_, pending_time_changes_;
 		QPtrList<textDescr> pending_texts_;
 		NMainFrameWidget *mainWidget_;
+		struct musixtex_options musixOpts_;
 		void externalCmd (QString command, QString filename);
 };
 

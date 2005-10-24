@@ -73,14 +73,12 @@ void NABCExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, int co
 	int voice_count;
 	int current_time;
 	bool something_written;
-	bool ok;
 	bool with_pedal_marks, with_drums;
 	bool voice_with_pedal, voice_with_drum;
 	bool gridsused, firstcall, dummy;
 	chordDiagramName *diagNam;
 	double dval;
 	NMusElement *last_elem;
-	QRegExp reg = QRegExp("/100");
 	QString s;
 
 	out_.open(fname);
@@ -113,27 +111,23 @@ void NABCExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, int co
 	out_ << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl << endl;
 	out_ << "% PAGE LAYOUT" << endl;
 	out_ << '%' << endl;
-	dval =  expWin->ABCWidth->text().toDouble(&ok);
-	if (!ok) dval = 17.0; else dval /= 10.0;
+	// Read options
+	expWin->getABCOptions( abcOpts_ );
+	dval =  abcOpts_.width / 10.0;
 	out_ << "%%pagewidth\t" << dval << "cm" << endl;
-	dval =  expWin->ABCHeight->text().toDouble(&ok);
-	if (!ok) dval = 25.0; else dval /= 10.0;
+	dval =  abcOpts_.height / 10.0;
 	out_ << "%%pageheight\t" << dval << "cm" << endl;
-	s = expWin->ABCscale->text();
-	s.replace (reg, "");
-	dval =  s.toDouble(&ok);
-	if (!ok) dval = 0.75; else dval /= 100.0;
+	dval =  abcOpts_.scale / 100.0;
 	out_ << "%%scale\t\t" << dval << endl;
-	dval =  expWin->ABCStaffSep->text().toDouble(&ok);
-	if (!ok) dval = 1.6; else dval /= 10.0;
+	dval =  abcOpts_.staffSep / 10.0;
 	out_ << "%%staffsep\t" << dval << "cm" << endl;
-	if (expWin->ABCExprAbove->isChecked()) {
+	if (abcOpts_.exprAbove) {
 		out_ << "%%exprabove\ttrue" << endl;
 	}
 	else {
 		out_ << "%%exprabove\tfalse" << endl;
 	}
-	if (expWin->ABCMeasNumInBox->isChecked()) {
+	if (abcOpts_.measNumInBox) {
 		out_ << "%%measurebox\ttrue" << endl;
 	}
 	else {
@@ -796,7 +790,7 @@ void NABCExport::handleSpecialElements(NStaff *staff_elem, NMusElement *elem) {
 	else {
 		xpos = (1 << 30);
 	}
-	while (specElem = staff_elem->checkSpecialElement(xpos, &volta)) {
+	while ((specElem = staff_elem->checkSpecialElement(xpos, &volta))>0) {
 		switch (specElem->getType()) {
 			case T_SIGN: ok = false;
 				     switch (specElem->getSubType()) {
@@ -836,7 +830,8 @@ void NABCExport::outputBarSym(NSign *sign, int volta, bool isLast) {
 void NABCExport::writePendingSigns(int idx) {
 	NSign *sign;
 
-	if (sign = voiceStatList_[idx].pendingVolumes) {
+	sign = voiceStatList_[idx].pendingVolumes;
+	if (sign > 0) {
 		voiceStatList_[idx].pendingVolumes = 0;
 		switch (sign->getVolType()) {
 			case V_PPPIANO : out_ << "!ppp!"; break;
@@ -848,14 +843,16 @@ void NABCExport::writePendingSigns(int idx) {
 			default        : out_ << "!mf!"; break;
 		}
 	}
-	if (sign = voiceStatList_[idx].pendingSegnos) {
+	sign = voiceStatList_[idx].pendingSegnos;
+	if (sign > 0) {
 		voiceStatList_[idx].pendingSegnos = 0;
 		switch(sign->getSubType()) {
 			case SEGNO     : out_ << "!segno! "; break;
 			case CODA      : out_ << "!coda! "; break;
 		}
 	}
-	if (sign = voiceStatList_[idx].pendingSegnos2) {
+	sign = voiceStatList_[idx].pendingSegnos2;
+	if (sign > 0) {
 		voiceStatList_[idx].pendingSegnos2 = 0;
 		switch(sign->getSubType()) {
 			case DAL_SEGNO : out_ << "!D.S.! "; break;
@@ -864,7 +861,8 @@ void NABCExport::writePendingSigns(int idx) {
 			case DAL_SEGNO_AL_CODA: out_ << "\"D.S. al coda\" "; break;
 		}
 	}
-	if (sign = voiceStatList_[idx].pendingRitAccel) {
+	sign = voiceStatList_[idx].pendingRitAccel;
+	if (sign > 0) {
 		voiceStatList_[idx].pendingRitAccel = 0;
 		switch(sign->getSubType()) {
 			case ACCELERANDO: out_ << "!acc! "; break;

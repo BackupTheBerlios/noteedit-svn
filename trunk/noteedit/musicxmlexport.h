@@ -39,6 +39,10 @@
 
 using namespace std;
 
+struct musicxml_options
+{
+};
+
 class NKeySig;
 class NStaff;
 class NVoice;

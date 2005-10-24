@@ -1,0 +1,540 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>MusiXTeXExportForm</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>MusiXTeXExportForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>600</width>
+            <height>480</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>MusiXTeX</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QGroupBox" row="1" column="0" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>x2</cstring>
+            </property>
+            <property name="title">
+                <string>Additional</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <spacer row="1" column="4">
+                    <property name="name">
+                        <cstring>Spacer1_3</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QSpinBox" row="1" column="3">
+                    <property name="name">
+                        <cstring>texParindent</cstring>
+                    </property>
+                    <property name="value">
+                        <number>10</number>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="0" column="3" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>texTempo</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;With tempo signs</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="3">
+                    <property name="name">
+                        <cstring>texVolume</cstring>
+                    </property>
+                    <property name="text">
+                        <string>With &amp;volume signs</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>TextLabel1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Indent:</string>
+                    </property>
+                </widget>
+                <spacer row="1" column="1" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>Spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QLabel" row="2" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>t1_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>MusiXTeX-Cmd:</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit" row="2" column="2" rowspan="1" colspan="3">
+                    <property name="name">
+                        <cstring>musixtexcmd</cstring>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QPushButton" row="4" column="0">
+            <property name="name">
+                <cstring>musixStaff</cstring>
+            </property>
+            <property name="text">
+                <string>&amp;Staff selection</string>
+            </property>
+        </widget>
+        <widget class="QGroupBox" row="0" column="0" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>x1</cstring>
+            </property>
+            <property name="title">
+                <string>Page geometry</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QLabel" row="0" column="2">
+                    <property name="name">
+                        <cstring>l4</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Width:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="2">
+                    <property name="name">
+                        <cstring>l5</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Height:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>l3</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Left margin:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>l2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Top margin:</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="1" column="3">
+                    <property name="name">
+                        <cstring>texHeight</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>500</number>
+                    </property>
+                    <property name="minValue">
+                        <number>-500</number>
+                    </property>
+                    <property name="value">
+                        <number>250</number>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="0" column="1">
+                    <property name="name">
+                        <cstring>texTop</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>500</number>
+                    </property>
+                    <property name="minValue">
+                        <number>-500</number>
+                    </property>
+                    <property name="value">
+                        <number>-10</number>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="0" column="3">
+                    <property name="name">
+                        <cstring>texWidth</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>500</number>
+                    </property>
+                    <property name="minValue">
+                        <number>-500</number>
+                    </property>
+                    <property name="value">
+                        <number>170</number>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="1" column="1">
+                    <property name="name">
+                        <cstring>texLeft</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>500</number>
+                    </property>
+                    <property name="minValue">
+                        <number>-500</number>
+                    </property>
+                    <property name="value">
+                        <number>-10</number>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="4">
+                    <property name="name">
+                        <cstring>texLandscape</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Landscape</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="0" column="2" rowspan="4" colspan="1">
+            <property name="name">
+                <cstring>x3</cstring>
+            </property>
+            <property name="title">
+                <string>Page generation</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QCheckBox" row="8" column="2">
+                    <property name="name">
+                        <cstring>texUcs</cstring>
+                    </property>
+                    <property name="text">
+                        <string>ucs</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="0" column="0" rowspan="1" colspan="3">
+                    <property name="name">
+                        <cstring>texMeasures_</cstring>
+                    </property>
+                    <property name="text">
+                        <string>L&amp;imit line measures</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="2" column="0" rowspan="2" colspan="3">
+                    <property name="name">
+                        <cstring>texTies</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Spa&amp;re ties</string>
+                    </property>
+                </widget>
+                <spacer row="1" column="0">
+                    <property name="name">
+                        <cstring>Spacer4</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QCheckBox" row="4" column="0" rowspan="1" colspan="3">
+                    <property name="name">
+                        <cstring>texBar</cstring>
+                    </property>
+                    <property name="text">
+                        <string>With bar &amp;numbers</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="5" column="0" rowspan="1" colspan="3">
+                    <property name="name">
+                        <cstring>texMLyr</cstring>
+                    </property>
+                    <property name="text">
+                        <string>With musix&amp;lyr</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="6" column="0" rowspan="1" colspan="3">
+                    <property name="name">
+                        <cstring>texOmitPageNumbering</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Omit page numbering</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox" row="7" column="0">
+                    <item>
+                        <property name="text">
+                            <string>ASCII</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>UTF-8</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>texOutputEncoding</cstring>
+                    </property>
+                    <property name="maxCount">
+                        <number>9</number>
+                    </property>
+                    <property name="duplicatesEnabled">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QComboBox" row="8" column="0">
+                    <item>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>latin1</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>cp1251</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>koi8-u</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>koi8-r</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>texInputEncoding</cstring>
+                    </property>
+                </widget>
+                <widget class="QComboBox" row="9" column="0">
+                    <item>
+                        <property name="text">
+                            <string>Small size</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Normal size</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Large size</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Very large size</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>texSize</cstring>
+                    </property>
+                    <property name="font">
+                        <font>
+                        </font>
+                    </property>
+                    <property name="currentItem">
+                        <number>1</number>
+                    </property>
+                    <property name="duplicatesEnabled">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QComboBox" row="7" column="1" rowspan="1" colspan="2">
+                    <item>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>T2A</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>T2B</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>T2C</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>OT1</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>OT2</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>X2</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>LCY</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>texFontModule</cstring>
+                    </property>
+                </widget>
+                <widget class="QSlider" row="1" column="1" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>measureVal</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="minValue">
+                        <number>2</number>
+                    </property>
+                    <property name="maxValue">
+                        <number>24</number>
+                    </property>
+                    <property name="value">
+                        <number>4</number>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                </widget>
+                <widget class="QLCDNumber" row="3" column="2">
+                    <property name="name">
+                        <cstring>j1</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="intValue" stdset="0">
+                        <number>4</number>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <spacer row="4" column="1">
+            <property name="name">
+                <cstring>Spacer3</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>198</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="2" column="0" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>Spacer1</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>215</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+    </grid>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+<connections>
+    <connection>
+        <sender>measureVal</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>j1</receiver>
+        <slot>display(int)</slot>
+    </connection>
+</connections>
+</UI>

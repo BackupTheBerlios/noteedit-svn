@@ -1,0 +1,262 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>PMXExportForm</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>PMXExportForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>600</width>
+            <height>480</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>PMXForm</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QGroupBox" row="0" column="0">
+            <property name="name">
+                <cstring>x4</cstring>
+            </property>
+            <property name="title">
+                <string>Page geometry</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>l6</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Width:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>l7</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Height:</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="0" column="1">
+                    <property name="name">
+                        <cstring>pmxWidth</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>500</number>
+                    </property>
+                    <property name="value">
+                        <number>170</number>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="1" column="1">
+                    <property name="name">
+                        <cstring>pmxHeight</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>500</number>
+                    </property>
+                    <property name="value">
+                        <number>250</number>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>pmxLandscape</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Landscape</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>pmxKeepBeams</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Keep beams</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="4" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>pmxMLyr</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;With musixlyr</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="0" column="1">
+            <property name="name">
+                <cstring>x5</cstring>
+            </property>
+            <property name="title">
+                <string>Settings</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="NScaleEdit" row="1" column="1">
+                    <property name="name">
+                        <cstring>pmxMeasure</cstring>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>225</width>
+                            <height>36</height>
+                        </size>
+                    </property>
+                </widget>
+                <widget class="NScaleEdit" row="3" column="1">
+                    <property name="name">
+                        <cstring>pmxNum</cstring>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>225</width>
+                            <height>36</height>
+                        </size>
+                    </property>
+                </widget>
+                <widget class="NScaleEdit" row="2" column="1">
+                    <property name="name">
+                        <cstring>pmxSystem</cstring>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>225</width>
+                            <height>36</height>
+                        </size>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>l8</cstring>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>78</width>
+                            <height>0</height>
+                        </size>
+                    </property>
+                    <property name="frameShadow">
+                        <enum>Plain</enum>
+                    </property>
+                    <property name="text">
+                        <string>&lt;center&gt;Measures&lt;br&gt;per system:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="2" column="0">
+                    <property name="name">
+                        <cstring>l9</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&lt;center&gt;Systems&lt;br&gt;per page:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="3" column="0">
+                    <property name="name">
+                        <cstring>l10</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&lt;center&gt;Number&lt;br&gt;of pages:</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton" row="4" column="1">
+                    <property name="name">
+                        <cstring>pmxStaff</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Staff selection</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+S</string>
+                    </property>
+                </widget>
+                <spacer row="0" column="0">
+                    <property name="name">
+                        <cstring>Spacer28</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Vertical</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Fixed</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <spacer row="5" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>Spacer1_2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+            </grid>
+        </widget>
+    </grid>
+</widget>
+<customwidgets>
+    <customwidget>
+        <class>NScaleEdit</class>
+        <header location="local">scaleedit_impl.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+    </customwidget>
+</customwidgets>
+<images>
+    <image name="image0">
+        <data format="PNG" length="256">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000000c749444154388dad55db1184200c4c180bb005eab1cd6b8112b40d4bf1bee2486ef3006fbf1c93ece605f07eece4e1a4ed42ff2b35f6e2961132e46309941952ed8f628a761a21f56217cb20b04a45fe276d97f8ffb422431ad96e62a4ee057a83131bcc38431a6d057f8eb5cb36438afcb5cded719614011e9088308374c61aa9adb0e0651b5552b4b29efaacb099312ad5da5b2d50a93124463b2adf516fbb8cbd1354a9b1b667c8a787674144f9f982bcb93635ba8cb3fd1b2616f251013403fee763fabce8bff0aa6c98500331e50000000049454e44ae426082</data>
+    </image>
+</images>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>nscaleedit.h</includehint>
+</includehints>
+</UI>

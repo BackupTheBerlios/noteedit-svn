@@ -1,0 +1,493 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>LilypondExportForm</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>LilypondExportForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>600</width>
+            <height>480</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Lilypond</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QGroupBox" row="1" column="0" rowspan="2" colspan="1">
+            <property name="name">
+                <cstring>x7</cstring>
+            </property>
+            <property name="title">
+                <string>Additional attributes</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>l14</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Volume signs:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>l13</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Global size:</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox" row="0" column="1">
+                    <item>
+                        <property name="text">
+                            <string>11</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>13</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>16</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>20</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>23</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>26</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>lilyFont</cstring>
+                    </property>
+                    <property name="currentItem">
+                        <number>2</number>
+                    </property>
+                </widget>
+                <widget class="QComboBox" row="2" column="0" rowspan="1" colspan="2">
+                    <item>
+                        <property name="text">
+                            <string>No volume signs</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Volume signs above</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Volume signs below</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>lilyVol</cstring>
+                    </property>
+                    <property name="currentItem">
+                        <number>2</number>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="0" column="1" rowspan="2" colspan="1">
+            <property name="name">
+                <cstring>x8</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>0</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="title">
+                <string>Generating parameters</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <spacer row="0" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>Spacer13</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>270</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QSlider" row="6" column="0">
+                    <property name="name">
+                        <cstring>lilyMeasureVal</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="minValue">
+                        <number>2</number>
+                    </property>
+                    <property name="maxValue">
+                        <number>24</number>
+                    </property>
+                    <property name="value">
+                        <number>4</number>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="1" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>lilyBeam</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Keep &amp;beams</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+B</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>lilyStem</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Keep stem directions</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+K</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>lilyDrumNotes</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Export drum notes</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="4" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>lilyVoice</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Only voices</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+O</string>
+                    </property>
+                </widget>
+                <widget class="QLCDNumber" row="6" column="1">
+                    <property name="name">
+                        <cstring>LCDNumber13</cstring>
+                    </property>
+                    <property name="intValue" stdset="0">
+                        <number>4</number>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="7" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>lilyTies</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Sparse &amp;ties</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+T</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="5" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>lilyMeasure</cstring>
+                    </property>
+                    <property name="text">
+                        <string>L&amp;imit the measures</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+I</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox" row="9" column="0">
+                    <item>
+                        <property name="text">
+                            <string>ASCII</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Latin1</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Unicode</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>UTF-8</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>lilyOutputCoding</cstring>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="8" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>l15</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Character encoding:</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QButtonGroup" row="0" column="0">
+            <property name="name">
+                <cstring>x6</cstring>
+            </property>
+            <property name="title">
+                <string>Page geometry</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QSpinBox" row="5" column="2">
+                    <property name="name">
+                        <cstring>lilyCWidth</cstring>
+                    </property>
+                    <property name="buttonSymbols">
+                        <enum>UpDownArrows</enum>
+                    </property>
+                    <property name="maxValue">
+                        <number>500</number>
+                    </property>
+                    <property name="minValue">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>170</number>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="6" column="2">
+                    <property name="name">
+                        <cstring>lilyCHeight</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>500</number>
+                    </property>
+                    <property name="minValue">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>250</number>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="3">
+                    <property name="name">
+                        <cstring>lilySLand</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Landscape</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+L</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="5" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>l11</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Width:</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="7" column="0" rowspan="1" colspan="3">
+                    <property name="name">
+                        <cstring>lilyCLand</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Landscape</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+L</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="6" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>l12</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Height:</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox" row="1" column="0" rowspan="1" colspan="2">
+                    <item>
+                        <property name="text">
+                            <string>A6</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>A5</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>A4</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>A3</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>US Legal</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>US Letter</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Tabloid</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>lilySPageSize</cstring>
+                    </property>
+                    <property name="currentItem">
+                        <number>2</number>
+                    </property>
+                </widget>
+                <spacer row="3" column="1" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>Spacer18</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>120</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <spacer row="3" column="0">
+                    <property name="name">
+                        <cstring>Spacer16</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>121</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QRadioButton" row="0" column="0" rowspan="1" colspan="3">
+                    <property name="name">
+                        <cstring>lilySPage</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="text">
+                        <string>Use &amp;standard page size</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+S</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                    <property name="buttonGroupId">
+                        <number>0</number>
+                    </property>
+                </widget>
+                <widget class="QRadioButton" row="4" column="0" rowspan="1" colspan="3">
+                    <property name="name">
+                        <cstring>lilyCPage</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Use &amp;custom page size</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+C</string>
+                    </property>
+                    <property name="buttonGroupId">
+                        <number>0</number>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QPushButton" row="2" column="1">
+            <property name="name">
+                <cstring>lilyStaff</cstring>
+            </property>
+            <property name="text">
+                <string>&amp;Staff selection</string>
+            </property>
+            <property name="accel">
+                <string>Alt+S</string>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+<connections>
+    <connection>
+        <sender>lilyMeasureVal</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>LCDNumber13</receiver>
+        <slot>display(int)</slot>
+    </connection>
+<slots>
+    <slot>lilyMeasures()</slot>
+</slots>
+</connections>
+</UI>

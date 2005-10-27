@@ -621,7 +621,7 @@ void NMidiTimeScale::initialize_desicion_tree(unrolled_midi_events_str *ptr, uns
 		}
 		else if ((ptr1->eventType & EVT_CLASS_NOTE) && (ptr->eventType & EVT_CLASS_NOTE)){
 			ptr->decision_tree[j].costs = (int) (PITCH_DIST_COST_FAC * fabs(ptr->ave_pitch - ptr1->ave_pitch) +
-								START_DIST_FAC * fabs(ptr1->start_time -  ptr->stop_time));
+								START_DIST_FAC * fabs((double)(ptr1->start_time -  ptr->stop_time)));
 		}
 		j++;
 	}

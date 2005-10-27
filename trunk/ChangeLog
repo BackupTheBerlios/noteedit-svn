@@ -83,3 +83,4 @@ version 2.9.0:
 	  - FIXED: Tuplets and/or beams are now correctly broken when non-complete tuplet and/or beam is copied.
 	  - ADDED: Assign beam properties to the cloned notes as well.
 	  - REMOVED: NChord::resetBeamFlag(), duplicate of NChord::resetBeamFlags()
+	* R380 -- fixed ambiguous argument cast of fabs in miditimescale.cpp

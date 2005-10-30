@@ -1457,8 +1457,34 @@ void NMainFrameWidget::processMoveEvent( QMouseEvent * evt)  {
 	repaint();
 }
 
-void NMainFrameWidget::processWeelEvent(QWheelEvent * e ) {
+/* Process the mouse wheel event */
+void NMainFrameWidget::processWheelEvent(QWheelEvent * e ) {
 	if (playing_) return;
+	bool fast = false, vertical = false; /* Are we fast-scrolling and/or scrolling vertically, using different key modifiers? */
+	
+	if (e->state() & ControlButton) {
+		if (e->delta() > 0) zoomIn();
+		else zoomOut();
+		
+		return;
+	}
+		
+	if (e->state() & AltButton)
+		fast = true;
+		
+	if (e->state() & ShiftButton)
+		vertical = true;
+	
+	if (vertical)
+		if (scrolly_->isVisible())
+			scrolly_->setValue(topy_ - e->delta() * ((fast) ? 10 : 1));
+	
+	if (!vertical)
+		scrollx_->setValue(leftx_ - e->delta() * ((fast) ? 10 : 1));
+
+/*	Old NoteEdit wheel behaviour - change note pitches
+	Have to rethink about it: Should this be reactivated in Edit or other specific note editing mode? */
+/*
 	if (e->state() & ControlButton) {
 		if (e->state() & ShiftButton) {
 			if (e->delta() > 0) {
@@ -1487,7 +1513,7 @@ void NMainFrameWidget::processWeelEvent(QWheelEvent * e ) {
 	}
 	else {
 		scrollx_->setValue(leftx_ - e->delta());
-	}
+	} */
 }
 
 void NMainFrameWidget::selectWholeStaff() {

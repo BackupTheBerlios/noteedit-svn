@@ -99,7 +99,7 @@ void NDbufferWidget::mouseMoveEvent ( QMouseEvent * evt)  {
 }
 
 void NDbufferWidget::wheelEvent( QWheelEvent * e ) {
-	mainFrame_->processWeelEvent(e);
+	mainFrame_->processWheelEvent(e);
 }
 
 void NDbufferWidget::mouseReleaseEvent ( QMouseEvent * )  {

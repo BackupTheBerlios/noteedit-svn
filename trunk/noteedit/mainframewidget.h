@@ -123,7 +123,7 @@ class NMainFrameWidget : public QWidget
 		void synchronizeRecentFiles();
 		void processMouseEvent(QMouseEvent * evt);
 		void processMoveEvent(QMouseEvent * evt);
-		void processWeelEvent(QWheelEvent * e );
+		void processWheelEvent(QWheelEvent * e );
 		void stopTimer() {autoscrollTimer_.stop();}
 		void generateClef(int type, int shift);
 		void createTuplet(char numNotes, char playtime);

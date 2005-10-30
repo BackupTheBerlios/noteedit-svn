@@ -84,3 +84,8 @@ version 2.9.0:
 	  - ADDED: Assign beam properties to the cloned notes as well.
 	  - REMOVED: NChord::resetBeamFlag(), duplicate of NChord::resetBeamFlags()
 	* R380 -- fixed ambiguous argument cast of fabs in miditimescale.cpp
+	* R381 -- changed mouse wheel behaviour.
+	  - Zoom in/out using CONTROL key modifier
+	  - Fast scroll (10 times faster than ordinary) using ALT key modifier
+	  - Vertical scroll using SHIFT key modifier.
+	  - Renamed processWeelEvent() -> processWheelEvent().

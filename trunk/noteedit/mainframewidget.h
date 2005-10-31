@@ -403,8 +403,8 @@ class NMainFrameWidget : public QWidget
 		void changeKey(int idx);
 
 /*-------------------------- reaction on scroll events ---------------------------------*/
-		void xscrollFromWidget(int val);
-		void yscroll(int val);
+		inline void xscroll(int val, bool _repaint = true);
+		inline void yscroll(int val, bool _repaint = true);
 		void trillLengthChanged(int val); // located in mainframewidget2.cpp
 		void trillDisabled();
 		void dynamicPosChanged(int val);
@@ -608,7 +608,8 @@ class NMainFrameWidget : public QWidget
 		void manageToolElement(bool becauseOfInsertion);
 /*-------------------------------- layout --------------------------------------*/
 		void renewStaffLayout();
-		void  appendStaffLayoutElem();
+		void appendStaffLayoutElem();
+		inline void computeLastYHeight();
 		QPixmap *layoutPixmap_;
 /*-------------------------------- playing --------------------------------------*/
 		int contextWidth_;

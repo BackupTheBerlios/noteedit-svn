@@ -501,7 +501,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	editMode_ = false;
 	notePart_ = new NDbufferWidget(this, (char *)"notepart");
 	scrollx_ = new QScrollBar(QScrollBar::Horizontal, this, "scrollx");
-	connect(scrollx_, SIGNAL(valueChanged(int)), this , SLOT(xscrollFromWidget(int)));
+	connect(scrollx_, SIGNAL(valueChanged(int)), this , SLOT(xscroll(int)));
 	scrolly_ = new QScrollBar(QScrollBar::Vertical, this, "scrolly");
 	connect(scrolly_, SIGNAL(valueChanged(int)), this , SLOT(yscroll(int)));
 	width_ = height_ = 0;
@@ -1113,7 +1113,10 @@ void  NMainFrameWidget::appendStaffLayoutElem() {
 	createLayoutPixmap();
 }
 
-	
+/* Calculates the last Y value of the bottom line + underlength of the most bottom staff - used for the vertical scrollbar. */
+void NMainFrameWidget::computeLastYHeight() {
+	lastYHeight_ = voiceList_.last()->getStaff()->getBase() + voiceList_.last()->getStaff()->underlength_;
+}	
 
 void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 #define TRANSX(x) (((int) ((float) (x)/main_props_.zoom + 0.5))+leftx_-main_props_.left_page_border)
@@ -1477,11 +1480,11 @@ void NMainFrameWidget::processWheelEvent(QWheelEvent * e ) {
 	
 	if (vertical)
 		if (scrolly_->isVisible())
-			scrolly_->setValue(topy_ - e->delta() * ((fast) ? 10 : 1));
+			scrolly_->setValue(topy_ - e->delta() * ((fast) ? 5 : 0.5));
 	
 	if (!vertical)
 		scrollx_->setValue(leftx_ - e->delta() * ((fast) ? 10 : 1));
-
+	
 /*	Old NoteEdit wheel behaviour - change note pitches
 	Have to rethink about it: Should this be reactivated in Edit or other specific note editing mode? */
 /*
@@ -1634,23 +1637,33 @@ void NMainFrameWidget::KE_moveSemiDown() {
 void NMainFrameWidget::KE_moveLeft() {
 	if (playing_) return;
 	NMusElement *elem;
-	int newXpos;
+	int newXpos, newYpos;
 	QPoint curpos;
 	prevElement();
 	if ((elem = currentVoice_->getCurrentElement()) == 0) return;
-	if (!NResource::allowKeyboardInsert_) {
-		newXpos = currentVoice_->getCurrentElement()->getXpos();
-		if (newXpos - SMALL_X_SENS_DIST< leftx_) {
-				scrollx_->setValue(leftx_ - SMALL_X_SCROLL < 0 ? 0 : leftx_ - SMALL_X_SCROLL);
-		}
-		return;
-	}
-	curpos = notePart_->mapFromGlobal(cursor().pos());
+	
 	newXpos = currentVoice_->getCurrentElement()->getXpos();
-	if (newXpos - SMALL_X_SENS_DIST< leftx_) {
-		scrollx_->setValue(leftx_ - SMALL_X_SCROLL < 0 ? 0 : leftx_ - SMALL_X_SCROLL);
-	}
-	curpos.setX((int) ((newXpos-leftx_) * main_props_.zoom)),
+	newYpos = currentVoice_->getCurrentElement()->getBbox()->y();
+	
+	// If we hit left and we are on the right side of the new element, pan left, so the element is visible near the left border - most modern text editor behaviours
+	if (newXpos - SMALL_X_SENS_DIST < leftx_)
+		scrollx_->setValue(newXpos - SMALL_X_SENS_DIST < 0 ? 0 : newXpos - SMALL_X_SENS_DIST);
+	// If we hit left and we are on the left side of the new element, pan right, so the element is visible near the right border - most modern text editor behaviours
+	else if (newXpos > leftx_ + paperScrollWidth_)
+		scrollx_->setValue(newXpos - paperScrollWidth_ + SMALL_X_SENS_DIST < 0 ? 0 : newXpos - paperScrollWidth_ + SMALL_X_SENS_DIST);
+	
+	// If the new element is too low, pan the viewport down
+	if (newYpos + SMALL_X_SENS_DIST > topy_ + paperScrollHeight_)
+		scrolly_->setValue(newYpos + SMALL_X_SENS_DIST - paperScrollHeight_);
+	// If the new element is too high, pan the viewport up
+	else if (newYpos < topy_)
+		scrolly_->setValue(newYpos > 0 ? newYpos : 0);
+	
+	if (!NResource::allowKeyboardInsert_)
+		return;
+	
+	curpos = notePart_->mapFromGlobal(cursor().pos());
+	curpos.setX((int) ((newXpos - leftx_) * main_props_.zoom));
 	cursor().setPos(notePart_->mapToGlobal(curpos));
 }
 
@@ -1669,26 +1682,36 @@ void NMainFrameWidget::KE_moveEnd() {
 void NMainFrameWidget::KE_moveRight() {
 	if (playing_) return;
 	NMusElement *elem;
-	int newXpos;
+	int newXpos, newYpos;
 	QPoint curpos;
 
 	nextElement();
 	if ((elem = currentVoice_->getCurrentElement()) == 0) return;
-	if (!NResource::allowKeyboardInsert_) {
-		newXpos = currentVoice_->getCurrentElement()->getXpos();
-		currentVoice_->getCurrentElement()->getBbox()->width();
-		if (newXpos + SMALL_X_SENS_DIST> leftx_ + paperScrollWidth_) {
-			scrollx_->setValue(leftx_ + SMALL_X_SCROLL);
-		}
+	
+	newXpos = currentVoice_->getCurrentElement()->getXpos() +
+	          currentVoice_->getCurrentElement()->getBbox()->width() + CUR_DIST;
+	newYpos = currentVoice_->getCurrentElement()->getBbox()->y();
+	
+	// If we hit right and we are on the left side of the new element, pan right, so the element is visible near the right border - most modern text editor behaviours
+	if (newXpos + SMALL_X_SENS_DIST > leftx_ + paperScrollWidth_)
+		scrollx_->setValue(newXpos + SMALL_X_SENS_DIST - paperScrollWidth_);
+	// If we hit right and we are on the right side of the new element, pan left, so the element is visible near the left border - most modern text editor behaviours
+	else if (newXpos < leftx_)
+		scrollx_->setValue(newXpos - SMALL_X_SENS_DIST);
+	
+	// If the new element is too low, pan the viewport down
+	if (newYpos + SMALL_X_SENS_DIST > topy_ + paperScrollHeight_)
+		scrolly_->setValue(newYpos + SMALL_X_SENS_DIST - paperScrollHeight_);
+	// If the new element is too high, pan the viewport up
+	else if (newYpos < topy_)
+		scrolly_->setValue(newYpos > 0 ? newYpos : 0);
+
+	if (!NResource::allowKeyboardInsert_)
 		return;
-	}
+	
 	curpos = notePart_->mapFromGlobal(cursor().pos());
-	newXpos = currentVoice_->getCurrentElement()->getXpos()+
-			currentVoice_->getCurrentElement()->getBbox()->width()+CUR_DIST;
-	if (newXpos + SMALL_X_SENS_DIST> leftx_ + paperScrollWidth_) {
-		scrollx_->setValue(leftx_ + SMALL_X_SCROLL);
-	}
-	curpos.setX((int) ((newXpos-leftx_) * main_props_.zoom)), cursor().setPos(notePart_->mapToGlobal(curpos));
+	curpos.setX((int) ((newXpos - leftx_) * main_props_.zoom));
+	cursor().setPos(notePart_->mapToGlobal(curpos));
 }
 
 void NMainFrameWidget::KE_delete() {
@@ -3543,7 +3566,7 @@ bool NMainFrameWidget::newPaper() {
 	currentStaff_->changeVoice(0);
 	currentStaff_->setActual(true);
 	currentStaff_->setBase( NResource::overlength_  + Y_STAFF_BASE);
-	lastYHeight_ = voiceList_.last()->getStaff()->getBase()+voiceList_.last()->getStaff()->underlength_;
+	computeLastYHeight();
 	actualFname_ = QString();
 	parentWidget()->setCaption( !scTitle_.isEmpty() ? (!scSubtitle_.isEmpty() ? (scTitle_ + ": " + scSubtitle_) : scTitle_) : actualFname_ );
 	emit caption("NoteEdit");
@@ -3687,7 +3710,7 @@ void NMainFrameWidget::readStaffsFromXMLFile(const char *fname) {
 	enableCriticalButtons(true);
 	voiceDisplay_->setMax(currentStaff_->voiceCount());
 	voiceDisplay_->setVal(0);
-	lastYHeight_ = voiceList_.last()->getStaff()->getBase()+voiceList_.last()->getStaff()->underlength_;
+	computeLastYHeight();
 	computeMidiTimes(false);
 	selectedSign_ = 0;
 	NVoice::resetUndo();
@@ -4924,7 +4947,7 @@ void NMainFrameWidget::arrangeStaffs(bool create_layout_pixmap) {
 	setEdited();
 }
 
-
+/* Change zoom value to int zval and repaint the viewport. */
 void NMainFrameWidget::changeZoomValue(int zval) {
 	main_props_.zoom = zoomselect_->computeZoomVal(zval);
 	main_props_.tp->setZoom(main_props_.zoom);
@@ -4938,7 +4961,9 @@ void NMainFrameWidget::changeZoomValue(int zval) {
 	main_props_.scaledBoldItalic_ = QFont ("Times" , (int) (main_props_.zoom * 40.0), QFont::Bold, true);
 	main_props_.scaledBoldItalicMetrics_ = QFontMetrics(main_props_.scaledBoldItalic_);
 	setScrollableNotePage();
-	xscrollFromWidget(leftx_);
+
+	xscroll(leftx_, false); //only set value, don't repaint
+	yscroll(topy_, true); //set value and repaint
 }
 
 void NMainFrameWidget::setInsertionKey() {
@@ -4982,12 +5007,14 @@ void NMainFrameWidget::changeKey(int idx) {
 
 /*-------------------------- reaction on scroll events ---------------------------------*/
 
-void NMainFrameWidget::xscrollFromWidget(int val) {
+/* Set the viewport's X scroll value. */
+void NMainFrameWidget::xscroll(int val, bool _repaint) {
 	if (playing_) return;
-        leftx_ = val;
+	
+	leftx_ = val;
 	main_props_.tp->setXPosition(val-main_props_.left_page_border);
 	main_props_.directPainter->setXPosition(val-main_props_.left_page_border);
-	repaint();
+	if (_repaint) repaint();
 }
 
 void NMainFrameWidget::xscrollDuringReplay(int val) {
@@ -5076,13 +5103,14 @@ void NMainFrameWidget::xscrollDuringReplay(int val) {
 	repaint();
 }
 
-void NMainFrameWidget::yscroll(int val) {
-        topy_ = val;
+/* Set the viewport's Y scroll value. */
+void NMainFrameWidget::yscroll(int val, bool _repaint) {
+	topy_ = val;
 	boty_ = val + (int) ((float) paperHeight_ / main_props_.zoom);
 	main_props_.tp->setYPosition(val-TOP_BOTTOM_BORDER);
 	main_props_.directPainter->setYPosition(val-TOP_BOTTOM_BORDER);
 	main_props_.p->setYPosition(val-TOP_BOTTOM_BORDER);
-	repaint();
+	if (_repaint) repaint();
 }
 
 /*-------------------------- reaction on timer events ---------------------------------*/
@@ -5195,15 +5223,17 @@ void NMainFrameWidget::setScrollableNotePage() {
 	paperHeight_ = height_-MENUBARHEIGHT-TOOLBARHEIGHT-3*BORDER-SCROLLBARHEIGHT;
 	paperScrollHeight_ = (int) ((float) paperHeight_ / main_props_.zoom);
 	boty_ = topy_ + paperScrollHeight_;
-	if (paperScrollHeight_ < lastYHeight_ + Y_SCROLL_DIST) {
+	
+	/* Vertical scrollbar becomes visible. */
+	if ( paperScrollHeight_ < lastYHeight_ + Y_SCROLL_DIST) {
 		scrolly_->setGeometry(width_ - BORDER - SCROLLBARHEIGHT, MENUBARHEIGHT + TOOLBARHEIGHT,
-		   	SCROLLBARHEIGHT, height_-MENUBARHEIGHT-TOOLBARHEIGHT-3*BORDER-SCROLLBARHEIGHT);
-		scrolly_->setSteps (10, (int) ((float) height_ / main_props_.zoom));
-		scrolly_->setRange(0, lastYHeight_);
+	   	SCROLLBARHEIGHT, height_-MENUBARHEIGHT-TOOLBARHEIGHT-3*BORDER-SCROLLBARHEIGHT);
+		scrolly_->setSteps (10, paperScrollHeight_);
+		scrolly_->setRange(0, lastYHeight_ + Y_SCROLL_DIST - paperScrollHeight_);
 		scrolly_->show();
-		scrolly_->setValue(0);
 		paperWidth_ = width_ - 3*BORDER - SCROLLBARHEIGHT;
 	}
+	/* Vertical scrollbar is still hidden. */
 	else {
 		topy_ = 0;
 		boty_ = paperScrollHeight_;
@@ -5424,7 +5454,7 @@ bool NMainFrameWidget::readStaffs(const char *fname) {
 	enableCriticalButtons(true);
 	voiceDisplay_->setMax(currentStaff_->voiceCount());
 	voiceDisplay_->setVal(0);
-	lastYHeight_ = voiceList_.last()->getStaff()->getBase()+voiceList_.last()->getStaff()->underlength_;
+	computeLastYHeight();
 	computeMidiTimes(false);
 	selectedSign_ = 0;
 	NVoice::resetUndo();
@@ -5744,7 +5774,7 @@ void NMainFrameWidget::completeTSE3toScore(bool ok) {
 	enableCriticalButtons(true);
 	staffCount_ = staffList_.count();
 	voiceDisplay_->setMax(currentStaff_->voiceCount());
-	lastYHeight_ = voiceList_.last()->getStaff()->getBase()+voiceList_.last()->getStaff()->underlength_;
+	computeLastYHeight();
 	currentStaff_->setActual(true);
 	setEdited(false);
 	computeMidiTimes(false);

@@ -89,3 +89,13 @@ version 2.9.0:
 	  - Fast scroll (10 times faster than ordinary) using ALT key modifier
 	  - Vertical scroll using SHIFT key modifier.
 	  - Renamed processWeelEvent() -> processWheelEvent().
+	* R382 -- User interface & viewport cleanups:
+	  - For computing the lastYHeight_ constant from the bottom most staff, a new method inline computeLastYHeight() was introduced, instead of writing the formula each time.
+	  - Zoom in/out keeps the top-left corner coordinate
+	  - Added another bool parameter to xscroll() and yscroll() which tells, if the picture gets repainted as well or only the values are set. Needed because xscroll() is used to only set the values and later yscroll() repaints the picture.
+	  - xscroll() and yscroll() functions declared as inline functions.
+	  - Vertical scrollbar properly calculates the viewport height (it ended way below the last staff Y coordinate)
+	  - Viewport position keeps the Y coordinate, when playing/stopping (it jumped to the top, when you stopped the playback before)
+	  - New horizontal scroll behaviour when using Right/Left arrow keys for cycling through elements, when the elements are outside of viewport. Behaviour similar to today's modern text editors - it jumps to the position, where the element is located in the score and fits it to the right/left border of the viewport.
+	  - Renamed xscrollFromWidget() -> xscroll()
+	  - Pan the viewport up/down when cylcling through elements, if the element is above/below the current viewport. 

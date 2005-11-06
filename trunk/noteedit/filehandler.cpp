@@ -194,45 +194,51 @@ bool NFileHandler::writeStaffs(QString fname, QPtrList<NStaff> *stafflist, NMain
 	out_ << "header" << endl;
 	if (!mainWidget->scTitle_.isEmpty()) {
 		outstring = mainWidget->scTitle_;
-		outstring.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
-		outstring.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
-		outstring.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
+		//replace non-ordinary characters with their escape sequence characters
+		outstring.replace('\\', "\\\\");
+		outstring.replace (newLines_, "\\n");
+		outstring.replace('"', "\\\"");
 		out_ << "\ttitle bold (" <<  SC_TITLE_FONT_SIZE << ") \"" << outstring.utf8() << '"' << endl;
 	}
 	if (!mainWidget->scSubtitle_.isEmpty()) {
 		outstring = mainWidget->scSubtitle_;
-		outstring.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
-		outstring.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
-		outstring.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
+		//replace non-ordinary characters with their escape sequence characters
+		outstring.replace('\\', "\\\\");
+		outstring.replace (newLines_, "\\n");
+		outstring.replace('"', "\\\"");
 		out_ << "\ttitle bold (" << SC_SUBTITLE_FONT_SIZE << ") \"" << outstring.utf8() << '"' << endl;
 	}
 	if (!mainWidget->scAuthor_.isEmpty()) {
 		outstring = mainWidget->scAuthor_;
-		outstring.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
-		outstring.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
-		outstring.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
+		//replace non-ordinary characters with their escape sequence characters
+		outstring.replace('\\', "\\\\");
+		outstring.replace (newLines_, "\\n");
+		outstring.replace('"', "\\\"");
 		out_ << "\ttitle bold (" << SC_AUTHOR_FONT_SIZE << ") \"" << outstring.utf8() << '"' << endl;
 	}
 	if (!mainWidget->scLastAuthor_.isEmpty()) {
 		outstring = mainWidget->scLastAuthor_;
-		outstring.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
-		outstring.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
-		outstring.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
+		//replace non-ordinary characters with their escape sequence characters
+		outstring.replace('\\', "\\\\");
+		outstring.replace (newLines_, "\\n");
+		outstring.replace('"', "\\\"");
 		out_ << "\ttitle bold (" << SC_LAST_AUTHOR_FONT_SIZE << ") \"" << outstring.utf8() << '"' << endl;
 	}
 	if (!mainWidget->scComment_.isEmpty()) {
 		outstring = mainWidget->scComment_;
-		outstring.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
-		outstring.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
-		outstring.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
+		//replace non-ordinary characters with their escape sequence characters
+		outstring.replace('\\', "\\\\");
+		outstring.replace (newLines_, "\\n");
+		outstring.replace('"', "\\\"");
 		out_ << "\ttitle bold (" << SC_COMMENT_FONT_SIZE << ") \"" <<  outstring.utf8() << '"' << endl;
 	}
 	if (!mainWidget->scCopyright_.isEmpty()) {
 		out_ << "footer" << endl;
+		//replace non-ordinary characters with their escape sequence characters
 		outstring = mainWidget->scCopyright_;
-		outstring.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
-		outstring.replace (newLines_, "\\n"); /* replace all newlines with \n two character symbols */
-		outstring.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
+		outstring.replace('\\', "\\\\");
+		outstring.replace (newLines_, "\\n");
+		outstring.replace('"', "\\\"");
 		out_ << "\ttitle bold (" << SC_COPYRIGHT_FONT_SIZE << ") \"" <<  outstring.utf8() << '"' << endl;
 	}
 	out_ << "score" << endl;
@@ -449,10 +455,10 @@ bool NFileHandler::writeStaffs(QString fname, QPtrList<NStaff> *stafflist, NMain
 				out_ << pedals_ << endl;
 			}
 			if (!textsigns_above_.isEmpty()) {
-				out_ << textsigns_above_ << endl;
+				out_ << textsigns_above_.utf8() << endl;
 			}
 			if (!textsigns_below_.isEmpty()) {
-				out_ << textsigns_below_ << endl;
+				out_ << textsigns_below_.utf8() << endl;
 			}
 			if (!signs_.isEmpty()) {
 				if (!some_notes_or_rests_written_) {

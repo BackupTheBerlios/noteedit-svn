@@ -294,7 +294,7 @@ class NVoice {
 		bool setProvisionalDynamic(int kind, unsigned int at, unsigned int till_meascount, unsigned int till, NMusElement *last_bar_sym);
 		bool setProvisionalSlur(unsigned int at, unsigned int till_meascount, unsigned int till, NMusElement *last_bar_sym);
 		bool setProvisionalOctaviation(int kind, unsigned int at, unsigned int till_meascount, unsigned int till, NMusElement *last_bar_sym);
-		void setProvisionalString(char *text, int type, unsigned int at, NMusElement *last_bar_sym);
+		void setProvisionalString(QString text, int type, unsigned int at, NMusElement *last_bar_sym);
 		bool setReadArpeggio(unsigned int at, NMusElement *last_bar_sym);
 		bool setReadPedalOn(unsigned int at, NMusElement *last_bar_sym);
 		bool setReadPedalOff(unsigned int at, NMusElement *last_bar_sym);

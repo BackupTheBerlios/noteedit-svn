@@ -6740,7 +6740,7 @@ bool NVoice::setProvisionalTrill(int kind, unsigned int at, unsigned int till_me
 	return true;
 }
 
-void NVoice::setProvisionalString(char *text, int type, unsigned int at, NMusElement *last_bar_sym) {
+void NVoice::setProvisionalString(QString text, int type, unsigned int at, NMusElement *last_bar_sym) {
 	NText *textElem = new NText(main_props_, theStaff_->getStaffPropsAddr(), text, type == 0 ? TEXT_UPTEXT : TEXT_DOWNTEXT);
 	textElem->destinationTime_ = MULTIPLICATOR * (at - 1);
 	textElem->barSym_ = last_bar_sym;

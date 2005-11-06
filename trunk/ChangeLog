@@ -103,4 +103,5 @@ version 2.9.0:
 	* R384 -- FIXED: Release-critical MusicXML export bug when exporting notes in voice number > 2.
 	* R385 -- ADDED: Autobeam when inserting notes in non-first voices now works.
 	  - selectNearestMidiEvent -> getNearestMidiEvent, as it doesn't make the element actual, but only gets its pointer.
-	  
+	* R386 -- ADDED: Arbitrary text is now saved/loaded in UTF8 format as well.
+	

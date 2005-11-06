@@ -1214,7 +1214,7 @@ string_infos : string_info
 
 string_info : {enable_strings();} timeposition Y_STRING ';'
 
-		{current_voice->setProvisionalString($3 ,current_string_placement ,($2.beats * 128 / denom) >> 7,
+		{current_voice->setProvisionalString(QString::fromUtf8($3) ,current_string_placement ,($2.beats * 128 / denom) >> 7,
 			pending_elements[voiceNumber].lastBarSym);
 		}
 	     ;

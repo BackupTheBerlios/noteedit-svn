@@ -31,7 +31,7 @@ main_props_str::main_props_str() : scaledBoldItalicMetrics_(QFont()) /* dummy */
 			tied = staccato = sforzato = portato = strong_pizzicato = 
 			arpeggio = grace = sforzando = fermate = hidden = false;
 			noteBody = 0;
-			actualLength = QUARTER_LENGTH;
+			actualLength = -1;
 			actualStemDir = STEM_DIR_AUTO;
 			tp              = new NTransPainter();
 			tp->setXPosition(-DEFAULT_LEFT_PAGE_BORDER);

@@ -99,3 +99,4 @@ version 2.9.0:
 	  - New horizontal scroll behaviour when using Right/Left arrow keys for cycling through elements, when the elements are outside of viewport. Behaviour similar to today's modern text editors - it jumps to the position, where the element is located in the score and fits it to the right/left border of the viewport.
 	  - Renamed xscrollFromWidget() -> xscroll()
 	  - Pan the viewport up/down when cylcling through elements, if the element is above/below the current viewport. 
+	* R383 -- When opening new window, set select mode by default.

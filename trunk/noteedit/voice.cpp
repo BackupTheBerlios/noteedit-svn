@@ -1177,7 +1177,7 @@ void NVoice::pasteAtPosition(int xpos, QPtrList<NMusElement> *clipboard, bool co
 }
 
 
-/* Is this really needed? New function selectNearestMidiEvent() or similar should replace this IMO -Matevz */
+/* Is this really needed? New function getNearestMidiEvent() or similar should replace this IMO -Matevz */
 void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128th, QPtrList<NMusElement> *clipboard) {
 	int idx, startidx, num = 0;
 	bool found;
@@ -1484,32 +1484,33 @@ void NVoice::moveSemiToneDown() {
 
 int NVoice::makePreviousElementActual(property_type *properties) {
 	*properties = 0;
+	bool already_moved = false;
 	
-	/* Check if there is actual element. If not, select the nearest at the last known MIDI location when something happened.
-	   If it cannot select any (eg. if there aren't any), return -1 */
+	//Check if there is actual element. If not, select the nearest at the last known MIDI location when something happened.
+	//If it cannot select any (eg. if there aren't any), return -1
 	if (!currentElement_)
-		if ( currentElement_ = selectNearestMidiEvent(main_props_->lastMidiTime) )
-			return currentElement_->getSubType();
+		if ( currentElement_ = getNearestMidiEvent(main_props_->lastMidiTime) )
+			already_moved = true;
 		else
 			return -1;
 	
-	bool was_playable;
-
-	was_playable = (currentElement_->getType() & PLAYABLE);
 	if (musElementList_.find(currentElement_) == -1) {
 		NResource::abort("makePreviousElementActual: internal error");
 	}
 
-	/* Check, if the current element is already the first one. */
-	if (musElementList_.getFirst() != currentElement_)
-		/* And if not,, move to the next one. */
-		if (musElementList_.prev() == 0) {
-			return -1;
-		}
-	currentElement_->setActual(false);
-	currentElement_->draw();
+	//Check, if the current element is already the first one.
+	if (!already_moved) {
+		if (musElementList_.getFirst() != currentElement_)
+			//And if not,, move to the next one.
+			if (musElementList_.prev() == 0) {
+				return -1;
+			}
+		currentElement_->setActual(false);
+		currentElement_->draw();
 	
-	currentElement_ = musElementList_.current();
+		currentElement_ = musElementList_.current();
+	}
+	
 	currentElement_->setActual(true);
 	currentElement_->draw();
 	if( currentElement_->playable() ) {
@@ -1523,33 +1524,34 @@ int NVoice::makePreviousElementActual(property_type *properties) {
 
 int NVoice::makeNextElementActual(property_type *properties) {
 	*properties = 0;
+	bool already_moved = false;
 	
-	/* Check if there is actual element. If not, select the nearest at the last known MIDI location when something happened.
-	   If it cannot select any (eg. if there aren't any), return -1 */
+	//Check if there is actual element. If not, select the nearest at the last known MIDI location when something happened.
+	//If it cannot select any (eg. if there aren't any), return -1
 	if (!currentElement_)
-		if ( currentElement_ = selectNearestMidiEvent(main_props_->lastMidiTime) )
-			return currentElement_->getSubType();
+		if ( currentElement_ = getNearestMidiEvent(main_props_->lastMidiTime) )
+			already_moved = true;
 		else
 			return -1;
 	
-	bool was_playable;
-
-	was_playable = (currentElement_->getType() & PLAYABLE);
 	if (musElementList_.find(currentElement_) == -1) {
-		NResource::abort("makeNextElementActual: internal error");
+		NResource::abort("makePreviousElementActual: internal error");
+	}
+
+	//Check, if the current element is already the first one.
+	if (!already_moved) {
+		if (musElementList_.getLast() != currentElement_)
+			//And if not,, move to the next one.
+			if (musElementList_.next() == 0) {
+				return -1;
+			}
+		
+		currentElement_->setActual(false);
+		currentElement_->draw();
+	
+		currentElement_ = musElementList_.current();
 	}
 	
-	/* Check, if the current element is already the last one. */
-	if (musElementList_.getLast() != currentElement_)
-		/* And if not, move to the next one. */
-		if (musElementList_.next() == 0) {
-			return -1;
-		}
-	
-	currentElement_->setActual(false);
-	currentElement_->draw();
-	
-	currentElement_ = musElementList_.current();
 	currentElement_->setActual(true);
 	currentElement_->draw();
 	if( currentElement_->playable() ) {
@@ -1764,7 +1766,7 @@ void NVoice::pubAddUndoElement() {
 
 /* Select the musElement nearest to the given MIDI time. */
 /* If the midiTime doesn't match any of the elements' MIDI times, it selects the nearest left one (!nearestRight - default) or the right one (nearestRight) */
-NMusElement *NVoice::selectNearestMidiEvent(int midiTime, bool nearestRight) {
+NMusElement *NVoice::getNearestMidiEvent(int midiTime, bool nearestRight) {
 	if (!musElementList_.count()) return 0;
 	
 	uint leftElt = 0; /* Index of the current left elt */
@@ -1806,8 +1808,6 @@ NMusElement *NVoice::selectNearestMidiEvent(int midiTime, bool nearestRight) {
 		currentElement_ = musElementList_.at(rightElt);
 	else
 		currentElement_ = musElementList_.at(leftElt);
-	
-	currentElement_->setActual(true);
 	
 	return currentElement_;
 }
@@ -4679,8 +4679,12 @@ void NVoice::computeMidiTime(bool insertBars,  bool doAutoBeam) {
 				     timeOfLastBar = elem->midiTime_; 
 				     indexOfLastBar = musElementList_.at();
 				     break;
-				     
 		}
+		
+		//In order to get autoBeam work in non-first voices, we have to seek the current time signature in first voice
+		if (!firstVoice_)
+			current_timesig.setSignature(theStaff_->getVoiceNr(0)->getNearestMidiEvent(mtime)->timeSig());
+			
 		mtime += elem->getMidiLength();
 		if (chord_seen && !not_grace_seen) {
 			last_note_time = mtime;

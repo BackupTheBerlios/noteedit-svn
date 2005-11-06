@@ -47,6 +47,8 @@ void NTimeSig::setSignature(int numerator, int denominator) {
 }
 
 void NTimeSig::setSignature(NTimeSig *otherTimeSig) {
+	if (!otherTimeSig) return;
+	
 	numerator_ = otherTimeSig->numerator_;
 	denominator_ = otherTimeSig->denominator_;
 	if (!staff_props_) return;

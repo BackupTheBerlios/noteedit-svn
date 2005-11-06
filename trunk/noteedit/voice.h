@@ -144,6 +144,7 @@ class NVoice {
 		void pasteAtIndex(QPtrList<NMusElement> *clipBoard, int idx);
 		QPtrList<NMusElement> *getClipBoard() {return &clipBoard_;}
 		int getBarsymTimeBefore(int till_meascount, int miditime);
+		NMusElement *getNearestMidiEvent(int MidiTime, bool nearestRight = false);
 		int computeSlurDist(NChord *chord);
 		int findTimeOfTrillEnd(NChord *chord, int *destmestime, int *mescount);
 		int findTimeOfSlurEnd(NChord *chord, int *destmestime, int *mescount);
@@ -200,7 +201,6 @@ class NVoice {
 		void cleanupRests(int shortestRest, bool region);
 		static int quant(int l, int *dotcount, int maxlength);
 		void pubAddUndoElement();
-		NMusElement *selectNearestMidiEvent(int MidiTime, bool nearestRight = false);
 /*------------------------- insertion due to user interaction --------------------*/
 		void insertTmpElemAtPosition(int xpos, NMusElement *tmpElem);
 		int findLastBarTime(int xpos);

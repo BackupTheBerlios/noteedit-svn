@@ -278,7 +278,7 @@ class NMainFrameWidget : public QWidget
     void filePrintReceivedStdOut(KProcess *, char *, int);
     void filePrintReceivedStdErr(KProcess *, char *, int);
     void filePrintNoPreview();
-    void setupPrinting(bool, IntPrinter *); // Helper methods for filePrint
+    void setupPrinting(bool); // Helper methods for filePrint
     void printWithLilypond(bool, QString, QString);
     void printWithABC(bool, QString, QString);
     void printWithPMX(bool, QString, QString);
@@ -643,7 +643,10 @@ class NMainFrameWidget : public QWidget
 		QPtrList<NMidiEventStr> stopList_;
 		void cleanupSelections();
 /*-------------------------------- printing -------------------------------*/
-		QString previewFile_;
+#ifdef WITH_DIRECT_PRINTING
+                IntPrinter *printer_;
+                QString previewFile_;
+#endif
 /*-------------------------------- static dadabase -------------------------------*/
 		static const char *keySigTab_[15];
 };
@@ -656,26 +659,31 @@ class NMainFrameWidget : public QWidget
 #include <kprinter.h>
 #include <unistd.h>
 //#include <qscrollview.h>
-class IntPrinter : public KPrinter
- {
- public:
- IntPrinter(QString fileName) { fileName_=fileName; }
-// ~IntPrinter() { unlink(fileName_); unlink(fileName_+".ps"); }
-// void printFiles(QStringList files,bool remove) {printFiles(files,remove);}
- void doPreparePrinting() { preparePrinting(); }
- QString fileName_;
- }; 
-
  class PrintExportDialogPage : public KPrintDialogPage
  {
  public:
-   PrintExportDialogPage( QString title, QWidget *tab, QWidget *parent = 0, const char *name = 0 );
+   PrintExportDialogPage( QWidget *tab, QWidget *parent = 0, const char *name = 0 );
    ~PrintExportDialogPage();
+
+   void setTabTitle( QString title );
 
    //reimplement virtual functions
    void getOptions( QMap<QString,QString>& opts, bool incldef = false );
    void setOptions( const QMap<QString,QString>& opts );
    bool isValid( QString& msg );
+ };
+
+class IntPrinter : public KPrinter
+ {
+ public:
+   IntPrinter(QWidget *exportParent);
+   ~IntPrinter();
+ void doPreparePrinting() { preparePrinting(); }
+ QWidget *createExportForm(QString dialogTitle, exportFormat_T format);
+ protected:
+  PrintExportDialogPage *formatExport_;
+  KPrintDialogPage      *pageExport_;
+  QWidget               *form_;
  };
 
 #endif /* WITH_DIRECT_PRINTING */

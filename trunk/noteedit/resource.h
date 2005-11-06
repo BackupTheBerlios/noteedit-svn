@@ -109,6 +109,17 @@
 #define MAX_PROGRAM_LENGTH 50
 #define MAX_OPTIONS_LENGTH 200
 
+typedef enum
+{
+  EXP_ABC = 0,
+  EXP_PMX,
+  EXP_Lilypond,
+  EXP_MusiXTeX,
+  EXP_Midi,
+  EXP_MusicXML,
+  EXP_NoteEdit
+} exportFormat_T;
+
 class staff_props_str;
 class NMainWindow;
 class NMidiMapper;

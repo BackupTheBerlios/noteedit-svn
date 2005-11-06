@@ -795,6 +795,9 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	layoutPixmap_ = 0;
 	context_rect_left_right_ = DEFAULT_CONTEXT_REC_LEFT_RIGHT;
 	createLayoutPixmap();
+#ifdef WITH_DIRECT_PRINTING
+        printer_ = 0;
+#endif
 }
 
 NMainFrameWidget::~NMainFrameWidget() {
@@ -851,6 +854,9 @@ NMainFrameWidget::~NMainFrameWidget() {
 	delete bracketMatrix_;
 	delete barCont_;
 	if (layoutPixmap_) delete layoutPixmap_;
+#ifdef WITH_DIRECT_PRINTING
+	if( printer_ ) delete printer_;
+#endif
 }
 
 void NMainFrameWidget::synchronizeRecentFiles() {
@@ -3811,32 +3817,37 @@ void NMainFrameWidget::fileSaveAs() {
 #include <kstandarddirs.h>
 #endif
 
+// Start previewing the sheet to be printed
 void NMainFrameWidget::filePrintPreview() {
 #ifdef WITH_DIRECT_PRINTING
 	filePrint(true);
 #endif
 }
 
+// Start printing
 void NMainFrameWidget::filePrintNoPreview() {
 #ifdef WITH_DIRECT_PRINTING
 	filePrint(false);
 #endif
 }         
 
-void NMainFrameWidget::setupPrinting(bool preview, IntPrinter *printer)
+// Setup printer (KDE IntPrinter)
+void NMainFrameWidget::setupPrinting(bool preview)
 {
 #ifdef WITH_DIRECT_PRINTING
   // Print preview ?
   if ( preview == false )
   {
     // Setup printer (shows the print dialog)
-    if( printer->setup(this) == false ) 
+    if( printer_->setup(this) == false ) 
       KMessageBox::error(0,i18n("Couldn't setup printer"), 
                          kapp->makeStdCaption(i18n("???")));
   }
 #endif
 }
 
+// Read all the print options and print (preview) with the selected format
+// preview: 'true' if the print should be previewed
 void NMainFrameWidget::filePrint(bool preview) {
 #ifdef WITH_DIRECT_PRINTING
 
@@ -3859,6 +3870,10 @@ void NMainFrameWidget::filePrint(bool preview) {
       KMessageBox::error (0,"Couldn't access the /tmp directory, aborting", "Noteeditor");
       return;
     }
+
+    // Remove printer so the extra tab gets deleted
+    if( printer_ ) delete printer_;
+    printer_ = new IntPrinter( this );
 
     // Custom: Format decides which export filter to use
     if( NResource::typesettingProgram_ == 4 )
@@ -3915,29 +3930,7 @@ void NMainFrameWidget::filePrint(bool preview) {
 #endif /* WITH_DIRECT_PRINTING */
 }
 
-void NMainFrameWidget::printWithLilypond(bool preview, QString ftsetprg, QString tmpFile)
-{
-#ifdef WITH_DIRECT_PRINTING
-    // Init process, export form and printer
-    KProcess typesettingProgram;
-    IntPrinter *printer=new IntPrinter(tmpFile);
-    NLilyExport lily;
-    struct lily_options lilyOpts;
-    KPrintDialogPage *lilyExport=new PrintExportDialogPage(exportDialog_->FormatComboBox->text( LILY_PAGE ),this);
-    LilypondExportForm *form = new LilypondExportForm( lilyExport );
-    // Read options
-    exportDialog_->getLilyOptions( lilyOpts );
-    // Save options to new form
-    exportDialog_->setLilyOptions( *form, lilyOpts );
-    printer->addDialogPage(lilyExport);
-    setupPrinting(preview, printer);
-    delete form;
-    delete lilyExport;
-    delete printer;
-#endif
-}
-
-// 
+// Clean up after print preview was finished.
 void NMainFrameWidget::filePrintPreviewFinished(KProcess *)
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -3948,6 +3941,7 @@ void NMainFrameWidget::filePrintPreviewFinished(KProcess *)
 #endif
 }
 
+// Show the standard output of the export or preview process
 void NMainFrameWidget::filePrintReceivedStdOut(KProcess *, char *buffer, int buflen)
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -3958,6 +3952,7 @@ void NMainFrameWidget::filePrintReceivedStdOut(KProcess *, char *buffer, int buf
 #endif
 }
 
+// Show the error output of the export or preview process
 void NMainFrameWidget::filePrintReceivedStdErr(KProcess *, char *buffer, int buflen)
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -3968,24 +3963,44 @@ void NMainFrameWidget::filePrintReceivedStdErr(KProcess *, char *buffer, int buf
 #endif
 }
 
+// Print (preview) using the Lilypond export to create the print file 
+// preview:  'true', if the print should be previewed
+// ftsetprg: file name of the typesetting program used to print
+// tmpFile:  file name of the exported sheet and of the print file
+void NMainFrameWidget::printWithLilypond(bool preview, QString ftsetprg, QString tmpFile)
+{
+#ifdef WITH_DIRECT_PRINTING
+    // Init process, export form and printer
+    KProcess typesettingProgram;
+    NLilyExport lily;
+    struct lily_options lilyOpts;
+    LilypondExportForm *form = (LilypondExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( LILY_PAGE ), EXP_Lilypond );
+    // Read options
+    exportDialog_->getLilyOptions( lilyOpts );
+    // Save options to new form
+    exportDialog_->setLilyOptions( *form, lilyOpts );
+    setupPrinting(preview);
+#endif
+}
+
+// Print (preview) using the ABC export to create the print file
+// preview:  'true', if the print should be previewed
+// ftsetprg: file name of the typesetting program used to print
+// tmpFile:  file name of the exported sheet and of the print file
 void NMainFrameWidget::printWithABC(bool preview, QString ftsetprg, QString tmpFile)
 {
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
     KProcess typesettingProgram;
     struct abc_options abcOpts;
-    IntPrinter *printer=new IntPrinter(tmpFile);
     NABCExport abc;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
-
-    KPrintDialogPage *abcExport=new PrintExportDialogPage(exportDialog_->FormatComboBox->text( ABC_PAGE ),this);
-    ABCExportForm *form = new ABCExportForm( abcExport );
+    ABCExportForm *form = (ABCExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( ABC_PAGE ), EXP_ABC );
     // Read options
     exportDialog_->getABCOptions( abcOpts );
     // Save options to new form
     exportDialog_->setABCOptions( *form, abcOpts );
-    printer->addDialogPage(abcExport);
-    setupPrinting(preview, printer);
+    setupPrinting(preview);
     // Export file to abc
     abc.exportStaffs( tmpFile, &staffList_, voiceList_.count(), exportDialog_, this );
     
@@ -4029,9 +4044,6 @@ void NMainFrameWidget::printWithABC(bool preview, QString ftsetprg, QString tmpF
 	{
 	  KMessageBox::sorry(this, i18n("File was not succesfully be converted."), 
                              kapp->makeStdCaption(i18n("???")));
-          delete form;
-	  delete abcExport;
-	  delete printer;
 	  return;
 	}
         // Replace the %s String by previewFile
@@ -4048,6 +4060,7 @@ void NMainFrameWidget::printWithABC(bool preview, QString ftsetprg, QString tmpF
       else
       {
         QString printFile;
+	QStringList printFiles;
         printFile = QFileInfo( tmpFile ).fileName() + ".ps";
 	if( false == QFileInfo( printFile ).exists() )
           printFile = tmpFile + ".ps";
@@ -4055,21 +4068,17 @@ void NMainFrameWidget::printWithABC(bool preview, QString ftsetprg, QString tmpF
 	{
 	  KMessageBox::sorry(this, i18n("File was not succesfully be converted."), 
                              kapp->makeStdCaption(i18n("???")));
-          delete form;
-	  delete abcExport;
-	  delete printer;
 	  return;
 	}
-        printer->doPreparePrinting();
+	printFiles += printFile;
+        printer_->doPreparePrinting();
 	// Print file
-        if (!printer->printFiles(printFile,true))
+	printf("Printing with %s\n",printer_->printProgram().ascii());
+        if (!printer_->printFiles(printFiles,true))
           unlink(tmpFile+".ps");
       }
       unlink(tmpFile);
     }
-    delete form;
-    delete abcExport;
-    delete printer;
 #endif
 }
     
@@ -4078,12 +4087,9 @@ void NMainFrameWidget::printWithPMX(bool preview, QString ftsetprg, QString tmpF
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
     KProcess typesettingProgram;    
-    IntPrinter *printer=new IntPrinter(tmpFile);
     NPmxExport pmx;
-    KPrintDialogPage *pmxExport=new PrintExportDialogPage(exportDialog_->FormatComboBox->text( PMX_PAGE ),this);
-    PMXExportForm *form;
-    printer->addDialogPage(pmxExport);
-    setupPrinting(preview, printer);
+    PMXExportForm *form = (PMXExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( PMX_PAGE ), EXP_PMX );
+    setupPrinting(preview);
 #endif
 }
     
@@ -4093,12 +4099,9 @@ void NMainFrameWidget::printWithMusiXTeX(bool preview, QString ftsetprg, QString
     // Init process, export form and printer
     KProcess typesettingProgram;    
     exportFrm *formBack=exportDialog_;
-    MusiXTeXExportForm *form;
-    IntPrinter *printer=new IntPrinter(tmpFile);
+    MusiXTeXExportForm *form = (MusiXTeXExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MUSIX_PAGE ), EXP_MusiXTeX );
     NMusiXTeX musixtex;
-    KPrintDialogPage *musixtexExport=new PrintExportDialogPage(exportDialog_->FormatComboBox->text( MUSIX_PAGE ),this);
-    printer->addDialogPage(musixtexExport);
-    setupPrinting(preview, printer);
+    setupPrinting(preview);
 #endif
 }
     
@@ -4108,13 +4111,10 @@ void NMainFrameWidget::printWithMusicXML(bool preview, QString ftsetprg, QString
     // Init process, export form and printer
     KProcess typesettingProgram;    
     exportFrm *formBack=exportDialog_;
-    MusicXMLExportForm *form;
-    IntPrinter *printer=new IntPrinter(tmpFile);
+    MusicXMLExportForm *form = (MusicXMLExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MUSICXML_PAGE ), EXP_MusicXML );
     NMusicXMLExport musicxml;
     // Currently we could omit to show the export dialog page as i
-    KPrintDialogPage *musicxmlExport=new PrintExportDialogPage(exportDialog_->FormatComboBox->text( MUSICXML_PAGE ),this);
-    printer->addDialogPage(musicxmlExport);
-    setupPrinting(preview, printer);
+    setupPrinting(preview);
 #endif
 }
     
@@ -4124,12 +4124,9 @@ void NMainFrameWidget::printWithMidi(bool preview, QString ftsetprg, QString tmp
     // Init process, export form and printer
     KProcess typesettingProgram;    
     exportFrm *formBack=exportDialog_;
-    MidiExportForm *form;
-    IntPrinter *printer=new IntPrinter(tmpFile);
+    MidiExportForm *form = (MidiExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MIDI_PAGE ), EXP_Midi );
     NMidiExport midi;
-    KPrintDialogPage *midiExport=new PrintExportDialogPage(exportDialog_->FormatComboBox->text( MIDI_PAGE ),this);
-    printer->addDialogPage(midiExport);
-    setupPrinting(preview, printer);
+    setupPrinting(preview);
 #endif
 }
     
@@ -6012,10 +6009,61 @@ void NMainFrameWidget::showTipOfTheDay() {
 }
 
 #ifdef WITH_DIRECT_PRINTING
+IntPrinter::IntPrinter(QWidget *exportParent)
+{
+  form_ = 0;
+  formatExport_ = new PrintExportDialogPage( exportParent );
+  pageExport_ = formatExport_;
+}
+
+// Creates the export form.
+// dialogTitle: Title for the to be added dialog tab
+// format: export format of the file to be printed
+QWidget *IntPrinter::createExportForm(QString dialogTitle, exportFormat_T format)
+{
+  formatExport_->setTabTitle( dialogTitle );
+  // Create form dependant from the format
+  switch( format )
+  {
+    case EXP_ABC: // ABC Music
+      form_ = new ABCExportForm( pageExport_ );
+      break;
+    case EXP_PMX: // PMX 
+      form_ = new PMXExportForm( pageExport_ );
+      break;
+    case EXP_Lilypond: // Lilypond 
+      form_ = new LilypondExportForm( pageExport_ );
+      break;
+    case EXP_MusiXTeX: // MusiXTeX 
+      form_ = new MusiXTeXExportForm( pageExport_ );
+      break;
+    case EXP_Midi: // Midi
+      form_ = new MidiExportForm( pageExport_ );
+      break;
+    case EXP_MusicXML: // MusicXML 
+      form_ = new MusicXMLExportForm( pageExport_ );
+      break;
+    case EXP_NoteEdit: default: // NoteEdit
+      break;
+  }
+  // Add form to dialog page
+  addDialogPage(pageExport_);
+  return form_;
+}
+
+// No need to delete our objects as QT does everything for us
+IntPrinter::~IntPrinter()
+{
+}
 
 // RK: Completely simplified the dialog, layout cannot be done within this class
-PrintExportDialogPage::PrintExportDialogPage( QString title, QWidget *tab, QWidget *parent, const char *name )
+PrintExportDialogPage::PrintExportDialogPage( QWidget *tab, QWidget *parent, const char *name )
  : KPrintDialogPage( parent, name )
+{
+}
+
+// Sets the dialog page title
+void PrintExportDialogPage::setTabTitle( QString title )
 {
     setTitle( title );
 }

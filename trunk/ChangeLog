@@ -100,3 +100,4 @@ version 2.9.0:
 	  - Renamed xscrollFromWidget() -> xscroll()
 	  - Pan the viewport up/down when cylcling through elements, if the element is above/below the current viewport. 
 	* R383 -- When opening new window, set select mode by default.
+	* R384 -- FIXED: Release-critical MusicXML export bug when exporting notes in voice number > 2.

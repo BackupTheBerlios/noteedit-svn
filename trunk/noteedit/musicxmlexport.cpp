@@ -867,6 +867,7 @@ bool NMusicXMLExport::writeOtherVoicesTill(int staff_nr, int voice_nr, NVoice *v
 						<< duration
 						<< "</duration>\n";
 					out_ << "\t\t\t</forward>\n";
+					curTime_ += duration;
 				     }
 				     else {
 				        // real, visible rest

@@ -1191,11 +1191,12 @@ void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128t
 	int diff_total, len, len2, lastElemTime;
 	NRest *rest;
 	int idx_of_first_inserted_rest = -1;
-
-	if (currentElement_)  {
-		currentElement_->setActual(false);
-		currentElement_ = 0;
-	}
+	
+	if (currentElement_)  { 
+		currentElement_->setActual(false); 
+		currentElement_ = 0; 
+	} 
+	
 	found = false;
 	ac_elem = musElementList_.first();
 	while (!found && ac_elem != 0) {
@@ -1764,27 +1765,24 @@ void NVoice::pubAddUndoElement() {
     createUndoElement(currentElement_, 1, 0);
 }
 
-/* Select the musElement nearest to the given MIDI time. */
-/* If the midiTime doesn't match any of the elements' MIDI times, it selects the nearest left one (!nearestRight - default) or the right one (nearestRight) */
+//Returns the musElement nearest to the given MIDI time.
+//If the midiTime doesn't match any of the elements' MIDI times, it selects the nearest left one - the element that is held in that particular time (nearestRight=false - default) or the right one (nearestRight=true) */
 NMusElement *NVoice::getNearestMidiEvent(int midiTime, bool nearestRight) {
 	if (!musElementList_.count()) return 0;
 	
+	NMusElement *tmpElt;
 	uint leftElt = 0; /* Index of the current left elt */
 	uint rightElt = musElementList_.count() - 1; /* Index of the current right elt */
 	uint midElt = (leftElt + rightElt) / 2; /* Index of the current mid elt - always in the half of left&right */
 	
-	/* if actual element exists, deselect it */
-	if (currentElement_)
-		currentElement_->setActual(false);
-	
-	/* Fast bisection algorythm follows */
+	//Fast bisection algorythm follows
 	while ( 
-	       ( /* Elements' MIDI times match exactly with the wanted time. */
+	       ( //Elements' MIDI times match exactly with the wanted time.
 	        (musElementList_.at(leftElt)->midiTime_ != midiTime) &&
 	        (musElementList_.at(rightElt)->midiTime_ != midiTime) &&
 	        (musElementList_.at(midElt)->midiTime_ != midiTime)
-	       ) && /* Or the algorythm finishes with approximate match.
-	               Only two elements are left in this case - the left one and the mid one always merge. */
+	       ) && //Or the algorythm finishes with approximate match.
+		        //Only two elements are left in this case - the left one and the mid one always merge.
 	       (musElementList_.at(leftElt) != musElementList_.at(midElt))
 	      )
 		if (musElementList_.at(midElt)->midiTime_ < midiTime) {
@@ -1795,21 +1793,21 @@ NMusElement *NVoice::getNearestMidiEvent(int midiTime, bool nearestRight) {
 			midElt = (leftElt + rightElt) / 2;
 		}
 	
-	/* MIDI times match exactly: correct current() item already gets selected above, when calling at() function */
+	//MIDI times match exactly: correct current() item already gets selected above, when calling at() function.
 	if (musElementList_.current()->midiTime_ == midiTime)
-		currentElement_ = musElementList_.current();
-	/* MIDI times approximately match:
-	   - if the wanted MIDI time is between the right&left elments ones', select the one according to the nearestRight variable */
+		tmpElt = musElementList_.current();
+	//MIDI times approximately match:
+	//  - if the wanted MIDI time is between the right&left elments ones', select the one according to the nearestRight variable
 	else if ( (midiTime < musElementList_.at(rightElt)->midiTime_) && (midiTime > musElementList_.at(leftElt)->midiTime_) )
-		if (!nearestRight) currentElement_ = musElementList_.at(leftElt);
-		else currentElement_ = musElementList_.at(rightElt);
-	/* - if the wanted MIDI time is out of range, select one of the outer elements - the one nearest to the wanted time */
+		if (!nearestRight) tmpElt = musElementList_.at(leftElt);
+		else tmpElt = musElementList_.at(rightElt);
+	//  - if the wanted MIDI time is out of range, select one of the outer elements - the one nearest to the wanted time
 	else if (midiTime > musElementList_.at(rightElt)->midiTime_)
-		currentElement_ = musElementList_.at(rightElt);
+		tmpElt = musElementList_.at(rightElt);
 	else
-		currentElement_ = musElementList_.at(leftElt);
+		tmpElt = musElementList_.at(leftElt);
 	
-	return currentElement_;
+	return tmpElt;
 }
 
 void NVoice::setActualTied() {

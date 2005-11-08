@@ -105,3 +105,4 @@ version 2.9.0:
 	  - selectNearestMidiEvent -> getNearestMidiEvent, as it doesn't make the element actual, but only gets its pointer.
 	* R386 -- ADDED: Arbitrary text is now saved/loaded in UTF8 format as well.
 	* R388 -- FIXED: Cycling through elements when one is deleted works correctly. getNearestMidiEvent() behaviour fixed.
+	* R389 -- ADDED: Paste also works only if a single element is selected (ie. no selection block).

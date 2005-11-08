@@ -290,7 +290,7 @@ void NVoice::findAppropriateElems() {
 	
 	startElement_ = endElement_ = 0;
 	if (musElementList_.count() < 1) return;
-	if (!NResource::voiceWithSelectedRegion_->startElement_ || !NResource::voiceWithSelectedRegion_->endElement_) return;
+	if (!NResource::voiceWithSelectedRegion_ || !NResource::voiceWithSelectedRegion_->startElement_ || !NResource::voiceWithSelectedRegion_->endElement_) return;
 	xpos0 = (NResource::voiceWithSelectedRegion_->endElementIdx_ > NResource::voiceWithSelectedRegion_->startElemIdx_) ?
 		 NResource::voiceWithSelectedRegion_->startElement_->getXpos() : NResource::voiceWithSelectedRegion_->endElement_->getXpos();
 	xpos1 = (NResource::voiceWithSelectedRegion_->endElementIdx_ > NResource::voiceWithSelectedRegion_->startElemIdx_) ?
@@ -325,13 +325,20 @@ void NVoice::grabElements() {
 	NMusElement *ac_elem;
 
 	clipBoard_.clear();
-	// if (startElement_ == 0) printf("startElement_ == 0\n");
-	// if (endElement_ == 0) printf("endElement_ == 0\n");
+	found = false;
+	
+	//If we don't have any selection made
+	if (!startElement_ || !endElement_) {
+		//Check if we at least have an element selected and add it to the clipboard
+		if (currentElement_) 
+			cout << "current element" << endl;
+			clipBoard_.append(currentElement_);
 
-	if (!startElement_ || !endElement_) return;
+		return;
+	}
+	
 	x0 = (endElementIdx_ > startElemIdx_) ? startElemIdx_ : endElementIdx_;
 	x1 = (endElementIdx_ > startElemIdx_) ? endElementIdx_ : startElemIdx_;
-	found = false;
 	ac_elem = musElementList_.at(x0);
 
 	idx = x0;

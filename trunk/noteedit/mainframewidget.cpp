@@ -1154,7 +1154,7 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 	keyLine_ = NULL_LINE;
 	if ((evt->state() & QEvent::MouseButtonPress)) return;
 	
-	/* remember the last selected element's Midi time, so it gets restored when needed */
+	//remember the last selected element's Midi time, so it gets restored when needed
 	if (currentVoice_->getCurrentElement())
 		main_props_.lastMidiTime = currentVoice_->getCurrentElement()->midiTime_;
 		
@@ -1170,6 +1170,7 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 				}
 			}
 			NResource::windowWithSelectedRegion_ = 0;
+			NResource::voiceWithSelectedRegion_ = 0;
 			if (NResource::staffSelMulti_) {
 				delete [] NResource::staffSelMulti_;
 				NResource::staffSelMulti_ = 0;
@@ -1375,6 +1376,19 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 						}
 						currentStaff_->pasteAtPosition(TRANSX(evt->x()), NResource::voiceWithSelectedRegion_->getStaff());
 					}
+					
+					setEdited();
+					computeMidiTimes(false);
+					reposit();
+					repaint();
+				} else if (currentStaff_->getActualVoice()->getCurrentElement()) {
+					//Local window pasting of a single element
+					NStaff *from = currentStaff_;
+					currentStaff_->grabElementsAccording();
+ 					p = TRANS_POINT(evt->x(), evt->y());
+					checkStaffIntersection(p); //Set the current staff the one under the mouse
+					
+					currentStaff_->pasteAtPosition(TRANSX(evt->x()), from);
 					setEdited();
 					computeMidiTimes(false);
 					reposit();

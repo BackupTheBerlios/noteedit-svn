@@ -1818,7 +1818,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						}
 						depth_--; out_ << endl; tabsOut();
 						out_ << "}" << endl; tabsOut();
-						out_ << "\\alternative {" << endl; depth_++; tabsOut();
+						out_ << "\\alternative" << endl; depth_++; tabsOut();
 						out_ << "{" << endl; depth_++; tabsOut(); counter = 0;
 						LineBeforeSPE1 = lastLine_;
 						lastLength_ = 1000; // invalidate

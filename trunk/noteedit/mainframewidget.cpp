@@ -3977,6 +3977,93 @@ void NMainFrameWidget::filePrintReceivedStdErr(KProcess *, char *buffer, int buf
 #endif
 }
 
+// Connects stdout/stderr output to methods to show the output of the running export
+// Runs the export process and removes the connections afterwards
+void NMainFrameWidget::printDoExport(KProcess *typesettingProgram)
+{
+#ifdef WITH_DIRECT_PRINTING
+    QValueList<QCString> args = typesettingProgram->args();
+    connect( typesettingProgram, SIGNAL( processExited (KProcess *) ), 
+             this, SLOT( filePrintPreviewFinished(KProcess *) ) );
+    // Output of convert process should be visible on console in case something fails
+    connect( typesettingProgram, SIGNAL( receivedStdout(KProcess *, char *, int) ),
+	     this, SLOT( filePrintReceivedStdOut(KProcess *, char *, int) ) );
+    connect( typesettingProgram, SIGNAL( receivedStderr(KProcess *, char *, int) ),
+	     this, SLOT( filePrintReceivedStdErr(KProcess *, char *, int) ) );
+    cout << "Exporting with ";
+    for ( QValueList<QCString>::Iterator it = args.begin(); it != args.end(); ++it ) {
+         cout << *it << " ";
+    }
+    cout << endl;
+    // Start converting exported file to a printable file
+    typesettingProgram->start(KProcess::Block, KProcess::All);
+    disconnect( typesettingProgram, SIGNAL( processExited (KProcess *) ), 
+                this, SLOT( filePrintPreviewFinished(KProcess *) ) );
+    disconnect( typesettingProgram, SIGNAL( receivedStdout(KProcess *, char *, int) ),
+	        this, SLOT( filePrintReceivedStdOut(KProcess *, char *, int) ) );
+    disconnect( typesettingProgram, SIGNAL( receivedStderr(KProcess *, char *, int) ),
+	        this, SLOT( filePrintReceivedStdErr(KProcess *, char *, int) ) );
+#endif
+}
+
+// Shows the exported file (postscript or pdf) with the set preview program
+bool NMainFrameWidget::printDoPreview(QString tmpFile, QString fileType)
+{
+#ifdef WITH_DIRECT_PRINTING
+    KProcess previewProgram;
+    QString fprevprog=KStandardDirs::findExe( NResource::previewProgramInvokation_ );
+    QStringList printpreviewOptions = QStringList::split( " ", QString(NResource::previewOptions_) );
+    // Preview File: abcm2ps strangely does not add the path to the created ps file
+    previewFile_ = QFileInfo( tmpFile ).fileName() + fileType;
+    printf("Previewing file %s\n",previewFile_.ascii());
+    if( false == QFileInfo( previewFile_ ).exists() )
+      previewFile_ = tmpFile + fileType;
+    printf("Previewing file %s\n",previewFile_.ascii());
+    if( false == QFileInfo( previewFile_ ).exists() )
+    {
+      KMessageBox::sorry(this, i18n("File was not succesfully be converted."), 
+                         kapp->makeStdCaption(i18n("???")));
+      return false;
+    }
+    // Replace the %s String by previewFile
+    printpreviewOptions.gres("%s",previewFile_);
+    previewProgram << fprevprog << printpreviewOptions;
+    // Signal exit of program so we can clean up
+    connect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
+             this, SLOT( filePrintPreviewFinished(KProcess *) ) );
+    // Start preview
+    previewProgram.start(KProcess::DontCare, KProcess::All);
+    disconnect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
+                this, SLOT( filePrintPreviewFinished(KProcess *) ) );
+#endif
+    return true;
+}
+
+// Prints the exported file (postscript or pdf) with the KDE print system
+bool NMainFrameWidget::printDoPrinting(QString tmpFile, QString fileType)
+{
+#ifdef WITH_DIRECT_PRINTING
+    QString printFile;
+    QStringList printFiles;
+    printFile = QFileInfo( tmpFile ).fileName() + fileType;
+    if( false == QFileInfo( printFile ).exists() )
+      printFile = tmpFile + fileType;
+    if( false == QFileInfo( printFile ).exists() )
+    {
+        KMessageBox::sorry(this, i18n("File was not succesfully be converted."), 
+                           kapp->makeStdCaption(i18n("???")));
+        return false;
+    }
+    printFiles += printFile;
+    printer_->doPreparePrinting();
+    // Print file
+    printf("Printing with %s\n",printer_->printProgram().ascii());
+    if (!printer_->printFiles(printFiles,true))
+        unlink(tmpFile+fileType);
+#endif
+    return true;
+}
+
 // Print (preview) using the Lilypond export to create the print file 
 // preview:  'true', if the print should be previewed
 // ftsetprg: file name of the typesetting program used to print
@@ -3986,14 +4073,37 @@ void NMainFrameWidget::printWithLilypond(bool preview, QString ftsetprg, QString
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
     KProcess typesettingProgram;
-    NLilyExport lily;
     struct lily_options lilyOpts;
+    NLilyExport lily;
+    QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     LilypondExportForm *form = (LilypondExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( LILY_PAGE ), EXP_Lilypond );
     // Read options
     exportDialog_->getLilyOptions( lilyOpts );
     // Save options to new form
     exportDialog_->setLilyOptions( *form, lilyOpts );
     setupPrinting(preview);
+    // Export file to lilypond
+    lily.exportStaffs( tmpFile + ".ly", &staffList_, exportDialog_, this );
+
+    // Replace the %s String by tmpFile
+    printOptions.gres("%s",tmpFile + ".ly");
+    // Which file to use for printing ? Out.ps or tmpFile.ps (Option -o !)
+    // We probably need to filter the -o option!
+    if( QString(NResource::typesettingOptions_).find("-o") == -1 )
+      printOptions.prepend("-o " + tmpFile);
+    typesettingProgram << ftsetprg << printOptions;
+    // Export file and create postscript file
+    printDoExport(&typesettingProgram);
+    // Converting succesfull ?
+    if (typesettingProgram.normalExit()) 
+    {
+      // Preview the printable file ?
+      if( preview == true )
+	printDoPreview(tmpFile, ".pdf");
+      else
+	printDoPrinting(tmpFile, ".pdf");
+      unlink(tmpFile + ".ly");
+    }
 #endif
 }
 
@@ -4016,82 +4126,28 @@ void NMainFrameWidget::printWithABC(bool preview, QString ftsetprg, QString tmpF
     exportDialog_->setABCOptions( *form, abcOpts );
     setupPrinting(preview);
     // Export file to abc
-    abc.exportStaffs( tmpFile, &staffList_, voiceList_.count(), exportDialog_, this );
+    abc.exportStaffs( tmpFile + ".abc", &staffList_, voiceList_.count(), exportDialog_, this );
     
     // Replace the %s String by tmpFile
-    printOptions.gres("%s",tmpFile);
+    printOptions.gres("%s",tmpFile + ".abc");
     // Earlier options: << "-O=" << "-c"
     // Which file to use for printing ? Out.ps or tmpFile.ps (Option -O= !)
     // We probably need to filter all -O options!
-    if( printOptions.find("-O=") == false && printOptions.find("-O =") == false)
-      printOptions.prepend("-O= ");
+    if( QString(NResource::typesettingOptions_).find("-O=") == -1 && 
+        QString(NResource::typesettingOptions_).find("-O =") == -1)
+      printOptions.prepend("-O=");
     typesettingProgram << ftsetprg << printOptions;
-    connect( &typesettingProgram, SIGNAL( processExited (KProcess *) ), 
-             this, SLOT( filePrintPreviewFinished(KProcess *) ) );
-    // Output of convert process should be visible on console in case something fails
-    connect( &typesettingProgram, SIGNAL( receivedStdout(KProcess *, char *, int) ),
-	     this, SLOT( filePrintReceivedStdOut(KProcess *, char *, int) ) );
-    connect( &typesettingProgram, SIGNAL( receivedStderr(KProcess *, char *, int) ),
-	     this, SLOT( filePrintReceivedStdErr(KProcess *, char *, int) ) );
-    // Start converting exported file to a printable file
-    typesettingProgram.start(KProcess::Block, KProcess::All);
-    disconnect( &typesettingProgram, SIGNAL( processExited (KProcess *) ), 
-                this, SLOT( filePrintPreviewFinished(KProcess *) ) );
-    disconnect( &typesettingProgram, SIGNAL( receivedStdout(KProcess *, char *, int) ),
-	        this, SLOT( filePrintReceivedStdOut(KProcess *, char *, int) ) );
-    disconnect( &typesettingProgram, SIGNAL( receivedStderr(KProcess *, char *, int) ),
-	        this, SLOT( filePrintReceivedStdErr(KProcess *, char *, int) ) );
+    // Export file and create postscript file
+    printDoExport(&typesettingProgram);
     // Converting succesfull ?
     if (typesettingProgram.normalExit()) 
     {
       // Preview the printable file ?
       if( preview == true )
-      {
-	KProcess previewProgram;
-	QString fprevprog=KStandardDirs::findExe( NResource::previewProgramInvokation_ );
-	QStringList printpreviewOptions = QStringList::split( " ", QString(NResource::previewOptions_) );
-	// Preview File: abcm2ps strangely does not add the path to the created ps file
-        previewFile_ = QFileInfo( tmpFile ).fileName() + ".ps";
-	if( false == QFileInfo( previewFile_ ).exists() )
-          previewFile_ = tmpFile + ".ps";
-	if( false == QFileInfo( previewFile_ ).exists() )
-	{
-	  KMessageBox::sorry(this, i18n("File was not succesfully be converted."), 
-                             kapp->makeStdCaption(i18n("???")));
-	  return;
-	}
-        // Replace the %s String by previewFile
-        printpreviewOptions.gres("%s",previewFile_);
-	previewProgram << fprevprog << printpreviewOptions;
-	// Signal exit of program so we can clean up
-	connect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
-                 this, SLOT( filePrintPreviewFinished(KProcess *) ) );
-	// Start preview
-	previewProgram.start(KProcess::DontCare, KProcess::All);
-	disconnect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
-                    this, SLOT( filePrintPreviewFinished(KProcess *) ) );
-      }
+	printDoPreview(tmpFile, ".ps");
       else
-      {
-        QString printFile;
-	QStringList printFiles;
-        printFile = QFileInfo( tmpFile ).fileName() + ".ps";
-	if( false == QFileInfo( printFile ).exists() )
-          printFile = tmpFile + ".ps";
-	if( false == QFileInfo( printFile ).exists() )
-	{
-	  KMessageBox::sorry(this, i18n("File was not succesfully be converted."), 
-                             kapp->makeStdCaption(i18n("???")));
-	  return;
-	}
-	printFiles += printFile;
-        printer_->doPreparePrinting();
-	// Print file
-	printf("Printing with %s\n",printer_->printProgram().ascii());
-        if (!printer_->printFiles(printFiles,true))
-          unlink(tmpFile+".ps");
-      }
-      unlink(tmpFile);
+	printDoPrinting(tmpFile, ".ps");
+      unlink(tmpFile + ".abc");
     }
 #endif
 }

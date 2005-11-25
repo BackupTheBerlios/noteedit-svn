@@ -279,6 +279,9 @@ class NMainFrameWidget : public QWidget
     void filePrintReceivedStdErr(KProcess *, char *, int);
     void filePrintNoPreview();
     void setupPrinting(bool); // Helper methods for filePrint
+    void printDoExport(KProcess *typesettingProgram);
+    bool printDoPreview(const QString tmpFile, const QString fileType);
+    bool printDoPrinting(QString tmpFile, QString fileType);
     void printWithLilypond(bool, QString, QString);
     void printWithABC(bool, QString, QString);
     void printWithPMX(bool, QString, QString);

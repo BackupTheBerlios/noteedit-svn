@@ -331,7 +331,6 @@ void NVoice::grabElements() {
 	if (!startElement_ || !endElement_) {
 		//Check if we at least have an element selected and add it to the clipboard
 		if (currentElement_) 
-			cout << "current element" << endl;
 			clipBoard_.append(currentElement_);
 
 		return;
@@ -1410,32 +1409,17 @@ void NVoice::release() {
 	currentElement_ = 0;
 }
 
+/* Synchronize the staff's actual clef and key sig. according to the current voice actual element. */
 void NVoice::makeKeysigAndClefActual() {
 	int oldidx, idx;
 	NMusElement *elem;
-	char *err = "makeKeysigAndClefActual: internal error";
-
+	
 	if ((oldidx = musElementList_.find(currentElement_)) < 0) return;
-	for (idx = 0, elem = musElementList_.first(); elem && idx < oldidx; elem = musElementList_.next(), idx++) {
-		switch (elem->getType()) {
-			case T_CLEF: theStaff_->actualClef_.change((NClef *) elem);
-				     theStaff_->actualKeysig_.setClef((NClef *) elem);
-				     break;
-			case T_KEYSIG: theStaff_->actualKeysig_.change((NKeySig*) elem);
-					break;
-		}
-	}
-	if (!elem) NResource::abort(err, 1);
-	theStaff_->actualKeysig_.deleteTempAccents();
-	for (elem = musElementList_.at(oldidx - 1); elem; elem = musElementList_.prev()) {
-		if (elem->getType() == T_SIGN && (elem->getSubType() & BAR_SYMS)) break;
-		if (elem->getType() != T_CHORD) continue;
-		((NChord *) elem)->accumulateAccidentals(&(theStaff_->actualKeysig_));
-	}
-}
-				     
-		
 
+	//Clef/key sigs are present in the first voice only. The only accessible way to do this in non-first voices is through the theStaff_ methods below.
+	theStaff_->setCorrectClefAccordingTime(currentElement_->midiTime_);
+	theStaff_->setCorrectKeySigAccordingTime(currentElement_->midiTime_);
+}
 
 void NVoice::moveUp(int up) {
 	if (!currentElement_) return;
@@ -3111,7 +3095,20 @@ void NVoice::setCorrectClefAccordingTime(int miditime) {
 	if (oldidx >= 0) musElementList_.at(oldidx);
 }
 
+void NVoice::setCorrectKeySigAccordingTime(int miditime) {
+	int oldidx;
+	NMusElement *elem;
+	
+	oldidx = musElementList_.at();
+	theStaff_->actualKeysig_.change(NResource::nullKeySig_);
+	for (elem = musElementList_.first(); elem && elem->midiTime_ <= miditime; elem = musElementList_.next()) {
+		if (elem->getType() == T_KEYSIG) {
+			theStaff_->actualKeysig_.change((NKeySig *) elem);
+		}
+	}
 
+	if (oldidx >= 0) musElementList_.at(oldidx);
+}
 
 int NVoice::findLastBarTime(int xpos) {
 	int lastbartime = 0;
@@ -3763,7 +3760,7 @@ int NVoice::getCurrentMeasureMidiLength() {
 	}
 	
 	if ((musElementList_.at() == -1) || (musElementList_.current()->getType() != T_TIMESIG)) 
-		midiLength = 4 * QUARTER_LENGTH; /* sets the default midi length if no time signatures found */
+		midiLength = 4 * QUARTER_LENGTH; /* set the default midi length if no time signatures found */
 	else {
 		numerator = ((NTimeSig *) musElementList_.current())->getNumerator();
 		switch ( ((NTimeSig *) musElementList_.current())->getDenominator() ) {
@@ -3940,10 +3937,9 @@ NMidiEventStr* NVoice::getNextMidiEvent(int mtime, bool reachInfo) {
 	NSign *sign;
 	int ending1Time;
 	if (muted_ || stopped_at_fine_)  return 0;
-	// if (actualMidiEvent_ == 0) {printf("actualMidiEvent_ == 0, firstVoice_ = %d\n", firstVoice_);}
-	else if (actualMidiEvent_->valid) {
+	else if (actualMidiEvent_->valid)
 		return actualMidiEvent_;
-	}
+		
 	while (!found && playPosition_) {
 		switch (playPosition_->getType ()) {
 		case T_CLEF:
@@ -4111,6 +4107,7 @@ NMidiEventStr* NVoice::getNextMidiEvent(int mtime, bool reachInfo) {
 			break;
 		}
 	}
+	
 	if (found) {
 		chord = (NChord *) playPosition_;
 		note_halt = actualMidiEvent_->notehalt;
@@ -4125,7 +4122,7 @@ NMidiEventStr* NVoice::getNextMidiEvent(int mtime, bool reachInfo) {
 				theStaff_->playClef_ = theStaff_->pending_clef_;
 				theStaff_->pending_clef_ = 0;
 				if (theStaff_->playKeySig_) {
-					theStaff_->playKeySig_->setClef(theStaff_->playClef_);
+					theStaff_-> playKeySig_->setClef(theStaff_->playClef_);
 				}
 			}
 		}

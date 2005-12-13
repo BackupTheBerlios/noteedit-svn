@@ -161,6 +161,7 @@ class NVoice {
 		int validateKeysig(int lastbaridx, int insertpos);
 		void validateKeysigAccordingPos(int lastbarstartpos, int insertpos);
 		void setCorrectClefAccordingTime(int miditime);
+		void setCorrectKeySigAccordingTime(int miditime);
 /*--------------------- changes due to user interaction ------------------------------------*/
 		void release();
 		void makeKeysigAndClefActual();

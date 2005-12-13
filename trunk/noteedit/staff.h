@@ -90,6 +90,9 @@ class NStaff {
 		void setCorrectClefAccordingTime(int miditime) {
 			voicelist_.getFirst()->setCorrectClefAccordingTime(miditime);
 		}
+		void setCorrectKeySigAccordingTime(int miditime) {
+			voicelist_.getFirst()->setCorrectKeySigAccordingTime(miditime);
+		}
 		void transpose(int semitones);
 		void setHalfsTo(property_type type);
 		void cleanupRests(int shortestRest);

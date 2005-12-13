@@ -107,4 +107,4 @@ version 2.9.0:
 	* R388 -- FIXED: Cycling through elements when one is deleted works correctly. getNearestMidiEvent() behaviour fixed.
 	* R389 -- ADDED: Paste also works only if a single element is selected (ie. no selection block).
 	* R390 -- FIXED: Export LilyPond alternative repeat markings correctly.
-	
+	* R392 -- FIXED: Placed Clef and/or KeySig is now properly interpreted in non-first voices when the rhythm is different than in the first voice. Playback is still messed up. Removed some debugging stuff.

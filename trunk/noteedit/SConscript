@@ -1,0 +1,151 @@
+############################
+## load the config
+
+## use the environment set in the top-level
+## SConstruct file (IMPORTANT)
+
+Import( 'env' )
+import os
+
+# Define the Prefix for our lex / grammar
+LEX_PREFIX  = 'NEDIT'
+# Variables for compiling lex / grammar file
+LEX_RESTART = LEX_PREFIX + 'restart'
+LEX_LINENO  = LEX_PREFIX + 'lineno'
+YACC_PARSE  = LEX_PREFIX + 'parse'
+YACC_LVAL   = LEX_PREFIX + 'lval'
+PREFIX_DEF='-DYYLINENO=' + LEX_LINENO + ' -DYYRESTART=' + LEX_RESTART + \
+           ' -DYYPARSE=' + YACC_PARSE + ' -DYYLVAL='    + YACC_LVAL
+
+# Compiling the lex file
+# Compiling the grammar file
+# remove from sourcesr
+# Variant 1: add manual command for these files with env.Command
+
+# env.Command('lexik.cpp', 'lexik.ll',
+#             "$CPPLEXBUILD < $SOURCES > $TARGET")
+# env.Command('grammar.cpp', 'grammar.yy',
+#             "$CPPLEXBUILD < $SOURCES > $TARGET")
+# CPPLEXBUILD = $CPPBUILD + CPPFLAGS=PREFIX_DEF or similar
+
+# Variant 2: add the flags to the static object lexik.ll / grammar.yy
+# StaticObect does return an object not being a string, so we need to convert it first
+# Create a separate string list from these to objects, we will add it later to the sources
+LG = str(env.StaticObject("grammar.yy", CPPFLAGS=PREFIX_DEF, YACCFLAGS='-y -d -pNEDIT')[0]) + ' ' + \
+     str(env.StaticObject("lexik.ll",   CPPFLAGS=PREFIX_DEF, LEXFLAGS='-l -PNEDIT')[0]) + ' ' + \
+     str(env.StaticObject("filehandler.cpp", CPPFLAGS=PREFIX_DEF)[0])
+# More special compile flags for other files can be added as well.
+
+# Currently left out: Special flags for final (Hide Exceptions from TSE3)
+
+# Our source files
+sources = """
+abcexport.cpp 
+abcexportform.ui
+chord.cpp 
+chorddiagram.cpp
+clef.cpp
+configuredialog.cpp 
+dbufferwidget.cpp 
+exports.ui 
+expWarn.ui
+filter.ui
+generProps.ui 
+internals.cpp
+keyoffs.cpp 
+keysig.cpp 
+layout.cpp
+lilyexport.cpp 
+lilypondexportform.ui
+lilytest.cpp 
+lines.ui 
+listSel.ui 
+lyrics.ui
+mainframewidget2.cpp 
+mainframewidget.cpp 
+metronom.ui
+mididevicelistbox.cpp 
+midiexport.cpp 
+midiexportform.ui 
+midimapper.cpp
+miditimescale.cpp
+midi.ui 
+mupWarning.ui 
+multistaffinfo.cpp
+muselement.cpp 
+musicxmlexportform.ui
+musicxmlcommon.cpp
+musicxmlimport.cpp
+musicxmlexport.cpp
+musixtex.cpp 
+musixtexexportform.ui 
+noteedit_part.cpp 
+notesel.cpp 
+numberdisplay.cpp
+outputbox.cpp 
+pmxexportform.ui
+pmxexport.cpp 
+saveparametersform.ui
+resource.cpp 
+rest.cpp
+scaleedit.ui
+scaleEd.ui 
+ScoreEditor.cpp 
+scoreinfo.cpp 
+sign.cpp
+smRest.ui 
+staff.cpp 
+staffElem.ui 
+staffPropFrm.cpp 
+staffProps.ui 
+staffSel.ui
+text.cpp 
+textDialog.ui 
+textDialog_impl.cpp
+tempotrack.cpp 
+timesig.cpp 
+timesigDia.ui 
+tip.ui
+transpainter.cpp 
+tse3handler.cpp 
+tse3Info.ui 
+tupletdialog.ui
+tupletdialog_impl.cpp 
+scaleedit_impl.cpp 
+uiconnect.cpp
+voice.cpp 
+voicedialog.cpp 
+voiceDia.ui 
+volume.ui
+zoomselection.cpp 
+"""
+
+# Make a list of words from the string list
+NT = Split( sources )
+# Add the LG list to the sources list in the same way
+NT = NT + Split(LG)
+# print "NT: ", NT, "LG: ", LG
+
+libnoteeditla=env.kobject('staticlib')
+libnoteeditla.target="libnoteedit"
+# These libs should all be static. Problem: How to teach scons to use the static libraries ?
+libnoteeditla.libs='../kguitar_excerpt/libkguitar_excerpt.a qt-mt kio kdecore kdeprint kparts tse3'
+libnoteeditla.source=NT
+print "The path to 1st source is:", str(libnoteeditla.source[0])
+
+libnoteeditso=env.kobject('shlib')
+libnoteeditso.target="libnoteedit"
+libnoteeditso.source=NT
+libnoteeditso.vnum='1.0.1'
+libnoteeditso.libs='../kguitar_excerpt/libkguitar_excerpt.la qt-mt kio kdecore kdeprint kparts tse3'
+libnoteeditso.execute()
+
+obj=env.kobject('program')
+obj.target='noteedit'
+obj.source=('main.cpp')
+# Build static version of NoteEdit
+# useful to find out which module doesn't find certain symbols
+# Warning: This doesn't seem to work currently
+# obj.libs='./libnoteedit.a'
+# Build shared library version of NoteEdit
+obj.libs='./libnoteedit.so'

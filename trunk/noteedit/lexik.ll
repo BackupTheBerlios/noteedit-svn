@@ -25,7 +25,7 @@
 #include <string.h>
 #include "muselement.h"
 #include "parsertypes.h"
-#include "grammar.h"
+#include "grammar.hh"
 int chordname_expected = 0;
 static int produce_strings = 0;
 static int in_grids = 0;

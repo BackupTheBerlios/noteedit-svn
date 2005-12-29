@@ -70,7 +70,7 @@ noinst_HEADERS = mididevicelistbox.h \
 	dbufferwidget.h \
 	exports.h expWarn.h \
 	filehandler.h filter.h \
-	generProps.h grammar.h \
+	generProps.h grammar.hh \
 	keyoffs.h keysig.h lilypondexportform.h \
 	lilyexport.h lilytest.h lines.h listSel.h lyrics.h \
 	mainframewidget.h metronom.h midiexport.h midi.h midimapper.h \
@@ -112,7 +112,7 @@ xmlui_DATA = noteeditui.rc noteedit_part.rc
 	sed '/__attribute__ *( *( *__unused__ *) *)/d' y.tab1.c > $@
 	rm y.tab.c y.tab1.c
 	if test -f y.tab.h; then \
-	if cmp -s y.tab.h $*.h; then rm -f y.tab.h; else mv y.tab.h $*.h; fi; \
+	if cmp -s y.tab.h $*.hh; then rm -f y.tab.h; else mv y.tab.h $*.hh; fi; \
 	else :; fi
 
 .ll.cc:
@@ -125,9 +125,9 @@ xmlui_DATA = noteeditui.rc noteedit_part.rc
 filehandler.lo: filehandler.cpp
 	$(LTCXXCOMPILE) $(PREFIX_DEF) -c $<
 
-grammar.h: grammar.yy
+grammar.hh: grammar.yy
 
-grammar.lo: grammar.cc muselement.h resource.h staff.h rest.h sign.h chord.h chorddiagram.h grammar.h
+grammar.lo: grammar.cc muselement.h resource.h staff.h rest.h sign.h chord.h chorddiagram.h grammar.hh
 	$(LTCXXCOMPILE) $(PREFIX_DEF) -c $<
 
 lexik.lo: lexik.cc grammar.cc  # because with "grammar.cc" "grammar.h" is built

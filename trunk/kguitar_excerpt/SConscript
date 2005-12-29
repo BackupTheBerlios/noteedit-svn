@@ -1,0 +1,26 @@
+############################
+## load the config
+
+## use the environment set in the top-level
+## SConstruct file (IMPORTANT)
+
+Import( 'env' )
+
+sources="""
+chord.cpp
+chordlist.cpp
+chordlistitem.cpp
+fingerlist.cpp
+fingers.cpp
+tabcolumn.cpp
+tabtrack.cpp
+"""
+
+libkguitar_excerptla=env.kobject('staticlib')
+libkguitar_excerptla.target="libkguitar_excerpt"
+libkguitar_excerptla.source=sources
+
+libkguitar_excerptso=env.kobject('shlib')
+libkguitar_excerptso.target="libkguitar_excerpt"
+libkguitar_excerptso.source=sources
+libkguitar_excerptso.execute()

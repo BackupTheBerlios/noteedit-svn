@@ -68,8 +68,7 @@ class QPushButton;
 class NChordDiagram;
 class ChordSelector;
 class tupletDialogImpl;
-class IntPrinter;
-class KProcess;
+class NPreviewPrint;
 
 #ifdef WITH_TSE3
 #include <tse3/PhraseEdit.h>
@@ -271,25 +270,8 @@ class NMainFrameWidget : public QWidget
 		void fileOpenRecent(const KURL &);
 		void fileSave();
 		void fileSaveAs();
-/*------------------------------ printing--------------------------------------------*/
-    void filePrint(bool);  // Jorge Windmeisser Oliver
-    void filePrintPreview();
-    void filePrintPreviewFinished(KProcess *);
-    void filePrintReceivedStdOut(KProcess *, char *, int);
-    void filePrintReceivedStdErr(KProcess *, char *, int);
-    void filePrintNoPreview();
-    void setupPrinting(bool); // Helper methods for filePrint
-    void printDoExport(KProcess *typesettingProgram);
-    bool printDoPreview(const QString tmpFile, const QString fileType);
-    bool printDoPrinting(QString tmpFile, QString fileType);
-    void printWithLilypond(bool, QString, QString);
-    void printWithABC(bool, QString, QString);
-    void printWithPMX(bool, QString, QString);
-    void printWithMusiXTeX(bool, QString, QString);
-    void printWithMusicXML(bool, QString, QString);
-    void printWithMidi(bool, QString, QString);
-    void printWithNative(bool, QString, QString);
-/*-----------------------------------------------------------------------------------*/        
+	    void filePrintPreview();
+	    void filePrintNoPreview();
 		void exportMusiXTeX();
 		void exportPMX();
 		void exportABC();
@@ -645,50 +627,10 @@ class NMainFrameWidget : public QWidget
 		double tempo_;
 		QPtrList<NMidiEventStr> stopList_;
 		void cleanupSelections();
-/*-------------------------------- printing -------------------------------*/
-#ifdef WITH_DIRECT_PRINTING
-                IntPrinter *printer_;
-                QString previewFile_;
-#endif
-/*-------------------------------- static dadabase -------------------------------*/
 		static const char *keySigTab_[15];
+		#ifdef WITH_DIRECT_PRINTING
+		NPreviewPrint *prvprint_;
+		#endif
 };
-
-#ifdef WITH_DIRECT_PRINTING
-
-// Jorge Windmeisser Oliver
-
-#include <kdeprint/kprintdialogpage.h>
-#include <kprinter.h>
-#include <unistd.h>
-//#include <qscrollview.h>
- class PrintExportDialogPage : public KPrintDialogPage
- {
- public:
-   PrintExportDialogPage( QWidget *tab, QWidget *parent = 0, const char *name = 0 );
-   ~PrintExportDialogPage();
-
-   void setTabTitle( QString title );
-
-   //reimplement virtual functions
-   void getOptions( QMap<QString,QString>& opts, bool incldef = false );
-   void setOptions( const QMap<QString,QString>& opts );
-   bool isValid( QString& msg );
- };
-
-class IntPrinter : public KPrinter
- {
- public:
-   IntPrinter(QWidget *exportParent);
-   ~IntPrinter();
- void doPreparePrinting() { preparePrinting(); }
- QWidget *createExportForm(QString dialogTitle, exportFormat_T format);
- protected:
-  PrintExportDialogPage *formatExport_;
-  KPrintDialogPage      *pageExport_;
-  QWidget               *form_;
- };
-
-#endif /* WITH_DIRECT_PRINTING */
 
 #endif // MYFRAME_WIDGET_H

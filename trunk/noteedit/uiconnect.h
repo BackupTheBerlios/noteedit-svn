@@ -151,6 +151,7 @@ class exportFrm : public exportForm {
 	{ getPMXOptions(*pmxExportWidget_, pmxOpts); };
 	inline void setPMXOptions(struct pmx_options pmxOpts)
 	{ setPMXOptions(*pmxExportWidget_, pmxOpts); };
+	void doExport(int type, QString fileName,  bool bSMsg = true);
 
     public slots:	
 	void showExportForm( int );

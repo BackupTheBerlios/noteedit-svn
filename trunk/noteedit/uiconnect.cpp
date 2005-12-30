@@ -294,6 +294,24 @@ void exportFrm::startExport()
     mask.sprintf( "*%s|%s file (*%s)\n*.*|All files (*.*)", ext[FormatComboBox->currentItem()], desc[FormatComboBox->currentItem()], ext[FormatComboBox->currentItem()] );
     QString fileName = NMainFrameWidget::checkFileName(KFileDialog::getSaveFileName( myFile, mask, this), ext[FormatComboBox->currentItem()] );
 
+    if( !fileName.isNull() )
+    {
+        doExport( FormatComboBox->currentItem(), fileName );
+		this->close();
+	}
+	
+    if( NResource::staffSelExport_ ) 
+    {
+		delete [] NResource::staffSelExport_;
+		NResource::staffSelExport_ = 0;
+	}
+}
+
+// Performs the actual export method
+// type:  Type of Export to do
+// bSMsg: 'true' to show messages on screen
+void exportFrm::doExport(int type, QString fileName, bool bSMsg /* = true */)
+{
     NMusiXTeX mt;
     NMidiExport me;
     NPmxExport pe;
@@ -301,14 +319,15 @@ void exportFrm::startExport()
     NABCExport abc;
     NMusicXMLExport muxml;
 
-    if( !fileName.isNull() ) {
-        switch( FormatComboBox->currentItem() ) {
-    	case MIDI_PAGE:
-    		me.exportMidi( fileName, voiceList_, (char *) midiExportWidget_->midiInfo->text().ascii());
+	switch( type ) 
+	{
+		case MIDI_PAGE:
+			me.exportMidi( fileName, voiceList_, (char *) midiExportWidget_->midiInfo->text().ascii());
 			break;
 	    case MUSIX_PAGE:  
 			mt.exportStaffs( fileName, staffList_, this,  mainWidget_);
-			KMessageBox::information(this, i18n("MusiXTeX export is now complete.\nWarning! The exported file is NOT a LaTeX file! Please use musixtex or pmx parser for compilation and not latex!"), kapp->makeStdCaption(i18n("???")));
+			if( bSMsg )
+				KMessageBox::information(this, i18n("MusiXTeX export is now complete.\nWarning! The exported file is NOT a LaTeX file! Please use musixtex or pmx parser for compilation and not latex!"), kapp->makeStdCaption(i18n("???")));
 			break;
 	    case ABC_PAGE:
 			abc.exportStaffs( fileName, staffList_, voiceList_->count(), this, mainWidget_ );
@@ -320,7 +339,10 @@ void exportFrm::startExport()
 			pe.exportStaffs( fileName, staffList_, this, mainWidget_ );
 			break;
 	    case LILY_PAGE:
-			if( !NResource::lilyProperties_.lilyAvailable ) {
+			if( !NResource::lilyProperties_.lilyAvailable ) 
+			{
+				if( bSMsg )
+				{
 	    	if (KMessageBox::warningContinueCancel
 				(this,
 				 i18n("Actually LilyPond is not supported by your system. Do you realy want to make such an export?"),
@@ -328,20 +350,16 @@ void exportFrm::startExport()
 				 i18n("&Export")
 				)
 				== KMessageBox::No
-			  ) {
+			   ) 
+			{
 				delete [] NResource::staffSelExport_;
 				NResource::staffSelExport_ = 0;
 				return;
 			}
+				}
 			}
 			le.exportStaffs( fileName, staffList_, this , mainWidget_);
 			break;
-	    }
-	this->close();
-	}
-    if( NResource::staffSelExport_ ) {
-	delete [] NResource::staffSelExport_;
-	NResource::staffSelExport_ = 0;
 	}
 }
 

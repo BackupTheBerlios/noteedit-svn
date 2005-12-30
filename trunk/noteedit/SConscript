@@ -33,7 +33,7 @@ PREFIX_DEF='-DYYLINENO=' + LEX_LINENO + ' -DYYRESTART=' + LEX_RESTART + \
 # Create a separate string list from these to objects, we will add it later to the sources
 LG = str(env.StaticObject("grammar.yy", CPPFLAGS=PREFIX_DEF, YACCFLAGS='-y -d -pNEDIT')[0]) + ' ' + \
      str(env.StaticObject("lexik.ll",   CPPFLAGS=PREFIX_DEF, LEXFLAGS='-l -PNEDIT')[0]) + ' ' + \
-     str(env.StaticObject("filehandler.cpp", CPPFLAGS=PREFIX_DEF)[0])
+     str(env.StaticObject("filehandler.cpp", CPPFLAGS=PREFIX_DEF, LEXFLAGS='-l -PNEDIT')[0])
 # More special compile flags for other files can be added as well.
 
 # Currently left out: Special flags for final (Hide Exceptions from TSE3)
@@ -85,6 +85,7 @@ numberdisplay.cpp
 outputbox.cpp 
 pmxexportform.ui
 pmxexport.cpp 
+previewprint.cpp
 saveparametersform.ui
 resource.cpp 
 rest.cpp

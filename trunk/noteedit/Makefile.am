@@ -26,7 +26,7 @@ libnoteedit_la_SOURCES = abcexport.cpp abcexportform.ui \
 	musixtex.cpp musixtexexportform.ui miditimescale.cpp \
 	noteedit_part.cpp notesel.cpp numberdisplay.cpp \
 	outputbox.cpp pmxexportform.ui \
-	pmxexport.cpp saveparametersform.ui \
+	pmxexport.cpp previewprint.cpp saveparametersform.ui \
 	scaleedit.ui resource.cpp rest.cpp \
 	scaleEd.ui ScoreEditor.cpp scoreinfo.cpp sign.cpp \
 	smRest.ui staff.cpp staffElem.ui staffProps.ui staffSel.ui \
@@ -130,6 +130,6 @@ grammar.hh: grammar.yy
 grammar.lo: grammar.cc muselement.h resource.h staff.h rest.h sign.h chord.h chorddiagram.h grammar.hh
 	$(LTCXXCOMPILE) $(PREFIX_DEF) -c $<
 
-lexik.lo: lexik.cc grammar.cc  # because with "grammar.cc" "grammar.h" is built
+lexik.lo: lexik.cc grammar.cc  # because with "grammar.cc" "grammar.hh" is built
 	$(LTCXXCOMPILE) $(PREFIX_DEF) -c $<
 

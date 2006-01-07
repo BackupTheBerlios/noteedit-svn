@@ -24,6 +24,7 @@
 #define PREVIEWPRINT_H_
 
 #include <qwidget.h>
+#include <config.h>
 #include "resource.h"
 
 class KProcess;

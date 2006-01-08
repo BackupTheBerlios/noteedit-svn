@@ -23,7 +23,9 @@
 #ifndef MIDITIMESCALE_H
 
 #define MIDITIMESCALE_H
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 #ifdef WITH_TSE3
 #include <tse3/Midi.h>
 #define MAX_VOICES 9

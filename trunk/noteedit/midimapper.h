@@ -26,7 +26,9 @@
 #include <qwidget.h>
 #include <qlistbox.h>
 #include <qpaintdevice.h>
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 #define ALSA_SCHEDULER_REQUESTED (1 << 0)
 #define OSS_SCHEDULER_REQUESTED (1 << 1)
 #define ARTS_SCHEDULER_REQUESTED (1 << 2)

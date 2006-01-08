@@ -1,5 +1,7 @@
 #include "noteedit_part.h"
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 
 #include <kinstance.h>
 #include <klocale.h>

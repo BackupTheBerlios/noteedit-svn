@@ -19,7 +19,9 @@
 /*											*/
 /****************************************************************************************/
 
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 #ifndef MUSICXMLCOMMON_H
 
 // link MusicXML chord kind to step values

@@ -26,7 +26,9 @@
 
 #include <qptrlist.h>
 #include <qstring.h>
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 #if GCC_MAJ_VERS > 2
 #include <fstream>
 #else

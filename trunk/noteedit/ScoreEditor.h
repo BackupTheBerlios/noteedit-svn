@@ -2,7 +2,9 @@
 
 #define SCORE_EDITOR_H
 
-#include <config.h>
+#ifndef WITH_SCONS
+#include "config.h"
+#endif
 #ifdef ANTHEM_PLUGIN
 
 #include <anthem/phraseeditors/PhraseEditor.h>

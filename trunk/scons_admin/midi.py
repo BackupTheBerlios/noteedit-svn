@@ -58,6 +58,7 @@ def generate(env):
                 ( 'midilib',  'install path for the lib, ie: /usr/lib' ),
                 ( 'withtse3', 'use tse3 library (default: yes)' ),
                 ( 'withkmid', 'use kmid library (default: no)' ),
+		( 'ALREADY_CONFIGURED', 'configuration succeeded'),
         )
         opts.Update(env)
 

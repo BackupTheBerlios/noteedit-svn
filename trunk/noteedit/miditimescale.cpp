@@ -20,7 +20,6 @@
 /*											*/
 /****************************************************************************************/
 
-#include "config.h"
 #ifdef WITH_TSE3
 #include "miditimescale.h"
 #include "resource.h"

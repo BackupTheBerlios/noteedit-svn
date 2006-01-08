@@ -101,6 +101,9 @@ def detect_kde(env):
 
 	print "Checking for kde version          : ",
 	kde_version = os.popen(kde_config+" --version|grep KDE").read().strip().split()[1]
+	# Attention: KDE4 would mean "old" version!
+	# But the truth is that KDE4 is an incompatible version!
+	# (except maybe there is an compatibility KDE3-layer like for qt3 in qt4)
 	if int(kde_version[0]) != 3 or int(kde_version[2]) < 2:
 		p('RED', kde_version)
 		p('RED',"Your kde version can be too old")

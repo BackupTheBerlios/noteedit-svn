@@ -23,7 +23,9 @@
 
 #define MUSICXMLEXPORT_H
 
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 
 #include <qptrlist.h>
 #include <qstring.h>

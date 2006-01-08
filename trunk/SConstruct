@@ -31,6 +31,17 @@ env['CXXCOMSTR']=bstr
 # SCRIPTS FOR BUILDING THE TARGETS
 ###################################################################
 
+# NoteEdit Version
+version = '2.8.0'
+env.AppendUnique( CPPFLAGS = ['-DVERSION=\\\"'+version+'\\\"'])
+
+# Flag so we don't include config.h if compiled with scons
+# This will be removed as soon as automake support is removed
+env.AppendUnique( CPPFLAGS = ['-DWITH_SCONS'])
+# Assume we have at least gcc-3.x for scons (i.e. deprecated)
+# This compiler specific flag will be removed from the source
+env.AppendUnique( CPPFLAGS = ['-DGCC_MAJ_VERS=3'])
+
 ## BuilDir example - try to have all sources to process in only one top-level folder
 SetOption('duplicate', 'soft-copy')
 env.BuildDir('#build', '#kguitar_excerpt #noteedit #doc')

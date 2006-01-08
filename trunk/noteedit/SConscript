@@ -7,6 +7,17 @@
 Import( 'env' )
 import os
 
+###################################################################
+# Copy necessary ui files
+###################################################################
+
+# QT2 is no longer supported, so we ignore these files
+# If we add QT4 support we should add again have two files
+# for the KDE3 and QT4 and handle the file type (".qt4") correctly
+# Therefore kde_version / qt_version needs to be exported from kde.py!
+if( not os.path.isfile('lyrics.ui') ):
+    env.Execute(Copy('lyrics.ui', 'lyrics.ui.qt3'))
+
 # Define the Prefix for our lex / grammar
 LEX_PREFIX  = 'NEDIT'
 # Variables for compiling lex / grammar file
@@ -29,12 +40,19 @@ PREFIX_DEF='-DYYLINENO=' + LEX_LINENO + ' -DYYRESTART=' + LEX_RESTART + \
 # CPPLEXBUILD = $CPPBUILD + CPPFLAGS=PREFIX_DEF or similar
 
 # Variant 2: add the flags to the static object lexik.ll / grammar.yy
+
+# Create new environment for extra CPPFLAGS not added to other files
+envlex = env.Copy()
+envlex.Append( CPPFLAGS = PREFIX_DEF )
 # StaticObect does return an object not being a string, so we need to convert it first
 # Create a separate string list from these to objects, we will add it later to the sources
-LG = str(env.StaticObject("grammar.yy", CPPFLAGS=PREFIX_DEF, YACCFLAGS='-y -d -pNEDIT')[0]) + ' ' + \
-     str(env.StaticObject("lexik.ll",   CPPFLAGS=PREFIX_DEF, LEXFLAGS='-l -PNEDIT')[0]) + ' ' + \
-     str(env.StaticObject("filehandler.cpp", CPPFLAGS=PREFIX_DEF, LEXFLAGS='-l -PNEDIT')[0])
-# More special compile flags for other files can be added as well.
+LG = str(envlex.StaticObject("grammar.yy", CPPFLAGS='${CPPFLAGS}',
+                             YACCFLAGS='-y -d -pNEDIT')[0]) + ' ' + \
+     str(envlex.StaticObject("lexik.ll", CPPFLAGS='${CPPFLAGS}',
+                             LEXFLAGS='-l -PNEDIT')[0]) + ' ' + \
+     str(envlex.StaticObject("filehandler.cpp", CPPFLAGS = '${CPPFLAGS}',
+                             LEXFLAGS='-l -PNEDIT')[0])
+# More special compile flags for other files (environments) should be added here.
 
 # Currently left out: Special flags for final (Hide Exceptions from TSE3)
 

@@ -263,6 +263,7 @@ bool NPreviewPrint::printDoPreview(QString fileType)
     connect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
              this, SLOT( filePrintPreviewFinished(KProcess *) ) );
     // Start preview
+    printf("Preview: %s\n", QString( fprevprog + " " + previewFile_ ).ascii() );
     previewProgram.start(KProcess::DontCare, KProcess::All);
     disconnect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
                 this, SLOT( filePrintPreviewFinished(KProcess *) ) );
@@ -297,6 +298,8 @@ void NPreviewPrint::printWithLilypond(bool preview)
     KProcess typesettingProgram;
     struct lily_options lilyOpts;
     NLilyExport lily;
+    QFile oLogFile;
+    QString oLogLine;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     LilypondExportForm *form = (LilypondExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( LILY_PAGE ), EXP_Lilypond );
     // Read options
@@ -312,11 +315,19 @@ void NPreviewPrint::printWithLilypond(bool preview)
     // Which file to use for printing ? fileName_.ps (Option -o !)
     // We probably need to filter the -o option!
     // Do not create a pdf file (broken with my lilypond version)
-    typesettingProgram << ftsetProg_ << "--ps" << printOptions;
+    typesettingProgram << ftsetProg_ << printOptions;
     printf("Setting working directory: %s\n",dirPath_.ascii());
     typesettingProgram.setWorkingDirectory( dirPath_ );
     // Export file and create postscript file
     printDoExport(&typesettingProgram);
+    // Show log file on console
+    oLogFile.setName( filePath_ + ".log" );
+    oLogFile.open( IO_ReadOnly | IO_Translate );
+    while( oLogFile.atEnd() == false )
+    {
+	oLogFile.readLine( oLogLine, 1024 );
+	printf( "%s",oLogLine.ascii() );
+    }
     // Converting succesfull ?
     if (typesettingProgram.normalExit()) 
     {

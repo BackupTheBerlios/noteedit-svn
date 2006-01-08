@@ -19,7 +19,9 @@
 /*											*/
 /****************************************************************************************/
 
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 #ifndef MUSICXMLIMPORT_H
 
 #include <qmap.h>

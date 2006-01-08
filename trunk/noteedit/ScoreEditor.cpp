@@ -22,7 +22,6 @@
 
 #include "ScoreEditor.h"
 #ifdef ANTHEM_PLUGIN
-#include "config.h"
 #if GCC_MAJ_VERS > 2
 #include <istream.h>
 #else

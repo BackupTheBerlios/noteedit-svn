@@ -24,7 +24,9 @@
 // WITH_OLDLILY trick implemented to be able to coop with old LilyPond syntax
 // </GFI>
 
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 #if GCC_MAJ_VERS > 2
 #include <istream>
 #else

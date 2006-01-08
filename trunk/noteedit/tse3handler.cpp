@@ -20,7 +20,7 @@
 /*											*/
 /****************************************************************************************/
 
-#include "config.h"
+// #include "config.h"
 #ifdef WITH_TSE3
 #if GCC_MAJ_VERS > 2
 #include <fstream>
@@ -45,7 +45,6 @@
 #include "uiconnect.h"
 #include "scaleedit_impl.h"
 #include "tempotrack.h"
-#include <config.h>
 #include <qtextview.h>
 #include <qslider.h>
 #include <kprogress.h>

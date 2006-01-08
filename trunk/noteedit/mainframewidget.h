@@ -27,7 +27,9 @@
 #include <sys/time.h>
 #include <qtimer.h>
 #include <qthread.h>
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 #include <kmainwindow.h>
 #include <kaction.h>
 #if QT_VERSION >= 300

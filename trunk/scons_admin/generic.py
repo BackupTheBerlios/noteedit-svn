@@ -328,6 +328,7 @@ def generate(env):
 		p('BOLD','--------------------')
 		p('BOLD','* debug        ','debug=1 (-g) or debug=full (-g3, slower) else use environment CXXFLAGS, or -O2 by default')
 		p('BOLD','* prefix       ','the installation path')
+		p('BOLD','* withfadein   ','switch on fade in/out support for (de)crescendo (default: yes)')
 		p('BOLD','* withprinting ','switch on printing support (default: yes)')
 		p('BOLD','* extraincludes','a list of paths separated by ":"')
 		p('BOLD','* scons configure debug=full prefix=/usr/local extraincludes=/tmp/include:/usr/local')
@@ -453,10 +454,18 @@ def generate(env):
 		env['EXTRAINCLUDES'] = env['ARGS'].get('extraincludes', None)
 		if env['EXTRAINCLUDES']:
 			env.pprint('VIOLET','** extra include paths for the project set to:',env['EXTRAINCLUDES'])
+		# Fade in support
+		wfadein = env['ARGS'].get('withfadein')
+		if wfadein != 'no' and wfadein != 'n':
+			env.AppendUnique( GENCXXFLAGS = ['-DWITH_FADE_IN=1'])
+			env.pprint('GREY','Enabling fade in support.')
+		else:
+			env.pprint('GREY','Disabling fade in support.')
+			
 		# Printing support
 		wprint = env['ARGS'].get('withprinting')
 		if wprint != 'no' and wprint != 'n':
-			env.AppendUnique( GENCXXFLAGS = ['-DWITH_DIRECT_PRINTING'])
+			env.AppendUnique( GENCXXFLAGS = ['-DWITH_DIRECT_PRINTING=1'])
 			env.pprint('GREY','Enabling print preview and printing support.')
 		else:
 			env.pprint('GREY','Disabling print preview and printing support.')

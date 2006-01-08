@@ -27,7 +27,9 @@
 #include <qbuttongroup.h> 
 #include <qhbox.h>
 
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 #include "lines.h"
 #include "abcexportform.h"
 #include "lilypondexportform.h"

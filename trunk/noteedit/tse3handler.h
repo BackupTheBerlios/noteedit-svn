@@ -23,7 +23,9 @@
 #ifndef TSE3HANDLER_H
 
 #define TSE3HANDLER_H
-#include <config.h>
+#ifndef WITH_SCONS
+#include "config.h"
+#endif
 #ifdef WITH_TSE3
 #include <qobject.h>
 #include <tse3/MidiScheduler.h>

@@ -543,6 +543,8 @@ void ConfigureDialog::printLayout() {
       break;
     case 4: default: // custom
       // Was program changed to custom ?
+      printf("ts Prog: %d, new: %d\n",tsProgram,typesettingProgram->currentItem());
+      fflush( stdout );
       if( tsProgram != typesettingProgram->currentItem() )
       {
 	tsProgram = typesettingProgram->currentItem();

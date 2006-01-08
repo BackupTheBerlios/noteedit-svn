@@ -24,7 +24,9 @@
 
 #define LILYEXPORT_H
 
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 #include "muselement.h" /* needed for property_type */
 #if GCC_MAJ_VERS > 2
 #include <sstream>

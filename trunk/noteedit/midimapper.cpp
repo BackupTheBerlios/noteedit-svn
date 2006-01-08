@@ -20,7 +20,7 @@
 /*											*/
 /****************************************************************************************/
 
-#include "config.h"
+#include "midimapper.h"
 #if GCC_MAJ_VERS > 2
 #ifndef WITH_TSE3
 #include <iostream>
@@ -43,7 +43,6 @@
 #include <qpushbutton.h>
 #include <qdatetime.h>
 #include "resource.h"
-#include "midimapper.h"
 #include "voice.h"
 #include "chord.h"
 

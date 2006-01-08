@@ -15,7 +15,9 @@
 #include "global.h"
 #include "tabtrack.h"
 
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 #if GCC_MAJ_VERS > 2
 #include <istream>
 #else

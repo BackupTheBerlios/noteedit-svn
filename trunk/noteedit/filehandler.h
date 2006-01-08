@@ -23,7 +23,9 @@
 #ifndef FILE_HANDLER_H
 
 #define FILE_HANDLER_H
+#ifndef WITH_SCONS
 #include "config.h"
+#endif
 #if GCC_MAJ_VERS > 2
 #include <sstream>
 #include <fstream>

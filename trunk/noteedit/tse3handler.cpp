@@ -20,7 +20,7 @@
 /*											*/
 /****************************************************************************************/
 
-// #include "config.h"
+#include "tse3handler.h"
 #ifdef WITH_TSE3
 #if GCC_MAJ_VERS > 2
 #include <fstream>
@@ -28,7 +28,6 @@
 #include <fstream.h>
 #endif
 #include <stdio.h>
-#include "tse3handler.h"
 #include <tse3/TSE3.h>
 #include <tse3/MidiFile.h>
 #include <tse3/TempoTrack.h>

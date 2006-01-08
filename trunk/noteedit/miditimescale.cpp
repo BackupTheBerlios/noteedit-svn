@@ -20,8 +20,8 @@
 /*											*/
 /****************************************************************************************/
 
-#ifdef WITH_TSE3
 #include "miditimescale.h"
+#ifdef WITH_TSE3
 #include "resource.h"
 #include "staff.h"
 #include "clef.h"

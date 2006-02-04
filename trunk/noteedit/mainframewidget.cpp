@@ -590,7 +590,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 
 	timesigDialog_ = new timesigDiaFrm ( this );
 
-	keys_ = new KAccel(this);
+	keys_ = new KAccel( (QWidget *)this->parent() );
 
 	keys_->insertItem( i18n( "Move up" ), "KEmoveup",  Key_Up);
 	keys_->connectItem( "KEmoveup", this, SLOT( KE_moveUp() ) );

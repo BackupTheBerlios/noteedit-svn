@@ -297,7 +297,7 @@ int NClef::getOctave() {
 /* Returns the note pitch on the given note's vertical position. Arguments: int line - note position (0-bottom line, 1-first space, 2-second line, -1-space below the bottom line) ... */
 char NClef::line2Name(int line, int *octave, bool lilyexport, bool abcexport) const {
 	*octave = 0;
-	char c;
+	char c = -3;
 	int kind = clefKind_;
 	if (lilyexport && (kind == DRUM_CLEF || kind == DRUM_BASS_CLEF)) {
 		line += 1;
@@ -340,6 +340,9 @@ char NClef::line2Name(int line, int *octave, bool lilyexport, bool abcexport) co
 		case  3: c = 'a'; break;
 		case  4: c = 'b'; break;
 	}
+	if (c==-3) // line error, c was not set
+		NResource::abort("NClef::line2Name()");
+		
 	return c;
 }
 
@@ -670,7 +673,7 @@ int NClef::chooseClefType(staffInfoClass *staffInfos, unsigned int minMidi, unsi
 }
 
 void NClef::calculateDimensionsAndPixmaps() {
-	int ypos, yoffs;
+	int ypos = 0, yoffs = 0;
 	if (!staff_props_->base) return;
 	switch (clefKind_) {
 		case TREBLE_CLEF: switch(shift_) {
@@ -782,7 +785,7 @@ void NClef::calculateDimensionsAndPixmaps() {
 		default: NResource::abort("unknown clef");
 				break;
 	}
-	nbaseDrawPoint_ = QPoint (xpos_, ypos+yoffs);
+	nbaseDrawPoint_ = QPoint(xpos_, ypos+yoffs);
 	bbox_ = QRect(xpos_, ypos , pixmapWidth_, pixmapHeight_);
 }
 

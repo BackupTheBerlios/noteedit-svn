@@ -898,7 +898,7 @@ void NMusiXTeX::generate(int staff_nr, int real_staff_nr, const char *extraDelim
 			     }
 			     if (chord->va_ != 0) {
 			     	hline = ac_voice->findBorderLineInVa(chord);
-				s = chord->computeTeXVa(chord->va_ < 0, hline, &vaPool_, &(staff_elem->actualClef_),
+				s = chord->computeTeXVa(hline, &vaPool_, &(staff_elem->actualClef_),
 					&(va_descr_[staff_nr]), &nested, &toomany);
 				if (nested) {
 					exerr = new NExportError(MUSIXTEX_ERR_NESTED_VAS, real_staff_nr + 1);

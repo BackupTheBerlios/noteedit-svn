@@ -584,7 +584,7 @@ bool NPmxExport::writeTrack(NVoice *voice,  int staff_nr, int voice_nr, int voic
 				     }
 				     if (chord->va_ != 0) {
 					hline = voice->findBorderLineInVa(chord);
-					s = chord->computeTeXVa(chord->va_ < 0, hline, &vaPool_, &(actual_staff->actualClef_),
+					s = chord->computeTeXVa(hline, &vaPool_, &(actual_staff->actualClef_),
 						&(va_descr_[staff_nr-1]), &nested, &toomany);
 					if (nested) {
 						bad = new badmeasure(PMX_ERR_NESTED_VAS, staff_nr, barNr_+numMeasures, 3 /* dummy */, 3 /* dummy */);

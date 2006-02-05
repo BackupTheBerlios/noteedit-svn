@@ -25,7 +25,8 @@ NChordDiagram::NChordDiagram(int *str, QString chordName, bool showDiagram) {
 }
 
 void NChordDiagram::setValues(int *str, QString chordName, bool showDiagram) {
-	int barre, eff, i, j;
+	int i,j;
+	char barre, eff;
 	bool noff = true;
 
 
@@ -34,7 +35,7 @@ void NChordDiagram::setValues(int *str, QString chordName, bool showDiagram) {
 	chordName_ = chordName;
 	showDiagram_ = showDiagram;
 	for (i = 0; i < 6; i++) {
-		strings_[i] = (char ) str[i];
+		strings_[i] = (char)str[i];
 	}
 	for (i = 0; i < 6; i++) {
 		if (strings_[i] < firstFret_ && strings_[i] > 0) {
@@ -67,8 +68,8 @@ void NChordDiagram::setValues(int *str, QString chordName, bool showDiagram) {
 
 		if (eff > 2) {
 			if (barree_count_ < 4) {
-				barree_[barree_count_][0] = i;
-				barree_[barree_count_++][1] = 6 - barre;
+				barree_[(int)barree_count_][0] = (char)i;
+				barree_[(int)barree_count_++][1] = 6 - barre;
 			}
 		}
 	}

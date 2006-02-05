@@ -709,7 +709,7 @@ bool NChord::beamHasOnlyTwoChords() {
 }
 
 void NChord::removeFromBeam() {
-	char *err = "internal error: removeFromBeam";
+	const char *err = "internal error: removeFromBeam";
 	if (!hasProperty(PROP_BEAMED)  || beamList_ == 0) {
 		NResource::abort(err, 1);
 	}
@@ -756,7 +756,7 @@ bool NChord::removeNote(NNote *note, int voices_stem_policy) {
 
 NNote *NChord::insertNewNote(int line, int offs, int voices_stem_policy, property_type properties) {
 	NNote *note, *new_part;
-	int idx;
+	int idx = 0;
 	bool found = false;
 	note = noteList_.first();
 	while (note && !found) {
@@ -797,7 +797,7 @@ void NChord::determineStemDir(int voices_stem_policy) {
 }
 	
 
-NNote *NChord::searchLine(int line, int min) {
+NNote *NChord::searchLine(int line, unsigned int min) {
 	NNote *note;
 	if (noteList_.count() < min) return 0;
 	for (note = noteList_.first(); note; note = noteList_.next()) {
@@ -829,7 +829,7 @@ NChord::~NChord () {
 	int i;
 	if (hasProperty(PROP_BEAMED)) {
 		if (beamList_->find(this) == -1) {
-			printf("&GRACE= 0x%x\n", hasProperty( PROP_GRACE )); fflush(stdout);
+			printf("&GRACE= 0x%qu\n", hasProperty( PROP_GRACE )); fflush(stdout);
 			NResource::abort("~Note: internal error");
 		}
 		beamList_->remove();
@@ -945,7 +945,7 @@ void NChord::calculateDimensionsAndPixmaps() {
 	int i, last_chord  = NULL_LINE;
 	NNote *note;
 	int x_aux_offs, x_acc_offs = 0;
-	int x_shift_offs = 0, shoffs;
+	int x_shift_offs = 0, shoffs = 0;
 	int min_line, max_line;
 	int xbpoint;
 	int lyricswidth;
@@ -1265,10 +1265,9 @@ void NChord::calculateGraceChord() {
 	int i, last_chord  = NULL_LINE;
 	NNote *note;
 	int x_aux_offs, x_acc_offs = 0;
-	int x_shift_offs = 0, shoffs;
+	int x_shift_offs = 0, shoffs = 0;
 	int min_line, max_line;
 	int xbpoint;
-	int lyricswidth;
 	int yoffs = 0;
 
 	pixmapHeight_ = NECK_LENGTH+1;
@@ -1658,8 +1657,7 @@ void NChord::draw(int flags) {
 		the_painter->drawLine( QPoint( xpos_, staff_props_->base + DYNAMIC_DIST + ( LINE_DIST * 5 )), QPoint(xpos_ + dynamic_, staff_props_->base + ( DYNAMIC_WIDTH / 2 ) + ( LINE_DIST * 5 ) + DYNAMIC_DIST));
 		the_painter->drawLine( QPoint( xpos_, staff_props_->base + DYNAMIC_DIST + ( LINE_DIST * 5 ) + DYNAMIC_WIDTH), QPoint(xpos_ + dynamic_, staff_props_->base + ( DYNAMIC_WIDTH / 2 ) + (LINE_DIST * 5 ) + DYNAMIC_DIST));
 		}
-		xpos_ + dynamic_;
-
+		//xpos_ + dynamic_; // Statement written by Jorg Anders. Don't know what it does, so I commented it?? -Matevz
 	}
 
 	if (hasProperty(PROP_SLURED) && slur_forward_) {
@@ -2162,7 +2160,7 @@ QString *NChord::computeTeXTie(unsigned int *tiePool, NClef *clef, int maxtie, b
 	NNote *note, *firstTiedPart = 0, *lastTiedPart = 0;
 	QString *s = 0, t;
 	*toomany = false;
-	char *err = "internal error: too many ties";
+	const char *err = "internal error: too many ties";
 
 	if (spare) {
 		for (note = noteList_.first(); note; note = noteList_.next()) {
@@ -2431,7 +2429,7 @@ QString *NChord::computeTeXTrill(int hline, unsigned int *trillPool, NClef *clef
 	return s;
 }
 
-QString *NChord::computeTeXVa(bool bassa, int hline, unsigned int *vaPool, NClef *clef, struct trill_descr_str *trill_descr, bool *nested, bool *toomany) {
+QString *NChord::computeTeXVa(int hline, unsigned int *vaPool, NClef *clef, struct trill_descr_str *trill_descr, bool *nested, bool *toomany) {
 	NNote *note;
 	int va_nr;
 	bool found;

@@ -27,7 +27,7 @@
 // link MusicXML chord kind to step values
 
 struct MusicXMLChord {
-	char * kind;
+	const char * kind;
 	short int s3;
 	short int s5;
 	short int s7;

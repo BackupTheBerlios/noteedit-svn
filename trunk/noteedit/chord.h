@@ -59,7 +59,7 @@ class NChord: public NPlayable {
 		virtual int getSubType() const {return length_;}
 		virtual int getType() const {return T_CHORD;}
 		virtual bool deleteNoteAtLine(int line, int voices_stem_policy);
-		virtual NNote *searchLine(int line, int min);
+		virtual NNote *searchLine(int line, unsigned int min);
 		virtual NNote *insertNewNote(int line, int offs, int voices_stem_policy, property_type properties);
 		virtual NChordDiagram *getChordChordDiagram() {return cdiagram_;}
 		void determineStemDir(int voices_stem_policy);
@@ -137,7 +137,7 @@ class NChord: public NPlayable {
 		QString *computeTeXSlur(unsigned int *slurPool, NClef *clef, int maxslur, bool *toomany);
 		QString *computeTeXTrill(int hline, unsigned int *trillPool, NClef *clef, struct trill_descr_str *trill_descr, 
                                         bool *nested, bool *toomany);
-		QString *computeTeXVa(bool bassa, int hline, unsigned int *vaPool, NClef *clef, struct trill_descr_str *trill_descr,
+		QString *computeTeXVa(int hline, unsigned int *vaPool, NClef *clef, struct trill_descr_str *trill_descr,
 			bool *nested, bool *toomany);
 		void initialize_acc_pos_computation();
 		QPtrList<NNote> *getAccTexRow(int row_nr);

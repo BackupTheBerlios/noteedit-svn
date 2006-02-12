@@ -2101,15 +2101,15 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 	exportDialog_->getLilyOptions( lilyOpts_ );
 	if (flush) {		// Flush, initialize for a next export and return.
         	if (!lilyOpts_.voice) {
-			if (lyricsInGrandStaff) {
-				tmps.sprintf("2\\context { \\GrandStaff \\accepts Lyrics }\n");
-				scoreBlock.insert(scoreBlock.count()-2, new QString(tmps));
-			}
 			for (m=0;m<scoreBlock.count();m++) {
 	               		tmps.sprintf("%s", scoreBlock.at(m)->latin1());
 				depth_ = tmps[0].digitValue();		// flush tabs
 				tabsOut();
 	               		out_ << tmps.remove(0,1);		// and flush rest of line
+			}
+			if (lyricsInGrandStaff) {
+				out_ << endl << "\\layout {" << endl;
+				out_ << "	\\context { \\GrandStaff \\accepts Lyrics }" << endl << "}" << endl;
 			}
 		}
 		scoreBlock.clear();	// autodelete is on, triggers init block next time

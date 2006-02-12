@@ -263,7 +263,7 @@ void NStaff::getElementsAfter(QPtrList<NPositStr> *plist, int mytime, int *num_p
 	}
 }
 
-bool NStaff::trimmRegionToWholeStaff(int *x0, int *x1) {
+bool NStaff::trimmRegionToWholeStaff(unsigned int *x0, unsigned int *x1) {
 	return voicelist_.first()->trimmRegionToWholeStaff(x0, x1);
 }
 

@@ -104,7 +104,7 @@ NLilyExport::NLilyExport() {
 void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, exportFrm *expWin, NMainFrameWidget *mainWidget) {
 	int i, j;
 	double wh;
-	int k, str;
+	int k, str=0;
 	badmeasure *bad;
 	NVoice *voice_elem;
 	NStaff *staff_elem;
@@ -724,8 +724,8 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 #define PENDING_ACCELERANDO	  (1 << 7)
 #define SOME_SIGNS_WITH_TEXT	 (PENDING_DAL_SEGNO | PENDING_DAL_SEGNO_AL_FINE | PENDING_DAL_SEGNO_AL_CODA | PENDING_FINE | PENDING_RITARDANDO | PENDING_ACCELERANDO)
 	int acr;
-	int saveLine;
-	int LineBeforeSPE1;
+	int saveLine=0;
+	int LineBeforeSPE1=0;
 	bool lastElemIsBar = false;
 	bool prevElemIsBar = false;
 	bool repeatOpenSeen = false;
@@ -737,13 +737,13 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	long currentPos;
 	long PosOfHiddenRepeat = -1;
 	bool repeatOpenAtBeginMissing = false;
-	int length;
+	unsigned int length=0;
 	int part;
 	NClef *clef;
 	NKeySig *key;
 	NTimeSig *timesig;
 	NNote *note;
-	NChord *chord;
+	NChord *chord=0;
 	NRest *rest;
 	NChordDiagram *diag;
 	NSign *sign;
@@ -762,7 +762,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	int trilledNotes = 0;
 	int vaendpos = 0;
 	int c4Line;
-	int restlen;
+	int restlen=0;
 	int octaviation = 0;
 	NText *pending_text = 0;
 	bool drumNotesChange = true;	// not inside chords implemented, use different voices if needed.
@@ -790,7 +790,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 			// Handle relevant special elements (T_KEYSIG, T_CLEF and T_SIGN/BAR_SYM)
 			// between the previous and the current element.
 			// Note that special elements are all stored in the first voice.
-			while (specialElem = actual_staff->checkSpecialElement(elem->getXpos())) {
+			while ( specialElem = (actual_staff->checkSpecialElement(elem->getXpos())) ) {
 				switch (specialElem->getType()) {
 					case T_KEYSIG:
 						     actual_staff->actualKeysig_.change((NKeySig *) specialElem);
@@ -812,7 +812,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 		switch (elem->getType()) {
 			case T_CHORD: chord = (NChord *) elem;
 				     if (PosOfHiddenRepeat < 0) {
-					if (acr = voi->determineAnacrusis()) {
+					if ( acr = (voi->determineAnacrusis()) ) {
 						out_ << "\\partial " << (128 / acr);
 						if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
 						out_ << endl << '\t';
@@ -1055,7 +1055,8 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					     }
 					     if (first) {
 						first = false;
-					        if ((!NResource::lilyProperties_.lilyVersion2 || chord->getNoteList()->count() < 2) && (length != lastLength_ || lastDotted_ != (chord->properties() & DOT_MASK))) {
+					        if ( (!NResource::lilyProperties_.lilyVersion2 || chord->getNoteList()->count() < 2) &&
+					             (length != lastLength_ || lastDotted_ != (chord->properties() & DOT_MASK)) ) {
 						   if (part == DOUBLE_WHOLE_LENGTH) {
 							out_ << "\\breve ";
 						   }
@@ -1341,7 +1342,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     break;
 			case T_REST: rest = elem->rest();
 				     if (PosOfHiddenRepeat < 0) {
-					if (acr = voi->determineAnacrusis()) {
+					if (acr = (voi->determineAnacrusis())) {
 						out_ << "\\partial " << (128 / acr);
 						if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
 						out_ << endl << '\t';
@@ -1910,7 +1911,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	if (!repeatOpenAtBeginMissing) {
 		currentPos = out_.tellp();
 		out_.seekp(PosOfHiddenRepeat);
-		for (i = 0; i < strlen(hiddenRepeat); i++) out_ << ' ';
+		for (i = 0; i < (int)strlen(hiddenRepeat); i++) out_ << ' ';
 		out_.seekp(currentPos);
 	}
 	if (voice_nr > 0) out_ << endl;
@@ -1963,20 +1964,20 @@ void NLilyExport::writeLyrics(int voice_nr, NVoice *voi, const QString& label) {
 	NMusElement *elem;
 	NChord *chord;
 	QString *ps, s;
-	int lyline;
+	unsigned int lyline;
 	int counter;
 
-if (NResource::lilyProperties_.lilyVersion24) {
-} else {
-	if (staffarray_[voice_nr].lyrics_count > 1) {
-		out_ << "{" << endl << "\t\\simultaneous {" << endl << "\t\t";
-		depth_ = 2;
+	if (NResource::lilyProperties_.lilyVersion24) {
+	} else {
+		if (staffarray_[voice_nr].lyrics_count > 1) {
+			out_ << "{" << endl << "\t\\simultaneous {" << endl << "\t\t";
+			depth_ = 2;
+		}
+		else {
+			out_ << "{" << endl << '\t';
+			depth_ = 1;
+		}
 	}
-	else {
-		out_ << "{" << endl << '\t';
-		depth_ = 1;
-	}
-}
 	
 	for (lyline = 0; lyline < staffarray_[voice_nr].lyrics_count; lyline++) {
 		counter = 0;
@@ -2223,8 +2224,6 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 		for (m=0;m<staffarray_[i].lyrics_count;m++) {
 			if (staffarray_[i].lyrics_count>1)		// number only when 2 verses and more
 				stanzaNStr.sprintf("%d.", m+1);
-			else
-				stanzaNStr.sprintf("");
 			tmps.sprintf("%d\\context Lyrics = c%s%s%c { \\set stanza = \"%s\" }\n",
 				hy, label.latin1(),
 				staff_elem->voiceCount() > 1 ? "Voice" : "",

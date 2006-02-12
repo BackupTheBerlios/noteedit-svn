@@ -447,7 +447,7 @@ class NMainFrameWidget : public QWidget
 		NInfoTable *about_;
 		NDbufferWidget *notePart_; //main view of the score
 		KAction *lilyPort_;
-		int voiceNr_;
+		unsigned int voiceNr_;
 /*------------------------------ Dialogs ------------------------------------------------*/
 
 		QDialog *channelDialog_;
@@ -500,12 +500,12 @@ class NMainFrameWidget : public QWidget
 /*----------------------------- internal reaction on resize --------------------------*/
 		void setScrollableNotePage();
 		void preparePixmaps();
-		int width_, height_;
-		int lastXpos_, lastYHeight_, oldLastXpos_;
-		int nettoWidth_, nettoHeight_;
-		int paperWidth_, paperHeight_;
-		int paperScrollWidth_, paperScrollHeight_;
-                int leftx_, topy_, boty_;
+		unsigned int width_, height_;
+		unsigned int lastXpos_, lastYHeight_, oldLastXpos_;
+		unsigned int nettoWidth_, nettoHeight_;
+		unsigned int paperWidth_, paperHeight_;
+		unsigned int paperScrollWidth_, paperScrollHeight_;
+		unsigned int leftx_, topy_, boty_;
 /*----------------------------- update of buttons due to selection ------------------*/
 		void setButton(int nr);
 		void updateInterface(property_type properties, int length);
@@ -526,7 +526,7 @@ class NMainFrameWidget : public QWidget
 		NTSE3Handler *tse3Handler_;
 #endif
 /*---------------------------- positioning ------------------------------------------*/
-		void xscrollDuringReplay(int val);
+		void xscrollDuringReplay(unsigned int val);
 		void computeMidiTimes(bool insertBars, bool doAutoBeam = false);
 		QPtrList<NMidiEventStr> currentEvents_, nextEvents_;
 		QPtrList<NMidiEventStr> *nextToPlay_, *nextToSearch_;
@@ -536,7 +536,7 @@ class NMainFrameWidget : public QWidget
 		bool editMode_;
 		property_type props_before_edit_mode_; /* selected buttons before going to edit mode */
 		int length_before_edit_mode_; /* selected note/rest length button before going to edit mode */
-		int x0_, y0_, x1_;
+		unsigned int x0_, y0_, x1_;
 		int xori_;
 		QRect   selRect_;
 		int checkAllStaffsForNoteInsertion(const int line, const QPoint p, property_type *properties, bool *playable, bool *delete_elem, bool *insert_new_note);
@@ -605,7 +605,7 @@ class NMainFrameWidget : public QWidget
 		int tempofactor_;
 		int changePlayMethodItemId_;
 		int notesToPlay_;
-		int turnOverOffset_;
+		unsigned int turnOverOffset_;
 		bool playing_;
 		NTempoTrack SortedTempoSigs_;
 		bool firstNoteActive_; // avoid overwriting first red colored note

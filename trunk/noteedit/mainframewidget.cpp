@@ -592,125 +592,70 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 
 	keys_ = new KAccel( (QWidget *)this->parent() );
 
-	keys_->insertItem( i18n( "Move up" ), "KEmoveup",  Key_Up);
-	keys_->connectItem( "KEmoveup", this, SLOT( KE_moveUp() ) );
-	keys_->insertItem( i18n( "Move down" ), "KEmovedown",  Key_Down);
-	keys_->connectItem( "KEmovedown", this, SLOT( KE_moveDown() ) );
-	keys_->insertItem( i18n( "Move semi up" ), "KEmoveSemiUp",  CTRL+Key_Up);
-	keys_->connectItem( "KEmoveSemiUp", this, SLOT( KE_moveSemiUp() ) );
-	keys_->insertItem( i18n( "Move semi down" ), "KEmoveSemiDown",  CTRL+Key_Down);
-	keys_->connectItem( "KEmoveSemiDown", this, SLOT( KE_moveSemiDown() ) );
-	keys_->insertItem( i18n( "Move left" ), "KEmoveleft",  Key_Left);
-	keys_->connectItem( "KEmoveleft", this, SLOT( KE_moveLeft() ) );
-	keys_->insertItem( i18n( "Move start" ), "KEmovestart",  Key_Home);
-	keys_->connectItem( "KEmovestart", this, SLOT( KE_moveStart() ) );
-	keys_->insertItem( i18n( "Move right" ), "KEmoveright",  Key_Right);
-	keys_->connectItem( "KEmoveright", this, SLOT( KE_moveRight() ) );
-	keys_->insertItem( i18n( "Move end" ), "KEmoveend",  Key_End);
-	keys_->connectItem( "KEmoveend", this, SLOT( KE_moveEnd() ) );
-	keys_->insertItem( i18n( "Delete forward" ), "KEdelete",  Key_Delete);
-	keys_->connectItem( "KEdelete", this, SLOT( KE_delete() ) );
-	keys_->insertItem( i18n( "Delete chord note" ), "KEremovechordnote", CTRL+Key_Delete);
-	keys_->connectItem( "KEremovechordnote", this, SLOT( KE_removechordnote() ) );
-	keys_->insertItem( i18n( "Delete before" ), "KEremove", Key_Backspace);
-	keys_->connectItem( "KEremove", this, SLOT( KE_remove() ) );
-	keys_->insertItem( i18n( "Toggle play" ), "KEplay", Key_Space);
-	keys_->connectItem( "KEplay", this, SLOT( KE_play() ) );
-	keys_->insertItem( i18n( "Leave current mode" ), "KEleave", Key_Escape);
-	keys_->connectItem( "KEleave", this, SLOT( KE_leaveCurrentMode() ) );	
-	keys_->insertItem( i18n( "Toggle edit" ), "KEedit",  Key_E);
-	keys_->connectItem( "KEedit", this, SLOT( KE_edit() ) );
-	keys_->insertItem( i18n( "Insert chord note" ), "KEinsertchordnote",  CTRL+Key_Return);
-	keys_->connectItem( "KEinsertchordnote", this, SLOT( KE_insertchordnote() ) );
-	keys_->insertItem( i18n( "Insert note" ), "KEinsertnote",  Key_Return);
-	keys_->connectItem( "KEinsertnote", this, SLOT( KE_insertnote() ) );
+	keys_->insert("KEmoveup", i18n( "Move up" ), QString::null, Key_Up, this, SLOT( KE_moveUp() ));
+	keys_->insert("KEmovedown", i18n( "Move down" ), QString::null, Key_Down, this, SLOT( KE_moveDown() ));
+	keys_->insert("KEmoveSemiUp", i18n( "Move semi up" ), QString::null, CTRL+Key_Up, this, SLOT( KE_moveSemiUp() ));
+	keys_->insert("KEmoveSemiDown", i18n( "Move semi down" ), QString::null, CTRL+Key_Down, this, SLOT( KE_moveSemiDown() ));	
+	keys_->insert("KEmoveleft", i18n( "Move left" ), QString::null, Key_Left, this, SLOT( KE_moveLeft() ));
+	keys_->insert("KEmovestart", i18n( "Move start" ), QString::null, Key_Home, this, SLOT( KE_moveStart() ));
+	keys_->insert("KEmoveright", i18n( "Move right" ), QString::null, Key_Right, this, SLOT( KE_moveRight() ));
+	keys_->insert("KEmoveend", i18n( "Move end" ), QString::null, Key_End, this, SLOT( KE_moveEnd() ));
+	keys_->insert("KEGotoMeasure", i18n( "Goto measure number" ), QString::null, CTRL+Key_G, this, SLOT( KE_gotoDialog() ));
+	keys_->insert("KEdelete", i18n( "Delete forward" ), QString::null, Key_Delete, this, SLOT( KE_delete() ));
+	keys_->insert("KEremovechordnote", i18n( "Delete chord note" ), QString::null, CTRL+Key_Delete, this, SLOT( KE_removechordnote() ));
+	keys_->insert("KEremove", i18n( "Delete before" ), QString::null, Key_Backspace, this, SLOT( KE_remove() ));
+	keys_->insert("KEplay", i18n( "Toggle play" ), QString::null, Key_Space, this, SLOT( KE_play() ));
+	keys_->insert("KEleave", i18n( "Leave current mode" ), QString::null, Key_Escape, this, SLOT( KE_leaveCurrentMode() ));
+	keys_->insert("KEedit", i18n( "Toggle edit" ), QString::null, Key_E, this, SLOT( KE_edit() ));
+	keys_->insert("KEinsertchordnote", i18n( "Insert chord note" ), QString::null, CTRL+Key_Return, this, SLOT( KE_insertchordnote() ));
+	keys_->insert("KEinsertnote", i18n( "Insert note" ), QString::null, Key_Return, this, SLOT( KE_insertnote() ));
 	
 	/* note length selection keys */
-	keys_->insertItem( i18n( "Full note" ), "KE1", Key_1);
-	keys_->connectItem( "KE1", this, SLOT( KE_1() ) );
-	keys_->insertItem( i18n( "Half note" ), "KE2", Key_2);
-	keys_->connectItem( "KE2", this, SLOT( KE_2() ) );
-	keys_->insertItem( i18n( "set triplet" ), "KE3", Key_3);
-	keys_->connectItem( "KE3", this, SLOT( KE_3() ) );
-	keys_->insertItem( i18n( "Quarter note" ), "KE4", Key_4);
-	keys_->connectItem( "KE4", this, SLOT( KE_4() ) );
-	keys_->insertItem( i18n( "Eighth note" ), "KE5", Key_5);
-	keys_->connectItem( "KE5", this, SLOT( KE_5() ) );
-	keys_->insertItem( i18n( "Sixteenth note" ), "KE6", Key_6);
-	keys_->connectItem( "KE6", this, SLOT( KE_6() ) );
-	keys_->insertItem( i18n( "32nd note" ), "KE7", Key_7);
-	keys_->connectItem( "KE7", this, SLOT( KE_7() ) );
-	keys_->insertItem( i18n( "64th note" ), "KE8", Key_8);
-	keys_->connectItem( "KE8", this, SLOT( KE_8() ) );
-	keys_->insertItem( i18n( "128th note" ), "KE9", Key_9);
-	keys_->connectItem( "KE9", this, SLOT( KE_9() ) );
-	
+	keys_->insert("KE1", i18n( "Full note" ), QString::null, Key_1, this, SLOT( KE_1() ));
+	keys_->insert("KE2", i18n( "Half note" ), QString::null, Key_2, this, SLOT( KE_2() ));
+	keys_->insert("KE3", i18n( "Set triplet" ), QString::null, Key_3, this, SLOT( KE_3() ));
+	keys_->insert("KE4", i18n( "Quarter note" ), QString::null, Key_4, this, SLOT( KE_4() ));
+	keys_->insert("KE5", i18n( "Eighth note" ), QString::null, Key_5, this, SLOT( KE_5() ));
+	keys_->insert("KE6", i18n( "Sixteenth note" ), QString::null, Key_6, this, SLOT( KE_6() ));
+	keys_->insert("KE7", i18n( "32nd note" ), QString::null, Key_7, this, SLOT( KE_7() ));
+	keys_->insert("KE8", i18n( "64th note" ), QString::null, Key_8, this, SLOT( KE_8() ));
+	keys_->insert("KE9", i18n( "128th note" ), QString::null, Key_9, this, SLOT( KE_9() ));
+
 	/* voice selection keys */
-	keys_->insertItem( i18n( "Select 1st voice" ), "KEVoice1", CTRL+Key_1);
-	keys_->connectItem( "KEVoice1", this, SLOT( KE_voice1() ) );
-	keys_->insertItem( i18n( "Select 2nd voice" ), "KEVoice2", CTRL+Key_2);
-	keys_->connectItem( "KEVoice2", this, SLOT( KE_voice2() ) );
-	keys_->insertItem( i18n( "Select 3rd voice" ), "KEVoice3", CTRL+Key_3);
-	keys_->connectItem( "KEVoice3", this, SLOT( KE_voice3() ) );
-	keys_->insertItem( i18n( "Select 4th voice" ), "KEVoice4", CTRL+Key_4);
-	keys_->connectItem( "KEVoice4", this, SLOT( KE_voice4() ) );
-	keys_->insertItem( i18n( "Select 5th voice" ), "KEVoice5", CTRL+Key_5);
-	keys_->connectItem( "KEVoice5", this, SLOT( KE_voice5() ) );
-	keys_->insertItem( i18n( "Select 6th voice" ), "KEVoice6", CTRL+Key_6);
-	keys_->connectItem( "KEVoice6", this, SLOT( KE_voice6() ) );
-	keys_->insertItem( i18n( "Select 7th voice" ), "KEVoice7", CTRL+Key_7);
-	keys_->connectItem( "KEVoice7", this, SLOT( KE_voice7() ) );
-	keys_->insertItem( i18n( "Select 8th voice" ), "KEVoice8", CTRL+Key_8);
-	keys_->connectItem( "KEVoice8", this, SLOT( KE_voice8() ) );
-	keys_->insertItem( i18n( "Select 9th voice" ), "KEVoice9", CTRL+Key_9);
-	keys_->connectItem( "KEVoice9", this, SLOT( KE_voice9() ) );
+	keys_->insert("KEVoice1", i18n( "Select 1st voice" ), QString::null, CTRL+Key_1, this, SLOT( KE_voice1() ));
+	keys_->insert("KEVoice2", i18n( "Select 2nd voice" ), QString::null, CTRL+Key_2, this, SLOT( KE_voice2() ));
+	keys_->insert("KEVoice3", i18n( "Select 3rd voice" ), QString::null, CTRL+Key_3, this, SLOT( KE_voice3() ));
+	keys_->insert("KEVoice4", i18n( "Select 4th voice" ), QString::null, CTRL+Key_4, this, SLOT( KE_voice4() ));
+	keys_->insert("KEVoice5", i18n( "Select 5th voice" ), QString::null, CTRL+Key_5, this, SLOT( KE_voice5() ));
+	keys_->insert("KEVoice6", i18n( "Select 6th voice" ), QString::null, CTRL+Key_6, this, SLOT( KE_voice6() ));
+	keys_->insert("KEVoice7", i18n( "Select 7th voice" ), QString::null, CTRL+Key_7, this, SLOT( KE_voice7() ));
+	keys_->insert("KEVoice8", i18n( "Select 8th voice" ), QString::null, CTRL+Key_8, this, SLOT( KE_voice8() ));
+	keys_->insert("KEVoice9", i18n( "Select 9th voice" ), QString::null, CTRL+Key_9, this, SLOT( KE_voice9() ));
 	
-	keys_->insertItem( i18n( "Set tied" ), "KEtie", Key_Apostrophe);
-	keys_->connectItem( "KEtie", this, SLOT( KE_tie() ) );
-	keys_->insertItem( i18n( "Set tied" ), "KEtie1", "Alt+AsciiTilde");
-	keys_->connectItem( "KEtie1", this, SLOT( KE_tie() ) );
-	keys_->insertItem( i18n( "Set dotted" ), "KEdot", Key_Period);
-	keys_->connectItem( "KEdot", this, SLOT( KE_dot() ) );
-	keys_->insertItem( i18n( "Flat" ), "KEflat", Key_Minus);
-	keys_->connectItem( "KEflat", this, SLOT( KE_flat() ) );
-	keys_->insertItem( i18n( "Sharp" ), "KEsharp", Key_NumberSign);
-	keys_->connectItem( "KEsharp", this, SLOT( KE_sharp() ) );
-	keys_->insertItem( i18n( "Sharp" ), "KEsharp1", Key_Plus);
-	keys_->connectItem( "KEsharp1", this, SLOT( KE_sharp() ) );
-	keys_->insertItem( i18n( "Natural" ), "KEnatural", Key_N);
-	keys_->connectItem( "KEnatural", this, SLOT( KE_natural() ) );
-	keys_->insertItem( i18n( "Natural" ), "KEnatural1", "Shift+Equal");
-	keys_->connectItem( "KEnatural1", this, SLOT( KE_natural() ) );
-	keys_->insertItem( i18n( "Set bar" ), "KEbar", Key_Bar);
-	keys_->connectItem( "KEbar", this, SLOT( KE_bar() ) );
-	keys_->insertItem( i18n( "Set bar after" ), "KEtab", Key_Tab);
-	keys_->connectItem( "KEtab", this, SLOT( KE_tab() ) );
-	keys_->insertItem( i18n( "Insert rest" ), "KErest", SHIFT+Key_Return);
-	keys_->connectItem( "KErest", this, SLOT( KE_insertRest() ) );
-	keys_->insertItem( i18n( "Toggle beam" ), "KEunderscore", "Shift+Underscore");
-	keys_->connectItem( "KEunderscore", this, SLOT( KE_underscore() ) );
-	keys_->insertItem( i18n( "Keyboard Insert mode" ), "KEkeybordInsert", Key_K);
-	keys_->connectItem( "KEkeybordInsert", this, SLOT( KE_keybordInsert() ) );
-	keys_->insertItem( i18n( "Goto measure" ), "KEGotoMeasure",  CTRL+Key_G);
-	keys_->connectItem( "KEGotoMeasure", this, SLOT( gotoDialog() ) );
+	keys_->insert("KEtie", i18n( "Set tied" ), QString::null, Key_Apostrophe, this, SLOT( KE_tie() ));
+	keys_->insert("KEtie1", i18n( "Set tied" ), QString::null, ALT+Key_AsciiTilde, this, SLOT( KE_tie() ));
+	keys_->insert("KEdot", i18n( "Set dotted" ), QString::null, Key_Period, this, SLOT( KE_dot() ));
+	keys_->insert("KEflat", i18n( "Flat" ), QString::null, Key_Minus, this, SLOT( KE_flat() ));
+	keys_->insert("KEsharp", i18n( "Sharp" ), QString::null, Key_NumberSign, this, SLOT( KE_sharp() ));
+	keys_->insert("KEsharp1", i18n( "Sharp" ), QString::null, Key_NumberSign, this, SLOT( KE_sharp() ));
+	keys_->insert("KEnatural", i18n( "Natural" ), QString::null, Key_N, this, SLOT( KE_natural() ));
+	keys_->insert("KEnatural1", i18n( "Natural" ), QString::null, SHIFT+Key_Equal, this, SLOT( KE_natural() ));
+	keys_->insert("KEbar", i18n( "Set bar" ), QString::null, Key_Bar, this, SLOT( KE_bar() ));
+	keys_->insert("KEtab", i18n( "Set bar after" ), QString::null, Key_Tab, this, SLOT( KE_tab() ));
+	keys_->insert("KErest", i18n( "Insert rest" ), QString::null, SHIFT+Key_Return, this, SLOT( KE_insertRest() ));
+	keys_->insert("KEunderscore", i18n( "Toggle beam" ), QString::null, SHIFT+Key_Underscore, this, SLOT( KE_underscore() ));
+	keys_->insert("KEkeyboardInsert", i18n( "Keyboard Insert mode" ), QString::null, Key_K, this, SLOT( KE_keyboardInsert() ));
 
 
 /*------------------------- "note" keys -----------------------------------------------*/
 
-	keys_->insertItem( i18n( "Pitch C" ), "KEpitchC", "C");
-	keys_->connectItem( "KEpitchC", this, SLOT( KE_pitch_C() ) );
-	keys_->insertItem( i18n( "Pitch D" ), "KEpitchD", "D");
-	keys_->connectItem( "KEpitchD", this, SLOT( KE_pitch_D() ) );
-	keys_->insertItem( i18n( "Pitch E" ), "KEpitchE", SHIFT+Key_E);
-	keys_->connectItem( "KEpitchE", this, SLOT( KE_pitch_E() ) );
-	keys_->insertItem( i18n( "Pitch F" ), "KEpitchF", "F");
-	keys_->connectItem( "KEpitchF", this, SLOT( KE_pitch_F() ) );
-	keys_->insertItem( i18n( "Pitch G" ), "KEpitchG", "G");
-	keys_->connectItem( "KEpitchG", this, SLOT( KE_pitch_G() ) );
-	keys_->insertItem( i18n( "Pitch A" ), "KEpitchA", "A");
-	keys_->connectItem( "KEpitchA", this, SLOT( KE_pitch_A() ) );
-	keys_->insertItem( i18n( "Pitch B" ), "KEpitchB", "B");
-	keys_->connectItem( "KEpitchB", this, SLOT( KE_pitch_B() ) );
+	keys_->insert("KEpitchC", i18n( "Pitch C" ), QString::null, Key_C, this, SLOT( KE_pitch_C() ));
+	keys_->insert("KEpitchD", i18n( "Pitch D" ), QString::null, Key_D, this, SLOT( KE_pitch_D() ));
+	keys_->insert("KEpitchE", i18n( "Pitch E" ), QString::null, Key_E, this, SLOT( KE_pitch_E() ));
+	keys_->insert("KEpitchF", i18n( "Pitch F" ), QString::null, Key_F, this, SLOT( KE_pitch_F() ));
+	keys_->insert("KEpitchG", i18n( "Pitch G" ), QString::null, Key_G, this, SLOT( KE_pitch_G() ));
+	keys_->insert("KEpitchA", i18n( "Pitch A" ), QString::null, Key_A, this, SLOT( KE_pitch_A() ));
+	keys_->insert("KEpitchB", i18n( "Pitch B" ), QString::null, Key_B, this, SLOT( KE_pitch_B() ));
 
 	keys_->readSettings();
 	connect(&timer_, SIGNAL(timeout()), this, SLOT(playNext()));
@@ -1126,10 +1071,10 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 #define TRANSX(x) (((int) ((float) (x)/main_props_.zoom + 0.5))+leftx_-main_props_.left_page_border)
 #define TRANSY(y) (((int) ((float) (y)/main_props_.zoom + 0.5))+topy_-TOP_BOTTOM_BORDER)
 #define RETRANSY(y) ((int) (main_props_.zoom * ((y)-topy_+TOP_BOTTOM_BORDER) + 0.5))
-#define TRANS_POINT(x, y) QPoint((int) ((double) (x)/main_props_.zoom + 0.5)+leftx_-main_props_.left_page_border, \
-			       (int) ((double) (y)/main_props_.zoom + 0.5)+topy_-TOP_BOTTOM_BORDER)
+#define TRANS_POINT(x, y) QPoint((unsigned int) ((double) (x)/main_props_.zoom + 0.5)+leftx_-main_props_.left_page_border, \
+			       (unsigned int) ((double) (y)/main_props_.zoom + 0.5)+topy_-TOP_BOTTOM_BORDER)
 #define RETRANSY2(y) ((y)+main_props_.zoom*(topy_-TOP_BOTTOM_BORDER))
-#define TRANSY2LINE(y, dl, l) dl = (4.0*(double) LINE_DIST-(((y)+main_props_.zoom*(topy_-TOP_BOTTOM_BORDER))/main_props_.zoom-currentStaff_->staff_props_.base))/((double)LINE_DIST/2.0); \
+#define TRANSY2LINE(y, dl, l) dl = (4.0*(double) LINE_DIST-(((y)+main_props_.zoom*((int)(topy_-TOP_BOTTOM_BORDER)))/main_props_.zoom-currentStaff_->staff_props_.base))/((double)LINE_DIST/2.0); \
 				l = (dl >= 0.0) ? (int) (dl + 0.5)  : (int) (dl - 0.5)
 			   	
 
@@ -1327,7 +1272,7 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 					if (elem) {
 						newXpos = elem->getXpos();
 						if (newXpos - SMALL_X_SENS_DIST< leftx_) {
-							scrollx_->setValue(leftx_ - SMALL_X_SCROLL < 0 ? 0 : leftx_ - SMALL_X_SCROLL);
+							scrollx_->setValue((int)(leftx_ - SMALL_X_SCROLL) < 0 ? 0 : leftx_ - SMALL_X_SCROLL);
 						}
 					}
 				}
@@ -1361,7 +1306,7 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 						for (i = 0, staff_elem = staffList_.first(); staff_elem && i < NResource::numOfMultiStaffs_;
 							 staff_elem = staffList_.next() , i++) {
 							if (NResource::staffSelMulti_[i]) {
-								if (i >= NResource::windowWithSelectedRegion_->staffList_.count()) break;
+								if ((unsigned int)i >= NResource::windowWithSelectedRegion_->staffList_.count()) break;
 								source_staff = NResource::windowWithSelectedRegion_->staffList_.at(i);
 								staff_elem->pasteAtPosition(TRANSX(evt->x()), source_staff);
 							}
@@ -1411,6 +1356,8 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 				}
 			resetSpecialButtons();
 			break;
+		default:
+			break;
 	}
 }
 
@@ -1431,7 +1378,7 @@ void NMainFrameWidget::autoscroll() {
 			scrolled = false;
 		}
 	}
-	else if (x1_ > leftx_ + (int) ((float) width_ / main_props_.zoom)  - SENS_DIST) {
+	else if (x1_ > leftx_ + (unsigned int) ((float) width_ / main_props_.zoom)  - SENS_DIST) {
 		scrolldist = leftx_ < lastXpos_ + AUTO_SCROLL_DIST ? AUTO_SCROLL_DIST : 0;
 		if (scrolldist) {
 			scrollx_->setValue(leftx_ + scrolldist);
@@ -1447,7 +1394,7 @@ void NMainFrameWidget::autoscroll() {
 		scrolled = false;
 	}
 	if (scrolled) {
-		selRect_ = QRect(x1_ > x0_ ? x0_ : x1_, y0_, abs(x0_ - x1_), 4*LINE_DIST);
+		selRect_ = QRect(x1_ > x0_ ? x0_ : x1_, y0_, abs((int)(x0_ - x1_)), 4*LINE_DIST);
 		repaint();
 	}
 }
@@ -1464,17 +1411,17 @@ void NMainFrameWidget::processMoveEvent( QMouseEvent * evt)  {
 	currentStaff_->getActualVoice()->findStartElemAt(x0_, x1_);
 	y0_ = currentStaff_->getBase();
 	x1_ = TRANSX(xori_ = evt->x());
-	if (abs(x1_ - x0_) < MINREGION) return;
+	if (abs((int)(x1_ - x0_)) < MINREGION) return;
 	NResource::windowWithSelectedRegion_ = this;
 	NResource::voiceWithSelectedRegion_ = currentStaff_->getActualVoice();
 	NResource::isGrabbed_ = false;
 	NResource::voiceWithSelectedRegion_->trimmRegion(&x0_, &x1_);
-	if (x1_ < leftx_ + SENS_DIST || x1_ > leftx_ + (int) ((float) width_ / main_props_.zoom) - SENS_DIST) {
+	if (x1_ < leftx_ + SENS_DIST || x1_ > leftx_ + (unsigned int) ((float) width_ / main_props_.zoom) - SENS_DIST) {
 		if (!autoscrollTimer_.isActive()) {
 			autoscrollTimer_.start(AUTOSCROLL_RATE);
 		}
 	}
-	selRect_ = QRect(x1_ > x0_ ? x0_ : x1_, y0_, abs(x0_ - x1_), 4*LINE_DIST);
+	selRect_ = QRect(x1_ > x0_ ? x0_ : x1_, y0_, abs((int)(x0_ - x1_)), 4*LINE_DIST);
 	repaint();
 }
 
@@ -1498,7 +1445,7 @@ void NMainFrameWidget::processWheelEvent(QWheelEvent * e ) {
 	
 	if (vertical)
 		if (scrolly_->isVisible())
-			scrolly_->setValue(topy_ - e->delta() * ((fast) ? 5 : 0.5));
+			scrolly_->setValue((int)(topy_ - e->delta() * ((fast) ? 5 : 0.5)));
 	
 	if (!vertical)
 		scrollx_->setValue(leftx_ - e->delta() * ((fast) ? 10 : 1));
@@ -1655,7 +1602,7 @@ void NMainFrameWidget::KE_moveSemiDown() {
 void NMainFrameWidget::KE_moveLeft() {
 	if (playing_) return;
 	NMusElement *elem;
-	int newXpos, newYpos;
+	unsigned int newXpos, newYpos;
 	QPoint curpos;
 	prevElement();
 	if ((elem = currentVoice_->getCurrentElement()) == 0) return;
@@ -1665,10 +1612,10 @@ void NMainFrameWidget::KE_moveLeft() {
 	
 	// If we hit left and we are on the right side of the new element, pan left, so the element is visible near the left border - most modern text editor behaviours
 	if (newXpos - SMALL_X_SENS_DIST < leftx_)
-		scrollx_->setValue(newXpos - SMALL_X_SENS_DIST < 0 ? 0 : newXpos - SMALL_X_SENS_DIST);
+		scrollx_->setValue((int)(newXpos - SMALL_X_SENS_DIST) < 0 ? 0 : newXpos - SMALL_X_SENS_DIST);
 	// If we hit left and we are on the left side of the new element, pan right, so the element is visible near the right border - most modern text editor behaviours
 	else if (newXpos > leftx_ + paperScrollWidth_)
-		scrollx_->setValue(newXpos - paperScrollWidth_ + SMALL_X_SENS_DIST < 0 ? 0 : newXpos - paperScrollWidth_ + SMALL_X_SENS_DIST);
+		scrollx_->setValue((int)(newXpos - paperScrollWidth_ + SMALL_X_SENS_DIST) < 0 ? 0 : newXpos - paperScrollWidth_ + SMALL_X_SENS_DIST);
 	
 	// If the new element is too low, pan the viewport down
 	if (newYpos + SMALL_X_SENS_DIST > topy_ + paperScrollHeight_)
@@ -1691,16 +1638,15 @@ void NMainFrameWidget::KE_moveStart() {
 }
 void NMainFrameWidget::KE_moveEnd() {
 	if (playing_) return;
-	int newXpos;
-	newXpos = lastXpos_ - width_;
-	if (newXpos < 0) newXpos = 0;
+	unsigned int newXpos;
+	newXpos = (int)(lastXpos_ - width_) < 0 ? 0 : lastXpos_ - width_;
 	scrollx_->setValue(newXpos);
 }
 
 void NMainFrameWidget::KE_moveRight() {
 	if (playing_) return;
 	NMusElement *elem;
-	int newXpos, newYpos;
+	unsigned int newXpos, newYpos;
 	QPoint curpos;
 
 	nextElement();
@@ -1763,7 +1709,7 @@ void NMainFrameWidget::KE_edit() {
 void NMainFrameWidget::KE_insertnote() {
 	if (playing_) return;
 	NMusElement *elem;
-	int newXpos;
+	unsigned int newXpos;
 	int line;
 	double dline;
 	QPoint curpos;
@@ -1790,7 +1736,7 @@ void NMainFrameWidget::KE_insertnote() {
 void NMainFrameWidget::KE_insertchordnote() {
 	if (playing_) return;
 	NMusElement *elem;
-	int newXpos;
+	unsigned int newXpos;
 	int line;
 	double dline;
 	QPoint curpos;
@@ -1979,13 +1925,13 @@ void NMainFrameWidget::KE_remove() {
 	if (playing_) return;
 	QPoint curpos;
 	NMusElement *elem;
-	int newXpos;
+	unsigned int newXpos;
 	if (NResource::windowWithSelectedRegion_) deleteBlock();
 	else deleteElem(true);
 	if ((elem = currentVoice_->getCurrentElement()) == 0) return;
 	newXpos = elem->getXpos();
 	if (newXpos - SMALL_X_SENS_DIST< leftx_) {
-		scrollx_->setValue(leftx_ - SMALL_X_SCROLL < 0 ? 0 : leftx_ - SMALL_X_SCROLL);
+		scrollx_->setValue((int)(leftx_ - SMALL_X_SCROLL) < 0 ? 0 : leftx_ - SMALL_X_SCROLL);
 	}
 	if (!NResource::allowKeyboardInsert_) return;
 	curpos = notePart_->mapFromGlobal(cursor().pos());
@@ -1997,7 +1943,7 @@ void NMainFrameWidget::KE_removechordnote() {
 	if (playing_) return;
 	QPoint curpos;
 	NMusElement *elem;
-	int newXpos;
+	unsigned int newXpos;
 	if (!NResource::allowKeyboardInsert_) return;
 	curpos = notePart_->mapFromGlobal(cursor().pos());
 	if (currentVoice_->deleteAtPosition(TRANSY(curpos.y()))) {
@@ -2005,7 +1951,7 @@ void NMainFrameWidget::KE_removechordnote() {
 		if ((elem = currentVoice_->getCurrentElement()) == 0) return;
 		newXpos = elem->getXpos();
 		if (newXpos - SMALL_X_SENS_DIST< leftx_) {
-			scrollx_->setValue(leftx_ - SMALL_X_SCROLL < 0 ? 0 : leftx_ - SMALL_X_SCROLL);
+			scrollx_->setValue((int)(leftx_ - SMALL_X_SCROLL) < 0 ? 0 : leftx_ - SMALL_X_SCROLL);
 		}
 		curpos = notePart_->mapFromGlobal(cursor().pos());
 		curpos.setX((int) ((elem->getXpos()+ elem->getBbox()->width()+CUR_DIST-leftx_) * main_props_.zoom));
@@ -2019,7 +1965,7 @@ void NMainFrameWidget::KE_tab() {
 	if (!currentVoice_->isFirstVoice()) return;
 	NMusElement *elem;
 	QPoint curpos;
-	int newXpos;
+	unsigned int newXpos;
 	currentVoice_->insertAfterCurrent(T_SIGN, SIMPLE_BAR);
 	computeMidiTimes(false);
 	reposit();
@@ -2037,7 +1983,7 @@ void NMainFrameWidget::KE_tab() {
 
 void NMainFrameWidget::KE_insertRest() {
 	if (playing_) return;
-	int newXpos;
+	unsigned int newXpos;
 	if (!NResource::allowKeyboardInsert_ || main_props_.actualLength <= 0) return;
 	NMusElement *elem;
 	QPoint curpos;
@@ -2097,7 +2043,7 @@ void NMainFrameWidget::KE_pitch_B() {
 void NMainFrameWidget::pitchToLine(int pitchNumber) {
 	if (playing_) return;
 	int halfLines, offs;
-	int newXpos;
+	unsigned int newXpos;
 	property_type properties;
 	NChord *newchord;
 	QPoint curpos;
@@ -2271,10 +2217,10 @@ void NMainFrameWidget::paintEvent( QPaintEvent * ) {
 	notePart_->setMouseTracking(false);
 	restoreAllBehindDummyNoteAndAuxLines();
 	notePart_->flip();
-	if (leftx_ + lastXpos_ < (int) ((float) nettoWidth_ / main_props_.zoom)) {
+	if (leftx_ + lastXpos_ < (unsigned int) ((float) nettoWidth_ / main_props_.zoom)) {
 		scrollx_->setRange ( 0, 0);
 	}
-	else if (abs(oldLastXpos_ - lastXpos_) > (int) ((float) nettoWidth_ / main_props_.zoom) / 4 || lastXpos_ >= (int) ((float) nettoWidth_ / main_props_.zoom) - SMALL_X_SCROLL) {
+	else if (abs((int)(oldLastXpos_ - lastXpos_)) > (unsigned int) ((float) nettoWidth_ / main_props_.zoom) / 4 || lastXpos_ >= (unsigned int) ((float) nettoWidth_ / main_props_.zoom) - SMALL_X_SCROLL) {
 		if (lastXpos_ < leftx_) {
 			newleftx = lastXpos_ - (int) ((float) nettoWidth_ / main_props_.zoom);
 			scrollx_->setValue(newleftx < 0 ? 0 : newleftx);
@@ -2731,7 +2677,7 @@ void NMainFrameWidget::playAll(bool on) {
 	int start_time;
 	NVoice *voice_elem;
 	NStaff *staff_elem;
-	int midipos;
+	unsigned int midipos;
 	struct timeval now;
 	if (playing_) {
 		playStop_ = true;
@@ -3070,8 +3016,9 @@ void NMainFrameWidget::setTriplet(bool triplet) {
 }
 
 void NMainFrameWidget::changeActualVoice(int voiceNr) {
-	if (voiceNr < 0 || voiceNr > currentStaff_->voiceCount())
+	if (voiceNr > (int)currentStaff_->voiceCount() || voiceNr < 0)
 		return;
+	
 	currentVoice_ = currentStaff_->changeActualVoice(voiceNr-1);
 	NResource::windowWithSelectedRegion_ = 0;
 	repaint();
@@ -3178,7 +3125,6 @@ void NMainFrameWidget::setEditMode(bool on) {
 	property_type properties;
 	unsigned int val, i;
 	bool playable;
-	QCursor *cursor;
 	if (on) {
 		selectbutton_->setOn(false);
 		props_before_edit_mode_ = 0;
@@ -3399,7 +3345,7 @@ void NMainFrameWidget::readNotesFromMidiMapper() {
 	property_type properties;
 	NMusElement *curElem;
 	int line, offs, *pitch;
-	int newXpos;
+	unsigned int newXpos;
 	QPtrList<int> *pitches;
 
 	pitches = NResource::mapper_->readEvents();
@@ -3494,7 +3440,8 @@ QPtrList<NMusElement> *NMainFrameWidget::getClipBoard(int clipBoardNr) {
 
 void NMainFrameWidget::setDummyNoteAndAuxLines(QMouseEvent *evt) {
 #define HELP_LINE_LENGTH 60
-	int y, i;
+	int i;
+	unsigned int y;
 	double lined;
 	int line;
 
@@ -4717,7 +4664,7 @@ void NMainFrameWidget::xscroll(int val, bool _repaint) {
 	if (_repaint) repaint();
 }
 
-void NMainFrameWidget::xscrollDuringReplay(int val) {
+void NMainFrameWidget::xscrollDuringReplay(unsigned int val) {
 	NStaff *staff_elem;
 	bool scrollException = false;
 	bool isConnected;
@@ -4821,7 +4768,7 @@ void NMainFrameWidget::playNext() {
 	NVoice *voice_elem;
 	int min_time = (1 << 30);
 	int last_time = myTime_;
-	int pxpos;
+	unsigned int pxpos=0;
 	struct timeval now;
 	struct timeval tempTime;
 
@@ -5093,7 +5040,7 @@ void NMainFrameWidget::updateInterface(property_type properties, int length) {
 			 triaDrumBu_->setOn(false);
 	}
 
-	/* turns on appropriate note length button */
+	/* turn on appropriate note length button */
 	if (!main_props_.grace)
 		setButton(NResource::noteLength2Button_(length));
 	else
@@ -5262,7 +5209,10 @@ bool NMainFrameWidget::checkStaffIntersection(const QPoint p) {
 	NStaff *staff_elem;
 	int idx = -1, i, dist, mindist = 10000000;
 
-	if (currentStaff_->intersects(p) != -1) {currentStaff_->setActual(true); return true;}
+	if (currentStaff_->intersects(p) != -1) {
+		currentStaff_->setActual(true);
+		return true;
+	}
 	for (i = 0, staff_elem = staffList_.first(); staff_elem; staff_elem = staffList_.next(), i++) {
 		dist = staff_elem->intersects(p);
 		if (dist >= 0 && dist < mindist) {
@@ -5399,7 +5349,7 @@ void NMainFrameWidget::importRecording() {
 	    == KMessageBox::No
 	   ) return;
 	tse3Handler_->TSE3Rec2Staff(currentStaff_, &voiceList_);
-	currentStaff_->changeActualVoice(-1);
+	currentStaff_->changeActualVoice(0);
 	voiceDisplay_->setMax(currentStaff_->voiceCount());
 	voiceDisplay_->setVal(currentStaff_->getActualVoiceNr()+1);
 	setEdited();

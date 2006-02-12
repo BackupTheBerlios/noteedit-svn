@@ -116,4 +116,5 @@ version 2.9.0:
 	  - double click to confirm the selection
 	  - up/down keys to walk through elements
 	  - return/escape keys to confirm/cancel the selection
-	  TODO: Get rid of the stupid timer that calls refresh procedures and start useing Qt's interface solutions for that.
+	  TODO: Get rid of the stupid timer that calls refresh procedures and start using Qt's implemented solutions for that (needs probably some restructuring as well).
+	* R403: Fixed compiler warnings: lexik.ll, grammar.yy, lilyexport.cpp/h, chord.cpp/h, staff.cpp/h, mainframewidget.cpp/h, voice.cpp/h, resource.cpp/h.

@@ -75,7 +75,7 @@ struct lily_options
 };
 
 struct staffdescr {
-	int lyrics_count;
+	unsigned int lyrics_count;
 	bool is_selected;
 };
 
@@ -97,7 +97,8 @@ class NLilyExport {
 		void analyseGroup(layoutDef *group, NMainFrameWidget *mainWidget, int staffCount, bool *continuedBars, bool *discontinuedBars);
 		bool continuedOutsideAGroup(NMainFrameWidget *mainWidget, int staffCount);
 		const char *LilyPondKeyName(property_type kind, int count);
-		int lastLine_, lastLength_, lastDotted_;
+		int lastLine_;
+		unsigned int lastLength_, lastDotted_;
 		int depth_;
 		int actualStemPolicy_;
 		int countof128th_;

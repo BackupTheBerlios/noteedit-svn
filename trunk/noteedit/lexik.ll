@@ -29,9 +29,9 @@
 int chordname_expected = 0;
 static int produce_strings = 0;
 static int in_grids = 0;
-static char *special_comments[] = { "underlength", "overlength", "lyricsdist", "playtransposd",
+static const char *special_comments[] = { "underlength", "overlength", "lyricsdist", "playtransposd",
 				     "yrestoffs", "stempolicy", "irregular", 0};
-static bool is_special_comment(char *s);
+static bool is_special_comment(const char *s);
 %}
 
 
@@ -224,8 +224,8 @@ with		{return Y_WITH;}
 
 int yywrap() {return 1;}
 
-static bool is_special_comment(char *s) {
-	char **cptr;
+static bool is_special_comment(const char *s) {
+	const char **cptr;
 
 	for (cptr = special_comments; *cptr; *cptr++) {
 		if (strstr(s, *cptr)) return true;

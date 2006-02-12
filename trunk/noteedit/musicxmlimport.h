@@ -73,6 +73,7 @@ class MusicXMLErrorHandler : public QXmlErrorHandler
 {
 public:
 	MusicXMLErrorHandler();
+	virtual ~MusicXMLErrorHandler();
 	bool warning(const QXmlParseException& exception);
 	bool error(const QXmlParseException& exception);
 	bool fatalError(const QXmlParseException& exception);

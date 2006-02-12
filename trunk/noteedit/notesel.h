@@ -30,6 +30,7 @@
 #define IS_CLEF	1
 #define IS_CLEF_DISTANCE 2
 #define IS_TIME	3
+#define IS_MEASURELINE 4
 
 class QFrame;
 class QScrollBar;

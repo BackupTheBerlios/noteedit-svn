@@ -119,7 +119,7 @@ class NChord: public NPlayable {
 		void setLyrics(QString *lyrics, int nr);
 		void deleteLyrics(int nr);
 		void computeStemBefore();
-		int countOfLyricsLines();
+		unsigned int countOfLyricsLines();
 		QString *getLyrics(int nr);
 		void setBeamParams(QPtrList<NChord> *beamList, NChord *nextChord, double m, double n);
 		void resetBeamFlags();

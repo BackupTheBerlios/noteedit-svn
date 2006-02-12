@@ -71,26 +71,26 @@ using namespace std;
 
 #define BEAM_LINE_WIDTH 2
 
-char *NResource::volume[] =
+const char *NResource::volume[] =
 {I18N_NOOP("ppp"), I18N_NOOP("pp"), I18N_NOOP("p"),  I18N_NOOP("mp"),
  I18N_NOOP("mf"),  I18N_NOOP("f"),  I18N_NOOP("ff"), I18N_NOOP("fff")
 };
 
-char *NResource::noteVal[] =
+const char *NResource::noteVal[] =
 {I18N_NOOP("full"),         I18N_NOOP("dotted half"), I18N_NOOP("half"),
  I18N_NOOP("dotted quarter"), I18N_NOOP("quarter"),   I18N_NOOP("dotted 8th"),
  I18N_NOOP("8th"),          I18N_NOOP("dotted 16th"), I18N_NOOP("16th"),
  I18N_NOOP("dotted 32th"),  I18N_NOOP("32th"),        I18N_NOOP("64th")
 };
 
-char *NResource::tripletVal[] =
+const char *NResource::tripletVal[] =
 {I18N_NOOP("half"),
  I18N_NOOP("quarter"),
  I18N_NOOP("8th"),
  I18N_NOOP("16th")
 };
 
-char *NResource::instrTab[128] =
+const char *NResource::instrTab[128] =
 {I18N_NOOP("Piano 1"),          I18N_NOOP("Piano 2"),
  I18N_NOOP("Piano 3"),          I18N_NOOP("Honky-tonk"),
  I18N_NOOP("E.Piano 1"),        I18N_NOOP("E.Piano 2"),
@@ -628,7 +628,6 @@ void NResource::abort( QString s, signed char no ) {
 }
 
 NResource::NResource() {
-	char e[128];
 	NResource::nresourceobj_ = this;
 	kapp->config()->setGroup("Autosave");
 	autosaveEnable_ = kapp->config()->readBoolEntry("Enable", AUTOSAVE_ENABLE);
@@ -1166,7 +1165,7 @@ void NResource::autosave() {
 	}
 }
 
-QCursor *NResource::loadCursor(char *fname) {
+QCursor *NResource::loadCursor(const char *fname) {
 	QBitmap shape;
 	QCursor *cursor;
 	QString s;

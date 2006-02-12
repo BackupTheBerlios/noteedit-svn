@@ -543,14 +543,14 @@ class NResource : public QObject  {
 
 		static int yPosOfOrchestralBar(int bar_xpos);
 		static void resetBarCkeckArray(int newYpos, bool clear);
-		static char *volume[];
-		static char *noteVal[];
-		static char *tripletVal[];
-		static char *instrTab[];
+		static const char *volume[];
+		static const char *noteVal[];
+		static const char *tripletVal[];
+		static const char *instrTab[];
 	private:
 		bool loadPixmaps(QPixmap **black_pixmap, QPixmap **red_pixmap, QString fname);
 		bool loadAlternativePixmap(QPixmap **grey_pixmap, QString fname, QString suffix);
-		QCursor *loadCursor(char *fname);
+		QCursor *loadCursor(const char *fname);
 		static QRegExp germanAE_;
 		static QRegExp germanOE_;
 		static QRegExp germanUE_;

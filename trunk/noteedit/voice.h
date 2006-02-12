@@ -133,8 +133,8 @@ class NVoice {
 		int getElemState(property_type *properties, bool *playable);
 		void grabElements();
 		void findAppropriateElems();
-		void trimmRegion(int *x0, int *x1);
-		bool trimmRegionToWholeStaff(int *x0, int *x1);
+		void trimmRegion(unsigned int *x0, unsigned int *x1);
+		bool trimmRegionToWholeStaff(unsigned int *x0, unsigned int *x1);
 		void deleteBlock();
 		void findStartElemAt(int x0, int x1);
 		bool wholeTupletDeleted(NPlayable *ac_elem, int posOfFirst, int posOfLast);
@@ -308,7 +308,7 @@ class NVoice {
 		void insertAtTime(unsigned int time, NMusElement *elem, bool splitRests = false);
 		void handleEndAfterMidiImport(int difftime);
 		bool insertElemAtTime(unsigned int at, NSign *sign, NMusElement *last_bar_sym);
-		void addLyrics(char *charlyrics, int verse);
+		void addLyrics(const char *charlyrics, int verse);
 		void copyLyricsToEditor();
 		void collChords();
 		QPtrList<NText> provStrings_;

@@ -218,6 +218,10 @@ MusicXMLErrorHandler::MusicXMLErrorHandler()
 	parser = 0;
 }
 
+MusicXMLErrorHandler::~MusicXMLErrorHandler()
+{
+}
+
 bool MusicXMLErrorHandler::warning(const QXmlParseException& exception)
 {
 	cerr << "MusicXMLErrorHandler::warning"

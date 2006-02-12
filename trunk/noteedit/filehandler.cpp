@@ -322,7 +322,7 @@ bool NFileHandler::writeStaffs(QString fname, QPtrList<NStaff> *stafflist, NMain
 		for (i = 1, staff_elem = stafflist->first(); staff_elem; staff_elem = stafflist->next(), i++) {
 			voice_elem = staff_elem->getVoiceNr(0);
 			hasClef_ = false;
-			writeScoreInfo(i, voice_elem, first, mainWidget);
+			writeScoreInfo(i, voice_elem, first);
 		}
  		if (!musicmode_ || (first && !music_written_)) {
 			musicmode_ = true;
@@ -680,7 +680,7 @@ bool NFileHandler::writeStaffs(QString fname, QPtrList<NStaff> *stafflist, NMain
 	return true;
 }
 
-void NFileHandler::writeScoreInfo(int staff_nr, NVoice *voi, bool firstcall, NMainFrameWidget *mainWidget) {
+void NFileHandler::writeScoreInfo(int staff_nr, NVoice *voi, bool firstcall) {
 	NMusElement *elem;
 	NVoice *voice_elem;
 	int voice_count, i;
@@ -791,7 +791,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 	NKeySig *ksig;
 	NText *textSign;
 	bool ok;
-	int tupletsum;
+	int tupletsum=0;
 	int subtype;
 	int dist;
 	int dest_measure_start_time;
@@ -1273,7 +1273,7 @@ int NFileHandler::writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int 
 				     }
 				     out_ << ((rest->hasProperty( PROP_HIDDEN ) ) ? "s; " : "r; ");
 				     if (diag = rest->getChordChordDiagram()) {
-					starttime = ((elem->midiTime_ - *measure_start_time) / MULTIPLICATOR) / (double) (128 / curr_denom_);
+					starttime = ((elem->midiTime_ - (*measure_start_time)) / MULTIPLICATOR) / (double) (128 / curr_denom_);
 					writeChord(staff_nr, starttime, diag);
 				     }
 				     if (rest->hasProperty( PROP_LAST_TUPLET ) ) {
@@ -1689,7 +1689,7 @@ void NFileHandler::writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, 
 	int count_of_measures;
 	QString timestring;
 	double starttime, endtime;
-	int tupletsum;
+	int tupletsum=0;
 	bool loop1 = true, loop2;
 	badmeasure *bad;
 	NStaff *actual_staff;

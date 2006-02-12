@@ -351,9 +351,9 @@ void NVoice::grabElements() {
 }
 
 void NVoice::findStartElemAt(int x0, int x1) {
-	int xp, dist, last_idx, mindist = (1 << 30);
+	int xp, dist, last_idx=0, mindist = (1 << 30);
 	bool found = false;
-	NMusElement *ac_elem, *last_elem;
+	NMusElement *ac_elem, *last_elem=0;
 
 	if (x0 <= x1) {
 		ac_elem = musElementList_.first();
@@ -402,8 +402,8 @@ void NVoice::findStartElemAt(int x0, int x1) {
 }
 
 
-void NVoice::trimmRegion(int *x0, int *x1) {
-	int x0n;
+void NVoice::trimmRegion(unsigned int *x0, unsigned int *x1) {
+	unsigned int x0n;
 	NMusElement *ac_elem;
 	bool found;
 	if (!startElement_) return;
@@ -414,11 +414,11 @@ void NVoice::trimmRegion(int *x0, int *x1) {
 	if (*x0 <= *x1) {
 		x0n = startElement_->getBbox()->left();
 		while (!found && ac_elem != 0) {
-			if (ac_elem->getBbox()->right() > *x1) {
+			if ((unsigned int)ac_elem->getBbox()->right() > *x1) {
 				found = true;
 				endElement_ = ac_elem;
 				endElementIdx_ = musElementList_.at();
-				*x1 = ac_elem->getBbox()->right();
+				*x1 = (unsigned int)ac_elem->getBbox()->right();
 			}
 			else {
 				ac_elem = musElementList_.next();
@@ -434,7 +434,7 @@ void NVoice::trimmRegion(int *x0, int *x1) {
 	else {
 		x0n = startElement_->getBbox()->right();
 		while (!found && ac_elem != 0) {
-			if (ac_elem->getBbox()->left() < *x1) {
+			if ((unsigned int)ac_elem->getBbox()->left() < *x1) {
 				found = true;
 				endElement_ = ac_elem;
 				endElementIdx_ = musElementList_.at();
@@ -454,7 +454,7 @@ void NVoice::trimmRegion(int *x0, int *x1) {
 	*x0 = x0n;
 }
 
-bool NVoice::trimmRegionToWholeStaff(int *x0, int *x1) {
+bool NVoice::trimmRegionToWholeStaff(unsigned int *x0, unsigned int *x1) {
 	NMusElement *elem;
 
 	findStartElemAt(0, 10 /* dummy */);
@@ -561,7 +561,7 @@ void NVoice::setSlured() {
 	bool found;
 	int x0, x1, idx;
 	NMusElement *ac_elem;
-	NChord *slured_chord, *partner;
+	NChord *slured_chord=0, *partner=0;
 
 	if (!startElement_ || !endElement_) return;
 	x0 = (endElementIdx_ > startElemIdx_) ? startElemIdx_ : endElementIdx_;
@@ -687,7 +687,7 @@ void NVoice::breakCopiedTuplets() {
 int NVoice::computeSlurDist(NChord *chord) {
 	int oldidx,idx;
 	NChord *partner;
-	char *err = "computeSlurDist: internal error";
+	const char *err = "computeSlurDist: internal error";
 
 	if ((oldidx = musElementList_.find(chord)) == -1) {
 		NResource::abort(err, 1);
@@ -706,7 +706,7 @@ int NVoice::findHighestLineInTrill(NChord *chord)  {
 	int oldidx;
 	int higestline = (1 << 30); 
 	bool found = false;
-	char *err = "FindHighestLineInTrill: internal error";
+	const char *err = "FindHighestLineInTrill: internal error";
 	NMusElement *elem;
 	
 	oldidx = musElementList_.at();
@@ -736,7 +736,7 @@ int NVoice::findBorderLineInVa(NChord *chord)  {
 	int minline = -2;
 	int h;
 	bool found = false;
-	char *err = "findBorderLineInVa: internal error";
+	const char *err = "findBorderLineInVa: internal error";
 	NMusElement *elem;
 
 	
@@ -1029,9 +1029,8 @@ bool NVoice::beginsWithGrace() {
 void NVoice::pasteAtPosition(int xpos, QPtrList<NMusElement> *clipboard, bool complete, int *part_in_current_measure, int *dest_midi_time, int *countof128th) {
 	int idx, startidx, i, num = 0;
 	bool found;
-	NChord *chord;
+	NChord *chord=0;
 	QPtrList<NChord> lastSluredClones;
-	QPtrList<NChord> *beamlist;
 	NMusElement *ac_elem, *elem_before = 0, *clone_elem;
 	QPtrList<NMusElement> *clonelist;
 	int lastbartime;
@@ -1187,7 +1186,7 @@ void NVoice::pasteAtPosition(int xpos, QPtrList<NMusElement> *clipboard, bool co
 
 /* Is this really needed? New function getNearestMidiEvent() or similar should replace this IMO -Matevz */
 void NVoice::pasteAtMidiTime(int dest_time, int part_in_measure, int countof128th, QPtrList<NMusElement> *clipboard) {
-	int idx, startidx, num = 0;
+	int idx=0, startidx, num = 0;
 	bool found;
 	NChord *chord;
 	QPtrList<NChord> lastSluredClones;
@@ -1413,8 +1412,7 @@ void NVoice::release() {
 
 /* Synchronize the staff's actual clef and key sig. according to the current voice actual element. */
 void NVoice::makeKeysigAndClefActual() {
-	int oldidx, idx;
-	NMusElement *elem;
+	int oldidx;
 	
 	if ((oldidx = musElementList_.find(currentElement_)) < 0) return;
 
@@ -1483,7 +1481,7 @@ int NVoice::makePreviousElementActual(property_type *properties) {
 	//Check if there is actual element. If not, select the nearest at the last known MIDI location when something happened.
 	//If it cannot select any (eg. if there aren't any), return -1
 	if (!currentElement_)
-		if ( currentElement_ = getNearestMidiEvent(main_props_->lastMidiTime) )
+		if ( currentElement_ = (getNearestMidiEvent(main_props_->lastMidiTime)) )
 			already_moved = true;
 		else
 			return -1;
@@ -1523,7 +1521,7 @@ int NVoice::makeNextElementActual(property_type *properties) {
 	//Check if there is actual element. If not, select the nearest at the last known MIDI location when something happened.
 	//If it cannot select any (eg. if there aren't any), return -1
 	if (!currentElement_)
-		if ( currentElement_ = getNearestMidiEvent(main_props_->lastMidiTime) )
+		if ( currentElement_ = (getNearestMidiEvent(main_props_->lastMidiTime)) )
 			already_moved = true;
 		else
 			return -1;
@@ -1882,7 +1880,7 @@ void NVoice::setPedalOff() {
 }
 
 void NVoice::setBeamed() {
-	int count, x0, x1, idx;
+	int count=0, x0, x1, idx;
 	bool found, beamable = true;
 	NMusElement *acc_elem;
 	QPtrList<NChord> *chordlist;
@@ -2107,7 +2105,7 @@ int NVoice::deleteActualElem(property_type *properties, bool backspace) {
 		}
 	}
 	if (!musElementList_.current()) musElementList_.first(); 
-	if (currentElement_ = musElementList_.current()) {
+	if (currentElement_ = (musElementList_.current())) {
 		*properties = currentElement_->playable() ? currentElement_->playable()->properties() : 0;
 		if (currentElement_->getType() == T_CHORD) {
 			partlist = currentElement_->chord()->getNoteList();
@@ -2178,7 +2176,7 @@ bool NVoice::deleteAtPosition(int y) {
 void NVoice::insertTmpElemAtPosition(int xpos, NMusElement *tmpElem) {
 	NMusElement *elem;
 	bool found;
-	int idx;
+	int idx=0;
 
 	tmpElem->setActual(true);
 	tmpElem->setStaffProps(&(theStaff_->staff_props_));
@@ -2398,18 +2396,16 @@ void NVoice::collectAndInsertPlayable(	int startTime,
 }
 
 void NVoice::autoBar() {
-	int akpos, idxOfFirstBar, barpos;
+	int akpos=0, idxOfFirstBar=0, barpos=0;
 	int ticks, maxticks;
 	bool foundfirstBar = false;
 	bool barInserted = false;
 	bool go_on;
-	int lrest, len1, len2;
+	int len1, len2;
 	NTimeSig *timesig;
 	NRest *rest;
 	NMusElement *elem, *nextElem;
 	QPtrList <NMusElement> elems;
-	NNote *note;
-	QPtrList <NNote> *part;
 
 	createUndoElement(0, musElementList_.count(), 0);
 
@@ -2905,7 +2901,7 @@ void NVoice::eliminateRests(QPtrList<NMusElement> *foundRests, int restSum, int 
 void NVoice::cleanupRests(int shortestRest, bool region) {
 	//int x0, x1, idx;
 	NChord* lastChord = 0;
-	NMusElement *elem, *stop_elem;
+	NMusElement *elem;
 	QPtrList<NMusElement> foundRests;
 	int restSum = 0;
 	int over;
@@ -3049,8 +3045,6 @@ void NVoice::searchPositionAndUpdateTimesig(int dest_xpos, int *countof128th) {
 
 int NVoice::validateKeysig(int lastbaridx, int insertpos) {
 	NMusElement *elem;
-	QPtrList<NNote> *noteList;
-	NNote *note;
 	int lastbarpos;
 	bool found;
 
@@ -3178,7 +3172,7 @@ void NVoice::tryToBuildAutoTriplet() {
 }
 
 void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int offs, NMusElement *tmpElem) {
-	NMusElement *new_elem, *elem_before, *elem;
+	NMusElement *new_elem=0, *elem_before, *elem;
 	bool found, is_chord = false, is_rest = false;
 	property_type properties = 0;
 	int idx, idx2;
@@ -3186,7 +3180,7 @@ void NVoice::insertAtPosition(int el_type, int xpos, int line, int sub_type, int
 	int dotcount;
 	int countof128th, len, len2, lastElemTime;
 	NRest *rest;
-	NNote *part;
+	NNote *part=0;
 	NMusElement *specialElem, *startElement = 0;
 	int newcount = 0;
 	
@@ -3494,7 +3488,7 @@ void NVoice::insertAfterCurrent(int el_type, int subtype) {
 bool NVoice::insertAfterCurrent(NMusElement *elem) {
 	int idx;
 	bool is_chord = false;
-	NNote *note;
+	NNote *note=0;
 	if ( (!musElementList_.isEmpty()) && (!currentElement_) ) return false;
 	if ( (currentElement_) && (musElementList_.find(currentElement_) == -1) ) {
 		NResource::abort("insertAfterCurrent: internal error");
@@ -3748,7 +3742,7 @@ int NVoice::getMidiPos() const {
 /* The whole masure length in MIDI units */
 int NVoice::getCurrentMeasureMidiLength() {
 	int i; int pointerOffset = 0;
-	int numerator; int denominator; int midiLength;
+	int numerator; int midiLength;
 	
 	if (musElementList_.count() == 0) return 4*QUARTER_LENGTH; /* returns default value if musElementList_ is still empty */
 	
@@ -3936,7 +3930,6 @@ NMidiEventStr* NVoice::getNextMidiEvent(int mtime, bool reachInfo) {
 	NNote *note;
 	bool partOfTie;
 	NChord *chord;
-	NSign *sign;
 	int ending1Time;
 	if (muted_ || stopped_at_fine_)  return 0;
 	else if (actualMidiEvent_->valid)
@@ -4276,7 +4269,6 @@ void NVoice::computeVolumesAndSearchFor2ndCodaSign() {
 	double currentVolumeIncrease;
 	NMusElement *elem;
 	NChord *chord;
-	NRest *rest;
 	int endtime;
 
 	dynamicEndPos = 0; lastVolume = -1;
@@ -5397,14 +5389,14 @@ void NVoice::insertAtTime(unsigned int time, NMusElement *elem, bool splitPlayab
 	int idx, lastPlayableIdx = -1;		// also a flag if *lastPlayable valid
 	int len, len1, len2, restlen;
 	bool lastPlayableUsed;
-
+	
 	computeMidiTime(false, false);
 	if (time > midiEndTime_) {
 		musElementList_.append(elem);
 		computeMidiTime(false, false);
 		return;
 	}
-
+	
 	for (el = musElementList_.first(); el; el = musElementList_.next()) {
 		if (el->midiTime_ >= (int) time && (el->getType() & PLAYABLE)) {
 			if (		splitPlayables &&
@@ -5504,7 +5496,7 @@ void NVoice::insertAtTime(unsigned int time, NMusElement *elem, bool splitPlayab
 			lastPlayableIdx = musElementList_.at();
 		}
 	}
-}			
+}
 
 void NVoice::handleEndAfterMidiImport(int difftime) {
 	int len, dotcount;
@@ -5534,7 +5526,7 @@ bool NVoice::insertElemAtTime(unsigned int at, NSign *sign, NMusElement *last_ba
 	return true;
 }
 
-void NVoice::addLyrics(char *charlyrics, int verse) {
+void NVoice::addLyrics(const char *charlyrics, int verse) {
 	int idx1, len1;
 	int idx2, len2;
 	bool found;
@@ -5945,10 +5937,8 @@ void NVoice::collChords() {
 	NMusElement *elem;
 	NChord *first = 0, *last, *chord, *chordBefore;
 	QPtrList<NMusElement> restlist;
-	int firstIdx, lastIdx;
+	int firstIdx=0, lastIdx=0;
 	int restlen;
-	int takt;
-
 
 	restlist.setAutoDelete(false);
 	createUndoElement(0, musElementList_.count(), 0);
@@ -6615,7 +6605,7 @@ void NVoice::correctReadTrillsSlursAndDynamicsStringsAndVAs() {
 	int xpos1, xpos2;
 	int dist;
 	unsigned int till_meascount;
-	char *err = "correctReadTrillsSlursAndDynamicsStringsAndVAs: internal error";
+	const char *err = "correctReadTrillsSlursAndDynamicsStringsAndVAs: internal error";
 	for (elem = musElementList_.first(); elem; elem = musElementList_.next()) {
 		if (elem->getType() != T_CHORD) continue;
 		chord1 = (NChord *) elem;
@@ -7024,7 +7014,7 @@ QPtrList<NMusElement> *NVoice::cloneGroup(int firstidx, int lastidx) {
 	NChord *slurpartner = 0, *chord, *slured_chord;
 	QPtrList<NChord> *clonebeamlist = 0;
 	QPtrList<NMusElement> *clonelist;
-	char *err = "cloneGroup: internal error";
+	const char *err = "cloneGroup: internal error";
 
 	if (lastidx < firstidx) return 0;
 	clonelist = new QPtrList<NMusElement>();
@@ -7117,7 +7107,7 @@ void NVoice::createUndoElement(NMusElement *startElement, int length, int count_
 void NVoice::createUndoElement(int startpos, int length, int count_of_added_items, int reason) {
 	int oldidx;
 	int oldidx1, minidx, maxidx, elemidx;
-	int firstidx, lastidx;
+	int firstidx=0, lastidx=0;
 	bool limits_changed;
 	NMusElement *elem;
 	NChord *chord;
@@ -7125,7 +7115,7 @@ void NVoice::createUndoElement(int startpos, int length, int count_of_added_item
 	QPtrList<NPlayable> *tupletlist;
 	minidx = startpos;
 	maxidx = minidx + length - 1;
-	char *err = "createUndoElement:: internal error";
+	const char *err = "createUndoElement:: internal error";
 
 	oldidx = musElementList_.at();
 	if (length) {

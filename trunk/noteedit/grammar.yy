@@ -71,7 +71,7 @@ static struct pendings {
 #define BEAM_END   (1 << 1)
 #define INTERIM_STOKE (1 << 21)
 static void insert_new_clefs_timesigs_and_keys();
-static int select_voice_and_staff(int staff_nr, int voice_nr);
+static int select_voice_and_staff(unsigned int staff_nr, unsigned int voice_nr);
 static void append_barsym_in_all_voices_and_reset_keysig(int bartype, int repcount);
 static int insert_volume_marker(int volTime, char *volstring, int volume);
 static void set_score_information(int key, char *value);
@@ -85,7 +85,7 @@ static void update_voice_stack(int voice_nr, int incr);
 void cleanup_parser_variables();
 void init_parser_variables();
 static int current_string_placement;
-void yyerror(char *s);
+void yyerror(const char *s);
 %}
 
 
@@ -1644,7 +1644,7 @@ slur_info : '<' Y_NUMBER '>'
 
 %%
 
-void yyerror(char *s) {
+void yyerror(const char *s) {
 	extern int YYLINENO;
 	QString Str;
 #ifdef YACCDEBUG
@@ -1785,7 +1785,7 @@ static void setStaffPropsMeasureLength(int mlength) {
 	}
 }
 
-static int select_voice_and_staff(int staff_nr, int voice_nr) {
+static int select_voice_and_staff(unsigned int staff_nr, unsigned int voice_nr) {
 	bool found;
 
 	staff_nr--; voice_nr--;
@@ -1794,7 +1794,7 @@ static int select_voice_and_staff(int staff_nr, int voice_nr) {
 		yyerror(Str);
 		return 0;
 	}
-	if (voice_nr >= current_staff->voiceCount() || voice_nr < 0) {
+	if (voice_nr >= current_staff->voiceCount()) {
 		sprintf(Str, "bad voice number: %d\n", voice_nr+1);
 		yyerror(Str);
 		return 0;

@@ -104,6 +104,9 @@ void noteSel::resiz() {
 				pn.drawText( NSEL_ELEM_DIST + 70, ( s / 0.45 ) + 40, QString( "%1" ).arg( int( ( amount_ + scroll_->value() ) % 24 ) + 1 ) );
 				pn.drawText( NSEL_ELEM_DIST + 70, ( s / 0.45 ) + 80, QString( "%1" ).arg( 1 << ( ( ( amount_ + scroll_->value() + 1 ) / 25 ) + 1 ) ) );
 				break;
+			case IS_MEASURELINE:
+				/* code */
+				break;
 		}
 	}
 	

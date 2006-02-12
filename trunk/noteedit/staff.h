@@ -40,7 +40,7 @@ class NStaff {
 		QPtrList<NVoice> voicelist_;
 		void setBase(int base);
 		void paperDimensiones(int width);
-		int getBase() const {return staff_props_.base;}
+		unsigned int getBase() const {return staff_props_.base;}
 		void setActual(bool actual) {staff_props_.is_actual = actual;}
 		void changeVoice(int voice) {midiVoice_ = voice;}
 		int getVoice() const {return midiVoice_;}
@@ -52,7 +52,7 @@ class NStaff {
 		void getElementsAfter(QPtrList<NPositStr> *plist, int mytime, int *num_positions, int *min_time);
 		int getWidth() {return width_;}
 		void validateKeysig(int startidx, int insertpos);
-		int voiceCount() {return voicelist_.count();}
+		unsigned int voiceCount() {return voicelist_.count();}
 		void startRepositioning();
 		void grabElements(NVoice *preferredVoice);
 		void grabElementsAccording();
@@ -68,7 +68,7 @@ class NStaff {
 		void drawContext();
 		QString staffName_;
 		int overlength_, underlength_;
-		bool trimmRegionToWholeStaff(int *x0, int *x1);
+		bool trimmRegionToWholeStaff(unsigned int *x0, unsigned int *x1);
 		int checkElementForNoteInsertion(const int line, const QPoint p, property_type *properties, bool *playable, bool *delete_elem, bool *insertNewNote, int offs) {
 			return actualVoice_->checkElementForNoteInsertion(line, p, properties, playable, delete_elem, insertNewNote, offs); }
 		bool checkElementForElementInsertion(const QPoint p) {

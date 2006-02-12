@@ -328,11 +328,11 @@ void NChord::transposeChordDiagram(int semitones) {
 	cdiagram_->transpose(semitones);
 }
 
-int NChord::countOfLyricsLines() {
+unsigned int NChord::countOfLyricsLines() {
 	int i;
 	if (!lyrics_) return 0;
 	for (i = NUM_LYRICS - 1; i >= 0; i--) {
-		if (lyrics_[i]) return (i+1);
+		if (lyrics_[i]) return (unsigned int)(i+1);
 	}
 	return 0;
 }
@@ -526,7 +526,7 @@ void NChord::checkSlures() {
 		removeProperty(PROP_SLURED);
 		slur_forward_ = 0;
 	}
-	if (hasProperty( PROP_PART_OF_SLUR) ) {
+	if (hasProperty( PROP_PART_OF_SLUR )) {
 		slur_backward_->removeProperty(PROP_SLURED);
 		slur_backward_->slur_forward_ = 0;
 		removeProperty(PROP_PART_OF_SLUR);

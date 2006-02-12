@@ -108,7 +108,7 @@ class NFileHandler {
 		void pitchOut( const NNote *note, NClef *ac_clef, bool with_tie);
 		int writeStaffUntilBar(int staff_nr, NVoice *voi, bool first, int multirestlength, int *measure_start_time);
 		void writeVoiceElemsTill(int staff_nr, int voice_nr, NVoice *voi, int stopTime, int multirestlength, int measure_start_time);
-		void writeScoreInfo(int staff_nr, NVoice *voi, bool firstcall, NMainFrameWidget *mainWidget);
+		void writeScoreInfo(int staff_nr, NVoice *voi, bool firstcall);
 		void writeTempoSig(NSign *temposig);
 		void writeTempoSig(double starttime, NSign *temposig);
 		void writeVolSig(double starttime, int staff_nr, NSign *volsig);

@@ -452,7 +452,7 @@ class staffelFrm : public staffelForm {
 	staffelFrm( NMainFrameWidget *mainWidget );
 	int boot( unsigned char type );
 
-    private slots:
+    public slots:
 	void slOk();
 	void slCh();
 

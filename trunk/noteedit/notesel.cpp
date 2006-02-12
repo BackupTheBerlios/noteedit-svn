@@ -35,22 +35,21 @@
 #define NSEL_LINE_TOP	30
 #define NSEL_ELEM_DIST	50
 
-noteSel::noteSel( QFrame *parent ) : QWidget( parent ) {
-    
-    selected_ = elem_amount_ = 0;
-    
+noteSel::noteSel( QFrame *parent , staffelForm *parentWindow ) : QWidget( parent ) {
+    selected_ = elem_amount_ = amount_ = 0;
+	
     parent_ = parent;
     scroll_ = new QScrollBar( 0, 10, 1, 10, 0, QScrollBar::Vertical, this );
     paint_ = new QPainter( this );
     timer_ = new QTimer( this );
+    parentWindow_ = parentWindow; //set the parent's window - needed for ok/cancel events
     connect( timer_, SIGNAL( timeout() ), this, SLOT( resiz() ) );
     connect( scroll_, SIGNAL( valueChanged( int ) ), this, SLOT( clearIt() ) );
     timer_->start( 1 );
-    
-    }
+	resiz();
+}
 
 noteSel::~noteSel() {
-
     delete scroll_;
     delete paint_;
 
@@ -59,74 +58,120 @@ noteSel::~noteSel() {
 
     delete [] pixms_;
     delete [] dists_;
-
-    }
+}
 
 void noteSel::resiz() {
-
-    QPainter pn( this );
-    QPainter bp( this );
-        
-    this->setGeometry( 2, 2, parent_->width() - 4, parent_->height() - 4 );
-    scroll_->setGeometry( this->width() - 15, 0, 15, this->height() );
-
-    paint_->setPen( Qt::black );
-    bp.setPen( Qt::blue );
-    pn.scale( 0.45, 0.45 );
-    int amount = 0;
-
-    if( scroll_->value() + ( parent_->height() - NSEL_LINE_TOP ) / NSEL_LINE_SEP > elem_amount_ ) 
+	QPainter pn( this );
+	QPainter bp( this );
+	
+	this->setGeometry( 2, 2, parent_->width() - 4, parent_->height() - 4 );
+	scroll_->setGeometry( this->width() - 15, 0, 15, this->height() );
+	
+	paint_->setPen( Qt::black );
+	bp.setPen( Qt::blue );
+	pn.scale( 0.45, 0.45 );
+	
+	if( scroll_->value() + ( parent_->height() - NSEL_LINE_TOP ) / NSEL_LINE_SEP > elem_amount_ ) 
 	scroll_->setValue( scroll_->value() - 1 );
-
-    for( int s = NSEL_LINE_TOP; s + NSEL_LINE_SEP < parent_->height() && amount < elem_amount_; s += NSEL_LINE_SEP, amount++ ) {
-	for( int i = 0; i < 5; i++)
-	    paint_->drawLine( selected_ == amount + scroll_->value() ? 20 : 10, ( i * NSEL_LINE_DIST ) + s, parent_->width() - int( selected_ == amount + scroll_->value() ? 37 : 27 ), ( i * NSEL_LINE_DIST ) + s );
-	if( selected_ == amount + scroll_->value() ) {
-	    bp.drawLine( 10, s - 10, 10, ( 4 * NSEL_LINE_DIST ) + s + 10 );
-	    bp.drawLine( 10, s - 10, 20, s - 20 );
-	    bp.drawLine( 10, ( 4 * NSEL_LINE_DIST ) + s + 10, 20, ( 4 * NSEL_LINE_DIST ) + s + 20 );
-	    bp.drawLine( parent_->width() - 27, s - 10, parent_->width() - 27, ( 4 * NSEL_LINE_DIST ) + s + 10 );
-	    bp.drawLine( parent_->width() - 27, s - 10, parent_->width() - 37, s - 20 );
-	    bp.drawLine( parent_->width() - 27, ( 4 * NSEL_LINE_DIST + s + 10 ), parent_->width() - 37, ( 4 * NSEL_LINE_DIST ) + s + 20 );
-	    }
-	switch( type_ ) {
-	    case IS_CLEF_DISTANCE:
-	    case IS_CLEF:  pn.drawPixmap( QPoint( NSEL_ELEM_DIST, ( s / 0.45 ) + dists_[amount + scroll_->value()] ), pixms_[amount + scroll_->value()] ); break;
-	    case IS_TIME: 
-		pn.drawPixmap( QPoint( NSEL_ELEM_DIST, ( s / 0.45 ) + dists_[0] ), pixms_[0] ); 
-		pn.setFont( QFont( "Times", 60 ) );
-		pn.drawText( NSEL_ELEM_DIST + 70, ( s / 0.45 ) + 40, QString( "%1" ).arg( int( ( amount + scroll_->value() ) % 24 ) + 1 ) );
-		pn.drawText( NSEL_ELEM_DIST + 70, ( s / 0.45 ) + 80, QString( "%1" ).arg( 1 << ( ( ( amount + scroll_->value() + 1 ) / 25 ) + 1 ) ) );
-		break;
-	    }
+	
+	amount_ = 0;
+	for( int s = NSEL_LINE_TOP;
+	     s + NSEL_LINE_SEP < parent_->height() && amount_ < elem_amount_;
+	     s += NSEL_LINE_SEP, amount_++ ) {
+		for( int i = 0; i < 5; i++)
+			paint_->drawLine( selected_ == amount_ + scroll_->value() ? 20 : 10,
+			                  ( i * NSEL_LINE_DIST ) + s,
+			                  parent_->width() - int( selected_ == amount_ + scroll_->value() ? 37 : 27 ),
+			                  ( i * NSEL_LINE_DIST ) + s
+			                );
+		if( selected_ == amount_ + scroll_->value() ) {
+			bp.drawLine( 10, s - 10, 10, ( 4 * NSEL_LINE_DIST ) + s + 10 );
+			bp.drawLine( 10, s - 10, 20, s - 20 );
+			bp.drawLine( 10, ( 4 * NSEL_LINE_DIST ) + s + 10, 20, ( 4 * NSEL_LINE_DIST ) + s + 20 );
+			bp.drawLine( parent_->width() - 27, s - 10, parent_->width() - 27, ( 4 * NSEL_LINE_DIST ) + s + 10 );
+			bp.drawLine( parent_->width() - 27, s - 10, parent_->width() - 37, s - 20 );
+			bp.drawLine( parent_->width() - 27, ( 4 * NSEL_LINE_DIST + s + 10 ), parent_->width() - 37, ( 4 * NSEL_LINE_DIST ) + s + 20 );
+		}
+	
+		switch( type_ ) {
+			case IS_CLEF_DISTANCE:
+			case IS_CLEF:
+				pn.drawPixmap( QPoint( NSEL_ELEM_DIST, ( s / 0.45 ) + dists_[amount_ + scroll_->value()] ), pixms_[amount_ + scroll_->value()] );
+				break;
+			case IS_TIME: 
+				pn.drawPixmap( QPoint( NSEL_ELEM_DIST, ( s / 0.45 ) + dists_[0] ), pixms_[0] ); 
+				pn.setFont( QFont( "Times", 60 ) );
+				pn.drawText( NSEL_ELEM_DIST + 70, ( s / 0.45 ) + 40, QString( "%1" ).arg( int( ( amount_ + scroll_->value() ) % 24 ) + 1 ) );
+				pn.drawText( NSEL_ELEM_DIST + 70, ( s / 0.45 ) + 80, QString( "%1" ).arg( 1 << ( ( ( amount_ + scroll_->value() + 1 ) / 25 ) + 1 ) ) );
+				break;
+		}
 	}
-
-    scroll_->setMaxValue( elem_amount_ - amount );
-
-    }
+	
+	amount_--;
+	scroll_->setMaxValue( elem_amount_ - amount_ - 1 );
+}
 
 void noteSel::clearIt() {
-
-    this->repaint();
-    
-    }
+	this->repaint();
+}
 
 void noteSel::mousePressEvent( QMouseEvent *event ) {
-
-    
-    selected_ = ( ( ( ( ( event->y() - ( NSEL_LINE_TOP / 2 ) ) / NSEL_LINE_SEP ) ) % 
+	selected_ = ( ( ( ( ( event->y() - ( NSEL_LINE_TOP / 2 ) ) / NSEL_LINE_SEP ) ) % 
 		( ( parent_->height() - NSEL_LINE_TOP ) / NSEL_LINE_SEP ) % elem_amount_ ) ) + 
 		scroll_->value();
+	
+	this->clearIt();
+}
 
-    this->clearIt();
+/* Confirm the selection and close the window */
+void noteSel::mouseDoubleClickEvent( QMouseEvent * e ) {
+	mousePressEvent(e);
+	
+	if (parentWindow_)
+		parentWindow_->slOk();
+}
 
-    }
+/* Reaction on scroll event */
+void noteSel::wheelEvent( QWheelEvent *e ) {
+	scroll_->setValue(scroll_->value() - e->delta()*0.01);
+}
+
+void noteSel::keyPressEvent( QKeyEvent *e ) {
+	switch (e->key()) {
+		case Qt::Key_Return:
+			parentWindow_->slOk();
+			break;
+		case Qt::Key_Escape:
+			parentWindow_->slCh();
+			break;
+		case Qt::Key_Up:
+			if (selected_ > 0) {
+				selected_--;
+				if (scroll_->value() > selected_)
+					scroll_->setValue(selected_);
+				else if (scroll_->value() + amount_ - 1 < selected_)
+					scroll_->setValue(selected_ - amount_);
+				
+				this->clearIt();
+			}
+			break;
+		case Qt::Key_Down:
+			if (selected_ < elem_amount_-1) {
+				selected_++;
+				if (scroll_->value() + amount_ - 1 < selected_)
+					scroll_->setValue(selected_ - amount_);
+				else if (scroll_->value() > selected_)
+					scroll_->setValue(selected_);
+				
+			    this->clearIt();
+			}
+			break;
+	}
+}
 
 int noteSel::getSelection() {
-
-    return( selected_);
-    
-    }
+    return (selected_);
+}
 
 void noteSel::setType( unsigned char type ) {
 

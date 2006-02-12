@@ -25,6 +25,7 @@
 
 //#include <qpainter.h>
 #include <qobject.h>
+#include <staffElem.h>
 
 #define IS_CLEF	1
 #define IS_CLEF_DISTANCE 2
@@ -41,7 +42,7 @@ class noteSel : public QWidget {
     Q_OBJECT
 
     public:
-	noteSel( QFrame *parent );
+	noteSel( QFrame *parent , staffelForm *parentWindow=0);
 	~noteSel();
 	void setType( unsigned char type );
 	int getSelection();
@@ -52,14 +53,19 @@ class noteSel : public QWidget {
 
     private:
 	void mousePressEvent( QMouseEvent *evnt );
+	void mouseDoubleClickEvent ( QMouseEvent * e );
+	void wheelEvent( QWheelEvent *e );
+	void keyPressEvent( QKeyEvent *e );
 
     private:
 	QScrollBar *scroll_;
 	QFrame *parent_;
 	QPainter *paint_;
 	QTimer *timer_;
-
-	int elem_amount_;
+	staffelForm *parentWindow_;
+	
+	int elem_amount_; //total count of elements
+	int amount_; //number of elements per one widget height
 	QPixmap *pixms_;
 	int *dists_;
 	int selected_;

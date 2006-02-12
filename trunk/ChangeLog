@@ -111,3 +111,9 @@ version 2.9.0:
 	* R399 -- FIXED: Key shortcuts not working anymore on KDE3.5. Thanks to Adam.
 	* R400 -- FIXED: Compiler warnings for chord.cpp/h, chorddiagram.cpp/h, clef.cpp, midiexport.cpp/h, musixtex.cpp and musicxmlcommon.cpp/h.
 	* R401: small LilyPond export filter fix: Pianostaff (Grandstaff) accepts lyrics.
+	* R402: Insert clef dialog now supports:
+	  - mouse wheel for scrolling
+	  - double click to confirm the selection
+	  - up/down keys to walk through elements
+	  - return/escape keys to confirm/cancel the selection
+	  TODO: Get rid of the stupid timer that calls refresh procedures and start useing Qt's interface solutions for that.

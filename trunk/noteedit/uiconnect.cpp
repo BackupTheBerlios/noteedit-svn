@@ -1329,8 +1329,10 @@ staffelFrm::staffelFrm( NMainFrameWidget *mainWidget ) : staffelForm( mainWidget
 
 int staffelFrm::boot( unsigned char type ) {
 
-    selClass_ = new noteSel( this->selBase );
+    selClass_ = new noteSel( this->selBase , this );
     selClass_->setType( type_ = type );
+    selClass_->setFocusPolicy(QWidget::WheelFocus);
+    selClass_->setFocus();
 #if QT_VERSION >= 300
     this->exec();
 #else
@@ -1343,8 +1345,7 @@ int staffelFrm::boot( unsigned char type ) {
         return v;
     else
 	return -1;
-
-    }
+}
 
 void staffelFrm::resizeEvent( QResizeEvent */*evt*/ ) {
 

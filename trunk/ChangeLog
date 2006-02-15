@@ -118,3 +118,4 @@ version 2.9.0:
 	  - return/escape keys to confirm/cancel the selection
 	  TODO: Get rid of the stupid timer that calls refresh procedures and start using Qt's implemented solutions for that (needs probably some restructuring as well).
 	* R403: Fixed compiler warnings: lexik.ll, grammar.yy, lilyexport.cpp/h, chord.cpp/h, staff.cpp/h, mainframewidget.cpp/h, voice.cpp/h, resource.cpp/h.
+

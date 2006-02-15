@@ -120,6 +120,7 @@ class NMainFrameWidget : public QWidget
 		bool loadFile( const QString & fileName );
 		void readStaffsFromXMLFile( const char *fname );
 		void setEdited(bool = true);
+		void setSelectedSign(int type) {selectedSign_ = type;}; // Set the current selected sign to sign type
 		void reloadRecentFileList();
 		void synchronizeRecentFiles();
 		void processMouseEvent(QMouseEvent * evt);
@@ -314,6 +315,7 @@ class NMainFrameWidget : public QWidget
 		void insertLine();
 		void insertText();
 		void clefDialog();
+		void specialBarlineDialog();
 		void changeClefDialog();
 		void redAccidentals();
 		void collChords();
@@ -361,6 +363,7 @@ class NMainFrameWidget : public QWidget
 		void KE_sharp();
 		void KE_natural();
 		void KE_bar();
+		void KE_barDialog();
 		void KE_remove();
 		void KE_removechordnote();
 		void KE_tab();
@@ -471,6 +474,7 @@ class NMainFrameWidget : public QWidget
 		timesigDiaFrm *timesigDialog_;
 		staffFrm *multistaffDialog_;
 		staffelFrm *clefDialog_;
+		staffelFrm *specialBarlineDialog_;
 		staffPropFrm *staffPropFrm_;
 //		voiceDiaFrm *voiceDialog_; //deprecated
 		tupletDialogImpl *tupletDialog_;

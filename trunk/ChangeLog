@@ -118,4 +118,13 @@ version 2.9.0:
 	  - return/escape keys to confirm/cancel the selection
 	  TODO: Get rid of the stupid timer that calls refresh procedures and start using Qt's implemented solutions for that (needs probably some restructuring as well).
 	* R403: Fixed compiler warnings: lexik.ll, grammar.yy, lilyexport.cpp/h, chord.cpp/h, staff.cpp/h, mainframewidget.cpp/h, voice.cpp/h, resource.cpp/h.
-
+	* R405: ADDED:
+	  - implemented Insert special barline dialog
+	  - if an element is selected, barline is inserted right after it. Otherwise, only the selected barline becomes the current item being placed when you first click on the score.
+	  - added menu option Insert->Special barline...
+	  - added shortcut key SHIFT+Key_Tab for this
+	  - Escape key now unselects the current active sign to be placed (e.g. barline)
+	  - Home/End keys hit multiple times select the first/last element
+	  - Home/End keys goes to the last X pos of the current staff
+	  - some other minor fixes and additions
+	  

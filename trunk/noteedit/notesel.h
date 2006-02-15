@@ -27,10 +27,10 @@
 #include <qobject.h>
 #include <staffElem.h>
 
-#define IS_CLEF	1
+#define IS_CLEF 1
 #define IS_CLEF_DISTANCE 2
-#define IS_TIME	3
-#define IS_MEASURELINE 4
+#define IS_TIME 3
+#define IS_BARLINE 4
 
 class QFrame;
 class QScrollBar;

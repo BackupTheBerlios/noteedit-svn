@@ -18,6 +18,7 @@
  <Menu name="insert"><text>&amp;Insert</text>
   <Action name="insert_clef"/>
   <Action name="insert_keysig"/>
+  <Action name="insert_special_barline"/>
   <Action name="insert_repeatopen"/>
   <Action name="insert_repeatclose"/>
   <Action name="insert_specialending1"/>

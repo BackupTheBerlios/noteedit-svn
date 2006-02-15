@@ -3459,15 +3459,15 @@ bool NVoice::insertNewNoteAtCurrent(int line, int offs) {
 	return true;
 }
 
-void NVoice::insertAfterCurrent(int el_type, int subtype) {
+NMusElement *NVoice::insertAfterCurrent(int el_type, int subtype) {
 	int idx;
 	NMusElement *new_elem;
-	if ( (!musElementList_.isEmpty()) && (!currentElement_) ) return;
+	if ( (!musElementList_.isEmpty()) && (!currentElement_) ) return 0;
 	
 	switch (el_type) {
 		case T_SIGN: new_elem = new NSign(main_props_, &(theStaff_->staff_props_), subtype);
 				break;
-		default: return;
+		default: return 0;
 	}
 	if (currentElement_) currentElement_->setActual(false);
 	if ( (currentElement_) && (musElementList_.find(currentElement_) == -1) ) {
@@ -3483,6 +3483,7 @@ void NVoice::insertAfterCurrent(int el_type, int subtype) {
 	currentElement_ = musElementList_.current();
 	createUndoElement(musElementList_.at(), 0, 1);
 	currentElement_->setActual(true);
+	return currentElement_;
 }
 
 bool NVoice::insertAfterCurrent(NMusElement *elem) {
@@ -5058,6 +5059,24 @@ NMusElement *NVoice::getLastPosition() {
 
 bool NVoice::removeLastPosition() {
 	return musElementList_.removeLast();
+}
+
+bool NVoice::setCurrentElement(NMusElement *elem) {
+	if (musElementList_.containsRef(elem)) {
+		musElementList_.find(elem);
+		if (currentElement_) {
+			currentElement_->setActual(false);
+			currentElement_->draw();
+		}
+		
+		currentElement_ = musElementList_.current();
+		currentElement_->setActual(true);
+		currentElement_->draw();
+
+		return true;
+	}
+	
+	return false;
 }
 
 int NVoice::findElemRef(const NMusElement *elem) {

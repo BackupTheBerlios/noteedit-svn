@@ -281,7 +281,9 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	criticalButtons_.append
 		(new KAction( i18n("Cle&f..."), "cleficon", 0, this, SLOT(clefDialog()), actionCollection(), "insert_clef"));
 	criticalButtons_.append
-		(new KAction( i18n("&Key signature..."), "keyicon", 0, this, SLOT(keyDialog()), actionCollection(), "insert_keysig" ));
+		(new KAction( i18n("&Key signature..."), "keyicon", 0, this, SLOT(keyDialog()), actionCollection(), "insert_keysig"));
+	criticalButtons_.append
+		(new KAction( i18n("Special &Barline..."), "endbar", 0, this, SLOT(specialBarlineDialog()), actionCollection(), "insert_special_barline"));
 	criticalButtons_.append
 		(new KAction( i18n("Repeat - &Open"), "repopen", 0, this, SLOT(insertRepeatOpen()), actionCollection(), "insert_repeatopen"));
 	criticalButtons_.append
@@ -557,6 +559,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	cleanUpRestsDialog_ = new smallestRestFrm( this );
 
 	clefDialog_ = new staffelFrm( this );
+	specialBarlineDialog_ = new staffelFrm ( this );
 
 	keyDialog_ = new QDialog();
 	keyDialog_->setCaption(kapp->makeStdCaption(i18n("Key")));
@@ -642,6 +645,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->insert("KEnatural1", i18n( "Natural" ), QString::null, SHIFT+Key_Equal, this, SLOT( KE_natural() ));
 	keys_->insert("KEbar", i18n( "Set bar" ), QString::null, Key_Bar, this, SLOT( KE_bar() ));
 	keys_->insert("KEtab", i18n( "Set bar after" ), QString::null, Key_Tab, this, SLOT( KE_tab() ));
+	keys_->insert("KEbarDialog", i18n( "Set special bar" ), QString::null, SHIFT+Key_Tab, this, SLOT( KE_barDialog() ));
 	keys_->insert("KErest", i18n( "Insert rest" ), QString::null, SHIFT+Key_Return, this, SLOT( KE_insertRest() ));
 	keys_->insert("KEunderscore", i18n( "Toggle beam" ), QString::null, SHIFT+Key_Underscore, this, SLOT( KE_underscore() ));
 	keys_->insert("KEkeyboardInsert", i18n( "Keyboard Insert mode" ), QString::null, Key_K, this, SLOT( KE_keyboardInsert() ));
@@ -764,6 +768,7 @@ NMainFrameWidget::~NMainFrameWidget() {
 	delete multistaffDialog_;
 	delete staffPropFrm_;
 	delete clefDialog_;
+	delete specialBarlineDialog_;
 	delete keyDialog_;
 	delete cleanUpRestsDialog_;
 	delete volChangeDialog_;
@@ -938,7 +943,7 @@ void NMainFrameWidget::createLayoutPixmap() {
 			}
 		}
 	}
-	if (overlapping) { /* document includes braces and brackets and they overlap*/
+	if (overlapping) { /* document includes braces and brackets and they overlap */
 		pixmap_width = LAYOUT_BRACEX_TOTAL + LAYOUT_BRACKET_X_TOTAL + BRACE_BRACKET_DIST - DEFAULT_LAYOUT_BRACKET_X_POS;
 		bracket_x_pos = LAYOUT_BRACEX_TOTAL + BRACE_BRACKET_DIST;
 		main_props_.left_page_border = pixmap_width - LAYOUT_BRACKET_X_OVERLAP;
@@ -1634,13 +1639,24 @@ void NMainFrameWidget::KE_moveLeft() {
 
 void NMainFrameWidget::KE_moveStart() {
 	if (playing_) return;
-	scrollx_->setValue(0);
+	if (scrollx_->value() != 0) // If scrollx_ is not at the beginning, move it to the beginning
+		scrollx_->setValue(0);
+	else
+		currentVoice_->setCurrentElement(currentVoice_->getFirst()); // Else, select the very first element in the current voice as well
+
+	repaint();
 }
 void NMainFrameWidget::KE_moveEnd() {
 	if (playing_) return;
 	unsigned int newXpos;
-	newXpos = (int)(lastXpos_ - width_) < 0 ? 0 : lastXpos_ - width_;
-	scrollx_->setValue(newXpos);
+	newXpos = (int)(currentVoice_->getLast()->getXpos() - width_) < 0 ? 0 : currentVoice_->getLast()->getXpos() - width_;
+	
+	if (scrollx_->value() != newXpos) // If scrollx_ is not at the end, move it to the end
+		scrollx_->setValue(newXpos);
+	else
+		currentVoice_->setCurrentElement(currentVoice_->getLast()); // Else, select the very last element in the current voice as well
+	
+	repaint();
 }
 
 void NMainFrameWidget::KE_moveRight() {
@@ -1910,6 +1926,25 @@ void NMainFrameWidget::KE_bar() {
 	QPoint curpos;
 	NMusElement *elem;
 	currentVoice_->insertBarAt(cursor().pos().x()-geometry().left());
+	computeMidiTimes(false);
+	setEdited();
+	reposit();
+	repaint();
+	curpos = notePart_->mapFromGlobal(cursor().pos());
+	if ((elem = currentVoice_->getCurrentElement()) == 0) return;
+	curpos.setX((int) ((currentVoice_->getCurrentElement()->getXpos()+
+			currentVoice_->getCurrentElement()->getBbox()->width()+CUR_DIST) * main_props_.zoom));
+	cursor().setPos(notePart_->mapToGlobal(curpos));
+}
+void NMainFrameWidget::KE_barDialog() {
+	if (playing_) return;
+	if (!currentVoice_->isFirstVoice()) return;
+	
+	QPoint curpos;
+	NMusElement *elem;
+	specialBarlineDialog();	
+	if (currentVoice_->insertAfterCurrent(T_SIGN, selectedSign_)) // If atualElement exists, insert the bar right after it, if not, leave selectedSign_ alone and wait until user places it with mouse
+		selectedSign_ = 0;
 	computeMidiTimes(false);
 	setEdited();
 	reposit();
@@ -2240,6 +2275,7 @@ void NMainFrameWidget::setSelectMode() {
 	main_props_.tied = false;
 	main_props_.grace = false;
 	notePart_->setCursor(arrowCursor);
+	selectedSign_ = 0;
 	
 	if (editMode_) {
 		editbutton_->setOn(false);
@@ -4310,6 +4346,10 @@ void NMainFrameWidget::timesigDialog() {
 	 timesigDialog_->showDialog();
 }
 
+void NMainFrameWidget::specialBarlineDialog() {
+	specialBarlineDialog_->boot( IS_BARLINE );
+}
+
 void NMainFrameWidget::setTempTimesig(int num, int dom) {
 	tmpTimeSig_ = new NTimeSig(currentVoice_->getMainPropsAddr(), currentStaff_->getStaffPropsAddr());
 	tmpTimeSig_->setSignature(num, dom);
@@ -5087,7 +5127,6 @@ bool NMainFrameWidget::readStaffs(const char *fname) {
 
 	if (!fhandler_->readStaffs(fname , &voiceList_, &staffList_, this)) {
 		return false;
-		
 	}
 	setEdited(false);
 	staffCount_ = staffList_.count();

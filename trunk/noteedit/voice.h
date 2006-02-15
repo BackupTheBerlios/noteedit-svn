@@ -208,7 +208,7 @@ class NVoice {
 		void insertAtPosition(int el_type, int xpos, int line, int sub_type, int offs, NMusElement *tmpElem = 0);
 		bool insertNewNoteAt(int line, const QPoint p, int offs);
 		bool insertNewNoteAtCurrent(int line, int offs);
-		void insertAfterCurrent(int el_type, int subtype);
+		NMusElement *insertAfterCurrent(int el_type, int subtype);
 		bool insertAfterCurrent(NMusElement *elem);
 		void insertBarAt(int xpos);
 /*------------------------ playing voice -------------------------------------*/
@@ -275,6 +275,7 @@ class NVoice {
 		NMusElement *getNextPosition();
 		NMusElement *getPrevPosition();
 		NMusElement *getCurrentElement() {return currentElement_;}
+		bool setCurrentElement(NMusElement *elt);
 		bool firstVolume_;
 		bool inBeam_, inTuplet_;
 /*--------------------------- import MusicXML --------------------------------*/
@@ -323,6 +324,7 @@ class NVoice {
 		void performClefChange(int type, int shift, bool region, int *dist, int *stop_x);
 /* ------------------------------- MuxiXTeX-Export (notice) ------------------------------*/
 		NMusElement *getLast() {return musElementList_.getLast();}
+		NMusElement *getFirst() {return musElementList_.getFirst();}
 		int beamCount_;
 		int beamNr_;
 	private: 

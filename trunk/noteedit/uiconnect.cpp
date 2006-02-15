@@ -1331,6 +1331,17 @@ int staffelFrm::boot( unsigned char type ) {
 
     selClass_ = new noteSel( this->selBase , this );
     selClass_->setType( type_ = type );
+	switch (type) {
+		case IS_CLEF:
+			this->setCaption(i18n("Insert clef"));
+			break;
+		case IS_CLEF_DISTANCE:
+			this->setCaption(i18n("Change clef"));
+			break;		
+		case IS_BARLINE:
+			this->setCaption(i18n("Insert special barline"));
+			break;		
+    }
     selClass_->setFocusPolicy(QWidget::WheelFocus);
     selClass_->setFocus();
 #if QT_VERSION >= 300
@@ -1393,9 +1404,28 @@ void staffelFrm::slOk() {
 			mainWidget_->performClefChange( ( 1 <<  ( selClass_->getSelection() - 10 ) ), 0);
 		}
 		break;
-    	}
-
+	case IS_BARLINE:
+		if (mainWidget_)
+			switch (selClass_->getSelection()) {
+				case 0:
+					mainWidget_->setSelectedSign(END_BAR);
+					break;
+				case 1:
+					mainWidget_->setSelectedSign(DOUBLE_BAR);
+					break;
+				case 2:
+					mainWidget_->setSelectedSign(REPEAT_CLOSE);
+					break;
+				case 3:
+					mainWidget_->setSelectedSign(REPEAT_OPEN);
+					break;
+				case 4:
+					mainWidget_->setSelectedSign(REPEAT_OPEN_CLOSE);
+					break;
+			}
+		break;
 	}
+}
 
 void staffelFrm::slCh() {
 

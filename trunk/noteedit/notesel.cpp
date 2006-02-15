@@ -104,8 +104,15 @@ void noteSel::resiz() {
 				pn.drawText( NSEL_ELEM_DIST + 70, ( s / 0.45 ) + 40, QString( "%1" ).arg( int( ( amount_ + scroll_->value() ) % 24 ) + 1 ) );
 				pn.drawText( NSEL_ELEM_DIST + 70, ( s / 0.45 ) + 80, QString( "%1" ).arg( 1 << ( ( ( amount_ + scroll_->value() + 1 ) / 25 ) + 1 ) ) );
 				break;
-			case IS_MEASURELINE:
-				/* code */
+			case IS_BARLINE:
+				/* draw double bar */
+				if ( (amount_ + scroll_->value() == 1/*the double bar index*/) )
+				{
+					pn.drawLine( NSEL_ELEM_DIST, (int)( s / 0.45 ), NSEL_ELEM_DIST, (int)( s / 0.45 + 9* NSEL_LINE_DIST));
+					pn.drawLine( NSEL_ELEM_DIST+10, (int)( s / 0.45 ), NSEL_ELEM_DIST+10, (int)( s / 0.45 + 9* NSEL_LINE_DIST));
+				}
+				else
+					pn.drawPixmap( QPoint( NSEL_ELEM_DIST, ( s / 0.45 )), pixms_[amount_ + scroll_->value()] );
 				break;
 		}
 	}
@@ -227,6 +234,20 @@ void noteSel::setType( unsigned char type ) {
 	    pixms_[0] = *NResource::treblePixmap_;
 	    dists_[0] = -50;
 	    break;
+	case IS_BARLINE:
+		elem_amount_ = 5;
+		pixms_ = new QPixmap[5];
+		dists_ = new int[5];
+		pixms_[0] = *NResource::endBarPixmap_;
+		dists_[0] = 0;
+		pixms_[1] = 0; //dummy for double bar, which is drawn manually in resiz()
+		dists_[1] = 0;
+		pixms_[2] = *NResource::repClosePixmap_;
+		dists_[2] = 0;
+		pixms_[3] = *NResource::repOpenPixmap_;
+		dists_[3] = 0;
+		pixms_[4] = *NResource::repOpenClosePixmap_;
+		dists_[4] = 0;
 	}
 
     }

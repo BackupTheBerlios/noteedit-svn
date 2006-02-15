@@ -127,4 +127,4 @@ version 2.9.0:
 	  - Home/End keys hit multiple times select the first/last element
 	  - Home/End keys goes to the last X pos of the current staff
 	  - some other minor fixes and additions
-	  
+	* R406: FIXED: Crash, when canceling the selection in special barline dialog.

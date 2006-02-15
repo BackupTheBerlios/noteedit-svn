@@ -1943,6 +1943,7 @@ void NMainFrameWidget::KE_barDialog() {
 	QPoint curpos;
 	NMusElement *elem;
 	specialBarlineDialog();	
+	if (!selectedSign_) return; // No bar was selected
 	if (currentVoice_->insertAfterCurrent(T_SIGN, selectedSign_)) // If atualElement exists, insert the bar right after it, if not, leave selectedSign_ alone and wait until user places it with mouse
 		selectedSign_ = 0;
 	computeMidiTimes(false);
@@ -4180,10 +4181,12 @@ void NMainFrameWidget::performClefChange(int type, int shift) {
 
 
 void NMainFrameWidget::clefDialog() {
+	if (playing_) return;
 	clefDialog_->boot( IS_CLEF );
 }
 
 void NMainFrameWidget::changeClefDialog() {
+	if (playing_) return;
 	clefDialog_->boot( IS_CLEF_DISTANCE );
 	setEdited();
 }
@@ -4343,10 +4346,12 @@ void NMainFrameWidget::keyDialog() {
 
 
 void NMainFrameWidget::timesigDialog() {
+	if (playing_) return;
 	 timesigDialog_->showDialog();
 }
 
 void NMainFrameWidget::specialBarlineDialog() {
+	if (playing_) return;
 	specialBarlineDialog_->boot( IS_BARLINE );
 }
 

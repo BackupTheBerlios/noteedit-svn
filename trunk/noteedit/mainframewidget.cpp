@@ -653,13 +653,13 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 
 /*------------------------- "note" keys -----------------------------------------------*/
 
-	keys_->insert("KEpitchC", i18n( "Pitch C" ), QString::null, Key_C, this, SLOT( KE_pitch_C() ));
-	keys_->insert("KEpitchD", i18n( "Pitch D" ), QString::null, Key_D, this, SLOT( KE_pitch_D() ));
-	keys_->insert("KEpitchE", i18n( "Pitch E" ), QString::null, Key_E, this, SLOT( KE_pitch_E() ));
-	keys_->insert("KEpitchF", i18n( "Pitch F" ), QString::null, Key_F, this, SLOT( KE_pitch_F() ));
-	keys_->insert("KEpitchG", i18n( "Pitch G" ), QString::null, Key_G, this, SLOT( KE_pitch_G() ));
-	keys_->insert("KEpitchA", i18n( "Pitch A" ), QString::null, Key_A, this, SLOT( KE_pitch_A() ));
-	keys_->insert("KEpitchB", i18n( "Pitch B" ), QString::null, Key_B, this, SLOT( KE_pitch_B() ));
+	keys_->insert("KEpitchC", i18n( "Pitch C" ), QString::null, SHIFT+Key_C, this, SLOT( KE_pitch_C() ));
+	keys_->insert("KEpitchD", i18n( "Pitch D" ), QString::null, SHIFT+Key_D, this, SLOT( KE_pitch_D() ));
+	keys_->insert("KEpitchE", i18n( "Pitch E" ), QString::null, SHIFT+Key_E, this, SLOT( KE_pitch_E() ));
+	keys_->insert("KEpitchF", i18n( "Pitch F" ), QString::null, SHIFT+Key_F, this, SLOT( KE_pitch_F() ));
+	keys_->insert("KEpitchG", i18n( "Pitch G" ), QString::null, SHIFT+Key_G, this, SLOT( KE_pitch_G() ));
+	keys_->insert("KEpitchA", i18n( "Pitch A" ), QString::null, SHIFT+Key_A, this, SLOT( KE_pitch_A() ));
+	keys_->insert("KEpitchB", i18n( "Pitch B" ), QString::null, SHIFT+Key_B, this, SLOT( KE_pitch_B() ));
 
 	keys_->readSettings();
 	connect(&timer_, SIGNAL(timeout()), this, SLOT(playNext()));
@@ -1709,6 +1709,7 @@ void NMainFrameWidget::KE_delete() {
 }
 
 void NMainFrameWidget::KE_leaveCurrentMode() {
+	
 	selectbutton_->setOn(true);
 	setSelectMode();
 }

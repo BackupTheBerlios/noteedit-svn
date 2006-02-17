@@ -128,3 +128,4 @@ version 2.9.0:
 	  - Home/End keys goes to the last X pos of the current staff
 	  - some other minor fixes and additions
 	* R406: FIXED: Crash, when canceling the selection in special barline dialog.
+	* R407: FIXED: Shortcut keys for setting the pitch (C,D,E,F, etc.) changed from Key_C to SHIFT+Key_C (capitalized C) and so on for the others, so there's no collision with Key_E for Edit mode when in non-caps-locked mode.

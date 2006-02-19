@@ -232,11 +232,9 @@ void NPreviewPrint::printDoExport(KProcess *typesettingProgram)
 // filePath: File (and optional path) to be checked
 bool NPreviewPrint::setExistantFile( QString &filePath )
 {
-    printf("Previewing file %s\n",previewFile_.ascii());
     if( false == QFileInfo( filePath ).exists() )
-      previewFile_ = dirPath_ + "/" + filePath;
-    printf("Previewing file %s\n",previewFile_.ascii());
-    if( false == QFileInfo( previewFile_ ).exists() )
+      filePath = dirPath_ + "/" + filePath;
+    if( false == QFileInfo( filePath ).exists() )
     {
       KMessageBox::sorry(this, i18n("File was not succesfully converted."), 
                          kapp->makeStdCaption(i18n("???")));
@@ -263,7 +261,6 @@ bool NPreviewPrint::printDoPreview(QString fileType)
     connect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
              this, SLOT( filePrintPreviewFinished(KProcess *) ) );
     // Start preview
-    printf("Preview: %s\n", QString( fprevprog + " " + previewFile_ ).ascii() );
     previewProgram.start(KProcess::DontCare, KProcess::All);
     disconnect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
                 this, SLOT( filePrintPreviewFinished(KProcess *) ) );
@@ -282,7 +279,6 @@ bool NPreviewPrint::printDoPrinting(QString fileType)
     printFiles += printFile;
     printer_->doPreparePrinting();
     // Print file
-    printf("Printing with %s\n",printer_->printProgram().ascii());
     if (!printer_->printFiles(printFiles,true))
         unlink(fileName_+fileType);
 #endif
@@ -316,7 +312,6 @@ void NPreviewPrint::printWithLilypond(bool preview)
     // We probably need to filter the -o option!
     // Do not create a pdf file (broken with my lilypond version)
     typesettingProgram << ftsetProg_ << printOptions;
-    printf("Setting working directory: %s\n",dirPath_.ascii());
     typesettingProgram.setWorkingDirectory( dirPath_ );
     // Export file and create postscript file
     printDoExport(&typesettingProgram);
@@ -386,15 +381,42 @@ void NPreviewPrint::printWithABC(bool preview)
     }
 #endif
 }
-    
+
 void NPreviewPrint::printWithPMX(bool preview)
 {
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
-    KProcess typesettingProgram;    
+    KProcess typesettingProgram;
+    struct pmx_options pmxOpts;
     NPmxExport pmx;
+    QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     PMXExportForm *form = (PMXExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( PMX_PAGE ), EXP_PMX );
+    // Read options
+    exportDialog_->getPMXOptions( pmxOpts );
+    // Save options to new form
+    exportDialog_->setPMXOptions( *form, pmxOpts );
     setupPrinting(preview);
+    // Export file to PMX
+    exportDialog_->doExport( PMX_PAGE, filePath_ + ".pmx", false );
+
+    // Replace the %s String by fileName_
+    printOptions.gres("%s",fileName_ + ".pmx");
+    // Which file to use for printing ? Out.ps or fileName_.ps (Option -o !)
+    // We probably need to filter the -o option!
+    typesettingProgram << ftsetProg_ << printOptions;
+    typesettingProgram.setWorkingDirectory( dirPath_ );
+    // Export file and create postscript file
+    printDoExport(&typesettingProgram);
+    // Converting succesfull ?
+    if (typesettingProgram.normalExit()) 
+    {
+      // Preview the printable file ?
+      if( preview == true )
+	printDoPreview(".ps");
+      else
+	printDoPrinting(".ps");
+      unlink(filePath_ + ".pmx");
+    }
 #endif
 }
     
@@ -402,11 +424,37 @@ void NPreviewPrint::printWithMusiXTeX(bool preview)
 {
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
-    KProcess typesettingProgram;    
-    exportFrm *formBack=exportDialog_;
+    KProcess typesettingProgram;
+    struct musixtex_options musixtexOpts;
+    NMusiXTeX mtex;
+    QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     MusiXTeXExportForm *form = (MusiXTeXExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MUSIX_PAGE ), EXP_MusiXTeX );
-    NMusiXTeX musixtex;
+    // Read options
+    exportDialog_->getMusiXTeXOptions( musixtexOpts );
+    // Save options to new form
+    exportDialog_->setMusiXTeXOptions( *form, musixtexOpts );
     setupPrinting(preview);
+    // Export file to MusiXTeX
+    exportDialog_->doExport( MUSIX_PAGE, filePath_ + ".tex", false );
+
+    // Replace the %s String by fileName_
+    printOptions.gres("%s",fileName_ + ".tex");
+    // Which file to use for printing ? Out.ps or fileName_.ps (Option -o !)
+    // We probably need to filter the -o option!
+    typesettingProgram << ftsetProg_ << printOptions;
+    typesettingProgram.setWorkingDirectory( dirPath_ );
+    // Export file and create postscript file
+    printDoExport(&typesettingProgram);
+    // Converting succesfull ?
+    if (typesettingProgram.normalExit()) 
+    {
+      // Preview the printable file ?
+      if( preview == true )
+	printDoPreview(".ps");
+      else
+	printDoPrinting(".ps");
+      unlink(filePath_ + ".tex");
+    }
 #endif
 }
     
@@ -414,12 +462,37 @@ void NPreviewPrint::printWithMusicXML(bool preview)
 {
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
-    KProcess typesettingProgram;    
-    exportFrm *formBack=exportDialog_;
-    MusicXMLExportForm *form = (MusicXMLExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MUSICXML_PAGE ), EXP_MusicXML );
+    KProcess typesettingProgram;
+    struct musicxml_options musicxmlOpts;
     NMusicXMLExport musicxml;
-    // Currently we could omit to show the export dialog page as i
+    QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
+    MusicXMLExportForm *form = (MusicXMLExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MUSICXML_PAGE ), EXP_MusicXML );
+    // Read options
+    exportDialog_->getMusicXMLOptions( musicxmlOpts );
+    // Save options to new form
+    exportDialog_->setMusicXMLOptions( *form, musicxmlOpts );
     setupPrinting(preview);
+    // Export file to MusicXML
+    exportDialog_->doExport( MUSICXML_PAGE, filePath_ + ".xml", false );
+
+    // Replace the %s String by fileName_
+    printOptions.gres("%s",fileName_ + ".xml");
+    // Which file to use for printing ? Out.ps or fileName_.ps (Option -o !)
+    // We probably need to filter the -o option!
+    typesettingProgram << ftsetProg_ << printOptions;
+    typesettingProgram.setWorkingDirectory( dirPath_ );
+    // Export file and create postscript file
+    printDoExport(&typesettingProgram);
+    // Converting succesfull ?
+    if (typesettingProgram.normalExit()) 
+    {
+      // Preview the printable file ?
+      if( preview == true )
+	printDoPreview(".ps");
+      else
+	printDoPrinting(".ps");
+      unlink(filePath_ + ".xml");
+    }
 #endif
 }
     
@@ -427,17 +500,75 @@ void NPreviewPrint::printWithMidi(bool preview)
 {
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
-    KProcess typesettingProgram;    
-    exportFrm *formBack=exportDialog_;
-    MidiExportForm *form = (MidiExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MIDI_PAGE ), EXP_Midi );
+    KProcess typesettingProgram;
+    struct midi_options midiOpts;
     NMidiExport midi;
+    QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
+    MidiExportForm *form = (MidiExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MIDI_PAGE ), EXP_Midi );
+    // Read options
+    exportDialog_->getMidiOptions( midiOpts );
+    // Save options to new form
+    exportDialog_->setMidiOptions( *form, midiOpts );
     setupPrinting(preview);
+    // Export file to Midi
+    exportDialog_->doExport( MIDI_PAGE, filePath_ + ".midi", false );
+
+    // Replace the %s String by fileName_
+    printOptions.gres("%s",fileName_ + ".midi");
+    // Which file to use for printing ? Out.ps or fileName_.ps (Option -o !)
+    // We probably need to filter the -o option!
+    typesettingProgram << ftsetProg_ << printOptions;
+    typesettingProgram.setWorkingDirectory( dirPath_ );
+    // Export file and create postscript file
+    printDoExport(&typesettingProgram);
+    // Converting succesfull ?
+    if (typesettingProgram.normalExit()) 
+    {
+      // Preview the printable file ?
+      if( preview == true )
+	printDoPreview(".ps");
+      else
+	printDoPrinting(".ps");
+      unlink(filePath_ + ".midi");
+    }
 #endif
 }
     
 void NPreviewPrint::printWithNative(bool preview)
 {
 #ifdef WITH_DIRECT_PRINTING
+    // Init process, export form and printer
+    KProcess typesettingProgram;
+    // No noteedit options structure available currently
+    //struct noteedit_options neOpts;
+    QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
+    saveParametersFrm *form = (saveParametersFrm *)printer_->createExportForm( "NoteEdit", EXP_NoteEdit );
+    // Read options (currently not done)
+    //form->getNoteEditOptions( neOpts );
+    // Save options to new form (currently not done)
+    //form_->setNoteEditOptions( *form, neOpts );
+    setupPrinting(preview);
+    // No need to save the file, just use the saved one
+    //writeStaffs( filePath_ + ".not", false );
+
+    // Replace the %s String by fileName_
+    printOptions.gres("%s",fileName_ + ".not");
+    // Which file to use for printing ? Out.ps or fileName_.ps (Option -o !)
+    // We probably need to filter the -o option!
+    typesettingProgram << ftsetProg_ << printOptions;
+    typesettingProgram.setWorkingDirectory( dirPath_ );
+    // Export file and create postscript file
+    printDoExport(&typesettingProgram);
+    // Converting succesfull ?
+    if (typesettingProgram.normalExit()) 
+    {
+      // Preview the printable file ?
+      if( preview == true )
+	printDoPreview(".ps");
+      else
+	printDoPrinting(".ps");
+      unlink(filePath_ + ".not");
+    }
 #endif
 }
 

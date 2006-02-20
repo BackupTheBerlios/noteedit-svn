@@ -317,12 +317,17 @@ void NPreviewPrint::printWithLilypond(bool preview)
     printDoExport(&typesettingProgram);
     // Show log file on console
     oLogFile.setName( filePath_ + ".log" );
-    oLogFile.open( IO_ReadOnly | IO_Translate );
-    while( oLogFile.atEnd() == false )
+    if( oLogFile.open( IO_ReadOnly | IO_Translate ) )
     {
-	oLogFile.readLine( oLogLine, 1024 );
-	printf( "%s",oLogLine.ascii() );
+        while( oLogFile.atEnd() == false )
+        {
+	    oLogFile.readLine( oLogLine, 1024 );
+	    printf( "%s",oLogLine.ascii() );
+        }
     }
+    else
+        printf("Could not open Lilypond log file %s for reading.\n",
+               QString(filePath_ + ".log").ascii() );
     // Converting succesfull ?
     if (typesettingProgram.normalExit()) 
     {
@@ -334,6 +339,7 @@ void NPreviewPrint::printWithLilypond(bool preview)
 		unlink(filePath_ + ".ly");
 		unlink(filePath_ + ".log");
 		unlink(filePath_ + ".pdf");
+		unlink(filePath_ + ".ps");
     }
 #endif
 }
@@ -378,6 +384,8 @@ void NPreviewPrint::printWithABC(bool preview)
       else
 	printDoPrinting(".ps");
       unlink(filePath_ + ".abc");
+      unlink(filePath_ + ".pdf");
+      unlink(filePath_ + ".ps");
     }
 #endif
 }
@@ -416,6 +424,8 @@ void NPreviewPrint::printWithPMX(bool preview)
       else
 	printDoPrinting(".ps");
       unlink(filePath_ + ".pmx");
+      unlink(filePath_ + ".pdf");
+      unlink(filePath_ + ".ps");
     }
 #endif
 }
@@ -454,6 +464,8 @@ void NPreviewPrint::printWithMusiXTeX(bool preview)
       else
 	printDoPrinting(".ps");
       unlink(filePath_ + ".tex");
+      unlink(filePath_ + ".pdf");
+      unlink(filePath_ + ".ps");
     }
 #endif
 }
@@ -492,6 +504,8 @@ void NPreviewPrint::printWithMusicXML(bool preview)
       else
 	printDoPrinting(".ps");
       unlink(filePath_ + ".xml");
+      unlink(filePath_ + ".pdf");
+      unlink(filePath_ + ".ps");
     }
 #endif
 }
@@ -530,6 +544,8 @@ void NPreviewPrint::printWithMidi(bool preview)
       else
 	printDoPrinting(".ps");
       unlink(filePath_ + ".midi");
+      unlink(filePath_ + ".pdf");
+      unlink(filePath_ + ".ps");
     }
 #endif
 }
@@ -568,6 +584,8 @@ void NPreviewPrint::printWithNative(bool preview)
       else
 	printDoPrinting(".ps");
       unlink(filePath_ + ".not");
+      unlink(filePath_ + ".pdf");
+      unlink(filePath_ + ".ps");
     }
 #endif
 }

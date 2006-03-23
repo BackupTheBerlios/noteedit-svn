@@ -58,12 +58,12 @@ def generate(env):
                 ( 'midilib',  'install path for the lib, ie: /usr/lib' ),
                 ( 'withtse3', 'use tse3 library (default: yes)' ),
                 ( 'withkmid', 'use kmid library (default: no)' ),
-		( 'ALREADY_CONFIGURED', 'configuration succeeded'),
+                ( 'CACHED_MIDI', 'Midi is already configured' ),
         )
         opts.Update(env)
 
         # this condition is used to check when to redetect the configuration (do not remove)
-	if 'configure' in env['TARGS'] or not env.has_key('ALREADY_CONFIGURED'):
+	if  not env['HELP'] and (env['_CONFIGURE_'] or not env.has_key('CACHED_MIDI')):
 		# Register our custom test to scons
 		conf = env.Configure( custom_tests = { 'CheckTSE3' : CheckTSE3 } )
 		# Base automatic TSE3 test (no version check) without asking :-)
@@ -72,11 +72,13 @@ def generate(env):
 		if haveTSE3:
 			if conf.CheckTSE3():
 				conf.env.Append( CPPFLAGS = '-DWITH_TSE3=1' )
+				env['CACHED_MIDI'] = 1
 		# Base automatic KMid test (NEW: only if TSE3 is not installed)
 		else:
 			haveKMID = conf.CheckLibWithHeader('libkmid','libkmid/libkmid.h','C++')
 			if haveKMID:
 				conf.env.Append( CPPFLAGS = '-DWITH_LIBKMID=1' )
+				env['CACHED_MIDI'] = 1
 			else:
 				p('RED','Warning: No midi libary found.')
 

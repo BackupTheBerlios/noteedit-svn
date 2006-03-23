@@ -145,26 +145,8 @@ NT = Split( sources )
 NT = NT + Split(LG)
 # print "NT: ", NT, "LG: ", LG
 
-libnoteeditla=env.kobject('staticlib')
-libnoteeditla.target="libnoteedit"
-# These libs should all be static. Problem: How to teach scons to use the static libraries ?
-libnoteeditla.libs='../kguitar_excerpt/libkguitar_excerpt.a qt-mt kio kdecore kdeprint kparts tse3'
-libnoteeditla.source=NT
-print "The path to 1st source is:", str(libnoteeditla.source[0])
+env.KDEstaticlib("noteedit", NT)
 
-libnoteeditso=env.kobject('shlib')
-libnoteeditso.target="libnoteedit"
-libnoteeditso.source=NT
-libnoteeditso.vnum='1.0.1'
-libnoteeditso.libs='../kguitar_excerpt/libkguitar_excerpt.la qt-mt kio kdecore kdeprint kparts tse3'
-libnoteeditso.execute()
+env.KDEshlib("noteedit", NT )
 
-obj=env.kobject('program')
-obj.target='noteedit'
-obj.source=('main.cpp')
-# Build static version of NoteEdit
-# useful to find out which module doesn't find certain symbols
-# Warning: This doesn't seem to work currently
-# obj.libs='./libnoteedit.a'
-# Build shared library version of NoteEdit
-obj.libs='./libnoteedit.so'
+env.KDEprogram('noteedit','main.cpp','','./libnoteedit.so','../kguitar_excerpt/libkguitar_excerpt.a',['kparts','kdeprint','tse3'])

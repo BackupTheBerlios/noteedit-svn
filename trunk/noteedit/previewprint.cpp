@@ -167,13 +167,17 @@ void NPreviewPrint::filePrint(bool preview, exportFrm *exportDialog)
 }
 
 // Clean up after print preview was finished.
-void NPreviewPrint::filePrintPreviewFinished(KProcess *)
+void NPreviewPrint::filePrintPreviewFinished(KProcess *previewProgram)
 {
 #ifdef WITH_DIRECT_PRINTING
     printf("Finished.\n");
     fflush(stdout);
+    disconnect( previewProgram, SIGNAL( processExited (KProcess *) ), 
+                this, SLOT( filePrintPreviewFinished(KProcess *) ) );
     // Remove preview file on exit of browser
     unlink(previewFile_);
+    unlink(filePath_ + ".pdf");
+    unlink(filePath_ + ".ps");
 #endif
 }
 
@@ -249,6 +253,12 @@ bool NPreviewPrint::printDoPreview(QString fileType)
 #ifdef WITH_DIRECT_PRINTING
     KProcess previewProgram;
     QString fprevprog=KStandardDirs::findExe( NResource::previewProgramInvokation_ );
+    if( fprevprog == "" || fprevprog == QString::null )
+    {
+      KMessageBox::sorry(this, i18n("Could not find preview program."), 
+                         kapp->makeStdCaption(i18n("???")));
+      return false;
+    }
     QStringList printpreviewOptions = QStringList::split( " ", QString(NResource::previewOptions_) );
     // Preview File: abcm2ps strangely does not add the path to the created ps file
     previewFile_ = fileName_ + fileType;
@@ -261,11 +271,14 @@ bool NPreviewPrint::printDoPreview(QString fileType)
     connect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
              this, SLOT( filePrintPreviewFinished(KProcess *) ) );
     // Start preview
-    previewProgram.start(KProcess::DontCare, KProcess::All);
-    disconnect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
-                this, SLOT( filePrintPreviewFinished(KProcess *) ) );
-#endif
+    if( false == previewProgram.start(KProcess::NotifyOnExit, KProcess::All) )
+    {
+      KMessageBox::sorry(this, i18n("Could not start preview program."), 
+                         kapp->makeStdCaption(i18n("???")));
+      return false;
+    }
     return true;
+#endif
 }
 
 // Prints the exported file (postscript or pdf) with the KDE print system
@@ -293,7 +306,6 @@ void NPreviewPrint::printWithLilypond(bool preview)
     // Init process, export form and printer
     KProcess typesettingProgram;
     struct lily_options lilyOpts;
-    NLilyExport lily;
     QFile oLogFile;
     QString oLogLine;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
@@ -338,9 +350,10 @@ void NPreviewPrint::printWithLilypond(bool preview)
 			printDoPrinting(".ps");
 		unlink(filePath_ + ".ly");
 		unlink(filePath_ + ".log");
-		unlink(filePath_ + ".pdf");
-		unlink(filePath_ + ".ps");
     }
+    else
+      KMessageBox::sorry(this, i18n("Exporting with lilypond failed.\nSee log file for details."), 
+                         kapp->makeStdCaption(i18n("???")));
 #endif
 }
 
@@ -352,7 +365,6 @@ void NPreviewPrint::printWithABC(bool preview)
     // Init process, export form and printer
     KProcess typesettingProgram;
     struct abc_options abcOpts;
-    NABCExport abc;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     ABCExportForm *form = (ABCExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( ABC_PAGE ), EXP_ABC );
     // Read options
@@ -384,8 +396,6 @@ void NPreviewPrint::printWithABC(bool preview)
       else
 	printDoPrinting(".ps");
       unlink(filePath_ + ".abc");
-      unlink(filePath_ + ".pdf");
-      unlink(filePath_ + ".ps");
     }
 #endif
 }
@@ -396,7 +406,6 @@ void NPreviewPrint::printWithPMX(bool preview)
     // Init process, export form and printer
     KProcess typesettingProgram;
     struct pmx_options pmxOpts;
-    NPmxExport pmx;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     PMXExportForm *form = (PMXExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( PMX_PAGE ), EXP_PMX );
     // Read options
@@ -424,8 +433,6 @@ void NPreviewPrint::printWithPMX(bool preview)
       else
 	printDoPrinting(".ps");
       unlink(filePath_ + ".pmx");
-      unlink(filePath_ + ".pdf");
-      unlink(filePath_ + ".ps");
     }
 #endif
 }
@@ -436,7 +443,6 @@ void NPreviewPrint::printWithMusiXTeX(bool preview)
     // Init process, export form and printer
     KProcess typesettingProgram;
     struct musixtex_options musixtexOpts;
-    NMusiXTeX mtex;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     MusiXTeXExportForm *form = (MusiXTeXExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MUSIX_PAGE ), EXP_MusiXTeX );
     // Read options
@@ -464,8 +470,6 @@ void NPreviewPrint::printWithMusiXTeX(bool preview)
       else
 	printDoPrinting(".ps");
       unlink(filePath_ + ".tex");
-      unlink(filePath_ + ".pdf");
-      unlink(filePath_ + ".ps");
     }
 #endif
 }
@@ -476,7 +480,6 @@ void NPreviewPrint::printWithMusicXML(bool preview)
     // Init process, export form and printer
     KProcess typesettingProgram;
     struct musicxml_options musicxmlOpts;
-    NMusicXMLExport musicxml;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     MusicXMLExportForm *form = (MusicXMLExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MUSICXML_PAGE ), EXP_MusicXML );
     // Read options
@@ -504,8 +507,6 @@ void NPreviewPrint::printWithMusicXML(bool preview)
       else
 	printDoPrinting(".ps");
       unlink(filePath_ + ".xml");
-      unlink(filePath_ + ".pdf");
-      unlink(filePath_ + ".ps");
     }
 #endif
 }
@@ -516,7 +517,6 @@ void NPreviewPrint::printWithMidi(bool preview)
     // Init process, export form and printer
     KProcess typesettingProgram;
     struct midi_options midiOpts;
-    NMidiExport midi;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     MidiExportForm *form = (MidiExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MIDI_PAGE ), EXP_Midi );
     // Read options
@@ -544,8 +544,6 @@ void NPreviewPrint::printWithMidi(bool preview)
       else
 	printDoPrinting(".ps");
       unlink(filePath_ + ".midi");
-      unlink(filePath_ + ".pdf");
-      unlink(filePath_ + ".ps");
     }
 #endif
 }
@@ -584,8 +582,6 @@ void NPreviewPrint::printWithNative(bool preview)
       else
 	printDoPrinting(".ps");
       unlink(filePath_ + ".not");
-      unlink(filePath_ + ".pdf");
-      unlink(filePath_ + ".ps");
     }
 #endif
 }

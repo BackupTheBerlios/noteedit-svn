@@ -6,33 +6,42 @@ compile    -> scons
 clean      -> scons -c
 install    -> scons install
 uninstall  -> scons -c install
-configure  -> scons configure prefix=/tmp/ita debug=full extraincludes=/usr/local/include:/tmp/include prefix=/usr/local
+configure  -> scons configure debug=full extraincludes=/usr/local/include:/tmp/include prefix=/usr/local
 
-Run from a subdirectory -> scons -u
-The variables are saved automatically after the first run (look at cache/kde.cache.py, ..)
+Run from a subdirectory -> scons -u (or export SCONSFLAGS="-u" in your ~/.bashrc)
+
 """
 
 ###################################################################
 # LOAD THE ENVIRONMENT AND SET UP THE TOOLS
 ###################################################################
+import sys, os
+sys.path.append('scons_admin')
 
-def bstr(target, source, env):
-	comp='kconfig_compiler -d%s %s %s' % (str(source[0].get_dir()), source[1].path, source[0].path)
-	return comp
+## Import the main configuration tool
+from generic import configure
+config = {
+	'modules'  : 'generic kde3 midi',
+	'builddir' : './',
+	'config.h' : 0,
+	'rpath'    : 1,
+	'colorful' : not os.environ.has_key('NOCOLORS'),
+}
+
+# and the config.h
+env=configure(config)
 
 ## Load the builders in config
-env = Environment( TARGS=COMMAND_LINE_TARGETS, ARGS=ARGUMENTS, tools=['default', 'generic', 'kde','midi'], toolpath=['./', './scons_admin'])
+#env = Environment( TARGS=COMMAND_LINE_TARGETS, ARGS=ARGUMENTS, tools=['default', 'generic', 'kde','midi'], toolpath=['./', './scons_admin'])
 
 env.KDEuse("environ rpath thread")
-
-env['CXXCOMSTR']=bstr
 
 ###################################################################
 # SCRIPTS FOR BUILDING THE TARGETS
 ###################################################################
 
 # NoteEdit Version
-version = '2.8.0'
+version = '2.8.1'
 env.AppendUnique( CPPFLAGS = ['-DVERSION=\\\"'+version+'\\\"'])
 
 # Flag so we don't include config.h if compiled with scons
@@ -43,30 +52,11 @@ env.AppendUnique( CPPFLAGS = ['-DWITH_SCONS'])
 env.AppendUnique( CPPFLAGS = ['-DGCC_MAJ_VERS=3'])
 
 ## BuilDir example - try to have all sources to process in only one top-level folder
-SetOption('duplicate', 'soft-copy')
-env.BuildDir('#build', '#kguitar_excerpt #noteedit #doc')
-env.subdirs('kguitar_excerpt noteedit doc')
-
-############################
-## Process the documentation
-############################
-
-# When it works again, uncomment and remove doc/SConscript
-#env.docfolder('noteedit/', 'en', 'noteedit/')
-#env.docfolder('de/', 'de', 'noteedit/')
-
-## Normal build
-#env.subdirs('kguitar_excerpt noteedit')
-
-############################
-## Process the translations
-############################
-
-## They are usually located in the po/ directory
-env.KDElang('po/', 'noteedit')
+env.set_build_dir('#build', '#kguitar_excerpt #noteedit #doc')
+env.subdirs('kguitar_excerpt noteedit po doc')
 
 ###################################################################
 # CONVENIENCE FUNCTIONS TO EMULATE 'make dist' and 'make distclean'
 ###################################################################
 
-env.dist('noteedit')
+env.dist('noteedit','2.8.1')

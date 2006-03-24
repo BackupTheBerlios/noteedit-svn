@@ -34,7 +34,7 @@ def configure(dict):
 	import os
 
 	cp_method  = 'soft-copy'
-	tool_path  = ['bksys']
+	tool_path  = ['scons_admin']
 	build_dir  = '.'
 	cache_dir  = 'cache'+os.sep
 	config_h   = 0

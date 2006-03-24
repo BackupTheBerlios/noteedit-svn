@@ -1,0 +1,10 @@
+############################
+## load the config
+
+## use the environment set in the top-level
+## SConstruct file (IMPORTANT)
+
+Import( 'env' )
+import os
+
+env.KDElang("./","noteedit")

@@ -59,8 +59,13 @@ def generate(env):
                 ( 'withtse3', 'use tse3 library (default: yes)' ),
                 ( 'withkmid', 'use kmid library (default: no)' ),
                 ( 'CACHED_MIDI', 'Midi is already configured' ),
+		( 'CXXFLAGS_MIDI','' ),
+		( 'LINKFLAGS_MIDI','' ),
+		( 'CPPPATH_MIDI','' ),
+		( 'LIBPATH_MIDI','' ),
         )
         opts.Update(env)
+	opts.Save(optionfile, env)
 
         # this condition is used to check when to redetect the configuration (do not remove)
 	if  not env['HELP'] and (env['_CONFIGURE_'] or not env.has_key('CACHED_MIDI')):
@@ -71,13 +76,13 @@ def generate(env):
 		# If TSE3 was found check version, aRts and adapt the environment
 		if haveTSE3:
 			if conf.CheckTSE3():
-				conf.env.Append( CPPFLAGS = '-DWITH_TSE3=1' )
+				env['CXXFLAGS_MIDI'] += ['-DWITH_TSE3=1']
 				env['CACHED_MIDI'] = 1
 		# Base automatic KMid test (NEW: only if TSE3 is not installed)
 		else:
 			haveKMID = conf.CheckLibWithHeader('libkmid','libkmid/libkmid.h','C++')
 			if haveKMID:
-				conf.env.Append( CPPFLAGS = '-DWITH_LIBKMID=1' )
+				env['CXXFLAGS_MIDI'] += ['-DWITH_LIBKMID=1']
 				env['CACHED_MIDI'] = 1
 			else:
 				p('RED','Warning: No midi libary found.')
@@ -95,14 +100,14 @@ def generate(env):
                 
                 # .. and set them
                 #env['TSE_FLAGS'] = ['-ltse3']
-                
+
                 # save the options
                 opts.Save(optionfile, env)
 
         # the configuration is over - at this point XXX_FLAGS is defined
 
         # load the variables detected into the environment
-        #env.AppendUnique( CXXFLAGS = env['TSE3_FLAGS'] )
+        #env.Append( CXXFLAGS = env['TSE3_FLAGS'] )
         
 
 def CheckTSE3(context):
@@ -131,9 +136,9 @@ int main() {
 		sys.exit(0);
 	# Set Version environment for midimapper
 	if int(tseVer[1]) > 1:
-		context.env.Append( CPPFLAGS = '-DTSE3_MID_VERSION_NR=2' )
+		context.env['CXXFLAGS_MIDI'] = ['-DTSE3_MID_VERSION_NR=2']
 	else:
-		context.env.Append( CPPFLAGS = '-DTSE3_MID_VERSION_NR=1' )
+		context.env['CXXFLAGS_MIDI'] = ['-DTSE3_MID_VERSION_NR=1']
 	# Test for aRts if KDE has aRts Library installed
 	context.Message( colors['NORMAL'] + 'Checking for TSE3 with aRts... ')
 	if int(tseVer[1]) > 1:
@@ -166,7 +171,7 @@ int main() {
 	# Set Arts environment for midimapper
 	if ret[0]:
 		context.Result( colors['BLUE'] + 'Yes')
-		context.env.Append( CPPFLAGS = '-DTSE3_HAS_ARTS=1' )
+		context.env['CXXFLAGS_MIDI'] += ['-DTSE3_HAS_ARTS=1']
 	else:
 		context.Result( colors['RED'] + 'No')
 	return 1

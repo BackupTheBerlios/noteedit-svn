@@ -548,7 +548,6 @@ void ConfigureDialog::printLayout() {
       if( tsProgram != typesettingProgram->currentItem() )
       {
 	tsProgram = typesettingProgram->currentItem();
-	typesettingProgramInvokation->setText("");
 	typesettingProgramFormat->setCurrentItem(0);
       }
       break;
@@ -584,10 +583,7 @@ void ConfigureDialog::printLayout() {
     case 4: // custom
       // Was program changed to custom ?
       if( pvProgram != previewProgram->currentItem() )
-      {
 	pvProgram = previewProgram->currentItem();
-	previewProgramInvokation->setText( "" );
-      }
       break;
   }
   if( previewProgram->currentItem() == 4 ) // custom selected

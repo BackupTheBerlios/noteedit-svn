@@ -1,4 +1,0 @@
-Todo list for development version 2.9.0. This file gets deleted in final
-version!
-- Migration to gcc/g++4. Currently, TSE3 cannot compile under it.
-- Migration to Qt4.

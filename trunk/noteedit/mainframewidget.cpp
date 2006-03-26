@@ -249,8 +249,8 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	new KAction( i18n("&Output Params..."), 0, this, SLOT(setOutputParam()), actionCollection(), "set_params" );
 	lilyPort_ = new KAction( i18n("Export &LilyPond..."), 0, this, SLOT(exportLilyPond()), actionCollection(), "export_lily" );
 #ifdef WITH_DIRECT_PRINTING
-	new KAction( i18n("Print pre&view..."), "print_preview", 0, this, SLOT(filePrintPreview()), actionCollection(), "print_preview");
-	new KAction( i18n("&Print..."), "print", CTRL+Key_P, this, SLOT(filePrintNoPreview()), actionCollection(), "print" );
+	new KAction( i18n("Print pre&view..."), "frameprint", 0, this, SLOT(filePrintPreview()), actionCollection(), "print_preview");
+	new KAction( i18n("&Print..."), "fileprint", CTRL+Key_P, this, SLOT(filePrintNoPreview()), actionCollection(), "print" );
 #endif
 	new KAction( i18n("Score in&formation..."), "readme", 0, this, SLOT(scoreInfo()), actionCollection(), "score_information" );
 	new KAction( i18n("&Key configuration"), "configure_shortcuts", 0, this, SLOT(keyConfig()), actionCollection(), "keyconfig" );

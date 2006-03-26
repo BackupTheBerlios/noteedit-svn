@@ -12,7 +12,7 @@ more information (http://noteedit.berlios.de).
 Installing NoteEdit from RPMs or DEBs
 -------------------------------------
 If you find an RPM (RedHat/Fedora, SuSE, Mandriva) or DEB (Debian, Ubuntu)
-package for your Linux distribution, you can install NoteEdit from the RPM or
+package for your Linux distribution, you should install NoteEdit from the RPM or
 DEB.
 
 Note!
@@ -32,7 +32,7 @@ do the following at the command prompt:
 - For RPM based systems:
   # rpm -ivh <filename.rpm>
 - For DEB based systems:
-  # dpkg -i <filename.rpm>
+  # dpkg -i <filename.deb>
 
 
 Installation from the source
@@ -59,7 +59,7 @@ Recommended packages:
 
 Possible export filters and its packages:
  * LilyPond (http://www.lilypond.org): Export works for all versions between
-   2.0 and 2.4. For any newer version, convert-ly should correctly convert the
+   2.0 and 2.6. For any newer version, convert-ly should correctly convert the
    syntax of exported files to the newer version. If no LilyPond found, version
    2.0 syntax is used by default.
  * MusicXML import/export (http://www.recordare.com): No special packages
@@ -86,13 +86,6 @@ possible out of the box. To build NoteEdit from SVN, do the following:
   for anonymous SVN access or follow Berlios'es instructions on
   https://developer.berlios.de/svn/?group_id=2232 for more secure SVN access.
   
-- If the correct admin files are not present in admin/ folder, download the
-  admin-files.tar.gz which can be found under files section at the NoteEdit's
-  project page at Berlios and extract them to the main NoteEdit folder by
-  executing:
-  $ cd noteedit
-  $ tar xfvz admin-files.tar.gz
-
 - In the main NoteEdit folder, type:
   $ make -f Makefile.cvs
 

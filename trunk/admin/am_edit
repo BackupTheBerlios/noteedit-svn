@@ -1545,6 +1545,8 @@ sub tag_ICON()
                'lo16' => 'locolor/16x16',
                'lo22' => 'locolor/22x22',
                'lo32' => 'locolor/32x32',
+               'lo48' => 'locolor/48x48',
+               'lo64' => 'locolor/64x64',
                'hi16' => 'hicolor/16x16',
                'hi22' => 'hicolor/22x22',
                'hi32' => 'hicolor/32x32',

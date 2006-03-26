@@ -163,3 +163,4 @@ version 2.9.0:
 	* R420: Simplified sconscript with new scons version
 	* R424: Added translation sconscript required by new scons/bksys version
 	* R426: Added printing icon ("fileprint") and preview icon ("frameprint")
+	* R434: FIXED: compilation warnings for lo48 and lo64 icons

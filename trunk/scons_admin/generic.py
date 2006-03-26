@@ -96,12 +96,12 @@ def configure(dict):
 def dist(env, appname, version=None):
 	import os
 	if 'dist' in sys.argv:
-                sys.path.append('bksys'+os.sep+'unix')
+                sys.path.append('scons_admin'+os.sep+'unix')
                 from detect_generic import dist
                 dist(env, appname, version)
 
 	if 'distclean' in sys.argv:
-                sys.path.append('bksys'+os.sep+'unix')
+                sys.path.append('scons_admin'+os.sep+'unix')
                 from detect_generic import distclean
                 distclean(env)
 
@@ -365,6 +365,7 @@ class genobj:
 					self.env.AppendUnique(CPPPATH=self.env['INCLUDES_'+lib])
 				if self.env.has_key('CXXFLAGS_'+lib):
 					self.env.AppendUnique(CXXFLAGS=self.env['CXXFLAGS_'+lib])
+					self.env.pprint('BLUE',"found CXXFLAGS " + env['CXXFLAGS_'+lib]  + " for lib " + lib)
 				if self.env.has_key('CCFLAGS_'+lib):
 					self.env.AppendUnique(CCFLAGS=self.env['CCFLAGS_'+lib])
 				if self.env.has_key('CPPPATH_'+lib):
@@ -713,10 +714,10 @@ def generate(env):
 
 		import sys
 		if env['WINDOWS']:
-			sys.path.append('bksys'+os.sep+'win32')
+			sys.path.append('scons_admin'+os.sep+'win32')
 			from detect_generic import detect
 		else:
-			sys.path.append('bksys'+os.sep+'unix') # includes osx
+			sys.path.append('scons_admin'+os.sep+'unix') # includes osx
 			from detect_generic import detect
 		detect(env)
 

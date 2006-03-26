@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg
-   xmlns:xml="http://www.w3.org/XML/1998/namespace"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://web.resource.org/cc/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -11,8 +10,8 @@
    xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="splash.svg"
-   sodipodi:docbase="/home/matevz/Cantus/NoteEdit/splash"
-   inkscape:version="0.41"
+   sodipodi:docbase="/home/matevz/apps/noteedit/graphics/splash"
+   inkscape:version="0.43"
    sodipodi:version="0.32"
    id="svg2"
    height="297mm"
@@ -68,13 +67,13 @@
   <sodipodi:namedview
      inkscape:window-y="0"
      inkscape:window-x="0"
-     inkscape:window-height="1029"
+     inkscape:window-height="984"
      inkscape:window-width="1400"
      inkscape:current-layer="layer1"
      inkscape:document-units="px"
      inkscape:cy="558.54351"
      inkscape:cx="338.00843"
-     inkscape:zoom="1.9798990"
+     inkscape:zoom="1.979899"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -83,16 +82,12 @@
      id="base" />
   <metadata
      id="metadata4">
-    <rdf:RDF
-       id="RDF5">
+    <rdf:RDF>
       <cc:Work
-         id="Work6"
          rdf:about="">
-        <dc:format
-           id="format7">image/svg+xml</dc:format>
+        <dc:format>image/svg+xml</dc:format>
         <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage"
-           id="type9" />
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -138,9 +133,9 @@
        id="rect6255"
        style="fill:url(#radialGradient7025);fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-opacity:0.81865287" />
     <rect
-       inkscape:export-ydpi="153.31329"
-       inkscape:export-xdpi="153.31329"
-       inkscape:export-filename="/home/matevz/Cantus/NoteEdit/splash/splash.png"
+       inkscape:export-ydpi="153.31"
+       inkscape:export-xdpi="153.31"
+       inkscape:export-filename="/home/matevz/apps/noteedit/graphics/splash/splash.png"
        y="332.74576"
        x="179.02640"
        height="233.72902"
@@ -152,12 +147,12 @@
        id="text2825"
        y="563.30054"
        x="370.90143"
-       style="font-size:11.000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:FreeMono;text-anchor:start;writing-mode:lr-tb"
+       style="font-size:11;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:100%;writing-mode:lr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:FreeMono;text-align:start"
        xml:space="preserve"><tspan
-         id="tspan3595"
          sodipodi:role="line"
-         y="563.30054"
-         x="370.90143">v2.8.0</tspan></text>
+         id="tspan1415"
+         x="370.90143"
+         y="563.30054">v2.8.1</tspan></text>
     <text
        transform="scale(1.068745,0.935677)"
        sodipodi:linespacing="100%"
@@ -191,7 +186,7 @@
        style="writing-mode:lr-tb;text-anchor:start;font-family:FreeSerif;stroke-opacity:0.91191709;stroke-linejoin:bevel;stroke-linecap:round;stroke-width:1.2699995;stroke:#ffff2d;fill-opacity:1.0000000;fill:#000000;font-stretch:normal;font-weight:bold;font-variant:normal;font-style:italic;font-size:54.756958;stroke-dasharray:none;stroke-miterlimit:4.0000000;stroke-dashoffset:0.0000000"
        xml:space="preserve"><tspan
          style="stroke-linejoin:bevel;stroke-dasharray:none;stroke-miterlimit:4.0000000;stroke-width:1.2699995;stroke-linecap:round;stroke-dashoffset:0.0000000"
-         y="477.04770"
+         y="477.0477"
          x="147.49693"
          id="tspan1295"
          sodipodi:role="line">NoteEdit</tspan></text>
@@ -217,6 +212,6 @@
          id="tspan2090"
          sodipodi:role="line"
          y="456.02454"
-         x="187.72760">http://noteedit.berlios.de</tspan></text>
+         x="187.7276">http://noteedit.berlios.de</tspan></text>
   </g>
 </svg>

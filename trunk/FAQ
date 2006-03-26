@@ -138,12 +138,12 @@ A 6.
 Please install NoteEdit (make install)! If you'd like to run a local version of
 NoteEdit, there is a shell script that should place the files and links
 correctly to the NoteEdit top directory:
- $ cd <path>/noteedit-2.8.0
+ $ cd <path>/noteedit-2.8.1
  $ ./admin/locinst.sh
 
 Then set the environment variable KDEDIRS to noteedit top directory by invoking:
- - using (t)csh: setenv KDEDIRS <path_to_noteedit-2.8.0_direcory>
- - using other shell: export KDEDIRS=<path_to_noteedit-2.8.0_direcory>
+ - using (t)csh: setenv KDEDIRS <path_to_noteedit-2.8.1_direcory>
+ - using other shell: export KDEDIRS=<path_to_noteedit-2.8.1_direcory>
 
 Now, you can run NoteEdit with:
  $ cd noteedit

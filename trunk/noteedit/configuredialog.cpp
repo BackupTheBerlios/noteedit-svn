@@ -176,7 +176,7 @@ ConfigureDialog::ConfigureDialog(NMainFrameWidget *mainWidget) :
 
 	//  PRINTING
 	QVBox *pagePrinting = addVBoxPage
-		(i18n("Printing"), QString::null, BarIcon("print", KIcon::SizeLarge));
+		(i18n("Printing"), QString::null, BarIcon("fileprint", KIcon::SizeLarge));
 
 	//  Typesetting program
 	QGroupBox *typesettingProgramGroup = new QGroupBox

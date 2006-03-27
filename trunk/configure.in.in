@@ -49,7 +49,7 @@ AC_ARG_WITH(oldlily,[  --with-oldlily	       	use LilyPond 1.2.17 syntax to expo
 AC_ARG_WITH(anthem,[  --with-anthem=DIR		produce Anthem plugin, DIR=Athem source directory])	
 AC_ARG_WITH(fadein,[  --without-fadein		say \"--without-fadein\" if (de)crescendo gives unexpected results])	
 AC_ARG_WITH(arts,[  --without-arts		say \"--without-arts\" if you never want to create an aRts scheduler])	
-AC_ARG_WITH(printing,[  --with-printing		say \"--with-printing\" for direct print preview and printing support])
+AC_ARG_WITH(printing,[  --without-printing		say \"--without-printing\" for disabling print preview and printing support])
 
 if test "X$USE_EXCEPTIONS" = "X"
 then
@@ -241,10 +241,10 @@ then
 	libtse3requ="no"
 fi
 
-if test "X$with_printing" = "Xyes"
+printingreq="yes"
+if test "X$with_printing" = "Xno"
 then
-	AC_DEFINE(WITH_DIRECT_PRINTING, 1, [enable print preview and printing support])
-	
+	printingreq="no"
 fi
 
 if test "X$with_libtse3_include" = "X"
@@ -432,6 +432,11 @@ then
 	echo ""
 	KMIDINCLUDE="-I$inc_libkmid"
 	KMIDLIBS="-L$lib_libkmid -lkmid"
+fi
+
+if test "$printingreq" = "yes"
+then
+    AC_DEFINE(WITH_DIRECT_PRINTING, 1, [enable print preview and printing support])
 fi
 
 if test "$libtse3requ" = "yes"

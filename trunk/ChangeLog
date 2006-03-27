@@ -165,3 +165,4 @@ version 2.8.1:
 	* R426: Added printing icon ("fileprint") and preview icon ("frameprint")
 	* R434: FIXED: compilation warnings for lo48 and lo64 icons
 	* R435: Updated NEWS. Updated Slovenian and other translations.
+	* R439: Enable print support by default in configure

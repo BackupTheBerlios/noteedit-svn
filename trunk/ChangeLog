@@ -166,3 +166,4 @@ version 2.8.1:
 	* R434: FIXED: compilation warnings for lo48 and lo64 icons
 	* R435: Updated NEWS. Updated Slovenian and other translations.
 	* R439: Enable print support by default in configure
+	* R441: In lilypond export korrect syntax for alternatives in repeats

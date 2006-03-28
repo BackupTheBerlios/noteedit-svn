@@ -1,0 +1,61 @@
+Release 2.8.1
+=============
+New features to 2.8.0:
+----------------------
+- New direct printing and print preview support using different backends:
+  - Implemented custom print dialog.
+  - New settings in Configure dialog for printing.
+  - Custom preview application (eg. kpdf, gpdf, xpdf, gv).
+  - Custom typesetting application (LilyPond, ABC, PMX/MusiXTeX).
+- Enhanced UI:
+  - mouse wheel behaviour improvements (zoom in/out, quick scroll, vertical
+  scroll),
+  - added keyboard shortcuts (select n-th voice directly, start/stop playback,
+  insert special barline, goto measure),
+  - few dialog improvements (insert clef or barline, page layout),
+  - new dialog: Insert special barline.
+  - remember the last position of action (useful when deleting the whole block
+  of the score),
+  - rewritten scroll behaviour (especially when the selected element is
+  out-of-scope),
+  - red border when Edit mode is active.
+  - added vertical line which connects all staves
+- MusicXML improvements:
+  - import arbitrary text.
+  - export arbitrary text.
+  - export all strings in UTF-8 encoding.
+- LilyPond export filter improvements:
+  - arranger is now exported.
+  - document page size is exported.
+  - rit./accel. signs are printed in italic.
+  - export all strings in UTF-8 encoding, if Lily >2.6 is found.
+- gcc4 complete compiler support. Many warning fixes and internal cleanups.
+- Many documentation additions and fixes.
+
+Bugs fixed to 2.8.0:
+--------------------
+- Arbitrary text bug fixes.
+- Transposition is now aware of the key signature (thanks to Csaba).
+- MIDI playback and export fixes where NoteEdit was not aware of the current
+  clef/key signature.
+- Invisible rest button works now as it should.
+- Copy & Paste of beamed elements no longer crash.
+- NoteEdit crashed when scrolling in playback mode sometimes.
+- New window and open document actions reset all modes.
+- Fixed horizontal alignments of staffs, if bracket and/or brace is present.
+- When cycling through elements, current element properties aren't inherited by
+  the previous element anymore.
+- When cycling through elements, accidentals don't get mixed up anymore.
+- Fixed ESC key behaviour - it should always leave the current mode correctly.
+- KDE 3.5 compatibility fixes.
+- Fixed keyboard lock-ups problem.
+- Slur/Tie position is now depdent on number of voices and default stem
+  direction.
+- < and > special characters for lyrics entrance aren't rendered anymore in the
+  score view.
+- Many UI polishes and english expressions fixes.
+
+Note:
+Only major new features and bugfixes will get mentioned in the NEWS now. For a
+complete change log, please take a look at ChangeLog file, where SVN revision
+numbers are supplied as well!

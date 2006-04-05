@@ -167,3 +167,4 @@ version 2.8.1:
 	* R435: Updated NEWS. Updated Slovenian and other translations.
 	* R439: Enable print support by default in configure
 	* R441: In lilypond export korrect syntax for alternatives in repeats
+	* R444: ADDED: Portuguese translation thanks to Denis A. Altoe Falqueto.

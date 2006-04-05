@@ -542,14 +542,4 @@
     <slot>slotPropertyChanged()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>nscaleedit.h</includehint>
-    <includehint>nscaleedit.h</includehint>
-    <includehint>nscaleedit.h</includehint>
-    <includehint>nscaleedit.h</includehint>
-    <includehint>nscaleedit.h</includehint>
-    <includehint>nscaleedit.h</includehint>
-    <includehint>nscaleedit.h</includehint>
-    <includehint>nscaleedit.h</includehint>
-</includehints>
 </UI>

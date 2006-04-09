@@ -169,3 +169,4 @@ version 2.8.1:
 	* R441: In lilypond export korrect syntax for alternatives in repeats
 	* R444: ADDED: Portuguese translation thanks to Denis A. Altoe Falqueto.
 	* R445: FIXED: Removed obsolete nscaleedit.h inclusion from a couple of .ui files, which caused problems during compilation on some systems.
+	* R446: Updated Slovenian and Italian translation.

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-27 00:41+0200\n"
+"POT-Creation-Date: 2006-04-09 11:34+0200\n"
 "PO-Revision-Date: 2005-06-12 22:30+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -14,6 +14,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
+
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Slovenský preklad: Zdenko Podobný"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "zdpo@mailbox.sk"
 
 #: abcexport.cpp:89 abcexport.cpp:92 filehandler.cpp:1097 filehandler.cpp:1099
 #: filehandler.cpp:1970 lilyexport.cpp:130 lilyexport.cpp:133
@@ -83,6 +95,10 @@ msgstr "name2Line: interná chyba "
 #: clef.cpp:465
 msgid "name2Line"
 msgstr "name2Line"
+
+#: configuredialog.cpp:56
+msgid "Configure"
+msgstr ""
 
 #: configuredialog.cpp:69
 msgid "General"
@@ -255,7 +271,7 @@ msgstr "Triediť podľa poznámok"
 msgid "Export format"
 msgstr "Triediť podľa poznámok"
 
-#: configuredialog.cpp:207 rc.cpp:481
+#: configuredialog.cpp:207 rc.cpp:490
 #, no-c-format
 msgid "Midi"
 msgstr ""
@@ -280,6 +296,11 @@ msgstr "Inform&ácie..."
 
 #: configuredialog.cpp:225 configuredialog.cpp:262
 msgid "&Options:"
+msgstr ""
+
+#: configuredialog.cpp:228 configuredialog.cpp:265 rc.cpp:760
+#, no-c-format
+msgid "Options"
 msgstr ""
 
 #: configuredialog.cpp:234
@@ -554,6 +575,11 @@ msgstr ""
 msgid "Possible data loss!"
 msgstr "Môže dôjsť ku strate údajov!"
 
+#: filehandler.cpp:592 resource.cpp:534 uiconnect.cpp:1533
+#, fuzzy
+msgid "Save"
+msgstr "Typ vlny"
+
 #: filehandler.cpp:598
 #, fuzzy
 msgid ""
@@ -654,6 +680,11 @@ msgstr ""
 #, fuzzy
 msgid "MUP cannot correctly write more than one slurred grace\n"
 msgstr "PMX sa nevie vysporiadať s viac ako 2 hlasmi na osnovu\n"
+
+#: layout.cpp:55 rc.cpp:842 rc.cpp:920 ../kguitar_excerpt/chord.cpp:353
+#, fuzzy, no-c-format
+msgid "Cancel"
+msgstr "Kanál"
 
 #: layout.cpp:55
 #, fuzzy
@@ -914,6 +945,11 @@ msgstr "Exportovať do &LilyPondu..."
 msgid "Print pre&view..."
 msgstr ""
 
+#: mainframewidget.cpp:253
+#, fuzzy
+msgid "&Print..."
+msgstr "&Elementy..."
+
 #: mainframewidget.cpp:255
 msgid "Score in&formation..."
 msgstr "In&formácie o partitúre"
@@ -921,6 +957,16 @@ msgstr "In&formácie o partitúre"
 #: mainframewidget.cpp:256
 msgid "&Key configuration"
 msgstr "&Klávesové skratky"
+
+#: mainframewidget.cpp:257
+#, fuzzy
+msgid "&Close"
+msgstr "&Zavrieť všetko"
+
+#: mainframewidget.cpp:258
+#, fuzzy
+msgid "&Quit"
+msgstr "&Stlmiť"
 
 #: mainframewidget.cpp:260
 msgid "Show &bar numbers"
@@ -1398,9 +1444,29 @@ msgstr ""
 msgid "Selected voice"
 msgstr "Odstrániť hlas"
 
+#: mainframewidget.cpp:554
+msgid "Zoom"
+msgstr ""
+
 #: mainframewidget.cpp:565 mainframewidget.cpp:4327
 msgid "Key"
 msgstr "Kľúč"
+
+#: mainframewidget.cpp:567 rc.cpp:148 rc.cpp:247 rc.cpp:421 rc.cpp:436
+#: rc.cpp:454 rc.cpp:484 rc.cpp:508 rc.cpp:721 rc.cpp:733 rc.cpp:796
+#: rc.cpp:827 rc.cpp:860 rc.cpp:877 rc.cpp:910 rc.cpp:953 rc.cpp:971
+#: resource.cpp:542
+#, no-c-format
+msgid "&OK"
+msgstr ""
+
+#: mainframewidget.cpp:569 mainframewidget.cpp:5392 rc.cpp:166 rc.cpp:214
+#: rc.cpp:244 rc.cpp:424 rc.cpp:433 rc.cpp:457 rc.cpp:463 rc.cpp:487
+#: rc.cpp:706 rc.cpp:724 rc.cpp:730 rc.cpp:739 rc.cpp:824 rc.cpp:857
+#: rc.cpp:956 rc.cpp:968 uiconnect.cpp:1074
+#, fuzzy, no-c-format
+msgid "&Cancel"
+msgstr "Kanál"
 
 #: mainframewidget.cpp:598
 #, fuzzy
@@ -1668,6 +1734,21 @@ msgstr ""
 msgid "New"
 msgstr "Nový"
 
+#: mainframewidget.cpp:3538 mainframewidget.cpp:3616 mainframewidget.cpp:3676
+#: mainframewidget.cpp:3974
+#, fuzzy
+msgid "&Save"
+msgstr "&Nastaviť"
+
+#: mainframewidget.cpp:3539 mainframewidget.cpp:3617 mainframewidget.cpp:3677
+#: mainframewidget.cpp:3975
+msgid "&Discard"
+msgstr ""
+
+#: mainframewidget.cpp:3615 mainframewidget.cpp:3675
+msgid "Open"
+msgstr ""
+
 #: mainframewidget.cpp:3841
 msgid ""
 "MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
@@ -1682,6 +1763,11 @@ msgid ""
 "present!\n"
 "Please look in the MIDI import section in documentation for more information!"
 msgstr ""
+
+#: mainframewidget.cpp:3973
+#, fuzzy
+msgid "Close"
+msgstr "Farby"
 
 #: mainframewidget.cpp:4037
 msgid "Do you really want to close all windows?"
@@ -1715,6 +1801,11 @@ msgstr "Zmazať osnovu"
 #: mainframewidget.cpp:4407
 msgid "This deletes current staff! Are you sure?"
 msgstr "Toto odstráni aktuálnu osnovu! Ste si istý?"
+
+#: mainframewidget.cpp:4409 staff.cpp:163 staff.cpp:197 staff.cpp:206
+#, fuzzy
+msgid "&Delete"
+msgstr "&Vybrať"
 
 #: mainframewidget.cpp:4441
 msgid "Staff moving"
@@ -1764,6 +1855,11 @@ msgstr "<center>Koľko nôt:</center>"
 #: mainframewidget.cpp:4523
 msgid "Autobeam"
 msgstr "Automatické viazanie"
+
+#: mainframewidget.cpp:4524
+#, fuzzy
+msgid "&Start"
+msgstr "Spustenie"
 
 #: mainframewidget.cpp:4535
 #, fuzzy
@@ -2140,20 +2236,50 @@ msgid ""
 "See log file for details."
 msgstr ""
 
+#: rc.cpp:3 rc.cpp:60
+#, fuzzy, no-c-format
+msgid "&Edit"
+msgstr "Úpravy"
+
+#: rc.cpp:6 rc.cpp:63
+#, fuzzy, no-c-format
+msgid "&View"
+msgstr "Hlas"
+
+#: rc.cpp:9 rc.cpp:66
+#, fuzzy, no-c-format
+msgid "&Insert"
+msgstr "vložiť notu"
+
 #: rc.cpp:12 rc.cpp:72
 #, no-c-format
 msgid "St&aff"
 msgstr "Osnov&a"
+
+#: rc.cpp:15 rc.cpp:81
+#, no-c-format
+msgid "&Tools"
+msgstr ""
 
 #: rc.cpp:18 rc.cpp:78
 #, no-c-format
 msgid "TSE&3"
 msgstr "TSE&3"
 
+#: rc.cpp:21 rc.cpp:84
+#, fuzzy, no-c-format
+msgid "&Settings"
+msgstr "Nastavenia"
+
 #: rc.cpp:24
 #, no-c-format
 msgid "&Window"
 msgstr "&Okno"
+
+#: rc.cpp:27 rc.cpp:87
+#, no-c-format
+msgid "&Help"
+msgstr ""
 
 #: rc.cpp:30 rc.cpp:90
 #, no-c-format
@@ -2190,6 +2316,11 @@ msgstr "dodatočné"
 msgid "Accent Toolbar"
 msgstr "Panel s akcentami"
 
+#: rc.cpp:51
+#, fuzzy, no-c-format
+msgid "&File"
+msgstr "Pekne!"
+
 #: rc.cpp:54
 #, no-c-format
 msgid "&Import"
@@ -2215,7 +2346,7 @@ msgstr "F&ormát"
 msgid "Graces"
 msgstr ""
 
-#: rc.cpp:117 rc.cpp:166
+#: rc.cpp:117 rc.cpp:178
 #, fuzzy, no-c-format
 msgid "ABC music"
 msgstr "ABC hudba"
@@ -2262,63 +2393,63 @@ msgstr "Počet prvkov v boxe"
 
 #: rc.cpp:145
 #, no-c-format
-msgid "File export - NoteEdit"
-msgstr "NoteEdit - export súborov"
-
-#: rc.cpp:148
-#, no-c-format
-msgid "Start &export"
-msgstr "Začať &exportovanie"
-
-#: rc.cpp:151
-#, fuzzy, no-c-format
-msgid "Alt+E"
-msgstr "Alt+C"
-
-#: rc.cpp:157 rc.cpp:391 rc.cpp:742
-#, no-c-format
-msgid "Alt+C"
-msgstr "Alt+C"
-
-#: rc.cpp:160
-#, fuzzy, no-c-format
-msgid "Midi format"
-msgstr "&PMX formát"
-
-#: rc.cpp:163
-#, fuzzy, no-c-format
-msgid "MusiXTeX format"
-msgstr "Formát MusiX&TeXu"
-
-#: rc.cpp:169
-#, fuzzy, no-c-format
-msgid "PMX format"
-msgstr "&PMX formát"
-
-#: rc.cpp:172
-#, fuzzy, no-c-format
-msgid "Lilypond format"
-msgstr "Lil&yPond formát"
-
-#: rc.cpp:175
-#, fuzzy, no-c-format
-msgid "MusicXML format"
-msgstr "Formát MusiX&TeXu"
-
-#: rc.cpp:178
-#, no-c-format
 msgid "export warning"
 msgstr "varovanie pri exporte"
 
-#: rc.cpp:184 rc.cpp:511
+#: rc.cpp:151 rc.cpp:511
 #, no-c-format
 msgid "&Details >>"
 msgstr "&Detaily >>"
 
-#: rc.cpp:187
+#: rc.cpp:154
 #, no-c-format
 msgid "Export problems"
 msgstr "Problémy s exportom"
+
+#: rc.cpp:157
+#, no-c-format
+msgid "File export - NoteEdit"
+msgstr "NoteEdit - export súborov"
+
+#: rc.cpp:160
+#, no-c-format
+msgid "Start &export"
+msgstr "Začať &exportovanie"
+
+#: rc.cpp:163
+#, fuzzy, no-c-format
+msgid "Alt+E"
+msgstr "Alt+C"
+
+#: rc.cpp:169 rc.cpp:391 rc.cpp:742
+#, no-c-format
+msgid "Alt+C"
+msgstr "Alt+C"
+
+#: rc.cpp:172
+#, fuzzy, no-c-format
+msgid "Midi format"
+msgstr "&PMX formát"
+
+#: rc.cpp:175
+#, fuzzy, no-c-format
+msgid "MusiXTeX format"
+msgstr "Formát MusiX&TeXu"
+
+#: rc.cpp:181
+#, fuzzy, no-c-format
+msgid "PMX format"
+msgstr "&PMX formát"
+
+#: rc.cpp:184
+#, fuzzy, no-c-format
+msgid "Lilypond format"
+msgstr "Lil&yPond formát"
+
+#: rc.cpp:187
+#, fuzzy, no-c-format
+msgid "MusicXML format"
+msgstr "Formát MusiX&TeXu"
 
 #: rc.cpp:190
 #, no-c-format
@@ -2712,15 +2843,15 @@ msgstr "Tempo záznamu:"
 msgid "&Start recording"
 msgstr "Začať zaznam&enávanie"
 
-#: rc.cpp:484
-#, fuzzy, no-c-format
-msgid "Additional MIDI parameters:"
-msgstr "Ďalšie atribúty"
-
-#: rc.cpp:487
+#: rc.cpp:481
 #, no-c-format
 msgid "MIDI settings - NoteEdit"
 msgstr "MIDI nastavenie - NoteEdit"
+
+#: rc.cpp:493
+#, fuzzy, no-c-format
+msgid "Additional MIDI parameters:"
+msgstr "Ďalšie atribúty"
 
 #: rc.cpp:496
 #, no-c-format
@@ -2937,6 +3068,11 @@ msgstr "Parametre ukladania"
 msgid "Enable"
 msgstr "Povolené"
 
+#: rc.cpp:684
+#, fuzzy, no-c-format
+msgid "Landscape"
+msgstr "Na š&írku"
+
 #: rc.cpp:687
 #, fuzzy, no-c-format
 msgid "&With measure numbers"
@@ -2953,19 +3089,19 @@ msgid "Dismiss"
 msgstr "Odmietnuť"
 
 #: rc.cpp:702
-#, no-c-format
-msgid "set value"
-msgstr "nastaviť hodnotu"
-
-#: rc.cpp:705
 #, fuzzy, no-c-format
 msgid "scaleForm"
 msgstr "Voľba hud. kľúča"
 
-#: rc.cpp:712
+#: rc.cpp:709
 #, no-c-format
 msgid "&Include rests"
 msgstr "&Vrátane pomlčiek"
+
+#: rc.cpp:712
+#, no-c-format
+msgid "set value"
+msgstr "nastaviť hodnotu"
 
 #: rc.cpp:715
 #, no-c-format
@@ -3226,6 +3362,11 @@ msgstr "Vytvoriť hla&s"
 #, no-c-format
 msgid "&Delete voice"
 msgstr "&Zmazať hlas"
+
+#: rc.cpp:950
+#, no-c-format
+msgid "&Apply"
+msgstr ""
 
 #: rc.cpp:959
 #, no-c-format
@@ -3879,6 +4020,11 @@ msgstr "Výstrel"
 msgid "Details:"
 msgstr "Detaily:"
 
+#: resource.cpp:573
+#, fuzzy
+msgid "Do not show this message again"
+msgstr "Ne&zobrazovať túto správu v budúcnosti"
+
 #: resource.cpp:620
 msgid ""
 "<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%"
@@ -4357,18 +4503,6 @@ msgstr ""
 "aj hudobným kľúčom! Noteedit prestane meniť akordy/noty, \n"
 "iba ak sa objaví nový hudobný kľúč.</p>\n"
 
-#: _translatorinfo.cpp:1
-msgid ""
-"_: NAME OF TRANSLATORS\n"
-"Your names"
-msgstr "Slovenský preklad: Zdenko Podobný"
-
-#: _translatorinfo.cpp:3
-msgid ""
-"_: EMAIL OF TRANSLATORS\n"
-"Your emails"
-msgstr "zdpo@mailbox.sk"
-
 #: tse3handler.cpp:312 tse3handler.cpp:338 tse3handler.cpp:363
 #: tse3handler.cpp:468 tse3handler.cpp:487 tse3handler.cpp:521
 #: tse3handler.cpp:564
@@ -4465,6 +4599,11 @@ msgstr "Importovať záznam"
 #: uiconnect.cpp:160
 msgid "There is nothing to export."
 msgstr "Niet čo exportovať."
+
+#: uiconnect.cpp:161 uiconnect.cpp:283 uiconnect.cpp:1554
+#, fuzzy
+msgid "Export"
+msgstr "&Export"
 
 #: uiconnect.cpp:282
 msgid "No staff selected for export."
@@ -4650,6 +4789,11 @@ msgstr "Nožičky hore"
 msgid "Rest position"
 msgstr "Pozícia pomlčky"
 
+#: voicedialog.cpp:79
+#, fuzzy
+msgid "Delete"
+msgstr "výber"
+
 #: voicedialog.cpp:88
 msgid "The number of the voice to which the settings above apply."
 msgstr "Počet hlasov, na ktoré sa budú tieto nastavenia aplikovať."
@@ -4750,6 +4894,10 @@ msgstr "Všetko"
 msgid "remove chord"
 msgstr "odstrániť akord"
 
+#: ../kguitar_excerpt/chord.cpp:349
+msgid "OK"
+msgstr ""
+
 #: ../kguitar_excerpt/chord.cpp:357
 msgid "show diagram"
 msgstr "zobraziť diagram"
@@ -4815,9 +4963,6 @@ msgstr "Tvorba akordov"
 
 #~ msgid "enable"
 #~ msgstr "povoliť"
-
-#~ msgid "select"
-#~ msgstr "výber"
 
 #~ msgid "drum1"
 #~ msgstr "bubon1"

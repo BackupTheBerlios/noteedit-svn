@@ -8,13 +8,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-27 00:41+0200\n"
+"POT-Creation-Date: 2006-04-09 11:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr ""
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr ""
 
 #: abcexport.cpp:89 abcexport.cpp:92 filehandler.cpp:1097 filehandler.cpp:1099
 #: filehandler.cpp:1970 lilyexport.cpp:130 lilyexport.cpp:133
@@ -74,6 +86,10 @@ msgstr ""
 
 #: clef.cpp:465
 msgid "name2Line"
+msgstr ""
+
+#: configuredialog.cpp:56
+msgid "Configure"
 msgstr ""
 
 #: configuredialog.cpp:69
@@ -226,7 +242,7 @@ msgstr ""
 msgid "Export format"
 msgstr ""
 
-#: configuredialog.cpp:207 rc.cpp:481
+#: configuredialog.cpp:207 rc.cpp:490
 #, no-c-format
 msgid "Midi"
 msgstr ""
@@ -250,6 +266,11 @@ msgstr ""
 
 #: configuredialog.cpp:225 configuredialog.cpp:262
 msgid "&Options:"
+msgstr ""
+
+#: configuredialog.cpp:228 configuredialog.cpp:265 rc.cpp:760
+#, no-c-format
+msgid "Options"
 msgstr ""
 
 #: configuredialog.cpp:234
@@ -494,6 +515,10 @@ msgstr ""
 msgid "Possible data loss!"
 msgstr ""
 
+#: filehandler.cpp:592 resource.cpp:534 uiconnect.cpp:1533
+msgid "Save"
+msgstr ""
+
 #: filehandler.cpp:598
 msgid ""
 "Noteedit will save your score, and it can (probably) restore the score.\n"
@@ -568,6 +593,11 @@ msgstr ""
 
 #: filehandler.cpp:672
 msgid "MUP cannot correctly write more than one slurred grace\n"
+msgstr ""
+
+#: layout.cpp:55 rc.cpp:842 rc.cpp:920 ../kguitar_excerpt/chord.cpp:353
+#, no-c-format
+msgid "Cancel"
 msgstr ""
 
 #: layout.cpp:55
@@ -802,12 +832,24 @@ msgstr ""
 msgid "Print pre&view..."
 msgstr ""
 
+#: mainframewidget.cpp:253
+msgid "&Print..."
+msgstr ""
+
 #: mainframewidget.cpp:255
 msgid "Score in&formation..."
 msgstr ""
 
 #: mainframewidget.cpp:256
 msgid "&Key configuration"
+msgstr ""
+
+#: mainframewidget.cpp:257
+msgid "&Close"
+msgstr ""
+
+#: mainframewidget.cpp:258
+msgid "&Quit"
 msgstr ""
 
 #: mainframewidget.cpp:260
@@ -1266,8 +1308,28 @@ msgstr ""
 msgid "Selected voice"
 msgstr ""
 
+#: mainframewidget.cpp:554
+msgid "Zoom"
+msgstr ""
+
 #: mainframewidget.cpp:565 mainframewidget.cpp:4327
 msgid "Key"
+msgstr ""
+
+#: mainframewidget.cpp:567 rc.cpp:148 rc.cpp:247 rc.cpp:421 rc.cpp:436
+#: rc.cpp:454 rc.cpp:484 rc.cpp:508 rc.cpp:721 rc.cpp:733 rc.cpp:796
+#: rc.cpp:827 rc.cpp:860 rc.cpp:877 rc.cpp:910 rc.cpp:953 rc.cpp:971
+#: resource.cpp:542
+#, no-c-format
+msgid "&OK"
+msgstr ""
+
+#: mainframewidget.cpp:569 mainframewidget.cpp:5392 rc.cpp:166 rc.cpp:214
+#: rc.cpp:244 rc.cpp:424 rc.cpp:433 rc.cpp:457 rc.cpp:463 rc.cpp:487
+#: rc.cpp:706 rc.cpp:724 rc.cpp:730 rc.cpp:739 rc.cpp:824 rc.cpp:857
+#: rc.cpp:956 rc.cpp:968 uiconnect.cpp:1074
+#, no-c-format
+msgid "&Cancel"
 msgstr ""
 
 #: mainframewidget.cpp:598
@@ -1494,6 +1556,20 @@ msgstr ""
 msgid "New"
 msgstr ""
 
+#: mainframewidget.cpp:3538 mainframewidget.cpp:3616 mainframewidget.cpp:3676
+#: mainframewidget.cpp:3974
+msgid "&Save"
+msgstr ""
+
+#: mainframewidget.cpp:3539 mainframewidget.cpp:3617 mainframewidget.cpp:3677
+#: mainframewidget.cpp:3975
+msgid "&Discard"
+msgstr ""
+
+#: mainframewidget.cpp:3615 mainframewidget.cpp:3675
+msgid "Open"
+msgstr ""
+
 #: mainframewidget.cpp:3841
 msgid ""
 "MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
@@ -1507,6 +1583,10 @@ msgid ""
 "MIDI import is performed by the TSE3 library, but the library is not "
 "present!\n"
 "Please look in the MIDI import section in documentation for more information!"
+msgstr ""
+
+#: mainframewidget.cpp:3973
+msgid "Close"
 msgstr ""
 
 #: mainframewidget.cpp:4037
@@ -1539,6 +1619,10 @@ msgstr ""
 
 #: mainframewidget.cpp:4407
 msgid "This deletes current staff! Are you sure?"
+msgstr ""
+
+#: mainframewidget.cpp:4409 staff.cpp:163 staff.cpp:197 staff.cpp:206
+msgid "&Delete"
 msgstr ""
 
 #: mainframewidget.cpp:4441
@@ -1587,6 +1671,10 @@ msgstr ""
 
 #: mainframewidget.cpp:4523
 msgid "Autobeam"
+msgstr ""
+
+#: mainframewidget.cpp:4524
+msgid "&Start"
 msgstr ""
 
 #: mainframewidget.cpp:4535
@@ -1925,9 +2013,29 @@ msgid ""
 "See log file for details."
 msgstr ""
 
+#: rc.cpp:3 rc.cpp:60
+#, no-c-format
+msgid "&Edit"
+msgstr ""
+
+#: rc.cpp:6 rc.cpp:63
+#, no-c-format
+msgid "&View"
+msgstr ""
+
+#: rc.cpp:9 rc.cpp:66
+#, no-c-format
+msgid "&Insert"
+msgstr ""
+
 #: rc.cpp:12 rc.cpp:72
 #, no-c-format
 msgid "St&aff"
+msgstr ""
+
+#: rc.cpp:15 rc.cpp:81
+#, no-c-format
+msgid "&Tools"
 msgstr ""
 
 #: rc.cpp:18 rc.cpp:78
@@ -1935,9 +2043,19 @@ msgstr ""
 msgid "TSE&3"
 msgstr ""
 
+#: rc.cpp:21 rc.cpp:84
+#, no-c-format
+msgid "&Settings"
+msgstr ""
+
 #: rc.cpp:24
 #, no-c-format
 msgid "&Window"
+msgstr ""
+
+#: rc.cpp:27 rc.cpp:87
+#, no-c-format
+msgid "&Help"
 msgstr ""
 
 #: rc.cpp:30 rc.cpp:90
@@ -1975,6 +2093,11 @@ msgstr ""
 msgid "Accent Toolbar"
 msgstr ""
 
+#: rc.cpp:51
+#, no-c-format
+msgid "&File"
+msgstr ""
+
 #: rc.cpp:54
 #, no-c-format
 msgid "&Import"
@@ -2000,7 +2123,7 @@ msgstr ""
 msgid "Graces"
 msgstr ""
 
-#: rc.cpp:117 rc.cpp:166
+#: rc.cpp:117 rc.cpp:178
 #, no-c-format
 msgid "ABC music"
 msgstr ""
@@ -2047,62 +2170,62 @@ msgstr ""
 
 #: rc.cpp:145
 #, no-c-format
-msgid "File export - NoteEdit"
-msgstr ""
-
-#: rc.cpp:148
-#, no-c-format
-msgid "Start &export"
-msgstr ""
-
-#: rc.cpp:151
-#, no-c-format
-msgid "Alt+E"
-msgstr ""
-
-#: rc.cpp:157 rc.cpp:391 rc.cpp:742
-#, no-c-format
-msgid "Alt+C"
-msgstr ""
-
-#: rc.cpp:160
-#, no-c-format
-msgid "Midi format"
-msgstr ""
-
-#: rc.cpp:163
-#, no-c-format
-msgid "MusiXTeX format"
-msgstr ""
-
-#: rc.cpp:169
-#, no-c-format
-msgid "PMX format"
-msgstr ""
-
-#: rc.cpp:172
-#, no-c-format
-msgid "Lilypond format"
-msgstr ""
-
-#: rc.cpp:175
-#, no-c-format
-msgid "MusicXML format"
-msgstr ""
-
-#: rc.cpp:178
-#, no-c-format
 msgid "export warning"
 msgstr ""
 
-#: rc.cpp:184 rc.cpp:511
+#: rc.cpp:151 rc.cpp:511
 #, no-c-format
 msgid "&Details >>"
 msgstr ""
 
-#: rc.cpp:187
+#: rc.cpp:154
 #, no-c-format
 msgid "Export problems"
+msgstr ""
+
+#: rc.cpp:157
+#, no-c-format
+msgid "File export - NoteEdit"
+msgstr ""
+
+#: rc.cpp:160
+#, no-c-format
+msgid "Start &export"
+msgstr ""
+
+#: rc.cpp:163
+#, no-c-format
+msgid "Alt+E"
+msgstr ""
+
+#: rc.cpp:169 rc.cpp:391 rc.cpp:742
+#, no-c-format
+msgid "Alt+C"
+msgstr ""
+
+#: rc.cpp:172
+#, no-c-format
+msgid "Midi format"
+msgstr ""
+
+#: rc.cpp:175
+#, no-c-format
+msgid "MusiXTeX format"
+msgstr ""
+
+#: rc.cpp:181
+#, no-c-format
+msgid "PMX format"
+msgstr ""
+
+#: rc.cpp:184
+#, no-c-format
+msgid "Lilypond format"
+msgstr ""
+
+#: rc.cpp:187
+#, no-c-format
+msgid "MusicXML format"
 msgstr ""
 
 #: rc.cpp:190
@@ -2494,14 +2617,14 @@ msgstr ""
 msgid "&Start recording"
 msgstr ""
 
-#: rc.cpp:484
-#, no-c-format
-msgid "Additional MIDI parameters:"
-msgstr ""
-
-#: rc.cpp:487
+#: rc.cpp:481
 #, no-c-format
 msgid "MIDI settings - NoteEdit"
+msgstr ""
+
+#: rc.cpp:493
+#, no-c-format
+msgid "Additional MIDI parameters:"
 msgstr ""
 
 #: rc.cpp:496
@@ -2719,6 +2842,11 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
+#: rc.cpp:684
+#, no-c-format
+msgid "Landscape"
+msgstr ""
+
 #: rc.cpp:687
 #, no-c-format
 msgid "&With measure numbers"
@@ -2736,17 +2864,17 @@ msgstr ""
 
 #: rc.cpp:702
 #, no-c-format
-msgid "set value"
+msgid "scaleForm"
 msgstr ""
 
-#: rc.cpp:705
+#: rc.cpp:709
 #, no-c-format
-msgid "scaleForm"
+msgid "&Include rests"
 msgstr ""
 
 #: rc.cpp:712
 #, no-c-format
-msgid "&Include rests"
+msgid "set value"
 msgstr ""
 
 #: rc.cpp:715
@@ -3007,6 +3135,11 @@ msgstr ""
 #: rc.cpp:947
 #, no-c-format
 msgid "&Delete voice"
+msgstr ""
+
+#: rc.cpp:950
+#, no-c-format
+msgid "&Apply"
 msgstr ""
 
 #: rc.cpp:959
@@ -3626,6 +3759,10 @@ msgstr ""
 msgid "Details:"
 msgstr ""
 
+#: resource.cpp:573
+msgid "Do not show this message again"
+msgstr ""
+
 #: resource.cpp:620
 msgid ""
 "<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%"
@@ -3959,18 +4096,6 @@ msgid ""
 "new clef appears.</p>\n"
 msgstr ""
 
-#: _translatorinfo.cpp:1
-msgid ""
-"_: NAME OF TRANSLATORS\n"
-"Your names"
-msgstr ""
-
-#: _translatorinfo.cpp:3
-msgid ""
-"_: EMAIL OF TRANSLATORS\n"
-"Your emails"
-msgstr ""
-
 #: tse3handler.cpp:312 tse3handler.cpp:338 tse3handler.cpp:363
 #: tse3handler.cpp:468 tse3handler.cpp:487 tse3handler.cpp:521
 #: tse3handler.cpp:564
@@ -4065,6 +4190,10 @@ msgstr ""
 
 #: uiconnect.cpp:160
 msgid "There is nothing to export."
+msgstr ""
+
+#: uiconnect.cpp:161 uiconnect.cpp:283 uiconnect.cpp:1554
+msgid "Export"
 msgstr ""
 
 #: uiconnect.cpp:282
@@ -4244,6 +4373,10 @@ msgstr ""
 msgid "Rest position"
 msgstr ""
 
+#: voicedialog.cpp:79
+msgid "Delete"
+msgstr ""
+
 #: voicedialog.cpp:88
 msgid "The number of the voice to which the settings above apply."
 msgstr ""
@@ -4336,6 +4469,10 @@ msgstr ""
 
 #: ../kguitar_excerpt/chord.cpp:345
 msgid "remove chord"
+msgstr ""
+
+#: ../kguitar_excerpt/chord.cpp:349
+msgid "OK"
 msgstr ""
 
 #: ../kguitar_excerpt/chord.cpp:357

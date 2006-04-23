@@ -31,6 +31,7 @@ New features to 2.8.0:
   - export all strings in UTF-8 encoding, if Lily >2.6 is found.
 - gcc4 complete compiler support. Many warning fixes and internal cleanups.
 - Many documentation additions and fixes.
+- New translations and translation updates
 
 Bugs fixed to 2.8.0:
 --------------------

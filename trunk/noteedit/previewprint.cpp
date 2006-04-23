@@ -41,6 +41,7 @@
 #include "uiconnect.h"
 #include "staffPropFrm.h"
 
+// Constructor
 NPreviewPrint::NPreviewPrint()
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -48,6 +49,7 @@ NPreviewPrint::NPreviewPrint()
 #endif
 }
 
+// Destructor
 NPreviewPrint::~NPreviewPrint()
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -65,7 +67,7 @@ void NPreviewPrint::setupPrinting(bool preview)
     // Setup printer (shows the print dialog)
     if( printer_->setup(this) == false ) 
       KMessageBox::error(0,i18n("Couldn't setup printer"), 
-                         kapp->makeStdCaption(i18n("???")));
+                         kapp->makeStdCaption(i18n("Error")));
   }
 #endif
 }
@@ -166,14 +168,31 @@ void NPreviewPrint::filePrint(bool preview, exportFrm *exportDialog)
 #endif /* WITH_DIRECT_PRINTING */
 }
 
+// Show that print export was finished.
+// exportProgram: export process
+void NPreviewPrint::filePrintExportFinished(KProcess *exportProgram)
+{
+#ifdef WITH_DIRECT_PRINTING
+    printf("Finished export.\n");
+    fflush(stdout);
+    disconnect( exportProgram, SIGNAL( processExited (KProcess *) ), 
+                this, SLOT( filePrintExportFinished(KProcess *) ) );
+#endif
+}
+
 // Clean up after print preview was finished.
+// previewProgram: preview process
 void NPreviewPrint::filePrintPreviewFinished(KProcess *previewProgram)
 {
 #ifdef WITH_DIRECT_PRINTING
-    printf("Finished.\n");
+    printf("Done viewing preview file.\n");
     fflush(stdout);
     disconnect( previewProgram, SIGNAL( processExited (KProcess *) ), 
                 this, SLOT( filePrintPreviewFinished(KProcess *) ) );
+    disconnect( previewProgram, SIGNAL( receivedStdout(KProcess *, char *, int) ),
+	        this, SLOT( filePrintReceivedStdOut(KProcess *, char *, int) ) );
+    disconnect( previewProgram, SIGNAL( receivedStderr(KProcess *, char *, int) ),
+	        this, SLOT( filePrintReceivedStdErr(KProcess *, char *, int) ) );
     // Remove preview file on exit of browser
     unlink(previewFile_);
     unlink(filePath_ + ".pdf");
@@ -182,6 +201,8 @@ void NPreviewPrint::filePrintPreviewFinished(KProcess *previewProgram)
 }
 
 // Show the standard output of the export or preview process
+// buffer: output of the process
+// buflen: Length of output
 void NPreviewPrint::filePrintReceivedStdOut(KProcess *, char *buffer, int buflen)
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -193,6 +214,8 @@ void NPreviewPrint::filePrintReceivedStdOut(KProcess *, char *buffer, int buflen
 }
 
 // Show the error output of the export or preview process
+// buffer: output of the process
+// buflen: Length of output
 void NPreviewPrint::filePrintReceivedStdErr(KProcess *, char *buffer, int buflen)
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -210,7 +233,7 @@ void NPreviewPrint::printDoExport(KProcess *typesettingProgram)
 #ifdef WITH_DIRECT_PRINTING
     QValueList<QCString> args = typesettingProgram->args();
     connect( typesettingProgram, SIGNAL( processExited (KProcess *) ), 
-             this, SLOT( filePrintPreviewFinished(KProcess *) ) );
+             this, SLOT( filePrintExportFinished(KProcess *) ) );
     // Output of convert process should be visible on console in case something fails
     connect( typesettingProgram, SIGNAL( receivedStdout(KProcess *, char *, int) ),
 	     this, SLOT( filePrintReceivedStdOut(KProcess *, char *, int) ) );
@@ -223,8 +246,8 @@ void NPreviewPrint::printDoExport(KProcess *typesettingProgram)
     cout << endl;
     // Start converting exported file to a printable file
     typesettingProgram->start(KProcess::Block, KProcess::All);
-    disconnect( typesettingProgram, SIGNAL( processExited (KProcess *) ), 
-                this, SLOT( filePrintPreviewFinished(KProcess *) ) );
+    //disconnect( typesettingProgram, SIGNAL( processExited (KProcess *) ), 
+    //            this, SLOT( filePrintExportFinished(KProcess *) ) );
     disconnect( typesettingProgram, SIGNAL( receivedStdout(KProcess *, char *, int) ),
 	        this, SLOT( filePrintReceivedStdOut(KProcess *, char *, int) ) );
     disconnect( typesettingProgram, SIGNAL( receivedStderr(KProcess *, char *, int) ),
@@ -241,13 +264,14 @@ bool NPreviewPrint::setExistantFile( QString &filePath )
     if( false == QFileInfo( filePath ).exists() )
     {
       KMessageBox::sorry(this, i18n("File was not succesfully converted."), 
-                         kapp->makeStdCaption(i18n("???")));
+                         kapp->makeStdCaption(i18n("Error")));
       return false;
     }
     return true;
 }
 
 // Shows the exported file (postscript or pdf) with the set preview program
+// fileType: ending to be added to the filename (".ps" or ".pdf")
 bool NPreviewPrint::printDoPreview(QString fileType)
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -256,7 +280,7 @@ bool NPreviewPrint::printDoPreview(QString fileType)
     if( fprevprog == "" || fprevprog == QString::null )
     {
       KMessageBox::sorry(this, i18n("Could not find preview program."), 
-                         kapp->makeStdCaption(i18n("???")));
+                         kapp->makeStdCaption(i18n("Error")));
       return false;
     }
     QStringList printpreviewOptions = QStringList::split( " ", QString(NResource::previewOptions_) );
@@ -270,11 +294,21 @@ bool NPreviewPrint::printDoPreview(QString fileType)
     // Signal exit of program so we can clean up
     connect( &previewProgram, SIGNAL( processExited (KProcess *) ), 
              this, SLOT( filePrintPreviewFinished(KProcess *) ) );
+    connect( &previewProgram, SIGNAL( receivedStdout(KProcess *, char *, int) ),
+	     this, SLOT( filePrintReceivedStdOut(KProcess *, char *, int) ) );
+    connect( &previewProgram, SIGNAL( receivedStderr(KProcess *, char *, int) ),
+	     this, SLOT( filePrintReceivedStdErr(KProcess *, char *, int) ) );
     // Start preview
+    cout << "Previewing with ";
+    QValueList<QCString> args = previewProgram.args();
+    for ( QValueList<QCString>::Iterator it = args.begin(); it != args.end(); ++it ) {
+         cout << *it << " ";
+    }
+    cout << endl;
     if( false == previewProgram.start(KProcess::NotifyOnExit, KProcess::All) )
     {
       KMessageBox::sorry(this, i18n("Could not start preview program."), 
-                         kapp->makeStdCaption(i18n("???")));
+                         kapp->makeStdCaption(i18n("Error")));
       return false;
     }
     return true;
@@ -282,6 +316,7 @@ bool NPreviewPrint::printDoPreview(QString fileType)
 }
 
 // Prints the exported file (postscript or pdf) with the KDE print system
+// fileType: ending to be added to the filename (".ps" or ".pdf")
 bool NPreviewPrint::printDoPrinting(QString fileType)
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -336,6 +371,8 @@ void NPreviewPrint::printWithLilypond(bool preview)
 	    oLogFile.readLine( oLogLine, 1024 );
 	    printf( "%s",oLogLine.ascii() );
         }
+	printf("\n");
+	fflush(stdout);
     }
     else
         printf("Could not open Lilypond log file %s for reading.\n",
@@ -353,7 +390,7 @@ void NPreviewPrint::printWithLilypond(bool preview)
     }
     else
       KMessageBox::sorry(this, i18n("Exporting with lilypond failed.\nSee log file for details."), 
-                         kapp->makeStdCaption(i18n("???")));
+                         kapp->makeStdCaption(i18n("Error")));
 #endif
 }
 
@@ -400,6 +437,8 @@ void NPreviewPrint::printWithABC(bool preview)
 #endif
 }
 
+// Print (preview) using PMX file format    
+// preview:  'true', if the print should be previewed
 void NPreviewPrint::printWithPMX(bool preview)
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -437,6 +476,8 @@ void NPreviewPrint::printWithPMX(bool preview)
 #endif
 }
     
+// Print (preview) using MusiXTeX file format    
+// preview:  'true', if the print should be previewed
 void NPreviewPrint::printWithMusiXTeX(bool preview)
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -474,6 +515,8 @@ void NPreviewPrint::printWithMusiXTeX(bool preview)
 #endif
 }
     
+// Print (preview) using MusicXML file format (with custom print program)    
+// preview:  'true', if the print should be previewed
 void NPreviewPrint::printWithMusicXML(bool preview)
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -510,7 +553,9 @@ void NPreviewPrint::printWithMusicXML(bool preview)
     }
 #endif
 }
-    
+
+// Print (preview) using midi file format (with custom print program)    
+// preview:  'true', if the print should be previewed
 void NPreviewPrint::printWithMidi(bool preview)
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -548,6 +593,8 @@ void NPreviewPrint::printWithMidi(bool preview)
 #endif
 }
     
+// Print (preview) using the noteedit file format (with custom print program)
+// preview:  'true', if the print should be previewed
 void NPreviewPrint::printWithNative(bool preview)
 {
 #ifdef WITH_DIRECT_PRINTING
@@ -557,6 +604,7 @@ void NPreviewPrint::printWithNative(bool preview)
     //struct noteedit_options neOpts;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     saveParametersFrm *form = (saveParametersFrm *)printer_->createExportForm( "NoteEdit", EXP_NoteEdit );
+    (void)form;
     // Read options (currently not done)
     //form->getNoteEditOptions( neOpts );
     // Save options to new form (currently not done)
@@ -587,6 +635,7 @@ void NPreviewPrint::printWithNative(bool preview)
 }
 
 #ifdef WITH_DIRECT_PRINTING
+// Constructor
 IntPrinter::IntPrinter(QWidget *exportParent)
 {
   form_ = 0;
@@ -638,6 +687,7 @@ IntPrinter::~IntPrinter()
 PrintExportDialogPage::PrintExportDialogPage( QWidget *tab, QWidget *parent, const char *name )
  : KPrintDialogPage( parent, name )
 {
+  (void)tab;
 }
 
 // Sets the dialog page title
@@ -646,14 +696,17 @@ void PrintExportDialogPage::setTabTitle( QString title )
     setTitle( title );
 }
 
+// Destructor
 PrintExportDialogPage::~PrintExportDialogPage()
 {
 }
 
+// Read options (not needed)
 void PrintExportDialogPage::getOptions( QMap<QString,QString>& /*opts*/, bool /*incldef*/ )
 {
 }
 
+// Change options (not needed)
 void PrintExportDialogPage::setOptions( const QMap<QString,QString>& /*opts*/ )
 {
 }

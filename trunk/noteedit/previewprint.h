@@ -47,6 +47,7 @@ public slots:
     void filePrint(bool, exportFrm *);
 
 protected slots:
+    void filePrintExportFinished(KProcess *);
     void filePrintPreviewFinished(KProcess *);
     void filePrintReceivedStdOut(KProcess *, char *, int);
     void filePrintReceivedStdErr(KProcess *, char *, int);

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-09 11:34+0200\n"
-"PO-Revision-Date: 2006-04-09 11:42+0200\n"
+"POT-Creation-Date: 2006-04-23 22:06+0200\n"
+"PO-Revision-Date: 2006-04-23 22:06+0200\n"
 "Last-Translator: Matevž Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team:  <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,21 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.2\n"
 
-#: _translatorinfo.cpp:1
-msgid ""
-"_: NAME OF TRANSLATORS\n"
-"Your names"
-msgstr "Matevž Jekovec"
-
-#: _translatorinfo.cpp:3
-msgid ""
-"_: EMAIL OF TRANSLATORS\n"
-"Your emails"
-msgstr "matevz.jekovec@guest.arnes.si"
-
 #: abcexport.cpp:89 abcexport.cpp:92 filehandler.cpp:1097 filehandler.cpp:1099
 #: filehandler.cpp:1970 lilyexport.cpp:130 lilyexport.cpp:133
-#: lilyexport.cpp:1090 mainframewidget.cpp:1155 mainframewidget.cpp:1159
+#: lilyexport.cpp:1098 mainframewidget.cpp:1155 mainframewidget.cpp:1159
 #: mainframewidget.cpp:1172 mainframewidget.cpp:1185 mainframewidget.cpp:1190
 #: mainframewidget.cpp:1194 mainframewidget.cpp:3841 mainframewidget.cpp:3843
 #: mainframewidget.cpp:4535 midiexport.cpp:149 midiexport.cpp:152
@@ -54,7 +42,7 @@ msgstr ""
 "pojavilo nekaj napak, ki bodo kasneje verjetno preprečile uspešen prevod "
 "dokumenta v PostScript format. \n"
 
-#: abcexport.cpp:271 filehandler.cpp:600 lilyexport.cpp:652
+#: abcexport.cpp:271 filehandler.cpp:600 lilyexport.cpp:660
 #: musicxmlexport.cpp:464 musixtex.cpp:623 pmxexport.cpp:395
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
@@ -85,7 +73,7 @@ msgstr ""
 
 #: abcexport.cpp:296
 msgid "ABC music produced. But there are some problems."
-msgstr "Izvoz v \"ABC music\" format je končan, vendar je prišlo do nekaj napak."
+msgstr "Izvoz v \"ABC music\" format je končan, vendar je prišlo do nekaterih napak."
 
 #: clef.cpp:464
 msgid "name2Line: internal error"
@@ -94,10 +82,6 @@ msgstr "name2Line: notranja napaka programa"
 #: clef.cpp:465
 msgid "name2Line"
 msgstr "name2Line"
-
-#: configuredialog.cpp:56
-msgid "Configure"
-msgstr "Nastavitve"
 
 #: configuredialog.cpp:69
 msgid "General"
@@ -260,7 +244,7 @@ msgstr "Tip izvožene datoteke:"
 msgid "Export format"
 msgstr "Tip izvožene datoteke"
 
-#: configuredialog.cpp:207 rc.cpp:490
+#: configuredialog.cpp:207 rc.cpp:481
 #, no-c-format
 msgid "Midi"
 msgstr "MIDI"
@@ -285,11 +269,6 @@ msgstr "Izvedi ukaz"
 #: configuredialog.cpp:225 configuredialog.cpp:262
 msgid "&Options:"
 msgstr "M&ožnosti:"
-
-#: configuredialog.cpp:228 configuredialog.cpp:265 rc.cpp:760
-#, no-c-format
-msgid "Options"
-msgstr "M&ožnosti"
 
 #: configuredialog.cpp:234
 msgid "Pre&view program"
@@ -547,10 +526,6 @@ msgstr ""
 msgid "Possible data loss!"
 msgstr "Možnost izgube podatkov!"
 
-#: filehandler.cpp:592 resource.cpp:534 uiconnect.cpp:1533
-msgid "Save"
-msgstr "Shrani"
-
 #: filehandler.cpp:598
 msgid ""
 "Noteedit will save your score, and it can (probably) restore the score.\n"
@@ -639,11 +614,6 @@ msgstr "MUP format ne podpira večih akolad na en sam sistem\n"
 msgid "MUP cannot correctly write more than one slurred grace\n"
 msgstr "MUP format ne more pravilno zapisati več kot eno okrasno noto pod lokom\n"
 
-#: layout.cpp:55 rc.cpp:842 rc.cpp:920 ../kguitar_excerpt/chord.cpp:353
-#, no-c-format
-msgid "Cancel"
-msgstr "Prekliči"
-
 #: layout.cpp:55
 msgid "Set brace"
 msgstr "Dodaj akolado"
@@ -672,7 +642,7 @@ msgstr "Taktnice ločene"
 msgid "Score layout"
 msgstr "Izgled dokumenta"
 
-#: lilyexport.cpp:650
+#: lilyexport.cpp:658
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -681,21 +651,21 @@ msgstr ""
 "nekaj problemov, ki bodo najverjetneje povzročili neuspešno izvajanje "
 "LilyPonda nad dokumentom\n"
 
-#: lilyexport.cpp:657
+#: lilyexport.cpp:665
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr "Sistem %1, takt %2: 128-inka v taktu, najmanjša je lahko 64-inka\n"
 
-#: lilyexport.cpp:661
+#: lilyexport.cpp:669
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr ""
 "Sistem %1 ima nenormativne stalne predznake, ki ne morajo biti zapisani v "
 "LilyPond formatu\n"
 
-#: lilyexport.cpp:665
+#: lilyexport.cpp:673
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "Sistem %1, takt %2 ima %3 128-inko, morala bi biti %%4\n"
 
-#: lilyexport.cpp:670
+#: lilyexport.cpp:678
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -703,11 +673,11 @@ msgstr ""
 "Sistem %1, takt %2: LilyPond starejši od 1.5.2 ne podpira dinamično dolgih "
 "trilčkov (valujoče črte)\n"
 
-#: lilyexport.cpp:675
+#: lilyexport.cpp:683
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr "Sistem %1, takt %2: Le nekaj not v akordu ima vezaje!\n"
 
-#: lilyexport.cpp:679
+#: lilyexport.cpp:687
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -715,11 +685,11 @@ msgstr ""
 "Sistem %1 vsebuje stavek za tolkala. Pozor! Izvoz v LilyPond format lahko ni "
 "povsem pravilen!\n"
 
-#: lilyexport.cpp:684
+#: lilyexport.cpp:692
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr "Sistem %1: Ta verzija LilyPonda ne podpira lokov znotraj okrasnih not\n"
 
-#: lilyexport.cpp:689
+#: lilyexport.cpp:697
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
@@ -727,23 +697,23 @@ msgstr ""
 "Oglat oklepaj z deloma povezljivo in deloma nepovezljivo taktnico ne more "
 "biti zapisan v LilyPond formatu\n"
 
-#: lilyexport.cpp:693
+#: lilyexport.cpp:701
 msgid "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Klavirski stavek brez povezljive taktnice med sistemoma ne more biti zapisan "
 "v LilyPond formatu\n"
 
-#: lilyexport.cpp:697
+#: lilyexport.cpp:705
 msgid "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Povezljiva taktnica zunaj območja akolade ali oglatega oklepaja ne more biti "
 "zapisana v LilyPond formatu\n"
 
-#: lilyexport.cpp:701
+#: lilyexport.cpp:709
 msgid "LilyPond produced. But there are some problems."
 msgstr "Uspešno Izvoženo v LilyPond format, vendar se je pojavilo nekaj napak."
 
-#: lilyexport.cpp:1089
+#: lilyexport.cpp:1097
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "
 "enjoy this feature."
@@ -891,10 +861,6 @@ msgstr "Izvozi v &LilyPond ..."
 msgid "Print pre&view..."
 msgstr "Predog&led tiska ..."
 
-#: mainframewidget.cpp:253
-msgid "&Print..."
-msgstr "Nati&stni ..."
-
 #: mainframewidget.cpp:255
 msgid "Score in&formation..."
 msgstr "Informacije o dokumentu ..."
@@ -902,14 +868,6 @@ msgstr "Informacije o dokumentu ..."
 #: mainframewidget.cpp:256
 msgid "&Key configuration"
 msgstr "&Nastavi bližnjice ..."
-
-#: mainframewidget.cpp:257
-msgid "&Close"
-msgstr "&Zapri"
-
-#: mainframewidget.cpp:258
-msgid "&Quit"
-msgstr "&Končaj"
 
 #: mainframewidget.cpp:260
 msgid "Show &bar numbers"
@@ -1367,29 +1325,9 @@ msgstr "Trikotnik - oblika notne glavice"
 msgid "Selected voice"
 msgstr "Trenutno izbran glas"
 
-#: mainframewidget.cpp:554
-msgid "Zoom"
-msgstr "Povečava"
-
 #: mainframewidget.cpp:565 mainframewidget.cpp:4327
 msgid "Key"
 msgstr "Stalni predznaki"
-
-#: mainframewidget.cpp:567 rc.cpp:148 rc.cpp:247 rc.cpp:421 rc.cpp:436
-#: rc.cpp:454 rc.cpp:484 rc.cpp:508 rc.cpp:721 rc.cpp:733 rc.cpp:796
-#: rc.cpp:827 rc.cpp:860 rc.cpp:877 rc.cpp:910 rc.cpp:953 rc.cpp:971
-#: resource.cpp:542
-#, no-c-format
-msgid "&OK"
-msgstr "V &redu"
-
-#: mainframewidget.cpp:569 mainframewidget.cpp:5392 rc.cpp:166 rc.cpp:214
-#: rc.cpp:244 rc.cpp:424 rc.cpp:433 rc.cpp:457 rc.cpp:463 rc.cpp:487
-#: rc.cpp:706 rc.cpp:724 rc.cpp:730 rc.cpp:739 rc.cpp:824 rc.cpp:857
-#: rc.cpp:956 rc.cpp:968 uiconnect.cpp:1074
-#, no-c-format
-msgid "&Cancel"
-msgstr "&Prekliči"
 
 #: mainframewidget.cpp:598
 msgid "Move up"
@@ -1617,20 +1555,6 @@ msgstr ""
 msgid "New"
 msgstr "Nov dokument"
 
-#: mainframewidget.cpp:3538 mainframewidget.cpp:3616 mainframewidget.cpp:3676
-#: mainframewidget.cpp:3974
-msgid "&Save"
-msgstr "&Shrani"
-
-#: mainframewidget.cpp:3539 mainframewidget.cpp:3617 mainframewidget.cpp:3677
-#: mainframewidget.cpp:3975
-msgid "&Discard"
-msgstr "&Zavrži"
-
-#: mainframewidget.cpp:3615 mainframewidget.cpp:3675
-msgid "Open"
-msgstr "Odpri"
-
 #: mainframewidget.cpp:3841
 msgid ""
 "MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
@@ -1652,10 +1576,6 @@ msgid ""
 msgstr ""
 "MIDI uvoz izvaja TSE3 knjižnica, ki pa ni na voljo!\n"
 "Prosimo, poglejte v MIDI import sekcijo v dokumentaciji za več informacij!"
-
-#: mainframewidget.cpp:3973
-msgid "Close"
-msgstr "Zapri"
 
 #: mainframewidget.cpp:4037
 msgid "Do you really want to close all windows?"
@@ -1688,10 +1608,6 @@ msgstr "Izbriši sistem"
 #: mainframewidget.cpp:4407
 msgid "This deletes current staff! Are you sure?"
 msgstr "Izbrisal bom trenutno izbran sistem! Ali ste prepričani?"
-
-#: mainframewidget.cpp:4409 staff.cpp:163 staff.cpp:197 staff.cpp:206
-msgid "&Delete"
-msgstr "&Zbriši"
 
 #: mainframewidget.cpp:4441
 msgid "Staff moving"
@@ -1740,10 +1656,6 @@ msgstr "<center>Koliko not?</center> "
 #: mainframewidget.cpp:4523
 msgid "Autobeam"
 msgstr "Samodejna vezava vratov"
-
-#: mainframewidget.cpp:4524
-msgid "&Start"
-msgstr "Začni"
 
 #: mainframewidget.cpp:4535
 msgid "Please choose a repeat close sign!"
@@ -1852,7 +1764,7 @@ msgid ""
 "but there are some problems.\n"
 msgstr ""
 "Noteedit je izvozil dokument v MusicXCML,\n"
-"vendar je prišlo do nekaj napak.\n"
+"vendar je prišlo do nekaterih napak.\n"
 
 #: musicxmlexport.cpp:469
 msgid "Staff %1 has irregular keysig. This is currently not supported.\n"
@@ -2105,50 +2017,20 @@ msgstr ""
 "Izvoz v LilyPond se je ponesrečil.\n"
 "Poglejte dnevnik za podrobnosti."
 
-#: rc.cpp:3 rc.cpp:60
-#, no-c-format
-msgid "&Edit"
-msgstr "&Urejanje"
-
-#: rc.cpp:6 rc.cpp:63
-#, no-c-format
-msgid "&View"
-msgstr "Po&gled"
-
-#: rc.cpp:9 rc.cpp:66
-#, no-c-format
-msgid "&Insert"
-msgstr "&Vstavi"
-
 #: rc.cpp:12 rc.cpp:72
 #, no-c-format
 msgid "St&aff"
 msgstr "Notni &Sistem"
-
-#: rc.cpp:15 rc.cpp:81
-#, no-c-format
-msgid "&Tools"
-msgstr "&Orodja"
 
 #: rc.cpp:18 rc.cpp:78
 #, no-c-format
 msgid "TSE&3"
 msgstr "TSE&3"
 
-#: rc.cpp:21 rc.cpp:84
-#, no-c-format
-msgid "&Settings"
-msgstr "Na&stavitve"
-
 #: rc.cpp:24
 #, no-c-format
 msgid "&Window"
 msgstr "&Okno"
-
-#: rc.cpp:27 rc.cpp:87
-#, no-c-format
-msgid "&Help"
-msgstr "&Pomoč"
 
 #: rc.cpp:30 rc.cpp:90
 #, no-c-format
@@ -2185,11 +2067,6 @@ msgstr "dodatno"
 msgid "Accent Toolbar"
 msgstr "Orodja za nemelodične note"
 
-#: rc.cpp:51
-#, no-c-format
-msgid "&File"
-msgstr "&Datoteka"
-
 #: rc.cpp:54
 #, no-c-format
 msgid "&Import"
@@ -2215,7 +2092,7 @@ msgstr "O&blika"
 msgid "Graces"
 msgstr "Okrasne note"
 
-#: rc.cpp:117 rc.cpp:178
+#: rc.cpp:117 rc.cpp:166
 #, no-c-format
 msgid "ABC music"
 msgstr "\"ABC music\" format"
@@ -2262,63 +2139,63 @@ msgstr "Številke taktov v okvirčkih"
 
 #: rc.cpp:145
 #, no-c-format
-msgid "export warning"
-msgstr "Opozorilo ob izvažanju"
-
-#: rc.cpp:151 rc.cpp:511
-#, no-c-format
-msgid "&Details >>"
-msgstr "&Podrobnosti >>"
-
-#: rc.cpp:154
-#, no-c-format
-msgid "Export problems"
-msgstr "Težave z izvozom"
-
-#: rc.cpp:157
-#, no-c-format
 msgid "File export - NoteEdit"
 msgstr "Datoteka izvozi - Noteedit"
 
-#: rc.cpp:160
+#: rc.cpp:148
 #, no-c-format
 msgid "Start &export"
 msgstr "Začni izvo&z"
 
-#: rc.cpp:163
+#: rc.cpp:151
 #, no-c-format
 msgid "Alt+E"
 msgstr "Alt+E"
 
-#: rc.cpp:169 rc.cpp:391 rc.cpp:742
+#: rc.cpp:157 rc.cpp:391 rc.cpp:742
 #, no-c-format
 msgid "Alt+C"
 msgstr "Alt+C"
 
-#: rc.cpp:172
+#: rc.cpp:160
 #, no-c-format
 msgid "Midi format"
 msgstr "MIDI format"
 
-#: rc.cpp:175
+#: rc.cpp:163
 #, no-c-format
 msgid "MusiXTeX format"
 msgstr "MusiX&Tex format"
 
-#: rc.cpp:181
+#: rc.cpp:169
 #, no-c-format
 msgid "PMX format"
 msgstr "&PMX format"
 
-#: rc.cpp:184
+#: rc.cpp:172
 #, no-c-format
 msgid "Lilypond format"
 msgstr "Lil&yPond format"
 
-#: rc.cpp:187
+#: rc.cpp:175
 #, no-c-format
 msgid "MusicXML format"
 msgstr "MusiX&Tex format"
+
+#: rc.cpp:178
+#, no-c-format
+msgid "export warning"
+msgstr "Opozorilo ob izvažanju"
+
+#: rc.cpp:184 rc.cpp:511
+#, no-c-format
+msgid "&Details >>"
+msgstr "&Podrobnosti >>"
+
+#: rc.cpp:187
+#, no-c-format
+msgid "Export problems"
+msgstr "Težave z izvozom"
 
 #: rc.cpp:190
 #, no-c-format
@@ -2713,15 +2590,15 @@ msgstr "Tempo za snemanje:"
 msgid "&Start recording"
 msgstr "&Začni snemati"
 
-#: rc.cpp:481
-#, no-c-format
-msgid "MIDI settings - NoteEdit"
-msgstr "MIDI Nastavitve - NoteEdit"
-
-#: rc.cpp:493
+#: rc.cpp:484
 #, no-c-format
 msgid "Additional MIDI parameters:"
 msgstr "Dodatni parametri za MIDI:"
+
+#: rc.cpp:487
+#, no-c-format
+msgid "MIDI settings - NoteEdit"
+msgstr "MIDI Nastavitve - NoteEdit"
 
 #: rc.cpp:496
 #, no-c-format
@@ -2938,11 +2815,6 @@ msgstr "Shrani nastavitve"
 msgid "Enable"
 msgstr "Vključeno"
 
-#: rc.cpp:684
-#, no-c-format
-msgid "Landscape"
-msgstr "&Ležeča stran"
-
 #: rc.cpp:687
 #, no-c-format
 msgid "&With measure numbers"
@@ -2960,18 +2832,18 @@ msgstr "Prekliči"
 
 #: rc.cpp:702
 #, no-c-format
+msgid "set value"
+msgstr "Nastavi vrednost"
+
+#: rc.cpp:705
+#, no-c-format
 msgid "scaleForm"
 msgstr "scaleForm"
 
-#: rc.cpp:709
+#: rc.cpp:712
 #, no-c-format
 msgid "&Include rests"
 msgstr "&Vključi pavze"
-
-#: rc.cpp:712
-#, no-c-format
-msgid "set value"
-msgstr "Nastavi vrednost"
 
 #: rc.cpp:715
 #, no-c-format
@@ -3232,11 +3104,6 @@ msgstr "&Ustvari glas"
 #, no-c-format
 msgid "&Delete voice"
 msgstr "&Izbriši glas"
-
-#: rc.cpp:950
-#, no-c-format
-msgid "&Apply"
-msgstr "&Uveljavi"
 
 #: rc.cpp:959
 #, no-c-format
@@ -3855,10 +3722,6 @@ msgstr "Strel s pištolo"
 msgid "Details:"
 msgstr "Podrobnosti:"
 
-#: resource.cpp:573
-msgid "Do not show this message again"
-msgstr "Ne pokaži tega sporočila več"
-
 #: resource.cpp:620
 msgid ""
 "<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%"
@@ -3897,12 +3760,12 @@ msgid "&Subject:"
 msgstr "&Podnaslov:"
 
 #: scoreinfo.cpp:88
-msgid "A&uthor:"
-msgstr "&Avtor:"
+msgid "Compo&ser:"
+msgstr "&Skladatelj:"
 
 #: scoreinfo.cpp:98
-msgid "&Last author:"
-msgstr "&Zadnji avtor:"
+msgid "&Arranger:"
+msgstr "&Aranžer:"
 
 #: scoreinfo.cpp:109
 msgid "&Copyright:"
@@ -4357,6 +4220,18 @@ msgstr ""
 "naletel\n"
 " na že kakšno ponovno spremembo ključa.</p>\n"
 
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Matevž Jekovec"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "matevz.jekovec@guest.arnes.si"
+
 #: tse3handler.cpp:312 tse3handler.cpp:338 tse3handler.cpp:363
 #: tse3handler.cpp:468 tse3handler.cpp:487 tse3handler.cpp:521
 #: tse3handler.cpp:564
@@ -4452,10 +4327,6 @@ msgstr "Uvozi snemanje"
 #: uiconnect.cpp:160
 msgid "There is nothing to export."
 msgstr "Ničesar za izvoziti."
-
-#: uiconnect.cpp:161 uiconnect.cpp:283 uiconnect.cpp:1554
-msgid "Export"
-msgstr "Izvozi"
 
 #: uiconnect.cpp:282
 msgid "No staff selected for export."
@@ -4639,10 +4510,6 @@ msgstr "Vratovi dol"
 msgid "Rest position"
 msgstr "Pozicija pavz"
 
-#: voicedialog.cpp:79
-msgid "Delete"
-msgstr "Izbriši"
-
 #: voicedialog.cpp:88
 msgid "The number of the voice to which the settings above apply."
 msgstr "Številka glasu, na katerega se nanašajo zgornje nastavitve."
@@ -4742,10 +4609,6 @@ msgstr "Vsi"
 #: ../kguitar_excerpt/chord.cpp:345
 msgid "remove chord"
 msgstr "Odstrani akord"
-
-#: ../kguitar_excerpt/chord.cpp:349
-msgid "OK"
-msgstr "V redu"
 
 #: ../kguitar_excerpt/chord.cpp:357
 msgid "show diagram"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-09 11:34+0200\n"
+"POT-Creation-Date: 2006-04-23 22:06+0200\n"
 "PO-Revision-Date: 2005-06-12 22:27+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: sloven��ina <lugos-slo@lugos.si>\n"
@@ -15,21 +15,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
 
-#: _translatorinfo.cpp:1
-msgid ""
-"_: NAME OF TRANSLATORS\n"
-"Your names"
-msgstr "Peter Breuer"
-
-#: _translatorinfo.cpp:3
-msgid ""
-"_: EMAIL OF TRANSLATORS\n"
-"Your emails"
-msgstr "comp@suselinux.hu"
-
 #: abcexport.cpp:89 abcexport.cpp:92 filehandler.cpp:1097 filehandler.cpp:1099
 #: filehandler.cpp:1970 lilyexport.cpp:130 lilyexport.cpp:133
-#: lilyexport.cpp:1090 mainframewidget.cpp:1155 mainframewidget.cpp:1159
+#: lilyexport.cpp:1098 mainframewidget.cpp:1155 mainframewidget.cpp:1159
 #: mainframewidget.cpp:1172 mainframewidget.cpp:1185 mainframewidget.cpp:1190
 #: mainframewidget.cpp:1194 mainframewidget.cpp:3841 mainframewidget.cpp:3843
 #: mainframewidget.cpp:4535 midiexport.cpp:149 midiexport.cpp:152
@@ -52,7 +40,7 @@ msgstr ""
 "Noteedit exportálta a kottát PMX formátumba, de elképzelhető néhány\n"
 "probléma amely lehetetlenné teszi a sikeres PMX kimenetet.\n"
 
-#: abcexport.cpp:271 filehandler.cpp:600 lilyexport.cpp:652
+#: abcexport.cpp:271 filehandler.cpp:600 lilyexport.cpp:660
 #: musicxmlexport.cpp:464 musixtex.cpp:623 pmxexport.cpp:395
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
@@ -95,10 +83,6 @@ msgstr "name2Line: belső hiba"
 #: clef.cpp:465
 msgid "name2Line"
 msgstr "name2Line"
-
-#: configuredialog.cpp:56
-msgid "Configure"
-msgstr ""
 
 #: configuredialog.cpp:69
 msgid "General"
@@ -263,7 +247,7 @@ msgstr "Export problémák"
 msgid "Export format"
 msgstr "Export problémák"
 
-#: configuredialog.cpp:207 rc.cpp:490
+#: configuredialog.cpp:207 rc.cpp:481
 #, no-c-format
 msgid "Midi"
 msgstr ""
@@ -288,11 +272,6 @@ msgstr "In&formáció..."
 
 #: configuredialog.cpp:225 configuredialog.cpp:262
 msgid "&Options:"
-msgstr ""
-
-#: configuredialog.cpp:228 configuredialog.cpp:265 rc.cpp:760
-#, no-c-format
-msgid "Options"
 msgstr ""
 
 #: configuredialog.cpp:234
@@ -557,11 +536,6 @@ msgstr ""
 msgid "Possible data loss!"
 msgstr "Adatvesztés lehetséges!"
 
-#: filehandler.cpp:592 resource.cpp:534 uiconnect.cpp:1533
-#, fuzzy
-msgid "Save"
-msgstr "Háromszögjel"
-
 #: filehandler.cpp:598
 msgid ""
 "Noteedit will save your score, and it can (probably) restore the score.\n"
@@ -659,11 +633,6 @@ msgstr ""
 msgid "MUP cannot correctly write more than one slurred grace\n"
 msgstr "PMX nem kezel többet két hangszernél szólamonként\n"
 
-#: layout.cpp:55 rc.cpp:842 rc.cpp:920 ../kguitar_excerpt/chord.cpp:353
-#, fuzzy, no-c-format
-msgid "Cancel"
-msgstr "Csatorna"
-
 #: layout.cpp:55
 #, fuzzy
 msgid "Set brace"
@@ -697,7 +666,7 @@ msgstr ""
 msgid "Score layout"
 msgstr "Kotta in&formáció..."
 
-#: lilyexport.cpp:650
+#: lilyexport.cpp:658
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -705,19 +674,19 @@ msgstr ""
 "Noteedit exportálta a kottát a LilyPond-ba, de néhány\n"
 "probléma fennálhat, amely gátolhatja a sikeres LilyPond kimenetet.\n"
 
-#: lilyexport.cpp:657
+#: lilyexport.cpp:665
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr "szólam %1, ütem %2: 128. az ütemben; minimum = 64.\n"
 
-#: lilyexport.cpp:661
+#: lilyexport.cpp:669
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr "szólam %1 valótlan előjegyzéssel. Ez nem vihető át a LilyPond-ba\n"
 
-#: lilyexport.cpp:665
+#: lilyexport.cpp:673
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "szólam %1, ütem %2:  %3 128., ennek %4-nek kell lennie\n"
 
-#: lilyexport.cpp:670
+#: lilyexport.cpp:678
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -725,13 +694,13 @@ msgstr ""
 "szólam %1, ütem %2: a LilyPond verziószáma kevesebb, mint 1.5.2 ez nem "
 "képes kezelni a hosszú triolákat (hullámvonalak)\n"
 
-#: lilyexport.cpp:675
+#: lilyexport.cpp:683
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr ""
 "szólam %1, ütem %2: csak az akkordba tartozó hangjegyeknek lehet "
 "kötésük!\n"
 
-#: lilyexport.cpp:679
+#: lilyexport.cpp:687
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -739,33 +708,33 @@ msgstr ""
 "A %1 szólam dobszólamot tartalmaz. Jegyezze meg! A LilyPond export nem "
 "lesz korrekt!\n"
 
-#: lilyexport.cpp:684
+#: lilyexport.cpp:692
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr "Szólam %1: A LilyPond ezen verziója nem kezeli a díszítéseket\n"
 
-#: lilyexport.cpp:689
+#: lilyexport.cpp:697
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
 msgstr ""
 
-#: lilyexport.cpp:693
+#: lilyexport.cpp:701
 #, fuzzy
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr "szólam %1 valótlan előjegyzéssel. Ez nem vihető át a LilyPond-ba\n"
 
-#: lilyexport.cpp:697
+#: lilyexport.cpp:705
 #, fuzzy
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr "szólam %1 valótlan előjegyzéssel. Ez nem vihető át a LilyPond-ba\n"
 
-#: lilyexport.cpp:701
+#: lilyexport.cpp:709
 msgid "LilyPond produced. But there are some problems."
 msgstr "LilyPond létrejött. Lehetnek azonban problémák."
 
-#: lilyexport.cpp:1089
+#: lilyexport.cpp:1097
 #, fuzzy
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "
@@ -920,11 +889,6 @@ msgstr "Export &LilyPond..."
 msgid "Print pre&view..."
 msgstr ""
 
-#: mainframewidget.cpp:253
-#, fuzzy
-msgid "&Print..."
-msgstr "&Vonal..."
-
 #: mainframewidget.cpp:255
 msgid "Score in&formation..."
 msgstr "Kotta in&formáció..."
@@ -932,16 +896,6 @@ msgstr "Kotta in&formáció..."
 #: mainframewidget.cpp:256
 msgid "&Key configuration"
 msgstr "&Kulcs beállítása"
-
-#: mainframewidget.cpp:257
-#, fuzzy
-msgid "&Close"
-msgstr "&Mindent bezár"
-
-#: mainframewidget.cpp:258
-#, fuzzy
-msgid "&Quit"
-msgstr "&Elnémít"
 
 #: mainframewidget.cpp:260
 msgid "Show &bar numbers"
@@ -1434,29 +1388,9 @@ msgstr ""
 msgid "Selected voice"
 msgstr "Hangszer törlése"
 
-#: mainframewidget.cpp:554
-msgid "Zoom"
-msgstr ""
-
 #: mainframewidget.cpp:565 mainframewidget.cpp:4327
 msgid "Key"
 msgstr "Hang"
-
-#: mainframewidget.cpp:567 rc.cpp:148 rc.cpp:247 rc.cpp:421 rc.cpp:436
-#: rc.cpp:454 rc.cpp:484 rc.cpp:508 rc.cpp:721 rc.cpp:733 rc.cpp:796
-#: rc.cpp:827 rc.cpp:860 rc.cpp:877 rc.cpp:910 rc.cpp:953 rc.cpp:971
-#: resource.cpp:542
-#, no-c-format
-msgid "&OK"
-msgstr ""
-
-#: mainframewidget.cpp:569 mainframewidget.cpp:5392 rc.cpp:166 rc.cpp:214
-#: rc.cpp:244 rc.cpp:424 rc.cpp:433 rc.cpp:457 rc.cpp:463 rc.cpp:487
-#: rc.cpp:706 rc.cpp:724 rc.cpp:730 rc.cpp:739 rc.cpp:824 rc.cpp:857
-#: rc.cpp:956 rc.cpp:968 uiconnect.cpp:1074
-#, fuzzy, no-c-format
-msgid "&Cancel"
-msgstr "Csatorna"
 
 #: mainframewidget.cpp:598
 #, fuzzy
@@ -1726,21 +1660,6 @@ msgstr ""
 msgid "New"
 msgstr "Új"
 
-#: mainframewidget.cpp:3538 mainframewidget.cpp:3616 mainframewidget.cpp:3676
-#: mainframewidget.cpp:3974
-#, fuzzy
-msgid "&Save"
-msgstr "&Téma:"
-
-#: mainframewidget.cpp:3539 mainframewidget.cpp:3617 mainframewidget.cpp:3677
-#: mainframewidget.cpp:3975
-msgid "&Discard"
-msgstr ""
-
-#: mainframewidget.cpp:3615 mainframewidget.cpp:3675
-msgid "Open"
-msgstr ""
-
 #: mainframewidget.cpp:3841
 msgid ""
 "MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
@@ -1755,11 +1674,6 @@ msgid ""
 "present!\n"
 "Please look in the MIDI import section in documentation for more information!"
 msgstr ""
-
-#: mainframewidget.cpp:3973
-#, fuzzy
-msgid "Close"
-msgstr "Színek"
 
 #: mainframewidget.cpp:4037
 msgid "Do you really want to close all windows?"
@@ -1794,11 +1708,6 @@ msgstr "Szólam törlése"
 #, fuzzy
 msgid "This deletes current staff! Are you sure?"
 msgstr "Ez törli az aktuális hangszert! Biztos benne?"
-
-#: mainframewidget.cpp:4409 staff.cpp:163 staff.cpp:197 staff.cpp:206
-#, fuzzy
-msgid "&Delete"
-msgstr "&Mindent kijelöl"
 
 #: mainframewidget.cpp:4441
 msgid "Staff moving"
@@ -1849,11 +1758,6 @@ msgstr "<center>Hány hangjegy van:</center>"
 #: mainframewidget.cpp:4523
 msgid "Autobeam"
 msgstr "Autogerenda"
-
-#: mainframewidget.cpp:4524
-#, fuzzy
-msgid "&Start"
-msgstr "Programindítás"
 
 #: mainframewidget.cpp:4535
 #, fuzzy
@@ -2235,50 +2139,20 @@ msgid ""
 "See log file for details."
 msgstr ""
 
-#: rc.cpp:3 rc.cpp:60
-#, fuzzy, no-c-format
-msgid "&Edit"
-msgstr "Szerkesztés"
-
-#: rc.cpp:6 rc.cpp:63
-#, fuzzy, no-c-format
-msgid "&View"
-msgstr "Ú&j"
-
-#: rc.cpp:9 rc.cpp:66
-#, fuzzy, no-c-format
-msgid "&Insert"
-msgstr "hangjegy beszúrása"
-
 #: rc.cpp:12 rc.cpp:72
 #, no-c-format
 msgid "St&aff"
 msgstr "S&zólam"
-
-#: rc.cpp:15 rc.cpp:81
-#, no-c-format
-msgid "&Tools"
-msgstr ""
 
 #: rc.cpp:18 rc.cpp:78
 #, no-c-format
 msgid "TSE&3"
 msgstr "TSE&3"
 
-#: rc.cpp:21 rc.cpp:84
-#, fuzzy, no-c-format
-msgid "&Settings"
-msgstr "Beállítások"
-
 #: rc.cpp:24
 #, no-c-format
 msgid "&Window"
 msgstr "&Ablak"
-
-#: rc.cpp:27 rc.cpp:87
-#, no-c-format
-msgid "&Help"
-msgstr ""
 
 #: rc.cpp:30 rc.cpp:90
 #, no-c-format
@@ -2315,11 +2189,6 @@ msgstr "egyebek"
 msgid "Accent Toolbar"
 msgstr "Hangsúly eszköztár"
 
-#: rc.cpp:51
-#, fuzzy, no-c-format
-msgid "&File"
-msgstr "&Vonal..."
-
 #: rc.cpp:54
 #, fuzzy, no-c-format
 msgid "&Import"
@@ -2345,7 +2214,7 @@ msgstr "Fermate"
 msgid "Graces"
 msgstr "díszítések"
 
-#: rc.cpp:117 rc.cpp:178
+#: rc.cpp:117 rc.cpp:166
 #, no-c-format
 msgid "ABC music"
 msgstr ""
@@ -2392,63 +2261,63 @@ msgstr "ütemszámokkal"
 
 #: rc.cpp:145
 #, no-c-format
-msgid "export warning"
-msgstr "export figyelmeztetés"
-
-#: rc.cpp:151 rc.cpp:511
-#, no-c-format
-msgid "&Details >>"
-msgstr "&Részletek >>"
-
-#: rc.cpp:154
-#, no-c-format
-msgid "Export problems"
-msgstr "Export problémák"
-
-#: rc.cpp:157
-#, no-c-format
 msgid "File export - NoteEdit"
 msgstr "Fájl exportálás - NoteEdit"
 
-#: rc.cpp:160
+#: rc.cpp:148
 #, no-c-format
 msgid "Start &export"
 msgstr "&Exportálás indítása"
 
-#: rc.cpp:163
+#: rc.cpp:151
 #, fuzzy, no-c-format
 msgid "Alt+E"
 msgstr "Altszaxofon"
 
-#: rc.cpp:169 rc.cpp:391 rc.cpp:742
+#: rc.cpp:157 rc.cpp:391 rc.cpp:742
 #, no-c-format
 msgid "Alt+C"
 msgstr ""
 
-#: rc.cpp:172
+#: rc.cpp:160
 #, fuzzy, no-c-format
 msgid "Midi format"
 msgstr "&PMX formátum"
 
-#: rc.cpp:175
+#: rc.cpp:163
 #, fuzzy, no-c-format
 msgid "MusiXTeX format"
 msgstr "MusiX&TeX formátum"
 
-#: rc.cpp:181
+#: rc.cpp:169
 #, fuzzy, no-c-format
 msgid "PMX format"
 msgstr "&PMX formátum"
 
-#: rc.cpp:184
+#: rc.cpp:172
 #, fuzzy, no-c-format
 msgid "Lilypond format"
 msgstr "Lil&yPond formátum"
 
-#: rc.cpp:187
+#: rc.cpp:175
 #, fuzzy, no-c-format
 msgid "MusicXML format"
 msgstr "MusiX&TeX formátum"
+
+#: rc.cpp:178
+#, no-c-format
+msgid "export warning"
+msgstr "export figyelmeztetés"
+
+#: rc.cpp:184 rc.cpp:511
+#, no-c-format
+msgid "&Details >>"
+msgstr "&Részletek >>"
+
+#: rc.cpp:187
+#, no-c-format
+msgid "Export problems"
+msgstr "Export problémák"
 
 #: rc.cpp:190
 #, no-c-format
@@ -2843,15 +2712,15 @@ msgstr "Felvételi tempó:"
 msgid "&Start recording"
 msgstr "&Felvétel megkezdése"
 
-#: rc.cpp:481
-#, no-c-format
-msgid "MIDI settings - NoteEdit"
-msgstr "MIDI beállítások - NoteEdit"
-
-#: rc.cpp:493
+#: rc.cpp:484
 #, fuzzy, no-c-format
 msgid "Additional MIDI parameters:"
 msgstr "További attribútumok"
+
+#: rc.cpp:487
+#, no-c-format
+msgid "MIDI settings - NoteEdit"
+msgstr "MIDI beállítások - NoteEdit"
 
 #: rc.cpp:496
 #, no-c-format
@@ -3068,11 +2937,6 @@ msgstr "Paraméterek mentése"
 msgid "Enable"
 msgstr "Bekapcsolt"
 
-#: rc.cpp:684
-#, fuzzy, no-c-format
-msgid "Landscape"
-msgstr "&Fekvő"
-
 #: rc.cpp:687
 #, fuzzy, no-c-format
 msgid "&With measure numbers"
@@ -3090,18 +2954,18 @@ msgstr "Elvet"
 
 #: rc.cpp:702
 #, no-c-format
+msgid "set value"
+msgstr "érték megadása"
+
+#: rc.cpp:705
+#, no-c-format
 msgid "scaleForm"
 msgstr "skálaInnen"
 
-#: rc.cpp:709
+#: rc.cpp:712
 #, no-c-format
 msgid "&Include rests"
 msgstr "&szünetekkel"
-
-#: rc.cpp:712
-#, no-c-format
-msgid "set value"
-msgstr "érték megadása"
 
 #: rc.cpp:715
 #, no-c-format
@@ -3362,11 +3226,6 @@ msgstr "Hangszer &létrehozása"
 #, no-c-format
 msgid "&Delete voice"
 msgstr "Hangszer &törlése"
-
-#: rc.cpp:950
-#, no-c-format
-msgid "&Apply"
-msgstr ""
 
 #: rc.cpp:959
 #, no-c-format
@@ -3985,11 +3844,6 @@ msgstr "Lövés"
 msgid "Details:"
 msgstr "Részletek:"
 
-#: resource.cpp:573
-#, fuzzy
-msgid "Do not show this message again"
-msgstr "Ne mutassa ezt az üzenetet a &jövőben"
-
 #: resource.cpp:620
 msgid ""
 "<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%"
@@ -4027,12 +3881,12 @@ msgid "&Subject:"
 msgstr "&Téma:"
 
 #: scoreinfo.cpp:88
-msgid "A&uthor:"
-msgstr "&Szerző:"
+msgid "Compo&ser:"
+msgstr ""
 
 #: scoreinfo.cpp:98
-msgid "&Last author:"
-msgstr "&Utolsó szerző:"
+msgid "&Arranger:"
+msgstr ""
 
 #: scoreinfo.cpp:109
 msgid "&Copyright:"
@@ -4471,6 +4325,18 @@ msgstr ""
 "megváltoztatását ha egy\n"
 "új kulcsba ütközik.</p>\n"
 
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Peter Breuer"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "comp@suselinux.hu"
+
 #: tse3handler.cpp:312 tse3handler.cpp:338 tse3handler.cpp:363
 #: tse3handler.cpp:468 tse3handler.cpp:487 tse3handler.cpp:521
 #: tse3handler.cpp:564
@@ -4566,11 +4432,6 @@ msgstr "Felvétel importálása"
 #: uiconnect.cpp:160
 msgid "There is nothing to export."
 msgstr "Nincs mit exportálni"
-
-#: uiconnect.cpp:161 uiconnect.cpp:283 uiconnect.cpp:1554
-#, fuzzy
-msgid "Export"
-msgstr "&Export"
 
 #: uiconnect.cpp:282
 msgid "No staff selected for export."
@@ -4760,11 +4621,6 @@ msgstr "Szárak le"
 msgid "Rest position"
 msgstr "Szünet pozíció"
 
-#: voicedialog.cpp:79
-#, fuzzy
-msgid "Delete"
-msgstr "törlés"
-
 #: voicedialog.cpp:88
 msgid "The number of the voice to which the settings above apply."
 msgstr "A hangszerek száma az alábbi beállítások szerint lesz."
@@ -4865,10 +4721,6 @@ msgstr "Összes"
 msgid "remove chord"
 msgstr "akkord eltávolítása"
 
-#: ../kguitar_excerpt/chord.cpp:349
-msgid "OK"
-msgstr ""
-
 #: ../kguitar_excerpt/chord.cpp:357
 msgid "show diagram"
 msgstr "diagram megtekintése"
@@ -4876,6 +4728,88 @@ msgstr "diagram megtekintése"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Akkordszerkesztő"
+
+#, fuzzy
+#~ msgid "Save"
+#~ msgstr "Háromszögjel"
+
+#, fuzzy
+#~ msgid "Cancel"
+#~ msgstr "Csatorna"
+
+#, fuzzy
+#~ msgid "&Print..."
+#~ msgstr "&Vonal..."
+
+#, fuzzy
+#~ msgid "&Close"
+#~ msgstr "&Mindent bezár"
+
+#, fuzzy
+#~ msgid "&Quit"
+#~ msgstr "&Elnémít"
+
+#, fuzzy
+#~ msgid "&Cancel"
+#~ msgstr "Csatorna"
+
+#, fuzzy
+#~ msgid "&Save"
+#~ msgstr "&Téma:"
+
+#, fuzzy
+#~ msgid "Close"
+#~ msgstr "Színek"
+
+#, fuzzy
+#~ msgid "&Delete"
+#~ msgstr "&Mindent kijelöl"
+
+#, fuzzy
+#~ msgid "&Start"
+#~ msgstr "Programindítás"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "Szerkesztés"
+
+#, fuzzy
+#~ msgid "&View"
+#~ msgstr "Ú&j"
+
+#, fuzzy
+#~ msgid "&Insert"
+#~ msgstr "hangjegy beszúrása"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Beállítások"
+
+#, fuzzy
+#~ msgid "&File"
+#~ msgstr "&Vonal..."
+
+#, fuzzy
+#~ msgid "Landscape"
+#~ msgstr "&Fekvő"
+
+#, fuzzy
+#~ msgid "Do not show this message again"
+#~ msgstr "Ne mutassa ezt az üzenetet a &jövőben"
+
+#~ msgid "A&uthor:"
+#~ msgstr "&Szerző:"
+
+#~ msgid "&Last author:"
+#~ msgstr "&Utolsó szerző:"
+
+#, fuzzy
+#~ msgid "Export"
+#~ msgstr "&Export"
+
+#, fuzzy
+#~ msgid "Delete"
+#~ msgstr "törlés"
 
 #, fuzzy
 #~ msgid "Goto measure"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-09 11:34+0200\n"
+"POT-Creation-Date: 2006-04-23 22:06+0200\n"
 "PO-Revision-Date: 2005-06-12 22:22+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -17,21 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
 
-#: _translatorinfo.cpp:1
-msgid ""
-"_: NAME OF TRANSLATORS\n"
-"Your names"
-msgstr "Павел и Елена Богмат"
-
-#: _translatorinfo.cpp:3
-msgid ""
-"_: EMAIL OF TRANSLATORS\n"
-"Your emails"
-msgstr "bohm@ukr.net"
-
 #: abcexport.cpp:89 abcexport.cpp:92 filehandler.cpp:1097 filehandler.cpp:1099
 #: filehandler.cpp:1970 lilyexport.cpp:130 lilyexport.cpp:133
-#: lilyexport.cpp:1090 mainframewidget.cpp:1155 mainframewidget.cpp:1159
+#: lilyexport.cpp:1098 mainframewidget.cpp:1155 mainframewidget.cpp:1159
 #: mainframewidget.cpp:1172 mainframewidget.cpp:1185 mainframewidget.cpp:1190
 #: mainframewidget.cpp:1194 mainframewidget.cpp:3841 mainframewidget.cpp:3843
 #: mainframewidget.cpp:4535 midiexport.cpp:149 midiexport.cpp:152
@@ -54,7 +42,7 @@ msgstr ""
 "некоторые проблемы, которые, возможно, будут препятствовать \n"
 "успешному выводу PostScript.\n"
 
-#: abcexport.cpp:271 filehandler.cpp:600 lilyexport.cpp:652
+#: abcexport.cpp:271 filehandler.cpp:600 lilyexport.cpp:660
 #: musicxmlexport.cpp:464 musixtex.cpp:623 pmxexport.cpp:395
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
@@ -95,10 +83,6 @@ msgstr "name2Line: внутренняя ошибка"
 #: clef.cpp:465
 msgid "name2Line"
 msgstr "name2Line"
-
-#: configuredialog.cpp:56
-msgid "Configure"
-msgstr ""
 
 #: configuredialog.cpp:69
 msgid "General"
@@ -268,7 +252,7 @@ msgstr "Экспорт нот барабана"
 msgid "Export format"
 msgstr "Экспорт нот барабана"
 
-#: configuredialog.cpp:207 rc.cpp:490
+#: configuredialog.cpp:207 rc.cpp:481
 #, no-c-format
 msgid "Midi"
 msgstr ""
@@ -293,11 +277,6 @@ msgstr "&Информация..."
 
 #: configuredialog.cpp:225 configuredialog.cpp:262
 msgid "&Options:"
-msgstr ""
-
-#: configuredialog.cpp:228 configuredialog.cpp:265 rc.cpp:760
-#, no-c-format
-msgid "Options"
 msgstr ""
 
 #: configuredialog.cpp:234
@@ -560,11 +539,6 @@ msgstr ""
 msgid "Possible data loss!"
 msgstr "Возможна потеря данных!"
 
-#: filehandler.cpp:592 resource.cpp:534 uiconnect.cpp:1533
-#, fuzzy
-msgid "Save"
-msgstr "Зубцевидная волна"
-
 #: filehandler.cpp:598
 msgid ""
 "Noteedit will save your score, and it can (probably) restore the score.\n"
@@ -662,11 +636,6 @@ msgstr "MUP не работает со встроенными [ акколада
 msgid "MUP cannot correctly write more than one slurred grace\n"
 msgstr "MUP работает с не более чем одной акколадой на систему.\n"
 
-#: layout.cpp:55 rc.cpp:842 rc.cpp:920 ../kguitar_excerpt/chord.cpp:353
-#, fuzzy, no-c-format
-msgid "Cancel"
-msgstr "Канал"
-
 #: layout.cpp:55
 #, fuzzy
 msgid "Set brace"
@@ -702,7 +671,7 @@ msgstr "прервать такт"
 msgid "Score layout"
 msgstr "Формат партитуры..."
 
-#: lilyexport.cpp:650
+#: lilyexport.cpp:658
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -710,21 +679,21 @@ msgstr ""
 "Noteedit экспортировал партитуру в LilyPond, но есть некоторые проблемы,\n"
 "которые, возможно, будут препятствовать успешному выводу LilyPond.\n"
 
-#: lilyexport.cpp:657
+#: lilyexport.cpp:665
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr "Нотный стан %1, такт %2: 128-ая в такте; минимум - 64-ая.\n"
 
-#: lilyexport.cpp:661
+#: lilyexport.cpp:669
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr ""
 "На нотном стане %1 нерегулярная тональность. Это не может быть выражено в "
 "LilyPond.\n"
 
-#: lilyexport.cpp:665
+#: lilyexport.cpp:673
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "Нотный стан %1, такт %2: имеет %3 128-ую, должна быть: %4\n"
 
-#: lilyexport.cpp:670
+#: lilyexport.cpp:678
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -732,12 +701,12 @@ msgstr ""
 "Нотный стан %1, такт %2: LilyPond версии меньше 1.5.2 не может работать с "
 "разной длиной трелей (волнистых линий).\n"
 
-#: lilyexport.cpp:675
+#: lilyexport.cpp:683
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr ""
 "Нотный стан %1; такт %2: Только несколько нот в аккорде могут связываться!\n"
 
-#: lilyexport.cpp:679
+#: lilyexport.cpp:687
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -745,12 +714,12 @@ msgstr ""
 "Нотный стан %1 содержит нотный стан барабана. Заметка! Экспорт LilyPond "
 "полностью неверный!\n"
 
-#: lilyexport.cpp:684
+#: lilyexport.cpp:692
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr ""
 "Нотный стан %1: Эта версия LilyPond не может работать с лигами в форшлагах.\n"
 
-#: lilyexport.cpp:689
+#: lilyexport.cpp:697
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
@@ -758,25 +727,25 @@ msgstr ""
 "Акколада [ с частично продолженными и частично непродолженными правилами "
 "такта не может быть выражена в LilyPond\n"
 
-#: lilyexport.cpp:693
+#: lilyexport.cpp:701
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Нотный стан Piano без правил продолженного такта. Это не может быть выражен "
 "в LilyPond.\n"
 
-#: lilyexport.cpp:697
+#: lilyexport.cpp:705
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Правило продолженного такта вне [ или { акколады не может быть выражено в "
 "LilyPond.\n"
 
-#: lilyexport.cpp:701
+#: lilyexport.cpp:709
 msgid "LilyPond produced. But there are some problems."
 msgstr "Был вызван LilyPond. Но есть некоторые проблемы."
 
-#: lilyexport.cpp:1089
+#: lilyexport.cpp:1097
 #, fuzzy
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "
@@ -928,11 +897,6 @@ msgstr "Экспорт LilyPond..."
 msgid "Print pre&view..."
 msgstr ""
 
-#: mainframewidget.cpp:253
-#, fuzzy
-msgid "&Print..."
-msgstr "&Линия..."
-
 #: mainframewidget.cpp:255
 msgid "Score in&formation..."
 msgstr "Информация о партитуре..."
@@ -940,16 +904,6 @@ msgstr "Информация о партитуре..."
 #: mainframewidget.cpp:256
 msgid "&Key configuration"
 msgstr "Конфигурация клавиш"
-
-#: mainframewidget.cpp:257
-#, fuzzy
-msgid "&Close"
-msgstr "Закрыть все"
-
-#: mainframewidget.cpp:258
-#, fuzzy
-msgid "&Quit"
-msgstr "При&глушить"
 
 #: mainframewidget.cpp:260
 msgid "Show &bar numbers"
@@ -1423,29 +1377,9 @@ msgstr ""
 msgid "Selected voice"
 msgstr "Удалить голос"
 
-#: mainframewidget.cpp:554
-msgid "Zoom"
-msgstr ""
-
 #: mainframewidget.cpp:565 mainframewidget.cpp:4327
 msgid "Key"
 msgstr "Тональность"
-
-#: mainframewidget.cpp:567 rc.cpp:148 rc.cpp:247 rc.cpp:421 rc.cpp:436
-#: rc.cpp:454 rc.cpp:484 rc.cpp:508 rc.cpp:721 rc.cpp:733 rc.cpp:796
-#: rc.cpp:827 rc.cpp:860 rc.cpp:877 rc.cpp:910 rc.cpp:953 rc.cpp:971
-#: resource.cpp:542
-#, no-c-format
-msgid "&OK"
-msgstr ""
-
-#: mainframewidget.cpp:569 mainframewidget.cpp:5392 rc.cpp:166 rc.cpp:214
-#: rc.cpp:244 rc.cpp:424 rc.cpp:433 rc.cpp:457 rc.cpp:463 rc.cpp:487
-#: rc.cpp:706 rc.cpp:724 rc.cpp:730 rc.cpp:739 rc.cpp:824 rc.cpp:857
-#: rc.cpp:956 rc.cpp:968 uiconnect.cpp:1074
-#, fuzzy, no-c-format
-msgid "&Cancel"
-msgstr "Канал"
 
 #: mainframewidget.cpp:598
 #, fuzzy
@@ -1714,21 +1648,6 @@ msgstr ""
 msgid "New"
 msgstr "Новый"
 
-#: mainframewidget.cpp:3538 mainframewidget.cpp:3616 mainframewidget.cpp:3676
-#: mainframewidget.cpp:3974
-#, fuzzy
-msgid "&Save"
-msgstr "Установить"
-
-#: mainframewidget.cpp:3539 mainframewidget.cpp:3617 mainframewidget.cpp:3677
-#: mainframewidget.cpp:3975
-msgid "&Discard"
-msgstr ""
-
-#: mainframewidget.cpp:3615 mainframewidget.cpp:3675
-msgid "Open"
-msgstr ""
-
 #: mainframewidget.cpp:3841
 msgid ""
 "MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
@@ -1749,11 +1668,6 @@ msgstr ""
 "Импорт MIDI возможен лишь при наличии библиотеки TSE3, которой сейчас нет в "
 "системе!\n"
 "Прочтите раздел об импорте MIDI-файлов в документации!"
-
-#: mainframewidget.cpp:3973
-#, fuzzy
-msgid "Close"
-msgstr "Цвета"
 
 #: mainframewidget.cpp:4037
 msgid "Do you really want to close all windows?"
@@ -1787,11 +1701,6 @@ msgstr "Удалить нотный стан"
 #: mainframewidget.cpp:4407
 msgid "This deletes current staff! Are you sure?"
 msgstr "Это удалит текущий стан! Вы уверены?"
-
-#: mainframewidget.cpp:4409 staff.cpp:163 staff.cpp:197 staff.cpp:206
-#, fuzzy
-msgid "&Delete"
-msgstr "&Выбрать"
 
 #: mainframewidget.cpp:4441
 msgid "Staff moving"
@@ -1841,11 +1750,6 @@ msgstr "<center>Сколько нот:</center>"
 #: mainframewidget.cpp:4523
 msgid "Autobeam"
 msgstr "Автогруппировка"
-
-#: mainframewidget.cpp:4524
-#, fuzzy
-msgid "&Start"
-msgstr "Запуск"
 
 #: mainframewidget.cpp:4535
 msgid "Please choose a repeat close sign!"
@@ -2221,50 +2125,20 @@ msgid ""
 "See log file for details."
 msgstr ""
 
-#: rc.cpp:3 rc.cpp:60
-#, fuzzy, no-c-format
-msgid "&Edit"
-msgstr "Правка"
-
-#: rc.cpp:6 rc.cpp:63
-#, fuzzy, no-c-format
-msgid "&View"
-msgstr "Звучание"
-
-#: rc.cpp:9 rc.cpp:66
-#, fuzzy, no-c-format
-msgid "&Insert"
-msgstr "Вставить ноту"
-
 #: rc.cpp:12 rc.cpp:72
 #, no-c-format
 msgid "St&aff"
 msgstr "Нотный стан"
-
-#: rc.cpp:15 rc.cpp:81
-#, no-c-format
-msgid "&Tools"
-msgstr ""
 
 #: rc.cpp:18 rc.cpp:78
 #, no-c-format
 msgid "TSE&3"
 msgstr "TSE3"
 
-#: rc.cpp:21 rc.cpp:84
-#, fuzzy, no-c-format
-msgid "&Settings"
-msgstr "Установки"
-
 #: rc.cpp:24
 #, no-c-format
 msgid "&Window"
 msgstr "Окно"
-
-#: rc.cpp:27 rc.cpp:87
-#, no-c-format
-msgid "&Help"
-msgstr ""
 
 #: rc.cpp:30 rc.cpp:90
 #, no-c-format
@@ -2301,11 +2175,6 @@ msgstr "Дополнительные"
 msgid "Accent Toolbar"
 msgstr "Панель акцентов"
 
-#: rc.cpp:51
-#, fuzzy, no-c-format
-msgid "&File"
-msgstr "&Конец"
-
 #: rc.cpp:54
 #, no-c-format
 msgid "&Import"
@@ -2331,7 +2200,7 @@ msgstr ""
 msgid "Graces"
 msgstr "Форшлаги"
 
-#: rc.cpp:117 rc.cpp:178
+#: rc.cpp:117 rc.cpp:166
 #, fuzzy, no-c-format
 msgid "ABC music"
 msgstr "ABC формат"
@@ -2378,63 +2247,63 @@ msgstr "Номера тактов в блоке"
 
 #: rc.cpp:145
 #, no-c-format
-msgid "export warning"
-msgstr "Предупреждение об экспорте"
-
-#: rc.cpp:151 rc.cpp:511
-#, no-c-format
-msgid "&Details >>"
-msgstr "Детали >>"
-
-#: rc.cpp:154
-#, no-c-format
-msgid "Export problems"
-msgstr "Проблемы экспорта"
-
-#: rc.cpp:157
-#, no-c-format
 msgid "File export - NoteEdit"
 msgstr "Экспорт файла - NoteEdit"
 
-#: rc.cpp:160
+#: rc.cpp:148
 #, no-c-format
 msgid "Start &export"
 msgstr "Начало экспорта"
 
-#: rc.cpp:163
+#: rc.cpp:151
 #, fuzzy, no-c-format
 msgid "Alt+E"
 msgstr "Alt+C"
 
-#: rc.cpp:169 rc.cpp:391 rc.cpp:742
+#: rc.cpp:157 rc.cpp:391 rc.cpp:742
 #, no-c-format
 msgid "Alt+C"
 msgstr "Alt+C"
 
-#: rc.cpp:172
+#: rc.cpp:160
 #, fuzzy, no-c-format
 msgid "Midi format"
 msgstr "PMX формат"
 
-#: rc.cpp:175
+#: rc.cpp:163
 #, fuzzy, no-c-format
 msgid "MusiXTeX format"
 msgstr "MusiXTeX формат"
 
-#: rc.cpp:181
+#: rc.cpp:169
 #, fuzzy, no-c-format
 msgid "PMX format"
 msgstr "PMX формат"
 
-#: rc.cpp:184
+#: rc.cpp:172
 #, fuzzy, no-c-format
 msgid "Lilypond format"
 msgstr "LilyPond формат"
 
-#: rc.cpp:187
+#: rc.cpp:175
 #, fuzzy, no-c-format
 msgid "MusicXML format"
 msgstr "MusiXTeX формат"
+
+#: rc.cpp:178
+#, no-c-format
+msgid "export warning"
+msgstr "Предупреждение об экспорте"
+
+#: rc.cpp:184 rc.cpp:511
+#, no-c-format
+msgid "&Details >>"
+msgstr "Детали >>"
+
+#: rc.cpp:187
+#, no-c-format
+msgid "Export problems"
+msgstr "Проблемы экспорта"
 
 #: rc.cpp:190
 #, no-c-format
@@ -2829,15 +2698,15 @@ msgstr "Запись темпа:"
 msgid "&Start recording"
 msgstr "Начало записи"
 
-#: rc.cpp:481
-#, no-c-format
-msgid "MIDI settings - NoteEdit"
-msgstr "MIDI установки - NoteЕdit"
-
-#: rc.cpp:493
+#: rc.cpp:484
 #, fuzzy, no-c-format
 msgid "Additional MIDI parameters:"
 msgstr "Дополнительные свойства"
+
+#: rc.cpp:487
+#, no-c-format
+msgid "MIDI settings - NoteEdit"
+msgstr "MIDI установки - NoteЕdit"
 
 #: rc.cpp:496
 #, no-c-format
@@ -3054,11 +2923,6 @@ msgstr "Сохранить параметры"
 msgid "Enable"
 msgstr "Возможно"
 
-#: rc.cpp:684
-#, fuzzy, no-c-format
-msgid "Landscape"
-msgstr "Альбом"
-
 #: rc.cpp:687
 #, fuzzy, no-c-format
 msgid "&With measure numbers"
@@ -3076,18 +2940,18 @@ msgstr "Отклонить"
 
 #: rc.cpp:702
 #, no-c-format
+msgid "set value"
+msgstr "Установить параметр"
+
+#: rc.cpp:705
+#, no-c-format
 msgid "scaleForm"
 msgstr "Форма шкалы"
 
-#: rc.cpp:709
+#: rc.cpp:712
 #, no-c-format
 msgid "&Include rests"
 msgstr "Включая паузы"
-
-#: rc.cpp:712
-#, no-c-format
-msgid "set value"
-msgstr "Установить параметр"
 
 #: rc.cpp:715
 #, no-c-format
@@ -3348,11 +3212,6 @@ msgstr "Создать &голос"
 #, no-c-format
 msgid "&Delete voice"
 msgstr "&Удалить голос"
-
-#: rc.cpp:950
-#, no-c-format
-msgid "&Apply"
-msgstr ""
 
 #: rc.cpp:959
 #, no-c-format
@@ -3971,11 +3830,6 @@ msgstr "Выстрел из ружья"
 msgid "Details:"
 msgstr "Детали:"
 
-#: resource.cpp:573
-#, fuzzy
-msgid "Do not show this message again"
-msgstr "Больше не показывать это сообщение."
-
 #: resource.cpp:620
 msgid ""
 "<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%"
@@ -4013,12 +3867,12 @@ msgid "&Subject:"
 msgstr "&Тема:"
 
 #: scoreinfo.cpp:88
-msgid "A&uthor:"
-msgstr "&Автор:"
+msgid "Compo&ser:"
+msgstr ""
 
 #: scoreinfo.cpp:98
-msgid "&Last author:"
-msgstr "&Последний автор:"
+msgid "&Arranger:"
+msgstr ""
 
 #: scoreinfo.cpp:109
 msgid "&Copyright:"
@@ -4466,6 +4320,18 @@ msgstr ""
 "с ключа! Noteedit останавливает изменение аккордов/нот,\n"
 "если появляется новый ключ.</p>\n"
 
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Павел и Елена Богмат"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "bohm@ukr.net"
+
 #: tse3handler.cpp:312 tse3handler.cpp:338 tse3handler.cpp:363
 #: tse3handler.cpp:468 tse3handler.cpp:487 tse3handler.cpp:521
 #: tse3handler.cpp:564
@@ -4561,11 +4427,6 @@ msgstr "Импорт записи"
 #: uiconnect.cpp:160
 msgid "There is nothing to export."
 msgstr "Нечего экспортировать."
-
-#: uiconnect.cpp:161 uiconnect.cpp:283 uiconnect.cpp:1554
-#, fuzzy
-msgid "Export"
-msgstr "&Экспорт"
 
 #: uiconnect.cpp:282
 msgid "No staff selected for export."
@@ -4754,11 +4615,6 @@ msgstr "Штили вниз"
 msgid "Rest position"
 msgstr "Позиция паузы"
 
-#: voicedialog.cpp:79
-#, fuzzy
-msgid "Delete"
-msgstr "Выбрать"
-
 #: voicedialog.cpp:88
 msgid "The number of the voice to which the settings above apply."
 msgstr "Номер голоса, к которому применяются вышеуказанные настройки."
@@ -4859,10 +4715,6 @@ msgstr "Все"
 msgid "remove chord"
 msgstr "Удалить акорд"
 
-#: ../kguitar_excerpt/chord.cpp:349
-msgid "OK"
-msgstr ""
-
 #: ../kguitar_excerpt/chord.cpp:357
 msgid "show diagram"
 msgstr "Показывать диаграмму"
@@ -4870,6 +4722,88 @@ msgstr "Показывать диаграмму"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Конструктор аккордов"
+
+#, fuzzy
+#~ msgid "Save"
+#~ msgstr "Зубцевидная волна"
+
+#, fuzzy
+#~ msgid "Cancel"
+#~ msgstr "Канал"
+
+#, fuzzy
+#~ msgid "&Print..."
+#~ msgstr "&Линия..."
+
+#, fuzzy
+#~ msgid "&Close"
+#~ msgstr "Закрыть все"
+
+#, fuzzy
+#~ msgid "&Quit"
+#~ msgstr "При&глушить"
+
+#, fuzzy
+#~ msgid "&Cancel"
+#~ msgstr "Канал"
+
+#, fuzzy
+#~ msgid "&Save"
+#~ msgstr "Установить"
+
+#, fuzzy
+#~ msgid "Close"
+#~ msgstr "Цвета"
+
+#, fuzzy
+#~ msgid "&Delete"
+#~ msgstr "&Выбрать"
+
+#, fuzzy
+#~ msgid "&Start"
+#~ msgstr "Запуск"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "Правка"
+
+#, fuzzy
+#~ msgid "&View"
+#~ msgstr "Звучание"
+
+#, fuzzy
+#~ msgid "&Insert"
+#~ msgstr "Вставить ноту"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Установки"
+
+#, fuzzy
+#~ msgid "&File"
+#~ msgstr "&Конец"
+
+#, fuzzy
+#~ msgid "Landscape"
+#~ msgstr "Альбом"
+
+#, fuzzy
+#~ msgid "Do not show this message again"
+#~ msgstr "Больше не показывать это сообщение."
+
+#~ msgid "A&uthor:"
+#~ msgstr "&Автор:"
+
+#~ msgid "&Last author:"
+#~ msgstr "&Последний автор:"
+
+#, fuzzy
+#~ msgid "Export"
+#~ msgstr "&Экспорт"
+
+#, fuzzy
+#~ msgid "Delete"
+#~ msgstr "Выбрать"
 
 #, fuzzy
 #~ msgid "Goto measure"

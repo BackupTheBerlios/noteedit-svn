@@ -79,23 +79,23 @@ ScoreInfoDialog::ScoreInfoDialog(NMainFrameWidget *parent) :
 	QLabel *subjectLabel = new QLabel(subject, i18n("&Subject:"), pageGeneral);
 	layoutGeneral->addWidget(subjectLabel, 1, 0);
 
-	//  Author
+	//  Composer
 	author = new KHistoryCombo(pageGeneral);
 	author->setHistoryItems
 		(kapp->config()->readListEntry("AuthorHistory"), true);
 	author->setEditText(mainWidget->scAuthor_);
 	layoutGeneral->addWidget(author, 2, 1);
-	QLabel *authorLabel = new QLabel(author, i18n("A&uthor:"), pageGeneral);
+	QLabel *authorLabel = new QLabel(author, i18n("Compo&ser:"), pageGeneral);
 	layoutGeneral->addWidget(authorLabel, 2, 0);
 
-	//  Last author
+	//  Arranger
 	lastAuthor = new KHistoryCombo(pageGeneral);
 	lastAuthor->setHistoryItems
 		(kapp->config()->readListEntry("LastAuthorHistory"), true);
 	lastAuthor->setEditText(mainWidget->scLastAuthor_);
 	layoutGeneral->addWidget(lastAuthor, 3, 1);
 	QLabel *lastAuthorLabel = new QLabel
-		(lastAuthor, i18n("&Last author:"), pageGeneral);
+		(lastAuthor, i18n("&Arranger:"), pageGeneral);
 	layoutGeneral->addWidget(lastAuthorLabel, 3, 0);
 
 

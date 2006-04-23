@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-09 11:34+0200\n"
+"POT-Creation-Date: 2006-04-23 22:06+0200\n"
 "PO-Revision-Date: 2006-04-09 01:37+0200\n"
 "Last-Translator: Nicola Ruggero <nixprog.adsl@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -17,21 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.2\n"
 
-#: _translatorinfo.cpp:1
-msgid ""
-"_: NAME OF TRANSLATORS\n"
-"Your names"
-msgstr "Nicola Ruggero,Riccardo Iaconelli,Amerigo Carugno"
-
-#: _translatorinfo.cpp:3
-msgid ""
-"_: EMAIL OF TRANSLATORS\n"
-"Your emails"
-msgstr "nixprog.adsl@tiscali.it,info@ruphy.com,amcarug@tin.it"
-
 #: abcexport.cpp:89 abcexport.cpp:92 filehandler.cpp:1097 filehandler.cpp:1099
 #: filehandler.cpp:1970 lilyexport.cpp:130 lilyexport.cpp:133
-#: lilyexport.cpp:1090 mainframewidget.cpp:1155 mainframewidget.cpp:1159
+#: lilyexport.cpp:1098 mainframewidget.cpp:1155 mainframewidget.cpp:1159
 #: mainframewidget.cpp:1172 mainframewidget.cpp:1185 mainframewidget.cpp:1190
 #: mainframewidget.cpp:1194 mainframewidget.cpp:3841 mainframewidget.cpp:3843
 #: mainframewidget.cpp:4535 midiexport.cpp:149 midiexport.cpp:152
@@ -53,7 +41,7 @@ msgstr ""
 "NoteEdit ha esportato la partitura in formato ABC ma ci sono stati alcuni\n"
 "problemi che potrebbero produrre un risultato errato in PostScript.\n"
 
-#: abcexport.cpp:271 filehandler.cpp:600 lilyexport.cpp:652
+#: abcexport.cpp:271 filehandler.cpp:600 lilyexport.cpp:660
 #: musicxmlexport.cpp:464 musixtex.cpp:623 pmxexport.cpp:395
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
@@ -101,10 +89,6 @@ msgstr "name2Line: errore interno"
 #: clef.cpp:465
 msgid "name2Line"
 msgstr "name2Line"
-
-#: configuredialog.cpp:56
-msgid "Configure"
-msgstr ""
 
 #: configuredialog.cpp:69
 msgid "General"
@@ -270,7 +254,7 @@ msgstr ""
 msgid "Export format"
 msgstr "Problemi nell'esportazione"
 
-#: configuredialog.cpp:207 rc.cpp:490
+#: configuredialog.cpp:207 rc.cpp:481
 #, no-c-format
 msgid "Midi"
 msgstr ""
@@ -295,11 +279,6 @@ msgstr "Informa&zioni..."
 
 #: configuredialog.cpp:225 configuredialog.cpp:262
 msgid "&Options:"
-msgstr ""
-
-#: configuredialog.cpp:228 configuredialog.cpp:265 rc.cpp:760
-#, no-c-format
-msgid "Options"
 msgstr ""
 
 #: configuredialog.cpp:234
@@ -561,11 +540,6 @@ msgstr ""
 msgid "Possible data loss!"
 msgstr "Possibile perdita di dati!"
 
-#: filehandler.cpp:592 resource.cpp:534 uiconnect.cpp:1533
-#, fuzzy
-msgid "Save"
-msgstr "Saw Wave"
-
 #: filehandler.cpp:598
 msgid ""
 "Noteedit will save your score, and it can (probably) restore the score.\n"
@@ -660,11 +634,6 @@ msgstr "MUP non può contenere quadre nidificate nelle graffe\n"
 msgid "MUP cannot correctly write more than one slurred grace\n"
 msgstr "MUP non può scrivere correttamente più di una fioritura legata\n"
 
-#: layout.cpp:55 rc.cpp:842 rc.cpp:920 ../kguitar_excerpt/chord.cpp:353
-#, fuzzy, no-c-format
-msgid "Cancel"
-msgstr "Canale"
-
 #: layout.cpp:55
 msgid "Set brace"
 msgstr "Imposta graffa"
@@ -693,7 +662,7 @@ msgstr "Barra spezzata"
 msgid "Score layout"
 msgstr "Layout della partitura"
 
-#: lilyexport.cpp:650
+#: lilyexport.cpp:658
 msgid ""
 "Noteedit has exported the score to LilyPond but there are some\n"
 "problems which will probably prevent successful LilyPond output.\n"
@@ -701,23 +670,23 @@ msgstr ""
 "NoteEdit ha esportato la partitura in LilyPond ma ci sono stati alcuni\n"
 "problemi che potrebbero produrre un risultato errato in LilyPond.\n"
 
-#: lilyexport.cpp:657
+#: lilyexport.cpp:665
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr ""
 "Rigo %1; battuta %2: nella battuta c'è una quintupla (1/128); il minimo è "
 "una semibiscroma (1/64)\n"
 
-#: lilyexport.cpp:661
+#: lilyexport.cpp:669
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr ""
 "Il rigo %1 ha una tonalità irregolare, che non può essere espressa in "
 "LilyPond\n"
 
-#: lilyexport.cpp:665
+#: lilyexport.cpp:673
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "Rigo %1; battuta %2: ha %3 128esimo/i, dovrebbe essere: %4\n"
 
-#: lilyexport.cpp:670
+#: lilyexport.cpp:678
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -725,13 +694,13 @@ msgstr ""
 "Rigo %1; battuta %2: le versioni di Lilypond inferiori alla 1.5.2 non "
 "possono gestire il simbolo ondulato del trillo\n"
 
-#: lilyexport.cpp:675
+#: lilyexport.cpp:683
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr ""
 "Rigo %1; battuta %2: Solo una parte delle note dell'accordo ha la legatura "
 "di valore\n"
 
-#: lilyexport.cpp:679
+#: lilyexport.cpp:687
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -739,12 +708,12 @@ msgstr ""
 "Il rigo %1 contiene notazione per le percussioni, la cui esportazione in "
 "Lilypond non è molto corretta.\n"
 
-#: lilyexport.cpp:684
+#: lilyexport.cpp:692
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr ""
 "Rigo %1: Questa versione di LilyPond non può gestire legature tra fioriture\n"
 
-#: lilyexport.cpp:689
+#: lilyexport.cpp:697
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
@@ -752,27 +721,27 @@ msgstr ""
 "Una quadra con barre in parte continue in parte spezzate non può essere "
 "espressa in LilyPond\n"
 
-#: lilyexport.cpp:693
+#: lilyexport.cpp:701
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Un rigo per pianoforte senza barre continue non può essere espresso in "
 "LilyPond\n"
 
-#: lilyexport.cpp:697
+#: lilyexport.cpp:705
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Barre continue fuori da una graffa o da una quadra non possono essere "
 "espresse in LilyPond\n"
 
-#: lilyexport.cpp:701
+#: lilyexport.cpp:709
 msgid "LilyPond produced. But there are some problems."
 msgstr ""
 "L'esportazione in LilyPond è stata completata, ma sono ci sono stati dei "
 "problemi."
 
-#: lilyexport.cpp:1089
+#: lilyexport.cpp:1097
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "
 "enjoy this feature."
@@ -920,11 +889,6 @@ msgstr "Esporta in &LilyPond..."
 msgid "Print pre&view..."
 msgstr ""
 
-#: mainframewidget.cpp:253
-#, fuzzy
-msgid "&Print..."
-msgstr "&Linea..."
-
 #: mainframewidget.cpp:255
 msgid "Score in&formation..."
 msgstr "In&formazioni sulla partitura..."
@@ -932,16 +896,6 @@ msgstr "In&formazioni sulla partitura..."
 #: mainframewidget.cpp:256
 msgid "&Key configuration"
 msgstr "Configurazione scorcia&toie"
-
-#: mainframewidget.cpp:257
-#, fuzzy
-msgid "&Close"
-msgstr "Chiudi &tutto"
-
-#: mainframewidget.cpp:258
-#, fuzzy
-msgid "&Quit"
-msgstr "&Muto"
 
 #: mainframewidget.cpp:260
 msgid "Show &bar numbers"
@@ -1406,29 +1360,9 @@ msgstr ""
 msgid "Selected voice"
 msgstr "Cancella voce"
 
-#: mainframewidget.cpp:554
-msgid "Zoom"
-msgstr ""
-
 #: mainframewidget.cpp:565 mainframewidget.cpp:4327
 msgid "Key"
 msgstr "Tonalità"
-
-#: mainframewidget.cpp:567 rc.cpp:148 rc.cpp:247 rc.cpp:421 rc.cpp:436
-#: rc.cpp:454 rc.cpp:484 rc.cpp:508 rc.cpp:721 rc.cpp:733 rc.cpp:796
-#: rc.cpp:827 rc.cpp:860 rc.cpp:877 rc.cpp:910 rc.cpp:953 rc.cpp:971
-#: resource.cpp:542
-#, no-c-format
-msgid "&OK"
-msgstr ""
-
-#: mainframewidget.cpp:569 mainframewidget.cpp:5392 rc.cpp:166 rc.cpp:214
-#: rc.cpp:244 rc.cpp:424 rc.cpp:433 rc.cpp:457 rc.cpp:463 rc.cpp:487
-#: rc.cpp:706 rc.cpp:724 rc.cpp:730 rc.cpp:739 rc.cpp:824 rc.cpp:857
-#: rc.cpp:956 rc.cpp:968 uiconnect.cpp:1074
-#, fuzzy, no-c-format
-msgid "&Cancel"
-msgstr "Canale"
 
 #: mainframewidget.cpp:598
 #, fuzzy
@@ -1696,21 +1630,6 @@ msgstr ""
 msgid "New"
 msgstr "Nuovo"
 
-#: mainframewidget.cpp:3538 mainframewidget.cpp:3616 mainframewidget.cpp:3676
-#: mainframewidget.cpp:3974
-#, fuzzy
-msgid "&Save"
-msgstr "Impo&sta"
-
-#: mainframewidget.cpp:3539 mainframewidget.cpp:3617 mainframewidget.cpp:3677
-#: mainframewidget.cpp:3975
-msgid "&Discard"
-msgstr ""
-
-#: mainframewidget.cpp:3615 mainframewidget.cpp:3675
-msgid "Open"
-msgstr ""
-
 #: mainframewidget.cpp:3841
 msgid ""
 "MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
@@ -1733,11 +1652,6 @@ msgstr ""
 "non è presente!\n"
 "Per favore guarda la documentazione nella sezione Importazione MIDI per "
 "avere maggiori informazioni!"
-
-#: mainframewidget.cpp:3973
-#, fuzzy
-msgid "Close"
-msgstr "Colori"
 
 #: mainframewidget.cpp:4037
 msgid "Do you really want to close all windows?"
@@ -1771,11 +1685,6 @@ msgstr "Cancella il pentagramma"
 #: mainframewidget.cpp:4407
 msgid "This deletes current staff! Are you sure?"
 msgstr "Quest'operazione eliminerà il pentagramma corrente! Sei sicuro?"
-
-#: mainframewidget.cpp:4409 staff.cpp:163 staff.cpp:197 staff.cpp:206
-#, fuzzy
-msgid "&Delete"
-msgstr "Cancella"
 
 #: mainframewidget.cpp:4441
 msgid "Staff moving"
@@ -1824,11 +1733,6 @@ msgstr "<center>Quante note:</center>"
 #: mainframewidget.cpp:4523
 msgid "Autobeam"
 msgstr "Barrette automatiche"
-
-#: mainframewidget.cpp:4524
-#, fuzzy
-msgid "&Start"
-msgstr "Avvio"
 
 #: mainframewidget.cpp:4535
 msgid "Please choose a repeat close sign!"
@@ -2206,50 +2110,20 @@ msgid ""
 "See log file for details."
 msgstr ""
 
-#: rc.cpp:3 rc.cpp:60
-#, fuzzy, no-c-format
-msgid "&Edit"
-msgstr "Modifica"
-
-#: rc.cpp:6 rc.cpp:63
-#, fuzzy, no-c-format
-msgid "&View"
-msgstr "Voce"
-
-#: rc.cpp:9 rc.cpp:66
-#, no-c-format
-msgid "&Insert"
-msgstr ""
-
 #: rc.cpp:12 rc.cpp:72
 #, no-c-format
 msgid "St&aff"
 msgstr "&Pentagramma"
-
-#: rc.cpp:15 rc.cpp:81
-#, no-c-format
-msgid "&Tools"
-msgstr ""
 
 #: rc.cpp:18 rc.cpp:78
 #, no-c-format
 msgid "TSE&3"
 msgstr "TS&E3"
 
-#: rc.cpp:21 rc.cpp:84
-#, fuzzy, no-c-format
-msgid "&Settings"
-msgstr "Impostazioni"
-
 #: rc.cpp:24
 #, no-c-format
 msgid "&Window"
 msgstr "Fi&nestre"
-
-#: rc.cpp:27 rc.cpp:87
-#, no-c-format
-msgid "&Help"
-msgstr ""
 
 #: rc.cpp:30 rc.cpp:90
 #, no-c-format
@@ -2286,11 +2160,6 @@ msgstr "Altro"
 msgid "Accent Toolbar"
 msgstr "Barra degli strumenti accenti"
 
-#: rc.cpp:51
-#, fuzzy, no-c-format
-msgid "&File"
-msgstr "&Fine"
-
 #: rc.cpp:54
 #, no-c-format
 msgid "&Import"
@@ -2316,7 +2185,7 @@ msgstr "F&ormato"
 msgid "Graces"
 msgstr "Fioriture"
 
-#: rc.cpp:117 rc.cpp:178
+#: rc.cpp:117 rc.cpp:166
 #, no-c-format
 msgid "ABC music"
 msgstr "Musica ABC"
@@ -2363,63 +2232,63 @@ msgstr "Numeri di battuta in un riquadro"
 
 #: rc.cpp:145
 #, no-c-format
-msgid "export warning"
-msgstr "Avviso esportazione"
-
-#: rc.cpp:151 rc.cpp:511
-#, no-c-format
-msgid "&Details >>"
-msgstr "&Dettagli >>>"
-
-#: rc.cpp:154
-#, no-c-format
-msgid "Export problems"
-msgstr "Problemi nell'esportazione"
-
-#: rc.cpp:157
-#, no-c-format
 msgid "File export - NoteEdit"
 msgstr "Esportazione file - NoteEdit"
 
-#: rc.cpp:160
+#: rc.cpp:148
 #, no-c-format
 msgid "Start &export"
 msgstr "Avvia l'&esportazione"
 
-#: rc.cpp:163
+#: rc.cpp:151
 #, fuzzy, no-c-format
 msgid "Alt+E"
 msgstr "Alt+S"
 
-#: rc.cpp:169 rc.cpp:391 rc.cpp:742
+#: rc.cpp:157 rc.cpp:391 rc.cpp:742
 #, no-c-format
 msgid "Alt+C"
 msgstr "Alt+C"
 
-#: rc.cpp:172
+#: rc.cpp:160
 #, fuzzy, no-c-format
 msgid "Midi format"
 msgstr "Formato &PMX"
 
-#: rc.cpp:175
+#: rc.cpp:163
 #, fuzzy, no-c-format
 msgid "MusiXTeX format"
 msgstr "Formato MusiX&TeX"
 
-#: rc.cpp:181
+#: rc.cpp:169
 #, fuzzy, no-c-format
 msgid "PMX format"
 msgstr "Formato &PMX"
 
-#: rc.cpp:184
+#: rc.cpp:172
 #, fuzzy, no-c-format
 msgid "Lilypond format"
 msgstr "Formato Lil&yPond"
 
-#: rc.cpp:187
+#: rc.cpp:175
 #, fuzzy, no-c-format
 msgid "MusicXML format"
 msgstr "Formato MusiX&TeX"
+
+#: rc.cpp:178
+#, no-c-format
+msgid "export warning"
+msgstr "Avviso esportazione"
+
+#: rc.cpp:184 rc.cpp:511
+#, no-c-format
+msgid "&Details >>"
+msgstr "&Dettagli >>>"
+
+#: rc.cpp:187
+#, no-c-format
+msgid "Export problems"
+msgstr "Problemi nell'esportazione"
 
 #: rc.cpp:190
 #, no-c-format
@@ -2812,15 +2681,15 @@ msgstr "Tempo di registrazione:"
 msgid "&Start recording"
 msgstr "Avvia la regi&strazione"
 
-#: rc.cpp:481
-#, no-c-format
-msgid "MIDI settings - NoteEdit"
-msgstr "Impostazioni MIDI - NoteEdit"
-
-#: rc.cpp:493
+#: rc.cpp:484
 #, fuzzy, no-c-format
 msgid "Additional MIDI parameters:"
 msgstr "Altri attributi"
+
+#: rc.cpp:487
+#, no-c-format
+msgid "MIDI settings - NoteEdit"
+msgstr "Impostazioni MIDI - NoteEdit"
 
 #: rc.cpp:496
 #, no-c-format
@@ -3038,11 +2907,6 @@ msgstr "Salva parametri"
 msgid "Enable"
 msgstr "Abilitato"
 
-#: rc.cpp:684
-#, fuzzy, no-c-format
-msgid "Landscape"
-msgstr "Pagina orizzonta&le"
-
 #: rc.cpp:687
 #, fuzzy, no-c-format
 msgid "&With measure numbers"
@@ -3060,18 +2924,18 @@ msgstr "Annulla"
 
 #: rc.cpp:702
 #, no-c-format
+msgid "set value"
+msgstr "imposta il valore"
+
+#: rc.cpp:705
+#, no-c-format
 msgid "scaleForm"
 msgstr "Scala"
 
-#: rc.cpp:709
+#: rc.cpp:712
 #, no-c-format
 msgid "&Include rests"
 msgstr "&Includi pause"
-
-#: rc.cpp:712
-#, no-c-format
-msgid "set value"
-msgstr "imposta il valore"
 
 #: rc.cpp:715
 #, no-c-format
@@ -3332,11 +3196,6 @@ msgstr "Crea &voce"
 #, no-c-format
 msgid "&Delete voice"
 msgstr "&Elimina voce"
-
-#: rc.cpp:950
-#, no-c-format
-msgid "&Apply"
-msgstr ""
 
 #: rc.cpp:959
 #, no-c-format
@@ -3955,11 +3814,6 @@ msgstr "Gun Shot"
 msgid "Details:"
 msgstr "Dettagli:"
 
-#: resource.cpp:573
-#, fuzzy
-msgid "Do not show this message again"
-msgstr "Non mostrare questo me&ssaggio in futuro"
-
 #: resource.cpp:620
 msgid ""
 "<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%"
@@ -3997,12 +3851,12 @@ msgid "&Subject:"
 msgstr "&Soggetto:"
 
 #: scoreinfo.cpp:88
-msgid "A&uthor:"
-msgstr "A&utore:"
+msgid "Compo&ser:"
+msgstr ""
 
 #: scoreinfo.cpp:98
-msgid "&Last author:"
-msgstr "U&ltimo autore:"
+msgid "&Arranger:"
+msgstr ""
 
 #: scoreinfo.cpp:109
 msgid "&Copyright:"
@@ -4458,6 +4312,18 @@ msgstr ""
 "una chiave! NoteEdit interrompe i cambiamenti di note e \n"
 "accordi se compare una nuova chiave.</p>\n"
 
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Nicola Ruggero,Riccardo Iaconelli,Amerigo Carugno"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "nixprog.adsl@tiscali.it,info@ruphy.com,amcarug@tin.it"
+
 #: tse3handler.cpp:312 tse3handler.cpp:338 tse3handler.cpp:363
 #: tse3handler.cpp:468 tse3handler.cpp:487 tse3handler.cpp:521
 #: tse3handler.cpp:564
@@ -4553,11 +4419,6 @@ msgstr "Importa registrazione"
 #: uiconnect.cpp:160
 msgid "There is nothing to export."
 msgstr "Nulla da esportare."
-
-#: uiconnect.cpp:161 uiconnect.cpp:283 uiconnect.cpp:1554
-#, fuzzy
-msgid "Export"
-msgstr "&Esporta"
 
 #: uiconnect.cpp:282
 msgid "No staff selected for export."
@@ -4747,11 +4608,6 @@ msgstr "Stanghette giù"
 msgid "Rest position"
 msgstr "Posizione pausa"
 
-#: voicedialog.cpp:79
-#, fuzzy
-msgid "Delete"
-msgstr "Cancella"
-
 #: voicedialog.cpp:88
 msgid "The number of the voice to which the settings above apply."
 msgstr "Il numero della voce su cui applicare le impostazioni."
@@ -4852,10 +4708,6 @@ msgstr "Tutti"
 msgid "remove chord"
 msgstr "Rimuovi gli accordi"
 
-#: ../kguitar_excerpt/chord.cpp:349
-msgid "OK"
-msgstr ""
-
 #: ../kguitar_excerpt/chord.cpp:357
 msgid "show diagram"
 msgstr "Mostra diagramma"
@@ -4863,6 +4715,84 @@ msgstr "Mostra diagramma"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Costruttore di accordi"
+
+#, fuzzy
+#~ msgid "Save"
+#~ msgstr "Saw Wave"
+
+#, fuzzy
+#~ msgid "Cancel"
+#~ msgstr "Canale"
+
+#, fuzzy
+#~ msgid "&Print..."
+#~ msgstr "&Linea..."
+
+#, fuzzy
+#~ msgid "&Close"
+#~ msgstr "Chiudi &tutto"
+
+#, fuzzy
+#~ msgid "&Quit"
+#~ msgstr "&Muto"
+
+#, fuzzy
+#~ msgid "&Cancel"
+#~ msgstr "Canale"
+
+#, fuzzy
+#~ msgid "&Save"
+#~ msgstr "Impo&sta"
+
+#, fuzzy
+#~ msgid "Close"
+#~ msgstr "Colori"
+
+#, fuzzy
+#~ msgid "&Delete"
+#~ msgstr "Cancella"
+
+#, fuzzy
+#~ msgid "&Start"
+#~ msgstr "Avvio"
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "Modifica"
+
+#, fuzzy
+#~ msgid "&View"
+#~ msgstr "Voce"
+
+#, fuzzy
+#~ msgid "&Settings"
+#~ msgstr "Impostazioni"
+
+#, fuzzy
+#~ msgid "&File"
+#~ msgstr "&Fine"
+
+#, fuzzy
+#~ msgid "Landscape"
+#~ msgstr "Pagina orizzonta&le"
+
+#, fuzzy
+#~ msgid "Do not show this message again"
+#~ msgstr "Non mostrare questo me&ssaggio in futuro"
+
+#~ msgid "A&uthor:"
+#~ msgstr "A&utore:"
+
+#~ msgid "&Last author:"
+#~ msgstr "U&ltimo autore:"
+
+#, fuzzy
+#~ msgid "Export"
+#~ msgstr "&Esporta"
+
+#, fuzzy
+#~ msgid "Delete"
+#~ msgstr "Cancella"
 
 #~ msgid "select"
 #~ msgstr "seleziona"

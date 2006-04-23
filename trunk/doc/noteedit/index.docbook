@@ -10,6 +10,18 @@
 <title>The &noteedit; Handbook</title>
 
 <authorgroup>
+<author
+><firstname
+>Reinhard</firstname
+><surname
+>Katzmann</surname
+> <affiliation
+><address
+><email
+>reinhard@suamor.de</email
+></address
+></affiliation>
+</author>
 <author>
 <firstname>Jörg</firstname><surname>Anders</surname>
 <affiliation>
@@ -25,6 +37,30 @@ Professur Rechnernetz u. verteilte Systeme
 </orgname>
 <address><email>j.anders@informatik.tu-chemnitz.de</email></address>
 </affiliation>
+</author>
+<author
+><firstname
+>Georg</firstname
+><surname
+>Rudolph</surname
+> <affiliation
+><address
+><email
+>georg.rudolph@schwaben.de</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Matevž</firstname
+><surname
+>Jekovec</surname
+> <affiliation
+><address
+><email
+>matevz.jekovec@guest.arnes.si</email
+></address
+></affiliation>
 </author>
 <author>
 <firstname>Christian</firstname><surname>Fasshauer</surname>
@@ -66,6 +102,12 @@ Professur Rechnernetz u. verteilte Systeme
 <year>2001-2004</year>
 <holder>Jörg Anders</holder>
 </copyright>
+<copyright>
+<year
+>2005-2006</year>
+<holder
+>NoteEdit development team</holder>
+</copyright>
 
 <!-- <legalnotice>&FDLNotice;</legalnotice> -->
 
@@ -75,7 +117,7 @@ License, Version 1.1 or any later version published by the Free Software Foundat
 no Front-Cover Texts, and with no Back-Cover Texts. A copy of the license is included in the section entitled
 <link linkend="credits">"GNU Free Documentation License"</link>.</para></legalnotice>
 
-<date>2005-02-01</date>
+<date>2006-04-23</date>
 <releaseinfo>2.8.1</releaseinfo>
 <abstract>
 
@@ -3813,12 +3855,12 @@ following at the command prompt:</para>
 <title>Requirements for source compilation</title>
 <para>You need the following packages:</para>
 <itemizedlist>
-<listitem><para>g++ compiler <emphasis>(You can use g++-3.x, but make sure QT/KDE (others ???) is also g++-3.x-compiled/You need TSE3-0.2.5 for gcc-3.2!)</emphasis></para></listitem>
+<listitem><para>g++ compiler <emphasis>(You can use g++-4.x, but make sure QT/KDE (etc.) are also g++-4.x-compiled/You need TSE3-0.3.0 for gcc-4.x!)</emphasis></para></listitem>
 <listitem><para>X11 (include and libraries)</para></listitem>
-<listitem><para>Qt (include and libraries) Qtdevel2 (>=Qt-2.2.2)</para></listitem>
+<listitem><para>Qt (include and libraries) Qtdevel3 (>=Qt-3.0)</para></listitem>
 <listitem><para>YACC or Bison</para></listitem>
 <listitem><para>LEX or flex</para></listitem>
-<listitem><para>KDE-2.x.y or KDE3</para></listitem>
+<listitem><para>KDE3</para></listitem>
 <listitem><para>gettext <emphasis>(only for text translation)</emphasis></para></listitem>
 <listitem><para>extractrc(from kde developement) <emphasis>(only for text translation)</emphasis></para></listitem>
 </itemizedlist>
@@ -3826,7 +3868,7 @@ following at the command prompt:</para>
 <para>recommended:</para>
 
 <itemizedlist>
-<listitem><para>TSE3 Library Version (0.1.2, 0.1.3, 0.2.3, 0.2.5) see: <ulink url="http://TSE3.sourceforge.net">http://TSE3.sourceforge.net</ulink></para></listitem>
+<listitem><para>TSE3 Library Version (0.1.2, 0.1.3, 0.2.3, 0.2.5, 0.3.0) see: <ulink url="http://TSE3.sourceforge.net">http://TSE3.sourceforge.net</ulink></para></listitem>
 <listitem><para>A good idea is also: LaTeX (te_latex package), MusiXTeX, xdvi, dvips, gv.</para></listitem>
 <listitem><para><application>abcm2ps</application> (version 3.x.y!!!)
 <ulink url="http://moinejf.free.fr">http://moinejf.free.fr</ulink></para></listitem>

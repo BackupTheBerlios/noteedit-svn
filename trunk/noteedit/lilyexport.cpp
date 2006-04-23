@@ -318,10 +318,14 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 				outString.replace ('\n', "\\n"); /* replace all newlines with \n two character symbols */
 				outString.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
 				if (NResource::lilyProperties_.lilyProperties) {
-					out_ << "\\property Staff.instrument = #\"" << outString << '"' << endl << '\t';
+					out_ << "\\property Staff.instrument = #\"";
+					writeEncodedAndReplaced(outString);
+					out_ << '"' << endl << '\t';
 				}
 				else {
-					out_ << "\\set Staff.instrument = #\"" << outString << '"' << endl << '\t';
+					out_ << "\\set Staff.instrument = #\"";
+					writeEncodedAndReplaced(outString);
+					out_ << '"' << endl << '\t';
 				}
 			}
 			voice_elem->prepareForWriting();
@@ -411,10 +415,14 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 				outString.replace ('\n', "\\n"); /* replace all newlines with \n two character symbols */
 				outString.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
 				if (NResource::lilyProperties_.lilyProperties) {
-					out_ << "\t\\property Staff.instrument = #\"" << outString << '"' << endl;
+					out_ << "\t\\property Staff.instrument = #\"";
+					writeEncodedAndReplaced(outString);
+					out_ << '"' << endl;
 				}
 				else {
-					out_ << "\t\\set Staff.instrument = #\"" << outString << '"' << endl;
+					out_ << "\t\\set Staff.instrument = #\"";
+					writeEncodedAndReplaced(outString);
+					out_ << '"' << endl;
 				}
 			}
 			for (j = 0, voice_elem = staff_elem->getVoiceNr(0); j < voice_count; j++) {

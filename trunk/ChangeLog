@@ -175,3 +175,4 @@ version 2.8.1:
 	* R450: Bugfix Preview Print: Don't delete preview files too early
 	* R451: FIXED: Lilypond instrument name is now exported in UTF8 encoding
 	* R452: FIXED: Author -> Composer, Last author -> Arranger, updated translations
+	* R453: Updated Spanish translation (part I)

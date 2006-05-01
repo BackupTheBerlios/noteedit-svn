@@ -603,7 +603,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->insert("KEmovestart", i18n( "Move start" ), QString::null, Key_Home, this, SLOT( KE_moveStart() ));
 	keys_->insert("KEmoveright", i18n( "Move right" ), QString::null, Key_Right, this, SLOT( KE_moveRight() ));
 	keys_->insert("KEmoveend", i18n( "Move end" ), QString::null, Key_End, this, SLOT( KE_moveEnd() ));
-	keys_->insert("KEGotoMeasure", i18n( "Goto measure number" ), QString::null, CTRL+Key_G, this, SLOT( KE_gotoDialog() ));
+	keys_->insert("KEGotoMeasure", i18n( "Goto measure number" ), QString::null, CTRL+Key_G, this, SLOT( gotoDialog() ));
 	keys_->insert("KEdelete", i18n( "Delete forward" ), QString::null, Key_Delete, this, SLOT( KE_delete() ));
 	keys_->insert("KEremovechordnote", i18n( "Delete chord note" ), QString::null, CTRL+Key_Delete, this, SLOT( KE_removechordnote() ));
 	keys_->insert("KEremove", i18n( "Delete before" ), QString::null, Key_Backspace, this, SLOT( KE_remove() ));
@@ -614,6 +614,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	keys_->insert("KEinsertnote", i18n( "Insert note" ), QString::null, Key_Return, this, SLOT( KE_insertnote() ));
 	
 	/* note length selection keys */
+	keys_->insert("KE0", i18n( "Breve note" ), QString::null, Key_0, this, SLOT( KE_0() ));
 	keys_->insert("KE1", i18n( "Full note" ), QString::null, Key_1, this, SLOT( KE_1() ));
 	keys_->insert("KE2", i18n( "Half note" ), QString::null, Key_2, this, SLOT( KE_2() ));
 	keys_->insert("KE3", i18n( "Set triplet" ), QString::null, Key_3, this, SLOT( KE_3() ));
@@ -1651,7 +1652,7 @@ void NMainFrameWidget::KE_moveEnd() {
 	unsigned int newXpos;
 	newXpos = (int)(currentVoice_->getLast()->getXpos() - width_) < 0 ? 0 : currentVoice_->getLast()->getXpos() - width_;
 	
-	if (scrollx_->value() != newXpos) // If scrollx_ is not at the end, move it to the end
+	if (scrollx_->value() != (int)newXpos) // If scrollx_ is not at the end, move it to the end
 		scrollx_->setValue(newXpos);
 	else
 		currentVoice_->setCurrentElement(currentVoice_->getLast()); // Else, select the very last element in the current voice as well
@@ -1776,6 +1777,11 @@ void NMainFrameWidget::KE_insertchordnote() {
 	}
 }
 
+void NMainFrameWidget::KE_0() {
+	if (playing_) return;
+	note_buttons_[0]->setOn(true);
+	setToFull(true);
+}
 void NMainFrameWidget::KE_1() {
 	if (playing_) return;
 	note_buttons_[1]->setOn(true);
@@ -2044,7 +2050,7 @@ void NMainFrameWidget::KE_underscore() {
 	if (playing_) return;
 	beambutton_->toggle();
 }
-void NMainFrameWidget::KE_keybordInsert() {
+void NMainFrameWidget::KE_keyboardInsert() {
 	if (playing_) return;
 	if (NResource::allowKeyboardInsert_) {
 		NResource::allowKeyboardInsert_ = false;

@@ -183,3 +183,5 @@ version 2.8.1:
                 FIXED: Use Lilyponds PDF output for preview and print
                 FIXED: Use QProcess for preview as KProcess::NotifyOnExit is broken on my system
                 FIXED: Parent parameters for QProcess and KProcess in preview and export
+	* R458: FIXED: Two slots were wrongly assigned to their signals.
+	        ADDED: New shortcut for breve.

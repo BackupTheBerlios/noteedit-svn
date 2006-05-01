@@ -339,6 +339,7 @@ class NMainFrameWidget : public QWidget
 		void KE_edit();
 		void KE_insertnote();
 		void KE_insertchordnote();
+		void KE_0();
 		void KE_1();
 		void KE_2();
 		void KE_3();
@@ -369,7 +370,7 @@ class NMainFrameWidget : public QWidget
 		void KE_tab();
 		void KE_insertRest();
 		void KE_underscore();
-		void KE_keybordInsert();
+		void KE_keyboardInsert();
 		
 /*------------------------- "note" keys -----------------------------------------------*/
 

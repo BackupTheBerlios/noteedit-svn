@@ -244,6 +244,7 @@ ConfigureDialog::ConfigureDialog(NMainFrameWidget *mainWidget) :
 	previewProgram->insertItem("evince");
 	previewProgram->insertItem("xpdf");
 	previewProgram->insertItem("kghostview");
+	previewProgram->insertItem("kpdf");
 	previewProgram->insertItem(i18n("custom"));
 	previewProgram->setCurrentItem(NResource::previewProgram_);
 	previewLayout->addWidget(previewProgram, 0, 1);
@@ -580,13 +581,16 @@ void ConfigureDialog::printLayout() {
     case 3: // KDE KGhostview
       previewProgramInvokation->setText("kghostview");
       break;
-    case 4: // custom
+    case 4: // KDE KPDF
+      previewProgramInvokation->setText("kpdf");
+      break;
+    case 5: // custom
       // Was program changed to custom ?
       if( pvProgram != previewProgram->currentItem() )
 	pvProgram = previewProgram->currentItem();
       break;
   }
-  if( previewProgram->currentItem() == 4 ) // custom selected
+  if( previewProgram->currentItem() == 5 ) // custom selected
   {
     previewProgramInvokation->setEnabled( true );
     previewProgramInvokationLabel->setEnabled( true );

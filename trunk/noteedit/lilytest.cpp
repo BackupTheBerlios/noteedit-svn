@@ -52,7 +52,7 @@ void lilytest::check() {
     char buf1[256];
     int ver[3];
     
-    char *env = getenv( "PATH" );
+    char *env = strdup( getenv( "PATH" ) );
     char *envp;
     const char *delim = ":";
     bool found = false;
@@ -112,6 +112,7 @@ void lilytest::check() {
 
     int whish6[] = { 2, 6, 0};
 	NResource::lilyProperties_.lilyVersion26 = this->chkit( &ver[0], &whish6[0] );
+    free( env );
 }
 
 bool lilytest::chkit( int ver[], int matrix[] ) {

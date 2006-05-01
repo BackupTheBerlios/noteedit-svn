@@ -179,3 +179,7 @@ version 2.8.1:
 	* R454: FIXED: Removed HTML lyrics parsing. QTextEdit completely messed up NoteEdit's < and > keywords for syllabic singing. 
 	* R455: FIXED: Duplicate env string in lilytest.cpp, so the path won't get truncated
 	* R456: ADDED: kpdf as preview program
+	* R457: CHANGED: Use KProcess:AllOutput on export instead of All
+                FIXED: Use Lilyponds PDF output for preview and print
+                FIXED: Use QProcess for preview as KProcess::NotifyOnExit is broken on my system
+                FIXED: Parent parameters for QProcess and KProcess in preview and export

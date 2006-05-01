@@ -30,6 +30,7 @@
 #include "resource.h"
 
 class KProcess;
+class QProcess;
 class IntPrinter;
 class exportFrm;
 
@@ -48,9 +49,11 @@ public slots:
 
 protected slots:
     void filePrintExportFinished(KProcess *);
-    void filePrintPreviewFinished(KProcess *);
     void filePrintReceivedStdOut(KProcess *, char *, int);
     void filePrintReceivedStdErr(KProcess *, char *, int);
+    void filePrintPreviewFinished();
+    void filePreviewReadStdOut();
+    void filePreviewReadStdErr();
     
 protected:
     void setupPrinting(bool); // Helper methods for filePrint
@@ -68,6 +71,7 @@ protected:
     void printWithNative(bool);
 
 #ifdef WITH_DIRECT_PRINTING
+    QProcess   *previewProgram_;
     IntPrinter *printer_;
     QString previewFile_;
     QString fileName_;        // Base file name (temporary)

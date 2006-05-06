@@ -302,6 +302,7 @@ void NStaffLayout::slSetBrace() {
 			}
 		}
 	}
+	
 	for (i = 0; i < staffCount_; i++) {
 		if (!localBracketMatrix_[i].valid) continue;
 		if (minh_ >= localBracketMatrix_[i].beg && minh_ <= localBracketMatrix_[i].end && maxh_ > localBracketMatrix_[i].end ||
@@ -312,6 +313,7 @@ void NStaffLayout::slSetBrace() {
 			}
 		}
 	}
+	
 	for (i = 0; i < staffCount_; i++) {
 		if (!localBraceMatrix_[i].valid) {
 			localBraceMatrix_[i].beg = minh_;
@@ -321,6 +323,7 @@ void NStaffLayout::slSetBrace() {
 			return;
 		}
 	}
+	
 	NResource::abort("slSetBrace: internal error");
 }
 
@@ -342,6 +345,7 @@ void NStaffLayout::slSetBracket() {
 			}
 		}
 	}
+	
 	/* if brace is found crossing the bracket, remove it. If inside it, or not related at all, leave it. */
 	for (i = 0; i < staffCount_; i++) {
 		if (!localBraceMatrix_[i].valid) continue;
@@ -349,6 +353,7 @@ void NStaffLayout::slSetBracket() {
 		       maxh_ < localBraceMatrix_[i].beg || minh_ > localBraceMatrix_[i].end ))
 				localBraceMatrix_[i].valid = false;
 	}
+	
 	for (i = 0; i < staffCount_; i++) {
 		if (!localBracketMatrix_[i].valid) {
 			localBracketMatrix_[i].beg = minh_;
@@ -358,8 +363,7 @@ void NStaffLayout::slSetBracket() {
 			return;
 		}
 	}
-	NResource::abort("slSetBracket: internal error");
-			
+	NResource::abort("slSetBracket: internal error");			
 }
 
 void NStaffLayout::slContBar() {
@@ -369,6 +373,7 @@ void NStaffLayout::slContBar() {
 	if (minh_ == LAYOUT_MANY) return;
 	if (maxh_ == -LAYOUT_MANY) return;
 	if (maxh_ - minh_ < 1) return;
+	
 	for (i = 0; i < staffCount_; i++) {
 		if (!localBarCont_[i].valid) continue;
 		if (localBarCont_[i].end >= minh_ && localBarCont_[i].end <= maxh_ || localBarCont_[i].beg >= minh_ && localBarCont_[i].beg <= maxh_ ||
@@ -379,6 +384,7 @@ void NStaffLayout::slContBar() {
 			}
 		}
 	}
+	
 	for (i = 0; i < staffCount_; i++) {
 		if (!localBarCont_[i].valid) {
 			localBarCont_[i].beg = minh_;
@@ -388,6 +394,7 @@ void NStaffLayout::slContBar() {
 			return;
 		}
 	}
+	
 	NResource::abort("slContBar: internal error");
 }
 	

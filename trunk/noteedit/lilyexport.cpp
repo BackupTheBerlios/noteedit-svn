@@ -76,6 +76,8 @@
 #define BRACE_END	(1 << 1)
 #define BRACKET_START	(1 << 2)
 #define BRACKET_END	(1 << 3)
+#define BAR_START	(1 << 4)
+#define BAR_END	(1 << 5)
 
 #define MEASURES_PER_LINE 2
 
@@ -2042,7 +2044,7 @@ void NLilyExport::writeLyrics(int voice_nr, NVoice *voi, const QString& label) {
 /*
 	Preparation where to begin and end a brace or bracket of the score.
 	For every staff a byte in QByteArray scoreBraceMasks is set with the bits
-	BRACE_START, BRACE_END, BRACKET_START and BRACKET_END according to the
+	BRACE_START/END, BRACKET_START/END, BAR_START/END according to the
 	partitur layout and the staffs selected. So in the follow up
 	buildScoreBlockAndFlush() can easily set Choir-/PianoStaff braces.
 */
@@ -2052,7 +2054,7 @@ void NLilyExport::buildBraceMasks(QPtrList<NStaff> *stafflist, const NMainFrameW
 	NStaff *staff_el;
 	int m, mm, beg, end, nb;
 
-	const int nBraces = 2;		// bracket and brace are similar, so we prefer to loop.
+	const int nBraces = 3;		// bracket, brace and bars connected are similar, so we prefer to loop.
 	layoutDef *bracs[nBraces];
 	char bracStart[nBraces];
 	char bracEnd[nBraces];
@@ -2062,6 +2064,9 @@ void NLilyExport::buildBraceMasks(QPtrList<NStaff> *stafflist, const NMainFrameW
 	bracs[1]	= mainWidget->braceMatrix_;
 	bracStart[1]	= BRACE_START;
 	bracEnd[1]	= BRACE_END;
+	bracs[2]	= mainWidget->barCont_;
+	bracStart[2]	= BAR_START;
+	bracEnd[2]	= BAR_END;
 
 	scoreBraceMasks.fill(0,stafflist->count());	// adjust and fill target with zero
 	for (nb = 0; nb < nBraces; nb++) {
@@ -2206,8 +2211,11 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 			scoreBlock.insert(ii++, new QString(tmps));
 			currentlyInGrandStaff = true;
 		}
-		if (scoreBraceMasks[i] & BRACKET_START) {	// ChoirStaff open
-			tmps.sprintf("%d\\context ChoirStaff = c%s%c <<\n", hy++, label.latin1(), i+'A');
+		if (scoreBraceMasks[i] & BRACKET_START) {	// ChoirStaff/StaffGroup open
+			if (~scoreBraceMasks[i] & BAR_START)
+				tmps.sprintf("%d\\context ChoirStaff = c%s%c <<\n", hy++, label.latin1(), i+'A');
+			else
+				tmps.sprintf("%d\\context StaffGroup = c%s%c <<\n", hy++, label.latin1(), i+'A');			
 			scoreBlock.insert(ii++, new QString(tmps));
 		}
 
@@ -2253,7 +2261,7 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 			lyricsInGrandStaff = lyricsInGrandStaff || currentlyInGrandStaff;
 		}
 
-		if (scoreBraceMasks[i] & BRACKET_END) {		// ChoirStaff close, hy--
+		if (scoreBraceMasks[i] & BRACKET_END) {		// ChoirStaff/StaffGroup close, hy--
 			tmps.sprintf("%d>>\n", --hy);
 			scoreBlock.insert(ii++, new QString(tmps));
 		}

@@ -187,3 +187,4 @@ version 2.8.1:
 	        ADDED: New shortcut for breve.
     * R459: ADDED: StaffGroup for staffs connected with barlines under bracket in LilyPond export code and ChoirStaff only for non-connected staffs under bracket.
 	* R460: FIXED: In LilyPond export stanza number moved to beginning of lyrics
+	* R461: FIXED: Crash, when you place a note in non-first voice and the first voice doesn't contain the key signature yet.

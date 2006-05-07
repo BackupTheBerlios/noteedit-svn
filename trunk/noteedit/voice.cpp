@@ -4679,7 +4679,7 @@ void NVoice::computeMidiTime(bool insertBars,  bool doAutoBeam) {
 		}
 		
 		//In order to get autoBeam work in non-first voices, we have to seek the current time signature in first voice
-		if (!firstVoice_)
+		if (!firstVoice_ && theStaff_->getVoiceNr(0)->musElementList_.count())
 			current_timesig.setSignature(theStaff_->getVoiceNr(0)->getNearestMidiEvent(mtime)->timeSig());
 			
 		mtime += elem->getMidiLength();

@@ -1995,6 +1995,14 @@ void NLilyExport::writeLyrics(int voice_nr, NVoice *voi, const QString& label) {
 		if (NResource::lilyProperties_.lilyVersion24) {
 			out_ << label.latin1() << "Text" << char(lyline+'A') << " = \\lyricmode ";
 			out_ << "{" << endl; depth_++; tabsOut();
+
+			out_ << "\\set stanza = \"" ;
+			if (staffarray_[voice_nr].lyrics_count > 1) {
+				s.sprintf("%d.", lyline+1);
+			} else
+				s = QString("");
+			out_ << s << "\"" << endl; tabsOut();
+
 		} else {
 			out_ << "{" << endl; depth_++; tabsOut();
 		}
@@ -2106,7 +2114,7 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 {
 	unsigned int m;
 	double wh;
-	QString tmps, stanzaNStr;
+	QString tmps;
 	static int hy;		// hierarchy, help determine indentation with tabs
 	static int ii, endDist;	// indices
 	static bool currentlyInGrandStaff, lyricsInGrandStaff;
@@ -2238,12 +2246,10 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 		scoreBlock.insert(ii++, new QString(tmps));
 
 		for (m=0;m<staffarray_[i].lyrics_count;m++) {
-			if (staffarray_[i].lyrics_count>1)		// number only when 2 verses and more
-				stanzaNStr.sprintf("%d.", m+1);
-			tmps.sprintf("%d\\context Lyrics = c%s%s%c { \\set stanza = \"%s\" }\n",
+			tmps.sprintf("%d\\context Lyrics = c%s%s%c { }\n",
 				hy, label.latin1(),
 				staff_elem->voiceCount() > 1 ? "Voice" : "",
-				m+'A', stanzaNStr.latin1());
+				m+'A');
 
 			scoreBlock.insert(ii++, new QString(tmps));
 

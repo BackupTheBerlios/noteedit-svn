@@ -186,3 +186,4 @@ version 2.8.1:
 	* R458: FIXED: Two slots were wrongly assigned to their signals.
 	        ADDED: New shortcut for breve.
     * R459: ADDED: StaffGroup for staffs connected with barlines under bracket in LilyPond export code and ChoirStaff only for non-connected staffs under bracket.
+	* R460: FIXED: In LilyPond export stanza number moved to beginning of lyrics

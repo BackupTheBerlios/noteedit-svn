@@ -188,3 +188,6 @@ version 2.8.1:
     * R459: ADDED: StaffGroup for staffs connected with barlines under bracket in LilyPond export code and ChoirStaff only for non-connected staffs under bracket.
 	* R460: FIXED: In LilyPond export stanza number moved to beginning of lyrics
 	* R461: FIXED: Crash, when you place a note in non-first voice and the first voice doesn't contain the key signature yet.
+	* R462: ADDED:
+	  - Correctly export to LilyPond hyphens and melismas. To do this, every word which ends with '-' means that it's connected with another note with an ordinary hyphen (the word is not finished) and every word which ends with '_' means that it's connected with another note with melisma (the word is finished).
+	  - Instrument name is now exported for multi-voice staff too.

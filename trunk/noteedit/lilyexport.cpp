@@ -91,7 +91,7 @@ QRegExp NLilyExport::nonAlphas_("[^A-Za-z]");
 QRegExp NLilyExport::digits_("[0-9]");
 QRegExp NLilyExport::whiteSpaces_(" ");
 QRegExp NLilyExport::relSyms("[<>]");
-QRegExp NLilyExport::starOnly("^ *[-\\*] *$");
+QRegExp NLilyExport::starOnly("^ *[-\\*\\_] *$");
 
 NLilyExport::NLilyExport() {
 #if GCC_MAJ_VERS > 2
@@ -370,7 +370,26 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 				} 
 				for (k = 0; k < str; k++) out_ << '\'';
                 out_ << " {" << endl << '\t';
-				if (!(lilyOpts_.stem)) {
+				//If this is the first voice, write the instrument name, if it exists
+				if (!staff_elem->staffName_.isNull() &&
+				    !staff_elem->staffName_.isEmpty() &&
+				    !j) {
+					outString = staff_elem->staffName_;
+					outString.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
+					outString.replace ('\n', "\\n"); /* replace all newlines with \n two character symbols */
+					outString.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
+					if (NResource::lilyProperties_.lilyProperties) {
+						out_ << "\\property Staff.instrument = #\"";
+						writeEncodedAndReplaced(outString);
+						out_ << '"' << endl << '\t';
+					}
+					else {
+						out_ << "\\set Staff.instrument = #\"";
+						writeEncodedAndReplaced(outString);
+						out_ << '"' << endl << '\t';
+					}
+				}
+				if (!(lilyOpts_.stem)) {					
 					switch(j) {
 						case 0: out_ << "\\voiceOne "; break;
 						case 1: out_ << "\\voiceTwo "; break;
@@ -411,22 +430,7 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 			removeExceptsFromString(&staffLabel, false);
 
 			out_ << staffLabel << " = \\simultaneous {" << endl;
-			if (!staff_elem->staffName_.isNull() && !staff_elem->staffName_.isEmpty()) {
-				outString = staff_elem->staffName_;
-				outString.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
-				outString.replace ('\n', "\\n"); /* replace all newlines with \n two character symbols */
-				outString.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
-				if (NResource::lilyProperties_.lilyProperties) {
-					out_ << "\t\\property Staff.instrument = #\"";
-					writeEncodedAndReplaced(outString);
-					out_ << '"' << endl;
-				}
-				else {
-					out_ << "\t\\set Staff.instrument = #\"";
-					writeEncodedAndReplaced(outString);
-					out_ << '"' << endl;
-				}
-			}
+			
 			for (j = 0, voice_elem = staff_elem->getVoiceNr(0); j < voice_count; j++) {
 				if (staff_elem->staffName_.isNull() || staff_elem->staffName_.isEmpty()) {
 					staffLabel.sprintf("Staff%cVoice%c", i + 'A', j + 'A');
@@ -2022,7 +2026,7 @@ void NLilyExport::writeLyrics(int voice_nr, NVoice *voi, const QString& label) {
 				if (!ps) {
 					out_ << " _ ";
 				}
-				else if (ps->find(starOnly) != -1) {
+				else if (ps->find(starOnly) != -1) {	//replace empty, dashes and melismas
 					out_ << " _ ";
 				}
 				else {
@@ -2030,6 +2034,9 @@ void NLilyExport::writeLyrics(int voice_nr, NVoice *voi, const QString& label) {
 					s.replace(QChar('"'), "''");
 					s.replace(relSyms, "");
 					s.replace(whiteSpaces_, "_");
+					s.replace("-", " --");	//non-finished word hyphens
+					if (s[s.length()-1] == '_')	//if the last character is _, it means melisma
+						s = s.left(s.length()-1) + " __";	//cut-off the last _ and add " __" sign for melisma in Lily
 					removeExceptsFromString(&s, true);
 					writeEncoded(s);
 				}

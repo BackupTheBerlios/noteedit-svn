@@ -193,3 +193,4 @@ version 2.8.1:
 	  - Instrument name is now exported for multi-voice staff too.
 	* R463: ADDED: Some more LilyPond lyrics improvements.
 	* R464: FIXED: Updated example4.not - new hyphens and melismas implemented. Removed stanza numbers - they show up in Lily now out of the box.
+	* R465: FIXED: kpdf is now the default preview program.

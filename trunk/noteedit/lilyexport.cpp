@@ -2024,17 +2024,18 @@ void NLilyExport::writeLyrics(int voice_nr, NVoice *voi, const QString& label) {
 				chord = (NChord *) elem;
 				ps = chord->getLyrics(lyline);
 				if (!ps) {
-					out_ << " _ ";
+					out_ << "_ ";
 				}
 				else if (ps->find(starOnly) != -1) {	//replace empty, dashes and melismas
-					out_ << " _ ";
+					out_ << "_ ";
 				}
 				else {
 					s = QString(*ps);
 					s.replace(QChar('"'), "''");
 					s.replace(relSyms, "");
 					s.replace(whiteSpaces_, "_");
-					s.replace("-", " --");	//non-finished word hyphens
+					if (s[s.length()-1] == '-')	//if the last character is -, it means the non-finished word yet hyphen
+						s = s.left(s.length()-1) + " --";	//cut-off the last - and add " --" sign for hyphens in Lily
 					if (s[s.length()-1] == '_')	//if the last character is _, it means melisma
 						s = s.left(s.length()-1) + " __";	//cut-off the last _ and add " __" sign for melisma in Lily
 					removeExceptsFromString(&s, true);

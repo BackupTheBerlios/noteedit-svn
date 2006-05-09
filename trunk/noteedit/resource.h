@@ -149,6 +149,7 @@ struct lily_properties {
 	bool lilyVersion2;
 	bool lilyVersion24;
 	bool lilyVersion26;
+	bool lilyVersion28;
 	bool lilyProperties;
 };
 

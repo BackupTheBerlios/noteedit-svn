@@ -160,10 +160,12 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 	out_ << "%       \"NoteEdit\" " <<  VERSION << "           %" << endl;
 	out_ << "%                                  %" << endl;
 	out_ << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl << endl;
-	if (NResource::lilyProperties_.lilyVersion26) {
-    	out_ << "\\version \"2.6.3\"" << endl << endl;		// LilyPond version 2.6.3 is the one that it is tested with.
+	if (NResource::lilyProperties_.lilyVersion28) {
+		out_ << "\\version \"2.8.1\"" << endl << endl;		// LilyPond version 2.8.1 is the one I tested it with. -Matevz
+	} else if (NResource::lilyProperties_.lilyVersion26) {
+    	out_ << "\\version \"2.6.3\"" << endl << endl;		// LilyPond version 2.6.3 is the one I tested it with. -Matevz
 	} else if (NResource::lilyProperties_.lilyVersion24) {
-    	out_ << "\\version \"2.4.5\"" << endl << endl;		// LilyPond version 2.4.5 is the one that it is tested with.
+    	out_ << "\\version \"2.4.5\"" << endl << endl;		// LilyPond version 2.4.5 is the one I tested it with. -Matevz
 	} else {
     	out_ << "\\version \"2.0\"" << endl << endl;        // Obsolete.
 	}
@@ -182,6 +184,7 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 			out_ << "bcr = { \\override Voice.NoteHead #'style = #'cross" << endl << '}' << endl;
 			out_ << "bdf = { \\override Voice.NoteHead #'style = #'default" << endl << '}' << endl;
 			out_ << "bcc = { \\override Voice.NoteHead #'style = #'xcircle" << endl << '}' << endl;
+			out_ << "bdi = { \\override Voice.NoteHead #'style = #'diamond" << endl << '}' << endl;
 			out_ << "btr = { \\override Voice.NoteHead #'style = #'triangle" << endl << '}' << endl << endl;
 		} else if (NResource::lilyProperties_.lilyProperties) {
 			out_ << "bcr = {" << endl << "\\context Thread = xcircle" << endl << "\\property Voice.NoteHead \\set #'style = #'cross" << endl << '}' << endl;
@@ -316,9 +319,9 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 			}
 			if (!voice_elem->getStaff()->staffName_.isNull() && !voice_elem->getStaff()->staffName_.isEmpty()) {
 				outString = voice_elem->getStaff()->staffName_;
-				outString.replace('\\', "\\\\"); /* replace all backslashes with \\ two character backslashes */
-				outString.replace ('\n', "\\n"); /* replace all newlines with \n two character symbols */
-				outString.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */
+				outString.replace('\\', "\\\\"); //replace all backslashes with \\ two character backslashes
+				outString.replace ('\n', "\\n"); //replace all newlines with \n two character symbols
+				outString.replace('"', "\\\""); //replace all double quotes with \" two character symbols
 				if (NResource::lilyProperties_.lilyProperties) {
 					out_ << "\\property Staff.instrument = #\"";
 					writeEncodedAndReplaced(outString);
@@ -661,8 +664,7 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 	if (!badlist_.isEmpty()) {
 		QString output;
 		output = i18n
-			("Noteedit has exported the score to LilyPond but there are some\n"
-			 "problems which will probably prevent successful LilyPond output.\n");
+			("NoteEdit has exported the score to LilyPond format but there are some problems which can prevent successful PostScript/PDF output or can change the final score layout.\n");
 		output += i18n("-----------------------------------------------------\n");
 		for (bad = badlist_.first(); bad; bad = badlist_.next()) {
 			switch (bad->kind) {
@@ -779,7 +781,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	int restlen=0;
 	int octaviation = 0;
 	NText *pending_text = 0;
-	bool drumNotesChange = true;	// not inside chords implemented, use different voices if needed.
+	bool drumNotesChange = true;	//is note not inside chord
 
 	countof128th_ = 128;
 	currentNumerator_ = currentDenominator_ = 4;
@@ -1029,41 +1031,62 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					}
 				     }
 
-				     	if (chord->getNoteList()->count() > 1) {
+					if (chord->getNoteList()->count() > 1) {
 						out_ << "< ";
 						drumNotesChange = false;
 					}
 					
 				     first = true;
 			  	     for (note = chord->getNoteList()->first(); note; note = chord->getNoteList()->next()) {
-					     if (first) {
-					        if (!NResource::lilyProperties_.lilyVersion2 && (chord->hasProperty( PROP_PART_OF_SLUR))) {
-							out_ << ") ";
-					        }
-					     }
-					     if (lilyOpts_.drumNotes && !drum_problem_written_ && (note->properties & BODY_MASK)) {
-						drum_problem_written_ = true;
-						bad = new badmeasure(LILY_ERR_DRUM_STAFF, staff_nr +1, 3 /* dummy */, total / 3, countof128th_);
-						badlist_.append(bad);
-					     }
-					     if (drumNotesChange && lilyOpts_.drumNotes && noteBody_ != (note->properties & BODY_MASK)) {
-						switch (noteBody_ = (note->properties & BODY_MASK)) {
-							case PROP_BODY_CROSS:
-							case PROP_BODY_CROSS2:
-								out_ << "\\bcr "; break;
-							case PROP_BODY_CIRCLE_CROSS:
-							case PROP_BODY_RECT:
-								out_ << "\\bcc "; break;
-							case PROP_BODY_TRIA:
-								 out_ << "\\btr "; break;
-							default:
-								 out_ << "\\bdf "; break;
+						if (first) {
+							if (!NResource::lilyProperties_.lilyVersion2 && (chord->hasProperty( PROP_PART_OF_SLUR))) {
+								out_ << ") ";
+							}
 						}
-					      }
-					     pitchOut(note, &(actual_staff->actualClef_));
-					     if ((chord->hasProperty( PROP_GRACE ) ) && (elem->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
-						length = WHOLE_LENGTH / (NOTE8_LENGTH);
-					     }
+						if (lilyOpts_.drumNotes && !drum_problem_written_ && (note->properties & BODY_MASK)) {
+							drum_problem_written_ = true;
+							bad = new badmeasure(LILY_ERR_DRUM_STAFF, staff_nr +1, 3 /* dummy */, total / 3, countof128th_);
+							badlist_.append(bad);
+						}
+						//write drum noteheads for single notes
+						if (drumNotesChange && lilyOpts_.drumNotes && noteBody_ != (note->properties & BODY_MASK)) {
+							switch (noteBody_ = (note->properties & BODY_MASK)) {
+								case PROP_BODY_CROSS:
+								case PROP_BODY_CROSS2:
+									out_ << "\\bcr "; break;
+								case PROP_BODY_CIRCLE_CROSS:
+									out_ << "\\bcc "; break;
+								case PROP_BODY_RECT:
+									out_ << "\\bdi "; break;
+								case PROP_BODY_TRIA:
+									out_ << "\\btr "; break;
+								default:
+									out_ << "\\bdf "; break;
+							}
+						}
+						//write drum noteheads for notes in chord. \tweak function works for Lily >=2.8 only
+						if (!drumNotesChange &&
+						    lilyOpts_.drumNotes &&
+						    noteBody_ != (note->properties & BODY_MASK) &&
+						    NResource::lilyProperties_.lilyVersion28) {
+							switch (note->properties & BODY_MASK) { //don't overwrite the original noteBody_ as above - it's needed for the next iteration!
+								case PROP_BODY_CROSS:
+								case PROP_BODY_CROSS2:
+									out_ << "\\tweak #'style #'cross "; break;
+								case PROP_BODY_CIRCLE_CROSS:
+									out_ << "\\tweak #'style #'xcircle "; break;
+								case PROP_BODY_RECT:
+									out_ << "\\tweak #'style #'diamond "; break;
+								case PROP_BODY_TRIA:
+									out_ << "\\tweak #'style #'triangle "; break;
+								default:
+									out_ << "\\tweak #'style #'default "; break;
+							}
+						}
+						pitchOut(note, &(actual_staff->actualClef_));
+						if ((chord->hasProperty( PROP_GRACE ) ) && (elem->getSubType() == INTERNAL_MARKER_OF_STROKEN_GRACE)) {
+							length = WHOLE_LENGTH / (NOTE8_LENGTH);
+						}
 					     else {
 						length = WHOLE_LENGTH / part;
 					     }

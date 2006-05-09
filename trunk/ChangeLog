@@ -194,3 +194,7 @@ version 2.8.1:
 	* R463: ADDED: Some more LilyPond lyrics improvements.
 	* R464: FIXED: Updated example4.not - new hyphens and melismas implemented. Removed stanza numbers - they show up in Lily now out of the box.
 	* R465: FIXED: kpdf is now the default preview program.
+	* R466: Improved LilyPond export filter:
+	  - Support for LilyPond 2.8.x. The exported syntax works out of the box.
+	  - New drum note for rectangle note - diamond.
+	  - Different drum notes can be present in a single chord now. LilyPond 2.8.x is needed for this, because we use \tweak function.

@@ -827,150 +827,151 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 		}
 		switch (elem->getType()) {
 			case T_CHORD: chord = (NChord *) elem;
-				     if (PosOfHiddenRepeat < 0) {
-					if ( acr = (voi->determineAnacrusis()) ) {
-						out_ << "\\partial " << (128 / acr);
-						if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
-						out_ << endl << '\t';
+					if (PosOfHiddenRepeat < 0) {
+						if ( acr = (voi->determineAnacrusis()) ) {
+							out_ << "\\partial " << (128 / acr);
+							if (NResource::lilyProperties_.lilySemicolons) out_ << ";";
+							out_ << endl << '\t';
+						}
+						PosOfHiddenRepeat = out_.tellp();
+						out_ << hiddenRepeat << endl << '\t';
 					}
-					PosOfHiddenRepeat = out_.tellp();
-					out_ << hiddenRepeat << endl << '\t';
-				     }
-				     prevElemIsBar = false;
-				     part = elem->getSubType(); 
-				     if (!(chord->hasProperty( PROP_GRACE ))) {
-				     	total += (chord->hasProperty( PROP_TUPLET ) ) ? chord->getPlaytime() * part / chord->getNumNotes() : part;
-				     }
-				     switch (chord->properties() & DOT_MASK) {
-					case 1: total += part / 2; break;
-					case 2: total += 3 * part / 4; break;
-				     }
-				     if ((chord->hasProperty( PROP_TUPLET ) ) && !intuplet) {
-					intuplet = true;
-					out_ << "\\times " << ((int) elem->chord()->getPlaytime()) << '/' << ((int) elem->chord()->getNumNotes()) << " { ";
-				     }
-				     if (total > MULTIPLICATOR*countof128th_ && voi->isFirstVoice()) {
-					total = 0;
-					bad = new badmeasure(LILY_ERR_NOTE_COUNT, (staff_nr + 1), barNr_, total / 3, countof128th_);
-					badlist_.append(bad);
-				     }
-				     if (chord->countOfLyricsLines() > staffarray_[staff_nr].lyrics_count) {
-					staffarray_[staff_nr].lyrics_count = chord->countOfLyricsLines();
-				     }
-				     if (chord->getSubType() < NOTE64_LENGTH) {
-					part = NOTE64_LENGTH;	
-					bad = new badmeasure(LILY_ERR_NOTE_128, (staff_nr + 1), barNr_, total / 3, countof128th_);
-					badlist_.append(bad);
-				     }
-				     if (chordHasMixedTies(chord->getNoteList())) {
-					bad = new badmeasure(LILY_ERR_NOTE_MIXED_TIES, (staff_nr + 1), barNr_, total / 3, countof128th_);
-					badlist_.append(bad);
-				     }
-				     if ((diag = chord->getChordChordDiagram()) != 0) {
-					if (!NResource::lilyProperties_.lilyVersion2  && !fatTextWritten) {
+					prevElemIsBar = false;
+					part = elem->getSubType(); 
+					if (!(chord->hasProperty( PROP_GRACE ))) {
+						total += (chord->hasProperty( PROP_TUPLET ) ) ? chord->getPlaytime() * part / chord->getNumNotes() : part;
+					}
+					switch (chord->properties() & DOT_MASK) {
+						case 1: total += part / 2; break;
+						case 2: total += 3 * part / 4; break;
+					}
+					if ((chord->hasProperty( PROP_TUPLET ) ) && !intuplet) {
+						intuplet = true;
+						out_ << "\\times " << ((int) elem->chord()->getPlaytime()) << '/' << ((int) elem->chord()->getNumNotes()) << " { ";
+					}
+					if (total > MULTIPLICATOR*countof128th_ && voi->isFirstVoice()) {
+						total = 0;
+						bad = new badmeasure(LILY_ERR_NOTE_COUNT, (staff_nr + 1), barNr_, total / 3, countof128th_);
+						badlist_.append(bad);
+					}
+					if (chord->countOfLyricsLines() > staffarray_[staff_nr].lyrics_count) {
+						staffarray_[staff_nr].lyrics_count = chord->countOfLyricsLines();
+					}
+					if (chord->getSubType() < NOTE64_LENGTH) {
+						part = NOTE64_LENGTH;	
+						bad = new badmeasure(LILY_ERR_NOTE_128, (staff_nr + 1), barNr_, total / 3, countof128th_);
+						badlist_.append(bad);
+					}
+					//Lily 2.4.x and on support mixed ties
+//					if (chordHasMixedTies(chord->getNoteList())) {
+//						bad = new badmeasure(LILY_ERR_NOTE_MIXED_TIES, (staff_nr + 1), barNr_, total / 3, countof128th_);
+//						badlist_.append(bad);
+//					}
+					if ((diag = chord->getChordChordDiagram()) != 0) {
+						if (!NResource::lilyProperties_.lilyVersion2  && !fatTextWritten) {
+							fatTextWritten = true;
+							out_ << "\\fatText ";
+						}
+					}
+					if ((pending_text || (pending_segnos_rirads_accels & SOME_SIGNS_WITH_TEXT)) && !fatTextWritten) {
 						fatTextWritten = true;
 						out_ << "\\fatText ";
 					}
-				     }
-				     if ((pending_text || (pending_segnos_rirads_accels & SOME_SIGNS_WITH_TEXT)) && !fatTextWritten) {
-				     	fatTextWritten = true;
-					out_ << "\\fatText ";
-				     }
-				     if (chord->trill_) {
-					trilledNotes = voi->findNoteCountTillTrillEnd(chord);
-					if (!NResource::lilyProperties_.lilyVersion2) {
-				        	if (NResource::lilyProperties_.lilyVarTrills) {
-							if (!textpropset) {
-								textpropset = true;
-								out_ << endl;
-								tabsOut();
-								if (NResource::lilyProperties_.lilyProperties) {
-									out_ << "\\property Voice.TextSpanner \\set #'type = #'trill" << endl;
+					if (chord->trill_) {
+						trilledNotes = voi->findNoteCountTillTrillEnd(chord);
+						if (!NResource::lilyProperties_.lilyVersion2) {
+							if (NResource::lilyProperties_.lilyVarTrills) {
+								if (!textpropset) {
+									textpropset = true;
+									out_ << endl;
+									tabsOut();
+									if (NResource::lilyProperties_.lilyProperties) {
+										out_ << "\\property Voice.TextSpanner \\set #'type = #'trill" << endl;
+									}
+									else {
+										out_ << "\\override Voice.TextSpanner #'type = #'trill" << endl;
+									}
 								}
-								else {
-									out_ << "\\override Voice.TextSpanner #'type = #'trill" << endl;
+								if (chord->trill_ > 0 && edgetext != EDGE_TEXT_TR) {
+									edgetext = EDGE_TEXT_TR;
+									out_ << endl;
+									tabsOut();
+									if (NResource::lilyProperties_.lilyProperties) {
+										out_ << "\\property Voice.TextSpanner \\set #'edge-text = #'((line (music \"scripts-trill\") \" \") . \"\")" << endl;
+									}
+									else {
+										out_ << "\\override Voice.TextSpanner #'edge-text = #'((line (music \"scripts-trill\") \" \") . \"\")" << endl;
+									}
+									tabsOut();
+								}
+								else if (chord->trill_ < 0 && edgetext != EDGE_TEXT_EMPTY) {
+									edgetext = EDGE_TEXT_EMPTY;
+									out_ << endl;
+									tabsOut();
+									if (NResource::lilyProperties_.lilyProperties) {
+										out_ << "\\property Voice.TextSpanner \\set #'edge-text = #'(\"\")" << endl;
+									}
+									else {
+										out_ << "\\override Voice.TextSpanner #'edge-text = #'(\"\")" << endl;
+									}
+									tabsOut();
 								}
 							}
-							if (chord->trill_ > 0 && edgetext != EDGE_TEXT_TR) {
-								edgetext = EDGE_TEXT_TR;
-								out_ << endl;
-								tabsOut();
-								if (NResource::lilyProperties_.lilyProperties) {
-									out_ << "\\property Voice.TextSpanner \\set #'edge-text = #'((line (music \"scripts-trill\") \" \") . \"\")" << endl;
-								}
-								else {
-									out_ << "\\override Voice.TextSpanner #'edge-text = #'((line (music \"scripts-trill\") \" \") . \"\")" << endl;
-								}
-								tabsOut();
+							else {
+								trilledNotes = 0;
+								bad = new badmeasure(LILY_ERR_VAR_TRILLS, (staff_nr + 1), barNr_, total / 3, countof128th_);
+								badlist_.append(bad);
 							}
-							else if (chord->trill_ < 0 && edgetext != EDGE_TEXT_EMPTY) {
-								edgetext = EDGE_TEXT_EMPTY;
-								out_ << endl;
-								tabsOut();
-								if (NResource::lilyProperties_.lilyProperties) {
-									out_ << "\\property Voice.TextSpanner \\set #'edge-text = #'(\"\")" << endl;
-								}
-								else {
-									out_ << "\\override Voice.TextSpanner #'edge-text = #'(\"\")" << endl;
-								}
-								tabsOut();
+						}
+					}
+					if (/*hasContraryStems(elem->getNoteList()) && */ lilyOpts_.stem) {
+						if (chord->hasProperty( PROP_STEM_UP ) ) {
+							if (actualStemPolicy_ != STEM_DIR_UP) {
+#ifndef WITH_OLDLILY
+								out_ << "\\stemUp ";
+#else
+								out_ << "\\stemup ";
+#endif	// WITH_OLDLILY
+								actualStemPolicy_ = STEM_DIR_UP;
 							}
 						}
 						else {
-							trilledNotes = 0;
-							bad = new badmeasure(LILY_ERR_VAR_TRILLS, (staff_nr + 1), barNr_, total / 3, countof128th_);
-							badlist_.append(bad);
-						}
-					}
-				     }
-				     if (/*hasContraryStems(elem->getNoteList()) && */ lilyOpts_.stem) {
-					if (chord->hasProperty( PROP_STEM_UP ) ) {
-						if (actualStemPolicy_ != STEM_DIR_UP) {
+							if (actualStemPolicy_ != STEM_DIR_DOWN) {
 #ifndef WITH_OLDLILY
-							out_ << "\\stemUp ";
+								out_ << "\\stemDown ";
 #else
-							out_ << "\\stemup ";
+								out_ << "\\stemdown ";
 #endif	// WITH_OLDLILY
-							actualStemPolicy_ = STEM_DIR_UP;
-						}
-					}
-					else {
-						if (actualStemPolicy_ != STEM_DIR_DOWN) {
-#ifndef WITH_OLDLILY
-							out_ << "\\stemDown ";
-#else
-							out_ << "\\stemdown ";
-#endif	// WITH_OLDLILY
-							actualStemPolicy_ = STEM_DIR_DOWN;
-						}
-					}
-				     }
-				     else if (actualStemPolicy_ != STEM_UNSET) {
-#ifndef WITH_OLDLILY
-					out_ << "\\stemBoth ";
-#else
-					out_ << "\\stemboth ";
-#endif	// WITH_OLDLILY
-					actualStemPolicy_ = STEM_UNSET;
-				     }
-				     if (chord->hasProperty( PROP_GRACE ) ) {
-					if (!slur_problem_written && chord->hasProperty( PROP_SLURED ) && !NResource::lilyProperties_.lilySluresInGraces) {
-						bad = new badmeasure(LILY_ERR_SLURES_IN_GRACES, (staff_nr + 1), barNr_, total / 3, countof128th_);
-						badlist_.append(bad);
-						slur_problem_written = true;
-					}
-					if  (!inGrace) {
-						inGrace = true;
-						strokenGrace = true;
-						inA_tura = inLongacciaccatura = false;
-						if (/* NResource::lilyProperties_.lilyProperties || */ !(chord->hasProperty( PROP_SLURED) )) {
-							out_ << "\\grace { ";
-							if (!NResource::lilyProperties_.lilyVersion2 && elem->getSubType() != INTERNAL_MARKER_OF_STROKEN_GRACE) {
-								strokenGrace = false;
-								out_ << "[ ";
+								actualStemPolicy_ = STEM_DIR_DOWN;
 							}
 						}
-						else { // LilyPond-2.2.x
+					}
+					else if (actualStemPolicy_ != STEM_UNSET) {
+#ifndef WITH_OLDLILY
+						out_ << "\\stemBoth ";
+#else
+						out_ << "\\stemboth ";
+#endif	// WITH_OLDLILY
+						actualStemPolicy_ = STEM_UNSET;
+					}
+					if (chord->hasProperty( PROP_GRACE ) ) {
+						if (!slur_problem_written && chord->hasProperty( PROP_SLURED ) && !NResource::lilyProperties_.lilySluresInGraces) {
+							bad = new badmeasure(LILY_ERR_SLURES_IN_GRACES, (staff_nr + 1), barNr_, total / 3, countof128th_);
+							badlist_.append(bad);
+							slur_problem_written = true;
+						}
+						if  (!inGrace) {
+							inGrace = true;
+							strokenGrace = true;
+							inA_tura = inLongacciaccatura = false;
+							if (/* NResource::lilyProperties_.lilyProperties || */ !(chord->hasProperty( PROP_SLURED) )) {
+								out_ << "\\grace { ";
+								if (!NResource::lilyProperties_.lilyVersion2 && elem->getSubType() != INTERNAL_MARKER_OF_STROKEN_GRACE) {
+									strokenGrace = false;
+									out_ << "[ ";
+								}
+							}
+							else { // LilyPond-2.2.x
 							elem2 = voi->getNextPosition();
 							voi->getPrevPosition();
 							if (elem2->getType() == T_CHORD && !(elem2->chord()->hasProperty( PROP_GRACE ) )) {

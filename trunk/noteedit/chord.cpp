@@ -1497,8 +1497,8 @@ void NChord::draw(int flags) {
 			}
 		}
 		if ((note->properties & PROP_TIED) && note->tie_forward) {
-			/* if there's no poliphony, ties are at the opposite side of stems,
-			   if there is polyphony, ties are at the same side as stems */
+			//if there is no polyphony, ties are at the opposite side of stems,
+			//if there is polyphony, ties are at the same side as stems
 			if ( (hasProperty( PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
 			    || (!hasProperty(PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
 		    	pa.setPoint(0, note->tie_start_point_up);
@@ -1511,6 +1511,7 @@ void NChord::draw(int flags) {
 				pa.setPoint(2, note->tie_forward->tie_back_point_down);
 				pa.setPoint(3, note->tie_forward->tie_start_point_down);
 			}
+			the_painter->setPen(NResource::blackWidePen_);
 #if QT_VERSION >= 300
 			the_painter->drawCubicBezier(pa);
 #else
@@ -1620,10 +1621,7 @@ void NChord::draw(int flags) {
 		trill_ = 1+-trill_;
 	    }
 	    for (int i = 1; i < trill_; ++i)
-	    /*
-		the_painter->drawPixmap (QPoint(isneg + acc_point_.x() + (( i - 1 ) * NResource::trillPixmap_->width()), trilly_), actual_ ? *NResource::trillRedPixmap_ : *NResource::trillPixmap_);
-		*/
-		the_painter->drawPixmap (QPoint(isneg + acc_point_.x() + (( i - 1 ) * NResource::trillPixmap_->width()), trilly_), *NResource::trillPixmap_);
+			the_painter->drawPixmap (QPoint(isneg + acc_point_.x() + (( i - 1 ) * NResource::trillPixmap_->width()), trilly_), *NResource::trillPixmap_);
 	    if (!isneg)
 		trill_ = 1-trill_;
 	}
@@ -1657,12 +1655,11 @@ void NChord::draw(int flags) {
 		the_painter->drawLine( QPoint( xpos_, staff_props_->base + DYNAMIC_DIST + ( LINE_DIST * 5 )), QPoint(xpos_ + dynamic_, staff_props_->base + ( DYNAMIC_WIDTH / 2 ) + ( LINE_DIST * 5 ) + DYNAMIC_DIST));
 		the_painter->drawLine( QPoint( xpos_, staff_props_->base + DYNAMIC_DIST + ( LINE_DIST * 5 ) + DYNAMIC_WIDTH), QPoint(xpos_ + dynamic_, staff_props_->base + ( DYNAMIC_WIDTH / 2 ) + (LINE_DIST * 5 ) + DYNAMIC_DIST));
 		}
-		//xpos_ + dynamic_; // Statement written by Jorg Anders. Don't know what it does, so I commented it?? -Matevz
 	}
 
 	if (hasProperty(PROP_SLURED) && slur_forward_) {
-		/* if there's no poliphony, slurs are at the opposite side of stems,
-		   if there is polyphony, slurs are at the same side as stems */
+		//if there is no polyphony, slurs are at the opposite side of stems,
+		//if there is polyphony, slurs are at the same side as stems
 		if ( (hasProperty(PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_INDIVIDUAL))
 		    || (!hasProperty(PROP_STEM_UP) && (voice_->stemPolicy_ == STEM_POL_DOWN)) ) {
 			pa.setPoint(0, slur_start_point_up_);
@@ -1675,6 +1672,7 @@ void NChord::draw(int flags) {
 			pa.setPoint(2, slur_forward_->slur_back_point_down_);
 			pa.setPoint(3, slur_forward_->slur_start_point_down_);
 		}
+		the_painter->setPen(NResource::blackWidePen_);
 #if QT_VERSION >= 300
 		the_painter->drawCubicBezier(pa);
 #else

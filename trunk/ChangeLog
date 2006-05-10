@@ -198,4 +198,5 @@ version 2.8.1:
 	  - Support for LilyPond 2.8.x. The exported syntax works out of the box.
 	  - New drum note for rectangle note - diamond.
 	  - Different drum notes can be present in a single chord now. LilyPond 2.8.x is needed for this, because we use \tweak function.
-	* R467: FIXED: Removed mixed ties warning in Lily export. LilyPond 2.4.x and on supports mixed ties perfectly. 
+	* R467: FIXED: Removed mixed ties warning in Lily export. LilyPond 2.4.x and on supports mixed ties perfectly.
+	* R468: ADDED: Ties and Slurs are now drawn with wide pen. This gives better readability of the score. 

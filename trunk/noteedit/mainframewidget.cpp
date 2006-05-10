@@ -367,7 +367,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 
 	// ------------ Actions for toolbar buttons, KDE interface --------
 	selectbutton_ = new KToggleAction(i18n("Select mode"), "selector", 0, actionCollection(), "select");
-	note_buttons_[0] = new KToggleAction(i18n("Breve"), "breve", 0, actionCollection(), "breve");
+	note_buttons_[0] = new KToggleAction(i18n("Breve note"), "breve", 0, actionCollection(), "breve");
 	note_buttons_[1] = new KToggleAction(i18n("Full note"), "fullnote", 0, actionCollection(), "full");
 	note_buttons_[2] = new KToggleAction(i18n("Half note"), "halfnote", 0, actionCollection(), "half");
 	note_buttons_[3] = new KToggleAction(i18n("Quarter note"), "quarternote", 0, actionCollection(), "quarter");

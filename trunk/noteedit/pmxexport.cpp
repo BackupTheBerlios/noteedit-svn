@@ -390,8 +390,7 @@ void NPmxExport::doExport() {
 	if (!badlist_.isEmpty()) {
 		QString output;
 		output = i18n
-			("Noteedit has exported the score to PMX but there are some\n"
-			 "problems which will probably prevent successful PMX output.\n");
+			("NoteEdit has exported the score to PMX format but there are some problems which can prevent successful PostScript/PDF output or can change the final score layout.\n");
 		output += i18n("-----------------------------------------------------\n");
 		for (bad = badlist_.first(); bad; bad = badlist_.next()) {
 			switch (bad->kind) {

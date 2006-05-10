@@ -617,9 +617,7 @@ void NMusiXTeX::doExport() {
 	if (!badMeasures_.isEmpty()) {
 		QString output;
 		output = i18n
-			("Noteedit has exported the score to MusiXTeX but there are some\n"
-			 "constructs which cannot be expressed in MusiXTeX. The score will\n"
-			 "work with MusiXTeX but Noteedit omitted these constructs.\n");
+			("NoteEdit has exported the score to MusiXTeX format but there are some problems which can prevent successful PostScript/PDF output or can change the final score layout.\n");
 		output += i18n("-----------------------------------------------------\n");
 		for (errptr = badMeasures_.first(); errptr; errptr = badMeasures_.next()) {
 			switch (errptr->reason) {

@@ -459,8 +459,7 @@ void NMusicXMLExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, i
 	if (!badlist_.isEmpty()) {
 		QString output;
 		output = i18n
-			("Noteedit has exported the score to MusicXML\n"
-			 "but there are some problems.\n");
+			("NoteEdit has exported the score to MusicXML but there are some problems.\n");
 		output += i18n("-----------------------------------------------------\n");
 		for (bad = badlist_.first(); bad; bad = badlist_.next()) {
 			switch (bad->type_) {

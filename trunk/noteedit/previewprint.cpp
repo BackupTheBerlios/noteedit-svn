@@ -283,7 +283,7 @@ bool NPreviewPrint::setExistantFile( QString &filePath )
       filePath = dirPath_ + "/" + filePath;
     if( false == QFileInfo( filePath ).exists() )
     {
-      KMessageBox::sorry(this, i18n("File was not succesfully converted."), 
+      KMessageBox::sorry(this, i18n("File was not successfully converted to PS/PDF printing format."), 
                          kapp->makeStdCaption(i18n("Error")));
       return false;
     }

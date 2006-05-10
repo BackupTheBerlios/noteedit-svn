@@ -266,8 +266,7 @@ void NABCExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, int co
 	if (!badlist_.isEmpty()) {
 		QString output;
 		output = i18n
-			("Noteedit has exported the score to ABC music but there are some\n"
-			 "problems which will probably prevent successful PostScript output.\n");
+			("NoteEdit has exported the score to ABC music format but there are some problems which can prevent successful PostScript/PDF output or can change the final score layout.\n");
 		output += i18n("-----------------------------------------------------\n");
 		for (bad = badlist_.first(); bad; bad = badlist_.next()) {
 			switch (bad->type_) {

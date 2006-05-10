@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-23 22:06+0200\n"
+"POT-Creation-Date: 2006-05-10 17:50+0200\n"
 "PO-Revision-Date: 2005-06-12 22:30+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -16,62 +16,61 @@ msgstr ""
 "X-Generator: KBabel 1.9.1\n"
 
 #: abcexport.cpp:89 abcexport.cpp:92 filehandler.cpp:1097 filehandler.cpp:1099
-#: filehandler.cpp:1970 lilyexport.cpp:130 lilyexport.cpp:133
-#: lilyexport.cpp:1098 mainframewidget.cpp:1155 mainframewidget.cpp:1159
-#: mainframewidget.cpp:1172 mainframewidget.cpp:1185 mainframewidget.cpp:1190
-#: mainframewidget.cpp:1194 mainframewidget.cpp:3841 mainframewidget.cpp:3843
-#: mainframewidget.cpp:4535 midiexport.cpp:149 midiexport.cpp:152
+#: filehandler.cpp:1970 lilyexport.cpp:132 lilyexport.cpp:135
+#: lilyexport.cpp:1128 mainframewidget.cpp:1156 mainframewidget.cpp:1160
+#: mainframewidget.cpp:1173 mainframewidget.cpp:1186 mainframewidget.cpp:1191
+#: mainframewidget.cpp:1195 mainframewidget.cpp:3847 mainframewidget.cpp:3849
+#: mainframewidget.cpp:4541 midiexport.cpp:149 midiexport.cpp:152
 #: musicxmlexport.cpp:318 musicxmlexport.cpp:321 musixtex.cpp:168
 #: musixtex.cpp:170 musixtex.cpp:188 musixtex.cpp:190 musixtex.cpp:206
-#: musixtex.cpp:208 previewprint.cpp:68 previewprint.cpp:244
-#: previewprint.cpp:259 previewprint.cpp:277 previewprint.cpp:356
-#: tse3handler.cpp:436 tse3handler.cpp:445 tse3handler.cpp:454
-#: tse3handler.cpp:955 tse3handler.cpp:1020 tse3handler.cpp:1027
-#: tse3handler.cpp:1035 uiconnect.cpp:332
+#: musixtex.cpp:208 tse3handler.cpp:436 tse3handler.cpp:445
+#: tse3handler.cpp:454 tse3handler.cpp:955 tse3handler.cpp:1020
+#: tse3handler.cpp:1027 tse3handler.cpp:1035 uiconnect.cpp:332
 msgid "???"
 msgstr "???"
 
 #: abcexport.cpp:269
 #, fuzzy
 msgid ""
-"Noteedit has exported the score to ABC music but there are some\n"
-"problems which will probably prevent successful PostScript output.\n"
+"NoteEdit has exported the score to ABC music format but there are some "
+"problems which can prevent successful PostScript/PDF output or can change "
+"the final score layout.\n"
 msgstr ""
 "Noteedit exportoval partitúru do PMX, ale vyskytli sa niektoré\n"
 "problémy, ktoré pravdepodobne zabránia úspešnému výstupu z PMX.\n"
 
-#: abcexport.cpp:271 filehandler.cpp:600 lilyexport.cpp:660
-#: musicxmlexport.cpp:464 musixtex.cpp:623 pmxexport.cpp:395
+#: abcexport.cpp:270 filehandler.cpp:600 lilyexport.cpp:668
+#: musicxmlexport.cpp:463 musixtex.cpp:621 pmxexport.cpp:394
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
 
-#: abcexport.cpp:276
+#: abcexport.cpp:275
 #, fuzzy
 msgid "Staff %1, measure %2: ABC music cannot deal with such kind of tuplets\n"
 msgstr "Osnova %1; takt %2: V PMX triola nemôže končiť na pomlčku\n"
 
-#: abcexport.cpp:280
+#: abcexport.cpp:279
 #, fuzzy
 msgid "Staff %1 has irregular keysig. This cannot be expressed in ABC music\n"
 msgstr ""
 "Osnova %1 má neregulárne označenie kľúča. Toto nie je možné vyjadriť v "
 "MusiXTeXe\n"
 
-#: abcexport.cpp:284
+#: abcexport.cpp:283
 msgid "ABC music cannot deal with nested brackets/braces\n"
 msgstr ""
 
-#: abcexport.cpp:288
+#: abcexport.cpp:287
 msgid "ABC music cannot deal with a one-staff bracket\n"
 msgstr ""
 
-#: abcexport.cpp:292
+#: abcexport.cpp:291
 #, fuzzy
 msgid ""
 "Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
 msgstr "Osnova %1; takt %2: V PMX triola nemôže končiť na pomlčku\n"
 
-#: abcexport.cpp:296
+#: abcexport.cpp:295
 #, fuzzy
 msgid "ABC music produced. But there are some problems."
 msgstr "MusiXTeX bol vyprodukovaný. Ale očakávajte problémy."
@@ -230,17 +229,17 @@ msgstr "ABC hudba"
 msgid "PMX"
 msgstr ""
 
-#: configuredialog.cpp:194 configuredialog.cpp:208 rc.cpp:250
+#: configuredialog.cpp:194 configuredialog.cpp:208 rc.cpp:256
 #, fuzzy, no-c-format
 msgid "Lilypond"
 msgstr "LilyPond export"
 
-#: configuredialog.cpp:195 rc.cpp:523
+#: configuredialog.cpp:195 rc.cpp:532
 #, fuzzy, no-c-format
 msgid "MusiXTeX"
 msgstr "MusiXTeX-Cmd:"
 
-#: configuredialog.cpp:196 configuredialog.cpp:247
+#: configuredialog.cpp:196 configuredialog.cpp:248
 #, fuzzy
 msgid "custom"
 msgstr "Automaticky"
@@ -255,12 +254,12 @@ msgstr "Triediť podľa poznámok"
 msgid "Export format"
 msgstr "Triediť podľa poznámok"
 
-#: configuredialog.cpp:207 rc.cpp:481
+#: configuredialog.cpp:207 rc.cpp:490
 #, no-c-format
 msgid "Midi"
 msgstr ""
 
-#: configuredialog.cpp:209 rc.cpp:517
+#: configuredialog.cpp:209 rc.cpp:526
 #, no-c-format
 msgid "MusicXML"
 msgstr "MusicXML"
@@ -273,12 +272,12 @@ msgstr "NoteEdit"
 msgid "&Invokation:"
 msgstr ""
 
-#: configuredialog.cpp:220 configuredialog.cpp:257
+#: configuredialog.cpp:220 configuredialog.cpp:258
 #, fuzzy
 msgid "Invokation"
 msgstr "Inform&ácie..."
 
-#: configuredialog.cpp:225 configuredialog.cpp:262
+#: configuredialog.cpp:225 configuredialog.cpp:263
 msgid "&Options:"
 msgstr ""
 
@@ -296,112 +295,112 @@ msgstr "programátor"
 msgid "P&rogram"
 msgstr "programátor"
 
-#: configuredialog.cpp:254
+#: configuredialog.cpp:255
 msgid "I&nvokation: "
 msgstr ""
 
-#: configuredialog.cpp:274
+#: configuredialog.cpp:275
 msgid "Colors"
 msgstr "Farby"
 
-#: configuredialog.cpp:285
+#: configuredialog.cpp:286
 msgid "&Backgrounds:"
 msgstr "&Pozadie:"
 
-#: configuredialog.cpp:293
+#: configuredialog.cpp:294
 msgid "Selection bac&kgrounds:"
 msgstr "Voľba &pozadia:"
 
-#: configuredialog.cpp:300
+#: configuredialog.cpp:301
 msgid "&Staffs:"
 msgstr "&Notová osnova:"
 
-#: configuredialog.cpp:307
+#: configuredialog.cpp:308
 msgid "Selected sta&ffs:"
 msgstr "Zvolené notové os&novy:"
 
-#: configuredialog.cpp:313
+#: configuredialog.cpp:314
 msgid "Ba&rs:"
 msgstr "Tak&tové čiary:"
 
-#: configuredialog.cpp:320
+#: configuredialog.cpp:321
 msgid "Sele&cted bars:"
 msgstr "Zvo&lené taktové čiary:"
 
-#: configuredialog.cpp:327
+#: configuredialog.cpp:328
 msgid "Bar n&umbers:"
 msgstr "Čí&sla taktov:"
 
-#: configuredialog.cpp:334
+#: configuredialog.cpp:335
 msgid "Selected bar nu&mbers:"
 msgstr "Zvolené čísla ta&ktov:"
 
-#: configuredialog.cpp:341
+#: configuredialog.cpp:342
 msgid "&Tempo signatures:"
 msgstr "Označenie &tempa"
 
-#: configuredialog.cpp:349
+#: configuredialog.cpp:350
 msgid "Selected temp&o signatures:"
 msgstr "Zvolené &označenia tempa"
 
-#: configuredialog.cpp:356
+#: configuredialog.cpp:357
 msgid "&Volume signatures:"
 msgstr "Označenie &hlasitosti"
 
-#: configuredialog.cpp:365
+#: configuredialog.cpp:366
 msgid "Selected volume si&gnatures:"
 msgstr "Zvolené označenie h&lasitosti"
 
-#: configuredialog.cpp:374
+#: configuredialog.cpp:375
 msgid "&Program changes:"
 msgstr "Zmeny &programu:"
 
-#: configuredialog.cpp:383
+#: configuredialog.cpp:384
 msgid "Selected program c&hanges:"
 msgstr "Zvolené zmeny pro&gramu:"
 
-#: configuredialog.cpp:392
+#: configuredialog.cpp:393
 msgid "Special &endings:"
 msgstr "Špeciálne &ukončenie:"
 
-#: configuredialog.cpp:400
+#: configuredialog.cpp:401
 msgid "Selected spec&ial endings:"
 msgstr "Zvolené špeciálne o&značenie:"
 
-#: configuredialog.cpp:407
+#: configuredialog.cpp:408
 msgid "Staff &names:"
 msgstr "Názvy &notových osnov:"
 
-#: configuredialog.cpp:414
+#: configuredialog.cpp:415
 msgid "Se&lected staff names:"
 msgstr "Zvo&lené názvy notových osnov:"
 
-#: configuredialog.cpp:421
+#: configuredialog.cpp:422
 msgid "L&yrics:"
 msgstr "Te&xt piesne:"
 
-#: configuredialog.cpp:429
+#: configuredialog.cpp:430
 #, fuzzy
 msgid "staff con&text:"
 msgstr "/Štýl karty/I_kona a text"
 
-#: configuredialog.cpp:435
+#: configuredialog.cpp:436
 msgid "Sound"
 msgstr "Zvuk"
 
-#: configuredialog.cpp:440
+#: configuredialog.cpp:441
 msgid "Sequencers"
 msgstr "Sekvencér"
 
-#: configuredialog.cpp:441
+#: configuredialog.cpp:442
 msgid "A&LSA"
 msgstr "A&LSA"
 
-#: configuredialog.cpp:446
+#: configuredialog.cpp:447
 msgid "Attempt to create an ALSA MIDI scheduler at startup."
 msgstr "Pokus o vytvorenie ALSA MIDI scheduler pri spustení"
 
-#: configuredialog.cpp:451
+#: configuredialog.cpp:452
 msgid ""
 "The TSE3 sequencer library will attempt to create an ALSA (Advanced Linux "
 "Sound Architecture) MIDI scheduler when the application starts if this is "
@@ -412,15 +411,15 @@ msgstr ""
 "aplikácie. Ak na prístup k zvukovej karte používate ALSA, tak povoľte túto "
 "možnosť."
 
-#: configuredialog.cpp:457
+#: configuredialog.cpp:458
 msgid "O&SS"
 msgstr "O&SS"
 
-#: configuredialog.cpp:462
+#: configuredialog.cpp:463
 msgid "Attempt to create an OSS MIDI scheduler at startup."
 msgstr "Pokus o vytvorenie OSS MIDI scheduler pri spustení"
 
-#: configuredialog.cpp:467
+#: configuredialog.cpp:468
 msgid ""
 "The TSE3 sequencer library will attempt to create an OSS (Open Sound System) "
 "MIDI scheduler when the application starts if this is enabled. Enable this "
@@ -430,68 +429,68 @@ msgstr ""
 "(Open Sound System) MIDI scheduler pri spustení aplikácie. Ak na prístup k "
 "zvukovej karte používate OSS, tak povoľte túto možnosť."
 
-#: configuredialog.cpp:476
+#: configuredialog.cpp:477
 msgid "&MIDI devices"
 msgstr "&MIDI zariadenia"
 
-#: configuredialog.cpp:481
+#: configuredialog.cpp:482
 msgid "Chords"
 msgstr "Akordy"
 
-#: configuredialog.cpp:484 configuredialog.cpp:485
+#: configuredialog.cpp:485 configuredialog.cpp:486
 msgid "Chordnames"
 msgstr "Názvy akordov"
 
-#: configuredialog.cpp:486
+#: configuredialog.cpp:487
 #, fuzzy
 msgid "American, sharps"
 msgstr "Americké rozmery"
 
-#: configuredialog.cpp:487
+#: configuredialog.cpp:488
 #, fuzzy
 msgid "American, flats"
 msgstr "Americké rozmery"
 
-#: configuredialog.cpp:488
+#: configuredialog.cpp:489
 #, fuzzy
 msgid "American, mixed"
 msgstr "Americké rozmery"
 
-#: configuredialog.cpp:489
+#: configuredialog.cpp:490
 #, fuzzy
 msgid "European, sharps"
 msgstr "Európske rozmery"
 
-#: configuredialog.cpp:490
+#: configuredialog.cpp:491
 #, fuzzy
 msgid "European, flats"
 msgstr "Európske rozmery"
 
-#: configuredialog.cpp:491
+#: configuredialog.cpp:492
 #, fuzzy
 msgid "European, mixed"
 msgstr "Európske rozmery"
 
-#: configuredialog.cpp:492
+#: configuredialog.cpp:493
 #, fuzzy
 msgid "Jazz, sharps"
 msgstr "Acid-Jazz"
 
-#: configuredialog.cpp:493
+#: configuredialog.cpp:494
 #, fuzzy
 msgid "Jazz, flats"
 msgstr "Acid-Jazz"
 
-#: configuredialog.cpp:494
+#: configuredialog.cpp:495
 #, fuzzy
 msgid "Jazz, mixed"
 msgstr "Acid-Jazz"
 
-#: configuredialog.cpp:499 configuredialog.cpp:500
+#: configuredialog.cpp:500 configuredialog.cpp:501
 msgid "Dominant 7"
 msgstr ""
 
-#: configuredialog.cpp:507 configuredialog.cpp:508
+#: configuredialog.cpp:508 configuredialog.cpp:509
 msgid "Alterations"
 msgstr ""
 
@@ -690,30 +689,32 @@ msgstr "S_umárny panel"
 msgid "Score layout"
 msgstr "Roz&loženie partitúry..."
 
-#: lilyexport.cpp:658
+#: lilyexport.cpp:667
+#, fuzzy
 msgid ""
-"Noteedit has exported the score to LilyPond but there are some\n"
-"problems which will probably prevent successful LilyPond output.\n"
+"NoteEdit has exported the score to LilyPond format but there are some "
+"problems which can prevent successful PostScript/PDF output or can change "
+"the final score layout.\n"
 msgstr ""
-"Noteedit exportoval partitúru do LilyPondu, ale vyskytli sa nejaké\n"
-"problémy, ktoré pravdepodobne zabránia správnemu výstupu z LilyPondu.\n"
+"Noteedit exportoval partitúru do PMX, ale vyskytli sa niektoré\n"
+"problémy, ktoré pravdepodobne zabránia úspešnému výstupu z PMX.\n"
 
-#: lilyexport.cpp:665
+#: lilyexport.cpp:673
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
 msgstr "Osnova %1, takt %2: 128 v takte; minimum je 64\n"
 
-#: lilyexport.cpp:669
+#: lilyexport.cpp:677
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
 msgstr ""
 "Osnova %1 má neregulárne označenie kľúča. Toto nie je možné vyjadriť v "
 "LilyPonde\n"
 
-#: lilyexport.cpp:673
+#: lilyexport.cpp:681
 #, fuzzy
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "Osnova %1, takt %2: má %3, malo by byť: %4\n"
 
-#: lilyexport.cpp:678
+#: lilyexport.cpp:686
 msgid ""
 "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
 "length trills (wavelines)\n"
@@ -721,11 +722,11 @@ msgstr ""
 "Osnova %1, takt %2: Staršie verzie LilyPondu ako 1.5.2 nevedia pracovať s "
 "premenlivou dĺžkou triliek (vlniek)\n"
 
-#: lilyexport.cpp:683
+#: lilyexport.cpp:691
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
 msgstr "Osnova %1, takt %2: Iba podskupina nôt v akorde má ligatúru!\n"
 
-#: lilyexport.cpp:687
+#: lilyexport.cpp:695
 msgid ""
 "Staff %1 contains drum staff. Note! The LilyPond export is not quite "
 "correct!\n"
@@ -733,17 +734,17 @@ msgstr ""
 "Osnova %1 je osnova s bubnami. Pozor! Lilypond export nie je celkom "
 "správny!\n"
 
-#: lilyexport.cpp:692
+#: lilyexport.cpp:700
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
 msgstr ""
 
-#: lilyexport.cpp:697
+#: lilyexport.cpp:705
 msgid ""
 "A bracket with partial continued partial discountinued bar rules cannot be "
 "expressed in LilyPond\n"
 msgstr ""
 
-#: lilyexport.cpp:701
+#: lilyexport.cpp:709
 #, fuzzy
 msgid ""
 "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
@@ -751,7 +752,7 @@ msgstr ""
 "Osnova %1 má neregulárne označenie kľúča. Toto nie je možné vyjadriť v "
 "LilyPonde\n"
 
-#: lilyexport.cpp:705
+#: lilyexport.cpp:713
 #, fuzzy
 msgid ""
 "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
@@ -759,11 +760,11 @@ msgstr ""
 "Osnova %1 má neregulárne označenie kľúča. Toto nie je možné vyjadriť v "
 "LilyPonde\n"
 
-#: lilyexport.cpp:709
+#: lilyexport.cpp:717
 msgid "LilyPond produced. But there are some problems."
 msgstr "Lilypond bol vyprodukovaný. Ale očakávajte problémy."
 
-#: lilyexport.cpp:1097
+#: lilyexport.cpp:1127
 #, fuzzy
 msgid ""
 "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "
@@ -1200,39 +1201,40 @@ msgstr "Tip &dňa"
 msgid "Select mode"
 msgstr "&Vybrať"
 
-#: mainframewidget.cpp:370
-msgid "Breve"
-msgstr ""
+#: mainframewidget.cpp:370 mainframewidget.cpp:617
+#, fuzzy
+msgid "Breve note"
+msgstr "Poznámka na okraji|o"
 
-#: mainframewidget.cpp:371 mainframewidget.cpp:617
+#: mainframewidget.cpp:371 mainframewidget.cpp:618
 msgid "Full note"
 msgstr "Celá nota"
 
-#: mainframewidget.cpp:372 mainframewidget.cpp:618
+#: mainframewidget.cpp:372 mainframewidget.cpp:619
 msgid "Half note"
 msgstr "Pólová nota"
 
-#: mainframewidget.cpp:373 mainframewidget.cpp:620
+#: mainframewidget.cpp:373 mainframewidget.cpp:621
 msgid "Quarter note"
 msgstr "Štvrťová nota"
 
-#: mainframewidget.cpp:374 mainframewidget.cpp:621
+#: mainframewidget.cpp:374 mainframewidget.cpp:622
 msgid "Eighth note"
 msgstr "Osminová nota"
 
-#: mainframewidget.cpp:375 mainframewidget.cpp:622
+#: mainframewidget.cpp:375 mainframewidget.cpp:623
 msgid "Sixteenth note"
 msgstr "Šesnástinová nota"
 
-#: mainframewidget.cpp:376 mainframewidget.cpp:623
+#: mainframewidget.cpp:376 mainframewidget.cpp:624
 msgid "32nd note"
 msgstr "Dvaatridsatinová nota"
 
-#: mainframewidget.cpp:377 mainframewidget.cpp:624
+#: mainframewidget.cpp:377 mainframewidget.cpp:625
 msgid "64th note"
 msgstr "Štyriašesdesatinová nota"
 
-#: mainframewidget.cpp:378 mainframewidget.cpp:625
+#: mainframewidget.cpp:378 mainframewidget.cpp:626
 msgid "128th note"
 msgstr "Stodvadsatinová nota"
 
@@ -1315,15 +1317,15 @@ msgstr "Silné pizzicato"
 msgid "Sforzando"
 msgstr "Sforzando"
 
-#: mainframewidget.cpp:414 mainframewidget.cpp:642 mainframewidget.cpp:643
+#: mainframewidget.cpp:414 mainframewidget.cpp:643 mainframewidget.cpp:644
 msgid "Sharp"
 msgstr "Krížik"
 
-#: mainframewidget.cpp:416 mainframewidget.cpp:641
+#: mainframewidget.cpp:416 mainframewidget.cpp:642
 msgid "Flat"
 msgstr "Bé"
 
-#: mainframewidget.cpp:418 mainframewidget.cpp:644 mainframewidget.cpp:645
+#: mainframewidget.cpp:418 mainframewidget.cpp:645 mainframewidget.cpp:646
 msgid "Natural"
 msgstr "Odrážka"
 
@@ -1335,7 +1337,7 @@ msgstr "Dvojitý krížik"
 msgid "Double flat"
 msgstr "Dvojité bé"
 
-#: mainframewidget.cpp:425 mainframewidget.cpp:2726 mainframewidget.cpp:2766
+#: mainframewidget.cpp:425 mainframewidget.cpp:2732 mainframewidget.cpp:2772
 msgid "Play"
 msgstr "Hrať"
 
@@ -1398,7 +1400,7 @@ msgstr ""
 msgid "Selected voice"
 msgstr "Odstrániť hlas"
 
-#: mainframewidget.cpp:565 mainframewidget.cpp:4327
+#: mainframewidget.cpp:565 mainframewidget.cpp:4333
 msgid "Key"
 msgstr "Kľúč"
 
@@ -1486,177 +1488,177 @@ msgstr "vložiť notu akordu"
 msgid "Insert note"
 msgstr "vložiť notu"
 
-#: mainframewidget.cpp:619
+#: mainframewidget.cpp:620
 #, fuzzy
 msgid "Set triplet"
 msgstr "trioal"
 
-#: mainframewidget.cpp:628
+#: mainframewidget.cpp:629
 #, fuzzy
 msgid "Select 1st voice"
 msgstr "Odstrániť hlas"
 
-#: mainframewidget.cpp:629
+#: mainframewidget.cpp:630
 #, fuzzy
 msgid "Select 2nd voice"
 msgstr "Odstrániť hlas"
 
-#: mainframewidget.cpp:630
+#: mainframewidget.cpp:631
 #, fuzzy
 msgid "Select 3rd voice"
 msgstr "Odstrániť hlas"
 
-#: mainframewidget.cpp:631
+#: mainframewidget.cpp:632
 #, fuzzy
 msgid "Select 4th voice"
 msgstr "Odstrániť hlas"
 
-#: mainframewidget.cpp:632
+#: mainframewidget.cpp:633
 #, fuzzy
 msgid "Select 5th voice"
 msgstr "Odstrániť hlas"
 
-#: mainframewidget.cpp:633
+#: mainframewidget.cpp:634
 #, fuzzy
 msgid "Select 6th voice"
 msgstr "Odstrániť hlas"
 
-#: mainframewidget.cpp:634
+#: mainframewidget.cpp:635
 #, fuzzy
 msgid "Select 7th voice"
 msgstr "Odstrániť hlas"
 
-#: mainframewidget.cpp:635
+#: mainframewidget.cpp:636
 #, fuzzy
 msgid "Select 8th voice"
 msgstr "Odstrániť hlas"
 
-#: mainframewidget.cpp:636
+#: mainframewidget.cpp:637
 #, fuzzy
 msgid "Select 9th voice"
 msgstr "Odstrániť hlas"
 
-#: mainframewidget.cpp:638 mainframewidget.cpp:639
+#: mainframewidget.cpp:639 mainframewidget.cpp:640
 #, fuzzy
 msgid "Set tied"
 msgstr "viazať"
 
-#: mainframewidget.cpp:640
+#: mainframewidget.cpp:641
 #, fuzzy
 msgid "Set dotted"
 msgstr "viazať"
 
-#: mainframewidget.cpp:646
+#: mainframewidget.cpp:647
 #, fuzzy
 msgid "Set bar"
 msgstr "Nastaviť pre %s"
 
-#: mainframewidget.cpp:647
+#: mainframewidget.cpp:648
 #, fuzzy
 msgid "Set bar after"
 msgstr "Predtým a potom"
 
-#: mainframewidget.cpp:648
+#: mainframewidget.cpp:649
 #, fuzzy
 msgid "Set special bar"
 msgstr "Nastaviť pre %s"
 
-#: mainframewidget.cpp:649
+#: mainframewidget.cpp:650
 #, fuzzy
 msgid "Insert rest"
 msgstr "Vodorovná odpočívadlo"
 
-#: mainframewidget.cpp:650
+#: mainframewidget.cpp:651
 #, fuzzy
 msgid "Toggle beam"
 msgstr "Prepínanie nástrojov %s"
 
-#: mainframewidget.cpp:651
+#: mainframewidget.cpp:652
 #, fuzzy
 msgid "Keyboard Insert mode"
 msgstr "Režim náhľadu animácie:"
 
-#: mainframewidget.cpp:656
+#: mainframewidget.cpp:657
 msgid "Pitch C"
 msgstr ""
 
-#: mainframewidget.cpp:657
+#: mainframewidget.cpp:658
 msgid "Pitch D"
 msgstr ""
 
-#: mainframewidget.cpp:658
+#: mainframewidget.cpp:659
 msgid "Pitch E"
 msgstr ""
 
-#: mainframewidget.cpp:659
+#: mainframewidget.cpp:660
 msgid "Pitch F"
 msgstr ""
 
-#: mainframewidget.cpp:660
+#: mainframewidget.cpp:661
 msgid "Pitch G"
 msgstr ""
 
-#: mainframewidget.cpp:661
+#: mainframewidget.cpp:662
 msgid "Pitch A"
 msgstr ""
 
-#: mainframewidget.cpp:662
+#: mainframewidget.cpp:663
 msgid "Pitch B"
 msgstr ""
 
-#: mainframewidget.cpp:685 mainframewidget.cpp:705 mainframewidget.cpp:720
+#: mainframewidget.cpp:686 mainframewidget.cpp:706 mainframewidget.cpp:721
 #, fuzzy
 msgid "Enabled"
 msgstr "Povolené"
 
-#: mainframewidget.cpp:697
+#: mainframewidget.cpp:698
 #, fuzzy
 msgid "Trill"
 msgstr "trilkovanie"
 
-#: mainframewidget.cpp:708
+#: mainframewidget.cpp:709
 #, fuzzy
 msgid "Turn"
 msgstr "Otočiť"
 
-#: mainframewidget.cpp:716
+#: mainframewidget.cpp:717
 msgid "Crescendo"
 msgstr ""
 
-#: mainframewidget.cpp:732 rc.cpp:415
+#: mainframewidget.cpp:733 rc.cpp:424
 #, no-c-format
 msgid "8va"
 msgstr ""
 
-#: mainframewidget.cpp:1155 mainframewidget.cpp:1172
+#: mainframewidget.cpp:1156 mainframewidget.cpp:1173
 #, fuzzy
 msgid "Please choose a note or rest!"
 msgstr "Zvoľte si prosím notu"
 
-#: mainframewidget.cpp:1159
+#: mainframewidget.cpp:1160
 #, fuzzy
 msgid "Please choose a note or rest from first voice"
 msgstr "Prosím zvoľte kľúč pre osnovu!"
 
-#: mainframewidget.cpp:1185 mainframewidget.cpp:1194
+#: mainframewidget.cpp:1186 mainframewidget.cpp:1195
 msgid "Please choose a note!"
 msgstr "Zvoľte si prosím notu"
 
-#: mainframewidget.cpp:1190
+#: mainframewidget.cpp:1191
 #, fuzzy
 msgid "Please choose a note from first voice"
 msgstr "Prosím zvoľte kľúč pre osnovu!"
 
-#: mainframewidget.cpp:2726
+#: mainframewidget.cpp:2732
 msgid "MIDI mapper is already in use!"
 msgstr "Midi mapper sa už používa!"
 
-#: mainframewidget.cpp:2766
+#: mainframewidget.cpp:2772
 msgid "Nothing to play!"
 msgstr "Niet čo hrať!"
 
-#: mainframewidget.cpp:3535 mainframewidget.cpp:3613 mainframewidget.cpp:3673
-#: mainframewidget.cpp:3971
+#: mainframewidget.cpp:3541 mainframewidget.cpp:3619 mainframewidget.cpp:3679
+#: mainframewidget.cpp:3977
 msgid ""
 "Your document contains unsaved changes.\n"
 "Do you want to save your changes or discard them?"
@@ -1664,11 +1666,11 @@ msgstr ""
 "Váš dokument obsahuje neuložené zmeny.\n"
 "Prajete si uložiťtieto zmeny alebo ich ignorovať?"
 
-#: mainframewidget.cpp:3537
+#: mainframewidget.cpp:3543
 msgid "New"
 msgstr "Nový"
 
-#: mainframewidget.cpp:3841
+#: mainframewidget.cpp:3847
 msgid ""
 "MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
 "other tools for better score layout.\n"
@@ -1676,192 +1678,192 @@ msgid ""
 "documentation!"
 msgstr ""
 
-#: mainframewidget.cpp:3843
+#: mainframewidget.cpp:3849
 msgid ""
 "MIDI import is performed by the TSE3 library, but the library is not "
 "present!\n"
 "Please look in the MIDI import section in documentation for more information!"
 msgstr ""
 
-#: mainframewidget.cpp:4037
+#: mainframewidget.cpp:4043
 msgid "Do you really want to close all windows?"
 msgstr "Skutočne chcete zavrieť všetky okná?"
 
-#: mainframewidget.cpp:4038
+#: mainframewidget.cpp:4044
 msgid "Close all"
 msgstr "Zavrieť všetko"
 
-#: mainframewidget.cpp:4039
+#: mainframewidget.cpp:4045
 msgid "&Close all"
 msgstr "&Zavrieť všetko"
 
-#: mainframewidget.cpp:4074
+#: mainframewidget.cpp:4080
 #, fuzzy
 msgid "<center>Please choose the target measure number!</center>"
 msgstr "<center>Zvoľte prosím cieľový bod!</center>"
 
-#: mainframewidget.cpp:4077 mainframewidget.cpp:4078
+#: mainframewidget.cpp:4083 mainframewidget.cpp:4084
 msgid "Goto"
 msgstr "Ísť na"
 
-#: mainframewidget.cpp:4400
+#: mainframewidget.cpp:4406
 msgid "Can't delete last staff."
 msgstr "Poslednú osnovu nie je možné odstrániť."
 
-#: mainframewidget.cpp:4401 mainframewidget.cpp:4408
+#: mainframewidget.cpp:4407 mainframewidget.cpp:4414
 msgid "Delete Staff"
 msgstr "Zmazať osnovu"
 
-#: mainframewidget.cpp:4407
+#: mainframewidget.cpp:4413
 msgid "This deletes current staff! Are you sure?"
 msgstr "Toto odstráni aktuálnu osnovu! Ste si istý?"
 
-#: mainframewidget.cpp:4441
+#: mainframewidget.cpp:4447
 msgid "Staff moving"
 msgstr "Presun osnovy"
 
-#: mainframewidget.cpp:4442
+#: mainframewidget.cpp:4448
 msgid "Please choose the target position:"
 msgstr "Zvoľte prosím cieľovú pozíciu:"
 
-#: mainframewidget.cpp:4477
+#: mainframewidget.cpp:4483
 #, fuzzy
 msgid "Please select a region first!"
 msgstr "Najskôr, prosím, opravte chybu\n"
 
-#: mainframewidget.cpp:4477
+#: mainframewidget.cpp:4483
 msgid "MultiStaff"
 msgstr "MultiOsnova"
 
-#: mainframewidget.cpp:4488
+#: mainframewidget.cpp:4494
 msgid "<center>Set tempo:</center>"
 msgstr "<center>Nastaviť tempo:</center>"
 
-#: mainframewidget.cpp:4491
+#: mainframewidget.cpp:4497
 msgid "Set new tempo"
 msgstr "Nastaviť nové tempo"
 
-#: mainframewidget.cpp:4492
+#: mainframewidget.cpp:4498
 msgid "Set new temp&o"
 msgstr "Nastaviť nové temp&o"
 
-#: mainframewidget.cpp:4498
+#: mainframewidget.cpp:4504
 msgid "<center>Set count of Measures:</center>"
 msgstr "<center>Nastaviť počet taktov:</center>"
 
-#: mainframewidget.cpp:4501
+#: mainframewidget.cpp:4507
 msgid "multi rest"
 msgstr "Viactaktová pomlčka"
 
-#: mainframewidget.cpp:4502
+#: mainframewidget.cpp:4508
 msgid "Set count of m&easures"
 msgstr "Nastaviť počítani&e taktov"
 
-#: mainframewidget.cpp:4519
+#: mainframewidget.cpp:4525
 msgid "<center>How many notes:</center>"
 msgstr "<center>Koľko nôt:</center>"
 
-#: mainframewidget.cpp:4523
+#: mainframewidget.cpp:4529
 msgid "Autobeam"
 msgstr "Automatické viazanie"
 
-#: mainframewidget.cpp:4535
+#: mainframewidget.cpp:4541
 #, fuzzy
 msgid "Please choose a repeat close sign!"
 msgstr "Zvoľte si prosím notu"
 
-#: mainframewidget.cpp:4539
+#: mainframewidget.cpp:4545
 #, fuzzy
 msgid "<center>Please set the repeat count!</center>"
 msgstr "<center>Zvoľte prosím cieľový bod!</center>"
 
-#: mainframewidget.cpp:4543
+#: mainframewidget.cpp:4549
 #, fuzzy
 msgid "Repeat count"
 msgstr "Spočítaj položky"
 
-#: mainframewidget.cpp:4544
+#: mainframewidget.cpp:4550
 msgid "&Set"
 msgstr "&Nastaviť"
 
-#: mainframewidget.cpp:4560
+#: mainframewidget.cpp:4566
 msgid "<center>Semitones:</center>"
 msgstr "<center>Poltóny:</center>"
 
-#: mainframewidget.cpp:4564
+#: mainframewidget.cpp:4570
 msgid "Transpose"
 msgstr "Transponovanie"
 
-#: mainframewidget.cpp:4565
+#: mainframewidget.cpp:4571
 msgid "&Transpose"
 msgstr "&Transponovať"
 
-#: mainframewidget.cpp:4591
+#: mainframewidget.cpp:4597
 msgid "Voice selection"
 msgstr "Voľba hlasu"
 
-#: mainframewidget.cpp:4592
+#: mainframewidget.cpp:4598
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>Zvoľte si tu svoj hlas:</center>"
 
-#: mainframewidget.cpp:5372 mainframewidget.cpp:5514
+#: mainframewidget.cpp:5378 mainframewidget.cpp:5520
 msgid "Error writing file \"%1\"."
 msgstr "Chyba pri zápise súboru \"%1\"."
 
-#: mainframewidget.cpp:5373
+#: mainframewidget.cpp:5379
 msgid "Write TSE3"
 msgstr "Zapísať TSE3"
 
-#: mainframewidget.cpp:5389
+#: mainframewidget.cpp:5395
 msgid "This overrides the current staff! Continue?"
 msgstr "Toto prepíše aktuálnu osnovu! Pokračovať?"
 
-#: mainframewidget.cpp:5390
+#: mainframewidget.cpp:5396
 msgid "Import Recording"
 msgstr "Import nahrávky"
 
-#: mainframewidget.cpp:5391 rc.cpp:217
+#: mainframewidget.cpp:5397 rc.cpp:223
 #, no-c-format
 msgid "&Import Recording"
 msgstr "&Import nahrávky"
 
-#: mainframewidget.cpp:5433
+#: mainframewidget.cpp:5439
 msgid "This will clear the existing document. Are you sure?"
 msgstr "Toto vymaže aktuálny dokument! Ste si istý?"
 
-#: mainframewidget.cpp:5434
+#: mainframewidget.cpp:5440
 msgid "Confirmation"
 msgstr "Potvrdenie"
 
-#: mainframewidget.cpp:5462
+#: mainframewidget.cpp:5468
 msgid "Error creating Score"
 msgstr "Chyba pri vytváraní partitúry"
 
-#: mainframewidget.cpp:5463
+#: mainframewidget.cpp:5469
 msgid "Creating Score"
 msgstr "Vytvoriť partitúru"
 
-#: mainframewidget.cpp:5515 tse3handler.cpp:364
+#: mainframewidget.cpp:5521 tse3handler.cpp:364
 msgid "TSE3 MIDI out"
 msgstr "TSE3 MIDI výstup"
 
-#: mainframewidget.cpp:5530 mainframewidget.cpp:5565
+#: mainframewidget.cpp:5536 mainframewidget.cpp:5571
 msgid "File read error \"%1\"."
 msgstr "Chyba pri čítaní súboru \"%1\"."
 
-#: mainframewidget.cpp:5531
+#: mainframewidget.cpp:5537
 msgid "TSE3 MIDI in"
 msgstr "TSE3 MIDI vstup"
 
-#: mainframewidget.cpp:5566
+#: mainframewidget.cpp:5572
 msgid "Read TSE3"
 msgstr "Čítať TSE3"
 
-#: mainframewidget.cpp:5690
+#: mainframewidget.cpp:5696
 msgid "File \"%1\" already exists! Overwrite?"
 msgstr "Súbor \"%1\" už existuje! Prepísať ho?"
 
-#: mainframewidget.cpp:5691
+#: mainframewidget.cpp:5697
 msgid "File already exists"
 msgstr "Súbor už existuje"
 
@@ -1872,112 +1874,111 @@ msgstr "[žiadne MIDI zariadenie]"
 #: musicxmlexport.cpp:462
 #, fuzzy
 msgid ""
-"Noteedit has exported the score to MusicXML\n"
-"but there are some problems.\n"
+"NoteEdit has exported the score to MusicXML but there are some problems.\n"
 msgstr ""
 "Noteedit exportoval partitúru do PMX, ale vyskytli sa niektoré\n"
 "problémy, ktoré pravdepodobne zabránia úspešnému výstupu z PMX.\n"
 
-#: musicxmlexport.cpp:469
+#: musicxmlexport.cpp:468
 #, fuzzy
 msgid "Staff %1 has irregular keysig. This is currently not supported.\n"
 msgstr ""
 "Osnova %1 má neregulárne označenie kľúča. Toto nie je možné vyjadriť v "
 "LilyPonde\n"
 
-#: musicxmlexport.cpp:474
+#: musicxmlexport.cpp:473
 #, fuzzy
 msgid "Staff %1 contains drum clef. This is currently not supported.\n"
 msgstr "Osnova %1 je osnova s bubnami. Toto nie je možné vyjadriť v PMX.\n"
 
-#: musicxmlexport.cpp:479
+#: musicxmlexport.cpp:478
 #, fuzzy
 msgid "Staff %1 contains drum staff. This is currently not supported.\n"
 msgstr "Osnova %1 je osnova s bubnami. Toto nie je možné vyjadriť v MUP.\n"
 
-#: musicxmlexport.cpp:484
+#: musicxmlexport.cpp:483
 #, fuzzy
 msgid "Staff %1 contains voice change. This is currently not supported.\n"
 msgstr "Osnova %1 je osnova s bubnami. Toto nie je možné vyjadriť v MUP.\n"
 
-#: musicxmlexport.cpp:489
+#: musicxmlexport.cpp:488
 msgid "Staff %1 contains 8va start without 8va stop.\n"
 msgstr ""
 
-#: musicxmlexport.cpp:494
+#: musicxmlexport.cpp:493
 #, fuzzy
 msgid ""
 "Staff %1 contains 8va over a single note. This is currently not supported.\n"
 msgstr "Osnova %1 je osnova s bubnami. Toto nie je možné vyjadriť v MUP.\n"
 
-#: musicxmlexport.cpp:499
+#: musicxmlexport.cpp:498
 msgid "Staff %1 contains dynamic start without dynamic stop.\n"
 msgstr ""
 
-#: musicxmlexport.cpp:504
+#: musicxmlexport.cpp:503
 #, fuzzy
 msgid "MusicXML produced. But there are some problems."
 msgstr "MusiXTeX bol vyprodukovaný. Ale očakávajte problémy."
 
 #: musixtex.cpp:620
+#, fuzzy
 msgid ""
-"Noteedit has exported the score to MusiXTeX but there are some\n"
-"constructs which cannot be expressed in MusiXTeX. The score will\n"
-"work with MusiXTeX but Noteedit omitted these constructs.\n"
+"NoteEdit has exported the score to MusiXTeX format but there are some "
+"problems which can prevent successful PostScript/PDF output or can change "
+"the final score layout.\n"
 msgstr ""
-"Noteedit exportoval partitúru do MusiXTeX,u ale sú nej niektoré\n"
-"konštrukcie, ktoré nie je možné vyjadriť v MusiXTeXe. Partitúra bude \n"
-"pracovať s MusiXTeXom, ale Noteedit vynechal tieto konštrukcie.\n"
+"Noteedit exportoval partitúru do PMX, ale vyskytli sa niektoré\n"
+"problémy, ktoré pravdepodobne zabránia úspešnému výstupu z PMX.\n"
 
-#: musixtex.cpp:628
+#: musixtex.cpp:626
 msgid "128th in measure: %2; maximum = %3 flags\n"
 msgstr "128 v takte: %2; maximum= %3 béčok\n"
 
-#: musixtex.cpp:633
+#: musixtex.cpp:631
 msgid "Staff %1 has irregular keysig. This cannot be expressed in MusiXTeX\n"
 msgstr ""
 "Osnova %1 má neregulárne označenie kľúča. Toto nie je možné vyjadriť v "
 "MusiXTeXe\n"
 
-#: musixtex.cpp:637
+#: musixtex.cpp:635
 msgid "Too many ties in measure: %2; maximum = %3\n"
 msgstr "Príliš veľa ligatúr v takte %2; maximum = %3\n"
 
-#: musixtex.cpp:641
+#: musixtex.cpp:639
 msgid "Too many slurs in measure: %1, ; maximum = %2\n"
 msgstr "Príliš veľa oblúčikov v takte: %1; maximum = %2\n"
 
-#: musixtex.cpp:645
+#: musixtex.cpp:643
 msgid "Too many trills in measure: %1: maximum = 6\n"
 msgstr "Príliš veľa trilkov v takte: %1:  maximum = 6\n"
 
-#: musixtex.cpp:649
+#: musixtex.cpp:647
 #, fuzzy
 msgid "Nested va lines in measure: %2 ;\n"
 msgstr "V takte %2  sú do seba vnorené trilky;\n"
 
-#: musixtex.cpp:653 pmxexport.cpp:464
+#: musixtex.cpp:651 pmxexport.cpp:463
 #, fuzzy
 msgid "Too many va lines in measure: %1: maximum = 6\n"
 msgstr "Príliš veľa trilkov v takte: %1:  maximum = 6\n"
 
-#: musixtex.cpp:657
+#: musixtex.cpp:655
 #, fuzzy
 msgid "Nested va lines in measure: %1 ;\n"
 msgstr "V takte %2  sú do seba vnorené trilky;\n"
 
-#: musixtex.cpp:661
+#: musixtex.cpp:659
 msgid "too many beams in measure: %1; maximum: %2\n"
 msgstr "príliš veľa viazaní (beams) v takte %1; maximum: %2\n"
 
-#: musixtex.cpp:665 pmxexport.cpp:452
+#: musixtex.cpp:663 pmxexport.cpp:451
 msgid ""
 "The score has individual bar layout (partial continued and partial "
 "discontinued)\n"
 "Please install \"musixdbr.tex\" by  Rainer Dunker\n"
 msgstr ""
 
-#: musixtex.cpp:669
+#: musixtex.cpp:667
 #, fuzzy
 msgid ""
 "The score has piano staffs with discontinued bar rules. This cannot be "
@@ -1986,11 +1987,11 @@ msgstr ""
 "Osnova %1 má neregulárne označenie kľúča. Toto nie je možné vyjadriť v "
 "MusiXTeXe\n"
 
-#: musixtex.cpp:678
+#: musixtex.cpp:676
 msgid "MusiXTeX produced. But there are some problems."
 msgstr "MusiXTeX bol vyprodukovaný. Ale očakávajte problémy."
 
-#: musixtex.cpp:1482
+#: musixtex.cpp:1480
 msgid "Output from MusiXTeX-Cmd"
 msgstr "Výstup z MusiXTeX-Cmd"
 
@@ -2035,19 +2036,21 @@ msgid "PMX export"
 msgstr "PMX export"
 
 #: pmxexport.cpp:393
+#, fuzzy
 msgid ""
-"Noteedit has exported the score to PMX but there are some\n"
-"problems which will probably prevent successful PMX output.\n"
+"NoteEdit has exported the score to PMX format but there are some problems "
+"which can prevent successful PostScript/PDF output or can change the final "
+"score layout.\n"
 msgstr ""
 "Noteedit exportoval partitúru do PMX, ale vyskytli sa niektoré\n"
 "problémy, ktoré pravdepodobne zabránia úspešnému výstupu z PMX.\n"
 
-#: pmxexport.cpp:400
+#: pmxexport.cpp:399
 #, fuzzy
 msgid "Staff %1, measure %2: %3 128th, should be: %4\n"
 msgstr "Osnova %1; takt %2: %3 128, by mal byť: %4\n"
 
-#: pmxexport.cpp:405
+#: pmxexport.cpp:404
 msgid ""
 "Staff %1, measure %2: PMX cannot deal with multi rests if more than 1 staff "
 "is exported"
@@ -2055,15 +2058,15 @@ msgstr ""
 "Osnova %1, takt %2:  PMX  sa nevie vysporiadať s viacnásobnými pomlčkami pri "
 "exporte viac ako jednej osnovy."
 
-#: pmxexport.cpp:410
+#: pmxexport.cpp:409
 msgid "measure %1: Too many opened ties\n"
 msgstr "takt %1: Príliš veľa otvorených ligatúr\n"
 
-#: pmxexport.cpp:414
+#: pmxexport.cpp:413
 msgid "measure %1: Too many opened slurs\n"
 msgstr "takt %1: Príliš veľa otvorených oblúčikov\n"
 
-#: pmxexport.cpp:418
+#: pmxexport.cpp:417
 #, fuzzy
 msgid ""
 "Staff %1, measure %2: PMX can only deal with equal tuplet members or members "
@@ -2072,69 +2075,69 @@ msgstr ""
 "osnova %1; takt %2: PMX sa vie vysporiadať iba s 3 zhodnými členmi trioly  "
 "alebo s 2 v pomere 2:1\n"
 
-#: pmxexport.cpp:423
+#: pmxexport.cpp:422
 #, fuzzy
 msgid "Staff %1, measure %2: In PMX tuplet cannot end with a rest\n"
 msgstr "Osnova %1; takt %2: V PMX triola nemôže končiť na pomlčku\n"
 
-#: pmxexport.cpp:428
+#: pmxexport.cpp:427
 msgid "PMX cannot deal with more than 2 voices per staff\n"
 msgstr "PMX sa nevie vysporiadať s viac ako 2 hlasmi na osnovu\n"
 
-#: pmxexport.cpp:432
+#: pmxexport.cpp:431
 msgid "Staff %1 contains drum staff. This cannot be expressed in PMX.\n"
 msgstr "Osnova %1 je osnova s bubnami. Toto nie je možné vyjadriť v PMX.\n"
 
-#: pmxexport.cpp:437
+#: pmxexport.cpp:436
 #, fuzzy
 msgid "Staff %1, measure %2: PMX cannot deal with mixed graces\n"
 msgstr "Osnova %1; takt %2: V PMX triola nemôže končiť na pomlčku\n"
 
-#: pmxexport.cpp:442
+#: pmxexport.cpp:441
 #, fuzzy
 msgid "Staff %1, measure %2: grace has no main note. PMX will not work\n"
 msgstr "Osnova %1; takt %2: V PMX triola nemôže končiť na pomlčku\n"
 
-#: pmxexport.cpp:447
+#: pmxexport.cpp:446
 #, fuzzy
 msgid ""
 "Staff %1, measure %2: Tuplet must be expressible by on (ev. dotted) note. "
 "PMX will not work\n"
 msgstr "Osnova %1; takt %2: V PMX triola nemôže končiť na pomlčku\n"
 
-#: pmxexport.cpp:456
+#: pmxexport.cpp:455
 #, fuzzy
 msgid ""
 "The score has piano staffs with discontinued bar rules. This cannot be "
 "expressed in PMX\n"
 msgstr "Osnova %1 je osnova s bubnami. Toto nie je možné vyjadriť v PMX.\n"
 
-#: pmxexport.cpp:460
+#: pmxexport.cpp:459
 #, fuzzy
 msgid "Nested trills in measure: %1 ;\n"
 msgstr "Nové prihlásenie vo vnorenom okne"
 
-#: pmxexport.cpp:468
+#: pmxexport.cpp:467
 msgid "PMX produced. But there are some problems."
 msgstr "PMX bol vyprodukovaný. Ale očakávajte problémy."
 
-#: previewprint.cpp:67
+#: previewprint.cpp:71
 msgid "Couldn't setup printer"
 msgstr ""
 
-#: previewprint.cpp:243
-msgid "File was not succesfully converted."
+#: previewprint.cpp:286
+msgid "File was not successfully converted to PS/PDF printing format."
 msgstr ""
 
-#: previewprint.cpp:258
+#: previewprint.cpp:304
 msgid "Could not find preview program."
 msgstr ""
 
-#: previewprint.cpp:276
+#: previewprint.cpp:335
 msgid "Could not start preview program."
 msgstr ""
 
-#: previewprint.cpp:355
+#: previewprint.cpp:417
 msgid ""
 "Exporting with lilypond failed.\n"
 "See log file for details."
@@ -2170,7 +2173,7 @@ msgstr "Ovládanie"
 msgid "Score control"
 msgstr "Ovládanie partitúry"
 
-#: rc.cpp:39 rc.cpp:99 rc.cpp:886
+#: rc.cpp:39 rc.cpp:99 rc.cpp:895
 #, no-c-format
 msgid "Notes"
 msgstr "Poznámky"
@@ -2220,7 +2223,7 @@ msgstr ""
 msgid "ABC music"
 msgstr "ABC hudba"
 
-#: rc.cpp:120 rc.cpp:340 rc.cpp:544 rc.cpp:639 rc.cpp:678
+#: rc.cpp:120 rc.cpp:349 rc.cpp:553 rc.cpp:648 rc.cpp:687
 #, no-c-format
 msgid "Page geometry"
 msgstr "Geometria strany"
@@ -2235,12 +2238,12 @@ msgstr "Ohraničenie nad"
 msgid "Staff separation:"
 msgstr "oddelenie osnov:"
 
-#: rc.cpp:129 rc.cpp:358 rc.cpp:550 rc.cpp:645 rc.cpp:693
+#: rc.cpp:129 rc.cpp:367 rc.cpp:559 rc.cpp:654 rc.cpp:702
 #, no-c-format
 msgid "Height:"
 msgstr "Výška:"
 
-#: rc.cpp:132 rc.cpp:349 rc.cpp:547 rc.cpp:642 rc.cpp:696
+#: rc.cpp:132 rc.cpp:358 rc.cpp:556 rc.cpp:651 rc.cpp:705
 #, no-c-format
 msgid "Width:"
 msgstr "Šírka:"
@@ -2275,7 +2278,7 @@ msgstr "Začať &exportovanie"
 msgid "Alt+E"
 msgstr "Alt+C"
 
-#: rc.cpp:157 rc.cpp:391 rc.cpp:742
+#: rc.cpp:157 rc.cpp:751
 #, no-c-format
 msgid "Alt+C"
 msgstr "Alt+C"
@@ -2306,96 +2309,106 @@ msgid "MusicXML format"
 msgstr "Formát MusiX&TeXu"
 
 #: rc.cpp:178
-#, no-c-format
-msgid "export warning"
+#, fuzzy, no-c-format
+msgid "Export warning"
 msgstr "varovanie pri exporte"
 
-#: rc.cpp:184 rc.cpp:511
+#: rc.cpp:184 rc.cpp:319 rc.cpp:808
+#, no-c-format
+msgid "Alt+O"
+msgstr "Alt+O"
+
+#: rc.cpp:187 rc.cpp:520
 #, no-c-format
 msgid "&Details >>"
 msgstr "&Detaily >>"
 
-#: rc.cpp:187
+#: rc.cpp:190 rc.cpp:523
+#, fuzzy, no-c-format
+msgid "Alt+D"
+msgstr "Alt+C"
+
+#: rc.cpp:193
 #, no-c-format
 msgid "Export problems"
 msgstr "Problémy s exportom"
 
-#: rc.cpp:190
+#: rc.cpp:196
 #, no-c-format
 msgid "Filter - NoteEdit"
 msgstr "Filter - NoteEdit"
 
-#: rc.cpp:193
+#: rc.cpp:199
 #, no-c-format
 msgid "Xxx:"
 msgstr "Xxx:"
 
-#: rc.cpp:196
+#: rc.cpp:202
 #, no-c-format
 msgid "Max volume:"
 msgstr "Max hlasitosť:"
 
-#: rc.cpp:199
+#: rc.cpp:205
 #, fuzzy, no-c-format
 msgid "Vel scale:"
 msgstr "Časová mierka"
 
-#: rc.cpp:202
+#: rc.cpp:208
 #, fuzzy, no-c-format
 msgid "Volume step:"
 msgstr "Bežný krok"
 
-#: rc.cpp:205
+#: rc.cpp:211
 #, no-c-format
 msgid "&Average volume"
 msgstr "Prie&merná hlasitosť"
 
-#: rc.cpp:208
+#: rc.cpp:214
 #, no-c-format
 msgid "Choose snap distance:"
 msgstr "Zvoľte najkratšiu notu:"
 
-#: rc.cpp:211
+#: rc.cpp:217
 #, fuzzy, no-c-format
 msgid "Triplet Raster:"
 msgstr "Hex trojica"
 
-#: rc.cpp:220
+#: rc.cpp:226
 #, fuzzy, no-c-format
 msgid "&TSE3 to Score ..."
 msgstr "Grafický hudobný editor"
 
-#: rc.cpp:223
+#: rc.cpp:229
 #, fuzzy, no-c-format
 msgid "&Line to Score .."
 msgstr "&Choď na riadok...           M-1"
 
-#: rc.cpp:226
+#: rc.cpp:232
 #, no-c-format
 msgid "Settings - NoteEdit"
 msgstr "Nastavenia - NoteEdit"
 
-#: rc.cpp:229
+#: rc.cpp:235
 #, fuzzy, no-c-format
 msgid "auto insert beams"
 msgstr "Vlož_iť časovú pečiatku"
 
-#: rc.cpp:232
+#: rc.cpp:238
 #, no-c-format
 msgid "Allow insert from &keyboard"
 msgstr "Povoliť vkladanie z &klávesnice"
 
-#: rc.cpp:235
+#: rc.cpp:241
 #, no-c-format
 msgid "Move according key&sig"
 msgstr "Pohyb podľa key&sig"
 
-#: rc.cpp:238
+#: rc.cpp:244
 #, no-c-format
 msgid "&Tip of the Day"
 msgstr "&Tip dňa"
 
-#: rc.cpp:241
+#: rc.cpp:247
 #, no-c-format
 msgid ""
 "If Tip of the Day is enabled, NoteEdit will show the Tip of the Day every "
@@ -2403,247 +2416,252 @@ msgid ""
 msgstr ""
 "Ak je povolený Tip dňa, tak NoteEdit zobrazí pri každom štarte Tip dňa."
 
-#: rc.cpp:253
+#: rc.cpp:259
 #, no-c-format
 msgid "Additional attributes"
 msgstr "Ďalšie atribúty"
 
-#: rc.cpp:256
+#: rc.cpp:262
 #, fuzzy, no-c-format
 msgid "Volume signs:"
 msgstr "Označenie &hlasitosti"
 
-#: rc.cpp:259
+#: rc.cpp:265
 #, fuzzy, no-c-format
 msgid "Global size:"
 msgstr "normálny rozmer"
 
-#: rc.cpp:262
+#: rc.cpp:268
 #, no-c-format
 msgid "11"
 msgstr "11"
 
-#: rc.cpp:265
+#: rc.cpp:271
 #, no-c-format
 msgid "13"
 msgstr "13"
 
-#: rc.cpp:268
+#: rc.cpp:274
 #, no-c-format
 msgid "16"
 msgstr "16"
 
-#: rc.cpp:271
+#: rc.cpp:277
 #, no-c-format
 msgid "20"
 msgstr "20"
 
-#: rc.cpp:274
+#: rc.cpp:280
 #, no-c-format
 msgid "23"
 msgstr "23"
 
-#: rc.cpp:277
+#: rc.cpp:283
 #, no-c-format
 msgid "26"
 msgstr "26"
 
-#: rc.cpp:280
+#: rc.cpp:286
 #, fuzzy, no-c-format
 msgid "No volume signs"
 msgstr "bez označenia hlasitosti"
 
-#: rc.cpp:283
+#: rc.cpp:289
 #, fuzzy, no-c-format
 msgid "Volume signs above"
 msgstr "znaky hlasitosti nad"
 
-#: rc.cpp:286
+#: rc.cpp:292
 #, fuzzy, no-c-format
 msgid "Volume signs below"
 msgstr "znaky hlasitosti pod"
 
-#: rc.cpp:289
+#: rc.cpp:295
 #, no-c-format
 msgid "Generating parameters"
 msgstr "Parametre generovania"
 
-#: rc.cpp:292
+#: rc.cpp:298
 #, no-c-format
 msgid "Keep &beams"
 msgstr "Dodržať &viazanie"
 
-#: rc.cpp:295
+#: rc.cpp:301
 #, fuzzy, no-c-format
 msgid "Alt+B"
 msgstr "Alt+C"
 
-#: rc.cpp:298
+#: rc.cpp:304
 #, fuzzy, no-c-format
 msgid "&Keep stem directions"
 msgstr "Dodržať &smer nožičiek"
 
-#: rc.cpp:301
+#: rc.cpp:307
 #, fuzzy, no-c-format
 msgid "Alt+K"
 msgstr "Alt+C"
 
-#: rc.cpp:304
+#: rc.cpp:310
 #, fuzzy, no-c-format
-msgid "Export drum notes"
+msgid "E&xport drum notes"
 msgstr "Triediť podľa poznámok"
 
-#: rc.cpp:307
-#, no-c-format
-msgid "&Only voices"
+#: rc.cpp:313
+#, fuzzy, no-c-format
+msgid "Alt+X"
+msgstr "Alt+C"
+
+#: rc.cpp:316
+#, fuzzy, no-c-format
+msgid "&Only voices skeleton"
 msgstr "&Iba hlasy"
 
-#: rc.cpp:310 rc.cpp:799
-#, no-c-format
-msgid "Alt+O"
-msgstr "Alt+O"
-
-#: rc.cpp:313
+#: rc.cpp:322
 #, no-c-format
 msgid "Sparse &ties"
 msgstr "Riedke lega&ta"
 
-#: rc.cpp:316 rc.cpp:805
+#: rc.cpp:325 rc.cpp:814
 #, no-c-format
 msgid "Alt+T"
 msgstr "Alt+T"
 
-#: rc.cpp:319
+#: rc.cpp:328
 #, no-c-format
 msgid "L&imit the measures"
 msgstr "Počet taktov na r&iadok"
 
-#: rc.cpp:322
+#: rc.cpp:331
 #, fuzzy, no-c-format
 msgid "Alt+I"
 msgstr "Alt+C"
 
-#: rc.cpp:325 rc.cpp:583
+#: rc.cpp:334 rc.cpp:592
 #, no-c-format
 msgid "ASCII"
 msgstr ""
 
-#: rc.cpp:328
+#: rc.cpp:337
 #, fuzzy, no-c-format
 msgid "Latin1"
 msgstr "latin1"
 
-#: rc.cpp:331
+#: rc.cpp:340
 #, no-c-format
 msgid "Unicode"
 msgstr ""
 
-#: rc.cpp:334 rc.cpp:586
+#: rc.cpp:343 rc.cpp:595
 #, no-c-format
 msgid "UTF-8"
 msgstr "UTF-8"
 
-#: rc.cpp:337
+#: rc.cpp:346
 #, fuzzy, no-c-format
 msgid "Character encoding:"
 msgstr "Začať zaznam&enávanie"
 
-#: rc.cpp:343 rc.cpp:352 rc.cpp:559 rc.cpp:648
+#: rc.cpp:352 rc.cpp:361 rc.cpp:568 rc.cpp:657
 #, no-c-format
 msgid "&Landscape"
 msgstr "Na š&írku"
 
-#: rc.cpp:346 rc.cpp:355
+#: rc.cpp:355 rc.cpp:364
 #, fuzzy, no-c-format
 msgid "Alt+L"
 msgstr "Alt+C"
 
-#: rc.cpp:361
+#: rc.cpp:370
 #, no-c-format
 msgid "A6"
 msgstr ""
 
-#: rc.cpp:364
+#: rc.cpp:373
 #, no-c-format
 msgid "A5"
 msgstr ""
 
-#: rc.cpp:367
+#: rc.cpp:376
 #, no-c-format
 msgid "A4"
 msgstr ""
 
-#: rc.cpp:370
+#: rc.cpp:379
 #, no-c-format
 msgid "A3"
 msgstr ""
 
-#: rc.cpp:373
+#: rc.cpp:382
 #, no-c-format
 msgid "US Legal"
 msgstr ""
 
-#: rc.cpp:376
+#: rc.cpp:385
 #, no-c-format
 msgid "US Letter"
 msgstr ""
 
-#: rc.cpp:379
+#: rc.cpp:388
 #, no-c-format
 msgid "Tabloid"
 msgstr ""
 
-#: rc.cpp:382
+#: rc.cpp:391
 #, no-c-format
 msgid "Use &standard page size"
 msgstr ""
 
-#: rc.cpp:385 rc.cpp:397 rc.cpp:505 rc.cpp:672
+#: rc.cpp:394 rc.cpp:406 rc.cpp:514 rc.cpp:681
 #, fuzzy, no-c-format
 msgid "Alt+S"
 msgstr "Alt+C"
 
-#: rc.cpp:388
+#: rc.cpp:397
 #, no-c-format
-msgid "Use &custom page size"
+msgid "Use custom page si&ze"
 msgstr ""
 
-#: rc.cpp:394 rc.cpp:541 rc.cpp:669
+#: rc.cpp:400
+#, fuzzy, no-c-format
+msgid "Alt+Z"
+msgstr "Alt+C"
+
+#: rc.cpp:403 rc.cpp:550 rc.cpp:678
 #, no-c-format
 msgid "&Staff selection"
 msgstr "Voľba notových o&snov"
 
-#: rc.cpp:400
+#: rc.cpp:409
 #, no-c-format
 msgid "Line Selection - NoteEdit"
 msgstr "Voľba riadkov - NoteEdit"
 
-#: rc.cpp:403
+#: rc.cpp:412
 #, no-c-format
 msgid "Element selection"
 msgstr "Voľba elementov"
 
-#: rc.cpp:406
+#: rc.cpp:415
 #, no-c-format
 msgid "trill"
 msgstr "trilkovanie"
 
-#: rc.cpp:409
+#: rc.cpp:418
 #, no-c-format
 msgid "lonely trill"
 msgstr "osamelé trilkovanie"
 
-#: rc.cpp:412
+#: rc.cpp:421
 #, no-c-format
 msgid "dynamic"
 msgstr "dynamika"
 
-#: rc.cpp:418
+#: rc.cpp:427
 #, fuzzy, no-c-format
 msgid "8bassa"
 msgstr "basový"
 
-#: rc.cpp:427
+#: rc.cpp:436
 #, no-c-format
 msgid ""
 "<center><b>Hint:<br></b>After choosing one of the objects, use the middle "
@@ -2652,602 +2670,597 @@ msgstr ""
 "<center><b>Rada:<br></b>Po zvolení nejakého objektu, použite stredné "
 "tlačítko na myši na vytvorenie spojenia s notou.</center>"
 
-#: rc.cpp:430
+#: rc.cpp:439
 #, no-c-format
 msgid "listForm"
 msgstr "listForm"
 
-#: rc.cpp:439
+#: rc.cpp:448
 #, no-c-format
 msgid "Lyrics settings - NoteEdit"
 msgstr "Nastavenia lyriky - NoteEdit"
 
-#: rc.cpp:442
+#: rc.cpp:451
 #, no-c-format
 msgid "Lyrics"
 msgstr "Lyrika"
 
-#: rc.cpp:445 uiconnect.cpp:1073
+#: rc.cpp:454 uiconnect.cpp:1073
 #, no-c-format
 msgid "C&lear"
 msgstr "Z&mazať"
 
-#: rc.cpp:448
+#: rc.cpp:457
 #, no-c-format
 msgid "Open &file"
 msgstr "Otvoriť &súbor"
 
-#: rc.cpp:451
+#: rc.cpp:460
 #, no-c-format
 msgid "&Restore"
 msgstr "O&bnoviť"
 
-#: rc.cpp:460
+#: rc.cpp:469
 #, no-c-format
 msgid "Metronome - NoteEdit"
 msgstr "Metronóm - NoteEdit"
 
-#: rc.cpp:466
+#: rc.cpp:475
 #, no-c-format
 msgid "Device:"
 msgstr "Zariadenie:"
 
-#: rc.cpp:469
+#: rc.cpp:478
 #, fuzzy, no-c-format
 msgid "Beat note:"
 msgstr "Poznámka na okraji|o"
 
-#: rc.cpp:472
+#: rc.cpp:481
 #, fuzzy, no-c-format
 msgid "Bar note:"
 msgstr "Poznámka na okraji|o"
 
-#: rc.cpp:475
+#: rc.cpp:484
 #, no-c-format
 msgid "Record tempo:"
 msgstr "Tempo záznamu:"
 
-#: rc.cpp:478
+#: rc.cpp:487
 #, no-c-format
 msgid "&Start recording"
 msgstr "Začať zaznam&enávanie"
 
-#: rc.cpp:484
+#: rc.cpp:493
 #, fuzzy, no-c-format
 msgid "Additional MIDI parameters:"
 msgstr "Ďalšie atribúty"
 
-#: rc.cpp:487
+#: rc.cpp:496
 #, no-c-format
 msgid "MIDI settings - NoteEdit"
 msgstr "MIDI nastavenie - NoteEdit"
 
-#: rc.cpp:496
+#: rc.cpp:505
 #, no-c-format
 msgid "MUP warning"
 msgstr "MUP varovanie"
 
-#: rc.cpp:499 uiconnect.cpp:1533
+#: rc.cpp:508 uiconnect.cpp:1533
 #, no-c-format
 msgid "Saved, but MUP does not work!"
 msgstr "Uložené, ale MUP nebude fungovať!"
 
-#: rc.cpp:502
+#: rc.cpp:511
 #, no-c-format
 msgid "Don't &show this message in future"
 msgstr "Ne&zobrazovať túto správu v budúcnosti"
 
-#: rc.cpp:514
-#, fuzzy, no-c-format
-msgid "Alt+D"
-msgstr "Alt+C"
-
-#: rc.cpp:520
+#: rc.cpp:529
 #, no-c-format
 msgid "The MusicXML export filter doesn't require any additional parameters."
 msgstr ""
 
-#: rc.cpp:526
+#: rc.cpp:535
 #, no-c-format
 msgid "Additional"
 msgstr "Dodatočné"
 
-#: rc.cpp:529
+#: rc.cpp:538
 #, no-c-format
 msgid "&With tempo signs"
 msgstr "S ozna&čením tempa"
 
-#: rc.cpp:532
+#: rc.cpp:541
 #, no-c-format
 msgid "With &volume signs"
 msgstr "S označením &hlasitosti"
 
-#: rc.cpp:535
+#: rc.cpp:544
 #, fuzzy, no-c-format
 msgid "Indent:"
 msgstr "Klarinet"
 
-#: rc.cpp:538
+#: rc.cpp:547
 #, no-c-format
 msgid "MusiXTeX-Cmd:"
 msgstr "MusiXTeX-Cmd:"
 
-#: rc.cpp:553
+#: rc.cpp:562
 #, no-c-format
 msgid "Left margin:"
 msgstr "Ľavý okraj:"
 
-#: rc.cpp:556
+#: rc.cpp:565
 #, no-c-format
 msgid "Top margin:"
 msgstr "Horný okraj:"
 
-#: rc.cpp:562
+#: rc.cpp:571
 #, no-c-format
 msgid "Page generation"
 msgstr "Generovanie strany"
 
-#: rc.cpp:565
+#: rc.cpp:574
 #, no-c-format
 msgid "ucs"
 msgstr ""
 
-#: rc.cpp:568
+#: rc.cpp:577
 #, no-c-format
 msgid "L&imit line measures"
 msgstr "Počet taktov na r&iadok"
 
-#: rc.cpp:571
+#: rc.cpp:580
 #, no-c-format
 msgid "Spa&re ties"
 msgstr "St&riedme legáta"
 
-#: rc.cpp:574
+#: rc.cpp:583
 #, no-c-format
 msgid "With bar &numbers"
 msgstr "S číslova&ním taktov"
 
-#: rc.cpp:577
+#: rc.cpp:586
 #, no-c-format
 msgid "With musix&lyr"
 msgstr "S musix&lyr"
 
-#: rc.cpp:580
+#: rc.cpp:589
 #, no-c-format
 msgid "&Omit page numbering"
 msgstr "Vynechať číslovanie strán"
 
-#: rc.cpp:590
+#: rc.cpp:599
 #, no-c-format
 msgid "latin1"
 msgstr "latin1"
 
-#: rc.cpp:593
+#: rc.cpp:602
 #, no-c-format
 msgid "cp1251"
 msgstr "cp1251"
 
-#: rc.cpp:596
+#: rc.cpp:605
 #, no-c-format
 msgid "koi8-u"
 msgstr "koi8-u"
 
-#: rc.cpp:599
+#: rc.cpp:608
 #, no-c-format
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: rc.cpp:602
+#: rc.cpp:611
 #, fuzzy, no-c-format
 msgid "Small size"
 msgstr "malý rozmer"
 
-#: rc.cpp:605
+#: rc.cpp:614
 #, fuzzy, no-c-format
 msgid "Normal size"
 msgstr "normálny rozmer"
 
-#: rc.cpp:608
+#: rc.cpp:617
 #, fuzzy, no-c-format
 msgid "Large size"
 msgstr "veľký rozmer"
 
-#: rc.cpp:611
+#: rc.cpp:620
 #, fuzzy, no-c-format
 msgid "Very large size"
 msgstr "veľmi veľký rozmer"
 
-#: rc.cpp:615
+#: rc.cpp:624
 #, no-c-format
 msgid "T2A"
 msgstr "T2A"
 
-#: rc.cpp:618
+#: rc.cpp:627
 #, no-c-format
 msgid "T2B"
 msgstr "T2B"
 
-#: rc.cpp:621
+#: rc.cpp:630
 #, no-c-format
 msgid "T2C"
 msgstr "T2C"
 
-#: rc.cpp:624
+#: rc.cpp:633
 #, no-c-format
 msgid "OT1"
 msgstr "OT1"
 
-#: rc.cpp:627
+#: rc.cpp:636
 #, no-c-format
 msgid "OT2"
 msgstr "OT2"
 
-#: rc.cpp:630
+#: rc.cpp:639
 #, no-c-format
 msgid "X2"
 msgstr "X2"
 
-#: rc.cpp:633
+#: rc.cpp:642
 #, no-c-format
 msgid "LCY"
 msgstr "LCY"
 
-#: rc.cpp:636
+#: rc.cpp:645
 #, fuzzy, no-c-format
 msgid "PMXForm"
 msgstr "&PMX formát"
 
-#: rc.cpp:651
+#: rc.cpp:660
 #, fuzzy, no-c-format
 msgid "Keep beams"
 msgstr "Dodržať &viazanie"
 
-#: rc.cpp:654
+#: rc.cpp:663
 #, fuzzy, no-c-format
 msgid "&With musixlyr"
 msgstr "S musix&lyr"
 
-#: rc.cpp:657
+#: rc.cpp:666
 #, no-c-format
 msgid "Settings"
 msgstr "Nastavenia"
 
-#: rc.cpp:660
+#: rc.cpp:669
 #, no-c-format
 msgid "<center>Measures<br>per system:"
 msgstr "<center>Počet taktov<br>na riadok:"
 
-#: rc.cpp:663
+#: rc.cpp:672
 #, no-c-format
 msgid "<center>Systems<br>per page:"
 msgstr "<center>Poč. riadkov<br>na strane:"
 
-#: rc.cpp:666
+#: rc.cpp:675
 #, no-c-format
 msgid "<center>Number<br>of pages:"
 msgstr "<center>Počet strán:"
 
-#: rc.cpp:675
+#: rc.cpp:684
 #, fuzzy, no-c-format
 msgid "Save parameters"
 msgstr "Parametre ukladania"
 
-#: rc.cpp:681
+#: rc.cpp:690
 #, fuzzy, no-c-format
 msgid "Enable"
 msgstr "Povolené"
 
-#: rc.cpp:687
+#: rc.cpp:696
 #, fuzzy, no-c-format
 msgid "&With measure numbers"
 msgstr "s číslami taktov"
 
-#: rc.cpp:690
+#: rc.cpp:699
 #, fuzzy, no-c-format
 msgid "Alt+W"
 msgstr "Alt+C"
 
-#: rc.cpp:699
+#: rc.cpp:708
 #, no-c-format
 msgid "Dismiss"
 msgstr "Odmietnuť"
 
-#: rc.cpp:702
+#: rc.cpp:711
 #, no-c-format
 msgid "set value"
 msgstr "nastaviť hodnotu"
 
-#: rc.cpp:705
+#: rc.cpp:714
 #, fuzzy, no-c-format
 msgid "scaleForm"
 msgstr "Voľba hud. kľúča"
 
-#: rc.cpp:712
+#: rc.cpp:721
 #, no-c-format
 msgid "&Include rests"
 msgstr "&Vrátane pomlčiek"
 
-#: rc.cpp:715
+#: rc.cpp:724
 #, no-c-format
 msgid "Cleanup rests - NoteEdit"
 msgstr "Zmazať pomlčky - NoteEdit"
 
-#: rc.cpp:718
+#: rc.cpp:727
 #, no-c-format
 msgid "Choose smallest rest:"
 msgstr "Zvoľte najkratšiu pomlčku:"
 
-#: rc.cpp:727
+#: rc.cpp:736
 #, no-c-format
 msgid "staffForm"
 msgstr ""
 
-#: rc.cpp:736
+#: rc.cpp:745
 #, no-c-format
 msgid "Staff properties - NoteEdit"
 msgstr "Nastavenie osnovy - NoteEdit"
 
-#: rc.cpp:745 rc.cpp:748
+#: rc.cpp:754 rc.cpp:757
 #, no-c-format
 msgid "Staff"
 msgstr "Osnova"
 
-#: rc.cpp:751
+#: rc.cpp:760
 #, no-c-format
 msgid "Name:"
 msgstr "Názov:"
 
-#: rc.cpp:754
+#: rc.cpp:763
 #, no-c-format
 msgid "Channel:"
 msgstr "Kanál:"
 
-#: rc.cpp:757
+#: rc.cpp:766
 #, no-c-format
 msgid "Instrument:"
 msgstr "Nástroj:"
 
-#: rc.cpp:763
+#: rc.cpp:772
 #, no-c-format
 msgid "Overlength:"
 msgstr "Horná vzdialenosť"
 
-#: rc.cpp:766
+#: rc.cpp:775
 #, no-c-format
 msgid "Play<br>transposed:"
 msgstr "Hrať<br>transponované:"
 
-#: rc.cpp:769
+#: rc.cpp:778
 #, no-c-format
 msgid "Chorus:"
 msgstr "Chorus:"
 
-#: rc.cpp:772
+#: rc.cpp:781
 #, no-c-format
 msgid "Reverb:"
 msgstr "Odraz:"
 
-#: rc.cpp:775
+#: rc.cpp:784
 #, no-c-format
 msgid "Stereo Pos:"
 msgstr "Stereo poloha:"
 
-#: rc.cpp:778
+#: rc.cpp:787
 #, no-c-format
 msgid "Lyrics dist.:"
 msgstr "Vzdialenosť lyriky"
 
-#: rc.cpp:781
+#: rc.cpp:790
 #, no-c-format
 msgid "Underlength:"
 msgstr "Dolná vzdialenosť"
 
-#: rc.cpp:784
+#: rc.cpp:793
 #, no-c-format
 msgid "Volume:"
 msgstr "Hlasitosť:"
 
-#: rc.cpp:787 rc.cpp:812 rc.cpp:895
+#: rc.cpp:796 rc.cpp:821 rc.cpp:904
 #, no-c-format
 msgid "Voice"
 msgstr "Hlas"
 
-#: rc.cpp:790
+#: rc.cpp:799
 #, no-c-format
 msgid "C&reate Voice"
 msgstr "Vytvo&riť hlas"
 
-#: rc.cpp:793
+#: rc.cpp:802
 #, no-c-format
 msgid "Alt+R"
 msgstr "Alt+R"
 
-#: rc.cpp:802
+#: rc.cpp:811
 #, no-c-format
 msgid "&Test"
 msgstr "&Test"
 
-#: rc.cpp:809 rc.cpp:892
+#: rc.cpp:818 rc.cpp:901
 #, no-c-format
 msgid "Staff No."
 msgstr "Osnova č."
 
-#: rc.cpp:815
+#: rc.cpp:824
 #, no-c-format
 msgid "Staff name"
 msgstr "Názov osnovy"
 
-#: rc.cpp:818
+#: rc.cpp:827
 #, no-c-format
 msgid "&Select all"
 msgstr "&Zvoliť všetko"
 
-#: rc.cpp:821
+#: rc.cpp:830
 #, no-c-format
 msgid "&Unselect all"
 msgstr "&Odznačiť všetko"
 
-#: rc.cpp:830
+#: rc.cpp:839
 #, no-c-format
 msgid "Text Dialog"
 msgstr "Textový dialóg"
 
-#: rc.cpp:833
+#: rc.cpp:842
 #, no-c-format
 msgid "Text"
 msgstr "Text"
 
-#: rc.cpp:836
+#: rc.cpp:845
 #, no-c-format
 msgid "Enter text:"
 msgstr "Vložiť text"
 
-#: rc.cpp:839 rc.cpp:926
+#: rc.cpp:848 rc.cpp:935
 #, no-c-format
 msgid "Ok"
 msgstr "OK"
 
-#: rc.cpp:845
+#: rc.cpp:854
 #, no-c-format
 msgid "Uptext"
 msgstr ""
 
-#: rc.cpp:848
+#: rc.cpp:857
 #, fuzzy, no-c-format
 msgid "DownText"
 msgstr "D&ole"
 
-#: rc.cpp:851
+#: rc.cpp:860
 #, no-c-format
 msgid "TimeSignature"
 msgstr "OznačenieDoby"
 
-#: rc.cpp:854
+#: rc.cpp:863
 #, fuzzy, no-c-format
 msgid "Custom time signature"
 msgstr "Zvoľte označenie taktu"
 
-#: rc.cpp:863
+#: rc.cpp:872
 #, no-c-format
 msgid "Predefined time signatures"
 msgstr "Preddefinované označenia taktu"
 
-#: rc.cpp:871
+#: rc.cpp:880
 #, no-c-format
 msgid "Tip of the day - NoteEdit"
 msgstr "Tip dňa - NoteEdit"
 
-#: rc.cpp:874
+#: rc.cpp:883
 #, no-c-format
 msgid "&Show tips in future"
 msgstr "Zobrazovať tipy aj v budúcnosti"
 
-#: rc.cpp:880
+#: rc.cpp:889
 #, no-c-format
 msgid "Information about the TSE3 song - NoteEdit"
 msgstr "Informácie o TSE3 piesni - NoteEdit"
 
-#: rc.cpp:883
+#: rc.cpp:892
 #, no-c-format
 msgid "Track No."
 msgstr "Stopa č."
 
-#: rc.cpp:889
+#: rc.cpp:898
 #, no-c-format
 msgid "Splitted"
 msgstr "Rozdelené"
 
-#: rc.cpp:898
+#: rc.cpp:907
 #, no-c-format
 msgid "Channel"
 msgstr "Kanál"
 
-#: rc.cpp:901
+#: rc.cpp:910
 #, no-c-format
 msgid "Volume"
 msgstr "Hlasitosť"
 
-#: rc.cpp:904
+#: rc.cpp:913
 #, no-c-format
 msgid "Clef"
 msgstr "Kľúč"
 
-#: rc.cpp:907
+#: rc.cpp:916
 #, fuzzy, no-c-format
 msgid "Shift"
 msgstr "Posun"
 
-#: rc.cpp:913
+#: rc.cpp:922
 #, fuzzy, no-c-format
 msgid "Tuplets"
 msgstr "Triola"
 
-#: rc.cpp:917
+#: rc.cpp:926
 #, fuzzy, no-c-format
 msgid "Number of notes:"
 msgstr "Fakturačné poznámky"
 
-#: rc.cpp:923
+#: rc.cpp:932
 #, no-c-format
 msgid "Real length (in notes above)"
 msgstr ""
 
-#: rc.cpp:929
+#: rc.cpp:938
 #, no-c-format
 msgid "Voices - NoteEdit"
 msgstr "Hlasy - Noteedit"
 
-#: rc.cpp:932
+#: rc.cpp:941
 #, no-c-format
 msgid "Stem direction"
 msgstr "Smer nôt"
 
-#: rc.cpp:935
+#: rc.cpp:944
 #, no-c-format
 msgid "&Up"
 msgstr "&Hore"
 
-#: rc.cpp:938
+#: rc.cpp:947
 #, no-c-format
 msgid "Do&wn"
 msgstr "D&ole"
 
-#: rc.cpp:941
+#: rc.cpp:950
 #, no-c-format
 msgid "&Indiviual"
 msgstr "&Individuálne"
 
-#: rc.cpp:944
+#: rc.cpp:953
 #, no-c-format
 msgid "Create &voice"
 msgstr "Vytvoriť hla&s"
 
-#: rc.cpp:947
+#: rc.cpp:956
 #, no-c-format
 msgid "&Delete voice"
 msgstr "&Zmazať hlas"
 
-#: rc.cpp:959
+#: rc.cpp:968
 #, no-c-format
 msgid "Voice number:"
 msgstr "Číslo hlasu:"
 
-#: rc.cpp:962
+#: rc.cpp:971
 #, no-c-format
 msgid "<center>Rest position</center>"
 msgstr "<center>Pozícia pomlčky</center>"
 
-#: rc.cpp:965
+#: rc.cpp:974
 #, no-c-format
 msgid "Insert volume - NoteEdit"
 msgstr "Vložiť hlasitosť - Noteedit"
 
-#: rc.cpp:974
+#: rc.cpp:983
 #, no-c-format
 msgid "volume"
 msgstr "hlasitosť"
 
-#: rc.cpp:977
+#: rc.cpp:986
 #, no-c-format
 msgid "Musical express:"
 msgstr "Hudobné vyjadrenie:"
@@ -4757,6 +4770,29 @@ msgstr "zobraziť diagram"
 #: ../kguitar_excerpt/chord.cpp:432
 msgid "Chord constructor"
 msgstr "Tvorba akordov"
+
+#~ msgid ""
+#~ "Noteedit has exported the score to LilyPond but there are some\n"
+#~ "problems which will probably prevent successful LilyPond output.\n"
+#~ msgstr ""
+#~ "Noteedit exportoval partitúru do LilyPondu, ale vyskytli sa nejaké\n"
+#~ "problémy, ktoré pravdepodobne zabránia správnemu výstupu z LilyPondu.\n"
+
+#~ msgid ""
+#~ "Noteedit has exported the score to MusiXTeX but there are some\n"
+#~ "constructs which cannot be expressed in MusiXTeX. The score will\n"
+#~ "work with MusiXTeX but Noteedit omitted these constructs.\n"
+#~ msgstr ""
+#~ "Noteedit exportoval partitúru do MusiXTeX,u ale sú nej niektoré\n"
+#~ "konštrukcie, ktoré nie je možné vyjadriť v MusiXTeXe. Partitúra bude \n"
+#~ "pracovať s MusiXTeXom, ale Noteedit vynechal tieto konštrukcie.\n"
+
+#~ msgid ""
+#~ "Noteedit has exported the score to PMX but there are some\n"
+#~ "problems which will probably prevent successful PMX output.\n"
+#~ msgstr ""
+#~ "Noteedit exportoval partitúru do PMX, ale vyskytli sa niektoré\n"
+#~ "problémy, ktoré pravdepodobne zabránia úspešnému výstupu z PMX.\n"
 
 #, fuzzy
 #~ msgid "Save"

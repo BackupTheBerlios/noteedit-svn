@@ -190,7 +190,13 @@
                         <cstring>lilyDrumNotes</cstring>
                     </property>
                     <property name="text">
-                        <string>Export drum notes</string>
+                        <string>E&amp;xport drum notes</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+X</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
                     </property>
                 </widget>
                 <widget class="QCheckBox" row="4" column="0" rowspan="1" colspan="2">
@@ -198,7 +204,7 @@
                         <cstring>lilyVoice</cstring>
                     </property>
                     <property name="text">
-                        <string>&amp;Only voices</string>
+                        <string>&amp;Only voices skeleton</string>
                     </property>
                     <property name="accel">
                         <string>Alt+O</string>
@@ -454,10 +460,10 @@
                         <cstring>lilyCPage</cstring>
                     </property>
                     <property name="text">
-                        <string>Use &amp;custom page size</string>
+                        <string>Use custom page si&amp;ze</string>
                     </property>
                     <property name="accel">
-                        <string>Alt+C</string>
+                        <string>Alt+Z</string>
                     </property>
                     <property name="buttonGroupId">
                         <number>0</number>
@@ -478,7 +484,6 @@
         </widget>
     </grid>
 </widget>
-<layoutdefaults spacing="6" margin="11"/>
 <connections>
     <connection>
         <sender>lilyMeasureVal</sender>
@@ -486,8 +491,6 @@
         <receiver>LCDNumber13</receiver>
         <slot>display(int)</slot>
     </connection>
-<slots>
-    <slot>lilyMeasures()</slot>
-</slots>
 </connections>
+<layoutdefaults spacing="6" margin="11"/>
 </UI>

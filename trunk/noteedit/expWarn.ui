@@ -1,88 +1,76 @@
-<!DOCTYPE UI><UI>
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>expWarnDialog</class>
-<widget>
-    <class>QDialog</class>
-    <property stdset="1">
-        <name>name</name>
+<widget class="QDialog">
+    <property name="name">
         <cstring>expWarnDialog</cstring>
     </property>
-    <property stdset="1">
-        <name>geometry</name>
+    <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>407</width>
-            <height>93</height>
+            <width>542</width>
+            <height>71</height>
         </rect>
     </property>
-    <property stdset="1">
-        <name>caption</name>
-        <string>export warning</string>
+    <property name="caption">
+        <string>Export warning</string>
     </property>
-    <widget>
-        <class>QPushButton</class>
-        <property stdset="1">
-            <name>name</name>
+    <widget class="QPushButton">
+        <property name="name">
             <cstring>OkBu</cstring>
         </property>
-        <property stdset="1">
-            <name>geometry</name>
+        <property name="geometry">
             <rect>
                 <x>10</x>
-                <y>50</y>
+                <y>40</y>
                 <width>154</width>
                 <height>26</height>
             </rect>
         </property>
-        <property stdset="1">
-            <name>text</name>
+        <property name="text">
             <string>&amp;OK</string>
         </property>
+        <property name="accel">
+            <string>Alt+O</string>
+        </property>
     </widget>
-    <widget>
-        <class>QPushButton</class>
-        <property stdset="1">
-            <name>name</name>
+    <widget class="QPushButton">
+        <property name="name">
             <cstring>DetBu</cstring>
         </property>
-        <property stdset="1">
-            <name>geometry</name>
+        <property name="geometry">
             <rect>
-                <x>230</x>
-                <y>50</y>
+                <x>380</x>
+                <y>40</y>
                 <width>153</width>
                 <height>26</height>
             </rect>
         </property>
-        <property stdset="1">
-            <name>text</name>
+        <property name="text">
             <string>&amp;Details &gt;&gt;</string>
         </property>
+        <property name="accel">
+            <string>Alt+D</string>
+        </property>
     </widget>
-    <widget>
-        <class>QLabel</class>
-        <property stdset="1">
-            <name>name</name>
+    <widget class="QLabel">
+        <property name="name">
             <cstring>Headline</cstring>
         </property>
-        <property stdset="1">
-            <name>geometry</name>
+        <property name="geometry">
             <rect>
                 <x>10</x>
-                <y>10</y>
-                <width>390</width>
+                <y>0</y>
+                <width>530</width>
                 <height>39</height>
             </rect>
         </property>
-        <property stdset="1">
-            <name>font</name>
+        <property name="font">
             <font>
                 <pointsize>14</pointsize>
-                <bold>1</bold>
             </font>
         </property>
-        <property stdset="1">
-            <name>text</name>
+        <property name="text">
             <string>Export problems</string>
         </property>
     </widget>
@@ -100,7 +88,10 @@
         <receiver>expWarnDialog</receiver>
         <slot>slShowDet()</slot>
     </connection>
-    <slot access="public">slShowDet()</slot>
-    <slot access="public">slOk()</slot>
 </connections>
+<slots>
+    <slot>slShowDet()</slot>
+    <slot>slOk()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
 </UI>

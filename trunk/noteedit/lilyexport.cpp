@@ -171,13 +171,11 @@ void NLilyExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, expor
 	}
 	// Read Lilypond options from form
 	exportDialog_->getLilyOptions( lilyOpts_ );
-	if (lilyOpts_.voice) {
-		if (NResource::lilyProperties_.lilyProperties) {
-			out_ << "\\include \"paper" << lilyOpts_.font << ".ly\"" << endl << endl;
-		}
-		else {
-			out_ << "#(set-global-staff-size " << lilyOpts_.font <<')' << endl << endl;
-		}
+	if (NResource::lilyProperties_.lilyProperties) {
+		out_ << "\\include \"paper" << lilyOpts_.font << ".ly\"" << endl << endl;
+	}
+	else {
+		out_ << "#(set-global-staff-size " << lilyOpts_.font <<')' << endl << endl;
 	}
 	if (lilyOpts_.drumNotes) {
 		if (NResource::lilyProperties_.lilyVersion24) {
@@ -2154,12 +2152,12 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 	// Read Lilypond options from form
 	exportDialog_->getLilyOptions( lilyOpts_ );
 	if (flush) {		// Flush, initialize for a next export and return.
-        	if (!lilyOpts_.voice) {
+		if (!lilyOpts_.voice) {
 			for (m=0;m<scoreBlock.count();m++) {
-	               		tmps.sprintf("%s", scoreBlock.at(m)->latin1());
+				tmps.sprintf("%s", scoreBlock.at(m)->latin1());
 				depth_ = tmps[0].digitValue();		// flush tabs
 				tabsOut();
-	               		out_ << tmps.remove(0,1);		// and flush rest of line
+				out_ << tmps.remove(0,1);		// and flush rest of line
 			}
 			if (lyricsInGrandStaff) {
 				out_ << endl << "\\layout {" << endl;
@@ -2168,7 +2166,7 @@ void NLilyExport::buildScoreBlockAndFlush(	int i, // staff index
 		}
 		scoreBlock.clear();	// autodelete is on, triggers init block next time
 		return;
-        }
+	}
 	
 	if (scoreBlock.isEmpty()) {	// This is the init block
 

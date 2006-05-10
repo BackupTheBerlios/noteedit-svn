@@ -201,3 +201,14 @@ version 2.8.1:
 	* R467: FIXED: Removed mixed ties warning in Lily export. LilyPond 2.4.x and on supports mixed ties perfectly.
 	* R468: ADDED: Ties and Slurs are now drawn with wide pen. This gives better readability of the score.
 	* R469: FIXED: Some UI polishments. Updated translations.
+	* R470: FIXED:
+	  - Font size in Lily export works again.
+	  - Added official font sizes from Lily documentation:
+	    - 11.22 pt (pocket scores)
+		- 12.60 pt
+		- 14.14 pt
+		- 15.87 pt
+		- 17.82 pt (song books)
+		- 20 pt (standard parts)
+		- 22.45 pt
+		- 25.2 pt

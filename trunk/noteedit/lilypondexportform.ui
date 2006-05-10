@@ -49,17 +49,27 @@
                 <widget class="QComboBox" row="0" column="1">
                     <item>
                         <property name="text">
-                            <string>11</string>
+                            <string>11.22</string>
                         </property>
                     </item>
                     <item>
                         <property name="text">
-                            <string>13</string>
+                            <string>12.60</string>
                         </property>
                     </item>
                     <item>
                         <property name="text">
-                            <string>16</string>
+                            <string>14.14</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>15.87</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>17.82</string>
                         </property>
                     </item>
                     <item>
@@ -69,19 +79,19 @@
                     </item>
                     <item>
                         <property name="text">
-                            <string>23</string>
+                            <string>22.45</string>
                         </property>
                     </item>
                     <item>
                         <property name="text">
-                            <string>26</string>
+                            <string>25.2</string>
                         </property>
                     </item>
                     <property name="name">
                         <cstring>lilyFont</cstring>
                     </property>
                     <property name="currentItem">
-                        <number>2</number>
+                        <number>5</number>
                     </property>
                 </widget>
                 <widget class="QComboBox" row="2" column="0" rowspan="1" colspan="2">
@@ -443,10 +453,10 @@
                         <enum>NoFocus</enum>
                     </property>
                     <property name="text">
-                        <string>Use &amp;standard page size</string>
+                        <string>&amp;Use standard page size</string>
                     </property>
                     <property name="accel">
-                        <string>Alt+S</string>
+                        <string>Alt+U</string>
                     </property>
                     <property name="checked">
                         <bool>true</bool>

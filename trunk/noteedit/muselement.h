@@ -132,9 +132,9 @@ class NPlayable : public NMusElement {
 		virtual double getBotY() = 0;
 
 	protected:
-		property_type properties_; /* element's flags - 64 bit long! */
+		property_type properties_; //element's flags - 64 bit long!
 
-		QPtrList<NPlayable> *tupletList_;	// all elements in this element's tuplet
+		QPtrList<NPlayable> *tupletList_;	//all elements under this element's tuplet
 		double tupm_; double tupn_;
 		int xstart_, xend_;
 		double tupTeXn_;

@@ -219,3 +219,6 @@ version 2.8.1:
 		FIXED: print/preview: stop if preview is still running
 		FIXED: delete form_ in IntPrinter destructor (does not remove the dialogpage though -- might lead to crashes!)
 	* R473: ADDED: Japanese translation thanks to Takeshi Hamasaki.
+	* R474: FIXED:
+	  - Tuplet doesn't disappear anymore, when pasting it after the non-musical element anymore.
+	  - Crash when pasting a tuplet into an empty staff.

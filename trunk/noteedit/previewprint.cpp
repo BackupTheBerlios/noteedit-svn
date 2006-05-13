@@ -56,21 +56,38 @@ NPreviewPrint::~NPreviewPrint()
 {
 #ifdef WITH_DIRECT_PRINTING
 	if( printer_ ) delete printer_;
+	if( previewProgram_ ) delete previewProgram_;
 #endif
 }
 
 // Setup printer (KDE IntPrinter)
-void NPreviewPrint::setupPrinting(bool preview)
+bool NPreviewPrint::setupPrinting(bool preview)
 {
+  bool ret = true;
 #ifdef WITH_DIRECT_PRINTING
   // Print preview ?
   if ( preview == false )
   {
     // Setup printer (shows the print dialog)
-    if( printer_->setup(this) == false ) 
+    if( printer_->setup(this) == false )
+    { 
       KMessageBox::error(0,i18n("Couldn't setup printer"), 
                          kapp->makeStdCaption(i18n("Error")));
+      ret = false;
+    }
   }
+  else
+  {
+    // Preview program (process) already running?
+    if( previewProgram_ && previewProgram_->isRunning() )
+    {
+      // Sorry, only one preview instance at a time.
+      KMessageBox::sorry(this, i18n("Could not start preview, is one already running?"), 
+      kapp->makeStdCaption(i18n("Error")));
+      ret = false;
+    }
+  }
+  return ret;
 #endif
 }
 
@@ -230,6 +247,7 @@ void NPreviewPrint::filePrintReceivedStdOut(KProcess *, char *buffer, int buflen
   buffer[buflen] = 0;
   printf("%s",buffer);
   fflush(stdout);
+  fflush(stderr);
 #endif
 }
 
@@ -243,6 +261,7 @@ void NPreviewPrint::filePrintReceivedStdErr(KProcess *, char *buffer, int buflen
   buffer[buflen] = 0;
   printf("%s",buffer);
   fflush(stdout);
+  fflush(stderr);
 #endif
 }
 
@@ -283,7 +302,7 @@ bool NPreviewPrint::setExistantFile( QString &filePath )
       filePath = dirPath_ + "/" + filePath;
     if( false == QFileInfo( filePath ).exists() )
     {
-      KMessageBox::sorry(this, i18n("File was not successfully converted to PS/PDF printing format."), 
+      KMessageBox::sorry(this, i18n("File was not succesfully converted."), 
                          kapp->makeStdCaption(i18n("Error")));
       return false;
     }
@@ -295,7 +314,8 @@ bool NPreviewPrint::setExistantFile( QString &filePath )
 bool NPreviewPrint::printDoPreview(QString fileType)
 {
 #ifdef WITH_DIRECT_PRINTING
-    previewProgram_ = new QProcess(this, "Preview");
+    if( 0 == previewProgram_ )
+      previewProgram_ = new QProcess(this, "Preview");
     // Use KDE to find the preview program
     QString previewArgs=KStandardDirs::findExe( NResource::previewProgramInvokation_ );
     // Don't continue if preview program wasn't found
@@ -365,8 +385,9 @@ void NPreviewPrint::printWithLilypond(bool preview)
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
     KProcess typesettingProgram;
-    struct lily_options lilyOpts;
-    QFile oLogFile;
+    bool res;
+    struct lily_options lilyOpts; // Options for export
+    QFile oLogFile;               // Lilypond log file
     QString oLogLine;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     LilypondExportForm *form = (LilypondExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( LILY_PAGE ), EXP_Lilypond );
@@ -374,7 +395,11 @@ void NPreviewPrint::printWithLilypond(bool preview)
     exportDialog_->getLilyOptions( lilyOpts );
     // Save options to new form
     exportDialog_->setLilyOptions( *form, lilyOpts );
-    setupPrinting(preview);
+    res = setupPrinting(preview);
+    // If preview is still running, don't start export
+    // It gets stuck (zombie process) for some unknown reason
+    if( false == res )
+      return;
     // Export file to lilypond
     exportDialog_->doExport( LILY_PAGE, filePath_ + ".ly", false );
 
@@ -426,6 +451,7 @@ void NPreviewPrint::printWithABC(bool preview)
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
     KProcess typesettingProgram;
+    bool res;
     struct abc_options abcOpts;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     ABCExportForm *form = (ABCExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( ABC_PAGE ), EXP_ABC );
@@ -433,7 +459,11 @@ void NPreviewPrint::printWithABC(bool preview)
     exportDialog_->getABCOptions( abcOpts );
     // Save options to new form
     exportDialog_->setABCOptions( *form, abcOpts );
-    setupPrinting(preview);
+    res = setupPrinting(preview);
+    // If preview is still running, don't start export
+    // It gets stuck (zombie process) for some unknown reason
+    if( false == res )
+      return;
     // Export file to abc
     exportDialog_->doExport( ABC_PAGE, filePath_ + ".abc", false );
     
@@ -469,6 +499,7 @@ void NPreviewPrint::printWithPMX(bool preview)
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
     KProcess typesettingProgram(this, "PMX Exporter");
+    bool res;
     struct pmx_options pmxOpts;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     PMXExportForm *form = (PMXExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( PMX_PAGE ), EXP_PMX );
@@ -476,7 +507,11 @@ void NPreviewPrint::printWithPMX(bool preview)
     exportDialog_->getPMXOptions( pmxOpts );
     // Save options to new form
     exportDialog_->setPMXOptions( *form, pmxOpts );
-    setupPrinting(preview);
+    res = setupPrinting(preview);
+    // If preview is still running, don't start export
+    // It gets stuck (zombie process) for some unknown reason
+    if( false == res )
+      return;
     // Export file to PMX
     exportDialog_->doExport( PMX_PAGE, filePath_ + ".pmx", false );
 
@@ -508,6 +543,7 @@ void NPreviewPrint::printWithMusiXTeX(bool preview)
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
     KProcess typesettingProgram(this, "MusiXTeX Exporter");
+    bool res;
     struct musixtex_options musixtexOpts;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     MusiXTeXExportForm *form = (MusiXTeXExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MUSIX_PAGE ), EXP_MusiXTeX );
@@ -515,7 +551,11 @@ void NPreviewPrint::printWithMusiXTeX(bool preview)
     exportDialog_->getMusiXTeXOptions( musixtexOpts );
     // Save options to new form
     exportDialog_->setMusiXTeXOptions( *form, musixtexOpts );
-    setupPrinting(preview);
+    res = setupPrinting(preview);
+    // If preview is still running, don't start export
+    // It gets stuck (zombie process) for some unknown reason
+    if( false == res )
+      return;
     // Export file to MusiXTeX
     exportDialog_->doExport( MUSIX_PAGE, filePath_ + ".tex", false );
 
@@ -547,6 +587,7 @@ void NPreviewPrint::printWithMusicXML(bool preview)
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
     KProcess typesettingProgram(this, "MusicXML Exporter");
+    bool res;
     struct musicxml_options musicxmlOpts;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     MusicXMLExportForm *form = (MusicXMLExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MUSICXML_PAGE ), EXP_MusicXML );
@@ -554,7 +595,11 @@ void NPreviewPrint::printWithMusicXML(bool preview)
     exportDialog_->getMusicXMLOptions( musicxmlOpts );
     // Save options to new form
     exportDialog_->setMusicXMLOptions( *form, musicxmlOpts );
-    setupPrinting(preview);
+    res = setupPrinting(preview);
+    // If preview is still running, don't start export
+    // It gets stuck (zombie process) for some unknown reason
+    if( false == res )
+      return;
     // Export file to MusicXML
     exportDialog_->doExport( MUSICXML_PAGE, filePath_ + ".xml", false );
 
@@ -586,6 +631,7 @@ void NPreviewPrint::printWithMidi(bool preview)
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
     KProcess typesettingProgram(this, "Midi Exporter");
+    bool res;
     struct midi_options midiOpts;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
     MidiExportForm *form = (MidiExportForm *)printer_->createExportForm( exportDialog_->FormatComboBox->text( MIDI_PAGE ), EXP_Midi );
@@ -593,7 +639,11 @@ void NPreviewPrint::printWithMidi(bool preview)
     exportDialog_->getMidiOptions( midiOpts );
     // Save options to new form
     exportDialog_->setMidiOptions( *form, midiOpts );
-    setupPrinting(preview);
+    res = setupPrinting(preview);
+    // If preview is still running, don't start export
+    // It gets stuck (zombie process) for some unknown reason
+    if( false == res )
+      return;
     // Export file to Midi
     exportDialog_->doExport( MIDI_PAGE, filePath_ + ".midi", false );
 
@@ -625,6 +675,7 @@ void NPreviewPrint::printWithNative(bool preview)
 #ifdef WITH_DIRECT_PRINTING
     // Init process, export form and printer
     KProcess typesettingProgram(this, "NE Print Saver");
+    bool res;
     // No noteedit options structure available currently
     //struct noteedit_options neOpts;
     QStringList printOptions = QStringList::split( " ", QString(NResource::typesettingOptions_) );
@@ -634,7 +685,11 @@ void NPreviewPrint::printWithNative(bool preview)
     //form->getNoteEditOptions( neOpts );
     // Save options to new form (currently not done)
     //form_->setNoteEditOptions( *form, neOpts );
-    setupPrinting(preview);
+    res = setupPrinting(preview);
+    // If preview is still running, don't start export
+    // It gets stuck (zombie process) for some unknown reason
+    if( false == res )
+      return;
     // No need to save the file, just use the saved one
     //writeStaffs( filePath_ + ".not", false );
 
@@ -706,6 +761,7 @@ QWidget *IntPrinter::createExportForm(QString dialogTitle, exportFormat_T format
 // No need to delete our objects as QT does everything for us
 IntPrinter::~IntPrinter()
 {
+  delete form_;
 }
 
 // RK: Completely simplified the dialog, layout cannot be done within this class

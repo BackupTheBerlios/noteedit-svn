@@ -212,4 +212,9 @@ version 2.8.1:
 		- 20 pt (standard parts)
 		- 22.45 pt
 		- 25.2 pt
-    * R471: FIXED: A typo in tips&trick - lines are placed using the left mouse button, not middle. Thanks to Takeshi Hamasaki for spotting this.
+	* R471: FIXED: A typo in tips&trick - lines are placed using the left mouse button, not middle. Thanks to Takeshi Hamasaki for spotting this.
+	* R472: ADDED: previewprint::setupPrinting returns whether setup
+	was successfull or not and checks if preview is still running
+	        FIXED: create preview process only if it wasn't created already
+		FIXED: print/preview: stop if preview is still running
+		FIXED: delete form_ in IntPrinter destructor (does not remove the dialogpage though -- might lead to crashes!)

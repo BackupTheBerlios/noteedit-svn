@@ -56,7 +56,7 @@ protected slots:
     void filePreviewReadStdErr();
     
 protected:
-    void setupPrinting(bool); // Helper methods for filePrint
+    bool setupPrinting(bool); // Helper methods for filePrint
     bool setExistantFile( QString &filePath );
     void printDoExport(KProcess *typesettingProgram);
     bool printDoPreview(const QString fileType);

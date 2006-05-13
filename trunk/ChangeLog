@@ -212,3 +212,4 @@ version 2.8.1:
 		- 20 pt (standard parts)
 		- 22.45 pt
 		- 25.2 pt
+    * R471: FIXED: A typo in tips&trick - lines are placed using the left mouse button, not middle. Thanks to Takeshi Hamasaki for spotting this.

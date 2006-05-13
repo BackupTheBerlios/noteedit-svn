@@ -174,7 +174,7 @@ does not suffice. Read the <a href="foo">documentation</a>!
 <tip category="NodeEdit|General">
 <html>
 <b>...that you can insert lines?</b><br/><br/>
-Select <code>Insert --&gt; lines</code>, choose a line and middle click	on
+Select <code>Insert --&gt; lines</code>, choose a line and left click on
 a note.
 </html>
 </tip>

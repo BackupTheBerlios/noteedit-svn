@@ -1141,7 +1141,9 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						}
 						if (trillendpos != 0 && chord->getBbox()->right() > trillendpos) {
 							trillendpos = 0;
-							if (NResource::lilyProperties_.lilyVersion2) {
+							if (NResource::lilyProperties_.lilyVersion26) {
+								out_ << "\\stopTrillSpan ";
+							} else if (NResource::lilyProperties_.lilyVersion2) {
 								out_ << "#(ly:export (make-span-event 'TextSpanEvent STOP)) ";
 							}
 							else {
@@ -1150,7 +1152,9 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 						}
 						if (chord->trill_ != 0 && trilledNotes > 0) {
 							trillendpos = chord->getTrillEnd();
-							if (NResource::lilyProperties_.lilyVersion2) {
+							if (NResource::lilyProperties_.lilyVersion26) {
+								out_ << "\\startTrillSpan ";
+							} else if (NResource::lilyProperties_.lilyVersion2) {
 								out_ << "#(ly:export (make-span-event 'TextSpanEvent START)) ";
 							}
 							else {

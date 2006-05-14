@@ -1619,10 +1619,10 @@ result is not <application>MUP</application>-able. &noteedit; warns you in this 
 <title>Overview</title>
 <para>&noteedit; 2.8.1 implements music score printing using one of the external typesetting program. Supported typesetting programs are:
 <itemizedlist>
-<listitem><application>LilyPond</application></listitem>
-<listitem><application>ABC music</application> (abcm2ps)</listitem>
-<listitem><application>MusiXTeX</application></listitem>
-<listitem><application>PMX</application></listitem>
+<listitem><para><application>LilyPond</application></para></listitem>
+<listitem><para><application>ABC music</application> (abcm2ps)</para></listitem>
+<listitem><para><application>MusiXTeX</application></para></listitem>
+<listitem><para><application>PMX</application></para></listitem>
 </itemizedlist></para>
 <para>What NoteEdit actually does is first, export the score into the desired typesetting format, run the typesetting program using the exported file (which produces the output PDF/PostScript file of the score then) and then preview or print the generated output file.</para>
 </sect2>
@@ -1630,39 +1630,39 @@ result is not <application>MUP</application>-able. &noteedit; warns you in this 
 <sect2 id="printing_configuration">
 <title>Printing configuration</title>
 <para>First, you need to tell &noteedit; which typesetting program it should use. Go to</para>
-<menuchoice>
+<para><menuchoice>
 <guimenu><accel>S</accel>ettings</guimenu>
 <guimenuitem><accel>C</accel>onfigure NoteEdit...</guimenuitem>
-</menuchoice>
+</menuchoice></para>
 <para>This will bring you the NoteEdit configuration window. Now select the Printing item on the left. This will bring you the following window.</para>
 <para><inlinemediaobject><imageobject><imagedata align="center" fileref="configureprinting.png"/></imageobject></inlinemediaobject></para>
-<itemizedlist>
+<para><itemizedlist>
 <listitem><para>&noteedit; already has some predefined typesetting file formats and typesetting and preview programs. The default one is <application>LilyPond</application> and the default application for previewing the documents is <application>KPDF</application>.</para></listitem>
 <listitem><para>If you want to use a non-standard typesetting program, you can select custom from the Program combo box and configure the appropriate options.</para></listitem>
 <listitem><para>If you want to use a non-standard typesetting format (like MIDI or MusicXML), you can choose one from the Export format combo box.</para></listitem>
 <listitem><para>If you want to manually run a non-standard typesetting program or &noteedit; doesn't find the desired program automatically, you can set the Invokation edit box. Enter the full path to the application there.</para></listitem>
 <listitem><para>Options edit box is meant for any additional arguments the typesetting or the preview program should need. %s is reserved for the &noteedit;'s exported file name.</para></listitem>
 <listitem><para>By default, the preview program always shows the generated PostScript file. The exception is <application>LilyPond</application>, where the shown file is a PDF file.</para></listitem>
-</itemizedlist>
+</itemizedlist></para>
 </sect2>
 
 <sect2 id="printing_preview">
 <title>Preview</title>
 <para>If you want to preview the score using the desired typesetting program, use</para>
-<menuchoice>
+<para><menuchoice>
 <guimenu><accel>F</accel>ile</guimenu>
 <guimenuitem><accel>P</accel>rint preview...</guimenuitem>
-</menuchoice>
+</menuchoice></para>
 <para>This will export the score, run the typesetting program on it and show you the generated file in the selected preview application.</para>
 </sect2>
 
 <sect2 id="printing_print">
 <title>Print</title>
 <para>To print the score, use</para>
-<menuchoice>
+<para><menuchoice>
 <guimenu><accel>F</accel>ile</guimenu>
 <guimenuitem><accel>P</accel>rint...</guimenuitem>
-</menuchoice>
+</menuchoice></para>
 <para>This will bring you the standard KDE print dialog with some &noteedit; additions.</para>
 <para><inlinemediaobject><imageobject><imagedata align="center" fileref="print.png"/></imageobject></inlinemediaobject></para>
 <para>Note the LilyPond format tab. This tab was added by &noteedit; and it's reserved for the selected export file format - LilyPond in this case. If you want to set any special settings for the way how &noteedit; should export your score to the desired typesetting format, you can change them here.</para>

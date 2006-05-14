@@ -48,6 +48,7 @@ NPreviewPrint::NPreviewPrint()
 #ifdef WITH_DIRECT_PRINTING
 	printer_ = 0;
 	previewProgram_ = 0;
+	doConvertLily_ = true;
 #endif
 }
 
@@ -137,19 +138,25 @@ void NPreviewPrint::filePrint(bool preview, exportFrm *exportDialog)
 	// Find out which format was selected
 	switch( NResource::typesettingProgramFormat_ )
 	{
-	  case 0: // Midi
-	    NResource::typesettingProgram_ = 5; // This is now Midi
-	    break;
-	  case 1: // Lilypond
-	    NResource::typesettingProgram_ = 2;
-	    break;
-	  case 2: // MusicXML
-	    NResource::typesettingProgram_ = 6; // This is now MusicXML
-	    break;
-	  case 3: // ABC Music
+	  case 0: // ABC Music
 	    NResource::typesettingProgram_ = 0;
 	    break;
-	  case 4: // NoteEdit
+	  case 1: // Midi
+	    NResource::typesettingProgram_ = 5; // This is now Midi
+	    break;
+	  case 2: // PMX
+	    NResource::typesettingProgram_ = 1;
+	    break;
+	  case 3: // Lilypond
+	    NResource::typesettingProgram_ = 2;
+	    break;
+	  case 4: // MusiXTeX
+	    NResource::typesettingProgram_ = 3;
+	    break;
+	  case 5: // MusicXML
+	    NResource::typesettingProgram_ = 6; // This is now MusicXML
+	    break;
+	  case 6: // NoteEdit
 	    NResource::typesettingProgram_ = 7; // This is now NoteEdit
 	    break;
 	}
@@ -402,6 +409,19 @@ void NPreviewPrint::printWithLilypond(bool preview)
       return;
     // Export file to lilypond
     exportDialog_->doExport( LILY_PAGE, filePath_ + ".ly", false );
+
+    // Shall we convert the lilypond file?
+    if( true == doConvertLily_ )
+    {
+      // Use only the filename for the conversion process
+      // This is useful for later versions of lilypond
+      typesettingProgram << QString("convert-ly") << QString("-e") << fileName_ + ".ly";
+      typesettingProgram.setWorkingDirectory( dirPath_ );
+      // Start converting the lilypond file
+      printDoExport(&typesettingProgram);
+      // Clear arguments so lilypond works
+      typesettingProgram.clearArguments();
+    }
 
     // Replace the %s String by fileName_
     printOptions.gres("%s",fileName_ + ".ly");
@@ -761,7 +781,17 @@ QWidget *IntPrinter::createExportForm(QString dialogTitle, exportFormat_T format
 // No need to delete our objects as QT does everything for us
 IntPrinter::~IntPrinter()
 {
-  delete form_;
+  if( form_ )
+  {
+    delete form_;
+    form_ = 0;
+  }
+  // NoteEdit crashes when trying to delete this object :-(
+  //if( formatExport_ )
+  //{
+  //  delete formatExport_;
+  //  formatExport_ = 0;
+  //}
 }
 
 // RK: Completely simplified the dialog, layout cannot be done within this class
@@ -787,7 +817,9 @@ void PrintExportDialogPage::getOptions( QMap<QString,QString>& /*opts*/, bool /*
 {
 }
 
-// Change options (not needed)
+// Change options (from the manual: If you correctly reimplemented 
+// KPrintDialogPage::setOptions(), the settings will be restored from call
+// to call, you don't have to worry about state saving/restoration.)
 void PrintExportDialogPage::setOptions( const QMap<QString,QString>& /*opts*/ )
 {
 }

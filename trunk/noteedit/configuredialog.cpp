@@ -204,10 +204,12 @@ ConfigureDialog::ConfigureDialog(NMainFrameWidget *mainWidget) :
 	typesettingLayout->addWidget(typesettingProgramFormatLabel, 1, 0);
 
 	typesettingProgramFormat = new QComboBox (i18n("Export format"), typesettingProgramGroup );
-	typesettingProgramFormat->insertItem( i18n("Midi") );
-	typesettingProgramFormat->insertItem( i18n("Lilypond") );
-	typesettingProgramFormat->insertItem( i18n("MusicXML") );
 	typesettingProgramFormat->insertItem( i18n("ABC Music") );
+	typesettingProgramFormat->insertItem( i18n("Midi") );
+	typesettingProgramFormat->insertItem( i18n("PMX") );
+	typesettingProgramFormat->insertItem( i18n("Lilypond") );
+	typesettingProgramFormat->insertItem( i18n("MusiXTeX") );
+	typesettingProgramFormat->insertItem( i18n("MusicXML") );
 	typesettingProgramFormat->insertItem( i18n("NoteEdit") );
 	typesettingProgramFormat->setCurrentItem(NResource::typesettingProgramFormat_);
 	typesettingLayout->addWidget(typesettingProgramFormat, 1, 1);
@@ -528,15 +530,15 @@ void ConfigureDialog::printLayout() {
   {
     case 0: // ABC Music
       typesettingProgramInvokation->setText("abcm2ps");
-      typesettingProgramFormat->setCurrentItem(3);
+      typesettingProgramFormat->setCurrentItem(0);
       break;
     case 1: // PMX
       typesettingProgramInvokation->setText("pmx");
-      typesettingProgramFormat->setCurrentItem(4);
+      typesettingProgramFormat->setCurrentItem(2);
       break;
     case 2: // Lilypond
       typesettingProgramInvokation->setText("lilypond");
-      typesettingProgramFormat->setCurrentItem(1);
+      typesettingProgramFormat->setCurrentItem(3);
       break;
     case 3: // MusiXTeX
       typesettingProgramInvokation->setText("musixtex");

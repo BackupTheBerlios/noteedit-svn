@@ -79,6 +79,7 @@ protected:
     QString filePath_;        // Both of the above together
     QString ftsetProg_;       // file name of the typesetting program used to print
     exportFrm *exportDialog_; // Copy of export Dialog instance
+    bool doConvertLily_;      // Call convert-ly before starting lilypond
 #endif
 };
 

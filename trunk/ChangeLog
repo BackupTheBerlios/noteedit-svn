@@ -230,3 +230,4 @@ version 2.8.1:
 	  - By default, if "Turn" flag is disabled, we place Decrescendo, if "Turn" flag is enabled, we place crescendo.
 	* R476: ADDED: Double click selects the key in Insert key dialog. Resized Insert lines dialog a bit to fit other languages too.
 	* R477: Updated docbook. Added Printing section.
+	* R479: Updated lilyexport for trills

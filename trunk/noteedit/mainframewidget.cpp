@@ -583,6 +583,7 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	naturlabel_->setPixmap(*NResource::naturIcon_);
 
 	connect(keyList_, SIGNAL(highlighted(int)), this, SLOT(changeKey(int)));
+	connect(keyList_, SIGNAL(doubleClicked(QListBoxItem *)), this, SLOT(setInsertionKey()));
 	connect(keyOkButton_, SIGNAL(clicked()), this, SLOT(setInsertionKey()));
 	connect(keyCancButton_, SIGNAL(clicked()), keyDialog_, SLOT(hide()));
 

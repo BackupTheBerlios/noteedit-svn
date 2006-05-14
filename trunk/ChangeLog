@@ -228,3 +228,4 @@ version 2.8.1:
 	  - When in edit mode, the appropriate tab is now open and enabled according to which line the note has.
 	  - Crescendo/Decrescendo's "Turn" checkbox is now refreshed correctly when selecting an element in edit mode.
 	  - By default, if "Turn" flag is disabled, we place Decrescendo, if "Turn" flag is enabled, we place crescendo.
+	* R476: ADDED: Double click selects the key in Insert key dialog. Resized Insert lines dialog a bit to fit other languages too.

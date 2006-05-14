@@ -117,7 +117,7 @@ License, Version 1.1 or any later version published by the Free Software Foundat
 no Front-Cover Texts, and with no Back-Cover Texts. A copy of the license is included in the section entitled
 <link linkend="credits">"GNU Free Documentation License"</link>.</para></legalnotice>
 
-<date>2006-04-23</date>
+<date>2006-05-14</date>
 <releaseinfo>2.8.1</releaseinfo>
 <abstract>
 
@@ -226,13 +226,13 @@ keyboard button (<inlinemediaobject><imageobject><imagedata fileref="redkeyboard
 
 <para id="comp_keyboard">Another possibility is to use the computer keyboard instead of a MIDI keyboard:</para>
 <itemizedlist>
-<listitem><para><literal>C</literal> means pitch C</para></listitem>
-<listitem><para><literal>D</literal> means pitch D</para></listitem>
-<listitem><para><literal>E</literal> means pitch E</para></listitem>
+<listitem><para><literal>Shift + C</literal> means pitch C</para></listitem>
+<listitem><para><literal>Shift + D</literal> means pitch D</para></listitem>
+<listitem><para><literal>Shift + E</literal> means pitch E</para></listitem>
 <listitem><para>...</para></listitem>
 </itemizedlist>
 
-<para>You can redefine the case because all <link linkend="keyconf">keys are configurable</link></para>
+<para>&noteedit; will automatically select the nearest pitch from the current one. You can redefine the case because all <link linkend="keyconf">keys are configurable</link></para>
 
 <para>If you insert notes at the end &noteedit; will re-compute the beams in last measure.(<link linkend="autobeaminsert">configurable</link>)</para>
 
@@ -259,7 +259,7 @@ music typesetters  <emphasis>(except PMX, here it is called '9')</emphasis> the 
 <itemizedlist>
 <listitem><para>In <application>MUP</application>, <application>LilyPond</application> and
 <application>ABC music</application> it looks like a whole note with 2 additional lines: <inlinemediaobject><imageobject><imagedata fileref="breve_oval.png"/></imageobject></inlinemediaobject></para></listitem>
-<listitem><para>In <application>MusiXTeX</application> and <application>PMX</application> it is a small rectangle: <inlinemediaobject><imageobject><imagedata fileref="breve_rect.png"/></imageobject></inlinemediaobject> and</para></listitem>
+<listitem><para>In <application>MusiXTeX</application> and <application>PMX</application> it is a small rectangle (baroque style): <inlinemediaobject><imageobject><imagedata fileref="breve_rect.png"/></imageobject></inlinemediaobject> and</para></listitem>
 <listitem><para><application>MusiXTeX</application> offers the whole note with 2 additional lines, too.</para></listitem>
 </itemizedlist>
 
@@ -293,8 +293,7 @@ measure instead!</para></note>
 <sect2><title>Problems exporting graces notes</title>
 
 <para><userinput>MusiXTeX</userinput> <application>MusiXTeX</application> accepts the graces so as written on score: with/without beam, with/without slur, even beamed stroken graces.</para>
-<para><userinput>LilyPond</userinput> <application>LilyPond</application> changes the beam status reasonably. Version 1.4.x cannot deal with slurs
-in grace notes. &noteedit; will warn you.</para>
+<para><userinput>LilyPond</userinput> <application>LilyPond</application> changes the beam status reasonably.</para>
 <para> <userinput>ABC music</userinput>  changes the beam status reasonably.</para>
 <para><userinput>PMX</userinput> <application>PMX</application> changes the slur and beam status reasonably.</para>
 <para><userinput>MUP</userinput> <application>MUP</application> hates beam statements in grace notes. It sets the beams reasonably. So, if you are
@@ -316,12 +315,7 @@ If you can't see this toolbar then select it on <literal><userinput>View</userin
 <para>Problems with exportation of drum notes</para>
 
 <para><userinput>MusiXTeX</userinput>: All 5 drum notes are supported in <application>MusiXTeX</application>.</para>
-<para><userinput>LilyPond</userinput>: First of all: I was told my drum exportation doesn't
-use all <application>LilyPond</application> features. Perhaps a <application>LilyPond</application> guru can
-review the &noteedit; <application>LilyPond</application> output and send me a mail
-what to to.</para>
-<para>The drum notes export works but with some side effects. All notes in a chord
-appear with the same drum note type. Only 3 of the 5 types are supported. &noteedit; will warn you.</para>
+<para><userinput>LilyPond</userinput>: <application>LilyPond</application> supports all the drum noteheads except for the <literal>+</literal> (plus) one. <literal>x</literal> (cross) notehead style is used instead.</para>
 <para><userinput>ABC music</userinput> drum notes are exported to ABC music.</para>
 <para><userinput>PMX</userinput>: Drum notes are not supported in <application>PMX</application>. &noteedit; will warn you.</para>
 <para><userinput>MUP</userinput>: The <application>MUP</application> compatibility ends here. <application>MUP</application> doesn't support drum notes. 
@@ -565,7 +559,7 @@ repeat count in every staff! Otherwise the replay behaviour is undefined.</para>
 <sect2 id="lyrics">
 <title>Lyrics</title>
 
-<para>You can attach up to 5 lines of lyrics to each staff.</para>
+<para>You can attach up to 5 stanzas of lyrics to each staff.</para>
 <para>
 <menuchoice>
 <guimenu>St<accel>a</accel>ff</guimenu>
@@ -579,10 +573,10 @@ should look like:(see: <literal>lyrics/whiskey[1-5].txt</literal> or <literal>ly
         Build me a boat that can car- ry two 
         a- and both shall row my love and I. 
         O down in the mea- dows the o- ther day 
-        a- gath'- ring flow'rs both fine and gay,  -
+        a- gath'- ring flow'rs both fine and gay,_ _
         a- gath'- ring flow'rs bo- oth red and blue, 
         I lit- tle thought wha- at love could do.
-        2.)I leaned my 
+        I leaned my 
 </literallayout>
 
 <para>&noteedit; interprets all blanks as hyphenation symbol. Select the appropriate staff and choose:</para>
@@ -592,34 +586,33 @@ should look like:(see: <literal>lyrics/whiskey[1-5].txt</literal> or <literal>ly
 <guimenuitem><accel>L</accel>yrics...</guimenuitem>
 <guimenuitem><accel>I</accel>mport</guimenuitem>
 </menuchoice>
-<emphasis> choose a line number and a text file</emphasis></para>
+<emphasis> choose a stanza number and a text file</emphasis></para>
 <para>You can repeat this as many times as you want till the lyrics are correct. 
 Likewise you can <link linkend="staffgeometry">change the staff geometry</link> to get enough place for the lyrics.
 You can remove the lyrics from current staff by clearing the board.</para>
-<para>See <filename>example4.not</filename> for a lyrics example with 5 lines!</para>
+<para>See <filename>example4.not</filename> for a lyrics example with 5 stanzas!</para>
 <para>Please note:</para>
 <itemizedlist>
-<listitem><para>The '-' sign behind <quote>gay,</quote>! If you want a note without lyrics choose a non-blank character.</para></listitem>
-<listitem><para>Instead of the '-' sign you can use the asterix ('*').
-In contrast to '-' sign the asterix isn't printed on score. Thus, it only appears in lyrics dialog.</para></listitem>
-<listitem><para>&noteedit; assumes a isolatin-1 coding. So you can use German umlauts (&auml;, &ouml;, &uuml;, ...). They are correctly translated
-into <application>MusiXTeX</application>. But be warned: <application>MUP</application> will fail if you use non-ascii characters!</para></listitem>
-<listitem><para>The lyrics are exported into <application>MusiXTeX</application>, MIDI file, <application>PMX</application> file <emphasis>(and implicitly to <application>MUP</application>)</emphasis>.
+<listitem><para>If you have a word consisting of more than a single syllable, you have to use hyphens to assign every syllable to a single note. Use '-' sign after the syllable to mark it that the other part of the word is still missing. Note the "nei- ther" and "a- gath'- ring" in the upper example!</para></listitem>
+<listitem><para>If you want to assign a single syllable to more than a single note, place '-' sign under every note you wish this syllable to be still held.</para></listitem>
+<listitem><para>Melismas are supported. Melisma means that the last syllable of a word is held and sang over more than a single note. In music, melismas and ordinary hyphens are treated differently. Put '_' sign after the last syllable and then a single '_' for every note you wish the melisma to still be held. Note the "gay,_ _" in the upper example!</para></listitem>
+<listitem><para>Syllabic singing is supported: If you want to assign more than a single syllable to a single note, use <literal>&lt;...&gt;</literal> parenthesis:
+<literal>Byl jsem &lt;v le-&gt; su.</literal><emphasis>(Czech)</emphasis></para></listitem>
+<listitem><para>Instead of the '-' sign you can use the '*' (asterix). In contrast to '-' sign, the asterix isn't shown in score. Thus, it only appears in lyrics dialog.</para></listitem>
+<listitem><para><emphasis>WARNING!</emphasis> Do not use any digits in Lyrics!</para></listitem>
+<listitem><para>&noteedit; uses UTF-8 coding, so you can use any non-ordinary characters of your prefered language present in UTF-8. Currently tested and supported export formats for UTF-8 are <application>MusiXTeX</application> and <application>LilyPond</application>. Be warned: <application>MUP</application> will fail, if you use non-ascii characters!</para></listitem>
+<listitem><para>Lyrics can be exported into all supported export formats.
 The <application>PMX</application> lyrics export has some drawbacks. Please read the <link linkend="pmx_export_appendix"><application>PMX</application> export discussion page</link>! 
 There are some MIDI players which
 show the lyrics during playback (the AWE MIDI player <application>tkmidi</application> by Takashi Iwai, <application>kmid</application> from KDE <emphasis>&laquo;but unfortunately the
 whole text in one line&raquo;</emphasis>, <application>timidity</application> <emphasis>&laquo;but unfortunately the whole text at the beginning&raquo;</emphasis>)</para></listitem>
 <listitem><para>If there are repeat signs and more than 1 lyrics line &noteedit; attaches the second
 lyrics line to the repeated part in MIDI file.</para></listitem>
-<listitem><para>Avoid empty lyrics lines. Fill them from 1 ... 5!</para></listitem>
-<listitem><para>If you want assign several syllables to one note use <literal>&lt;...&gt;</literal> parenthesis:
-<literal>Byl jsem &lt;v le-&gt; su.</literal><emphasis>(Czech)</emphasis></para></listitem>
 </itemizedlist>
 </sect2>
 
 <sect2 id="arb_text">
-<title><inlinemediaobject><imageobject><imagedata fileref="new.png"/></imageobject></inlinemediaobject>
-Arbitrary  text</title>
+<title>Arbitrary  text</title>
 <para>To insert arbitrary  text like <emphasis>"Allegro"</emphasis>, <emphasis>"Adagio"</emphasis> ... select:</para>
 <para>
 <menuchoice>
@@ -861,12 +854,12 @@ at the left tempo signature and the end of the ritardando(accelerando) at the ri
 <itemizedlist>
 <listitem>
 <para>Activate 
-the selector (<inlinemediaobject><imageobject><imagedata fileref="selector.png"/></imageobject></inlinemediaobject>) or  the edit mode
-(<inlinemediaobject><imageobject><imagedata fileref="edit.png"/></imageobject></inlinemediaobject>) and click element with &LMB;!</para></listitem>
-<listitem><para> If there is a selected element: User back/forward cursor keys.</para></listitem>
+the Selection mode (<inlinemediaobject><imageobject><imagedata fileref="selector.png"/></imageobject></inlinemediaobject>) (using <keycap>ESC</keycap> key to exit all modes) or the Edit mode
+(<inlinemediaobject><imageobject><imagedata fileref="edit.png"/></imageobject></inlinemediaobject>) (using <keycap>E</keycap> key) and click on the element with &LMB;. Note the red border around the score when in Edit mode!</para></listitem>
+<listitem><para> Use left/right cursor keys to walk through elements.</para></listitem>
 </itemizedlist>
 
-<para>Use scroll bar if needed!</para>
+<para>Use <keycap>mouse wheel</keycap> for scrolloing, <keycap>Alt + mouse wheel</keycap> for the quick scroll or <keycap>Shift + mouse wheel</keycap> for vertical scroll.</para>
 </sect2>
 
 <sect2 id="goto">
@@ -890,15 +883,6 @@ Select a note! Press up/down cursor keys! By pressing Ctrl the note is shiftet b
 <note><para>
 This does not work in <link linkend="keyboardInsert">keyboard insertion mode</link>!
 </para></note>
-
-<para>
-You can use the wheel to move the notes:
-<itemizedlist>
-<listitem><para>Press Ctrl + wheel shifts the note by 1 line up/down</para></listitem>
-<listitem><para>Press Shift + wheel shifts the note by 1 octave up/down</para></listitem>
-<listitem><para>Press Shift + Ctrl + wheel shifts the note by 1 semi tone up/down</para></listitem>
-</itemizedlist>
-</para>
 </sect2>
 
 <sect2 id="change_other">
@@ -1435,8 +1419,8 @@ region the operation only effects this region.</para>
 <title>Creating Windows</title>
 <para>You can open up as many windows you want (
 <menuchoice>
-<guimenu><accel>W</accel>indow</guimenu>
-<guimenuitem><accel>N</accel>ew</guimenuitem>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem><accel>N</accel>ew window</guimenuitem>
 </menuchoice>
 ). This allows you to copy/paste elements between different scores.</para>
 <para><userinput>Attention!</userinput> In principle you can use the <link linkend="multistaff">multistaff copy</link>.
@@ -1448,7 +1432,7 @@ But this can cause unexpected results if the count of staves differs.</para>
 <para>You can choose the zoom factor by the zoom selection (<inlinemediaobject><imageobject><imagedata fileref="zoom.png"/></imageobject></inlinemediaobject>).
 Furthermore you can set your preferred zoom value in <link linkend="configfile">config file</link>.</para>
 
-<para>Alternatively you can zoom using the <literal>Zoom in/out</literal> buttons. (<inlinemediaobject><imageobject><imagedata fileref="zoominout.png"/></imageobject></inlinemediaobject>)</para>
+<para>Usually you zoom using the <keycap>Ctrl+mouse wheel</keycap> combination or by pressing <literal>Zoom in/out</literal> buttons. (<inlinemediaobject><imageobject><imagedata fileref="zoominout.png"/></imageobject></inlinemediaobject>)</para>
 </sect2>
 
 <sect2 id="showhide">
@@ -1516,7 +1500,7 @@ till measure of insertion):</para>
 <para><inlinemediaobject><imageobject><imagedata align="center" fileref="voiceex1.png"/></imageobject></inlinemediaobject></para>
 
 <para><userinput>Note!</userinput> There is always a <emphasis>current voice</emphasis>. You can change the <emphasis>current voice</emphasis>
-by left/right clicking the voice counter:</para>
+by using shortcut keys <keycap>Ctrl+1 through 9</keycap> or by left/right clicking the voice counter:</para>
 <itemizedlist>
 <listitem><para><mediaobject><imageobject><imagedata fileref="voiccounta.png"/></imageobject></mediaobject> --&gt; <quote>all</quote> voices (the current voice is the first voice)</para></listitem>
 <listitem><para><mediaobject><imageobject><imagedata fileref="voiccount1.png"/></imageobject></mediaobject> --&gt; the current voice is the first voice</para></listitem>
@@ -1625,6 +1609,64 @@ will ignore all stem statements.</para>
 <para>If a staff has more than 3 voices &noteedit; "extends" the <application>MUP</application> syntax. Of course, the
 result is not <application>MUP</application>-able. &noteedit; warns you in this case.</para>
 </sect3>
+</sect2>
+</sect1>
+
+<sect1 id="printing">
+<title>Printing<inlinemediaobject><imageobject><imagedata fileref="new.png"/></imageobject></inlinemediaobject></title>
+
+<sect2 id="printing_overview">
+<title>Overview</title>
+<para>&noteedit; 2.8.1 implements music score printing using one of the external typesetting program. Supported typesetting programs are:
+<itemizedlist>
+<listitem><application>LilyPond</application></listitem>
+<listitem><application>ABC music</application> (abcm2ps)</listitem>
+<listitem><application>MusiXTeX</application></listitem>
+<listitem><application>PMX</application></listitem>
+</itemizedlist></para>
+<para>What NoteEdit actually does is first, export the score into the desired typesetting format, run the typesetting program using the exported file (which produces the output PDF/PostScript file of the score then) and then preview or print the generated output file.</para>
+</sect2>
+
+<sect2 id="printing_configuration">
+<title>Printing configuration</title>
+<para>First, you need to tell &noteedit; which typesetting program it should use. Go to</para>
+<menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>onfigure NoteEdit...</guimenuitem>
+</menuchoice>
+<para>This will bring you the NoteEdit configuration window. Now select the Printing item on the left. This will bring you the following window.</para>
+<para><inlinemediaobject><imageobject><imagedata align="center" fileref="configureprinting.png"/></imageobject></inlinemediaobject></para>
+<itemizedlist>
+<listitem><para>&noteedit; already has some predefined typesetting file formats and typesetting and preview programs. The default one is <application>LilyPond</application> and the default application for previewing the documents is <application>KPDF</application>.</para></listitem>
+<listitem><para>If you want to use a non-standard typesetting program, you can select custom from the Program combo box and configure the appropriate options.</para></listitem>
+<listitem><para>If you want to use a non-standard typesetting format (like MIDI or MusicXML), you can choose one from the Export format combo box.</para></listitem>
+<listitem><para>If you want to manually run a non-standard typesetting program or &noteedit; doesn't find the desired program automatically, you can set the Invokation edit box. Enter the full path to the application there.</para></listitem>
+<listitem><para>Options edit box is meant for any additional arguments the typesetting or the preview program should need. %s is reserved for the &noteedit;'s exported file name.</para></listitem>
+<listitem><para>By default, the preview program always shows the generated PostScript file. The exception is <application>LilyPond</application>, where the shown file is a PDF file.</para></listitem>
+</itemizedlist>
+</sect2>
+
+<sect2 id="printing_preview">
+<title>Preview</title>
+<para>If you want to preview the score using the desired typesetting program, use</para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem><accel>P</accel>rint preview...</guimenuitem>
+</menuchoice>
+<para>This will export the score, run the typesetting program on it and show you the generated file in the selected preview application.</para>
+</sect2>
+
+<sect2 id="printing_print">
+<title>Print</title>
+<para>To print the score, use</para>
+<menuchoice>
+<guimenu><accel>F</accel>ile</guimenu>
+<guimenuitem><accel>P</accel>rint...</guimenuitem>
+</menuchoice>
+<para>This will bring you the standard KDE print dialog with some &noteedit; additions.</para>
+<para><inlinemediaobject><imageobject><imagedata align="center" fileref="print.png"/></imageobject></inlinemediaobject></para>
+<para>Note the LilyPond format tab. This tab was added by &noteedit; and it's reserved for the selected export file format - LilyPond in this case. If you want to set any special settings for the way how &noteedit; should export your score to the desired typesetting format, you can change them here.</para>
+<para>When you're ready, click Print and &noteedit; will send the score to your printer.</para>
 </sect2>
 </sect1>
 

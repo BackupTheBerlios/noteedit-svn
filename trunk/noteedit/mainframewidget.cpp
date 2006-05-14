@@ -690,11 +690,8 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	trillLength_->setGeometry( QRect( 2, 18, TOOL_ELEMENT_WIDTH - 4, 20 ) );
 	trillLength_->setMinValue( 0 );
 	trillLength_->setMaxValue( 30 );
-
-
 	connect( trillLength_, SIGNAL( valueChanged( int ) ), this, SLOT( trillLengthChanged( int ) ) );
 	connect( trillEnabled_, SIGNAL( clicked() ), this, SLOT( trillDisabled() ) );
-	
 	tabWid_->insertTab( trillLengthBase_, i18n ( "Trill" ) );
 	
 	dynamicBase_ = new QFrame( toolContainer_ );
@@ -709,11 +706,9 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	dynamicAlignment_ = new QCheckBox( i18n ( "Turn" ) , dynamicBase_ );
 	dynamicAlignment_->setGeometry( QRect( TOOL_ELEMENT_WIDTH - 102, 2, 100, 16 ) );
 	dynamicAlignment_->setChecked( true );
-
 	connect( dynamicPos_, SIGNAL( valueChanged(int) ), this, SLOT(dynamicPosChanged( int ) ) );
 	connect( dynamicDisable_, SIGNAL( clicked() ), this, SLOT( dynamicKill() ) );
 	connect( dynamicAlignment_, SIGNAL( clicked() ), this, SLOT( dynamicSwitch() ) );
-
 	tabWid_->insertTab( dynamicBase_, i18n ( "Crescendo" ) );
 
 	vaLengthBase_ = new QFrame( toolContainer_ );
@@ -725,11 +720,8 @@ NMainFrameWidget::NMainFrameWidget (KActionCollection *actObj, bool inPart, QWid
 	vaLength_->setGeometry( QRect( 2, 18, TOOL_ELEMENT_WIDTH - 4, 20 ) );
 	vaLength_->setMinValue( 0 );
 	vaLength_->setMaxValue( 100 );
-
-
 	connect( vaLength_, SIGNAL( valueChanged( int ) ), this, SLOT( vaLengthChanged( int ) ) );
 	connect( vaDisable_, SIGNAL( clicked() ), this, SLOT( vaDisabled() ) );
-	
 	tabWid_->insertTab( vaLengthBase_, i18n ( "8va" ) );
 
 	tmpElem_ = 0;
@@ -1196,44 +1188,39 @@ void NMainFrameWidget::processMouseEvent ( QMouseEvent * evt)  {
 							return;
 						}
 						switch(selectedSign_) {
-						    case TRILL:	if (voice_elem->getCurrentElement()->chord()->va_ != 0) break;
-						    		if (voice_elem->getCurrentElement()->chord()->dynamic_ != 0) break;
+						    case TRILL:
 								voice_elem->pubAddUndoElement();  
 								if( voice_elem->getCurrentElement()->chord()->trill_ ) {
-								      if( voice_elem->getCurrentElement()->chord()->trill_ < 0 )
-								        voice_elem->getCurrentElement()->chord()->trill_ =
-									    -voice_elem->getCurrentElement()->chord()->trill_;
-								  }
-								else 
-								  voice_elem->getCurrentElement()->chord()->trill_ = 4;
-								break;
-						    case LNTRILL: if (voice_elem->getCurrentElement()->chord()->va_ != 0) break;
-						    		  if (voice_elem->getCurrentElement()->chord()->dynamic_ != 0) break;
-								  voice_elem->pubAddUndoElement();
-								  if( voice_elem->getCurrentElement()->chord()->trill_ ) {
-									if( voice_elem->getCurrentElement()->chord()->trill_ > 0 )
-									    voice_elem->getCurrentElement()->chord()->trill_ =
+									if( voice_elem->getCurrentElement()->chord()->trill_ < 0 )
+										voice_elem->getCurrentElement()->chord()->trill_ =
 										-voice_elem->getCurrentElement()->chord()->trill_;
-								  }
-								else
-								    voice_elem->getCurrentElement()->chord()->trill_ = -3;
+								}
+								else 
+									voice_elem->getCurrentElement()->chord()->trill_ = 4;
 								break;
-						    case DYNAMIC: if (voice_elem->getCurrentElement()->chord()->trill_ != 0) break;
-						    		  if (voice_elem->getCurrentElement()->chord()->va_ != 0) break;
-								  voice_elem->pubAddUndoElement();
-								  voice_elem->getCurrentElement()->chord()->dynamic_ = 10;
-								  voice_elem->getCurrentElement()->chord()->dynamicAlign_ = true;
-								  break;
-						    case VA8:     if (voice_elem->getCurrentElement()->chord()->trill_ != 0) break;
-						    		  if (voice_elem->getCurrentElement()->chord()->dynamic_ != 0) break;
-						    		  voice_elem->pubAddUndoElement();
-								  voice_elem->getCurrentElement()->chord()->va_ = 10;
-								  break;
-						    case VA8_BASSA: if (voice_elem->getCurrentElement()->chord()->trill_ != 0) break;
-						    		  if (voice_elem->getCurrentElement()->chord()->dynamic_ != 0) break;
-						    		  voice_elem->pubAddUndoElement();
-								  voice_elem->getCurrentElement()->chord()->va_ = -10;
-								  break;
+						    case LNTRILL:
+								voice_elem->pubAddUndoElement();
+								if( voice_elem->getCurrentElement()->chord()->trill_ ) {
+									if( voice_elem->getCurrentElement()->chord()->trill_ > 0 )
+										voice_elem->getCurrentElement()->chord()->trill_ =
+										-voice_elem->getCurrentElement()->chord()->trill_;
+								}
+								else
+									voice_elem->getCurrentElement()->chord()->trill_ = -3;
+								break;
+						    case DYNAMIC:
+								voice_elem->pubAddUndoElement();
+								voice_elem->getCurrentElement()->chord()->dynamic_ = 10;
+								voice_elem->getCurrentElement()->chord()->dynamicAlign_ = true;
+								break;
+						    case VA8:
+								voice_elem->pubAddUndoElement();
+								voice_elem->getCurrentElement()->chord()->va_ = 10;
+								break;
+						    case VA8_BASSA:
+								voice_elem->pubAddUndoElement();
+								voice_elem->getCurrentElement()->chord()->va_ = -10;
+								break;
 						}
 						reposit();
 						repaint();
@@ -2962,72 +2949,68 @@ void NMainFrameWidget::forceAccent(property_type acc, bool val) {
 	}
 }
 
-
+/* Show the note trill, 8va, crescendo and chord properties dialog */
 void NMainFrameWidget::manageToolElement(bool becauseOfInsertion) {
-
-    int elcnt = 0;
-    NMusElement *elem;
-    NChordDiagram *diag;
-
-    if (!editMode_ && !becauseOfInsertion) return;
-    elem = currentVoice_->getCurrentElement();
-    if( elem && elem->chord() && elem->chord()->trill_ ) {
-	bool isneg = false;
-	if( currentVoice_->getCurrentElement()->chord()->trill_ < 0 ) {
-	    currentVoice_->getCurrentElement()->chord()->trill_ = -currentVoice_->getCurrentElement()->chord()->trill_;
-	    isneg = true;
-	}
-	trillLength_->setValue( currentVoice_->getCurrentElement()->chord()->trill_ );
-
-	if( isneg )
-	    currentVoice_->getCurrentElement()->chord()->trill_ = -currentVoice_->getCurrentElement()->chord()->trill_;
-	++elcnt;
-	tabWid_->setTabEnabled( trillLengthBase_, true );
-    }
-    else
-        tabWid_->setTabEnabled( trillLengthBase_, false );
-    
-
-    if( elem && elem->chord() && elem->chord()->dynamic_ ) {
-	dynamicPos_->setValue( currentVoice_->getCurrentElement()->chord()->dynamic_ );
-	tabWid_->setTabEnabled( dynamicBase_, true );
-	++elcnt;
-    }
-    else 
-      tabWid_->setTabEnabled( dynamicBase_, false );
-
-    if( elem && elem->chord() && elem->chord()->va_ ) {
-	if( currentVoice_->getCurrentElement()->chord()->va_ < 0 ) {
-		vaLength_->setValue( -currentVoice_->getCurrentElement()->chord()->va_ );
-	}
-	else {
-		vaLength_->setValue( currentVoice_->getCurrentElement()->chord()->va_ );
-	}
-
-	++elcnt;
-	tabWid_->setTabEnabled( vaLengthBase_, true );
-    }
-    else
-        tabWid_->setTabEnabled( vaLengthBase_, false );
-
-    if( elcnt ) {
-	toolContainer_->move(width()-toolContainer_->width(), height()-TOOL_ELEMENT_HEIGHT);
-	toolContainer_->show();
-    }
-    else
-	toolContainer_->hide();
-
-    if (elem && elem->playable() && (diag = elem->playable()->getChordChordDiagram()) != 0) {
+	int elcnt = 0;
+	NMusElement *elem;
+	NChordDiagram *diag;
+	
+	if (!editMode_ && !becauseOfInsertion) return;
+	
+	elem = currentVoice_->getCurrentElement();
+	if( elem && elem->chord() && elem->chord()->trill_ ) {
+		bool isneg = false;
+		if( currentVoice_->getCurrentElement()->chord()->trill_ < 0 ) {
+			currentVoice_->getCurrentElement()->chord()->trill_ = -currentVoice_->getCurrentElement()->chord()->trill_;
+			isneg = true;
+		}
+		trillLength_->setValue( currentVoice_->getCurrentElement()->chord()->trill_ );
+		
+		if( isneg )
+			currentVoice_->getCurrentElement()->chord()->trill_ = -currentVoice_->getCurrentElement()->chord()->trill_;
+		tabWid_->setTabEnabled( trillLengthBase_, true );
+		tabWid_->setCurrentPage(0);
+		++elcnt;
+	} else
+		tabWid_->setTabEnabled( trillLengthBase_, false );
+	
+	
+	if( elem && elem->chord() && elem->chord()->dynamic_ ) {
+		dynamicPos_->setValue( currentVoice_->getCurrentElement()->chord()->dynamic_ );
+		dynamicAlignment_->setChecked ( 
+			!currentVoice_->getCurrentElement()->chord()->dynamicAlign_
+		);
+		tabWid_->setTabEnabled( dynamicBase_, true );
+		tabWid_->setCurrentPage(1);
+		++elcnt;
+	} else 
+		tabWid_->setTabEnabled( dynamicBase_, false );
+	
+	if( elem && elem->chord() && elem->chord()->va_ ) {
+		if( currentVoice_->getCurrentElement()->chord()->va_ < 0 ) {
+			vaLength_->setValue( -currentVoice_->getCurrentElement()->chord()->va_ );
+		} else
+			vaLength_->setValue( currentVoice_->getCurrentElement()->chord()->va_ );
+		
+		tabWid_->setTabEnabled( vaLengthBase_, true );
+		tabWid_->setCurrentPage(2);
+		++elcnt;
+	} else
+		tabWid_->setTabEnabled( vaLengthBase_, false );
+	
+	if( elcnt ) {
+		toolContainer_->move(width()-toolContainer_->width(), height()-TOOL_ELEMENT_HEIGHT);
+		toolContainer_->show();
+	} else
+		toolContainer_->hide();
+	
+	if (elem && elem->playable() && (diag = elem->playable()->getChordChordDiagram()) != 0) {
 		selectedElemForChord_ = elem;
 		chordDialog_->setFingers(diag->getStrings());
 		chordDialog_->show();
-    }
-    else {
-	chordDialog_->hide();
-    }
-
-
-    
+	} else {
+		chordDialog_->hide();
+	}
 }
 
 void NMainFrameWidget::setSlured(bool slured) {
@@ -5014,23 +4997,23 @@ void NMainFrameWidget::updateInterface(property_type properties, int length) {
         // (For the KDE interface, this is not even necessary)
 	// Ok! Thank you (J.Anders)
 
-	beambutton_->setOn (properties & PROP_BEAMED);
-	dotbutton_->setOn (properties & PROP_SINGLE_DOT);
-	ddotbutton_->setOn (properties & PROP_DOUBLE_DOT);
-	tiebutton_->setOn (properties & PROP_TIED);
-	slurbutton_->setOn (properties & PROP_SLURED);
-	tripletbutton_->setOn (properties & PROP_TUPLET);
-	hiddenrestbutton_->setOn (properties & PROP_HIDDEN);
+	beambutton_->setOn(properties & PROP_BEAMED);
+	dotbutton_->setOn(properties & PROP_SINGLE_DOT);
+	ddotbutton_->setOn(properties & PROP_DOUBLE_DOT);
+	tiebutton_->setOn(properties & PROP_TIED);
+	slurbutton_->setOn(properties & PROP_SLURED);
+	tripletbutton_->setOn(properties & PROP_TUPLET);
+	hiddenrestbutton_->setOn(properties & PROP_HIDDEN);
 	main_props_.hidden = (properties & PROP_HIDDEN);
-	staccatobutton_->setOn (properties & PROP_STACC);
-	sforzatobutton_->setOn (properties & PROP_SFORZ);
-	portatobutton_->setOn (properties & PROP_PORTA);
-	strong_pizzicatobutton_->setOn (properties & PROP_STPIZ);
-	sforzandobutton_->setOn (properties & PROP_SFZND);
-	fermatebutton_->setOn (properties & PROP_FERMT);
-	arpeggbutton_->setOn (properties & PROP_ARPEGG);
-	pedonbutton_->setOn (properties & PROP_PEDAL_ON);
-	pedoffbutton_->setOn (properties & PROP_PEDAL_OFF);
+	staccatobutton_->setOn(properties & PROP_STACC);
+	sforzatobutton_->setOn(properties & PROP_SFORZ);
+	portatobutton_->setOn(properties & PROP_PORTA);
+	strong_pizzicatobutton_->setOn(properties & PROP_STPIZ);
+	sforzandobutton_->setOn(properties & PROP_SFZND);
+	fermatebutton_->setOn(properties & PROP_FERMT);
+	arpeggbutton_->setOn(properties & PROP_ARPEGG);
+	pedonbutton_->setOn(properties & PROP_PEDAL_ON);
+	pedoffbutton_->setOn(properties & PROP_PEDAL_OFF);
 
 	stemUpbutton_->setOn(properties & PROP_STEM_UP);
 	stemDownbutton_->setOn(!(properties & PROP_STEM_UP));

@@ -222,3 +222,9 @@ version 2.8.1:
 	* R474: FIXED:
 	  - Tuplet doesn't disappear anymore, when pasting it after the non-musical element anymore.
 	  - Crash when pasting a tuplet into an empty staff.
+	* R475: ADDED: Lines (cresc., trill, 8va) improvements:
+	  - Double click in Insert line dialog selects the line and closes the dialog.
+	  - Multiple line symbols per single chord now allowed.
+	  - When in edit mode, the appropriate tab is now open and enabled according to which line the note has.
+	  - Crescendo/Decrescendo's "Turn" checkbox is now refreshed correctly when selecting an element in edit mode.
+	  - By default, if "Turn" flag is disabled, we place Decrescendo, if "Turn" flag is enabled, we place crescendo.

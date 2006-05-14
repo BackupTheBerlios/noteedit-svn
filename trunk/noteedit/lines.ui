@@ -165,6 +165,12 @@
         <receiver>lineSel</receiver>
         <slot>slot_ok()</slot>
     </connection>
+    <connection>
+        <sender>ListBox1</sender>
+        <signal>doubleClicked(QListBoxItem*)</signal>
+        <receiver>lineSel</receiver>
+        <slot>slot_ok()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>slot_ok()</slot>

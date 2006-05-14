@@ -50,93 +50,85 @@
 /*------------------------------------ reaction on menu events -----------------------------------*/
 
 void NMainFrameWidget::insertLine() {
-
-    modifyPrerequisite;
-    
-    lineSelWg *wdg = new lineSelWg( 0 );
+	modifyPrerequisite;
+	
+	lineSelWg *wdg = new lineSelWg( 0 );
 #if QT_VERSION >= 300
-    wdg->exec();
+	wdg->exec();
 #else
-    wdg->show();
+	wdg->show();
 #endif
-    switch( wdg->getResult() ) {
-	case CHS_TRILL:   selectedSign_ = TRILL; 	break;
-	case CHS_LNTRILL: selectedSign_ = LNTRILL;	break;
-	case CHS_DYN:	  selectedSign_ = DYNAMIC;	break;
-	case CHS_VA8:	  selectedSign_ = VA8;	break;
-	case CHS_VA8BASSA:  selectedSign_ = VA8_BASSA;	break;
-
-    }
-    delete wdg;
-
+	switch( wdg->getResult() ) {
+		case CHS_TRILL:   selectedSign_ = TRILL; 	break;
+		case CHS_LNTRILL: selectedSign_ = LNTRILL;	break;
+		case CHS_DYN:	  selectedSign_ = DYNAMIC;	break;
+		case CHS_VA8:	  selectedSign_ = VA8;	break;
+		case CHS_VA8BASSA:  selectedSign_ = VA8_BASSA;	break;
+	}
+	delete wdg;
 }
 
 /*------------------------------------ internal reactions -----------------------------------------*/
 
 void NMainFrameWidget::trillLengthChanged(int val) {
-    if( currentVoice_->getCurrentElement()->chord() ) {
-	if( currentVoice_->getCurrentElement()->chord()->trill_ < 0 )
-	    currentVoice_->getCurrentElement()->chord()->trill_ = -val;
-	else
-	    currentVoice_->getCurrentElement()->chord()->trill_ = val;
-    }
-    repaint();
+	if( currentVoice_->getCurrentElement()->chord() ) {
+		if( currentVoice_->getCurrentElement()->chord()->trill_ < 0 )
+	    	currentVoice_->getCurrentElement()->chord()->trill_ = -val;
+		else
+	    	currentVoice_->getCurrentElement()->chord()->trill_ = val;
+	}
+	repaint();
 }
 
 void NMainFrameWidget::trillDisabled() {
-    if( currentVoice_->getCurrentElement()->chord() ) {
-	currentVoice_->getCurrentElement()->chord()->trill_ = 0;
-	this->trillEnabled_->setChecked( true );
-	manageToolElement(true);
-    }
-    repaint();
+	if( currentVoice_->getCurrentElement()->chord() ) {
+		currentVoice_->getCurrentElement()->chord()->trill_ = 0;
+		this->trillEnabled_->setChecked( true );
+		manageToolElement(true);
+	}
+	repaint();
 }
 
 void NMainFrameWidget::dynamicPosChanged(int val) {
-    if( currentVoice_->getCurrentElement()->chord() ) {
-	currentVoice_->getCurrentElement()->chord()->dynamic_ = val;
-    }
-    repaint();
-    
+	if( currentVoice_->getCurrentElement()->chord() ) {
+		currentVoice_->getCurrentElement()->chord()->dynamic_ = val;
+	}
+	repaint();
 }
 
 void NMainFrameWidget::dynamicKill() {
-    if( currentVoice_->getCurrentElement()->chord() ) {
-	currentVoice_->getCurrentElement()->chord()->dynamic_ = 0;
-	dynamicDisable_->setChecked(true);
-	manageToolElement(true);
-    }
-    repaint();
-    
+	if( currentVoice_->getCurrentElement()->chord() ) {
+		currentVoice_->getCurrentElement()->chord()->dynamic_ = 0;
+		dynamicDisable_->setChecked(true);
+		manageToolElement(true);
+	}
+	repaint();
 }
 
 void NMainFrameWidget::dynamicSwitch() {
-    if( currentVoice_->getCurrentElement()->chord() ) {
-	currentVoice_->getCurrentElement()->chord()->dynamicAlign_ = this->dynamicAlignment_->isChecked();
-    }
-    repaint();
+	if( currentVoice_->getCurrentElement()->chord() ) {
+		currentVoice_->getCurrentElement()->chord()->dynamicAlign_ = !this->dynamicAlignment_->isChecked();
+	}
+	repaint();
 }
 
 void NMainFrameWidget::vaLengthChanged(int val) {
-    if( currentVoice_->getCurrentElement()->chord() ) {
-	if (currentVoice_->getCurrentElement()->chord()->va_ < 0) {
-	    currentVoice_->getCurrentElement()->chord()->va_ = -val;
+	if( currentVoice_->getCurrentElement()->chord() ) {
+		if (currentVoice_->getCurrentElement()->chord()->va_ < 0) {
+	    	currentVoice_->getCurrentElement()->chord()->va_ = -val;
+		} else {
+			currentVoice_->getCurrentElement()->chord()->va_ = val;
+		}
 	}
-	else {
-	    currentVoice_->getCurrentElement()->chord()->va_ = val;
-	}
-    }
-    repaint();
-    
+	repaint();
 }
 
 void NMainFrameWidget::vaDisabled() {
-    if( currentVoice_->getCurrentElement()->chord() ) {
-	currentVoice_->getCurrentElement()->chord()->va_ = 0;
-	vaDisable_->setChecked(true);
-	manageToolElement(true);
-    }
-    repaint();
-    
+	if( currentVoice_->getCurrentElement()->chord() ) {
+		currentVoice_->getCurrentElement()->chord()->va_ = 0;
+		vaDisable_->setChecked(true);
+		manageToolElement(true);
+	}
+	repaint();
 }
 

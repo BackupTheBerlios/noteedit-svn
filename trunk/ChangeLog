@@ -236,3 +236,4 @@ version 2.8.1:
 	        FIXED: two formats were missing for the custom export formats
 		FIXED: a more logical sequence for the export formats
 	* R482: FIXED: ABC music export fixes. Now, Latin1() is called to convert from the original NoteEdit's internal UTF8 encodings for all the strings there are. Also, remove any non-alpha characters from staff names and other basic elements that prevent abcm2ps to compile the score.
+	* R483: ADDED: Use UTF-8 encoding checkbox in ABC music export dialog.

@@ -146,6 +146,14 @@
                         <string>Measure numbers in a box</string>
                     </property>
                 </widget>
+                <widget class="QCheckBox" row="5" column="0">
+                    <property name="name">
+                        <cstring>ABCUseUtf8Encoding</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Use UTF-8 encoding</string>
+                    </property>
+                </widget>
             </grid>
         </widget>
     </grid>

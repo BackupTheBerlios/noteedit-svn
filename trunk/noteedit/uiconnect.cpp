@@ -458,6 +458,7 @@ void exportFrm::getABCOptions(ABCExportForm &abcExportWidget, struct abc_options
     if (!ok) abcOpts.staffSep = 16.0; // Default Value
     abcOpts.exprAbove = abcExportWidget.ABCExprAbove->isChecked();
     abcOpts.measNumInBox = abcExportWidget.ABCMeasNumInBox->isChecked();
+    abcOpts.useUtf8Encoding = abcExportWidget.ABCUseUtf8Encoding->isChecked();
 }
 
 // Set ABC options into form

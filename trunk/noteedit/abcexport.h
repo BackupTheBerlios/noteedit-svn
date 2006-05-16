@@ -54,6 +54,7 @@ struct abc_options
   double  staffSep;
   bool    exprAbove;
   bool    measNumInBox;
+  bool    useUtf8Encoding;
 };
 
 class NABCExport  {

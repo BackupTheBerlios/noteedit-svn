@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-16 11:45+0200\n"
-"PO-Revision-Date: 2006-04-23 11:19+0200\n"
+"PO-Revision-Date: 2006-05-16 23:19+0200\n"
 "Last-Translator: Georg Rudolph <georg.rudolph@schwaben.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,6 @@ msgid "???"
 msgstr "???"
 
 #: abcexport.cpp:294
-#, fuzzy
 msgid ""
 "NoteEdit has exported the score to ABC music format but there are some "
 "problems which can prevent successful PostScript/PDF output or can change "
@@ -68,12 +67,10 @@ msgstr ""
 
 #: abcexport.cpp:312
 msgid "ABC music cannot deal with a one-staff bracket\n"
-msgstr ""
-"ABC music kann nicht mit eckigen Klammern über nur einer Notenzeile umgehen\n"
+msgstr "ABC music kann nicht mit eckigen Klammern über nur einer Notenzeile umgehen\n"
 
 #: abcexport.cpp:316
-msgid ""
-"Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
+msgid "Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
 msgstr ""
 "Zeile %1; Takt %2: ABC Music kann nicht mit Oktavierungszeichen (va-Linien) "
 "umgehen\n"
@@ -569,8 +566,7 @@ msgstr ""
 
 #: filehandler.cpp:620
 msgid "staff %1; measure %2: Mup cannot deal with trills without \"tr\" sign\n"
-msgstr ""
-"Zeile %1; Takt %2: MUP kann nicht mit Trillern ohne \"tr\"-Symbol umgehen.\n"
+msgstr "Zeile %1; Takt %2: MUP kann nicht mit Trillern ohne \"tr\"-Symbol umgehen.\n"
 
 #: filehandler.cpp:625
 msgid "Staff %1 has irregular key, this may not work with MUP.\n"
@@ -615,8 +611,7 @@ msgstr ""
 "umgehen.\n"
 
 #: filehandler.cpp:660
-msgid ""
-"MUP cannot deal with some chord annotations with and some without grids\n"
+msgid "MUP cannot deal with some chord annotations with and some without grids\n"
 msgstr "MUP kann mit Akkorden mit und ohne Diagramm gemischt nicht umgehen\n"
 
 #: filehandler.cpp:664
@@ -625,13 +620,11 @@ msgstr "MUP\n"
 
 #: filehandler.cpp:668
 msgid "MUP cannot deal with nested brackets in braces\n"
-msgstr ""
-"MUP kann nicht geschweiften Klammern innerhalb eckiger Klammern umgehen\n"
+msgstr "MUP kann nicht geschweiften Klammern innerhalb eckiger Klammern umgehen\n"
 
 #: filehandler.cpp:672
 msgid "MUP cannot correctly write more than one slurred grace\n"
-msgstr ""
-"MUP kann mehr als eine gebundene Vorschlag-Note nicht korrekt notieren\n"
+msgstr "MUP kann mehr als eine gebundene Vorschlag-Note nicht korrekt notieren\n"
 
 #: layout.cpp:55
 msgid "Set brace"
@@ -662,13 +655,12 @@ msgid "Score layout"
 msgstr "Partiturlayout"
 
 #: lilyexport.cpp:665
-#, fuzzy
 msgid ""
 "NoteEdit has exported the score to LilyPond format but there are some "
 "problems which can prevent successful PostScript/PDF output or can change "
 "the final score layout.\n"
 msgstr ""
-"Noteedit hat die Partitur nach ABC-Music exportiert. Aber es gibt einige\n"
+"Noteedit hat die Partitur nach LilyPond exportiert. Aber es gibt einige\n"
 "Probleme, die möglicherweise eine erfolgreiche Weiterverarbeitung "
 "verhindern.\n"
 
@@ -696,8 +688,7 @@ msgstr ""
 
 #: lilyexport.cpp:689
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
-msgstr ""
-"Zeile %1; Takt %2: Nur eine Untermenge von Akkorden hat einen Haltebogen!\n"
+msgstr "Zeile %1; Takt %2: Nur eine Untermenge von Akkorden hat einen Haltebogen!\n"
 
 #: lilyexport.cpp:693
 msgid ""
@@ -722,15 +713,13 @@ msgstr ""
 "Taktstrichen kann in LilyPond nicht ausgedrückt werden\n"
 
 #: lilyexport.cpp:707
-msgid ""
-"A piano staff without continued bar rules cannot be expressed in LilyPond\n"
+msgid "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
 msgstr ""
 "Pianozeilen mit nicht durchgezogenen Taktstrichen sind in LilyPond nicht "
 "möglich.\n"
 
 #: lilyexport.cpp:711
-msgid ""
-"Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
+msgid "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Durchgezogene Taktriche außerhalb geschweifter oder eckiger Klammern können "
 "in LilyPond nicht ausgedrückt werden\n"
@@ -1160,9 +1149,8 @@ msgid "Select mode"
 msgstr "Modus auswählen"
 
 #: mainframewidget.cpp:370 mainframewidget.cpp:618
-#, fuzzy
 msgid "Breve note"
-msgstr "Takt-Note"
+msgstr "alla breve-Note"
 
 #: mainframewidget.cpp:371 mainframewidget.cpp:619
 msgid "Full note"
@@ -1787,9 +1775,7 @@ msgid "[no MIDI device created]"
 msgstr "[kein MIDI-Gerät vorhanden]"
 
 #: musicxmlexport.cpp:462
-#, fuzzy
-msgid ""
-"NoteEdit has exported the score to MusicXML but there are some problems.\n"
+msgid "NoteEdit has exported the score to MusicXML but there are some problems.\n"
 msgstr ""
 "Noteedit hat die Partitur nach MusicXML exportiert. Aber es gibt einige\n"
 "Probleme\n"
@@ -1808,8 +1794,7 @@ msgstr ""
 
 #: musicxmlexport.cpp:478
 msgid "Staff %1 contains drum staff. This is currently not supported.\n"
-msgstr ""
-"Zeile %1 enthält Schlagzeugelemente. Das wird zur Zeit nicht unterstützt.\n"
+msgstr "Zeile %1 enthält Schlagzeugelemente. Das wird zur Zeit nicht unterstützt.\n"
 
 #: musicxmlexport.cpp:483
 msgid "Staff %1 contains voice change. This is currently not supported.\n"
@@ -1822,8 +1807,7 @@ msgid "Staff %1 contains 8va start without 8va stop.\n"
 msgstr "Notenzeile %1 enthält 8va start ohne 8va stop.\n"
 
 #: musicxmlexport.cpp:493
-msgid ""
-"Staff %1 contains 8va over a single note. This is currently not supported.\n"
+msgid "Staff %1 contains 8va over a single note. This is currently not supported.\n"
 msgstr ""
 "Notenzeile %1 enthält 8va über eine einzelne Note. Das wird zur Zeit nicht "
 "unterstützt.\n"
@@ -1837,13 +1821,12 @@ msgid "MusicXML produced. But there are some problems."
 msgstr "MusicXMLwurde erzeugt. Aber es gibt Probleme."
 
 #: musixtex.cpp:620
-#, fuzzy
 msgid ""
 "NoteEdit has exported the score to MusiXTeX format but there are some "
 "problems which can prevent successful PostScript/PDF output or can change "
 "the final score layout.\n"
 msgstr ""
-"Noteedit hat die Partitur nach ABC-Music exportiert. Aber es gibt einige\n"
+"Noteedit hat die Partitur nach MusiXTeX exportiert. Aber es gibt einige\n"
 "Probleme, die möglicherweise eine erfolgreiche Weiterverarbeitung "
 "verhindern.\n"
 
@@ -1953,13 +1936,12 @@ msgid "PMX export"
 msgstr "PMX Export"
 
 #: pmxexport.cpp:393
-#, fuzzy
 msgid ""
 "NoteEdit has exported the score to PMX format but there are some problems "
 "which can prevent successful PostScript/PDF output or can change the final "
 "score layout.\n"
 msgstr ""
-"Noteedit hat die Partitur nach ABC-Music exportiert. Aber es gibt einige\n"
+"Noteedit hat die Partitur in's PMX-Format exportiert. Aber es gibt einige\n"
 "Probleme, die möglicherweise eine erfolgreiche Weiterverarbeitung "
 "verhindern.\n"
 
@@ -1993,8 +1975,7 @@ msgstr ""
 
 #: pmxexport.cpp:422
 msgid "Staff %1, measure %2: In PMX tuplet cannot end with a rest\n"
-msgstr ""
-"Zeile %1; Takt %2: In PMX dürfen N-Tuplets nicht mit einer Pause enden\n"
+msgstr "Zeile %1; Takt %2: In PMX dürfen N-Tuplets nicht mit einer Pause enden\n"
 
 #: pmxexport.cpp:427
 msgid "PMX cannot deal with more than 2 voices per staff\n"
@@ -2002,13 +1983,11 @@ msgstr "PMX kann nicht mehr als 2 Stimmen pro Notenzeile verarbeiten.\n"
 
 #: pmxexport.cpp:431
 msgid "Staff %1 contains drum staff. This cannot be expressed in PMX.\n"
-msgstr ""
-"Zeile %1 enthält Schlagzeugnoten. Das kann in PMX nicht ausgedrückt werden.\n"
+msgstr "Zeile %1 enthält Schlagzeugnoten. Das kann in PMX nicht ausgedrückt werden.\n"
 
 #: pmxexport.cpp:436
 msgid "Staff %1, measure %2: PMX cannot deal with mixed graces\n"
-msgstr ""
-"Zeile %1; Takt %2: In PMX kann nicht mit gemischten Vorschlag-Noten umgehen\n"
+msgstr "Zeile %1; Takt %2: In PMX kann nicht mit gemischten Vorschlag-Noten umgehen\n"
 
 #: pmxexport.cpp:441
 msgid "Staff %1, measure %2: grace has no main note. PMX will not work\n"
@@ -2045,12 +2024,10 @@ msgid "Couldn't setup printer"
 msgstr "Konnte Drucker nicht einrichten"
 
 #: previewprint.cpp:86
-#, fuzzy
 msgid "Could not start preview, is one already running?"
-msgstr "Vorschauprogramm nicht erfolgreich gestartet."
+msgstr "Vorschauprogramm nicht erfolgreich gestartet. Läuft es schon?"
 
 #: previewprint.cpp:312
-#, fuzzy
 msgid "File was not succesfully converted."
 msgstr "Datei konnte nicht konvertiert werden."
 
@@ -2241,7 +2218,7 @@ msgid "MusicXML format"
 msgstr "MusicXML-Format"
 
 #: rc.cpp:181
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Export warning"
 msgstr "Export-Warnung"
 
@@ -2445,9 +2422,9 @@ msgid "Alt+K"
 msgstr "Alt+K"
 
 #: rc.cpp:319
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "E&xport drum notes"
-msgstr "exportiere Schlagzeugnoten"
+msgstr "e&xportiere Schlagzeugnoten"
 
 #: rc.cpp:322
 #, fuzzy, no-c-format
@@ -2455,7 +2432,7 @@ msgid "Alt+X"
 msgstr "Alt+E"
 
 #: rc.cpp:325
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "&Only voices skeleton"
 msgstr "N&ur Stimmen"
 
@@ -2550,7 +2527,7 @@ msgid "Tabloid"
 msgstr ""
 
 #: rc.cpp:400
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "&Use standard page size"
 msgstr "&Standard-Seitengrösse"
 
@@ -2560,7 +2537,7 @@ msgid "Alt+U"
 msgstr "Alt+E"
 
 #: rc.cpp:406
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Use custom page si&ze"
 msgstr "&Benutzerdefinierte Seitengrösse"
 
@@ -3875,8 +3852,7 @@ msgid "This deletes voice %1! Are you sure?"
 msgstr "Soll die %1. Stimme wirklich gelöscht werden?"
 
 #: staff.cpp:606
-msgid ""
-"Unable to paste! The destination staff has less voices than the source staff."
+msgid "Unable to paste! The destination staff has less voices than the source staff."
 msgstr ""
 "Einfügen unmöglich! Die Zielnotenzeile hat weniger Stimmen als die "
 "Quellnotenzeile"
@@ -4202,7 +4178,6 @@ msgstr ""
 "nicht ausreicht!. Siehe <a href=\"foo\">documentation</a>!\n"
 
 #: tips.cpp:176
-#, fuzzy
 msgid ""
 "<b>...that you can insert lines?</b><br/><br/>\n"
 "Select <code>Insert --&gt; lines</code>, choose a line and left click on\n"
@@ -4725,125 +4700,3 @@ msgstr "Diagramm anzeigen"
 msgid "Chord constructor"
 msgstr "Akkorderzeugung"
 
-#~ msgid "11"
-#~ msgstr "11"
-
-#~ msgid "13"
-#~ msgstr "13"
-
-#~ msgid "16"
-#~ msgstr "16"
-
-#~ msgid "23"
-#~ msgstr "23"
-
-#~ msgid "26"
-#~ msgstr "26"
-
-#~ msgid "Breve"
-#~ msgstr "breve"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigurieren"
-
-#~ msgid "Options"
-#~ msgstr "Optionen"
-
-#~ msgid "Save"
-#~ msgstr "Speichern"
-
-#~ msgid "Cancel"
-#~ msgstr "Abbrechen"
-
-#~ msgid ""
-#~ "Noteedit has exported the score to LilyPond but there are some\n"
-#~ "problems which will probably prevent successful LilyPond output.\n"
-#~ msgstr ""
-#~ "Noteedit hat die Partitur nach LilyPond exportiert. Aber es gibt\n"
-#~ "einige Probleme, die ein Arbeiten von LilyPond eventuell verhindert.\n"
-
-#~ msgid "&Print..."
-#~ msgstr "&Drucke..."
-
-#~ msgid "&Close"
-#~ msgstr "&Alles schliessen"
-
-#~ msgid "&Quit"
-#~ msgstr "&Verlassen"
-
-#~ msgid "&Cancel"
-#~ msgstr "&Abbrechen"
-
-#~ msgid "&Save"
-#~ msgstr "&Speichern"
-
-#~ msgid "&Discard"
-#~ msgstr "&Verwerfen"
-
-#~ msgid "Open"
-#~ msgstr "Öffnen"
-
-#~ msgid "Close"
-#~ msgstr "Schliessen"
-
-#~ msgid "&Delete"
-#~ msgstr "&Löschen"
-
-#~ msgid "&Start"
-#~ msgstr "Programmstart"
-
-#~ msgid ""
-#~ "Noteedit has exported the score to MusiXTeX but there are some\n"
-#~ "constructs which cannot be expressed in MusiXTeX. The score will\n"
-#~ "work with MusiXTeX but Noteedit omitted these constructs.\n"
-#~ msgstr ""
-#~ "Noteedit hat die Partitur nach MusiXTeX exportiert. Aber es gibt\n"
-#~ "einige Konstruktionen, die in MuxiXTeX nicht ausgedrückt werden können.\n"
-#~ "MusiXTeX wird arbeiten aber Noteedit hat die fraglichen Konsruktionen "
-#~ "weggelassen.\n"
-
-#~ msgid ""
-#~ "Noteedit has exported the score to PMX but there are some\n"
-#~ "problems which will probably prevent successful PMX output.\n"
-#~ msgstr ""
-#~ "Noteedit hat die Partitur nach PMX exportiert. Aber es gibt einige\n"
-#~ "Probleme, die ein erfolgreiches Arbeiten von PMX verhindern.\n"
-
-#~ msgid "&Edit"
-#~ msgstr "&Bearbeiten"
-
-#~ msgid "&View"
-#~ msgstr "&Ansicht"
-
-#~ msgid "&Insert"
-#~ msgstr "&Einfügen"
-
-#~ msgid "&Settings"
-#~ msgstr "Ein&stellungen"
-
-#~ msgid "&Help"
-#~ msgstr "&Hilfe"
-
-#~ msgid "&File"
-#~ msgstr "Dat&ei"
-
-#~ msgid "Landscape"
-#~ msgstr "&waagerecht"
-
-#~ msgid "&Apply"
-#~ msgstr "&Anwenden"
-
-#~ msgid "Do not show this message again"
-#~ msgstr "Zeige diese Nachricht &nie mehr!"
-
-#~ msgid "A&uthor:"
-#~ msgstr "&Verfasser:"
-
-#~ msgid "&Last author:"
-#~ msgstr "&Letzter Verfasser:"
-
-#~ msgid "Export"
-#~ msgstr "Export"
-
-#~ msgid "Delete"
-#~ msgstr "Löschen"

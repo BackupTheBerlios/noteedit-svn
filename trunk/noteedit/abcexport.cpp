@@ -177,19 +177,19 @@ void NABCExport::exportStaffs(QString fname, QPtrList<NStaff> *stafflist, int co
 
 	out_ << "X: 1" << endl;
 	if (!mainWidget->scTitle_.isEmpty()) {
-		out_ << "T: " << mainWidget->scTitle_ << endl;
+		out_ << "T: " << mainWidget->scTitle_.latin1() << endl;
 	}
 	if (!mainWidget->scSubtitle_.isEmpty()) {
-		out_ << "T: " << mainWidget->scSubtitle_ << endl;
+		out_ << "T: " << mainWidget->scSubtitle_.latin1() << endl;
 	}
 	if (!mainWidget->scAuthor_.isEmpty()) {
-		out_ << "C: " << mainWidget->scAuthor_<< endl;
+		out_ << "C: " << mainWidget->scAuthor_.latin1() << endl;
 	}
 	if (!mainWidget->scLastAuthor_.isEmpty()) {
-		out_ << "C: " << mainWidget->scLastAuthor_ << endl;
+		out_ << "C: " << mainWidget->scLastAuthor_.latin1() << endl;
 	}
 	if (!mainWidget->scCopyright_.isEmpty()) {
-		out_ << "C: copyright: " << mainWidget->scCopyright_ << endl;
+		out_ << "C: copyright: " << mainWidget->scCopyright_.latin1() << endl;
 	}
 	outputMeter(stafflist->first()->getVoiceNr(0)->getFirstTimeSig(), true);
 	out_ << "L: 1/4 % default length" << endl;
@@ -390,7 +390,7 @@ bool NABCExport::writeFirstVoice(NVoice *voice_elem, QString staffName, int staf
 						(*lyricsLine_[i]) << " * ";
 					}
 					if (lyrics) {
-						(*lyricsLine_[i]) << lyrics2ABC(lyrics) << ' ';
+						(*lyricsLine_[i]) << lyrics2ABC(lyrics).latin1() << ' ';
 					}
 				      }
 				      if ((diag = chord->getChordChordDiagram()) != 0) {
@@ -1148,7 +1148,7 @@ void NABCExport::outputVoiceParams(NVoice *voice, QString staffName) {
 		staffName.replace ('\n', "\\n"); /* replace all newlines with \n two character symbols */
 		staffName.replace('"', "\\\""); /* replace all double quotes with \" two character symbols */	
 
-		out_ << "name=\"" << staffName << '"';
+		out_ << "name=\"" << staffName.latin1() << '"';
 	}
 }
 
@@ -1173,21 +1173,21 @@ bool NABCExport::outputClefInfo(NClef *clef) {
 
 QString NABCExport::createVoiceName(QString staffName,  int staff_nr, int voice_nr) {
 	QString s, t;
-	QRegExp reg = QRegExp("[ \\.]");
-
+	QRegExp nonAlphas_("[^A-Za-z]");
 	if (staffName.isEmpty()) {
 		s = 'S';
 	}
 	else {
 		s = staffName;
 	}
+	s.replace(nonAlphas_, "X");	//replace blanks, dots, numbers, UTF-8 chars with X-es
 	t.sprintf("%d", staff_nr);
 	s += t;
 	if (voice_nr) {
 		t.sprintf("V%d", voice_nr);
 		s += t;
 	}
-	s.replace (reg, "_");
+
 	return s;
 }
 
@@ -1271,7 +1271,6 @@ void NABCExport::outputMidi(QPtrList<NStaff> *stafflist) {
 QString NABCExport::lyrics2ABC(QString *lyrics) {
 	QString ret;
 	QRegExp reg;
-
 	
 	ret = QString(*lyrics);
 
@@ -1289,7 +1288,8 @@ QString NABCExport::lyrics2ABC(QString *lyrics) {
 		ret = '*';
 		return ret;
 	}
-	reg = QRegExp("ä");
+	
+/*	reg = QRegExp("ä");
 	ret.replace (reg, "\\\"a");
 	reg = QRegExp("ö");
 	ret.replace (reg, "\\\"o");
@@ -1302,7 +1302,7 @@ QString NABCExport::lyrics2ABC(QString *lyrics) {
 	reg = QRegExp("Ü");
 	ret.replace (reg, "\\\"U");
 	reg = QRegExp("ß");
-	ret.replace (reg, "\\ss");
+	ret.replace (reg, "\\ss"); */ //leave in utf8 encoding, we'll call latin1() then for convertable characters
 	reg = QRegExp("_");
 	ret.replace (reg, "\\_");
 	return ret;

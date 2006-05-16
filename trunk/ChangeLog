@@ -231,6 +231,8 @@ version 2.8.1:
 	* R476: ADDED: Double click selects the key in Insert key dialog. Resized Insert lines dialog a bit to fit other languages too.
 	* R477: Updated docbook. Added Printing section.
 	* R479: Updated lilyexport for trills
+	* R480: FIXED: Syntax error in docbook.
 	* R481: ADDED: convert-ly process before calling lilypond
 	        FIXED: two formats were missing for the custom export formats
 		FIXED: a more logical sequence for the export formats
+	* R482: FIXED: ABC music export fixes. Now, Latin1() is called to convert from the original NoteEdit's internal UTF8 encodings for all the strings there are. Also, remove any non-alpha characters from staff names and other basic elements that prevent abcm2ps to compile the score.

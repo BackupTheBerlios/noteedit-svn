@@ -182,7 +182,7 @@
 ></legalnotice>
 
 <date
->2006-23-04</date>
+>2006-21-05</date>
 <releaseinfo
 >2.8.1</releaseinfo>
 <abstract>
@@ -370,19 +370,19 @@ oder Pedal-aus (<inlinemediaobject><imageobject><imagedata fileref="pedaloff.png
 <listitem
 ><para
 ><literal
->C</literal
+>Umschalt+C</literal
 > bedeutet Ton C</para
 ></listitem>
 <listitem
 ><para
 ><literal
->D</literal
+>Umschalt+D</literal
 > bedeutet Ton D</para
 ></listitem>
 <listitem
 ><para
 ><literal
->E</literal
+>Umschalt+E</literal
 > bedeutet Ton E</para
 ></listitem>
 <listitem
@@ -392,7 +392,7 @@ oder Pedal-aus (<inlinemediaobject><imageobject><imagedata fileref="pedaloff.png
 </itemizedlist>
 
 <para
->Sie können die Buchstaben umdefinieren, weil alle <link linkend="keyconf"
+>&noteedit; wählt automatisch die nächstliegende Tonhöhe bei der aktuellen. Sie können die Buchstaben umdefinieren, weil alle <link linkend="keyconf"
 >Tasten konfigurierbar</link
 > sind.</para>
 
@@ -453,7 +453,7 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 >MusiXTeX</application
 > and <application
 >PMX</application
-> ist sie ein kleines Rechteck: <inlinemediaobject
+> ist sie ein kleines Rechteck (Barockstil): <inlinemediaobject
 ><imageobject
 ><imagedata fileref="breve_rect.png"/></imageobject
 ></inlinemediaobject
@@ -551,7 +551,7 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 >LilyPond</userinput
 > <application
 >LilyPond</application
-> ändert den Balken-Status sinnvoll. Version 1.4.x kann Bindebögen in Vorschlag/Nachschlag-Noten nicht behandeln. &noteedit; gibt eine Warnung aus.</para>
+> ändert den Balken-Status sinnvoll.</para>
 <para
 ><userinput
 >ABC music</userinput
@@ -610,15 +610,15 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 <para
 ><userinput
 >LilyPond</userinput
->: Zunächst: Es wurde mir gesagt, dass der Export meiner Schlagzeugnoten nicht alle <application
+>: <application
 >LilyPond</application
-> Eigenschaften ausnutzen würde. Vielleicht kann ein <application
->LilyPond</application
-> -Guru die &noteedit; <application
->LilyPond</application
-> Ausgabe durchsehen und mir eine Mail senden, aus der hervorgeht, was zu tun wäre.</para>
+> unterstützt alle Schlagzeugnotenköpfe mit Ausnahme des<literal
+>+</literal
+> (Plus). Stattdessen wird der <literal
+>x</literal
+> (Kreuz) Notenkopfstil verwendet.</para>
 <para
->Der Export der Schlagzeugnoten arbeitet,  aber mit einigen Nebeneffekten. Alle Noten eines Akkords erscheinen mit der gleichen Art von Schlagzeugnoten. Nur 3 der 5 Arten werden unterstützt. &noteedit; gibt eine Warnung aus.</para>
+>Der Export der Schlagzeugnoten arbeitet,  aber mit einigen Nebeneffekten. Alle Noten eines Akkords erscheinen mit der gleichen Art von Schlagzeugnoten. Nur 3 der 5 Arten werden unterstöützt. &noteedit; gibt eine Warnung aus.</para>
 <para
 ><userinput
 >ABC music</userinput
@@ -1079,7 +1079,7 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 >Texte</title>
 
 <para
->Sie können zu jeder Notenzeile bis zu 5 Textzeilen hinzufügen.</para>
+>Sie können zu jeder Notenzeile bis zu 5 Textstrophen hinzufügen.</para>
 <para
 ><menuchoice
 > <guimenu
@@ -1102,10 +1102,10 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
         Build me a boat that can car- ry two 
         a- and both shall row my love and I. 
         O down in the mea- dows the o- ther day 
-        a- gath'- ring flow'rs both fine and gay,  -
+        a- gath'- ring flow'rs both fine and gay,_ _
         a- gath'- ring flow'rs bo- oth red and blue, 
         I lit- tle thought wha- at love could do.
-        2.)I leaned my 
+        I leaned my 
 </literallayout>
 
 <para
@@ -1126,7 +1126,7 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 >Lyrics</guimenuitem
 > </menuchoice
 > <emphasis
-> wählen sie eine Zeilennummer und eine Textdatei</emphasis
+> wählen sie eine Strophennummer und eine Textdatei</emphasis
 ></para>
 <para
 >Das können Sie wiederholen, so oft sie wollen, bis die Texte korrekt sind. Falls notwendig, können Sie  die <link linkend="staffgeometry"
@@ -1135,39 +1135,64 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 <para
 >Siehe auch <filename
 >example4.not</filename
->! Das ist ein Textbeispiel mit 5 Zeilen!</para>
+>! Das ist ein Volksliedbeispiel mit 5 Strophen!</para>
 <para
 >Bitte beachten Sie:</para>
 <itemizedlist>
 <listitem
 ><para
->Das '-' Zeichen hinter dem Wort <quote
-> gay</quote
->! Wenn Sie eine Note ohne Text wollen, wählen sie irgendein druckbares Zeichen.</para
-></listitem>
+>Wenn Sie ein Wort haben, das aus mehr als einer einzigen Silbe besteht, müssen Sie Trennungsstriche (Divisi)  verwenden, um jede Silbe einer einzelnen Note zuzuweisen. Setzen Sie das '-'-Zeichen nach der Silbe, um anzuzeigen, daß noch weitere Silben folgen, wie bei "nei- ther" und "a- gath'- ring" im obigen Beispiel.</para 
+></listitem
+><listitem
+><para
+>Wenn Sie einer einzigen Silbe mehr als eine einzige Note zuweisen möchten, plazieren Sie das '-'-Zeichen als Ergänzungsbindestrich unter jeder Note, die Sie zur Silbe hinzufügen wollen.</para
+></listitem
+><listitem
+><para
+>Melismen sind unterstützt. Melisma bedeutet daß mehrere Noten auf eine Silbe kommen. In der Musik werden Melismen und ordinäre Trennungsstriche unterschiedlich behandelt. Setzen Sie ein '_' Zeichen nach der letzten Silbe und dann jeweils eine einziges '_' für jede zugehörige Note, wie bei "gay,_ _" im obigen Beispiel.</para
+></listitem
+><listitem
+><para
+>Syllabischer Gesang ist unterstützt. Wenn Sie mehr als eine einzige
+Silbe einer Note zuordnen wollen, benutzen Sie <literal
+>&lt;...&gt;</literal
+> parenthesis:
+<literal
+>Byl jsem &lt;v le-&gt; su.</literal
+><emphasis
+>(Tschechisch)</emphasis
+></para
+></listitem
+>
 <listitem
 ><para
->Statt des '-' Zeichens können Sie auch den Stern ('*') nutzen. Im Gegensatz zum '-' Zeichen erscheint der Stern nicht in der Partitur. Folglich ist er nur im Strophen-Dialog sichtbar.</para
-></listitem>
+>Statt dem '-' Zeichen können Sie auch den '*' (Stern) setzen. Im
+Gegensatz zum Trennungsstrich wird der Stern nicht in der Partitur
+angezeigt, d.h. er ist nur im Lyrics Dialog sichtbar.</para
+></listitem
+>
 <listitem
 ><para
->&noteedit; nimmt eine ISOLATIN-1 Kodierung an. So können Sie deutsche Umlaute benutzen (&auml;, &ouml;, &uuml;, ...). Sie werden korrekt in <application
+><emphasis
+>WARNUNG!</emphasis
+> Sie dürfen keine Ziffern bei der Eingabe im Lyrics Dialog!</para
+></listitem
+>
+<listitem
+><para
+>&noteedit; kodiert den Text in UTF-8, so daß Sie auch alle in UTF-8 vorhandenen Sonderzeichen ihrer verwendeten Sprache setzen können. Mit UTF-8 getestete und unterstützte Exportformate sind <application
 >MusiXTeX</application
-> übersetzt. Aber seien Sie gewarnt: <application
+> und <application
+>LilyPond</application
+>. Warnung: <application
 >MUP</application
-> versagt, wenn  Nicht-ASCII-Zeichen verwendet werden!</para
-></listitem>
+> funktioniert nicht, wenn Sie Sonderzeichen verwenden!</para
+></listitem
+>
 <listitem
 ><para
->Die Texte werden nach <application
->MusiXTeX</application
->, MIDI Files, <application
->PMX</application
-> Files <emphasis
->(und implizit  nach <application
->MUP</application
->)</emphasis
-> exportiert. Der <application
+>Lyrics werden in alle unterstützten Exportformate exportiert.
+Der <application
 >PMX</application
 > Textexport bereitet einige Probleme. Bitte lesen Sie die <link linkend="pmx_export_appendix"
 ><application
@@ -1189,30 +1214,12 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 ><para
 >Wenn Wiederholungszeichen und mehr als eine Textzeile auftreten, ordnet &noteedit; die zweite Textzeile dem wiederholten Teil der MIDI-Datei zu.</para
 ></listitem>
-<listitem
-><para
->Vermeiden Sie leere Textzeilen. Füllen Sie sie von 1 ... 5!</para
-></listitem>
-<listitem
-><para
->Wenn Sie einer Note mehrere Silben zuweisen wollen, so benutzen Sie bitte die <literal
->&lt;...&gt;</literal
-> Klammern: <literal
->Byl jsem &lt;v le-&gt; su.</literal
-><emphasis
->(Tschechisch)</emphasis
-></para
-></listitem>
 </itemizedlist>
 </sect2>
 
 <sect2 id="arb_text">
 <title
-><inlinemediaobject
-><imageobject
-><imagedata fileref="new.png"/></imageobject
-></inlinemediaobject
-> Beliebiger Text</title>
+>Beliebiger Text</title>
 <para
 >Um beliebigen Text, wie <emphasis
 >"Allegro"</emphasis
@@ -1658,24 +1665,24 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 <itemizedlist>
 <listitem>
 <para
->Aktivieren Sie den Selektor-Knopf (<inlinemediaobject
+>Aktivieren Sie den Auswahl-Modus (<inlinemediaobject
 ><imageobject
 ><imagedata fileref="selector.png"/></imageobject
 ></inlinemediaobject
->) oder den Edit-Modus (<inlinemediaobject
+>) (verwenden Sie die <keycap>ESC</keycap>-Taste, um alle Modi zu beenden) oder den Edit-Modus (<inlinemediaobject
 ><imageobject
 ><imagedata fileref="edit.png"/></imageobject
 ></inlinemediaobject
->) und klicken Sie ein Element mit dem  &LMBD; an!</para
+>) (oder verwenden Sie die <keycap>E</keycap>-Taste) und klicken Sie ein Element mit dem  &LMBD; an! Beachten Sie den roten Rand um die Partitur herum im Edit-Modus!</para
 ></listitem>
 <listitem
 ><para
->Wenn ein Element ausgewählt ist: Benutzen Sie die Cursor- vor-/rückwärts-Tasten.</para
+>Benutzen Sie das <keycap>Mausrad</keycap> zum horizontalen
+ Verschieben der Partitur, <keycap>Alt + Mausrad</keycap> zum
+ schnellen Verschieben, <keycap>Umschalt + Mausrad</keycap> zum
+ vertikalen Verschieben der Partitur.</para
 ></listitem>
 </itemizedlist>
-
-<para
->Benutzen sie, wenn notwendig, den Scroll-Balken!</para>
 </sect2>
 
 <sect2 id="goto">
@@ -1714,23 +1721,6 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 >Tastatureingabemodus</link
 >! </para
 ></note>
-
-<para
->Sie können auch das Maus-Rad zum Notenverschieben benutzen: <itemizedlist>
-<listitem
-><para
->Drücken Sie Ctrl(Strg), so wird die Note um eine Linie aufwärts/abwärts bewegt</para
-></listitem>
-<listitem
-><para
->Drücken Sie Shift und bewegen das Maus-Rad, so wird die Note um eine Oktave aufwärts/abwärts bewegt.</para
-></listitem>
-<listitem
-><para
->Betätigen Sie das Maus-Rad und drücken Shift und Ctrl(Strg), so wird die Note um einen Halbton aufwärts/abwärts bewegt.</para
-></listitem>
-</itemizedlist>
-</para>
 </sect2>
 
 <sect2 id="change_other">
@@ -1752,13 +1742,13 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 <para
 ><menuchoice
 > <guimenu
->Noten<accel
->z</accel
->eile</guimenu
-> <guimenuitem
 ><accel
->V</accel
->erschieben</guimenuitem
+>D</accel
+>atei</guimenu
+> <guimenuitem
+>Neues Fens<accel
+>t</accel
+>er</guimenuitem
 > </menuchoice
 > <emphasis
 > ... Wählen Sie eine Position</emphasis
@@ -2641,13 +2631,11 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 > angeben.</para>
 
 <para
->Sie können auch zoomen, indem Sie die <literal
->Vergößern/Verkleinern</literal
->  (<inlinemediaobject
+>Einfacher können den Zoomfaktor mit dem <keycap>Strg+Mausrad</keycap> oder durch Drücken der <literal>Vergößern/Verkleinern</literal> Knöpfe ändern (<inlinemediaobject
 ><imageobject
 ><imagedata fileref="zoominout.png"/></imageobject
 ></inlinemediaobject
->)-Knöpfe benutzen.</para>
+>).</para>
 </sect2>
 
 <sect2 id="showhide">
@@ -2781,7 +2769,7 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 >aktuelle Stimme</emphasis
 >. Sie können die <emphasis
 >aktuelle Stimme</emphasis
-> durch links/rechts-Klicken des Stimmenzählers wechseln:</para>
+> mit den Tastaturkürzeln <keycap>Strg+1 bis 9</keycap> oder durch links/rechts-Klicken des Stimmenzählers wechseln:</para>
 <itemizedlist>
 <listitem
 ><para
@@ -3006,6 +2994,70 @@ während der Eingabe von Noten oder Pausen gedrückt ist, wird &noteedit; versuc
 >MUP</application
 >-bar. &noteedit; warnt Sie in diesem Falle.</para>
 </sect3>
+</sect2>
+</sect1>
+
+<sect1 id="printing">
+<title>Drucken<inlinemediaobject><imageobject><imagedata fileref="new.png"/></imageobject></inlinemediaobject></title>
+
+<sect2 id="printing_overview">
+<title>Übersicht</title>
+<para>&noteedit; 2.8.1 implementiert Musikpartiturdruck, indem es eines der externen Satzprogramme einsetzt. Folgende Satzprogramme sind unterstützt:
+<itemizedlist>
+<listitem><para><application>LilyPond</application></para></listitem>
+<listitem><para><application>ABC music</application> (abcm2ps)</para></listitem>
+<listitem><para><application>MusiXTeX</application></para></listitem>
+<listitem><para><application>PMX</application></para></listitem>
+</itemizedlist></para>
+<para>Genauer gesagt exportiert &noteedit; zunächst die Partitur im gewünschten Satzformat. Anschließend startet es das Satzprogramm mit der exportierten Datei (was widerum die auszugebende Postscript/PDF-Datei generiert). Im Anschluß wird diese Datei angezeigt oder ausgedruckt.</para>
+</sect2>
+
+<sect2 id="printing_configuration">
+<title>Druckkonfiguration</title>
+<para>Zunächst müssen Sie &noteedit; aus das zu verwendende
+Satzprogramm einstellen. Dazu wählen Sie
+</para>
+<para><menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem>Noteneditor ein<accel>r</accel>ichten...</guimenuitem>
+</menuchoice></para>
+<para>Dies zeigt Ihnen das &noteedit; Konfigurationsfenster. Wählen
+ Sie nun "Drucken" auf der linken Seite. Damit erscheint folgendes Fenster:</para>
+<para><inlinemediaobject><imageobject><imagedata align="center" fileref="configureprinting.png"/></imageobject></inlinemediaobject></para>
+<para><itemizedlist>
+<listitem><para>&noteedit; hat bereits einige vordefinierte
+ Satzformate und Satz- und Vorschauprogramme. Die Voreinstellung für
+ das Satzprogramm ist <application>LilyPond</application> und für das
+ Vorschauprogramm zum Anschauen des Dokuments ist <application>KPDF</application>.</para></listitem>
+<listitem><para>Wenn Sie ein spezielles Satzprogramm verwenden möchten, können Sie "Benutzer definiert" aus der Liste der Programme auswählen und die geeigneten Optionen einstellen.</para></listitem>
+<listitem><para>Wenn Sie ein spezielles Satzformat (z.B. MIDI oder MusicXML) verwende möchten. können sie dieses aus der Liste der Formate auswählen.</para></listitem>
+<listitem><para>Wenn Sie ein spezielles Satzprogramm manuell starten wollen oder &noteedit; sein gesuchtes Programm nicht automatisch findet, können Sie das Eingabefeld "Aufruf" verändern. Sie können hier den gesamten Pfad an das Satzprogramm voranstellen, falls das Programm nicht gefunden wird.</para></listitem>
+<listitem><para>Das "Optionen" Eingebefeld ist für zusätzliche Parameter gedacht, falls diese vom Satz- oder Druckvorschauprogramm benötigt werden sollten. %s ist reserviert für den aus &noteedit; exportierten Dateinamen.</para></listitem>
+<listitem><para>Die Voreinstellung für das Dateiformat bei der Druckvorschau ist Postscript mit Ausnahme von <application>LilyPond</application>, das als Dateiformat PDF erzeugt.</para></listitem>
+</itemizedlist></para>
+</sect2>
+
+<sect2 id="printing_preview">
+<title>Druckvorschau</title>
+<para>Wenn Sie die Partitur vorab anschauen möchten mit dem gewünschten Satzprogramm, verwenden Sie</para>
+<para><menuchoice>
+<guimenu><accel>D</accel>atei</guimenu>
+<guimenuitem>Druck<accel>v</accel>orschau...</guimenuitem>
+</menuchoice></para>
+<para>Dadurch wird die Partitur exportiert und auf das Ergebnis das Satzprogramm ausgeführt und anschließend die generierte Datei im ausgewählten Vorschauprogramm angezeigt.</para>
+</sect2>
+
+<sect2 id="printing_print">
+<title>Drucken</title>
+<para>Um die Partitur zu drucken, verwenden Sie</para>
+<para><menuchoice>
+<guimenu><accel>D</accel>atei</guimenu>
+<guimenuitem><accel>D</accel>rucken...</guimenuitem>
+</menuchoice></para>
+<para>Dies zeigt Ihnen den normalen KDE Druckdialog mit einigen &noteedit; Erweiterungen an.</para>
+<para><inlinemediaobject><imageobject><imagedata align="center" fileref="print.png"/></imageobject></inlinemediaobject></para>
+<para>Beachten Sie die Lilypond Format Registerkarte. Sie wurde von &noteedit; hinzugefügt und sie steht ausschließlich für das gewählte Exportformat zu Verfügung - wie Lilypond in diesem Fall. Wenn Sie bestimmte Einstellungen festlegen möchten bezüglich der Art und Weise wie &noteedit; Ihre Partitur exportieren soll in das gewünschte Satzformat, dann können Sie diese hier verändern.</para>
+<para>Wenn alles eingestellt ist, drücken Sie auf "Drucken". &noteedit; sendet dann die Partitur zu ihrem Drucker.</para>
 </sect2>
 </sect1>
 

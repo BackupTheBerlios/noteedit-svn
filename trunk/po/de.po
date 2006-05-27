@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-16 11:45+0200\n"
-"PO-Revision-Date: 2006-05-20 15:47+0100\n"
+"PO-Revision-Date: 2006-05-21 16:01+0100\n"
 "Last-Translator: Reinhard Katzmann <reinhard@suamor.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -4388,7 +4388,7 @@ msgstr "[Unbenannt]"
 
 #: uiconnect.cpp:1061
 msgid "Stanza no %1 %2"
-msgstr "Zeile %1%2"
+msgstr "Strophe %1%2"
 
 #: uiconnect.cpp:1063
 msgid "[empty]"

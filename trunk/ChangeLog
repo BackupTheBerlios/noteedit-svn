@@ -239,3 +239,5 @@ version 2.8.1:
 	* R483: ADDED: Use UTF-8 encoding checkbox in ABC music export dialog.
 	* R486: FIXED: de.po
 	* R488: UPDATED: de.po
+	* R489: UPDATED: german documentation with translated parts from the english documentation.
+	        FIXED: de.po

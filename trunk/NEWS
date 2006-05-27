@@ -29,6 +29,7 @@ New features to 2.8.0:
   - document page size is exported.
   - rit./accel. signs are printed in italic.
   - export all strings in UTF-8 encoding, if Lily >2.6 is found.
+  - official Lilypond font sizes are now supported
 - gcc4 complete compiler support. Many warning fixes and internal cleanups.
 - Many documentation additions and fixes.
 - New translations and translation updates
@@ -54,6 +55,8 @@ Bugs fixed to 2.8.0:
   direction.
 - < and > special characters for lyrics entrance aren't rendered anymore in the
   score view.
+- Fixes for ABC music export (like conversion to latin1 from utf8
+  internal NoteEdit encoding), so abcm2ps does not fail on compilation.
 - Many UI polishes and english expressions fixes.
 
 Note:

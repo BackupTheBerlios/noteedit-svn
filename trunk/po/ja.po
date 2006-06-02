@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-16 11:45+0200\n"
-"PO-Revision-Date: 2006-05-13 18:53+0900\n"
+"PO-Revision-Date: 2006-06-02 23:54+0900\n"
 "Last-Translator: Takeshi Hamasaki <hma@syd.odn.ne.jp>\n"
 "Language-Team: Japanese <translation-team-ja-admin@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -16,32 +16,57 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: abcexport.cpp:89 abcexport.cpp:92 filehandler.cpp:1097 filehandler.cpp:1099
-#: filehandler.cpp:1970 lilyexport.cpp:132 lilyexport.cpp:135
-#: lilyexport.cpp:1126 mainframewidget.cpp:1149 mainframewidget.cpp:1153
-#: mainframewidget.cpp:1166 mainframewidget.cpp:1179 mainframewidget.cpp:1184
-#: mainframewidget.cpp:1188 mainframewidget.cpp:3831 mainframewidget.cpp:3833
-#: mainframewidget.cpp:4525 midiexport.cpp:149 midiexport.cpp:152
-#: musicxmlexport.cpp:318 musicxmlexport.cpp:321 musixtex.cpp:168
-#: musixtex.cpp:170 musixtex.cpp:188 musixtex.cpp:190 musixtex.cpp:206
-#: musixtex.cpp:208 tse3handler.cpp:436 tse3handler.cpp:445
-#: tse3handler.cpp:454 tse3handler.cpp:955 tse3handler.cpp:1020
-#: tse3handler.cpp:1027 tse3handler.cpp:1035 uiconnect.cpp:332
+#: abcexport.cpp:89
+#: abcexport.cpp:92
+#: filehandler.cpp:1097
+#: filehandler.cpp:1099
+#: filehandler.cpp:1970
+#: lilyexport.cpp:132
+#: lilyexport.cpp:135
+#: lilyexport.cpp:1126
+#: mainframewidget.cpp:1149
+#: mainframewidget.cpp:1153
+#: mainframewidget.cpp:1166
+#: mainframewidget.cpp:1179
+#: mainframewidget.cpp:1184
+#: mainframewidget.cpp:1188
+#: mainframewidget.cpp:3831
+#: mainframewidget.cpp:3833
+#: mainframewidget.cpp:4525
+#: midiexport.cpp:149
+#: midiexport.cpp:152
+#: musicxmlexport.cpp:318
+#: musicxmlexport.cpp:321
+#: musixtex.cpp:168
+#: musixtex.cpp:170
+#: musixtex.cpp:188
+#: musixtex.cpp:190
+#: musixtex.cpp:206
+#: musixtex.cpp:208
+#: tse3handler.cpp:436
+#: tse3handler.cpp:445
+#: tse3handler.cpp:454
+#: tse3handler.cpp:955
+#: tse3handler.cpp:1020
+#: tse3handler.cpp:1027
+#: tse3handler.cpp:1035
+#: uiconnect.cpp:332
 msgid "???"
 msgstr "???"
 
 #: abcexport.cpp:294
-msgid ""
-"NoteEdit has exported the score to ABC music format but there are some "
-"problems which can prevent successful PostScript/PDF output or can change "
-"the final score layout.\n"
+msgid "NoteEdit has exported the score to ABC music format but there are some problems which can prevent successful PostScript/PDF output or can change the final score layout.\n"
 msgstr ""
 "Noteedit は 楽譜を ABC music 形式にエクスポートしました。しかしいくつか\n"
 "問題があるため、出力された PostScript/PDF は正しくない可能性があり、\n"
 "また最終的に得られる楽譜のレイアウトが異なる可能性があります。\n"
 
-#: abcexport.cpp:295 filehandler.cpp:600 lilyexport.cpp:666
-#: musicxmlexport.cpp:463 musixtex.cpp:621 pmxexport.cpp:394
+#: abcexport.cpp:295
+#: filehandler.cpp:600
+#: lilyexport.cpp:666
+#: musicxmlexport.cpp:463
+#: musixtex.cpp:621
+#: pmxexport.cpp:394
 msgid "-----------------------------------------------------\n"
 msgstr "-----------------------------------------------------\n"
 
@@ -51,8 +76,7 @@ msgstr "五線 %1, 小節 %2: ABC music はこのような種類の連符を扱�
 
 #: abcexport.cpp:304
 msgid "Staff %1 has irregular keysig. This cannot be expressed in ABC music\n"
-msgstr ""
-"五線 %1 に異常な keysig があります。これは ABC music では表現できません\n"
+msgstr "五線 %1 に異常な keysig があります。これは ABC music では表現できません\n"
 
 #: abcexport.cpp:308
 msgid "ABC music cannot deal with nested brackets/braces\n"
@@ -60,15 +84,11 @@ msgstr "ABC music は入れ子になった大括弧/ブレイスを取り扱う�
 
 #: abcexport.cpp:312
 msgid "ABC music cannot deal with a one-staff bracket\n"
-msgstr ""
-"ABC music は五線を１つだけしか含まない大括弧を取り扱うことができません\n"
+msgstr "ABC music は五線を１つだけしか含まない大括弧を取り扱うことができません\n"
 
 #: abcexport.cpp:316
-msgid ""
-"Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
-msgstr ""
-"五線 %1, 小節 %2: ABC music はオクターブ設定(va lines) を取り扱うことができま"
-"せん\n"
+msgid "Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
+msgstr "五線 %1, 小節 %2: ABC music はオクターブ設定(va lines) を取り扱うことができません\n"
 
 #: abcexport.cpp:320
 msgid "ABC music produced. But there are some problems."
@@ -100,20 +120,8 @@ msgstr "有効にすると編集中の楽譜は定期的に保存されます。
 
 #: configuredialog.cpp:84
 #, fuzzy
-msgid ""
-"The current score will be saved regularly if this is enabled. It will be "
-"saved to <filename>.sav, where <filename> is the name of the file to which "
-"the current score was last saved, or if it was not saved, the name of the "
-"file from which it was loaded. If the current score is new, it will be saved "
-"to unnamed<number>.not.sav, where <number> is a positive integer with the "
-"purpouse of making the name unique."
-msgstr ""
-"有効にすると編集中の楽譜は定期的に保存されます。It will be saved to "
-"<filename>.sav, where <filename> is the name of the file to which the "
-"current score was last saved, or if it was not saved, the name of the file "
-"from which it was loaded. If the current score is new, it will be saved to "
-"unnamed<number>.not.sav, where <number> is a positive integer with the "
-"purpouse of making the name unique."
+msgid "The current score will be saved regularly if this is enabled. It will be saved to <filename>.sav, where <filename> is the name of the file to which the current score was last saved, or if it was not saved, the name of the file from which it was loaded. If the current score is new, it will be saved to unnamed<number>.not.sav, where <number> is a positive integer with the purpouse of making the name unique."
+msgstr "有効にすると編集中の楽譜は定期的に保存されます。It will be saved to <filename>.sav, where <filename> is the name of the file to which the current score was last saved, or if it was not saved, the name of the file from which it was loaded. If the current score is new, it will be saved to unnamed<number>.not.sav, where <number> is a positive integer with the purpouse of making the name unique."
 
 #: configuredialog.cpp:96
 msgid " minutes"
@@ -124,9 +132,7 @@ msgid "Autosave &interval:"
 msgstr "自動保存の間隔(&I)"
 
 #: configuredialog.cpp:101
-msgid ""
-"The time interval between the occations when the current score is saved if "
-"there are unsaved changes."
+msgid "The time interval between the occations when the current score is saved if there are unsaved changes."
 msgstr "保存されていない変更があるときに、自動的に保存を行う間隔"
 
 #: configuredialog.cpp:113
@@ -138,12 +144,8 @@ msgid "useMidi&Pedal"
 msgstr "MIDI ペダルを使う(&P)"
 
 #: configuredialog.cpp:117
-msgid ""
-"enable MIDI pedal instruction (does not work on all sound cards; especially "
-"TiMidity++)"
-msgstr ""
-"MIDIペダルを有効にします。(ただし、すべてのサウンドカードで機能するわけではあ"
-"りません。特に Timidity++では)"
+msgid "enable MIDI pedal instruction (does not work on all sound cards; especially TiMidity++)"
+msgstr "MIDIペダルを有効にします。(ただし、すべてのサウンドカードで機能するわけではありません。特に Timidity++では)"
 
 #: configuredialog.cpp:119
 msgid "&Tip of the day"
@@ -158,18 +160,18 @@ msgid "Load la&st score"
 msgstr "最後に編集していた楽譜をロードする(&S)"
 
 #: configuredialog.cpp:133
-msgid ""
-"The last score that was open the last time the appliaction was used will be "
-"loaded if this is enabled."
+msgid "The last score that was open the last time the appliaction was used will be loaded if this is enabled."
 msgstr "有効にすると、起動時に前回最後に開いていた楽譜をロードします。"
 
 #: configuredialog.cpp:138
+#, fuzzy
 msgid "Turn Over"
-msgstr ""
+msgstr "上に曲げた矢印"
 
 #: configuredialog.cpp:146
+#, fuzzy
 msgid "page turn point:"
-msgstr ""
+msgstr "  エントリポイントアドレス:          "
 
 #: configuredialog.cpp:150
 msgid "Determine the offset at which the turn over takes place."
@@ -189,7 +191,7 @@ msgstr "エコーを挿入する(&E)"
 
 #: configuredialog.cpp:169
 msgid "Move according ke&ysig"
-msgstr ""
+msgstr "調号に併せて移動(&Y)"
 
 #: configuredialog.cpp:172
 msgid "autom. bar insertion"
@@ -211,25 +213,32 @@ msgstr "プログラム(&P):"
 msgid "Typesetting program"
 msgstr "書式整形プログラム"
 
-#: configuredialog.cpp:192 configuredialog.cpp:207
+#: configuredialog.cpp:192
+#: configuredialog.cpp:207
 msgid "ABC Music"
 msgstr "ABC Music"
 
-#: configuredialog.cpp:193 configuredialog.cpp:209
+#: configuredialog.cpp:193
+#: configuredialog.cpp:209
 msgid "PMX"
 msgstr "PMX"
 
-#: configuredialog.cpp:194 configuredialog.cpp:210 rc.cpp:259
+#: configuredialog.cpp:194
+#: configuredialog.cpp:210
+#: rc.cpp:259
 #, no-c-format
 msgid "Lilypond"
 msgstr "LilyPond"
 
-#: configuredialog.cpp:195 configuredialog.cpp:211 rc.cpp:541
+#: configuredialog.cpp:195
+#: configuredialog.cpp:211
+#: rc.cpp:541
 #, no-c-format
 msgid "MusiXTeX"
 msgstr "MusiXTeX"
 
-#: configuredialog.cpp:196 configuredialog.cpp:250
+#: configuredialog.cpp:196
+#: configuredialog.cpp:250
 msgid "custom"
 msgstr "カスタム指定する"
 
@@ -241,17 +250,20 @@ msgstr "エクスポートする形式(&F)"
 msgid "Export format"
 msgstr "エクスポートする形式"
 
-#: configuredialog.cpp:208 rc.cpp:499
+#: configuredialog.cpp:208
+#: rc.cpp:499
 #, no-c-format
 msgid "Midi"
 msgstr "MIDI"
 
-#: configuredialog.cpp:212 rc.cpp:535
+#: configuredialog.cpp:212
+#: rc.cpp:535
 #, no-c-format
 msgid "MusicXML"
 msgstr "MusicXML"
 
-#: configuredialog.cpp:213 noteedit_part.cpp:70
+#: configuredialog.cpp:213
+#: noteedit_part.cpp:70
 msgid "NoteEdit"
 msgstr "NoteEdit"
 
@@ -259,11 +271,13 @@ msgstr "NoteEdit"
 msgid "&Invokation:"
 msgstr "実行コマンド(&I):"
 
-#: configuredialog.cpp:222 configuredialog.cpp:260
+#: configuredialog.cpp:222
+#: configuredialog.cpp:260
 msgid "Invokation"
 msgstr "実行コマンド"
 
-#: configuredialog.cpp:227 configuredialog.cpp:265
+#: configuredialog.cpp:227
+#: configuredialog.cpp:265
 msgid "&Options:"
 msgstr "オプション(&O)"
 
@@ -364,8 +378,9 @@ msgid "L&yrics:"
 msgstr "歌詞(&Y):"
 
 #: configuredialog.cpp:432
+#, fuzzy
 msgid "staff con&text:"
-msgstr ""
+msgstr "<b>パス上テキスト</b> (%s, %s)"
 
 #: configuredialog.cpp:438
 msgid "Sound"
@@ -384,15 +399,8 @@ msgid "Attempt to create an ALSA MIDI scheduler at startup."
 msgstr "起動時に ALSA MIDI スケジューラを作成する。"
 
 #: configuredialog.cpp:454
-msgid ""
-"The TSE3 sequencer library will attempt to create an ALSA (Advanced Linux "
-"Sound Architecture) MIDI scheduler when the application starts if this is "
-"enabled. Enable this if you use ALSA to acces your soundcard."
-msgstr ""
-"有効にすると、TSE3シーケンサライブラリはアプリケーション起動時に ALSA "
-"(Advanced·Linux·Sound·Architecture)·MIDI·スケジューラを生成しようとします。サ"
-"ウンドカードにアクセスするために ALSA を使用している場合はこれを有効にしてく"
-"ださい。"
+msgid "The TSE3 sequencer library will attempt to create an ALSA (Advanced Linux Sound Architecture) MIDI scheduler when the application starts if this is enabled. Enable this if you use ALSA to acces your soundcard."
+msgstr "有効にすると、TSE3シーケンサライブラリはアプリケーション起動時に ALSA (Advanced·Linux·Sound·Architecture)·MIDI·スケジューラを生成しようとします。サウンドカードにアクセスするために ALSA を使用している場合はこれを有効にしてください。"
 
 #: configuredialog.cpp:460
 msgid "O&SS"
@@ -403,14 +411,8 @@ msgid "Attempt to create an OSS MIDI scheduler at startup."
 msgstr "起動時に OSS MIDI スケジューラを作成する。"
 
 #: configuredialog.cpp:470
-msgid ""
-"The TSE3 sequencer library will attempt to create an OSS (Open Sound System) "
-"MIDI scheduler when the application starts if this is enabled. Enable this "
-"if you use OSS to acces your soundcard."
-msgstr ""
-"有効にすると、TSE3シーケンサライブラリはアプリケーション起動時に OSS·"
-"(Open·Sound·System)·MIDI·スケジューラを生成しようとします。サウンドカードにア"
-"クセスするために OSS を使用している場合はこれを有効にしてください。"
+msgid "The TSE3 sequencer library will attempt to create an OSS (Open Sound System) MIDI scheduler when the application starts if this is enabled. Enable this if you use OSS to acces your soundcard."
+msgstr "有効にすると、TSE3シーケンサライブラリはアプリケーション起動時に OSS·(Open·Sound·System)·MIDI·スケジューラを生成しようとします。サウンドカードにアクセスするために OSS を使用している場合はこれを有効にしてください。"
 
 #: configuredialog.cpp:479
 msgid "&MIDI devices"
@@ -420,51 +422,54 @@ msgstr "&MIDI デバイス"
 msgid "Chords"
 msgstr "コード"
 
-#: configuredialog.cpp:487 configuredialog.cpp:488
+#: configuredialog.cpp:487
+#: configuredialog.cpp:488
 msgid "Chordnames"
 msgstr "コード名"
 
 #: configuredialog.cpp:489
 msgid "American, sharps"
-msgstr ""
+msgstr "アメリカン, シャープ"
 
 #: configuredialog.cpp:490
 msgid "American, flats"
-msgstr ""
+msgstr "アメリカン, フラット"
 
 #: configuredialog.cpp:491
 msgid "American, mixed"
-msgstr ""
+msgstr "アメリカン, 混合"
 
 #: configuredialog.cpp:492
 msgid "European, sharps"
-msgstr ""
+msgstr "ヨーロピアン, シャープ"
 
 #: configuredialog.cpp:493
 msgid "European, flats"
-msgstr ""
+msgstr "ヨーロピアン, フラット"
 
 #: configuredialog.cpp:494
 msgid "European, mixed"
-msgstr ""
+msgstr "ヨーロピアン, 混合"
 
 #: configuredialog.cpp:495
 msgid "Jazz, sharps"
-msgstr ""
+msgstr "ジャズ, シャープ"
 
 #: configuredialog.cpp:496
 msgid "Jazz, flats"
-msgstr ""
+msgstr "ジャズ, フラット"
 
 #: configuredialog.cpp:497
 msgid "Jazz, mixed"
-msgstr ""
+msgstr "ジャズ, 混合"
 
-#: configuredialog.cpp:502 configuredialog.cpp:503
+#: configuredialog.cpp:502
+#: configuredialog.cpp:503
 msgid "Dominant 7"
 msgstr "ドミナント 7"
 
-#: configuredialog.cpp:510 configuredialog.cpp:511
+#: configuredialog.cpp:510
+#: configuredialog.cpp:511
 msgid "Alterations"
 msgstr "臨時記号"
 
@@ -472,7 +477,9 @@ msgstr "臨時記号"
 msgid "nothing to write"
 msgstr "書くものがありません"
 
-#: filehandler.cpp:175 filehandler.cpp:186 filehandler.cpp:189
+#: filehandler.cpp:175
+#: filehandler.cpp:186
+#: filehandler.cpp:189
 msgid "Write Staffs"
 msgstr "五線を書き込む"
 
@@ -481,12 +488,8 @@ msgid "error opening file "
 msgstr "ファイルを開く時にエラーが発生しました"
 
 #: filehandler.cpp:561
-msgid ""
-"staff %1; measure %2: you mixed different bar types; this cannot be "
-"expressed in MUP and causes data loss\n"
-msgstr ""
-"五線 %1; 小節 %2: 異なる種類の縦線が混在しています。MUP ではこれを表現するこ"
-"とができないため、データの一部が失われます\n"
+msgid "staff %1; measure %2: you mixed different bar types; this cannot be expressed in MUP and causes data loss\n"
+msgstr "五線 %1; 小節 %2: 異なる種類の縦線が混在しています。MUP ではこれを表現することができないため、データの一部が失われます\n"
 
 #: filehandler.cpp:567
 msgid "Staff %1 ; measure %2 :The multirests are not aligned\n"
@@ -498,29 +501,17 @@ msgid "staff %1; measure %2: irregulaer key in the middle omitted\n"
 msgstr "五線 %1; 小節 %2: irregulaer key in the middle omitted\n"
 
 #: filehandler.cpp:577
-msgid ""
-"staff %1; measure %2: Mup can only deal with tuplets which sum up to a "
-"single note length\n"
-msgstr ""
-"五線 %1; 小節 %2: Mup は合計して１つの音符の長さになる連符だけを取り扱うこと"
-"ができます\n"
+msgid "staff %1; measure %2: Mup can only deal with tuplets which sum up to a single note length\n"
+msgstr "五線 %1; 小節 %2: Mup は合計して１つの音符の長さになる連符だけを取り扱うことができます\n"
 
 #: filehandler.cpp:582
 #, fuzzy
-msgid ""
-"staff %1; measure %2: Mup cannot deal with segno staff at end. The segno "
-"staff is deleted.  Please insert a rest!\n"
-msgstr ""
-"五線 %1; 小節 %2: MUP はセーニョ     を取り扱えません。セーニョ 五線は削除さ"
-"れました。休符を挿入してください!"
+msgid "staff %1; measure %2: Mup cannot deal with segno staff at end. The segno staff is deleted.  Please insert a rest!\n"
+msgstr "五線 %1; 小節 %2: MUP はセーニョ     を取り扱えません。セーニョ 五線は削除されました。休符を挿入してください!"
 
 #: filehandler.cpp:587
-msgid ""
-"staff %1; measure %2: Mup cannot deal with pedal marks in non-1st-voice! "
-"This cannot be restored\n"
-msgstr ""
-"五線 %1; 小節 %2: MUP は最初の声部にないペダル記号を取り扱うことができませ"
-"ん。これは復元されません\n"
+msgid "staff %1; measure %2: Mup cannot deal with pedal marks in non-1st-voice! This cannot be restored\n"
+msgstr "五線 %1; 小節 %2: MUP は最初の声部にないペダル記号を取り扱うことができません。これは復元されません\n"
 
 #: filehandler.cpp:592
 msgid "Possible data loss!"
@@ -529,29 +520,21 @@ msgstr "一部のデータが失われた可能性があります!"
 #: filehandler.cpp:598
 msgid ""
 "Noteedit will save your score, and it can (probably) restore the score.\n"
-"But the file doesn't conform to MUP, so it will not work with the MUP "
-"interpreter.\n"
+"But the file doesn't conform to MUP, so it will not work with the MUP interpreter.\n"
 msgstr ""
 "Noteedit は楽譜を保存します, （多分）復元することができます。\n"
-"しかし、ファイルが MUP の形式に従っていないため、MUP インタプリタでは動かない"
-"でしょう。\n"
+"しかし、ファイルが MUP の形式に従っていないため、MUP インタプリタでは動かないでしょう。\n"
 
 #: filehandler.cpp:605
 msgid "staff %1; measure  %2 : %3 128th, should be: %4\n"
 msgstr "五線 %1; 小節  %2 : %3 128分音符,  %4 であるべきです\n"
 
 #: filehandler.cpp:610
-msgid ""
-"staff %1; measure %2: Mup cannot deal with mixed lyrics/non-lyrics notes in "
-"the same measure\n"
-msgstr ""
-"五線 %1; 小節 %2: MUP は同一小節内に歌詞のある／ない音符を混在させることがで"
-"きません。\n"
+msgid "staff %1; measure %2: Mup cannot deal with mixed lyrics/non-lyrics notes in the same measure\n"
+msgstr "五線 %1; 小節 %2: MUP は同一小節内に歌詞のある／ない音符を混在させることができません。\n"
 
 #: filehandler.cpp:615
-msgid ""
-"staff %1; measure %2: Mup up cannot deal with slurs over more than 1 "
-"element, besides in 1st or 2nd voice\n"
+msgid "staff %1; measure %2: Mup up cannot deal with slurs over more than 1 element, besides in 1st or 2nd voice\n"
 msgstr ""
 
 #: filehandler.cpp:620
@@ -560,12 +543,11 @@ msgstr "五線 %1; 小節 %2: Mup は \"tr\" 記号のないトリルを扱え�
 
 #: filehandler.cpp:625
 msgid "Staff %1 has irregular key, this may not work with MUP.\n"
-msgstr ""
+msgstr "五線 %1 には異常な調号があります。MUP では機能しないでしょう。\n"
 
 #: filehandler.cpp:630
 msgid "Staff %1 has too many voices! MUP accepts up to 3 voices.\n"
-msgstr ""
-"五線 %1 にある声部が多すぎます! MUP は最大 3つまでの声部を受け付けます。\n"
+msgstr "五線 %1 にある声部が多すぎます! MUP は最大 3つまでの声部を受け付けます。\n"
 
 #: filehandler.cpp:635
 msgid "Staff %1 contains drum staff. This cannot be expressed in MUP.\n"
@@ -577,34 +559,27 @@ msgstr "五線 %1; 小節 %2: Mup は装飾音符でカスタムの連桁を扱�
 
 #: filehandler.cpp:645
 msgid "staff %1; measure %2: Mup cannot deal with graces after\n"
-msgstr ""
+msgstr "五線 %1; 小節 %2: Mup は後ろに付く装飾音符を扱えません\n"
 
 #: filehandler.cpp:650
-msgid ""
-"staff %1; measure %2: MUP cannot deal with clef changes in the middle of "
-"measure\n"
-msgstr ""
-"五線 %1; 小節 %2: MUP は小節の途中で音部記号を変更することができません\n"
+msgid "staff %1; measure %2: MUP cannot deal with clef changes in the middle of measure\n"
+msgstr "五線 %1; 小節 %2: MUP は小節の途中で音部記号を変更することができません\n"
 
 #: filehandler.cpp:655
-msgid ""
-"staff %1; measure %2: MUP cannot deal with key changes in the middle of "
-"measure\n"
-msgstr ""
-"五線 %1; 小節 %2: MUP は小節の途中でのキー変更を取り扱うことができません\n"
+msgid "staff %1; measure %2: MUP cannot deal with key changes in the middle of measure\n"
+msgstr "五線 %1; 小節 %2: MUP は小節の途中でのキー変更を取り扱うことができません\n"
 
 #: filehandler.cpp:660
-msgid ""
-"MUP cannot deal with some chord annotations with and some without grids\n"
+msgid "MUP cannot deal with some chord annotations with and some without grids\n"
 msgstr ""
 
 #: filehandler.cpp:664
 msgid "MUP cannot deal with more than one bracket per system\n"
-msgstr ""
+msgstr "MUP は1つの譜表の中で 2つ以上の括弧([)を扱えません\n"
 
 #: filehandler.cpp:668
 msgid "MUP cannot deal with nested brackets in braces\n"
-msgstr ""
+msgstr "MUP は大括弧({) の中で入れ子になった括弧([)を扱えません\n"
 
 #: filehandler.cpp:672
 msgid "MUP cannot correctly write more than one slurred grace\n"
@@ -612,37 +587,34 @@ msgstr "MUP は2つ以上のスラーが付いた装飾音符を正しく書く�
 
 #: layout.cpp:55
 msgid "Set brace"
-msgstr ""
+msgstr "大括弧({) を付ける"
 
 #: layout.cpp:55
 msgid "Set bracket"
-msgstr ""
+msgstr "括弧([) を付ける"
 
 #: layout.cpp:55
 msgid "Continue bar"
-msgstr ""
+msgstr "小節区切りをつなげる"
 
 #: layout.cpp:56
 msgid "Remove brace"
-msgstr ""
+msgstr "大括弧({) を外す"
 
 #: layout.cpp:56
 msgid "Remove bracket"
-msgstr ""
+msgstr "括弧([) を外す"
 
 #: layout.cpp:56
 msgid "Discontinue bar"
-msgstr ""
+msgstr "小節区切りをつなげない"
 
 #: layout.cpp:59
 msgid "Score layout"
 msgstr "楽譜のレイアウト"
 
 #: lilyexport.cpp:665
-msgid ""
-"NoteEdit has exported the score to LilyPond format but there are some "
-"problems which can prevent successful PostScript/PDF output or can change "
-"the final score layout.\n"
+msgid "NoteEdit has exported the score to LilyPond format but there are some problems which can prevent successful PostScript/PDF output or can change the final score layout.\n"
 msgstr ""
 "Noteedit は 楽譜を LilyPond 形式にエクスポートしました。しかしいくつか\n"
 "問題があるため、出力された PostScript/PDF は正しくない可能性があり、\n"
@@ -650,65 +622,50 @@ msgstr ""
 
 #: lilyexport.cpp:671
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
-msgstr ""
-"五線 %1, 小節 %2: 128分音符が小節に含まれています。64分が許される最短です。\n"
+msgstr "五線 %1, 小節 %2: 128分音符が小節に含まれています。64分が許される最短です。\n"
 
 #: lilyexport.cpp:675
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
-msgstr ""
+msgstr "五線 %1 に異常な調号があります。これは LilyPond では表現できません\n"
 
 #: lilyexport.cpp:679
 msgid "Staff %1, measure %2: has %3 128th, should be: %4\n"
 msgstr "五線 %1, 小節 %2: には %3 つの128分音符があります。%4 のはずです\n"
 
 #: lilyexport.cpp:684
-msgid ""
-"Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable "
-"length trills (wavelines)\n"
-msgstr ""
+msgid "Staff %1, measure %2: LilyPond less than 1.5.2 cannot deal with variable length trills (wavelines)\n"
+msgstr "五線 %1, 小節 %2: 1.5.2 より前の LilyPond は長さの変化するトリル（波線）を扱えません\n"
 
 #: lilyexport.cpp:689
 msgid "Staff %1, measure %2: Only a subset of notes in a chord has ties!\n"
-msgstr ""
-"五線 %1, 小節 %2: コードに含まれる音符の一部にだけタイが付いています!\n"
+msgstr "五線 %1, 小節 %2: コードに含まれる音符の一部にだけタイが付いています!\n"
 
 #: lilyexport.cpp:693
-msgid ""
-"Staff %1 contains drum staff. Note! The LilyPond export is not quite "
-"correct!\n"
-msgstr ""
-"五線 %1 はドラム譜を含んでいます。注意! LilyPond エクスポートは正しいとは限り"
-"ません!\n"
+msgid "Staff %1 contains drum staff. Note! The LilyPond export is not quite correct!\n"
+msgstr "五線 %1 はドラム譜を含んでいます。注意! LilyPond エクスポートは正しいとは限りません!\n"
 
 #: lilyexport.cpp:698
 msgid "Staff %1: This version of LilyPond cannot deal with slures in graces\n"
-msgstr ""
-"五線 %1: LilyPond のこのバージョンでは装飾音符にかかるスラーを扱えません\n"
+msgstr "五線 %1: LilyPond のこのバージョンでは装飾音符にかかるスラーを扱えません\n"
 
 #: lilyexport.cpp:703
-msgid ""
-"A bracket with partial continued partial discountinued bar rules cannot be "
-"expressed in LilyPond\n"
-msgstr ""
+msgid "A bracket with partial continued partial discountinued bar rules cannot be expressed in LilyPond\n"
+msgstr "括弧の中でところどころつながった/つながっていない小節区切りを持つ楽譜は LilyPond では表現できません\n"
 
 #: lilyexport.cpp:707
-msgid ""
-"A piano staff without continued bar rules cannot be expressed in LilyPond\n"
-msgstr ""
+msgid "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
+msgstr "つながった小節区切りのないピアノ五線は LilyPond では表現できません\n"
 
 #: lilyexport.cpp:711
-msgid ""
-"Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
-msgstr ""
+msgid "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
+msgstr "大括弧、括弧の外でつながった小節区切りは LilyPond では表現できません\n"
 
 #: lilyexport.cpp:715
 msgid "LilyPond produced. But there are some problems."
 msgstr "LilyPond 形式が生成されました。しかし、いくつか問題があります。"
 
 #: lilyexport.cpp:1125
-msgid ""
-"Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to "
-"enjoy this feature."
+msgid "Sorry, strong Pizzicato is not available under LilyPond. Take musixtex, to enjoy this feature."
 msgstr ""
 
 #: main.cpp:54
@@ -872,8 +829,9 @@ msgid "Show &aux lines"
 msgstr "補助線を表示(&A)"
 
 #: mainframewidget.cpp:269
+#, fuzzy
 msgid "Show staff &context"
-msgstr ""
+msgstr "五線のコンテキストを表示(&C)"
 
 #: mainframewidget.cpp:272
 msgid "Show &drum tools"
@@ -917,7 +875,7 @@ msgstr "調号(&K)..."
 
 #: mainframewidget.cpp:286
 msgid "Special &Barline..."
-msgstr ""
+msgstr "特殊な小節区切り"
 
 #: mainframewidget.cpp:288
 msgid "Repeat - &Open"
@@ -984,12 +942,14 @@ msgid "&dal Segno"
 msgstr "ダルセーニョ(&D)"
 
 #: mainframewidget.cpp:320
+#, fuzzy
 msgid "dal Segno &al Fine"
-msgstr ""
+msgstr "フィンまでダルセーニョ(&A)"
 
 #: mainframewidget.cpp:322
+#, fuzzy
 msgid "dal Segno al C&oda"
-msgstr ""
+msgstr "コーダまでダルセーニョ(&O)"
 
 #: mainframewidget.cpp:324
 msgid "&Fine"
@@ -1053,7 +1013,7 @@ msgstr "複数の五線を選択(&M)..."
 
 #: mainframewidget.cpp:345
 msgid "&Goto measure..."
-msgstr "指定した小節へ(&G)..."
+msgstr "指定した小節へ移動(&G)..."
 
 #: mainframewidget.cpp:347
 msgid "&Auto Bar..."
@@ -1061,7 +1021,7 @@ msgstr "自動小節区切り(&A)..."
 
 #: mainframewidget.cpp:349
 msgid "Auto &Beam..."
-msgstr "自動音符接続(&B)..."
+msgstr "自動連桁(&B)..."
 
 #: mainframewidget.cpp:350
 msgid "&Cleanup rests..."
@@ -1123,39 +1083,48 @@ msgstr "今日の小技(&D)"
 msgid "Select mode"
 msgstr "モード選択"
 
-#: mainframewidget.cpp:370 mainframewidget.cpp:618
+#: mainframewidget.cpp:370
+#: mainframewidget.cpp:618
 msgid "Breve note"
 msgstr "２全音符"
 
-#: mainframewidget.cpp:371 mainframewidget.cpp:619
+#: mainframewidget.cpp:371
+#: mainframewidget.cpp:619
 msgid "Full note"
 msgstr "全音符"
 
-#: mainframewidget.cpp:372 mainframewidget.cpp:620
+#: mainframewidget.cpp:372
+#: mainframewidget.cpp:620
 msgid "Half note"
 msgstr "２分音符"
 
-#: mainframewidget.cpp:373 mainframewidget.cpp:622
+#: mainframewidget.cpp:373
+#: mainframewidget.cpp:622
 msgid "Quarter note"
 msgstr "４分音符"
 
-#: mainframewidget.cpp:374 mainframewidget.cpp:623
+#: mainframewidget.cpp:374
+#: mainframewidget.cpp:623
 msgid "Eighth note"
 msgstr "８分音符"
 
-#: mainframewidget.cpp:375 mainframewidget.cpp:624
+#: mainframewidget.cpp:375
+#: mainframewidget.cpp:624
 msgid "Sixteenth note"
 msgstr "１６分音符"
 
-#: mainframewidget.cpp:376 mainframewidget.cpp:625
+#: mainframewidget.cpp:376
+#: mainframewidget.cpp:625
 msgid "32nd note"
 msgstr "３２分音符"
 
-#: mainframewidget.cpp:377 mainframewidget.cpp:626
+#: mainframewidget.cpp:377
+#: mainframewidget.cpp:626
 msgid "64th note"
 msgstr "６４分音符"
 
-#: mainframewidget.cpp:378 mainframewidget.cpp:627
+#: mainframewidget.cpp:378
+#: mainframewidget.cpp:627
 msgid "128th note"
 msgstr "１２８分音符"
 
@@ -1235,15 +1204,20 @@ msgstr ""
 msgid "Sforzando"
 msgstr ""
 
-#: mainframewidget.cpp:414 mainframewidget.cpp:644 mainframewidget.cpp:645
+#: mainframewidget.cpp:414
+#: mainframewidget.cpp:644
+#: mainframewidget.cpp:645
 msgid "Sharp"
 msgstr "シャープ"
 
-#: mainframewidget.cpp:416 mainframewidget.cpp:643
+#: mainframewidget.cpp:416
+#: mainframewidget.cpp:643
 msgid "Flat"
 msgstr "フラット"
 
-#: mainframewidget.cpp:418 mainframewidget.cpp:646 mainframewidget.cpp:647
+#: mainframewidget.cpp:418
+#: mainframewidget.cpp:646
+#: mainframewidget.cpp:647
 msgid "Natural"
 msgstr "ナチュラル"
 
@@ -1255,7 +1229,9 @@ msgstr "ダブルシャープ"
 msgid "Double flat"
 msgstr "ダブルフラット"
 
-#: mainframewidget.cpp:425 mainframewidget.cpp:2720 mainframewidget.cpp:2760
+#: mainframewidget.cpp:425
+#: mainframewidget.cpp:2720
+#: mainframewidget.cpp:2760
 msgid "Play"
 msgstr "再生"
 
@@ -1282,7 +1258,7 @@ msgstr "キーボードから入力"
 #: mainframewidget.cpp:436
 #, fuzzy
 msgid "Glue"
-msgstr "接着剤"
+msgstr " グルーコード列"
 
 #: mainframewidget.cpp:437
 msgid "Stem up"
@@ -1316,9 +1292,11 @@ msgstr "音符△"
 msgid "Selected voice"
 msgstr "選択された声部:"
 
-#: mainframewidget.cpp:565 mainframewidget.cpp:4317
+#: mainframewidget.cpp:565
+#: mainframewidget.cpp:4317
+#, fuzzy
 msgid "Key"
-msgstr ""
+msgstr "キー"
 
 #: mainframewidget.cpp:599
 msgid "Move up"
@@ -1353,9 +1331,8 @@ msgid "Move end"
 msgstr "末尾へ"
 
 #: mainframewidget.cpp:607
-#, fuzzy
 msgid "Goto measure number"
-msgstr "小節番号へ移動"
+msgstr "指定した小節へ移動"
 
 #: mainframewidget.cpp:608
 msgid "Delete forward"
@@ -1371,19 +1348,19 @@ msgstr "前を消す"
 
 #: mainframewidget.cpp:611
 msgid "Toggle play"
-msgstr ""
+msgstr "再生／停止"
 
 #: mainframewidget.cpp:612
 msgid "Leave current mode"
-msgstr ""
+msgstr "現在のモードから抜ける"
 
 #: mainframewidget.cpp:613
 msgid "Toggle edit"
-msgstr ""
+msgstr "編集モード切替え"
 
 #: mainframewidget.cpp:614
 msgid "Insert chord note"
-msgstr "和音の音符を挿入する"
+msgstr "和音に音符を挿入する"
 
 #: mainframewidget.cpp:615
 msgid "Insert note"
@@ -1391,7 +1368,7 @@ msgstr "音符を挿入する"
 
 #: mainframewidget.cpp:621
 msgid "Set triplet"
-msgstr ""
+msgstr "3連符切替え"
 
 #: mainframewidget.cpp:630
 msgid "Select 1st voice"
@@ -1429,7 +1406,8 @@ msgstr "8番目の声部を選択する"
 msgid "Select 9th voice"
 msgstr "9番目の声部を選択する"
 
-#: mainframewidget.cpp:640 mainframewidget.cpp:641
+#: mainframewidget.cpp:640
+#: mainframewidget.cpp:641
 msgid "Set tied"
 msgstr "タイを設定"
 
@@ -1443,11 +1421,11 @@ msgstr "縦線"
 
 #: mainframewidget.cpp:649
 msgid "Set bar after"
-msgstr ""
+msgstr "小節区切りを追加する"
 
 #: mainframewidget.cpp:650
 msgid "Set special bar"
-msgstr ""
+msgstr "特殊な小節区切りを追加する"
 
 #: mainframewidget.cpp:651
 msgid "Insert rest"
@@ -1455,41 +1433,44 @@ msgstr "休符を挿入する"
 
 #: mainframewidget.cpp:652
 msgid "Toggle beam"
-msgstr ""
+msgstr "連桁の有無を切替える"
 
 #: mainframewidget.cpp:653
+#, fuzzy
 msgid "Keyboard Insert mode"
-msgstr ""
+msgstr "和音挿入モード(&h)"
 
 #: mainframewidget.cpp:658
 msgid "Pitch C"
-msgstr ""
+msgstr "C の高さ"
 
 #: mainframewidget.cpp:659
 msgid "Pitch D"
-msgstr ""
+msgstr "D の高さ"
 
 #: mainframewidget.cpp:660
 msgid "Pitch E"
-msgstr ""
+msgstr "E の高さ"
 
 #: mainframewidget.cpp:661
 msgid "Pitch F"
-msgstr ""
+msgstr "F の高さ"
 
 #: mainframewidget.cpp:662
 msgid "Pitch G"
-msgstr ""
+msgstr "G の高さ"
 
 #: mainframewidget.cpp:663
 msgid "Pitch A"
-msgstr ""
+msgstr "A の高さ"
 
 #: mainframewidget.cpp:664
 msgid "Pitch B"
-msgstr ""
+msgstr "B の高さ"
 
-#: mainframewidget.cpp:687 mainframewidget.cpp:704 mainframewidget.cpp:717
+#: mainframewidget.cpp:687
+#: mainframewidget.cpp:704
+#: mainframewidget.cpp:717
 msgid "Enabled"
 msgstr "有効"
 
@@ -1498,19 +1479,22 @@ msgid "Trill"
 msgstr "トリル"
 
 #: mainframewidget.cpp:707
+#, fuzzy
 msgid "Turn"
-msgstr ""
+msgstr "ターン"
 
 #: mainframewidget.cpp:713
 msgid "Crescendo"
 msgstr "クレッシェンド"
 
-#: mainframewidget.cpp:726 rc.cpp:433
+#: mainframewidget.cpp:726
+#: rc.cpp:433
 #, no-c-format
 msgid "8va"
 msgstr ""
 
-#: mainframewidget.cpp:1149 mainframewidget.cpp:1166
+#: mainframewidget.cpp:1149
+#: mainframewidget.cpp:1166
 msgid "Please choose a note or rest!"
 msgstr "音符か休符を１つ選択してください!"
 
@@ -1518,7 +1502,8 @@ msgstr "音符か休符を１つ選択してください!"
 msgid "Please choose a note or rest from first voice"
 msgstr "1番目の声部から音符か休符を選択してください"
 
-#: mainframewidget.cpp:1179 mainframewidget.cpp:1188
+#: mainframewidget.cpp:1179
+#: mainframewidget.cpp:1188
 msgid "Please choose a note!"
 msgstr "音符を１つ選択してください!"
 
@@ -1534,7 +1519,9 @@ msgstr "MIDI マッパーは既に使用されています!"
 msgid "Nothing to play!"
 msgstr "再生するものがありません!"
 
-#: mainframewidget.cpp:3525 mainframewidget.cpp:3603 mainframewidget.cpp:3663
+#: mainframewidget.cpp:3525
+#: mainframewidget.cpp:3603
+#: mainframewidget.cpp:3663
 #: mainframewidget.cpp:3961
 msgid ""
 "Your document contains unsaved changes.\n"
@@ -1549,27 +1536,20 @@ msgstr "新規"
 
 #: mainframewidget.cpp:3831
 msgid ""
-"MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
-"other tools for better score layout.\n"
-"You can also read more about MIDI import and other useful tools in "
-"documentation!"
+"MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and other tools for better score layout.\n"
+"You can also read more about MIDI import and other useful tools in documentation!"
 msgstr ""
 "MIDI インポートが完了しました。\n"
-"楽譜のレイアウトをより良いものにするためには、編集 --> 自動小節区切り,  編集 "
-"--> 自動音符接続, その他のツールを使ってください。\n"
-"更なる情報は、ドキュメントの MIDI インポート, その他の便利なツールについての"
-"記述を読んでください。"
+"楽譜のレイアウトをより良いものにするためには、編集 --> 自動小節区切り,  編集 --> 自動連桁, その他のツールを使ってください。\n"
+"更なる情報は、ドキュメントの MIDI インポート, その他の便利なツールについての記述を読んでください。"
 
 #: mainframewidget.cpp:3833
 msgid ""
-"MIDI import is performed by the TSE3 library, but the library is not "
-"present!\n"
+"MIDI import is performed by the TSE3 library, but the library is not present!\n"
 "Please look in the MIDI import section in documentation for more information!"
 msgstr ""
-"MIDI インポートは TSE3 ライブラリを使用します。しかし、TSE3ライブラリがありま"
-"せん!\n"
-"詳細については、ドキュメントの MIDI インポートについて書かれたセクションを参"
-"照してください。"
+"MIDI インポートは TSE3 ライブラリを使用します。しかし、TSE3ライブラリがありません!\n"
+"詳細については、ドキュメントの MIDI インポートについて書かれたセクションを参照してください。"
 
 #: mainframewidget.cpp:4027
 msgid "Do you really want to close all windows?"
@@ -1584,19 +1564,20 @@ msgid "&Close all"
 msgstr "すべて閉じる(&C)"
 
 #: mainframewidget.cpp:4064
-#, fuzzy
 msgid "<center>Please choose the target measure number!</center>"
 msgstr "<center>移動先の小節番号を指定してください!</center>"
 
-#: mainframewidget.cpp:4067 mainframewidget.cpp:4068
+#: mainframewidget.cpp:4067
+#: mainframewidget.cpp:4068
 msgid "Goto"
-msgstr ""
+msgstr "移動"
 
 #: mainframewidget.cpp:4390
 msgid "Can't delete last staff."
 msgstr "最後の五線を削除することはできません。"
 
-#: mainframewidget.cpp:4391 mainframewidget.cpp:4398
+#: mainframewidget.cpp:4391
+#: mainframewidget.cpp:4398
 msgid "Delete Staff"
 msgstr "五線を削除"
 
@@ -1650,7 +1631,7 @@ msgstr "<center>音符の数:</center>"
 
 #: mainframewidget.cpp:4513
 msgid "Autobeam"
-msgstr "自動音符接続"
+msgstr "自動連桁"
 
 #: mainframewidget.cpp:4525
 msgid "Please choose a repeat close sign!"
@@ -1688,7 +1669,8 @@ msgstr "声部を選択"
 msgid "<center>Select your voice here:</center>"
 msgstr "<center>声部を選択してください:</center>"
 
-#: mainframewidget.cpp:5362 mainframewidget.cpp:5504
+#: mainframewidget.cpp:5362
+#: mainframewidget.cpp:5504
 msgid "Error writing file \"%1\"."
 msgstr "ファイル \"%1\" を書き込んでいる時にエラーが発生しました。"
 
@@ -1704,7 +1686,8 @@ msgstr "現在の五線に上書きされます。続けますか?"
 msgid "Import Recording"
 msgstr "録音をインポート"
 
-#: mainframewidget.cpp:5381 rc.cpp:226
+#: mainframewidget.cpp:5381
+#: rc.cpp:226
 #, no-c-format
 msgid "&Import Recording"
 msgstr "録音をインポート(&I)"
@@ -1725,11 +1708,13 @@ msgstr "楽譜を作成しようとしたときにエラーが発生しました
 msgid "Creating Score"
 msgstr "楽譜を作成しています"
 
-#: mainframewidget.cpp:5505 tse3handler.cpp:364
+#: mainframewidget.cpp:5505
+#: tse3handler.cpp:364
 msgid "TSE3 MIDI out"
 msgstr "TSE3 MIDI 出力"
 
-#: mainframewidget.cpp:5520 mainframewidget.cpp:5555
+#: mainframewidget.cpp:5520
+#: mainframewidget.cpp:5555
 msgid "File read error \"%1\"."
 msgstr "ファイル \"%1\" を読み込んでいる時にエラーが発生しました。"
 
@@ -1749,16 +1734,14 @@ msgstr "ファイル \"%1\" は既に存在します! 上書きしますか?"
 msgid "File already exists"
 msgstr "ファイルは既に存在します"
 
-#: mididevicelistbox.cpp:75 mididevicelistbox.cpp:91
+#: mididevicelistbox.cpp:75
+#: mididevicelistbox.cpp:91
 msgid "[no MIDI device created]"
 msgstr "[no MIDI device created]"
 
 #: musicxmlexport.cpp:462
-msgid ""
-"NoteEdit has exported the score to MusicXML but there are some problems.\n"
-msgstr ""
-"NoteEdit は楽譜を MusicXML 形式でエクスポートしました。しかし、いくつか問題が"
-"あります。\n"
+msgid "NoteEdit has exported the score to MusicXML but there are some problems.\n"
+msgstr "NoteEdit は楽譜を MusicXML 形式でエクスポートしました。しかし、いくつか問題があります。\n"
 
 #: musicxmlexport.cpp:468
 msgid "Staff %1 has irregular keysig. This is currently not supported.\n"
@@ -1766,26 +1749,22 @@ msgstr ""
 
 #: musicxmlexport.cpp:473
 msgid "Staff %1 contains drum clef. This is currently not supported.\n"
-msgstr ""
-"五線 %1 はドラムの音部記号を含んでいます。これは現在サポートされていませ"
-"ん。\n"
+msgstr "五線 %1 はドラムの音部記号を含んでいます。これは現在サポートされていません。\n"
 
 #: musicxmlexport.cpp:478
 msgid "Staff %1 contains drum staff. This is currently not supported.\n"
-msgstr ""
-"五線 %1 はドラム五線を含んでいます。これは現在サポートされていません。\n"
+msgstr "五線 %1 はドラム五線を含んでいます。これは現在サポートされていません。\n"
 
 #: musicxmlexport.cpp:483
 msgid "Staff %1 contains voice change. This is currently not supported.\n"
-msgstr ""
+msgstr "五線 %1 は声部の変更を含んでいます。これは現在サポートされていません。\n"
 
 #: musicxmlexport.cpp:488
 msgid "Staff %1 contains 8va start without 8va stop.\n"
 msgstr ""
 
 #: musicxmlexport.cpp:493
-msgid ""
-"Staff %1 contains 8va over a single note. This is currently not supported.\n"
+msgid "Staff %1 contains 8va over a single note. This is currently not supported.\n"
 msgstr ""
 
 #: musicxmlexport.cpp:498
@@ -1797,10 +1776,7 @@ msgid "MusicXML produced. But there are some problems."
 msgstr "MusicXML  形式が生成されました。しかし、いくつか問題があります。"
 
 #: musixtex.cpp:620
-msgid ""
-"NoteEdit has exported the score to MusiXTeX format but there are some "
-"problems which can prevent successful PostScript/PDF output or can change "
-"the final score layout.\n"
+msgid "NoteEdit has exported the score to MusiXTeX format but there are some problems which can prevent successful PostScript/PDF output or can change the final score layout.\n"
 msgstr ""
 "Noteedit は 楽譜を MusiXTeX 形式にエクスポートしました。しかしいくつか\n"
 "問題があるため、出力された PostScript/PDF は正しくない可能性があり、\n"
@@ -1808,11 +1784,11 @@ msgstr ""
 
 #: musixtex.cpp:626
 msgid "128th in measure: %2; maximum = %3 flags\n"
-msgstr ""
+msgstr "128分音符があります: 小節 %2; 旗の上限 = %3\n"
 
 #: musixtex.cpp:631
 msgid "Staff %1 has irregular keysig. This cannot be expressed in MusiXTeX\n"
-msgstr ""
+msgstr "五線 %1 に異常な調号があります。これは MusiXTeX では表現できません\n"
 
 #: musixtex.cpp:635
 msgid "Too many ties in measure: %2; maximum = %3\n"
@@ -1831,7 +1807,8 @@ msgstr "小節: %1:トリルの数が多すぎます。 上限 = 6\n"
 msgid "Nested va lines in measure: %2 ;\n"
 msgstr "入れ子になった va 線があります。小節: %2 ;\n"
 
-#: musixtex.cpp:651 pmxexport.cpp:463
+#: musixtex.cpp:651
+#: pmxexport.cpp:463
 msgid "Too many va lines in measure: %1: maximum = 6\n"
 msgstr ""
 
@@ -1844,20 +1821,16 @@ msgstr "入れ子になった va 線があります。小節: %1 ;\n"
 msgid "too many beams in measure: %1; maximum: %2\n"
 msgstr "小節 %1 にある連桁が多すぎます; 上限 = %2\n"
 
-#: musixtex.cpp:663 pmxexport.cpp:451
+#: musixtex.cpp:663
+#: pmxexport.cpp:451
 msgid ""
-"The score has individual bar layout (partial continued and partial "
-"discontinued)\n"
+"The score has individual bar layout (partial continued and partial discontinued)\n"
 "Please install \"musixdbr.tex\" by  Rainer Dunker\n"
 msgstr ""
 
 #: musixtex.cpp:667
-msgid ""
-"The score has piano staffs with discontinued bar rules. This cannot be "
-"expressed in MusiXTeX.\n"
-msgstr ""
-"楽譜に、不連続な小節区切りルールを持つ鍵盤五線があります。MusiXTeX はこれを表"
-"現できません\n"
+msgid "The score has piano staffs with discontinued bar rules. This cannot be expressed in MusiXTeX.\n"
+msgstr "楽譜に、不連続な小節区切りルールを持つ鍵盤五線があります。MusiXTeX はこれを表現できません\n"
 
 #: musixtex.cpp:676
 msgid "MusiXTeX produced. But there are some problems."
@@ -1903,15 +1876,13 @@ msgstr "lilypond インタフェース"
 msgid "developer and composer"
 msgstr "開発者 そして 作曲者"
 
-#: pmxexport.cpp:153 pmxexport.cpp:156
+#: pmxexport.cpp:153
+#: pmxexport.cpp:156
 msgid "PMX export"
 msgstr "PMX エクスポート"
 
 #: pmxexport.cpp:393
-msgid ""
-"NoteEdit has exported the score to PMX format but there are some problems "
-"which can prevent successful PostScript/PDF output or can change the final "
-"score layout.\n"
+msgid "NoteEdit has exported the score to PMX format but there are some problems which can prevent successful PostScript/PDF output or can change the final score layout.\n"
 msgstr ""
 "Noteedit は 楽譜を PMX 形式にエクスポートしました。しかしいくつか\n"
 "問題があるため、出力された PostScript/PDF は正しくない可能性があり、\n"
@@ -1923,12 +1894,8 @@ msgstr "五線 %1; 小節 %2: %3 個の128分音符,  %4 個のはずです\n"
 
 #: pmxexport.cpp:404
 #, fuzzy
-msgid ""
-"Staff %1, measure %2: PMX cannot deal with multi rests if more than 1 staff "
-"is exported"
-msgstr ""
-"五線 %1, 小節 %2: PMX で 2つ以上の五線をエクスポートするときには複数の休符を"
-"扱えません"
+msgid "Staff %1, measure %2: PMX cannot deal with multi rests if more than 1 staff is exported"
+msgstr "五線 %1, 小節 %2: PMX で 2つ以上の五線をエクスポートするときには複数の休符を扱えません"
 
 #: pmxexport.cpp:409
 msgid "measure %1: Too many opened ties\n"
@@ -1939,12 +1906,8 @@ msgid "measure %1: Too many opened slurs\n"
 msgstr "小節 %1: 開いたままのスラーが多すぎます\n"
 
 #: pmxexport.cpp:417
-msgid ""
-"Staff %1, measure %2: PMX can only deal with equal tuplet members or members "
-"in ratio 2:1\n"
-msgstr ""
-"五線 %1, 小節 %2: PMX では連符の中の音符の長さは互いに等しいか、2:1 である必"
-"要があります\n"
+msgid "Staff %1, measure %2: PMX can only deal with equal tuplet members or members in ratio 2:1\n"
+msgstr "五線 %1, 小節 %2: PMX では連符の中の音符の長さは互いに等しいか、2:1 である必要があります\n"
 
 #: pmxexport.cpp:422
 msgid "Staff %1, measure %2: In PMX tuplet cannot end with a rest\n"
@@ -1964,25 +1927,15 @@ msgstr "五線 %1, 小節 %2: PMX は装飾音符の種類を混ぜて扱うこ�
 
 #: pmxexport.cpp:441
 msgid "Staff %1, measure %2: grace has no main note. PMX will not work\n"
-msgstr ""
-"五線 %1, 小節 %2: 主音符なしの装飾音符があります。PMX では処理できません\n"
+msgstr "五線 %1, 小節 %2: 主音符なしの装飾音符があります。PMX では処理できません\n"
 
 #: pmxexport.cpp:446
-msgid ""
-"Staff %1, measure %2: Tuplet must be expressible by on (ev. dotted) note. "
-"PMX will not work\n"
-msgstr ""
-"五線 %1, 小節 %2: 連符は（付点）音符で表現できる必要があります。PMX では処理"
-"できません\n"
+msgid "Staff %1, measure %2: Tuplet must be expressible by on (ev. dotted) note. PMX will not work\n"
+msgstr "五線 %1, 小節 %2: 連符は（付点）音符で表現できる必要があります。PMX では処理できません\n"
 
 #: pmxexport.cpp:455
-#, fuzzy
-msgid ""
-"The score has piano staffs with discontinued bar rules. This cannot be "
-"expressed in PMX\n"
-msgstr ""
-"楽譜に、不連続な小節区切りルールを持つ鍵盤五線があります。PMX はこれを表現で"
-"きません\n"
+msgid "The score has piano staffs with discontinued bar rules. This cannot be expressed in PMX\n"
+msgstr "楽譜に、不連続な小節区切りルールを持つ鍵盤五線があります。PMX はこれを表現できません\n"
 
 #: pmxexport.cpp:459
 msgid "Nested trills in measure: %1 ;\n"
@@ -1997,14 +1950,12 @@ msgid "Couldn't setup printer"
 msgstr "プリンタを設定できません"
 
 #: previewprint.cpp:86
-#, fuzzy
 msgid "Could not start preview, is one already running?"
-msgstr "プレビューのためのプログラムを起動できません。"
+msgstr "プレビューのためのプログラムを起動できません。既に起動していませんか?"
 
 #: previewprint.cpp:312
-#, fuzzy
 msgid "File was not succesfully converted."
-msgstr "ファイルを印刷のための PS/PDF 形式への変換に失敗しました。"
+msgstr "ファイルの変換に失敗しました。"
 
 #: previewprint.cpp:331
 msgid "Could not find preview program."
@@ -2022,12 +1973,14 @@ msgstr ""
 "lilypond を使ったエクスポートに失敗しました。\n"
 "詳細についてはログファイルを見てください。"
 
-#: rc.cpp:12 rc.cpp:72
+#: rc.cpp:12
+#: rc.cpp:72
 #, no-c-format
 msgid "St&aff"
 msgstr "五線(&A)"
 
-#: rc.cpp:18 rc.cpp:78
+#: rc.cpp:18
+#: rc.cpp:78
 #, no-c-format
 msgid "TSE&3"
 msgstr "TSE&3"
@@ -2037,37 +1990,46 @@ msgstr "TSE&3"
 msgid "&Window"
 msgstr "ウィンドウ(&W)"
 
-#: rc.cpp:30 rc.cpp:90
-#, no-c-format
+#: rc.cpp:30
+#: rc.cpp:90
+#, fuzzy, no-c-format
 msgid "Program control"
-msgstr ""
+msgstr "ダイアログコントロール"
 
-#: rc.cpp:33 rc.cpp:93
-#, no-c-format
+#: rc.cpp:33
+#: rc.cpp:93
+#, fuzzy, no-c-format
 msgid "Control"
-msgstr ""
+msgstr "制御"
 
-#: rc.cpp:36 rc.cpp:96
-#, no-c-format
+#: rc.cpp:36
+#: rc.cpp:96
+#, fuzzy, no-c-format
 msgid "Score control"
-msgstr ""
+msgstr "ダイアログコントロール"
 
-#: rc.cpp:39 rc.cpp:99 rc.cpp:904
+#: rc.cpp:39
+#: rc.cpp:99
+#: rc.cpp:904
 #, no-c-format
 msgid "Notes"
 msgstr "音符"
 
-#: rc.cpp:42 rc.cpp:105
+#: rc.cpp:42
+#: rc.cpp:105
 #, no-c-format
 msgid "signs"
-msgstr ""
+msgstr "記号"
 
-#: rc.cpp:45 rc.cpp:108
+#: rc.cpp:45
+#: rc.cpp:108
 #, no-c-format
 msgid "additional"
-msgstr ""
+msgstr "追加"
 
-#: rc.cpp:48 rc.cpp:111 rc.cpp:114
+#: rc.cpp:48
+#: rc.cpp:111
+#: rc.cpp:114
 #, no-c-format
 msgid "Accent Toolbar"
 msgstr "アクセント ツールバー"
@@ -2077,7 +2039,8 @@ msgstr "アクセント ツールバー"
 msgid "&Import"
 msgstr "インポート(&I)"
 
-#: rc.cpp:57 uiconnect.cpp:352
+#: rc.cpp:57
+#: uiconnect.cpp:352
 #, no-c-format
 msgid "&Export"
 msgstr "エクスポート(&E)"
@@ -2097,32 +2060,45 @@ msgstr "形式(&O)"
 msgid "Graces"
 msgstr "装飾音符"
 
-#: rc.cpp:117 rc.cpp:169
+#: rc.cpp:117
+#: rc.cpp:169
 #, no-c-format
 msgid "ABC music"
 msgstr "ABC music"
 
-#: rc.cpp:120 rc.cpp:358 rc.cpp:562 rc.cpp:657 rc.cpp:696
+#: rc.cpp:120
+#: rc.cpp:358
+#: rc.cpp:562
+#: rc.cpp:657
+#: rc.cpp:696
 #, no-c-format
 msgid "Page geometry"
 msgstr "ページの大きさ"
 
 #: rc.cpp:123
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "Expressiones above"
-msgstr ""
+msgstr "上記以外"
 
 #: rc.cpp:126
 #, no-c-format
 msgid "Staff separation:"
 msgstr "五線を分割する:"
 
-#: rc.cpp:129 rc.cpp:376 rc.cpp:568 rc.cpp:663 rc.cpp:711
+#: rc.cpp:129
+#: rc.cpp:376
+#: rc.cpp:568
+#: rc.cpp:663
+#: rc.cpp:711
 #, no-c-format
 msgid "Height:"
 msgstr "高さ:"
 
-#: rc.cpp:132 rc.cpp:367 rc.cpp:565 rc.cpp:660 rc.cpp:714
+#: rc.cpp:132
+#: rc.cpp:367
+#: rc.cpp:565
+#: rc.cpp:660
+#: rc.cpp:714
 #, no-c-format
 msgid "Width:"
 msgstr "幅:"
@@ -2140,12 +2116,12 @@ msgstr "/100"
 #: rc.cpp:142
 #, no-c-format
 msgid "Measure numbers in a box"
-msgstr ""
+msgstr "小節番号を四角の中に"
 
 #: rc.cpp:145
 #, no-c-format
 msgid "Use UTF-8 encoding"
-msgstr ""
+msgstr "UTF-8 エンコーディングを使用する"
 
 #: rc.cpp:148
 #, no-c-format
@@ -2162,7 +2138,8 @@ msgstr "エクスポート開始(&E)"
 msgid "Alt+E"
 msgstr "Alt+E"
 
-#: rc.cpp:160 rc.cpp:760
+#: rc.cpp:160
+#: rc.cpp:760
 #, no-c-format
 msgid "Alt+C"
 msgstr "Alt+C"
@@ -2197,17 +2174,21 @@ msgstr "MusicXML 形式"
 msgid "Export warning"
 msgstr "エクスポート 警告"
 
-#: rc.cpp:187 rc.cpp:328 rc.cpp:817
+#: rc.cpp:187
+#: rc.cpp:328
+#: rc.cpp:817
 #, no-c-format
 msgid "Alt+O"
 msgstr "Alt+O"
 
-#: rc.cpp:190 rc.cpp:529
+#: rc.cpp:190
+#: rc.cpp:529
 #, no-c-format
 msgid "&Details >>"
 msgstr "詳細(&D) >>"
 
-#: rc.cpp:193 rc.cpp:532
+#: rc.cpp:193
+#: rc.cpp:532
 #, no-c-format
 msgid "Alt+D"
 msgstr "Alt+D"
@@ -2233,9 +2214,9 @@ msgid "Max volume:"
 msgstr "最大音量:"
 
 #: rc.cpp:208
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "Vel scale:"
-msgstr ""
+msgstr "フォント・スケール"
 
 #: rc.cpp:211
 #, no-c-format
@@ -2248,14 +2229,14 @@ msgid "&Average volume"
 msgstr "平均音量(&A)"
 
 #: rc.cpp:217
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "Choose snap distance:"
-msgstr ""
+msgstr "間隔を調整"
 
 #: rc.cpp:220
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "Triplet Raster:"
-msgstr ""
+msgstr "CMU ラスタ画像"
 
 #: rc.cpp:229
 #, no-c-format
@@ -2263,9 +2244,9 @@ msgid "&TSE3 to Score ..."
 msgstr "&TSE3 から楽譜へ ..."
 
 #: rc.cpp:232
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "&Line to Score .."
-msgstr ""
+msgstr "&TSE3 から楽譜へ ..."
 
 #: rc.cpp:235
 #, no-c-format
@@ -2275,7 +2256,7 @@ msgstr "設定 - NoteEdit"
 #: rc.cpp:238
 #, no-c-format
 msgid "auto insert beams"
-msgstr ""
+msgstr "連桁を自動挿入"
 
 #: rc.cpp:241
 #, no-c-format
@@ -2285,7 +2266,7 @@ msgstr "キーボードからの入力を許可(&K)"
 #: rc.cpp:244
 #, no-c-format
 msgid "Move according key&sig"
-msgstr ""
+msgstr "調号に従って移動する(&S)"
 
 #: rc.cpp:247
 #, no-c-format
@@ -2294,9 +2275,7 @@ msgstr "今日の小技(&T)"
 
 #: rc.cpp:250
 #, no-c-format
-msgid ""
-"If Tip of the Day is enabled, NoteEdit will show the Tip of the Day every "
-"time it starts."
+msgid "If Tip of the Day is enabled, NoteEdit will show the Tip of the Day every time it starts."
 msgstr "今日の小技 が有効だと、NoteEdit は起動時に 今日の小技 を表示します。"
 
 #: rc.cpp:262
@@ -2310,9 +2289,9 @@ msgid "Volume signs:"
 msgstr "音量記号:"
 
 #: rc.cpp:268
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "Global size:"
-msgstr ""
+msgstr "サイズが異なります"
 
 #: rc.cpp:271
 #, no-c-format
@@ -2360,14 +2339,14 @@ msgid "No volume signs"
 msgstr "音量記号なし"
 
 #: rc.cpp:298
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Volume signs above"
-msgstr "音量記号を上に"
+msgstr "音量記号を上へ"
 
 #: rc.cpp:301
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Volume signs below"
-msgstr "音量記号を下に"
+msgstr "音量記号を下へ"
 
 #: rc.cpp:304
 #, no-c-format
@@ -2405,31 +2384,33 @@ msgid "Alt+X"
 msgstr "Alt+X"
 
 #: rc.cpp:325
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "&Only voices skeleton"
-msgstr "声部のみ(&O)"
+msgstr "声部のスケルトンのみ(&O)"
 
 #: rc.cpp:331
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "Sparse &ties"
-msgstr ""
+msgstr "広間点"
 
-#: rc.cpp:334 rc.cpp:823
+#: rc.cpp:334
+#: rc.cpp:823
 #, no-c-format
 msgid "Alt+T"
 msgstr "Alt+T"
 
 #: rc.cpp:337
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "L&imit the measures"
-msgstr ""
+msgstr "%1 分 %2.%3%4 秒 (%5 ユニット, %6 measures)"
 
 #: rc.cpp:340
 #, no-c-format
 msgid "Alt+I"
 msgstr "Alt+I"
 
-#: rc.cpp:343 rc.cpp:601
+#: rc.cpp:343
+#: rc.cpp:601
 #, no-c-format
 msgid "ASCII"
 msgstr "ASCII"
@@ -2444,7 +2425,8 @@ msgstr "Latin1"
 msgid "Unicode"
 msgstr "Unicode"
 
-#: rc.cpp:352 rc.cpp:604
+#: rc.cpp:352
+#: rc.cpp:604
 #, no-c-format
 msgid "UTF-8"
 msgstr "UTF-8"
@@ -2454,12 +2436,16 @@ msgstr "UTF-8"
 msgid "Character encoding:"
 msgstr "文字エンコード"
 
-#: rc.cpp:361 rc.cpp:370 rc.cpp:577 rc.cpp:666
+#: rc.cpp:361
+#: rc.cpp:370
+#: rc.cpp:577
+#: rc.cpp:666
 #, no-c-format
 msgid "&Landscape"
 msgstr "横長(&L)"
 
-#: rc.cpp:364 rc.cpp:373
+#: rc.cpp:364
+#: rc.cpp:373
 #, no-c-format
 msgid "Alt+L"
 msgstr "Alt+L"
@@ -2519,12 +2505,16 @@ msgstr "ページサイズを指定する(&Z)"
 msgid "Alt+Z"
 msgstr "Alt+Z"
 
-#: rc.cpp:412 rc.cpp:559 rc.cpp:687
+#: rc.cpp:412
+#: rc.cpp:559
+#: rc.cpp:687
 #, no-c-format
 msgid "&Staff selection"
 msgstr "五線を選択する(&S)"
 
-#: rc.cpp:415 rc.cpp:523 rc.cpp:690
+#: rc.cpp:415
+#: rc.cpp:523
+#: rc.cpp:690
 #, no-c-format
 msgid "Alt+S"
 msgstr "Alt+S"
@@ -2547,12 +2537,12 @@ msgstr "トリル"
 #: rc.cpp:427
 #, no-c-format
 msgid "lonely trill"
-msgstr ""
+msgstr "tr記号なしのトリル"
 
 #: rc.cpp:430
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "dynamic"
-msgstr ""
+msgstr "動的(_D):"
 
 #: rc.cpp:436
 #, no-c-format
@@ -2561,12 +2551,8 @@ msgstr ""
 
 #: rc.cpp:445
 #, no-c-format
-msgid ""
-"<center><b>Hint:<br></b>After choosing one of the objects, use the middle "
-"mouse button to make a connection with the note.</center>"
-msgstr ""
-"<center><b>ヒント:<br></b>オブジェクトを1つ選択した後、ある音符と関連づけるた"
-"めにはマウスの中ボタンを押してください。</center>"
+msgid "<center><b>Hint:<br></b>After choosing one of the objects, use the middle mouse button to make a connection with the note.</center>"
+msgstr "<center><b>ヒント:<br></b>オブジェクトを1つ選択した後、ある音符と関連づけるためにはマウスの中ボタンを押してください。</center>"
 
 #: rc.cpp:448
 #, no-c-format
@@ -2583,7 +2569,8 @@ msgstr "歌詞の設定 - NoteEdit"
 msgid "Lyrics"
 msgstr "歌詞"
 
-#: rc.cpp:463 uiconnect.cpp:1074
+#: rc.cpp:463
+#: uiconnect.cpp:1074
 #, no-c-format
 msgid "C&lear"
 msgstr "クリア(&L)"
@@ -2609,14 +2596,14 @@ msgid "Device:"
 msgstr "デバイス:"
 
 #: rc.cpp:487
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "Beat note:"
-msgstr ""
+msgstr "音符の挿入(&I)"
 
 #: rc.cpp:490
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "Bar note:"
-msgstr ""
+msgstr "音符の挿入(&I)"
 
 #: rc.cpp:493
 #, no-c-format
@@ -2643,7 +2630,8 @@ msgstr "MIDI 設定 - NoteEdit"
 msgid "MUP warning"
 msgstr "MUP 警告"
 
-#: rc.cpp:517 uiconnect.cpp:1534
+#: rc.cpp:517
+#: uiconnect.cpp:1534
 #, no-c-format
 msgid "Saved, but MUP does not work!"
 msgstr "保存しました、しかし MUP は機能しません!"
@@ -2704,14 +2692,16 @@ msgid "ucs"
 msgstr ""
 
 #: rc.cpp:586
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "L&imit line measures"
 msgstr ""
+"\n"
+" 行番号ステートメント:\n"
 
 #: rc.cpp:589
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "Spa&re ties"
-msgstr ""
+msgstr "レイヤー名を変更(_n)"
 
 #: rc.cpp:592
 #, no-c-format
@@ -2719,9 +2709,9 @@ msgid "With bar &numbers"
 msgstr "小節番号(&N)"
 
 #: rc.cpp:595
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "With musix&lyr"
-msgstr ""
+msgstr "%s はステータス %d で終了しました"
 
 #: rc.cpp:598
 #, no-c-format
@@ -2814,9 +2804,9 @@ msgid "Keep beams"
 msgstr "連桁を保存する"
 
 #: rc.cpp:672
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "&With musixlyr"
-msgstr ""
+msgstr " は以下と競合 (conflicts) します: "
 
 #: rc.cpp:675
 #, no-c-format
@@ -2898,7 +2888,8 @@ msgstr ""
 msgid "Staff properties - NoteEdit"
 msgstr "五線のプロパティ - NoteEdit"
 
-#: rc.cpp:763 rc.cpp:766
+#: rc.cpp:763
+#: rc.cpp:766
 #, no-c-format
 msgid "Staff"
 msgstr "五線"
@@ -2944,9 +2935,9 @@ msgid "Stereo Pos:"
 msgstr "ステレオ位置:"
 
 #: rc.cpp:796
-#, no-c-format
+#, fuzzy, no-c-format
 msgid "Lyrics dist.:"
-msgstr ""
+msgstr "拡散域:"
 
 #: rc.cpp:799
 #, no-c-format
@@ -2958,7 +2949,9 @@ msgstr ""
 msgid "Volume:"
 msgstr "音量:"
 
-#: rc.cpp:805 rc.cpp:830 rc.cpp:913
+#: rc.cpp:805
+#: rc.cpp:830
+#: rc.cpp:913
 #, no-c-format
 msgid "Voice"
 msgstr "声部"
@@ -2978,7 +2971,8 @@ msgstr "Alt+R"
 msgid "&Test"
 msgstr "テスト(&T)"
 
-#: rc.cpp:827 rc.cpp:910
+#: rc.cpp:827
+#: rc.cpp:910
 #, no-c-format
 msgid "Staff No."
 msgstr "五線 No."
@@ -3013,7 +3007,8 @@ msgstr "テキスト"
 msgid "Enter text:"
 msgstr "テキスト:"
 
-#: rc.cpp:857 rc.cpp:944
+#: rc.cpp:857
+#: rc.cpp:944
 #, no-c-format
 msgid "Ok"
 msgstr "Ok"
@@ -3203,7 +3198,8 @@ msgstr "全休符"
 msgid "dotted half"
 msgstr "付点２分休符"
 
-#: resource.cpp:80 resource.cpp:87
+#: resource.cpp:80
+#: resource.cpp:87
 msgid "half"
 msgstr "２分休符"
 
@@ -3211,7 +3207,8 @@ msgstr "２分休符"
 msgid "dotted quarter"
 msgstr "付点４分休符"
 
-#: resource.cpp:81 resource.cpp:88
+#: resource.cpp:81
+#: resource.cpp:88
 msgid "quarter"
 msgstr "４分休符"
 
@@ -3219,7 +3216,8 @@ msgstr "４分休符"
 msgid "dotted 8th"
 msgstr "付点８分休符"
 
-#: resource.cpp:82 resource.cpp:89
+#: resource.cpp:82
+#: resource.cpp:89
 msgid "8th"
 msgstr "８分休符"
 
@@ -3227,7 +3225,8 @@ msgstr "８分休符"
 msgid "dotted 16th"
 msgstr "付点１６分休符"
 
-#: resource.cpp:82 resource.cpp:90
+#: resource.cpp:82
+#: resource.cpp:90
 msgid "16th"
 msgstr "１６分休符"
 
@@ -3256,16 +3255,17 @@ msgid "Piano 3"
 msgstr "ピアノ 3"
 
 #: resource.cpp:95
+#, fuzzy
 msgid "Honky-tonk"
-msgstr ""
+msgstr "ホンキートンク"
 
 #: resource.cpp:96
 msgid "E.Piano 1"
-msgstr ""
+msgstr "エレクトリック ピアノ 1"
 
 #: resource.cpp:96
 msgid "E.Piano 2"
-msgstr ""
+msgstr "エレクトリック ピアノ 2"
 
 #: resource.cpp:97
 msgid "Harpsichord"
@@ -3345,7 +3345,7 @@ msgstr "ナイロン ギター"
 
 #: resource.cpp:106
 msgid "Steel Guitar"
-msgstr ""
+msgstr "スチール ギター"
 
 #: resource.cpp:107
 msgid "Jazz Guitar"
@@ -3356,48 +3356,55 @@ msgid "Clean Guitar"
 msgstr "クリーン ギター"
 
 #: resource.cpp:108
+#, fuzzy
 msgid "Guitar Mutes"
-msgstr ""
+msgstr "クリーン ギター"
 
 #: resource.cpp:108
 msgid "Overdrive Guitar"
 msgstr "オーバードライブ ギター"
 
 #: resource.cpp:109
+#, fuzzy
 msgid "Guitar Harmonics"
-msgstr ""
+msgstr "クリーン ギター"
 
 #: resource.cpp:110
 msgid "Acoustic Bass"
 msgstr "アコースティック ベース"
 
 #: resource.cpp:110
+#, fuzzy
 msgid "Fingered Bass"
-msgstr ""
+msgstr "ヘ音記号(&B)"
 
 #: resource.cpp:111
+#, fuzzy
 msgid "Picked Bass"
-msgstr ""
+msgstr "ヘ音記号(&B)"
 
 #: resource.cpp:111
+#, fuzzy
 msgid "Fretless Bass"
-msgstr ""
+msgstr "ヘ音記号(&B)"
 
 #: resource.cpp:112
+#, fuzzy
 msgid "Slap Bass 1"
-msgstr ""
+msgstr "ヘ音記号(&B)"
 
 #: resource.cpp:112
+#, fuzzy
 msgid "Slap Bass 2"
-msgstr ""
+msgstr "ヘ音記号(&B)"
 
 #: resource.cpp:113
 msgid "Synth Bass 1"
-msgstr ""
+msgstr "シンセ ベース 1"
 
 #: resource.cpp:113
 msgid "Synth Bass 2"
-msgstr ""
+msgstr "シンセ ベース 2"
 
 #: resource.cpp:114
 msgid "Violin"
@@ -3436,8 +3443,9 @@ msgid "Strings"
 msgstr "ストリングス"
 
 #: resource.cpp:118
+#, fuzzy
 msgid "Slow Strings"
-msgstr ""
+msgstr "シンセ ストリングス 1"
 
 #: resource.cpp:119
 msgid "Synth Strings 1"
@@ -3452,12 +3460,14 @@ msgid "Choir Aahs"
 msgstr ""
 
 #: resource.cpp:120
+#, fuzzy
 msgid "Voice Oohs"
-msgstr ""
+msgstr "声部を削除(&D)"
 
 #: resource.cpp:121
+#, fuzzy
 msgid "Synth Vox"
-msgstr ""
+msgstr "<シンセサイザー無し>"
 
 #: resource.cpp:121
 msgid "Orchestra Hit"
@@ -3477,7 +3487,7 @@ msgstr "チューバ"
 
 #: resource.cpp:123
 msgid "Mute Trumpet"
-msgstr ""
+msgstr "ミュート トランペット"
 
 #: resource.cpp:124
 msgid "French Horns"
@@ -3521,7 +3531,7 @@ msgstr "イングリッシュ ホルン"
 
 #: resource.cpp:129
 msgid "Bassoon"
-msgstr ""
+msgstr "バスーン"
 
 #: resource.cpp:129
 msgid "Clarinet"
@@ -3540,12 +3550,14 @@ msgid "Recorder"
 msgstr "リコーダー"
 
 #: resource.cpp:131
+#, fuzzy
 msgid "Pan Flute"
-msgstr ""
+msgstr "/ダイアログ/CSS/S_PAN..."
 
 #: resource.cpp:132
+#, fuzzy
 msgid "Bottle Chiff"
-msgstr ""
+msgstr "ガスボンベ"
 
 #: resource.cpp:132
 msgid "Shakuhachi"
@@ -3561,19 +3573,21 @@ msgstr "オカリナ"
 
 #: resource.cpp:134
 msgid "Square Wave"
-msgstr ""
+msgstr "四角波"
 
 #: resource.cpp:134
 msgid "Saw Wave"
-msgstr ""
+msgstr "鋸波"
 
 #: resource.cpp:135
+#, fuzzy
 msgid "Synth Calliope"
-msgstr ""
+msgstr "<シンセサイザー無し>"
 
 #: resource.cpp:135
+#, fuzzy
 msgid "Chiffer Lead"
-msgstr ""
+msgstr "メインの開発者"
 
 #: resource.cpp:136
 msgid "Charang"
@@ -3585,47 +3599,54 @@ msgstr ""
 
 #: resource.cpp:137
 msgid "5th Saw Wave"
-msgstr ""
+msgstr "5度の鋸波"
 
 #: resource.cpp:137
+#, fuzzy
 msgid "Bass & Lead"
-msgstr ""
+msgstr "メインの開発者"
 
 #: resource.cpp:138
 msgid "Fantasia"
 msgstr ""
 
 #: resource.cpp:138
+#, fuzzy
 msgid "Warm Pad"
-msgstr ""
+msgstr "入力パッド"
 
 #: resource.cpp:139
+#, fuzzy
 msgid "Poly Synth"
-msgstr ""
+msgstr "<シンセサイザー無し>"
 
 #: resource.cpp:139
+#, fuzzy
 msgid "Space Voice"
-msgstr ""
+msgstr "声部を削除(&D)"
 
 #: resource.cpp:140
+#, fuzzy
 msgid "Bowed Glass"
-msgstr ""
+msgstr "ガラスタイル"
 
 #: resource.cpp:140
 msgid "Metal Pad"
-msgstr ""
+msgstr "メタル パッド"
 
 #: resource.cpp:141
+#, fuzzy
 msgid "Halo Pad"
-msgstr ""
+msgstr "入力パッド"
 
 #: resource.cpp:141
+#, fuzzy
 msgid "Sweep Pad"
-msgstr ""
+msgstr "入力パッド"
 
 #: resource.cpp:142
 msgid "Ice Rain"
-msgstr ""
+msgstr "氷雨"
 
 #: resource.cpp:142
 msgid "Soundtrack"
@@ -3633,27 +3654,29 @@ msgstr "サウンドトラック"
 
 #: resource.cpp:143
 msgid "Crystal"
-msgstr ""
+msgstr "クリスタル"
 
 #: resource.cpp:143
 msgid "Atmosphere"
 msgstr ""
 
 #: resource.cpp:144
+#, fuzzy
 msgid "Brightness"
-msgstr ""
+msgstr "明るさ"
 
 #: resource.cpp:144
 msgid "Goblin"
-msgstr ""
+msgstr "ゴブリン"
 
 #: resource.cpp:145
+#, fuzzy
 msgid "Echo Drops"
-msgstr ""
+msgstr "Echo コンポーネント"
 
 #: resource.cpp:145
 msgid "Star Theme"
-msgstr ""
+msgstr "星のテーマ"
 
 #: resource.cpp:146
 msgid "Sitar"
@@ -3677,11 +3700,11 @@ msgstr ""
 
 #: resource.cpp:148
 msgid "Bagpipe"
-msgstr ""
+msgstr "バグパイプ"
 
 #: resource.cpp:149
 msgid "Fiddle"
-msgstr ""
+msgstr "フィドル"
 
 #: resource.cpp:149
 msgid "Shenai"
@@ -3689,7 +3712,7 @@ msgstr ""
 
 #: resource.cpp:150
 msgid "Tinker Bell"
-msgstr ""
+msgstr "ティンカーベル"
 
 #: resource.cpp:150
 msgid "Agogo"
@@ -3697,11 +3720,11 @@ msgstr ""
 
 #: resource.cpp:151
 msgid "Steel Drum"
-msgstr ""
+msgstr "スチールドラム"
 
 #: resource.cpp:151
 msgid "Wood Block"
-msgstr ""
+msgstr "ウッドブロック"
 
 #: resource.cpp:152
 msgid "Taiko Drum"
@@ -3717,15 +3740,15 @@ msgstr "シンセドラム"
 
 #: resource.cpp:153
 msgid "Reverse Cymbal"
-msgstr ""
+msgstr "リバース シンバル"
 
 #: resource.cpp:154
 msgid "Fret Noise"
-msgstr ""
+msgstr "フレット ノイズ"
 
 #: resource.cpp:154
 msgid "Breath Noise"
-msgstr ""
+msgstr "ブレス ノイズ"
 
 #: resource.cpp:155
 msgid "Seashore"
@@ -3756,12 +3779,8 @@ msgid "Details:"
 msgstr "詳細"
 
 #: resource.cpp:620
-msgid ""
-"<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%"
-"1\"<br>Error Code is: %2</i><br><br>The program must be interrupted.<br>"
-msgstr ""
-"<b>内部でエラーが発生しました。<br><br></b>メッセージ:<br><i>\"%1\"<br>エラー"
-"コード: %2</i><br><br>プログラムの実行が中断されます。<br>"
+msgid "<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%1\"<br>Error Code is: %2</i><br><br>The program must be interrupted.<br>"
+msgstr "<b>内部でエラーが発生しました。<br><br></b>メッセージ:<br><i>\"%1\"<br>エラーコード: %2</i><br><br>プログラムの実行が中断されます。<br>"
 
 #: resource.cpp:624
 msgid "Internal error"
@@ -3793,11 +3812,11 @@ msgstr "主題(&S)"
 
 #: scoreinfo.cpp:88
 msgid "Compo&ser:"
-msgstr ""
+msgstr "作曲者(&S)"
 
 #: scoreinfo.cpp:98
 msgid "&Arranger:"
-msgstr ""
+msgstr "編曲者(&A)"
 
 #: scoreinfo.cpp:109
 msgid "&Copyright:"
@@ -3811,39 +3830,44 @@ msgstr "コメント(&M)"
 msgid "Cannot create more than 9 voices per staff."
 msgstr "10 以上の声部を 1つの五線内に作成することはできません。"
 
-#: staff.cpp:151 staff.cpp:184
+#: staff.cpp:151
+#: staff.cpp:184
 msgid "Cannot remove first voice"
 msgstr "最初の声部を削除することはできません"
 
-#: staff.cpp:152 staff.cpp:162 staff.cpp:185 staff.cpp:196 staff.cpp:205
+#: staff.cpp:152
+#: staff.cpp:162
+#: staff.cpp:185
+#: staff.cpp:196
+#: staff.cpp:205
 msgid "Delete voice"
 msgstr "声部を削除"
 
-#: staff.cpp:161 staff.cpp:195 staff.cpp:204
+#: staff.cpp:161
+#: staff.cpp:195
+#: staff.cpp:204
 msgid "This deletes voice %1! Are you sure?"
 msgstr "声部 %1 は削除されます。よろしいですか?"
 
 #: staff.cpp:606
-msgid ""
-"Unable to paste! The destination staff has less voices than the source staff."
-msgstr ""
-"貼り付けできません! 貼り付け先の五線の声部の数が、元の五線より少ないです。"
+msgid "Unable to paste! The destination staff has less voices than the source staff."
+msgstr "貼り付けできません! 貼り付け先の五線の声部の数が、元の五線より少ないです。"
 
 #: staff.cpp:631
 msgid ""
-"You are going to copy elements from the first voice and paste them to the "
-"non-first voice!\n"
-"Special elements that can only be expressed in the first voice are not going "
-"to be copied!"
+"You are going to copy elements from the first voice and paste them to the non-first voice!\n"
+"Special elements that can only be expressed in the first voice are not going to be copied!"
 msgstr ""
 "最初の声部から、それ以外の声部に要素をコピーしようとしています。\n"
 "最初の声部でのみ意味を持つ特殊な要素はコピーされません。"
 
-#: staffPropFrm.cpp:24 uiconnect.cpp:956
+#: staffPropFrm.cpp:24
+#: uiconnect.cpp:956
 msgid "%1. %2"
 msgstr "%1. %2"
 
-#: staffPropFrm.cpp:26 tse3handler.cpp:539
+#: staffPropFrm.cpp:26
+#: tse3handler.cpp:539
 msgid "Channel %1"
 msgstr "チャネル %1"
 
@@ -3870,8 +3894,7 @@ msgstr ""
 "<dt>左</dt>\n"
 "<dd><i>(もしセレクタまたは編集ボタンが ON なら)<i><br></dd>選択する\n"
 "そうでなければ: 音符を挿入する <i>(音符ボタンが ON の時のみ)</i><br>\n"
-"または: <i>(例えば声部記号のような)新しい要素が選択された場合</i>要素を挿入す"
-"る \n"
+"または: <i>(例えば声部記号のような)新しい要素が選択された場合</i>要素を挿入する \n"
 "<dt>中</dt>\n"
 "<dd>ブロック指示を貼り付け</dd>\n"
 "<dt>右</dt>\n"
@@ -3884,24 +3907,18 @@ msgstr ""
 msgid ""
 "<b>...how to add and remove notes in chords?</b><br/>\n"
 "<ul>\n"
-"<li>to add a note to a chord make sure a note button is on and press left "
-"mouse button near this chord\n"
-"<li>to remove a note press Ctrl + left mouse button near the note to be "
-"deleted\n"
+"<li>to add a note to a chord make sure a note button is on and press left mouse button near this chord\n"
+"<li>to remove a note press Ctrl + left mouse button near the note to be deleted\n"
 "</ul>\n"
 msgstr ""
 "<b>...コードの中に音符を足す、または削除する方法を?</b><br/>\n"
 "<ul>\n"
-"<li>コードに音符を足すには 音符ボタンを ON にし、コードのそばでマウスの左ボタ"
-"ンを押してください。\n"
-"<li>音符を削除するには、その音符の近くで Ctrl + マウスの左ボタンを押してくだ"
-"さい。\n"
+"<li>コードに音符を足すには 音符ボタンを ON にし、コードのそばでマウスの左ボタンを押してください。\n"
+"<li>音符を削除するには、その音符の近くで Ctrl + マウスの左ボタンを押してください。\n"
 "</ul>\n"
 
 #: tips.cpp:30
-msgid ""
-"<b>...that you can move up/down inserted notes by means of the cursor up/"
-"down keys?</b>\n"
+msgid "<b>...that you can move up/down inserted notes by means of the cursor up/down keys?</b>\n"
 msgstr "<b>...挿入した音符をカーソル上／下キーで上下に動かせることを?</b>\n"
 
 #: tips.cpp:35
@@ -3909,18 +3926,15 @@ msgid ""
 "<b>...that you can insert bars with the <code>Tab</code> key?</b>\n"
 "<br/><br/>\n"
 "If configured NoteEdit inserts bars if you insert notes at the end. You\n"
-"can insert your own bars by means of the Tab key. To check the bars produce "
-"a 2nd\n"
+"can insert your own bars by means of the Tab key. To check the bars produce a 2nd\n"
 "staff with only rests and bars! If the bars are aligned, the measures are\n"
 "complete.\n"
 msgstr ""
 "<b>...小節の区切りを <code>Tab</code> キーで入力できることを?</b>\n"
 "<br/><br/>\n"
-"設定すれば NoteEdit は小節の最後の音符を入力した後で小節区切りを挿入しま"
-"す。\n"
+"設定すれば NoteEdit は小節の最後の音符を入力した後で小節区切りを挿入します。\n"
 "Tab キーで小節区切りを入力することもできます。\n"
-"小節区切りをチェックするには、休符と区切りのみを含む2番目の五線を作成してくだ"
-"さい。小節区切りが整列していれば、小節は完了しています。\n"
+"小節区切りをチェックするには、休符と区切りのみを含む2番目の五線を作成してください。小節区切りが整列していれば、小節は完了しています。\n"
 
 #: tips.cpp:45
 msgid ""
@@ -3965,8 +3979,7 @@ msgid ""
 "(sharp, flat, natural) only if you wish a <i>visible</i> accidental.\n"
 msgstr ""
 "<b>...臨時記号の使い方を?</b><br/><br/>\n"
-"音符は調号に従います。ですから、臨時記号ボタン（シャープ、フラット、ナチュラ"
-"ル）は\n"
+"音符は調号に従います。ですから、臨時記号ボタン（シャープ、フラット、ナチュラル）は\n"
 "臨時記号を<i>明示したいとき</i>にだけ使ってください。\n"
 
 #: tips.cpp:72
@@ -3989,6 +4002,23 @@ msgid ""
 "<dd>determine pitch</dd>\n"
 "</dl>\n"
 msgstr ""
+"<b>...キーボードから入力できるモードがあることを?</b><br/><br/>\n"
+"このモードに入るには キーボードから入力 ボタンを押してください。\n"
+"以下のキーが使えます:\n"
+"<dl>\n"
+"<dt>Enter</dt>\n"
+"<dd>音符を入力</dd>\n"
+"<dt>Ctrl+Enter</dt>\n"
+"<dd>前の和音に音符を追加</dd>\n"
+"<dt>BackSpace</dt>\n"
+"<dd>音符を削除</dd>\n"
+"<dt>Ctrl+BackSpace</dt>\n"
+"<dd>前の和音から音符を削除</dd>\n"
+"<dt>space</dt>\n"
+"<dd>休符を入力</dd>\n"
+"<dt>カーソル 上/下</dt>\n"
+"<dd>音の高さを上げる/下げる</dd>\n"
+"</dl>\n"
 
 #: tips.cpp:93
 msgid ""
@@ -4008,6 +4038,8 @@ msgid ""
 "soundcard?</b><br/><br/>\n"
 "Use the red keyboard button!\n"
 msgstr ""
+"<b>...音の高さをサウンドカードに接続した MIDI キーボードから決定できることを?</b><br/><br/>\n"
+"赤い鍵盤のボタンを押してください。\n"
 
 #: tips.cpp:108
 msgid ""
@@ -4057,6 +4089,9 @@ msgid ""
 "(<code><u>W</u>indow --&gt; <u>N</u>ew Window</code>)?</b><br/><br/>\n"
 "This allows you to copy between different scores.\n"
 msgstr ""
+"<b>...好きなだけ ビュー を開けることを?\n"
+"(<code>ファイル(<u>F</u>) --&gt; 新しいウィンドウ(<u>W</u>)</code>)?</b><br/><br/>\n"
+"これで、異なる楽譜の間でコピーすることができます。\n"
 
 #: tips.cpp:153
 msgid ""
@@ -4077,8 +4112,7 @@ msgid ""
 "file?</b><br/><br/>\n"
 " \tPlease read the <a href=\"foo\">MIDI import discussion page</a>!\n"
 msgstr ""
-"<b>...\tMIDI ファイルから良い楽譜を生成するためには MIDI フィルタが必要である"
-"ことを?</b><br/><br/>\n"
+"<b>...\tMIDI ファイルから良い楽譜を生成するためには MIDI フィルタが必要であることを?</b><br/><br/>\n"
 " \t<a href=\"foo\">MIDI インポートについてのページ</a>を読んでください。\n"
 
 #: tips.cpp:168
@@ -4091,8 +4125,7 @@ msgstr ""
 "<b>...\tNotedit が LaTeX/MusiXTeX 出力を生成できることを?</b><br/><br/>\n"
 "注意<br/>\n"
 "<code>latex &lt;file&gt;</code><br/>\n"
-"だけでは十分ではありません。<a href=\"foo\">ドキュメント</a>を読んでくださ"
-"い。\n"
+"だけでは十分ではありません。<a href=\"foo\">ドキュメント</a>を読んでください。\n"
 
 #: tips.cpp:176
 msgid ""
@@ -4101,8 +4134,7 @@ msgid ""
 "a note.\n"
 msgstr ""
 "<b>...線を挿入できることを?</b><br/><br/>\n"
-"<code>挿入 --&gt; 線</code> で表示されるウィンドウから線を決定して\t音符の上"
-"で\n"
+"<code>挿入 --&gt; 線</code> で表示されるウィンドウから線を決定して\t音符の上で\n"
 "マウスの左ボタンを押してください。\n"
 
 #: tips.cpp:183
@@ -4111,6 +4143,8 @@ msgid ""
 "Place 2 different volume signatures\tleft and right the (de-)crescendo\n"
 "symbol<br/>\n"
 msgstr ""
+"<b>...クレッシェンド/デクレッシェンドを聞こえる形で入力する方法を?</b><br/><br/>\n"
+"2つの異なる音量記号を\tクレッシェンド/デクレッシェンドの左右に置いてください。\n"
 
 #: tips.cpp:190
 msgid ""
@@ -4194,8 +4228,12 @@ msgstr ""
 "_: 翻訳者のメールアドレス\n"
 "hma(at)syd.odn.ne.jp"
 
-#: tse3handler.cpp:312 tse3handler.cpp:338 tse3handler.cpp:363
-#: tse3handler.cpp:468 tse3handler.cpp:487 tse3handler.cpp:521
+#: tse3handler.cpp:312
+#: tse3handler.cpp:338
+#: tse3handler.cpp:363
+#: tse3handler.cpp:468
+#: tse3handler.cpp:487
+#: tse3handler.cpp:521
 #: tse3handler.cpp:564
 msgid "First create a TSE3 song structure!"
 msgstr "まず TSE3 の曲を生成してください!"
@@ -4208,25 +4246,30 @@ msgstr "TSE3 の曲を再生"
 msgid "Write TSE3 song"
 msgstr "TSE3 の曲を書き込む"
 
-#: tse3handler.cpp:435 tse3handler.cpp:1019
+#: tse3handler.cpp:435
+#: tse3handler.cpp:1019
 msgid "unable to determine a clef"
 msgstr "音部記号を決定できません"
 
-#: tse3handler.cpp:444 tse3handler.cpp:1027
+#: tse3handler.cpp:444
+#: tse3handler.cpp:1027
 msgid "No notes recorded"
 msgstr "何も録音されませんでした"
 
-#: tse3handler.cpp:453 tse3handler.cpp:1034
+#: tse3handler.cpp:453
+#: tse3handler.cpp:1034
 msgid "This cannot be imported to ONE staff"
 msgstr "これを１つの五線にインポートすることはできません"
 
 #: tse3handler.cpp:469
+#, fuzzy
 msgid "Record AAAAAAAAAAAAAA"
-msgstr ""
+msgstr "録音デバイス"
 
 #: tse3handler.cpp:488
+#, fuzzy
 msgid "Record BBBBBBBBBBB"
-msgstr ""
+msgstr "録音デバイス"
 
 #: tse3handler.cpp:522
 msgid "Song information"
@@ -4241,7 +4284,9 @@ msgstr "トラック %1%2"
 msgid "%1 Notes"
 msgstr "%1 音符"
 
-#: tse3handler.cpp:537 uiconnect.cpp:1195 uiconnect.cpp:1203
+#: tse3handler.cpp:537
+#: uiconnect.cpp:1195
+#: uiconnect.cpp:1203
 #, c-format
 msgid "Staff %1%2"
 msgstr "五線 %1%2"
@@ -4260,7 +4305,7 @@ msgstr "高音"
 
 #: tse3handler.cpp:542
 msgid "Shift %1"
-msgstr ""
+msgstr "Shift %1"
 
 #: tse3handler.cpp:565
 msgid "Merge"
@@ -4297,26 +4342,21 @@ msgstr "エクスポートするための五線が選択されていません。
 #: uiconnect.cpp:332
 msgid ""
 "MusiXTeX export is now complete.\n"
-"Warning! The exported file is NOT a LaTeX file! Please use musixtex or pmx "
-"parser for compilation and not latex!"
+"Warning! The exported file is NOT a LaTeX file! Please use musixtex or pmx parser for compilation and not latex!"
 msgstr ""
 "MusiXTeX エクスポートが完了しました。\n"
-"警告! エクスポートされたファイルは LaTeX ファイルではありません! コンパイルす"
-"るには latex ではなく musixtex または pmx を使用してください!"
+"警告! エクスポートされたファイルは LaTeX ファイルではありません! コンパイルするには latex ではなく musixtex または pmx を使用してください!"
 
 #: uiconnect.cpp:350
-msgid ""
-"Actually LilyPond is not supported by your system. Do you realy want to make "
-"such an export?"
-msgstr ""
-"LilyPond はあなたのシステムではサポートされていません。エクスポートを実行しま"
-"すか?"
+msgid "Actually LilyPond is not supported by your system. Do you realy want to make such an export?"
+msgstr "LilyPond はあなたのシステムではサポートされていません。エクスポートを実行しますか?"
 
 #: uiconnect.cpp:351
 msgid "LilyPond export"
 msgstr "LilyPond 形式でエクスポート"
 
-#: uiconnect.cpp:766 uiconnect.cpp:767
+#: uiconnect.cpp:766
+#: uiconnect.cpp:767
 msgid "Auto"
 msgstr "自動"
 
@@ -4325,8 +4365,9 @@ msgid "None"
 msgstr "なし"
 
 #: uiconnect.cpp:800
+#, fuzzy
 msgid "Dynamic:"
-msgstr ""
+msgstr "動的(_D):"
 
 #: uiconnect.cpp:801
 msgid "Set min volume"
@@ -4336,7 +4377,8 @@ msgstr "最小音量を設定"
 msgid "Staff %1, %2, %3"
 msgstr "五線 %1, %2, %3"
 
-#: uiconnect.cpp:963 uiconnect.cpp:1198
+#: uiconnect.cpp:963
+#: uiconnect.cpp:1198
 msgid "[unnamed]"
 msgstr "[名前なし]"
 
@@ -4402,11 +4444,11 @@ msgstr "自動小節区切り(&O)"
 
 #: uiconnect.cpp:1226
 msgid "Select staffs for autobeam"
-msgstr "自動的に音符を接続する五線を選択してください"
+msgstr "自動的に連桁を追加する五線を選択してください"
 
 #: uiconnect.cpp:1227
 msgid "Aut&obeam"
-msgstr "自動音符接続(&O)"
+msgstr "自動連桁(&O)"
 
 #: uiconnect.cpp:1232
 msgid "Merge staffs"
@@ -4428,7 +4470,8 @@ msgstr "作成(&C)"
 msgid "Select staffs for export"
 msgstr "エクスポートする五線を選択する"
 
-#: uiconnect.cpp:1245 uiconnect.cpp:1251
+#: uiconnect.cpp:1245
+#: uiconnect.cpp:1251
 msgid "&Select"
 msgstr "選択(&S)"
 
@@ -4446,11 +4489,12 @@ msgstr "音部記号を変更"
 
 #: uiconnect.cpp:1343
 msgid "Insert special barline"
-msgstr ""
+msgstr "特殊な小節区切りを挿入"
 
 #: voice.cpp:4434
+#, fuzzy
 msgid "posit: chord skipped"
-msgstr ""
+msgstr "鍵%s: 新しい鍵です - とばします\n"
 
 #: voice.cpp:4435
 msgid "Repositioning voice"
@@ -4477,21 +4521,15 @@ msgid "The number of the voice to which the settings above apply."
 msgstr "上記の設定を適用する声部の番号"
 
 #: voicedialog.cpp:106
-msgid ""
-"All notes in voice number %1 will have their stems pointing up when this is "
-"selected."
+msgid "All notes in voice number %1 will have their stems pointing up when this is selected."
 msgstr "これを選択すると声部番号 %1 の音符の縦棒はすべて上を向きます。"
 
 #: voicedialog.cpp:114
-msgid ""
-"The direction of the stems of the notes in voice number %1 will be chosen "
-"optimally for each note when this is selected."
+msgid "The direction of the stems of the notes in voice number %1 will be chosen optimally for each note when this is selected."
 msgstr "これを選択すると声部番号 %1 の音符の縦棒は個別に最適な方向を向きます。"
 
 #: voicedialog.cpp:122
-msgid ""
-"All notes in voice number %1 will have their stems pointing down when this "
-"is selected."
+msgid "All notes in voice number %1 will have their stems pointing down when this is selected."
 msgstr "これを選択すると声部番号 %1 の音符の縦棒はすべて下を向きます。"
 
 #: voicedialog.cpp:129
@@ -4518,13 +4556,15 @@ msgstr "声部を作成する(&R)"
 msgid "Staff %1"
 msgstr "五線 %1"
 
-#: ../kguitar_excerpt/chord.cpp:223 ../kguitar_excerpt/chord.cpp:513
+#: ../kguitar_excerpt/chord.cpp:223
+#: ../kguitar_excerpt/chord.cpp:513
 msgid "Guitar"
 msgstr "ギター"
 
 #: ../kguitar_excerpt/chord.cpp:305
+#, fuzzy
 msgid "Root"
-msgstr ""
+msgstr "ルートウィンドウ"
 
 #: ../kguitar_excerpt/chord.cpp:306
 msgid "Inv #1"
@@ -4571,26 +4611,22 @@ msgid "show diagram"
 msgstr "ダイアグラムを表示する"
 
 #: ../kguitar_excerpt/chord.cpp:432
+#, fuzzy
 msgid "Chord constructor"
-msgstr ""
+msgstr "%d 個のコンストラクタが見つかりました\n"
 
 #~ msgid "A&uthor:"
 #~ msgstr "著作者(&U)"
-
 #~ msgid "&Last author:"
 #~ msgstr "最終更新者(&L)"
-
 #~ msgid "delete"
 #~ msgstr "削除"
-
 #~ msgid "&MIDI format"
 #~ msgstr "&MIDI 形式"
-
 #~ msgid "height:"
 #~ msgstr "高さ:"
-
 #~ msgid "width:"
 #~ msgstr "幅:"
-
 #~ msgid "paper dimensions"
 #~ msgstr "用紙の大きさ"
+

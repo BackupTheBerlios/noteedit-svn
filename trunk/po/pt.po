@@ -1,20 +1,20 @@
-# translation of pt_BR.po to Português brasileiro
+# translation of pt.po to Português brasileiro
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Denis A. Altoé Falqueto <denisfalqueto@gmail.com>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: pt_BR\n"
+"Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-16 11:45+0200\n"
-"PO-Revision-Date: 2006-04-04 08:02-0300\n"
+"PO-Revision-Date: 2006-06-06 09:58-0300\n"
 "Last-Translator: Denis A. Altoé Falqueto <denisfalqueto@gmail.com>\n"
 "Language-Team: Português brasileiro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.1\n"
+"X-Generator: KBabel 1.11.2\n"
 "Plural-Forms:  nplurals=2; plural=(n > 1);\n"
 
 #: abcexport.cpp:89 abcexport.cpp:92 filehandler.cpp:1097 filehandler.cpp:1099
@@ -32,14 +32,13 @@ msgid "???"
 msgstr ""
 
 #: abcexport.cpp:294
-#, fuzzy
 msgid ""
 "NoteEdit has exported the score to ABC music format but there are some "
 "problems which can prevent successful PostScript/PDF output or can change "
 "the final score layout.\n"
 msgstr ""
 "Noteedit exportou a partitura para o formato ABC mas existem alguns\n"
-"problemas que poderão impedir uma saía correta no formato PostScript.\n"
+"problemas que poderão impedir uma saía correta no formato PostScript/PDF ou poderão alterar o leiaute final da partitura.\n"
 
 #: abcexport.cpp:295 filehandler.cpp:600 lilyexport.cpp:666
 #: musicxmlexport.cpp:463 musixtex.cpp:621 pmxexport.cpp:394
@@ -67,8 +66,7 @@ msgid "ABC music cannot deal with a one-staff bracket\n"
 msgstr "O formato ABC não pode lidar com um colchete de uma pauta\n"
 
 #: abcexport.cpp:316
-msgid ""
-"Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
+msgid "Staff %1, measure %2: ABC music cannot deal with octaviation (va lines)\n"
 msgstr ""
 "Pauta %1, compasso %2: o formato ABC não pode lidar com oitavização (linhas "
 "de oitava)\n"
@@ -99,8 +97,7 @@ msgstr "&Habilita auto gravação"
 
 #: configuredialog.cpp:79
 msgid "The current score will be saved regularly if this is enabled."
-msgstr ""
-"A partitura atual será gravada regularmente se isto estiver habilitado."
+msgstr "A partitura atual será gravada regularmente se isto estiver habilitado."
 
 #: configuredialog.cpp:84
 msgid ""
@@ -131,7 +128,7 @@ msgid ""
 "The time interval between the occations when the current score is saved if "
 "there are unsaved changes."
 msgstr ""
-"O intervalo de tempo entre as ocasiões em que a partitura atual é gravada se "
+"O intervalo de tempo entre as ocasiões em que a partitura atual é gravada, se "
 "existirem alterações ainda não gravadas."
 
 #: configuredialog.cpp:113
@@ -147,7 +144,7 @@ msgid ""
 "enable MIDI pedal instruction (does not work on all sound cards; especially "
 "TiMidity++)"
 msgstr ""
-"Habilita a instrução do pedal MIDI (não funciona em todas as placas de som; "
+"Habilita a utilização do pedal MIDI (não funciona em todas as placas de som; "
 "especialmente TiMidity++)"
 
 #: configuredialog.cpp:119
@@ -382,7 +379,7 @@ msgstr "Som"
 
 #: configuredialog.cpp:443
 msgid "Sequencers"
-msgstr "Sequenciadores"
+msgstr "Seqûenciadores"
 
 #: configuredialog.cpp:444
 msgid "A&LSA"
@@ -398,7 +395,7 @@ msgid ""
 "Sound Architecture) MIDI scheduler when the application starts if this is "
 "enabled. Enable this if you use ALSA to acces your soundcard."
 msgstr ""
-"A biblioteca de sequenciador TSE3 tentará criar um agendador MIDI ALSA "
+"A biblioteca de seqûenciador TSE3 tentará criar um agendador MIDI ALSA "
 "(Advanced Linux Sound Architecture) quando a aplicação iniciar, se isto "
 "estiver habilitado. Habilite isto se você usa ALSA para acessar sua placa de "
 "som."
@@ -417,7 +414,7 @@ msgid ""
 "MIDI scheduler when the application starts if this is enabled. Enable this "
 "if you use OSS to acces your soundcard."
 msgstr ""
-"A biblioteca de sequenciador TSE3 tentará criar um agendador MIDI OSS (Open "
+"A biblioteca de seqûenciador TSE3 tentará criar um agendador MIDI OSS (Open "
 "Sound System) quando a aplicação iniciar, se isto estiver habilitado. "
 "Habilite isto se você usa OSS para acessar sua placa de som."
 
@@ -565,8 +562,7 @@ msgstr ""
 
 #: filehandler.cpp:620
 msgid "staff %1; measure %2: Mup cannot deal with trills without \"tr\" sign\n"
-msgstr ""
-"pauta %1; compasso %2: MUP não pode lidar com trilos sem o sinal \"tr\"\n"
+msgstr "pauta %1; compasso %2: MUP não pode lidar com trilos sem o sinal \"tr\"\n"
 
 #: filehandler.cpp:625
 msgid "Staff %1 has irregular key, this may not work with MUP.\n"
@@ -588,8 +584,7 @@ msgstr ""
 
 #: filehandler.cpp:645
 msgid "staff %1; measure %2: Mup cannot deal with graces after\n"
-msgstr ""
-"pauta %1; compasso %2: MUP não pode lidar com apoggiaturas posteriores\n"
+msgstr "pauta %1; compasso %2: MUP não pode lidar com apoggiaturas posteriores\n"
 
 #: filehandler.cpp:650
 msgid ""
@@ -608,8 +603,7 @@ msgstr ""
 "do compasso\n"
 
 #: filehandler.cpp:660
-msgid ""
-"MUP cannot deal with some chord annotations with and some without grids\n"
+msgid "MUP cannot deal with some chord annotations with and some without grids\n"
 msgstr ""
 "MUP não pode lidar com algumas anotações de acordes com grades e outras sem "
 "grades\n"
@@ -624,8 +618,7 @@ msgstr "MUP não pode lidar com chaves ou colchetes aninhados\n"
 
 #: filehandler.cpp:672
 msgid "MUP cannot correctly write more than one slurred grace\n"
-msgstr ""
-"MUP não pode escrever corretamente mais de uma apoggiatura com legato\n"
+msgstr "MUP não pode escrever corretamente mais de uma apoggiatura com legato\n"
 
 #: layout.cpp:55
 msgid "Set brace"
@@ -653,22 +646,18 @@ msgstr "Barra descontínua"
 
 #: layout.cpp:59
 msgid "Score layout"
-msgstr "Disposição da partitura"
+msgstr "Leioute da partitura"
 
 #: lilyexport.cpp:665
-#, fuzzy
 msgid ""
 "NoteEdit has exported the score to LilyPond format but there are some "
 "problems which can prevent successful PostScript/PDF output or can change "
 "the final score layout.\n"
-msgstr ""
-"Noteedit exportou a partitura para o formato ABC mas existem alguns\n"
-"problemas que poderão impedir uma saía correta no formato PostScript.\n"
+msgstr "NoteEdit exportou a partitura para o formato LilyPond, mas existem alguns problemas que poderão impedir uma saída correta em Postscript/PDF ou poderão alterar o leiaute final da partitura.\n"
 
 #: lilyexport.cpp:671
 msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
-msgstr ""
-"Pauta %1; compasso%2: quartifusa no compasso; o mínimo é uma semifusa\n"
+msgstr "Pauta %1; compasso%2: quartifusa no compasso; o mínimo é uma semifusa\n"
 
 #: lilyexport.cpp:675
 msgid "Staff %1 has irregular keysig. This cannot be expressed in LilyPond\n"
@@ -717,14 +706,11 @@ msgstr ""
 "LilyPond\n"
 
 #: lilyexport.cpp:707
-msgid ""
-"A piano staff without continued bar rules cannot be expressed in LilyPond\n"
-msgstr ""
-"Uma pauta de piano sem barras contínuas não pode ser expressado em LilyPond\n"
+msgid "A piano staff without continued bar rules cannot be expressed in LilyPond\n"
+msgstr "Uma pauta de piano sem barras contínuas não pode ser expressado em LilyPond\n"
 
 #: lilyexport.cpp:711
-msgid ""
-"Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
+msgid "Continued bar rule outside brace or bracket cannot be expressed in LilyPond\n"
 msgstr ""
 "Barras contínuas fora de chaves ou colchetes não podem ser expressadas em "
 "LilyPond\n"
@@ -887,7 +873,7 @@ msgstr "In&formação da partitura..."
 
 #: mainframewidget.cpp:256
 msgid "&Key configuration"
-msgstr "Configuração de &tonalidade"
+msgstr "Configuração de &atalhos do teclado"
 
 #: mainframewidget.cpp:260
 msgid "Show &bar numbers"
@@ -1154,9 +1140,8 @@ msgid "Select mode"
 msgstr "Selecione o modo"
 
 #: mainframewidget.cpp:370 mainframewidget.cpp:618
-#, fuzzy
 msgid "Breve note"
-msgstr "Nota no compasso:"
+msgstr "Breve"
 
 #: mainframewidget.cpp:371 mainframewidget.cpp:619
 msgid "Full note"
@@ -1584,7 +1569,7 @@ msgid ""
 "documentation!"
 msgstr ""
 "A importação de MIDI está completa. Por favor, use Editar->Auto compasso, "
-"Editar->Auto União e outras ferramentas para melhorar a disposição da "
+"Editar->Auto União e outras ferramentas para melhorar a leioute da "
 "partitura.\n"
 "Você também pode ler mais sobre a importação de MIDI e outras ferramentas "
 "teis na documentação!"
@@ -1782,12 +1767,8 @@ msgid "[no MIDI device created]"
 msgstr "[nenhum dispositivo MIDI criado]"
 
 #: musicxmlexport.cpp:462
-#, fuzzy
-msgid ""
-"NoteEdit has exported the score to MusicXML but there are some problems.\n"
-msgstr ""
-"Noteedit exportou a partitura para MusicXML\n"
-"Mas existem alguns problemas.\n"
+msgid "NoteEdit has exported the score to MusicXML but there are some problems.\n"
+msgstr "NoteEdit exportou a partitura para o formato MusicXML, mas existem alguns problemas.\n"
 
 #: musicxmlexport.cpp:468
 msgid "Staff %1 has irregular keysig. This is currently not supported.\n"
@@ -1795,8 +1776,7 @@ msgstr "Pauta %1 tem armadura de clave. Atualmente, isto não é permitido.\n"
 
 #: musicxmlexport.cpp:473
 msgid "Staff %1 contains drum clef. This is currently not supported.\n"
-msgstr ""
-"Pauta %1 contém clave de percussão. Atualmente, isto não é permitido.\n"
+msgstr "Pauta %1 contém clave de percussão. Atualmente, isto não é permitido.\n"
 
 #: musicxmlexport.cpp:478
 msgid "Staff %1 contains drum staff. This is currently not supported.\n"
@@ -1811,8 +1791,7 @@ msgid "Staff %1 contains 8va start without 8va stop.\n"
 msgstr "Pauta %1 contém um início de oitava sem término de oitava.\n"
 
 #: musicxmlexport.cpp:493
-msgid ""
-"Staff %1 contains 8va over a single note. This is currently not supported.\n"
+msgid "Staff %1 contains 8va over a single note. This is currently not supported.\n"
 msgstr ""
 "Pauta %1 contém uma 8va sobre uma única nota. Atualmente, isto não é "
 "permitido.\n"
@@ -1826,14 +1805,11 @@ msgid "MusicXML produced. But there are some problems."
 msgstr "MusicXML produzido. Mas existem alguns problemas."
 
 #: musixtex.cpp:620
-#, fuzzy
 msgid ""
 "NoteEdit has exported the score to MusiXTeX format but there are some "
 "problems which can prevent successful PostScript/PDF output or can change "
 "the final score layout.\n"
-msgstr ""
-"Noteedit exportou a partitura para o formato ABC mas existem alguns\n"
-"problemas que poderão impedir uma saía correta no formato PostScript.\n"
+msgstr "NoteEdit exportou a partitura para o formato MusiXTeX, mas existem alguns problemas que poderão impedir uma saída correta em PostScript/PDF ou poderão alterar o leioute final da partitura.\n"
 
 #: musixtex.cpp:626
 msgid "128th in measure: %2; maximum = %3 flags\n"
@@ -1879,7 +1855,7 @@ msgid ""
 "discontinued)\n"
 "Please install \"musixdbr.tex\" by  Rainer Dunker\n"
 msgstr ""
-"A partitura tem uma disposição de barras de compassos específica\n"
+"A partitura tem uma leioute de barras de compassos específica\n"
 "(parcialmente contínua e parcialmente descontínua)\n"
 "Por favor, instale \"musixdbr.tex\", de Rainer Dunker\n"
 
@@ -1913,7 +1889,7 @@ msgstr "programador"
 
 #: noteedit_part.cpp:84
 msgid "TSE3 sequencer library"
-msgstr "Biblioteca de sequenciador TSE3"
+msgstr "Biblioteca de seqûenciador TSE3"
 
 #: noteedit_part.cpp:87
 msgid "developer"
@@ -1940,14 +1916,11 @@ msgid "PMX export"
 msgstr "Exportação PMX"
 
 #: pmxexport.cpp:393
-#, fuzzy
 msgid ""
 "NoteEdit has exported the score to PMX format but there are some problems "
 "which can prevent successful PostScript/PDF output or can change the final "
 "score layout.\n"
-msgstr ""
-"Noteedit exportou a partitura para o formato ABC mas existem alguns\n"
-"problemas que poderão impedir uma saía correta no formato PostScript.\n"
+msgstr "NoteEdit exportou a partitura para o formato PMX, mas existem alguns problemas que poderão impedir uma saída correta em PostScript/PDF ou poderão alterar o leiaute final da partitura.\n"
 
 #: pmxexport.cpp:399
 msgid "Staff %1, measure %2: %3 128th, should be: %4\n"
@@ -2030,12 +2003,10 @@ msgid "Couldn't setup printer"
 msgstr "Não pude configurar a impressora"
 
 #: previewprint.cpp:86
-#, fuzzy
 msgid "Could not start preview, is one already running?"
-msgstr "Não pude iniciar o programa de pré-visualização."
+msgstr "Não foi possível iniciar a pré-visualização. Existe alguma já em execução?"
 
 #: previewprint.cpp:312
-#, fuzzy
 msgid "File was not succesfully converted."
 msgstr "O arquivo não foi convertido corretamente."
 
@@ -2178,7 +2149,7 @@ msgstr "Número de compassos numa caixa"
 #: rc.cpp:145
 #, no-c-format
 msgid "Use UTF-8 encoding"
-msgstr ""
+msgstr "Usar codificação UTF-8"
 
 #: rc.cpp:148
 #, no-c-format
@@ -2226,7 +2197,7 @@ msgid "MusicXML format"
 msgstr "Formato MusicXML"
 
 #: rc.cpp:181
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Export warning"
 msgstr "Aviso de exportação"
 
@@ -2430,9 +2401,9 @@ msgid "Alt+K"
 msgstr ""
 
 #: rc.cpp:319
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "E&xport drum notes"
-msgstr "Exporta notas de percussão"
+msgstr "E&xportar notas de percussão"
 
 #: rc.cpp:322
 #, no-c-format
@@ -2440,9 +2411,9 @@ msgid "Alt+X"
 msgstr ""
 
 #: rc.cpp:325
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "&Only voices skeleton"
-msgstr "A&penas vozes"
+msgstr "Estrutura a&penas com vozes"
 
 #: rc.cpp:331
 #, no-c-format
@@ -2535,9 +2506,9 @@ msgid "Tabloid"
 msgstr "Tablóide"
 
 #: rc.cpp:400
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "&Use standard page size"
-msgstr "Usa tamanho de página pa&drão"
+msgstr "Usar tamanho de página pa&drão"
 
 #: rc.cpp:403
 #, no-c-format
@@ -2545,9 +2516,9 @@ msgid "Alt+U"
 msgstr ""
 
 #: rc.cpp:406
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Use custom page si&ze"
-msgstr "Usa tamanho de pá&gina personalizado"
+msgstr "Usar tamanho de pá&gina personalizado"
 
 #: rc.cpp:409
 #, no-c-format
@@ -2956,7 +2927,7 @@ msgstr "Instrumento:"
 #: rc.cpp:781
 #, no-c-format
 msgid "Overlength:"
-msgstr ""
+msgstr "Comprimento acima:"
 
 #: rc.cpp:784
 #, no-c-format
@@ -2986,7 +2957,7 @@ msgstr "Distância das letras.:"
 #: rc.cpp:799
 #, no-c-format
 msgid "Underlength:"
-msgstr ""
+msgstr "Comprimento abaixo:"
 
 #: rc.cpp:802
 #, no-c-format
@@ -3829,11 +3800,11 @@ msgstr "A&ssunto:"
 
 #: scoreinfo.cpp:88
 msgid "Compo&ser:"
-msgstr ""
+msgstr "Com&positor:"
 
 #: scoreinfo.cpp:98
 msgid "&Arranger:"
-msgstr ""
+msgstr "&Arranjador:"
 
 #: scoreinfo.cpp:109
 msgid "&Copyright:"
@@ -3860,8 +3831,7 @@ msgid "This deletes voice %1! Are you sure?"
 msgstr "Isto vai deletar a voz %1! Tem certeza?"
 
 #: staff.cpp:606
-msgid ""
-"Unable to paste! The destination staff has less voices than the source staff."
+msgid "Unable to paste! The destination staff has less voices than the source staff."
 msgstr ""
 "Não foi possível colar! A pauta de destino tem menos vozes que a pauta de "
 "origem."
@@ -4179,7 +4149,6 @@ msgstr ""
 "não é suficiente. Leia a <a href=\"foo\">documentação</a>!\n"
 
 #: tips.cpp:176
-#, fuzzy
 msgid ""
 "<b>...that you can insert lines?</b><br/><br/>\n"
 "Select <code>Insert --&gt; lines</code>, choose a line and left click on\n"
@@ -4187,7 +4156,7 @@ msgid ""
 msgstr ""
 "<b>...que você pode inserir linhas?</b><br/><br/>\n"
 "Selecione <code>Inserir --&gt; linhas</code>, escolha uma linha e clique com "
-"o botão do meio \tsobre \n"
+"o botão esquerdo sobre \n"
 "uma nota.\n"
 
 #: tips.cpp:183
@@ -4456,7 +4425,7 @@ msgstr "[sem-nome]"
 
 #: uiconnect.cpp:1061
 msgid "Stanza no %1 %2"
-msgstr "Instância no %1 %2"
+msgstr "Frase núm. %1 %2"
 
 #: uiconnect.cpp:1063
 msgid "[empty]"
@@ -4464,11 +4433,11 @@ msgstr "[vazio]"
 
 #: uiconnect.cpp:1072
 msgid "Are you sure to clear the current stanza?"
-msgstr "Você tem certeza que quer limpar a instância atual?"
+msgstr "Você tem certeza que quer limpar a frase atual?"
 
 #: uiconnect.cpp:1073
 msgid "Clear stanza"
-msgstr "Limpa instância"
+msgstr "Limpa frase"
 
 #: uiconnect.cpp:1101
 msgid "File open aborted."
@@ -4694,111 +4663,3 @@ msgstr "mostra diagrama"
 msgid "Chord constructor"
 msgstr "Construção de acordes"
 
-#~ msgid ""
-#~ "Noteedit has exported the score to LilyPond but there are some\n"
-#~ "problems which will probably prevent successful LilyPond output.\n"
-#~ msgstr ""
-#~ "Noteedit exportou a partitura para LilyPond, mas existem alguns\n"
-#~ "problemas que provavelmente poderão impedir uma saída LilyPond correta.\n"
-
-#~ msgid ""
-#~ "Noteedit has exported the score to MusiXTeX but there are some\n"
-#~ "constructs which cannot be expressed in MusiXTeX. The score will\n"
-#~ "work with MusiXTeX but Noteedit omitted these constructs.\n"
-#~ msgstr ""
-#~ "Noteedit exportou a partitura para MusiXTeX mas existem alguns\n"
-#~ "elementos que não podem ser expressados em MusiXTeX. A partitura\n"
-#~ "irá funcionar com MusiXTeX mas Noteedit omitiu esses elementos.\n"
-
-#~ msgid ""
-#~ "Noteedit has exported the score to PMX but there are some\n"
-#~ "problems which will probably prevent successful PMX output.\n"
-#~ msgstr ""
-#~ "Noteedit exportou a partitura para PMX mas existem alguns\n"
-#~ "problemas que provavelmente ir� impedir uma saída PMX correta.\n"
-
-#, fuzzy
-#~ msgid "Options"
-#~ msgstr "&Opções:"
-
-#, fuzzy
-#~ msgid "Save"
-#~ msgstr "Onda dente de serra"
-
-#, fuzzy
-#~ msgid "Cancel"
-#~ msgstr "Canal"
-
-#, fuzzy
-#~ msgid "&Print..."
-#~ msgstr "Lin&ha..."
-
-#, fuzzy
-#~ msgid "&Close"
-#~ msgstr "&Fechar tudo"
-
-#, fuzzy
-#~ msgid "&Quit"
-#~ msgstr "E&mudecer"
-
-#, fuzzy
-#~ msgid "&Cancel"
-#~ msgstr "Canal"
-
-#, fuzzy
-#~ msgid "&Save"
-#~ msgstr "&Ajusta"
-
-#, fuzzy
-#~ msgid "Close"
-#~ msgstr "Cores"
-
-#, fuzzy
-#~ msgid "&Delete"
-#~ msgstr "&Selecione"
-
-#, fuzzy
-#~ msgid "&Start"
-#~ msgstr "Inicialização"
-
-#, fuzzy
-#~ msgid "&Edit"
-#~ msgstr "Edição"
-
-#, fuzzy
-#~ msgid "&View"
-#~ msgstr "Voz"
-
-#, fuzzy
-#~ msgid "&Insert"
-#~ msgstr "Inserir clave"
-
-#, fuzzy
-#~ msgid "&Settings"
-#~ msgstr "Configurações"
-
-#, fuzzy
-#~ msgid "&File"
-#~ msgstr "Rabeca"
-
-#, fuzzy
-#~ msgid "Landscape"
-#~ msgstr "&Paisagem"
-
-#, fuzzy
-#~ msgid "Do not show this message again"
-#~ msgstr "Não &mostre mais esta mensagem"
-
-#~ msgid "A&uthor:"
-#~ msgstr "&Autor:"
-
-#~ msgid "&Last author:"
-#~ msgstr "Ú&timo autor:"
-
-#, fuzzy
-#~ msgid "Export"
-#~ msgstr "&Exportação"
-
-#, fuzzy
-#~ msgid "Delete"
-#~ msgstr "Deletar voz"

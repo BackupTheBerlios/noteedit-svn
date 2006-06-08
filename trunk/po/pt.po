@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-16 11:45+0200\n"
-"PO-Revision-Date: 2006-06-06 09:58-0300\n"
+"PO-Revision-Date: 2006-06-08 10:03-0300\n"
 "Last-Translator: Denis A. Altoé Falqueto <denisfalqueto@gmail.com>\n"
 "Language-Team: Português brasileiro\n"
 "MIME-Version: 1.0\n"
@@ -4425,7 +4425,7 @@ msgstr "[sem-nome]"
 
 #: uiconnect.cpp:1061
 msgid "Stanza no %1 %2"
-msgstr "Frase núm. %1 %2"
+msgstr "Estrofe núm. %1 %2"
 
 #: uiconnect.cpp:1063
 msgid "[empty]"
@@ -4433,11 +4433,11 @@ msgstr "[vazio]"
 
 #: uiconnect.cpp:1072
 msgid "Are you sure to clear the current stanza?"
-msgstr "Você tem certeza que quer limpar a frase atual?"
+msgstr "Você tem certeza que quer limpar a estrofe atual?"
 
 #: uiconnect.cpp:1073
 msgid "Clear stanza"
-msgstr "Limpa frase"
+msgstr "Limpa estrofe"
 
 #: uiconnect.cpp:1101
 msgid "File open aborted."

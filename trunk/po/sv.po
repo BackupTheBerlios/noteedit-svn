@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-16 11:45+0200\n"
+"POT-Creation-Date: 2006-06-26 20:00+0200\n"
 "PO-Revision-Date: 2005-06-12 22:31+0200\n"
 "Last-Translator: Matevz Jekovec <matevz.jekovec@guest.arnes.si>\n"
 "Language-Team: slovenščina <lugos-slo@lugos.si>\n"
@@ -14,6 +14,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
+
+#: _translatorinfo.cpp:1
+msgid ""
+"_: NAME OF TRANSLATORS\n"
+"Your names"
+msgstr "Erik Sigra"
+
+#: _translatorinfo.cpp:3
+msgid ""
+"_: EMAIL OF TRANSLATORS\n"
+"Your emails"
+msgstr "<sigra@home.se>"
 
 #: abcexport.cpp:89 abcexport.cpp:92 filehandler.cpp:1097 filehandler.cpp:1099
 #: filehandler.cpp:1970 lilyexport.cpp:132 lilyexport.cpp:135
@@ -82,6 +94,10 @@ msgstr "name2Line: internt fel"
 #: clef.cpp:465
 msgid "name2Line"
 msgstr "name2Line"
+
+#: configuredialog.cpp:56
+msgid "Configure"
+msgstr "Ställ in"
 
 #: configuredialog.cpp:69
 msgid "General"
@@ -224,13 +240,13 @@ msgstr ""
 msgid "PMX"
 msgstr ""
 
-#: configuredialog.cpp:194 configuredialog.cpp:210 rc.cpp:259
-#, fuzzy, no-c-format
+#: configuredialog.cpp:194 configuredialog.cpp:210
+#, fuzzy
 msgid "Lilypond"
 msgstr "Exportera till LilyPond"
 
-#: configuredialog.cpp:195 configuredialog.cpp:211 rc.cpp:541
-#, fuzzy, no-c-format
+#: configuredialog.cpp:195 configuredialog.cpp:211
+#, fuzzy
 msgid "MusiXTeX"
 msgstr "MusiX&TeX-format"
 
@@ -249,13 +265,11 @@ msgstr "Exportproblem"
 msgid "Export format"
 msgstr "Exportproblem"
 
-#: configuredialog.cpp:208 rc.cpp:499
-#, no-c-format
+#: configuredialog.cpp:208
 msgid "Midi"
 msgstr ""
 
-#: configuredialog.cpp:212 rc.cpp:535
-#, no-c-format
+#: configuredialog.cpp:212
 msgid "MusicXML"
 msgstr ""
 
@@ -274,6 +288,10 @@ msgstr "In&formation..."
 
 #: configuredialog.cpp:227 configuredialog.cpp:265
 msgid "&Options:"
+msgstr ""
+
+#: configuredialog.cpp:230 configuredialog.cpp:268
+msgid "Options"
 msgstr ""
 
 #: configuredialog.cpp:236
@@ -539,6 +557,11 @@ msgstr ""
 msgid "Possible data loss!"
 msgstr "Möjlig dataförlust!"
 
+#: filehandler.cpp:592 resource.cpp:534 uiconnect.cpp:1534
+#, fuzzy
+msgid "Save"
+msgstr "sågvåg"
+
 #: filehandler.cpp:598
 msgid ""
 "Noteedit will save your score, and it can (probably) restore the score.\n"
@@ -633,6 +656,11 @@ msgstr "notrad %1, takt %2: MUP kan inte hantera trillar utan \"tr\"-tecken\n"
 #, fuzzy
 msgid "MUP cannot correctly write more than one slurred grace\n"
 msgstr "PMX kan inte hantera mer än 2 stämmor per notrad.\n"
+
+#: layout.cpp:55 ../kguitar_excerpt/chord.cpp:353
+#, fuzzy
+msgid "Cancel"
+msgstr "Kanal"
 
 #: layout.cpp:55
 #, fuzzy
@@ -898,6 +926,11 @@ msgstr "Exportera till &LilyPond..."
 msgid "Print pre&view..."
 msgstr ""
 
+#: mainframewidget.cpp:253
+#, fuzzy
+msgid "&Print..."
+msgstr "&Linje..."
+
 #: mainframewidget.cpp:255
 msgid "Score in&formation..."
 msgstr "Partiturin&formation..."
@@ -905,6 +938,16 @@ msgstr "Partiturin&formation..."
 #: mainframewidget.cpp:256
 msgid "&Key configuration"
 msgstr "Tangentinst&ällningar"
+
+#: mainframewidget.cpp:257
+#, fuzzy
+msgid "&Close"
+msgstr "Stäng &alla"
+
+#: mainframewidget.cpp:258
+#, fuzzy
+msgid "&Quit"
+msgstr "&Tysta"
 
 #: mainframewidget.cpp:260
 msgid "Show &bar numbers"
@@ -1398,9 +1441,22 @@ msgstr ""
 msgid "Selected voice"
 msgstr "Ta bort stämma"
 
+#: mainframewidget.cpp:554
+msgid "Zoom"
+msgstr "Zoom"
+
 #: mainframewidget.cpp:565 mainframewidget.cpp:4317
 msgid "Key"
 msgstr "Tangent"
+
+#: mainframewidget.cpp:567 resource.cpp:542
+msgid "&OK"
+msgstr ""
+
+#: mainframewidget.cpp:569 mainframewidget.cpp:5382 uiconnect.cpp:1075
+#, fuzzy
+msgid "&Cancel"
+msgstr "Kanal"
 
 #: mainframewidget.cpp:599
 #, fuzzy
@@ -1629,8 +1685,7 @@ msgstr ""
 msgid "Crescendo"
 msgstr ""
 
-#: mainframewidget.cpp:726 rc.cpp:433
-#, no-c-format
+#: mainframewidget.cpp:726
 msgid "8va"
 msgstr ""
 
@@ -1674,6 +1729,21 @@ msgstr ""
 msgid "New"
 msgstr "Ny"
 
+#: mainframewidget.cpp:3528 mainframewidget.cpp:3606 mainframewidget.cpp:3666
+#: mainframewidget.cpp:3964
+#, fuzzy
+msgid "&Save"
+msgstr "&Markera allt"
+
+#: mainframewidget.cpp:3529 mainframewidget.cpp:3607 mainframewidget.cpp:3667
+#: mainframewidget.cpp:3965
+msgid "&Discard"
+msgstr "&Förkasta"
+
+#: mainframewidget.cpp:3605 mainframewidget.cpp:3665
+msgid "Open"
+msgstr ""
+
 #: mainframewidget.cpp:3831
 msgid ""
 "MIDI import is now complete. Please use Edit-->AutoBar, Edit-->AutoBeam and "
@@ -1688,6 +1758,11 @@ msgid ""
 "present!\n"
 "Please look in the MIDI import section in documentation for more information!"
 msgstr ""
+
+#: mainframewidget.cpp:3963
+#, fuzzy
+msgid "Close"
+msgstr "Färger"
 
 #: mainframewidget.cpp:4027
 msgid "Do you really want to close all windows?"
@@ -1722,6 +1797,11 @@ msgstr "Ta bort notrad"
 #, fuzzy
 msgid "This deletes current staff! Are you sure?"
 msgstr "Detta tar bort den valda stämman! Är du säker?"
+
+#: mainframewidget.cpp:4399 staff.cpp:163 staff.cpp:197 staff.cpp:206
+#, fuzzy
+msgid "&Delete"
+msgstr "&Markera allt"
 
 #: mainframewidget.cpp:4431
 msgid "Staff moving"
@@ -1772,6 +1852,11 @@ msgstr "<center>Hur många noter:</center>"
 #: mainframewidget.cpp:4513
 msgid "Autobeam"
 msgstr "Balkar"
+
+#: mainframewidget.cpp:4514
+#, fuzzy
+msgid "&Start"
+msgstr "Igångkörning"
 
 #: mainframewidget.cpp:4525
 #, fuzzy
@@ -1830,8 +1915,7 @@ msgstr "Detta ersätter den valda stämman! Fortsätt?"
 msgid "Import Recording"
 msgstr "Importera inspelning"
 
-#: mainframewidget.cpp:5381 rc.cpp:226
-#, no-c-format
+#: mainframewidget.cpp:5381
 msgid "&Import Recording"
 msgstr "&Importera inspelning"
 
@@ -2134,6 +2218,11 @@ msgstr "PMX skapat, men det uppstod några problem."
 msgid "Couldn't setup printer"
 msgstr ""
 
+#: previewprint.cpp:76 previewprint.cpp:87 previewprint.cpp:313
+#: previewprint.cpp:332 previewprint.cpp:363 previewprint.cpp:463
+msgid "Error"
+msgstr ""
+
 #: previewprint.cpp:86
 msgid "Could not start preview, is one already running?"
 msgstr ""
@@ -2155,1147 +2244,6 @@ msgid ""
 "Exporting with lilypond failed.\n"
 "See log file for details."
 msgstr ""
-
-#: rc.cpp:12 rc.cpp:72
-#, no-c-format
-msgid "St&aff"
-msgstr "&Notrad"
-
-#: rc.cpp:18 rc.cpp:78
-#, no-c-format
-msgid "TSE&3"
-msgstr "TSE&3"
-
-#: rc.cpp:24
-#, no-c-format
-msgid "&Window"
-msgstr "&Fönster"
-
-#: rc.cpp:30 rc.cpp:90
-#, no-c-format
-msgid "Program control"
-msgstr "Programstyrning"
-
-#: rc.cpp:33 rc.cpp:93
-#, no-c-format
-msgid "Control"
-msgstr "Styrning"
-
-#: rc.cpp:36 rc.cpp:96
-#, no-c-format
-msgid "Score control"
-msgstr "Partiturstyrning"
-
-#: rc.cpp:39 rc.cpp:99 rc.cpp:904
-#, no-c-format
-msgid "Notes"
-msgstr "Noter"
-
-#: rc.cpp:42 rc.cpp:105
-#, no-c-format
-msgid "signs"
-msgstr "tecken"
-
-#: rc.cpp:45 rc.cpp:108
-#, no-c-format
-msgid "additional"
-msgstr "ytterligare"
-
-#: rc.cpp:48 rc.cpp:111 rc.cpp:114
-#, no-c-format
-msgid "Accent Toolbar"
-msgstr "Accentverktygsrad"
-
-#: rc.cpp:54
-#, fuzzy, no-c-format
-msgid "&Import"
-msgstr "&Exportera"
-
-#: rc.cpp:57 uiconnect.cpp:352
-#, no-c-format
-msgid "&Export"
-msgstr "&Exportera"
-
-#: rc.cpp:69
-#, no-c-format
-msgid "Seg&no"
-msgstr ""
-
-#: rc.cpp:75
-#, fuzzy, no-c-format
-msgid "F&ormat"
-msgstr "Fermate"
-
-#: rc.cpp:102
-#, no-c-format
-msgid "Graces"
-msgstr ""
-
-#: rc.cpp:117 rc.cpp:169
-#, no-c-format
-msgid "ABC music"
-msgstr ""
-
-#: rc.cpp:120 rc.cpp:358 rc.cpp:562 rc.cpp:657 rc.cpp:696
-#, no-c-format
-msgid "Page geometry"
-msgstr "Sidmått"
-
-#: rc.cpp:123
-#, fuzzy, no-c-format
-msgid "Expressiones above"
-msgstr "ljudstyrketecken ovanför"
-
-#: rc.cpp:126
-#, fuzzy, no-c-format
-msgid "Staff separation:"
-msgstr "Notrad&sval"
-
-#: rc.cpp:129 rc.cpp:376 rc.cpp:568 rc.cpp:663 rc.cpp:711
-#, no-c-format
-msgid "Height:"
-msgstr "Höjd:"
-
-#: rc.cpp:132 rc.cpp:367 rc.cpp:565 rc.cpp:660 rc.cpp:714
-#, no-c-format
-msgid "Width:"
-msgstr "Bredd:"
-
-#: rc.cpp:135
-#, fuzzy, no-c-format
-msgid "Scale:"
-msgstr "Fartskala:"
-
-#: rc.cpp:139
-#, no-c-format
-msgid "/100"
-msgstr ""
-
-#: rc.cpp:142
-#, fuzzy, no-c-format
-msgid "Measure numbers in a box"
-msgstr "med taktnummer"
-
-#: rc.cpp:145
-#, no-c-format
-msgid "Use UTF-8 encoding"
-msgstr ""
-
-#: rc.cpp:148
-#, no-c-format
-msgid "File export - NoteEdit"
-msgstr "Filexport - NoteEdit"
-
-#: rc.cpp:151
-#, no-c-format
-msgid "Start &export"
-msgstr "Påbörja &export"
-
-#: rc.cpp:154
-#, fuzzy, no-c-format
-msgid "Alt+E"
-msgstr "altsaxofon"
-
-#: rc.cpp:160 rc.cpp:760
-#, no-c-format
-msgid "Alt+C"
-msgstr ""
-
-#: rc.cpp:163
-#, fuzzy, no-c-format
-msgid "Midi format"
-msgstr "&PMX-format"
-
-#: rc.cpp:166
-#, fuzzy, no-c-format
-msgid "MusiXTeX format"
-msgstr "MusiX&TeX-format"
-
-#: rc.cpp:172
-#, fuzzy, no-c-format
-msgid "PMX format"
-msgstr "&PMX-format"
-
-#: rc.cpp:175
-#, fuzzy, no-c-format
-msgid "Lilypond format"
-msgstr "Lil&yPond-format"
-
-#: rc.cpp:178
-#, fuzzy, no-c-format
-msgid "MusicXML format"
-msgstr "MusiX&TeX-format"
-
-#: rc.cpp:181
-#, fuzzy, no-c-format
-msgid "Export warning"
-msgstr "exportvarning"
-
-#: rc.cpp:187 rc.cpp:328 rc.cpp:817
-#, no-c-format
-msgid "Alt+O"
-msgstr ""
-
-#: rc.cpp:190 rc.cpp:529
-#, no-c-format
-msgid "&Details >>"
-msgstr "&Detaljer >>"
-
-#: rc.cpp:193 rc.cpp:532
-#, no-c-format
-msgid "Alt+D"
-msgstr ""
-
-#: rc.cpp:196
-#, no-c-format
-msgid "Export problems"
-msgstr "Exportproblem"
-
-#: rc.cpp:199
-#, no-c-format
-msgid "Filter - NoteEdit"
-msgstr "Filter - Notredigerare"
-
-#: rc.cpp:202
-#, no-c-format
-msgid "Xxx:"
-msgstr "Xxx:"
-
-#: rc.cpp:205
-#, no-c-format
-msgid "Max volume:"
-msgstr "Största ljudstyrka:"
-
-#: rc.cpp:208
-#, no-c-format
-msgid "Vel scale:"
-msgstr "Fartskala:"
-
-#: rc.cpp:211
-#, fuzzy, no-c-format
-msgid "Volume step:"
-msgstr "Ljudstyrkor:"
-
-#: rc.cpp:214
-#, no-c-format
-msgid "&Average volume"
-msgstr "Genomsnittlig ljudstyrk&a"
-
-#: rc.cpp:217
-#, no-c-format
-msgid "Choose snap distance:"
-msgstr "Välj snapavstånd:"
-
-#: rc.cpp:220
-#, fuzzy, no-c-format
-msgid "Triplet Raster:"
-msgstr "Triol"
-
-#: rc.cpp:229
-#, fuzzy, no-c-format
-msgid "&TSE3 to Score ..."
-msgstr "&TSE3 till partitur..."
-
-#: rc.cpp:232
-#, fuzzy, no-c-format
-msgid "&Line to Score .."
-msgstr "&TSE3 till partitur..."
-
-#: rc.cpp:235
-#, no-c-format
-msgid "Settings - NoteEdit"
-msgstr "Inställningar - Notredigerare"
-
-#: rc.cpp:238
-#, fuzzy, no-c-format
-msgid "auto insert beams"
-msgstr "infoga paus"
-
-#: rc.cpp:241
-#, no-c-format
-msgid "Allow insert from &keyboard"
-msgstr "Infoga från &tangentbord"
-
-#: rc.cpp:244
-#, no-c-format
-msgid "Move according key&sig"
-msgstr "&Flytta enligt förtecken"
-
-#: rc.cpp:247
-#, no-c-format
-msgid "&Tip of the Day"
-msgstr "&Dagens tips"
-
-#: rc.cpp:250
-#, no-c-format
-msgid ""
-"If Tip of the Day is enabled, NoteEdit will show the Tip of the Day every "
-"time it starts."
-msgstr "Om dagens tips är valt visas dagens tips varje gång programmet körs."
-
-#: rc.cpp:262
-#, no-c-format
-msgid "Additional attributes"
-msgstr "Ytterligare engenskaper"
-
-#: rc.cpp:265
-#, fuzzy, no-c-format
-msgid "Volume signs:"
-msgstr "&Ljudstyrkesignaturer:"
-
-#: rc.cpp:268
-#, fuzzy, no-c-format
-msgid "Global size:"
-msgstr "&Liten storlek"
-
-#: rc.cpp:271
-#, no-c-format
-msgid "11.22"
-msgstr ""
-
-#: rc.cpp:274
-#, no-c-format
-msgid "12.60"
-msgstr ""
-
-#: rc.cpp:277
-#, no-c-format
-msgid "14.14"
-msgstr ""
-
-#: rc.cpp:280
-#, no-c-format
-msgid "15.87"
-msgstr ""
-
-#: rc.cpp:283
-#, no-c-format
-msgid "17.82"
-msgstr ""
-
-#: rc.cpp:286
-#, no-c-format
-msgid "20"
-msgstr "20"
-
-#: rc.cpp:289
-#, no-c-format
-msgid "22.45"
-msgstr ""
-
-#: rc.cpp:292
-#, no-c-format
-msgid "25.2"
-msgstr ""
-
-#: rc.cpp:295
-#, fuzzy, no-c-format
-msgid "No volume signs"
-msgstr "inga ljudstyrketecken"
-
-#: rc.cpp:298
-#, fuzzy, no-c-format
-msgid "Volume signs above"
-msgstr "ljudstyrketecken ovanför"
-
-#: rc.cpp:301
-#, fuzzy, no-c-format
-msgid "Volume signs below"
-msgstr "ljudstyrketecken under"
-
-#: rc.cpp:304
-#, no-c-format
-msgid "Generating parameters"
-msgstr "Alstringsparametrar"
-
-#: rc.cpp:307
-#, no-c-format
-msgid "Keep &beams"
-msgstr "&Behåll balkar"
-
-#: rc.cpp:310
-#, fuzzy, no-c-format
-msgid "Alt+B"
-msgstr "altsaxofon"
-
-#: rc.cpp:313
-#, fuzzy, no-c-format
-msgid "&Keep stem directions"
-msgstr "Behåll stamri&ktiningar"
-
-#: rc.cpp:316
-#, fuzzy, no-c-format
-msgid "Alt+K"
-msgstr "altsaxofon"
-
-#: rc.cpp:319
-#, fuzzy, no-c-format
-msgid "E&xport drum notes"
-msgstr "Exportproblem"
-
-#: rc.cpp:322
-#, fuzzy, no-c-format
-msgid "Alt+X"
-msgstr "altsaxofon"
-
-#: rc.cpp:325
-#, fuzzy, no-c-format
-msgid "&Only voices skeleton"
-msgstr "&Endast stämmor"
-
-#: rc.cpp:331
-#, no-c-format
-msgid "Sparse &ties"
-msgstr "Sparse &ties"
-
-#: rc.cpp:334 rc.cpp:823
-#, no-c-format
-msgid "Alt+T"
-msgstr ""
-
-#: rc.cpp:337
-#, no-c-format
-msgid "L&imit the measures"
-msgstr "&Begränsa takterna"
-
-#: rc.cpp:340
-#, fuzzy, no-c-format
-msgid "Alt+I"
-msgstr "altsaxofon"
-
-#: rc.cpp:343 rc.cpp:601
-#, no-c-format
-msgid "ASCII"
-msgstr ""
-
-#: rc.cpp:346
-#, no-c-format
-msgid "Latin1"
-msgstr ""
-
-#: rc.cpp:349
-#, no-c-format
-msgid "Unicode"
-msgstr ""
-
-#: rc.cpp:352 rc.cpp:604
-#, no-c-format
-msgid "UTF-8"
-msgstr ""
-
-#: rc.cpp:355
-#, fuzzy, no-c-format
-msgid "Character encoding:"
-msgstr "Påbörja in&spelning"
-
-#: rc.cpp:361 rc.cpp:370 rc.cpp:577 rc.cpp:666
-#, no-c-format
-msgid "&Landscape"
-msgstr "&Liggande"
-
-#: rc.cpp:364 rc.cpp:373
-#, fuzzy, no-c-format
-msgid "Alt+L"
-msgstr "altsaxofon"
-
-#: rc.cpp:379
-#, no-c-format
-msgid "A6"
-msgstr ""
-
-#: rc.cpp:382
-#, no-c-format
-msgid "A5"
-msgstr ""
-
-#: rc.cpp:385
-#, no-c-format
-msgid "A4"
-msgstr ""
-
-#: rc.cpp:388
-#, no-c-format
-msgid "A3"
-msgstr ""
-
-#: rc.cpp:391
-#, no-c-format
-msgid "US Legal"
-msgstr ""
-
-#: rc.cpp:394
-#, no-c-format
-msgid "US Letter"
-msgstr ""
-
-#: rc.cpp:397
-#, no-c-format
-msgid "Tabloid"
-msgstr ""
-
-#: rc.cpp:400
-#, no-c-format
-msgid "&Use standard page size"
-msgstr ""
-
-#: rc.cpp:403
-#, fuzzy, no-c-format
-msgid "Alt+U"
-msgstr "altsaxofon"
-
-#: rc.cpp:406
-#, no-c-format
-msgid "Use custom page si&ze"
-msgstr ""
-
-#: rc.cpp:409
-#, fuzzy, no-c-format
-msgid "Alt+Z"
-msgstr "altsaxofon"
-
-#: rc.cpp:412 rc.cpp:559 rc.cpp:687
-#, no-c-format
-msgid "&Staff selection"
-msgstr "Notrad&sval"
-
-#: rc.cpp:415 rc.cpp:523 rc.cpp:690
-#, fuzzy, no-c-format
-msgid "Alt+S"
-msgstr "altsaxofon"
-
-#: rc.cpp:418
-#, no-c-format
-msgid "Line Selection - NoteEdit"
-msgstr "Linjeval - Notredigerare"
-
-#: rc.cpp:421
-#, no-c-format
-msgid "Element selection"
-msgstr "Elementval"
-
-#: rc.cpp:424
-#, no-c-format
-msgid "trill"
-msgstr "trill"
-
-#: rc.cpp:427
-#, no-c-format
-msgid "lonely trill"
-msgstr "ensam trill"
-
-#: rc.cpp:430
-#, no-c-format
-msgid "dynamic"
-msgstr "dynamisk"
-
-#: rc.cpp:436
-#, fuzzy, no-c-format
-msgid "8bassa"
-msgstr "bas"
-
-#: rc.cpp:445
-#, no-c-format
-msgid ""
-"<center><b>Hint:<br></b>After choosing one of the objects, use the middle "
-"mouse button to make a connection with the note.</center>"
-msgstr ""
-"<center><b>Tips:<br></b>Efter att ha valt ett föremål, använd mittmusknappen "
-"för att ansluta det till en not.</center>"
-
-#: rc.cpp:448
-#, no-c-format
-msgid "listForm"
-msgstr "listForm"
-
-#: rc.cpp:457
-#, no-c-format
-msgid "Lyrics settings - NoteEdit"
-msgstr "Sångtextinställningar - Notredigerare"
-
-#: rc.cpp:460
-#, no-c-format
-msgid "Lyrics"
-msgstr "Sångtexter"
-
-#: rc.cpp:463 uiconnect.cpp:1074
-#, no-c-format
-msgid "C&lear"
-msgstr "&Rensa"
-
-#: rc.cpp:466
-#, no-c-format
-msgid "Open &file"
-msgstr "Öppna &fil"
-
-#: rc.cpp:469
-#, no-c-format
-msgid "&Restore"
-msgstr "Åte&rställ"
-
-#: rc.cpp:478
-#, no-c-format
-msgid "Metronome - NoteEdit"
-msgstr "Takthållare - Notredigerare"
-
-#: rc.cpp:484
-#, no-c-format
-msgid "Device:"
-msgstr "Enhet:"
-
-#: rc.cpp:487
-#, no-c-format
-msgid "Beat note:"
-msgstr "Taktslagsnot:"
-
-#: rc.cpp:490
-#, no-c-format
-msgid "Bar note:"
-msgstr "Taktstrecksnot:"
-
-#: rc.cpp:493
-#, no-c-format
-msgid "Record tempo:"
-msgstr "Spela in tempo:"
-
-#: rc.cpp:496
-#, no-c-format
-msgid "&Start recording"
-msgstr "Påbörja in&spelning"
-
-#: rc.cpp:502
-#, fuzzy, no-c-format
-msgid "Additional MIDI parameters:"
-msgstr "Ytterligare engenskaper"
-
-#: rc.cpp:505
-#, no-c-format
-msgid "MIDI settings - NoteEdit"
-msgstr "MIDI-inställningar - Notredigerare"
-
-#: rc.cpp:514
-#, no-c-format
-msgid "MUP warning"
-msgstr "MUP-varning"
-
-#: rc.cpp:517 uiconnect.cpp:1534
-#, no-c-format
-msgid "Saved, but MUP does not work!"
-msgstr "Sparad, men fungerar ej med MUP!"
-
-#: rc.cpp:520
-#, no-c-format
-msgid "Don't &show this message in future"
-msgstr "Vi&sa inte det här meddelande igen"
-
-#: rc.cpp:538
-#, no-c-format
-msgid "The MusicXML export filter doesn't require any additional parameters."
-msgstr ""
-
-#: rc.cpp:544
-#, no-c-format
-msgid "Additional"
-msgstr "Ytterligare"
-
-#: rc.cpp:547
-#, no-c-format
-msgid "&With tempo signs"
-msgstr "&Med tempotecken"
-
-#: rc.cpp:550
-#, no-c-format
-msgid "With &volume signs"
-msgstr "Med l&judstyrketecken"
-
-#: rc.cpp:553
-#, fuzzy, no-c-format
-msgid "Indent:"
-msgstr "klarinett"
-
-#: rc.cpp:556
-#, fuzzy, no-c-format
-msgid "MusiXTeX-Cmd:"
-msgstr "MusiX&TeX-format"
-
-#: rc.cpp:571
-#, no-c-format
-msgid "Left margin:"
-msgstr "Vänstermarginal:"
-
-#: rc.cpp:574
-#, no-c-format
-msgid "Top margin:"
-msgstr "Övermarginal:"
-
-#: rc.cpp:580
-#, no-c-format
-msgid "Page generation"
-msgstr "Sidalstring"
-
-#: rc.cpp:583
-#, no-c-format
-msgid "ucs"
-msgstr ""
-
-#: rc.cpp:586
-#, no-c-format
-msgid "L&imit line measures"
-msgstr "&Begränsa radtakter"
-
-#: rc.cpp:589
-#, no-c-format
-msgid "Spa&re ties"
-msgstr "Spa&re ties"
-
-#: rc.cpp:592
-#, no-c-format
-msgid "With bar &numbers"
-msgstr "Med takt&nummer"
-
-#: rc.cpp:595
-#, no-c-format
-msgid "With musix&lyr"
-msgstr "Med musix&lyr"
-
-#: rc.cpp:598
-#, fuzzy, no-c-format
-msgid "&Omit page numbering"
-msgstr "med taktnummer"
-
-#: rc.cpp:608
-#, no-c-format
-msgid "latin1"
-msgstr ""
-
-#: rc.cpp:611
-#, no-c-format
-msgid "cp1251"
-msgstr ""
-
-#: rc.cpp:614
-#, no-c-format
-msgid "koi8-u"
-msgstr ""
-
-#: rc.cpp:617
-#, no-c-format
-msgid "koi8-r"
-msgstr ""
-
-#: rc.cpp:620
-#, fuzzy, no-c-format
-msgid "Small size"
-msgstr "&Liten storlek"
-
-#: rc.cpp:623
-#, fuzzy, no-c-format
-msgid "Normal size"
-msgstr "&Liten storlek"
-
-#: rc.cpp:626
-#, fuzzy, no-c-format
-msgid "Large size"
-msgstr "&Liten storlek"
-
-#: rc.cpp:629
-#, no-c-format
-msgid "Very large size"
-msgstr ""
-
-#: rc.cpp:633
-#, no-c-format
-msgid "T2A"
-msgstr ""
-
-#: rc.cpp:636
-#, no-c-format
-msgid "T2B"
-msgstr ""
-
-#: rc.cpp:639
-#, no-c-format
-msgid "T2C"
-msgstr ""
-
-#: rc.cpp:642
-#, no-c-format
-msgid "OT1"
-msgstr ""
-
-#: rc.cpp:645
-#, no-c-format
-msgid "OT2"
-msgstr ""
-
-#: rc.cpp:648
-#, no-c-format
-msgid "X2"
-msgstr ""
-
-#: rc.cpp:651
-#, no-c-format
-msgid "LCY"
-msgstr ""
-
-#: rc.cpp:654
-#, fuzzy, no-c-format
-msgid "PMXForm"
-msgstr "&PMX-format"
-
-#: rc.cpp:669
-#, fuzzy, no-c-format
-msgid "Keep beams"
-msgstr "&Behåll balkar"
-
-#: rc.cpp:672
-#, fuzzy, no-c-format
-msgid "&With musixlyr"
-msgstr "Med musix&lyr"
-
-#: rc.cpp:675
-#, no-c-format
-msgid "Settings"
-msgstr "Inställningar"
-
-#: rc.cpp:678
-#, no-c-format
-msgid "<center>Measures<br>per system:"
-msgstr "<center>Takter<br>per system:"
-
-#: rc.cpp:681
-#, no-c-format
-msgid "<center>Systems<br>per page:"
-msgstr "<center>System<br>per sida:"
-
-#: rc.cpp:684
-#, no-c-format
-msgid "<center>Number<br>of pages:"
-msgstr "<center>Antal<br>sidor:"
-
-#: rc.cpp:693
-#, fuzzy, no-c-format
-msgid "Save parameters"
-msgstr "Sparningsparametrar"
-
-#: rc.cpp:699
-#, fuzzy, no-c-format
-msgid "Enable"
-msgstr "Tillåt"
-
-#: rc.cpp:705
-#, fuzzy, no-c-format
-msgid "&With measure numbers"
-msgstr "med taktnummer"
-
-#: rc.cpp:708
-#, fuzzy, no-c-format
-msgid "Alt+W"
-msgstr "altsaxofon"
-
-#: rc.cpp:717
-#, no-c-format
-msgid "Dismiss"
-msgstr "Avfärda"
-
-#: rc.cpp:720
-#, no-c-format
-msgid "set value"
-msgstr "välj värde"
-
-#: rc.cpp:723
-#, no-c-format
-msgid "scaleForm"
-msgstr "scaleForm"
-
-#: rc.cpp:730
-#, no-c-format
-msgid "&Include rests"
-msgstr "&Ta med pauser"
-
-#: rc.cpp:733
-#, no-c-format
-msgid "Cleanup rests - NoteEdit"
-msgstr "Rensa pauser - Notredigerare"
-
-#: rc.cpp:736
-#, no-c-format
-msgid "Choose smallest rest:"
-msgstr "Välj minsta paus:"
-
-#: rc.cpp:745
-#, no-c-format
-msgid "staffForm"
-msgstr "staffForm"
-
-#: rc.cpp:754
-#, no-c-format
-msgid "Staff properties - NoteEdit"
-msgstr "Notradsegenskaper - Notredigerare"
-
-#: rc.cpp:763 rc.cpp:766
-#, no-c-format
-msgid "Staff"
-msgstr "Notrad"
-
-#: rc.cpp:769
-#, no-c-format
-msgid "Name:"
-msgstr "Namn:"
-
-#: rc.cpp:772
-#, no-c-format
-msgid "Channel:"
-msgstr "Kanal:"
-
-#: rc.cpp:775
-#, no-c-format
-msgid "Instrument:"
-msgstr ""
-
-#: rc.cpp:781
-#, no-c-format
-msgid "Overlength:"
-msgstr "Överlängd:"
-
-#: rc.cpp:784
-#, no-c-format
-msgid "Play<br>transposed:"
-msgstr "Spela<br>transponerad:"
-
-#: rc.cpp:787
-#, no-c-format
-msgid "Chorus:"
-msgstr "Kör:"
-
-#: rc.cpp:790
-#, no-c-format
-msgid "Reverb:"
-msgstr "Eko:"
-
-#: rc.cpp:793
-#, no-c-format
-msgid "Stereo Pos:"
-msgstr "Steropos:"
-
-#: rc.cpp:796
-#, no-c-format
-msgid "Lyrics dist.:"
-msgstr "Sångtextavstånd:"
-
-#: rc.cpp:799
-#, no-c-format
-msgid "Underlength:"
-msgstr "Underlängd:"
-
-#: rc.cpp:802
-#, no-c-format
-msgid "Volume:"
-msgstr "Ljudstyrka:"
-
-#: rc.cpp:805 rc.cpp:830 rc.cpp:913
-#, no-c-format
-msgid "Voice"
-msgstr "Stämma"
-
-#: rc.cpp:808
-#, fuzzy, no-c-format
-msgid "C&reate Voice"
-msgstr "Skapa st&ämma"
-
-#: rc.cpp:811
-#, no-c-format
-msgid "Alt+R"
-msgstr ""
-
-#: rc.cpp:820
-#, fuzzy, no-c-format
-msgid "&Test"
-msgstr "&Markera allt"
-
-#: rc.cpp:827 rc.cpp:910
-#, no-c-format
-msgid "Staff No."
-msgstr "Notradsnummer"
-
-#: rc.cpp:833
-#, no-c-format
-msgid "Staff name"
-msgstr "Notradsnamn"
-
-#: rc.cpp:836
-#, no-c-format
-msgid "&Select all"
-msgstr "&Markera allt"
-
-#: rc.cpp:839
-#, no-c-format
-msgid "&Unselect all"
-msgstr "&Avmarkera allt"
-
-#: rc.cpp:848
-#, no-c-format
-msgid "Text Dialog"
-msgstr ""
-
-#: rc.cpp:851
-#, no-c-format
-msgid "Text"
-msgstr ""
-
-#: rc.cpp:854
-#, no-c-format
-msgid "Enter text:"
-msgstr ""
-
-#: rc.cpp:857 rc.cpp:944
-#, no-c-format
-msgid "Ok"
-msgstr ""
-
-#: rc.cpp:863
-#, no-c-format
-msgid "Uptext"
-msgstr ""
-
-#: rc.cpp:866
-#, fuzzy, no-c-format
-msgid "DownText"
-msgstr "&Ned"
-
-#: rc.cpp:869
-#, no-c-format
-msgid "TimeSignature"
-msgstr "Tidssignatur"
-
-#: rc.cpp:872
-#, fuzzy, no-c-format
-msgid "Custom time signature"
-msgstr "Välj tidssignaturer"
-
-#: rc.cpp:881
-#, no-c-format
-msgid "Predefined time signatures"
-msgstr "Förinställda tidssignaturer"
-
-#: rc.cpp:889
-#, no-c-format
-msgid "Tip of the day - NoteEdit"
-msgstr "Dagens tips - Notredigerare"
-
-#: rc.cpp:892
-#, no-c-format
-msgid "&Show tips in future"
-msgstr "Vi&sa tips i framtiden"
-
-#: rc.cpp:898
-#, no-c-format
-msgid "Information about the TSE3 song - NoteEdit"
-msgstr "Information om TSE3-sången - Notredigerare"
-
-#: rc.cpp:901
-#, no-c-format
-msgid "Track No."
-msgstr "Spårnummer"
-
-#: rc.cpp:907
-#, no-c-format
-msgid "Splitted"
-msgstr "Klyvd"
-
-#: rc.cpp:916
-#, no-c-format
-msgid "Channel"
-msgstr "Kanal"
-
-#: rc.cpp:919
-#, no-c-format
-msgid "Volume"
-msgstr "Ljudstyrka"
-
-#: rc.cpp:922
-#, no-c-format
-msgid "Clef"
-msgstr "Klav"
-
-#: rc.cpp:925
-#, no-c-format
-msgid "Shift"
-msgstr "Skifta"
-
-#: rc.cpp:931
-#, fuzzy, no-c-format
-msgid "Tuplets"
-msgstr "Triol"
-
-#: rc.cpp:935
-#, no-c-format
-msgid "Number of notes:"
-msgstr ""
-
-#: rc.cpp:941
-#, no-c-format
-msgid "Real length (in notes above)"
-msgstr ""
-
-#: rc.cpp:947
-#, no-c-format
-msgid "Voices - NoteEdit"
-msgstr "Stämmor - Notredigerare"
-
-#: rc.cpp:950
-#, no-c-format
-msgid "Stem direction"
-msgstr "Stamriktning"
-
-#: rc.cpp:953
-#, no-c-format
-msgid "&Up"
-msgstr "&Upp"
-
-#: rc.cpp:956
-#, no-c-format
-msgid "Do&wn"
-msgstr "&Ned"
-
-#: rc.cpp:959
-#, no-c-format
-msgid "&Indiviual"
-msgstr "Ol&ika"
-
-#: rc.cpp:962
-#, no-c-format
-msgid "Create &voice"
-msgstr "Skapa st&ämma"
-
-#: rc.cpp:965
-#, no-c-format
-msgid "&Delete voice"
-msgstr "Ta &bort stämma"
-
-#: rc.cpp:977
-#, no-c-format
-msgid "Voice number:"
-msgstr "Stämmonummer:"
-
-#: rc.cpp:980
-#, no-c-format
-msgid "<center>Rest position</center>"
-msgstr "<center>Pausläge:</center>"
-
-#: rc.cpp:983
-#, no-c-format
-msgid "Insert volume - NoteEdit"
-msgstr "Infoga ljudstyrka - Notredigerare"
-
-#: rc.cpp:992
-#, no-c-format
-msgid "volume"
-msgstr "ljudstyrka"
-
-#: rc.cpp:995
-#, no-c-format
-msgid "Musical express:"
-msgstr "Musikuttryck:"
 
 #: resource.cpp:75
 msgid "ppp"
@@ -3890,6 +2838,11 @@ msgstr "gevärsskott"
 msgid "Details:"
 msgstr "Detaljer:"
 
+#: resource.cpp:573
+#, fuzzy
+msgid "Do not show this message again"
+msgstr "Vi&sa inte det här meddelande igen"
+
 #: resource.cpp:620
 msgid ""
 "<b>An internal error happened somewhere.<br><br></b>The message is:<br><i>\"%"
@@ -4362,18 +3315,6 @@ msgstr ""
 "<p><b>Lägg märke till:</b> Det markerade omrädet ska börja med en klav.\n"
 "Notredigeraren slutar ändra ackorden/noterna om en ny klav påträffas.\n"
 
-#: _translatorinfo.cpp:1
-msgid ""
-"_: NAME OF TRANSLATORS\n"
-"Your names"
-msgstr "Erik Sigra"
-
-#: _translatorinfo.cpp:3
-msgid ""
-"_: EMAIL OF TRANSLATORS\n"
-"Your emails"
-msgstr "<sigra@home.se>"
-
 #: tse3handler.cpp:312 tse3handler.cpp:338 tse3handler.cpp:363
 #: tse3handler.cpp:468 tse3handler.cpp:487 tse3handler.cpp:521
 #: tse3handler.cpp:564
@@ -4470,6 +3411,10 @@ msgstr "Importera inspelning"
 msgid "There is nothing to export."
 msgstr "Det finns ingenting att exportera."
 
+#: uiconnect.cpp:161 uiconnect.cpp:283 uiconnect.cpp:1555
+msgid "Export"
+msgstr "Exportera"
+
 #: uiconnect.cpp:282
 msgid "No staff selected for export."
 msgstr "Ingen notrad vald för export."
@@ -4490,6 +3435,10 @@ msgstr "LilyPond stöds inte av systemet. Vill du verkligen exportera?"
 #: uiconnect.cpp:351
 msgid "LilyPond export"
 msgstr "Exportera till LilyPond"
+
+#: uiconnect.cpp:352
+msgid "&Export"
+msgstr "&Exportera"
 
 #: uiconnect.cpp:766 uiconnect.cpp:767
 #, fuzzy
@@ -4534,6 +3483,10 @@ msgstr "Vill du verkligen ta bort den valda versen?"
 #, fuzzy
 msgid "Clear stanza"
 msgstr "&Töm alla"
+
+#: uiconnect.cpp:1074
+msgid "C&lear"
+msgstr "&Rensa"
 
 #: uiconnect.cpp:1101
 msgid "File open aborted."
@@ -4632,6 +3585,10 @@ msgstr "&Byt klav..."
 msgid "Insert special barline"
 msgstr ""
 
+#: uiconnect.cpp:1534
+msgid "Saved, but MUP does not work!"
+msgstr "Sparad, men fungerar ej med MUP!"
+
 #: voice.cpp:4434
 msgid "posit: chord skipped"
 msgstr "posit: ackord överhoppat"
@@ -4655,6 +3612,11 @@ msgstr "Stammar nedåt"
 #: voicedialog.cpp:72
 msgid "Rest position"
 msgstr "Pausläge"
+
+#: voicedialog.cpp:79
+#, fuzzy
+msgid "Delete"
+msgstr "ta bort"
 
 #: voicedialog.cpp:88
 msgid "The number of the voice to which the settings above apply."
@@ -4756,6 +3718,10 @@ msgstr ""
 msgid "remove chord"
 msgstr "flytta till slutet"
 
+#: ../kguitar_excerpt/chord.cpp:349
+msgid "OK"
+msgstr ""
+
 #: ../kguitar_excerpt/chord.cpp:357
 msgid "show diagram"
 msgstr ""
@@ -4764,6 +3730,584 @@ msgstr ""
 #, fuzzy
 msgid "Chord constructor"
 msgstr "Partiturstyrning"
+
+#~ msgid "St&aff"
+#~ msgstr "&Notrad"
+
+#~ msgid "TSE&3"
+#~ msgstr "TSE&3"
+
+#~ msgid "&Window"
+#~ msgstr "&Fönster"
+
+#~ msgid "Program control"
+#~ msgstr "Programstyrning"
+
+#~ msgid "Control"
+#~ msgstr "Styrning"
+
+#~ msgid "Score control"
+#~ msgstr "Partiturstyrning"
+
+#~ msgid "Notes"
+#~ msgstr "Noter"
+
+#~ msgid "signs"
+#~ msgstr "tecken"
+
+#~ msgid "additional"
+#~ msgstr "ytterligare"
+
+#~ msgid "Accent Toolbar"
+#~ msgstr "Accentverktygsrad"
+
+#, fuzzy
+#~ msgid "&Import"
+#~ msgstr "&Exportera"
+
+#, fuzzy
+#~ msgid "F&ormat"
+#~ msgstr "Fermate"
+
+#~ msgid "Page geometry"
+#~ msgstr "Sidmått"
+
+#, fuzzy
+#~ msgid "Expressiones above"
+#~ msgstr "ljudstyrketecken ovanför"
+
+#, fuzzy
+#~ msgid "Staff separation:"
+#~ msgstr "Notrad&sval"
+
+#~ msgid "Height:"
+#~ msgstr "Höjd:"
+
+#~ msgid "Width:"
+#~ msgstr "Bredd:"
+
+#, fuzzy
+#~ msgid "Scale:"
+#~ msgstr "Fartskala:"
+
+#, fuzzy
+#~ msgid "Measure numbers in a box"
+#~ msgstr "med taktnummer"
+
+#~ msgid "File export - NoteEdit"
+#~ msgstr "Filexport - NoteEdit"
+
+#~ msgid "Start &export"
+#~ msgstr "Påbörja &export"
+
+#, fuzzy
+#~ msgid "Alt+E"
+#~ msgstr "altsaxofon"
+
+#, fuzzy
+#~ msgid "Midi format"
+#~ msgstr "&PMX-format"
+
+#, fuzzy
+#~ msgid "MusiXTeX format"
+#~ msgstr "MusiX&TeX-format"
+
+#, fuzzy
+#~ msgid "PMX format"
+#~ msgstr "&PMX-format"
+
+#, fuzzy
+#~ msgid "Lilypond format"
+#~ msgstr "Lil&yPond-format"
+
+#, fuzzy
+#~ msgid "MusicXML format"
+#~ msgstr "MusiX&TeX-format"
+
+#, fuzzy
+#~ msgid "Export warning"
+#~ msgstr "exportvarning"
+
+#~ msgid "&Details >>"
+#~ msgstr "&Detaljer >>"
+
+#~ msgid "Export problems"
+#~ msgstr "Exportproblem"
+
+#~ msgid "Filter - NoteEdit"
+#~ msgstr "Filter - Notredigerare"
+
+#~ msgid "Xxx:"
+#~ msgstr "Xxx:"
+
+#~ msgid "Max volume:"
+#~ msgstr "Största ljudstyrka:"
+
+#~ msgid "Vel scale:"
+#~ msgstr "Fartskala:"
+
+#, fuzzy
+#~ msgid "Volume step:"
+#~ msgstr "Ljudstyrkor:"
+
+#~ msgid "&Average volume"
+#~ msgstr "Genomsnittlig ljudstyrk&a"
+
+#~ msgid "Choose snap distance:"
+#~ msgstr "Välj snapavstånd:"
+
+#, fuzzy
+#~ msgid "Triplet Raster:"
+#~ msgstr "Triol"
+
+#, fuzzy
+#~ msgid "&TSE3 to Score ..."
+#~ msgstr "&TSE3 till partitur..."
+
+#, fuzzy
+#~ msgid "&Line to Score .."
+#~ msgstr "&TSE3 till partitur..."
+
+#~ msgid "Settings - NoteEdit"
+#~ msgstr "Inställningar - Notredigerare"
+
+#, fuzzy
+#~ msgid "auto insert beams"
+#~ msgstr "infoga paus"
+
+#~ msgid "Allow insert from &keyboard"
+#~ msgstr "Infoga från &tangentbord"
+
+#~ msgid "Move according key&sig"
+#~ msgstr "&Flytta enligt förtecken"
+
+#~ msgid "&Tip of the Day"
+#~ msgstr "&Dagens tips"
+
+#~ msgid ""
+#~ "If Tip of the Day is enabled, NoteEdit will show the Tip of the Day every "
+#~ "time it starts."
+#~ msgstr ""
+#~ "Om dagens tips är valt visas dagens tips varje gång programmet körs."
+
+#~ msgid "Additional attributes"
+#~ msgstr "Ytterligare engenskaper"
+
+#, fuzzy
+#~ msgid "Volume signs:"
+#~ msgstr "&Ljudstyrkesignaturer:"
+
+#, fuzzy
+#~ msgid "Global size:"
+#~ msgstr "&Liten storlek"
+
+#~ msgid "20"
+#~ msgstr "20"
+
+#, fuzzy
+#~ msgid "No volume signs"
+#~ msgstr "inga ljudstyrketecken"
+
+#, fuzzy
+#~ msgid "Volume signs above"
+#~ msgstr "ljudstyrketecken ovanför"
+
+#, fuzzy
+#~ msgid "Volume signs below"
+#~ msgstr "ljudstyrketecken under"
+
+#~ msgid "Generating parameters"
+#~ msgstr "Alstringsparametrar"
+
+#~ msgid "Keep &beams"
+#~ msgstr "&Behåll balkar"
+
+#, fuzzy
+#~ msgid "Alt+B"
+#~ msgstr "altsaxofon"
+
+#, fuzzy
+#~ msgid "&Keep stem directions"
+#~ msgstr "Behåll stamri&ktiningar"
+
+#, fuzzy
+#~ msgid "Alt+K"
+#~ msgstr "altsaxofon"
+
+#, fuzzy
+#~ msgid "E&xport drum notes"
+#~ msgstr "Exportproblem"
+
+#, fuzzy
+#~ msgid "Alt+X"
+#~ msgstr "altsaxofon"
+
+#, fuzzy
+#~ msgid "&Only voices skeleton"
+#~ msgstr "&Endast stämmor"
+
+#~ msgid "Sparse &ties"
+#~ msgstr "Sparse &ties"
+
+#~ msgid "L&imit the measures"
+#~ msgstr "&Begränsa takterna"
+
+#, fuzzy
+#~ msgid "Alt+I"
+#~ msgstr "altsaxofon"
+
+#, fuzzy
+#~ msgid "Character encoding:"
+#~ msgstr "Påbörja in&spelning"
+
+#~ msgid "&Landscape"
+#~ msgstr "&Liggande"
+
+#, fuzzy
+#~ msgid "Alt+L"
+#~ msgstr "altsaxofon"
+
+#, fuzzy
+#~ msgid "Alt+U"
+#~ msgstr "altsaxofon"
+
+#, fuzzy
+#~ msgid "Alt+Z"
+#~ msgstr "altsaxofon"
+
+#~ msgid "&Staff selection"
+#~ msgstr "Notrad&sval"
+
+#, fuzzy
+#~ msgid "Alt+S"
+#~ msgstr "altsaxofon"
+
+#~ msgid "Line Selection - NoteEdit"
+#~ msgstr "Linjeval - Notredigerare"
+
+#~ msgid "Element selection"
+#~ msgstr "Elementval"
+
+#~ msgid "trill"
+#~ msgstr "trill"
+
+#~ msgid "lonely trill"
+#~ msgstr "ensam trill"
+
+#~ msgid "dynamic"
+#~ msgstr "dynamisk"
+
+#, fuzzy
+#~ msgid "8bassa"
+#~ msgstr "bas"
+
+#~ msgid ""
+#~ "<center><b>Hint:<br></b>After choosing one of the objects, use the middle "
+#~ "mouse button to make a connection with the note.</center>"
+#~ msgstr ""
+#~ "<center><b>Tips:<br></b>Efter att ha valt ett föremål, använd "
+#~ "mittmusknappen för att ansluta det till en not.</center>"
+
+#~ msgid "listForm"
+#~ msgstr "listForm"
+
+#~ msgid "Lyrics settings - NoteEdit"
+#~ msgstr "Sångtextinställningar - Notredigerare"
+
+#~ msgid "Lyrics"
+#~ msgstr "Sångtexter"
+
+#~ msgid "Open &file"
+#~ msgstr "Öppna &fil"
+
+#~ msgid "&Restore"
+#~ msgstr "Åte&rställ"
+
+#~ msgid "Metronome - NoteEdit"
+#~ msgstr "Takthållare - Notredigerare"
+
+#~ msgid "Device:"
+#~ msgstr "Enhet:"
+
+#~ msgid "Beat note:"
+#~ msgstr "Taktslagsnot:"
+
+#~ msgid "Bar note:"
+#~ msgstr "Taktstrecksnot:"
+
+#~ msgid "Record tempo:"
+#~ msgstr "Spela in tempo:"
+
+#~ msgid "&Start recording"
+#~ msgstr "Påbörja in&spelning"
+
+#, fuzzy
+#~ msgid "Additional MIDI parameters:"
+#~ msgstr "Ytterligare engenskaper"
+
+#~ msgid "MIDI settings - NoteEdit"
+#~ msgstr "MIDI-inställningar - Notredigerare"
+
+#~ msgid "MUP warning"
+#~ msgstr "MUP-varning"
+
+#~ msgid "Don't &show this message in future"
+#~ msgstr "Vi&sa inte det här meddelande igen"
+
+#~ msgid "Additional"
+#~ msgstr "Ytterligare"
+
+#~ msgid "&With tempo signs"
+#~ msgstr "&Med tempotecken"
+
+#~ msgid "With &volume signs"
+#~ msgstr "Med l&judstyrketecken"
+
+#, fuzzy
+#~ msgid "Indent:"
+#~ msgstr "klarinett"
+
+#, fuzzy
+#~ msgid "MusiXTeX-Cmd:"
+#~ msgstr "MusiX&TeX-format"
+
+#~ msgid "Left margin:"
+#~ msgstr "Vänstermarginal:"
+
+#~ msgid "Top margin:"
+#~ msgstr "Övermarginal:"
+
+#~ msgid "Page generation"
+#~ msgstr "Sidalstring"
+
+#~ msgid "L&imit line measures"
+#~ msgstr "&Begränsa radtakter"
+
+#~ msgid "Spa&re ties"
+#~ msgstr "Spa&re ties"
+
+#~ msgid "With bar &numbers"
+#~ msgstr "Med takt&nummer"
+
+#~ msgid "With musix&lyr"
+#~ msgstr "Med musix&lyr"
+
+#, fuzzy
+#~ msgid "&Omit page numbering"
+#~ msgstr "med taktnummer"
+
+#, fuzzy
+#~ msgid "Small size"
+#~ msgstr "&Liten storlek"
+
+#, fuzzy
+#~ msgid "Normal size"
+#~ msgstr "&Liten storlek"
+
+#, fuzzy
+#~ msgid "Large size"
+#~ msgstr "&Liten storlek"
+
+#, fuzzy
+#~ msgid "PMXForm"
+#~ msgstr "&PMX-format"
+
+#, fuzzy
+#~ msgid "Keep beams"
+#~ msgstr "&Behåll balkar"
+
+#, fuzzy
+#~ msgid "&With musixlyr"
+#~ msgstr "Med musix&lyr"
+
+#~ msgid "Settings"
+#~ msgstr "Inställningar"
+
+#~ msgid "<center>Measures<br>per system:"
+#~ msgstr "<center>Takter<br>per system:"
+
+#~ msgid "<center>Systems<br>per page:"
+#~ msgstr "<center>System<br>per sida:"
+
+#~ msgid "<center>Number<br>of pages:"
+#~ msgstr "<center>Antal<br>sidor:"
+
+#, fuzzy
+#~ msgid "Save parameters"
+#~ msgstr "Sparningsparametrar"
+
+#, fuzzy
+#~ msgid "Enable"
+#~ msgstr "Tillåt"
+
+#, fuzzy
+#~ msgid "&With measure numbers"
+#~ msgstr "med taktnummer"
+
+#, fuzzy
+#~ msgid "Alt+W"
+#~ msgstr "altsaxofon"
+
+#~ msgid "Dismiss"
+#~ msgstr "Avfärda"
+
+#~ msgid "set value"
+#~ msgstr "välj värde"
+
+#~ msgid "scaleForm"
+#~ msgstr "scaleForm"
+
+#~ msgid "&Include rests"
+#~ msgstr "&Ta med pauser"
+
+#~ msgid "Cleanup rests - NoteEdit"
+#~ msgstr "Rensa pauser - Notredigerare"
+
+#~ msgid "Choose smallest rest:"
+#~ msgstr "Välj minsta paus:"
+
+#~ msgid "staffForm"
+#~ msgstr "staffForm"
+
+#~ msgid "Staff properties - NoteEdit"
+#~ msgstr "Notradsegenskaper - Notredigerare"
+
+#~ msgid "Staff"
+#~ msgstr "Notrad"
+
+#~ msgid "Name:"
+#~ msgstr "Namn:"
+
+#~ msgid "Channel:"
+#~ msgstr "Kanal:"
+
+#~ msgid "Overlength:"
+#~ msgstr "Överlängd:"
+
+#~ msgid "Play<br>transposed:"
+#~ msgstr "Spela<br>transponerad:"
+
+#~ msgid "Chorus:"
+#~ msgstr "Kör:"
+
+#~ msgid "Reverb:"
+#~ msgstr "Eko:"
+
+#~ msgid "Stereo Pos:"
+#~ msgstr "Steropos:"
+
+#~ msgid "Lyrics dist.:"
+#~ msgstr "Sångtextavstånd:"
+
+#~ msgid "Underlength:"
+#~ msgstr "Underlängd:"
+
+#~ msgid "Volume:"
+#~ msgstr "Ljudstyrka:"
+
+#~ msgid "Voice"
+#~ msgstr "Stämma"
+
+#, fuzzy
+#~ msgid "C&reate Voice"
+#~ msgstr "Skapa st&ämma"
+
+#, fuzzy
+#~ msgid "&Test"
+#~ msgstr "&Markera allt"
+
+#~ msgid "Staff No."
+#~ msgstr "Notradsnummer"
+
+#~ msgid "Staff name"
+#~ msgstr "Notradsnamn"
+
+#~ msgid "&Select all"
+#~ msgstr "&Markera allt"
+
+#~ msgid "&Unselect all"
+#~ msgstr "&Avmarkera allt"
+
+#, fuzzy
+#~ msgid "DownText"
+#~ msgstr "&Ned"
+
+#~ msgid "TimeSignature"
+#~ msgstr "Tidssignatur"
+
+#, fuzzy
+#~ msgid "Custom time signature"
+#~ msgstr "Välj tidssignaturer"
+
+#~ msgid "Predefined time signatures"
+#~ msgstr "Förinställda tidssignaturer"
+
+#~ msgid "Tip of the day - NoteEdit"
+#~ msgstr "Dagens tips - Notredigerare"
+
+#~ msgid "&Show tips in future"
+#~ msgstr "Vi&sa tips i framtiden"
+
+#~ msgid "Information about the TSE3 song - NoteEdit"
+#~ msgstr "Information om TSE3-sången - Notredigerare"
+
+#~ msgid "Track No."
+#~ msgstr "Spårnummer"
+
+#~ msgid "Splitted"
+#~ msgstr "Klyvd"
+
+#~ msgid "Channel"
+#~ msgstr "Kanal"
+
+#~ msgid "Volume"
+#~ msgstr "Ljudstyrka"
+
+#~ msgid "Clef"
+#~ msgstr "Klav"
+
+#~ msgid "Shift"
+#~ msgstr "Skifta"
+
+#, fuzzy
+#~ msgid "Tuplets"
+#~ msgstr "Triol"
+
+#~ msgid "Voices - NoteEdit"
+#~ msgstr "Stämmor - Notredigerare"
+
+#~ msgid "Stem direction"
+#~ msgstr "Stamriktning"
+
+#~ msgid "&Up"
+#~ msgstr "&Upp"
+
+#~ msgid "Do&wn"
+#~ msgstr "&Ned"
+
+#~ msgid "&Indiviual"
+#~ msgstr "Ol&ika"
+
+#~ msgid "Create &voice"
+#~ msgstr "Skapa st&ämma"
+
+#~ msgid "&Delete voice"
+#~ msgstr "Ta &bort stämma"
+
+#~ msgid "Voice number:"
+#~ msgstr "Stämmonummer:"
+
+#~ msgid "<center>Rest position</center>"
+#~ msgstr "<center>Pausläge:</center>"
+
+#~ msgid "Insert volume - NoteEdit"
+#~ msgstr "Infoga ljudstyrka - Notredigerare"
+
+#~ msgid "volume"
+#~ msgstr "ljudstyrka"
+
+#~ msgid "Musical express:"
+#~ msgstr "Musikuttryck:"
 
 #~ msgid "11"
 #~ msgstr "11"
@@ -4810,55 +4354,6 @@ msgstr "Partiturstyrning"
 #~ "Notredigeraren har exporterat partituret till PMX men det uppstod några\n"
 #~ "problem som antagligen kommer att förhindra riktiga utdata från PMX.\n"
 
-#~ msgid "Configure"
-#~ msgstr "Ställ in"
-
-#, fuzzy
-#~ msgid "Save"
-#~ msgstr "sågvåg"
-
-#, fuzzy
-#~ msgid "Cancel"
-#~ msgstr "Kanal"
-
-#, fuzzy
-#~ msgid "&Print..."
-#~ msgstr "&Linje..."
-
-#, fuzzy
-#~ msgid "&Close"
-#~ msgstr "Stäng &alla"
-
-#, fuzzy
-#~ msgid "&Quit"
-#~ msgstr "&Tysta"
-
-#~ msgid "Zoom"
-#~ msgstr "Zoom"
-
-#, fuzzy
-#~ msgid "&Cancel"
-#~ msgstr "Kanal"
-
-#, fuzzy
-#~ msgid "&Save"
-#~ msgstr "&Markera allt"
-
-#~ msgid "&Discard"
-#~ msgstr "&Förkasta"
-
-#, fuzzy
-#~ msgid "Close"
-#~ msgstr "Färger"
-
-#, fuzzy
-#~ msgid "&Delete"
-#~ msgstr "&Markera allt"
-
-#, fuzzy
-#~ msgid "&Start"
-#~ msgstr "Igångkörning"
-
 #, fuzzy
 #~ msgid "&Edit"
 #~ msgstr "Redigering"
@@ -4886,22 +4381,11 @@ msgstr "Partiturstyrning"
 #~ msgid "&Apply"
 #~ msgstr "Tillämp&a"
 
-#, fuzzy
-#~ msgid "Do not show this message again"
-#~ msgstr "Vi&sa inte det här meddelande igen"
-
 #~ msgid "A&uthor:"
 #~ msgstr "&Författare:"
 
 #~ msgid "&Last author:"
 #~ msgstr "&Senaste författare:"
-
-#~ msgid "Export"
-#~ msgstr "Exportera"
-
-#, fuzzy
-#~ msgid "Delete"
-#~ msgstr "ta bort"
 
 #, fuzzy
 #~ msgid "Goto measure"

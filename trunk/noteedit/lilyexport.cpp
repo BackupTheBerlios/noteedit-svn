@@ -43,6 +43,7 @@
 #include <qspinbox.h>
 #include <qslider.h>
 #include <qradiobutton.h>
+#include <qptrlist.h>
 #include "lilyexport.h"
 #include "mainframewidget.h"
 #include "resource.h"
@@ -725,7 +726,8 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	int total = 0, i;
 	bool first;
 	bool AfterFirstBar = false;
-	const char *pendingVolSig = 0;
+	QPtrList<const char> pendingVolSigs;
+	pendingVolSigs.setAutoDelete(false);
 	int pending_tempo = -1;
 	unsigned int pending_segnos_rirads_accels = 0;
 #define PENDING_SEGNO		  (1 << 0)
@@ -778,7 +780,8 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 	int c4Line;
 	int restlen=0;
 	int octaviation = 0;
-	NText *pending_text = 0;
+	QPtrList<NText> pending_texts;
+	pending_texts.setAutoDelete(false);
 	bool drumNotesChange = true;	//is note not inside chord
 
 	countof128th_ = 128;
@@ -871,7 +874,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 							out_ << "\\fatText ";
 						}
 					}
-					if ((pending_text || (pending_segnos_rirads_accels & SOME_SIGNS_WITH_TEXT)) && !fatTextWritten) {
+					if ((!pending_texts.isEmpty() || (pending_segnos_rirads_accels & SOME_SIGNS_WITH_TEXT)) && !fatTextWritten) {
 						fatTextWritten = true;
 						out_ << "\\fatText ";
 					}
@@ -1190,21 +1193,27 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 							}
 						}
 						if (!NResource::lilyProperties_.lilyVersion2) {
-							if (pendingVolSig) {
-								switch (lilyOpts_.volume) {
-									case 1: out_ << '^' << pendingVolSig; break;
-									case 2: out_  << pendingVolSig; break;
-								}
-								pendingVolSig = 0;
+							if (!pendingVolSigs.isEmpty()) {
+							  const char *pendingVolSig;
+							  for(pendingVolSig=pendingVolSigs.first();pendingVolSig;pendingVolSig=pendingVolSigs.next()){
+							    switch (lilyOpts_.volume) {
+							    case 1: out_ << '^' << pendingVolSig; break;
+							    case 2: out_  << pendingVolSig; break;
+							    }
+							  };
+							  pendingVolSigs.clear();
 							}
-							if (pending_text) {
-								if (pending_text->getSubType() == TEXT_UPTEXT) {
-									out_ << "^#'(large \"" << pending_text->getText() << "\") ";
-								}
-								else {
-									out_ << "_#'(large \"" << pending_text->getText() << "\") ";
-								}
-								pending_text = 0;
+							if (!pending_texts.isEmpty()){
+							  NText *pending_text;
+							  for(pending_text=pending_texts.first();pending_text;pending_text=pending_texts.next()){
+							    if (pending_text->getSubType() == TEXT_UPTEXT) {
+							      out_ << "^#'(large \"" << pending_text->getText() << "\") ";
+							    }
+							    else {
+							      out_ << "_#'(large \"" << pending_text->getText() << "\") ";
+							    };
+							  };
+							  pending_texts.clear();
 							}
 									
 							if (pending_tempo >= 0) {
@@ -1277,21 +1286,28 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					if ((chord->hasProperty( PROP_SLURED ) ) && !inA_tura && !inLongacciaccatura) {
 					  		out_ << " ( ";
 					}
-					if (pendingVolSig) {
-						switch (lilyOpts_.volume) {
-							case 1: out_ << '^' << pendingVolSig; break;
-							case 2: out_  << pendingVolSig; break;
-						}
-						pendingVolSig = 0;
+					if (!pendingVolSigs.isEmpty()) {
+					  const char *pendingVolSig;
+					  for(pendingVolSig=pendingVolSigs.first();pendingVolSig;pendingVolSig=pendingVolSigs.next()){
+					    switch (lilyOpts_.volume) {
+					    case 1: out_ << '^' << pendingVolSig; break;
+					    case 2: out_  << pendingVolSig; break;
+					    }
+					  };
+					  pendingVolSigs.clear();
 					}
-					if (pending_text) {
-						if (pending_text->getSubType() == TEXT_UPTEXT) {
-							out_ << "^\\markup{\\large {" << pending_text->getText() << "} } ";
-						}
-						else  {
-							out_ << "_\\markup{\\large {" << pending_text->getText() << "} } ";
-						}
-						pending_text = 0;
+					if (!pending_texts.isEmpty()) {
+					  NText *pending_text;
+					  for(pending_text=pending_texts.first();pending_text;pending_text=pending_texts.next()){
+					    
+					    if (pending_text->getSubType() == TEXT_UPTEXT) {
+					      out_ << "^\\markup{\\large {" << pending_text->getText() << "} } ";
+					    }
+					    else  {
+					      out_ << "_\\markup{\\large {" << pending_text->getText() << "} } ";
+					    }
+					  };
+					  pending_texts.clear();
 					}
 					if (chord->hasProperty( PROP_ARPEGG ) ) {
 						out_ << "\\arpeggio ";
@@ -1441,12 +1457,15 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					bad = new badmeasure(LILY_ERR_NOTE_COUNT, (staff_nr + 1), barNr_, total / 3, countof128th_);
 					badlist_.append(bad);
 				     }
-				     if (pendingVolSig) {
-						switch (lilyOpts_.volume) {
-							case 1: out_ << '^' << pendingVolSig; break;
-							case 2: out_  << pendingVolSig; break;
-						}
-						pendingVolSig = 0;
+				     if (!pendingVolSigs.isEmpty()) {
+				       const char *pendingVolSig;
+				       for(pendingVolSig=pendingVolSigs.first();pendingVolSig;pendingVolSig=pendingVolSigs.next()){
+					 switch (lilyOpts_.volume) {
+					 case 1: out_ << '^' << pendingVolSig; break;
+					 case 2: out_  << pendingVolSig; break;
+					 }
+				       };
+				       pendingVolSigs.clear();
 				     }
 				     if (NResource::lilyProperties_.lilyVersion26 && pending_tempo >= 0) {
 					out_ << " \\tempo 4.=" << pending_tempo << endl << ' ';
@@ -1490,12 +1509,15 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 					out_ << "\\fermata";
 				     }
 				     if (!NResource::lilyProperties_.lilyVersion2) {
-					if (pendingVolSig) {
-						switch (lilyOpts_.volume) {
-							case 1: out_ << '^' << pendingVolSig; break;
-							case 2: out_  << pendingVolSig; break;
-						}
-						pendingVolSig = 0;
+					if (!pendingVolSigs.isEmpty()) {
+					  const char *pendingVolSig;
+					  for(pendingVolSig=pendingVolSigs.first();pendingVolSig;pendingVolSig=pendingVolSigs.next()){
+					    switch (lilyOpts_.volume) {
+					    case 1: out_ << '^' << pendingVolSig; break;
+					    case 2: out_  << pendingVolSig; break;
+					    }
+					  };
+					  pendingVolSigs.clear();
 					}
 					if (pending_tempo >= 0) {
 				   		out_ << "^#`(columns , quarter-head \" = " << pending_tempo << "\") ";
@@ -1887,14 +1909,14 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     		prevElemIsBar = false;
 						sign = (NSign *) elem;
 						switch(sign->getVolType()) {
-							case V_PPPIANO : pendingVolSig = "\\ppp "; break;
-							case V_PPIANO  : pendingVolSig = "\\pp "; break;
-							case V_PIANO   : pendingVolSig = "\\p "; break;
-							case V_MPIANO  : pendingVolSig = "\\mp "; break;
-							case V_FORTE   : pendingVolSig = "\\f "; break;
-							case V_FFORTE  : pendingVolSig = "\\ff "; break;
-							case V_FFFORTE : pendingVolSig = "\\fff "; break;
-							default        : pendingVolSig = "\\mf "; break;
+							case V_PPPIANO : pendingVolSigs.append("\\ppp "); break;
+							case V_PPIANO  : pendingVolSigs.append("\\pp "); break;
+							case V_PIANO   : pendingVolSigs.append("\\p "); break;
+							case V_MPIANO  : pendingVolSigs.append("\\mp "); break;
+							case V_FORTE   : pendingVolSigs.append("\\f "); break;
+							case V_FFORTE  : pendingVolSigs.append("\\ff "); break;
+							case V_FFFORTE : pendingVolSigs.append("\\fff "); break;
+							default        : pendingVolSigs.append("\\mf "); break;
 						}
 						break;
 #ifdef XXX
@@ -1929,7 +1951,7 @@ void NLilyExport::writeVoice(int staff_nr,  int voice_nr, NVoice *voi) {
 				     }
 				     break;
 			case T_TEXT:
-				     pending_text = (NText *) elem;
+				     pending_texts.append((NText *)elem);
 				     break;
 				    
 		} // end switch (elem->getType())
